@@ -1,0 +1,13 @@
+.obsidian/
+
+obj/
+bin/
+.vs/
+__pycache__/
+packages/
+node_modules/
+
+package-lock.json
+*.user
+
+!.Webprogramozás/**/bin
