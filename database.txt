@@ -1,0 +1,32 @@
+#Database kreáció
+
+create database Konyvtarirendszer
+default character set utf8
+collate utf8_hungarian_ci;
+
+#felhasználó tábla
+
+CREATE TABLE felhasznalo( 
+Nev varchar(50) NOT null, 
+OMazonosito int(11) not null PRIMARY KEY 
+);
+
+#könyvek tábla
+
+CREATE TABLE konyv(
+  ISBN int(13) PRIMARY KEY not null,
+  cim varchar(255) not null,
+  nev varchar(255) not null,
+  kiado varchar(255) not null,
+  szerzo_neve varchar(255) not null
+);
+
+#kapcsolat tábla
+
+CREATE TABLE kapcsolat(
+    ID int not null PRIMARY KEY,
+    OMazonosito int(11) not null,
+    ISBN int(13) not null,
+    FOREIGN KEY (OMazonosito) REFERENCES felhasznalo(OMazonosito),
+    FOREIGN KEY (ISBN) REFERENCES konyv(ISBN)
+);
