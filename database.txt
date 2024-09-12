@@ -6,9 +6,9 @@ collate utf8_hungarian_ci;
 
 #felhasználó tábla
 
-CREATE TABLE felhasznalo( 
-Nev varchar(50) NOT null, 
-OMazonosito int(11) not null PRIMARY KEY 
+CREATE TABLE felhasznalo(
+Nev varchar(50) NOT null,
+OMazonosito int(11) not null PRIMARY KEY
 );
 
 #könyvek tábla
