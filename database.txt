@@ -6,6 +6,10 @@ collate utf8_hungarian_ci;
 
 #felhasználó tábla
 
+CREATE TABLE felhasznalo( 
+OMazonosito bigint(11) not null PRIMARY KEY,
+Nev varchar(50) NOT null
+
 
 CREATE TABLE felhasznalo( 
 OMazonosito bigint(11) not null PRIMARY KEY,
@@ -27,6 +31,7 @@ CREATE TABLE kapcsolat(
     ID int not null PRIMARY KEY,
     OMazonosito bigint(11) not null,
     ISBN bigint(13) not null,
+    ISBN int(13) not null,
     FOREIGN KEY (OMazonosito) REFERENCES felhasznalo(OMazonosito),
     FOREIGN KEY (ISBN) REFERENCES konyv(ISBN)
 );
