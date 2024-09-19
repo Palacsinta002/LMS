@@ -1,51 +1,34 @@
-Extended Library Management System (LMS)
-Project Description:
-The Library Management System (LMS) automates the processes involved in running a library, including cataloging books, managing members, tracking loans, and processing returns. The system will support both physical and digital books, providing options for eBooks and audiobooks. It will also include features for managing overdue fines, generating reports, and tracking library analytics (e.g., popular books, frequent borrowers).
-
-Core Components:
-Database (backbone of the system)
-Website (public-facing, for members and staff)
-Desktop Application (for librarians and administrators)
 1. Database Design
 The database is the heart of the LMS, where all library data is stored and retrieved. Here's how you can structure the database:
 
 Key Tables:
 Books: Stores information about all books in the library.
+Fields: BookID, Title, AuthorID, ISBN, PublicationYear, CategoryID, CopiesAvailable
 
-Fields: BookID, Title, AuthorID, ISBN, PublicationYear, CategoryID, CopiesAvailable, DigitalCopyURL (for eBooks).
 Authors: Stores information about authors.
+Fields: AuthorID, Name, Nationality
 
-Fields: AuthorID, Name, Bio, Nationality.
 Members: Information about library users who borrow books.
+Fields: MemberID, FirstName, LastName, MembershipType (e.g., Student, Adult)
 
-Fields: MemberID, FirstName, LastName, Email, Address, PhoneNumber, MembershipType (e.g., Student, Adult), JoinDate.
 Borrowings: Tracks which books are borrowed by members.
+Fields: BorrowID, MemberID, BookID, BorrowDate, Returned?
 
-Fields: BorrowID, MemberID, BookID, BorrowDate, ReturnDate, DueDate, FineAmount.
-Fines: Stores overdue fines issued to members.
-
-Fields: FineID, BorrowID, FineAmount, PaidStatus.
-Staff: Information about library staff members (librarians and administrators).
-
-Fields: StaffID, FirstName, LastName, Email, Role, HireDate.
 Categories: Book categories (genres) such as Fiction, Science, History, etc.
+Fields: CategoryID, CategoryName
 
-Fields: CategoryID, CategoryName.
-Reservations: Tracks book reservations made by members.
-
-Fields: ReservationID, MemberID, BookID, ReservationDate, Status (e.g., Reserved, Collected, Canceled).
-DigitalContent: Stores links and details of digital content (eBooks, audiobooks).
-
-Fields: DigitalID, BookID, FileURL, FileType (e.g., ePub, PDF, MP3), AccessRights (e.g., Borrowable, ViewOnly).
 Relationships:
 One-to-many between Authors and Books (an author can write many books).
 One-to-many between Members and Borrowings (a member can borrow many books).
 Many-to-many between Books and Borrowings (a book can be borrowed by many members over time, and a member can borrow many books).
-One-to-many between Categories and Books (each book belongs to a category).
+One-to-many between Categories and Books (each book belongs to a category)
+
 Additional Database Features:
-Triggers: Automatically issue overdue fines if a book isn't returned by the due date.
 Views: Create SQL views for commonly used queries, such as "currently borrowed books" or "most borrowed books."
+
 Indexes: Optimize search performance on key fields such as Title, ISBN, and AuthorName.
+
+
 2. Website
 The website serves both the library's members and staff. It will be the public interface for the system, providing access to library resources and services.
 
