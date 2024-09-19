@@ -1,6 +1,4 @@
 1. Database Design
-The database is the heart of the LMS, where all library data is stored and retrieved. Here's how you can structure the database:
-
 Key Tables:
 Books: Stores information about all books in the library.
 Fields: BookID, Title, AuthorID, ISBN, PublicationYear, CategoryID, CopiesAvailable
@@ -26,11 +24,9 @@ One-to-many between Categories and Books (each book belongs to a category)
 Additional Database Features:
 Views: Create SQL views for commonly used queries, such as "currently borrowed books" or "most borrowed books."
 
-Indexes: Optimize search performance on key fields such as Title, ISBN, and AuthorName.
-
 
 2. Website
-The website serves both the library's members and staff. It will be the public interface for the system, providing access to library resources and services.
+The website serves the library's members. It will be the public interface for the system, providing access to library resources and services.
 
 Frontend Features:
 Home Page:
@@ -68,6 +64,8 @@ Frontend: HTML, CSS, JavaScript, React.js or Angular for creating a dynamic and 
 Backend: Node.js with Express, or Django (Python), or Ruby on Rails.
 Database: MySQL or PostgreSQL for structured data storage.
 APIs: RESTful APIs to connect the frontend and backend.
+
+
 3. Desktop Application
 The desktop app is designed for library staff and administrators who manage day-to-day library operations. It focuses on fast, local access to critical functions and may work offline with the ability to sync data when connected.
 
