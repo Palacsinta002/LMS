@@ -13,9 +13,9 @@ Projekt név: LMS (Library Management System)
 ## Books - Könyvek
 ##### Adatokat tárol a könyvekről
 
-| BookID | Title       | AuthorID | ISBN | PublicationYear | CategoryID | CopiesAvailable |
-| ------ | ----------- | -------- | ---- | --------------- | ---------- | --------------- |
-| 1      | Irodalom 9. | 1        | 1234 | 2020            | 1          | 5               |
+| BookID | Title       | AuthorID | PublisherID | ISBN | PublicationYear | CategoryID | CopiesAvailable |
+| ------ | ----------- | -------- | ----------- | ---- | --------------- | ---------- | --------------- |
+| 1      | Irodalom 9. | 1        | 1           | 1234 | 2020            | 1          | 5               |
 # Authors - Szerzők
 ##### Információkat tárol az írókról.
 
