@@ -1,5 +1,6 @@
 1. Database Design
 Key Tables:
+
 Books: Stores information about all books in the library.
 Fields: BookID, Title, AuthorID, ISBN, PublicationYear, CategoryID, CopiesAvailable
 
@@ -7,10 +8,13 @@ Authors: Stores information about authors.
 Fields: AuthorID, Name, Nationality
 
 Members: Information about library users who borrow books.
-Fields: MemberID, FirstName, LastName, MembershipType (e.g., Student, Adult)
+Fields: MemberID, FirstName, LastName, Email, MembershipType (e.g., Student, Adult)
 
 Borrowings: Tracks which books are borrowed by members.
-Fields: BorrowID, MemberID, BookID, BorrowDate, Returned?
+Fields: BorrowID, MemberID, BookID, BorrowDate, ReturnDate, DueDate, Returned?
+
+Staff: Information about library staff members (librarians and administrators)
+Fields: StaffID, FirstName, LastName, Email, Role
 
 Categories: Book categories (genres) such as Fiction, Science, History, etc.
 Fields: CategoryID, CategoryName

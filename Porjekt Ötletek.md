@@ -8,5 +8,10 @@
 | HTML, CSS, JavaScript           | MySQL, PHP            | C#                                       |
 | Weboldal a felhasználók részére | Háttér adatbázis      | Könyvtárosok és adminisztrátorok részére |
 
-# Részletek
+# Adatbázis
 
+## Books
+
+| BookID | Title | AuthorID | ISBN | PublicationYear | CategoryID | CopiesAvailable |
+| ------ | ----- | -------- | ---- | --------------- | ---------- | --------------- |
+| 1      |       |          |      |                 |            |                 |
