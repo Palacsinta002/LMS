@@ -24,7 +24,9 @@ Projekt név: LMS (Library Management System)
 | 1        | William Shakespeare | Angol       |
 # Members - Tagok
 ##### Adatokat tárol a könyveket kölcsönző tagokról
+##### A MembershipType lehet diák, tanár, felnőtt
 
-|     |     |
-| --- | --- |
-|     |     |
+| MemberID | FirstName | LastName | Email                  | MembershipType |
+| -------- | --------- | -------- | ---------------------- | -------------- |
+| 1        | Árpád     | Péter    | peterarpad@cicamail.hu | Felnőtt        |
+# Borrowings - Kölcsönzések
