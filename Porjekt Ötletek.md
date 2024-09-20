@@ -36,3 +36,9 @@ Projekt név: LMS (Library Management System)
 | -------- | -------- | ------ | ----------- | ----------- | ----------- | ---------- |
 | 1        | 1        | 1      | 2023.12.07. | null        | 2024.12.07. | false      |
 | 2        | 2        | 2      | 2024.03.22. | 2024.06.15. | 2025.03.22. | true       |
+# Staff - Alkalmazottak
+##### Információk a könyvtárosokról és az adminisztrátorokról
+
+| StaffID | FirstName | LastName | Email                      | Role       |
+| ------- | --------- | -------- | -------------------------- | ---------- |
+| 1       | Nikolasz  | Székej   | szekejnikolasz@cicamail.hu | Könyvtáros |
