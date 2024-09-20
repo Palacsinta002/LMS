@@ -48,12 +48,19 @@ Projekt név: LMS (Library Management System)
 | CategoryID | CategoryName |
 | ---------- | ------------ |
 | 1          | Tankönyv     |
+# Publisher - Kiadó
+##### Információk a kiadóról
+
+| PublisherID | Publisher |
+| ----------- | --------- |
+| 1           | Mozaik    |
 # Kapcsolatok
 
 Több-több kapcsolat: Szerzők és könyvek, egy könyvnek lehet több szerzője, és egy szerzőnek lehet több könyve
 Egy-több kapcsolat: Tagok és kölcsönzések, egy tag tud több könyvet is kikölcsönözni
 Több-több: Könyvek és kölcsönzések, egy könyv többször ki lehet kölcsönözve, egy tag pedig több könyvet is ki tud kölcsönözni
 Egy-több: Könyvek és kategóriák, egy könyvnek egy kategóriája van, de egy kategória több könyvé is lehet
+Egy-több: Kiadó és könyvek, egy kiadó több könyvet is kiadhat
 
 # Adatbázis fejlesztési lehetőségek
 ##### Megtekintések: Leggyakrabban megtekintett könyvek vagy leggyakrabban kölcsönzött könyvek. 

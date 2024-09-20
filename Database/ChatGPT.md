@@ -1,34 +1,3 @@
-1. Database Design
-Key Tables:
-
-Books: Stores information about all books in the library.
-Fields: BookID, Title, AuthorID, ISBN, PublicationYear, CategoryID, CopiesAvailable
-
-Authors: Stores information about authors.
-Fields: AuthorID, Name, Nationality
-
-Members: Information about library users who borrow books.
-Fields: MemberID, FirstName, LastName, Email, MembershipType (e.g., Student, Adult)
-
-Borrowings: Tracks which books are borrowed by members.
-Fields: BorrowID, MemberID, BookID, BorrowDate, ReturnDate, DueDate, Returned?
-
-Staff: Information about library staff members (librarians and administrators)
-Fields: StaffID, FirstName, LastName, Email, Role
-
-Categories: Book categories (genres) such as Fiction, Science, History, etc.
-Fields: CategoryID, CategoryName
-
-Relationships:
-One-to-many between Authors and Books (an author can write many books).
-One-to-many between Members and Borrowings (a member can borrow many books).
-Many-to-many between Books and Borrowings (a book can be borrowed by many members over time, and a member can borrow many books).
-One-to-many between Categories and Books (each book belongs to a category)
-
-Additional Database Features:
-Views: Create SQL views for commonly used queries, such as "currently borrowed books" or "most borrowed books."
-
-
 2. Website
 The website serves the library's members. It will be the public interface for the system, providing access to library resources and services.
 
