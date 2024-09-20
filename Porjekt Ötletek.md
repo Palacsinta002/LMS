@@ -42,3 +42,18 @@ Projekt név: LMS (Library Management System)
 | StaffID | FirstName | LastName | Email                      | Role       |
 | ------- | --------- | -------- | -------------------------- | ---------- |
 | 1       | Nikolasz  | Székej   | szekejnikolasz@cicamail.hu | Könyvtáros |
+# Categories - Kategóriák
+##### Könyvkategóriák: Sci-fi, Tudományos, Tankönyv, Történelmi, stb.
+
+| CategoryID | CategoryName |
+| ---------- | ------------ |
+| 1          | Tankönyv     |
+# Kapcsolatok
+
+Több-több kapcsolat: Szerzők és könyvek, egy könyvnek lehet több szerzője, és egy szerzőnek lehet több könyve
+Egy-több kapcsolat: Tagok és kölcsönzések, egy tag tud több könyvet is kikölcsönözni
+Több-több: Könyvek és kölcsönzések, egy könyv többször ki lehet kölcsönözve, egy tag pedig több könyvet is ki tud kölcsönözni
+Egy-több: Könyvek és kategóriák, egy könyvnek egy kategóriája van, de egy kategória több könyvé is lehet
+
+# Adatbázis fejlesztési lehetőségek
+##### Megtekintések: Leggyakrabban megtekintett könyvek vagy leggyakrabban kölcsönzött könyvek. 
