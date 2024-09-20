@@ -1,4 +1,4 @@
-# Projekt név: LMS (Library Management System)
+Projekt név: LMS (Library Management System)
 
 # Csapatfelosztás
 
@@ -10,8 +10,21 @@
 
 # Adatbázis
 
-## Books
+## Books - Könyvek
+##### Adatokat tárol a könyvekről
 
-| BookID | Title | AuthorID | ISBN | PublicationYear | CategoryID | CopiesAvailable |
-| ------ | ----- | -------- | ---- | --------------- | ---------- | --------------- |
-| 1      |       |          |      |                 |            |                 |
+| BookID | Title       | AuthorID | ISBN | PublicationYear | CategoryID | CopiesAvailable |
+| ------ | ----------- | -------- | ---- | --------------- | ---------- | --------------- |
+| 1      | Irodalom 9. | 1        | 1234 | 2020            | 1          | 5               |
+# Authors - Szerzők
+##### Információkat tárol az írókról.
+
+| AuthorID | Name                | Nationality |
+| -------- | ------------------- | ----------- |
+| 1        | William Shakespeare | Angol       |
+# Members - Tagok
+##### Adatokat tárol a könyveket kölcsönző tagokról
+
+|     |     |
+| --- | --- |
+|     |     |
