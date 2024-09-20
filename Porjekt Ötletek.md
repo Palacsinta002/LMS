@@ -30,3 +30,9 @@ Projekt név: LMS (Library Management System)
 | -------- | --------- | -------- | ---------------------- | -------------- |
 | 1        | Árpád     | Péter    | peterarpad@cicamail.hu | Felnőtt        |
 # Borrowings - Kölcsönzések
+##### Követi, hogy melyik könyvek vannak kikölcsönözve, és hogy kik kölcsönzik őket
+
+| BorrowID | MemberID | BookID | BorrowDate  | ReturnDate  | DueDate     | IsReturned |
+| -------- | -------- | ------ | ----------- | ----------- | ----------- | ---------- |
+| 1        | 1        | 1      | 2023.12.07. | null        | 2024.12.07. | false      |
+| 2        | 2        | 2      | 2024.03.22. | 2024.06.15. | 2025.03.22. | true       |
