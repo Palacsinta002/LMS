@@ -17,13 +17,13 @@ Adatokat tárol a könyvekről.
 | BookID | PublisherID | AuthorID | CategoryID | Title       | PublicationYear | ISBN | CopiesAvailable |
 | ------ | ----------- | -------- | ---------- | ----------- | --------------- | ---- | --------------- |
 | 1      | 1           | 1        | 1          | Irodalom 9. | 2020            | 1234 | 5               |
-## Authors - Szerzők
+## Users - Felhasználók
 
-Információkat tárol az írókról.
+Adatokat tárol a felhasználókról.
 
-| AuthorID | Name                | Nationality |
-| -------- | ------------------- | ----------- |
-| 1        | William Shakespeare | British     |
+| UserID | FirstName | LastName | Email                  | Username     | Password         | MembershipTypeID | RoleID |
+| ------ | --------- | -------- | ---------------------- | ------------ | ---------------- | ---------------- | ------ |
+| 1      | Árpád     | Péter    | peterarpad@cicamail.hu | Peterarpad04 | !asdf123(sha512) | 1                | 1      |
 ## Borrowings - Kölcsönzések
 
 Követi, hogy melyik könyvek vannak kikölcsönözve, és hogy kik kölcsönzik őket.
@@ -32,13 +32,6 @@ Követi, hogy melyik könyvek vannak kikölcsönözve, és hogy kik kölcsönzik
 | -------- | ------ | ------ | ---------- | ---------- | ---------- | ---------- |
 | 1        | 1      | 1      | 12/07/2023 | null       | 12/07/2024 | false      |
 | 2        | 2      | 2      | 03/22/2024 | 06/15/2024 | 03/22/2025 | true       |
-## Users - Felhasználók
-
-Adatokat tárol a felhasználókról.
-
-| UserID | FirstName | LastName | Email                  | Username     | Password         | MembershipTypeID | RoleID |
-| ------ | --------- | -------- | ---------------------- | ------------ | ---------------- | ---------------- | ------ |
-| 1      | Árpád     | Péter    | peterarpad@cicamail.hu | Peterarpad04 | !asdf123(sha512) | 1                | 1      |
 ## MembershipType - Tagság típus
 
 A tagság típusait tárolja el. 
@@ -58,6 +51,13 @@ A rangokat tárolja el.
 | 1      | Member    |
 | 2      | Admin     |
 | 3      | Librarian |
+## Authors - Szerzők
+
+Információkat tárol az írókról.
+
+| AuthorID | Name                | Nationality |
+| -------- | ------------------- | ----------- |
+| 1        | William Shakespeare | British     |
 ## Categories - Kategóriák
 
 Könyvkategóriák: Sci-fi, Tudományos, Tankönyv, Történelmi, stb.
