@@ -27,9 +27,9 @@
 Adatokat tárol a könyveket kölcsönző tagokról
 A MembershipType lehet diák, tanár, felnőtt
 
-| MemberID | FirstName | LastName | Email                  | MembershipType |
-| -------- | --------- | -------- | ---------------------- | -------------- |
-| 1        | Árpád     | Péter    | peterarpad@cicamail.hu | Felnőtt        |
+| MemberID | FirstName | LastName | Email                  | Username     | Password   | MembershipType |
+| -------- | --------- | -------- | ---------------------- | ------------ | ---------- | -------------- |
+| 1        | Árpád     | Péter    | peterarpad@cicamail.hu | Peterarpad04 | !asdf123.. | Felnőtt        |
 ## Borrowings - Kölcsönzések
 
 Követi, hogy melyik könyvek vannak kikölcsönözve, és hogy kik kölcsönzik őket
@@ -42,9 +42,9 @@ Követi, hogy melyik könyvek vannak kikölcsönözve, és hogy kik kölcsönzik
 
 Információk a könyvtárosokról és az adminisztrátorokról
 
-| StaffID | FirstName | LastName | Email                      | Role       |
-| ------- | --------- | -------- | -------------------------- | ---------- |
-| 1       | Nikolasz  | Székej   | szekejnikolasz@cicamail.hu | Könyvtáros |
+| StaffID | FirstName | LastName | Email                      | Role       |     |
+| ------- | --------- | -------- | -------------------------- | ---------- | --- |
+| 1       | Nikolasz  | Székej   | szekejnikolasz@cicamail.hu | Könyvtáros |     |
 ## Categories - Kategóriák
 
 Könyvkategóriák: Sci-fi, Tudományos, Tankönyv, Történelmi, stb.
@@ -76,7 +76,13 @@ Megtekintések: Leggyakrabban megtekintett könyvek vagy leggyakrabban kölcsön
 
 # Weboldal
 
-#### A weboldal fog felelni a tagok kiszolgálásáért
-
+A weboldal fog felelni a tagok kiszolgálásáért
 ## Frontend
 
+#### Főoldal
+
+Kereső, ahol a tagok tudnak keresni könyveket cím, szerző, műfaj vagy elérhetőség alapján. Elérhetőség alapján úgy lehet keresni, hogyha bejelöljük, megjelenik az összes elérhető könyv (ami nincs kikölcsönözve). 
+
+#### Tagok oldal
+
+Bejelentkezés/Regisztráció: A tagok be tudnak lépni a

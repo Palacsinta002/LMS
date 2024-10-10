@@ -3,11 +3,10 @@ The website serves the library's members. It will be the public interface for th
 
 Frontend Features:
 Home Page:
-
 A searchable catalog where users can browse books by title, author, genre, or availability.
 Highlight featured books or new arrivals.
-Member Portal:
 
+Member Portal:
 Login/Registration: Members can log in using their library credentials or sign up for a new membership.
 Borrow/Reserve Books: Members can check out books (both physical and digital) or reserve books for future borrowing.
 My Borrowings: A dashboard to track borrowed books, due dates, and fines.
