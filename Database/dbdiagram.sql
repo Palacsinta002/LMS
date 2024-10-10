@@ -1,51 +1,81 @@
-CREATE TABLE `Authors` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
-  `name` varchar(255),
-  `nationality` varchar(255)
-);
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
 
-CREATE TABLE `Categories` (
-  `categoryID` int PRIMARY KEY AUTO_INCREMENT,
-  `categoryName` varchar(100) NOT NULL
-);
+/*Table follows {
+  following_user_id integer
+  followed_user_id integer
+  created_at timestamp 
+}
 
-CREATE TABLE `Books` (
-  `bookID` int,
-  `title` varchar(255) NOT NULL,
-  `authorID` int,
-  `ISBN` varchar(13),
-  `publicationYear` year,
-  `categoryID` int,
-  `pusblisherID` int,
-  PRIMARY KEY (`bookID`, `pusblisherID`)
-);
+Table users {
+  id integer [primary key]
+  username varchar
+  role varchar
+  created_at timestamp
+}
 
-CREATE TABLE `Members` (
-  `memberID` int PRIMARY KEY AUTO_INCREMENT,
-  `firstName` varchar(100) NOT NULL,
-  `lastName` varchar(100) NOT NULL,
-  `membershipType` ENUM(Student,Adult)
-);
+Table posts {
+  id integer [primary key]
+  title varchar
+  body text [note: 'Content of the post']
+  user_id integer
+  status varchar
+  created_at timestamp
+}
 
-CREATE TABLE `Borrowings` (
-  `borrowID` int PRIMARY KEY AUTO_INCREMENT,
-  `memberID` int,
-  `bookID` int,
-  `borrowDate` date NOT NULL,
-  `returned` enum(Yes,No) DEFAULT 'no'
-);
+Ref: posts.user_id > users.id // many-to-one
 
-CREATE TABLE `Publisher` (
-  `publisherID` int PRIMARY KEY,
-  `publisher` varchar(100)
-);
+Ref: users.id < follows.following_user_id
 
-ALTER TABLE `Books` ADD FOREIGN KEY (`authorID`) REFERENCES `Authors` (`id`);
+Ref: users.id < follows.followed_user_id*/
 
-ALTER TABLE `Books` ADD FOREIGN KEY (`categoryID`) REFERENCES `Categories` (`categoryID`);
+Table Authors{
+  id int [primary key, increment]
+  name varchar(255)
+  nationality varchar(255)
+}
+Table Categories{
+  categoryID int [primary key, increment]
+  categoryName varchar(100) [not null]
+}
+Table Books {
+  bookID int [primary key]
+  title varchar(255) [not null]
+  authorID int 
+  ISBN varchar(13)
+  publicationYear year
+  categoryID int
+  pusblisherID int [primary key]
+}
+Table Users{
+  userID int [primary key, increment]
+  firstName varchar(100) [not null]
+  lastName varchar(100) [not null]
+  email varchar(100) [not null]
+  username varchar(100) [not null]
+  password varchar(255) [not null]
+  membershipType ENUM("Student", "Adult")
+  role ENUM("Admin", "Staff", "Member")
+}
+Table Borrowings{
+  borrowID int [primary key, increment]
+  userID int
+  bookID int
+  borrowDate date [not null]
+  returned enum("Yes", "No") [default: "no"]
+}
+table Publisher{
+  publisherID int [primary key, increment]
+  publisher varchar(100)
+}
 
-ALTER TABLE `Books` ADD FOREIGN KEY (`pusblisherID`) REFERENCES `Publisher` (`publisherID`);
 
-ALTER TABLE `Borrowings` ADD FOREIGN KEY (`memberID`) REFERENCES `Members` (`memberID`);
+Ref: "Authors"."id" < "Books"."authorID"
 
-ALTER TABLE `Books` ADD FOREIGN KEY (`bookID`) REFERENCES `Borrowings` (`bookID`);
+Ref: "Categories"."categoryID" < "Books"."categoryID"
+
+Ref: "Publisher"."publisherID" < "Books"."pusblisherID"
+
+Ref: "Users"."userID" < "Borrowings"."userID"
+
+Ref: "Borrowings"."bookID" < "Books"."bookID"
