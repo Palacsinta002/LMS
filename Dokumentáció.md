@@ -82,14 +82,14 @@ Egy-több: Kiadó és könyvek, egy kiadó több könyvet is kiadhat
 
 ## Adatbázis fejlesztési lehetőségek
 
-Megtekintések: Leggyakrabban megtekintett könyvek vagy leggyakrabban kölcsönzött könyvek. 
+- Megtekintések: Leggyakrabban megtekintett könyvek vagy leggyakrabban kölcsönzött könyvek. 
 
 
 
 
 # Weboldal
 
-A weboldal fog felelni a tagok kiszolgálásáért
+A weboldal felel a tagok kiszolgálásáért.
 ## Frontend
 
 #### Főoldal
@@ -98,4 +98,12 @@ Kereső, ahol a tagok tudnak keresni könyveket cím, szerző, műfaj vagy elér
 
 #### Tagok oldal
 
-Bejelentkezés/Regisztráció: A tagok be tudnak lépni a
+Bejelentkezés/Regisztráció: A tagok be tudnak lépni a felhasználónevük vagy email címük és a jelszavuk megadásával. A felhasználók tudnak regisztrálni, hogy tagokká váljanak.
+
+Kölcsönzés: A tagok ki tudnak kölcsönözni könyveket.
+
+Kölcsönzéseim: Kiírja, hogy milyen könyvek vannak kikölcsönözve a bejelentkezett felhasználó által. 
+
+## Weboldal fejlesztési lehetőségek:
+
+- Algoritmus, ami ajánl a felhasználónak könyveket az eddigi kölcsönzések alapján.
