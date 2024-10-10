@@ -1,89 +1,74 @@
-#Database kreáció
+-- Create the database
+CREATE DATABASE LMS default CHARACTER SET utf8 collate utf8_hungarian_ci;
+USE LMS;
 
-create database Konyvtarirendszer
-default character set utf8
-collate utf8_hungarian_ci;
-
-#felhasználó tábla
-
-CREATE TABLE felhasznalo( 
-OMazonosito bigint(11) not null PRIMARY KEY,
-Nev varchar(50) NOT null
-
-
-CREATE TABLE felhasznalo( 
-OMazonosito bigint(11) not null PRIMARY KEY,
-Nev varchar(50) NOT null );
-
-#könyvek tábla
-
-CREATE TABLE konyv(
-  ISBN bigint(13) PRIMARY KEY not null,
-  cim varchar(255) not null,
-  nev varchar(255) not null,
-  kiado varchar(255) not null,
-  szerzo_neve varchar(255) not null
+-- Create Authors table
+CREATE TABLE authorsTable (
+    AuthorID INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL,
+    Nationality VARCHAR(100)
 );
 
-#kapcsolat tábla
-
-CREATE TABLE kapcsolat(
-    ID int not null PRIMARY KEY,
-    OMazonosito bigint(11) not null,
-    ISBN bigint(13) not null,
-    ISBN int(13) not null,
-    FOREIGN KEY (OMazonosito) REFERENCES felhasznalo(OMazonosito),
-    FOREIGN KEY (ISBN) REFERENCES konyv(ISBN)
+-- Create Publisher table
+CREATE TABLE Publisher (
+    PublisherID INT AUTO_INCREMENT PRIMARY KEY,
+    PublisherName VARCHAR(255) NOT NULL
 );
 
-#adatok feltöltése
+-- Create Roles table
+CREATE TABLE Roles(
+    RolesID INT AUTO_INCREMENT PRIMARY KEY,
+    Role VARCHAR(100) NOT NULL
+);
 
-INSERT INTO felhasznalo(OMazonosito,nev)
-VALUES
-(70863330626,"Kiss Erika"),
-(77824486794,"Horváth István"),
-(72473798005,"Molnár Katalin"),
-(70636695447,"Farkas Dániel"),
-(75950344555,"Balogh Zsófia"),
-(72289227363,"Németh Attila"),
-(74084295414,"Fekete Zoltán"),
-(71356139105,"Papp János"),
-(73072265432,"Simon Judit"),
-(72155366113,"Takács Bence"),
-(75901988878,"Juhász Viktória"),
-(78319348186,"Szilágyi Tamás"),
-(71541182428,"Rácz Gabriella"),
-(73166688927,"Majoros András"),
-(75923842643,"Bíró Ágnes"),
-(74364319112,"Vörös Márk"),
-(74967764085,"Sipos Alexandra"),
-(74717464952,"Katona Balázs"),
-(77645698255,"Fodor Lili"),
-(76974596928,"Halász Levente"),
-(73958651643,"Bognár Enikő"),
-(74915299743,"Kocsis Máté"),
-(72716440168,"Bodnár Réka"),
-(78844522010,"Pál Gergely"),
-(72591561476,"Veres Edit"),
-(76202408616,"Vörös Márk"),
-(75482880873,"Halász Levente"),
-(76003509916,"Papp János"),
-(77100819098,"Bognár Enikő"),
-(71651723779,"Molnár Katalin"),
-(76731674751,"Kiss Erika"),
-(76031180323,"Majoros András"),
-(72071734894,"Kocsis Máté"),
-(78171652707,"Juhász Viktória"),
-(76959871124,"Németh Attila"),
-(77432688465,"Sipos Alexandra"),
-(71044910430,"Horváth István"),
-(74124193009,"Fekete Zoltán"),
-(77462662364,"Katona Balázs"),
-(79396256402,"Mészáros Csaba"),
-(79423908275,"Papp János"),
-(76256483049,"Lukács Nóra"),
-(71450760694,"Hajdu Kristóf"),
-(72596677758,"Sárközi Dorina"),
-(71377682184,"Pataki Ádám");
+-- Create Categories table
+CREATE TABLE Categories (
+    CategoryID INT AUTO_INCREMENT PRIMARY KEY,
+    CategoryName VARCHAR(100) NOT NULL
+);
 
+-- Create MembershipType table
+CREATE TABLE MembershipType(
+    MembershipTypeID INT AUTO_INCREMENT PRIMARY KEY,
+    MembershipType VARCHAR(100) NOT NULL
+);
 
+-- Create Books table
+CREATE TABLE Books (
+    BookID INT AUTO_INCREMENT PRIMARY KEY,
+    Title VARCHAR(255) NOT NULL,
+    AuthorID INT,
+    ISBN VARCHAR(13),
+    PublisherID INT,
+    PublicationYear YEAR,
+    CategoryID INT,
+    CopiesAvailable INT DEFAULT 0,
+    FOREIGN KEY (AuthorID) REFERENCES authorsTable(AuthorID),
+    FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID),
+    FOREIGN KEY (PublisherID) REFERENCES Publisher(PublisherID)
+);
+
+-- Create Users table (previously called Members)
+CREATE TABLE Users (
+    UserID INT AUTO_INCREMENT PRIMARY KEY,
+    FirstName VARCHAR(100) NOT NULL,
+    LastName VARCHAR(100) NOT NULL,
+    MembershipTypeID INT NOT NULL,
+    RolesID INT NOT NULL,
+    Email Varchar(50) not Null,
+    Username Varchar(25) not null,
+    Password varchar(100) not null,
+    FOREIGN KEY (MembershipTypeID) REFERENCES MembershipType(MembershipTypeID),
+    FOREIGN KEY (RolesID) REFERENCES Roles(RolesID)
+);
+
+-- Create Borrowings table
+CREATE TABLE Borrowings (
+    BorrowID INT AUTO_INCREMENT PRIMARY KEY,
+    UserID INT NOT NULL,
+    BookID INT NOT NULL,
+    BorrowDate DATE NOT NULL,
+    Returned ENUM('Yes', 'No') DEFAULT 'No',
+    FOREIGN KEY (UserID) REFERENCES Users(UserID),
+    FOREIGN KEY (BookID) REFERENCES Books(BookID)
+);
