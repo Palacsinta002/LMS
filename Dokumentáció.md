@@ -11,50 +11,63 @@
 # Adatbázis
 
 ## Books - Könyvek
-##### Adatokat tárol a könyvekről
+
+Adatokat tárol a könyvekről.
 
 | BookID | Title       | AuthorID | PublisherID | ISBN | PublicationYear | CategoryID | CopiesAvailable |
 | ------ | ----------- | -------- | ----------- | ---- | --------------- | ---------- | --------------- |
 | 1      | Irodalom 9. | 1        | 1           | 1234 | 2020            | 1          | 5               |
 ## Authors - Szerzők
-##### Információkat tárol az írókról.
+
+Információkat tárol az írókról.
 
 | AuthorID | Name                | Nationality |
 | -------- | ------------------- | ----------- |
-| 1        | William Shakespeare | Angol       |
-## Members - Tagok
-
-Adatokat tárol a könyveket kölcsönző tagokról
-A MembershipType lehet diák, tanár, felnőtt
-
-| MemberID | FirstName | LastName | Email                  | Username     | Password   | MembershipType |
-| -------- | --------- | -------- | ---------------------- | ------------ | ---------- | -------------- |
-| 1        | Árpád     | Péter    | peterarpad@cicamail.hu | Peterarpad04 | !asdf123.. | Felnőtt        |
+| 1        | William Shakespeare | British     |
 ## Borrowings - Kölcsönzések
 
-Követi, hogy melyik könyvek vannak kikölcsönözve, és hogy kik kölcsönzik őket
+Követi, hogy melyik könyvek vannak kikölcsönözve, és hogy kik kölcsönzik őket.
 
-| BorrowID | MemberID | BookID | BorrowDate  | ReturnDate  | DueDate     | IsReturned |
-| -------- | -------- | ------ | ----------- | ----------- | ----------- | ---------- |
-| 1        | 1        | 1      | 2023.12.07. | null        | 2024.12.07. | false      |
-| 2        | 2        | 2      | 2024.03.22. | 2024.06.15. | 2025.03.22. | true       |
-## Staff - Alkalmazottak
+| BorrowID | MemberID | BookID | BorrowDate | ReturnDate | DueDate    | IsReturned |
+| -------- | -------- | ------ | ---------- | ---------- | ---------- | ---------- |
+| 1        | 1        | 1      | 12/07/2023 | null       | 12/07/2024 | false      |
+| 2        | 2        | 2      | 03/22/2024 | 06/15/2024 | 03/22/2025 | true       |
+## Users - Felhasználók
 
-Információk a könyvtárosokról és az adminisztrátorokról
+Adatokat tárol a felhasználókról.
 
-| StaffID | FirstName | LastName | Email                      | Role       |     |
-| ------- | --------- | -------- | -------------------------- | ---------- | --- |
-| 1       | Nikolasz  | Székej   | szekejnikolasz@cicamail.hu | Könyvtáros |     |
+| MemberID | FirstName | LastName | Email                  | Username     | Password   | MembershipTypeID | RoleID |
+| -------- | --------- | -------- | ---------------------- | ------------ | ---------- | ---------------- | ------ |
+| 1        | Árpád     | Péter    | peterarpad@cicamail.hu | Peterarpad04 | !asdf123.. | 1                | 1      |
+## MembershipType - Tagság típus
+
+A tagság típusait tárolja el. 
+
+| MembershipTypeID | MemebershipType |
+| ---------------- | --------------- |
+| 1                | Student         |
+| 2                | Teacher         |
+| 3                | Adult           |
+| 4                | None            |
+## Roles - Rangok
+
+A rangokat tárolja el. 
+
+| RoleID | Role      |
+| ------ | --------- |
+| 1      | Member    |
+| 2      | Admin     |
+| 3      | Librarian |
 ## Categories - Kategóriák
 
 Könyvkategóriák: Sci-fi, Tudományos, Tankönyv, Történelmi, stb.
 
 | CategoryID | CategoryName |
 | ---------- | ------------ |
-| 1          | Tankönyv     |
+| 1          | Textbook     |
 ## Publisher - Kiadó
 
-Információk a kiadóról
+Információk a kiadóról.
 
 | PublisherID | Publisher |
 | ----------- | --------- |
