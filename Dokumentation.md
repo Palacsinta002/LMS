@@ -1,4 +1,4 @@
-Projekt név: LMS (Library Management System)
+#### Projekt név: LMS (Library Management System)
 
 # Csapatfelosztás
 
@@ -62,5 +62,5 @@ Több-több: Könyvek és kölcsönzések, egy könyv többször ki lehet kölcs
 Egy-több: Könyvek és kategóriák, egy könyvnek egy kategóriája van, de egy kategória több könyvé is lehet
 Egy-több: Kiadó és könyvek, egy kiadó több könyvet is kiadhat
 
-# Adatbázis fejlesztési lehetőségek
+## Adatbázis fejlesztési lehetőségek
 ##### Megtekintések: Leggyakrabban megtekintett könyvek vagy leggyakrabban kölcsönzött könyvek. 
