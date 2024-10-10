@@ -10,12 +10,14 @@ CREATE TABLE `Categories` (
 );
 
 CREATE TABLE `Books` (
-  `bookID` int PRIMARY KEY,
+  `bookID` int,
   `title` varchar(255) NOT NULL,
   `authorID` int,
   `ISBN` varchar(13),
   `publicationYear` year,
-  `categoryID` int
+  `categoryID` int,
+  `pusblisherID` int,
+  PRIMARY KEY (`bookID`, `pusblisherID`)
 );
 
 CREATE TABLE `Members` (
@@ -37,3 +39,13 @@ CREATE TABLE `Publisher` (
   `publisherID` int PRIMARY KEY,
   `publisher` varchar(100)
 );
+
+ALTER TABLE `Books` ADD FOREIGN KEY (`authorID`) REFERENCES `Authors` (`id`);
+
+ALTER TABLE `Books` ADD FOREIGN KEY (`categoryID`) REFERENCES `Categories` (`categoryID`);
+
+ALTER TABLE `Books` ADD FOREIGN KEY (`pusblisherID`) REFERENCES `Publisher` (`publisherID`);
+
+ALTER TABLE `Borrowings` ADD FOREIGN KEY (`memberID`) REFERENCES `Members` (`memberID`);
+
+ALTER TABLE `Books` ADD FOREIGN KEY (`bookID`) REFERENCES `Borrowings` (`bookID`);
