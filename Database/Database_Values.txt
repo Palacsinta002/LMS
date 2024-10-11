@@ -1,0 +1,70 @@
+INSERT INTO MembershipType(MembershipType) VALUES
+('Student'),
+('Teacher'),
+('Adult'),
+('None');
+
+INSERT INTO Roles(Role) VALUES
+('Member'),
+('Admin'),
+('Librarian');
+
+INSERT INTO Authors (Name, Nationality) VALUES
+('J.K. Rowling', 'British'),
+('George R.R. Martin', 'American'),
+('Isaac Asimov', 'Russian'),
+('Agatha Christie', 'British'),
+('Stephen King', 'American'),
+-- További szerzők generálása
+('Author 6', 'Nationality 6'),
+('Author 7', 'Nationality 7'),
+('Author 8', 'Nationality 8'),
+('Author 9', 'Nationality 9'),
+('Author 10', 'Nationality 10');
+
+INSERT INTO Categories (Category) VALUES
+('Fiction'),
+('Non-Fiction'),
+('Science Fiction'),
+('Mystery'),
+('Fantasy'),
+('Biography'),
+('History'),
+('Romance'),
+-- További kategóriák generálása
+('Category 9'),
+('Category 10');
+
+INSERT INTO Publishers (Publisher) VALUES
+('Penguin Random House'),
+('HarperCollins'),
+('Simon & Schuster'),
+('Hachette Book Group'),
+('Macmillan'),
+-- További kiadók generálása
+('Publisher 6'),
+('Publisher 7'),
+('Publisher 8'),
+('Publisher 9'),
+('Publisher 10');
+
+INSERT INTO Users (FirstName, LastName, Email, Username, Password, MembershipTypeID, RoleID) VALUES
+('John', 'Doe', 'john.doe@example.com', 'johndoe', 'password123', 1, 1),
+('Jane', 'Smith', 'jane.smith@example.com', 'janesmith', 'password123', 1, 1),
+('Emily', 'Jones', 'emily.jones@example.com', 'emilyjones', 'password123', 1, 1),
+('Michael', 'Brown', 'michael.brown@example.com', 'michaelbrown', 'password123', 1, 1),
+('Chris', 'Johnson', 'chris.johnson@example.com', 'chrisjohnson', 'password123', 1, 1);
+
+INSERT INTO Books (PublisherID, AuthorID, CategoryID, Title, PublicationYear, ISBN, CopiesAvailable) VALUES
+(1, 1, 1, 'Harry Potter and the Philosopher\'s Stone', 1997, '9780747532699', 5),
+(2, 2, 3, 'A Game of Thrones', 1996, '9780553103540', 3),
+(3, 3, 1, 'Foundation', 1951, '9780553293357', 4),
+(4, 4, 4, 'Murder on the Orient Express', 1934, '9780062693662', 2),
+(5, 5, 2, 'The Shining', 1977, '9780307743657', 6);
+
+INSERT INTO Borrowings (UserID, BookID, BorrowDate, ReturnDate, DueDate, IsReturned) VALUES
+(1, 1, '2023-10-01', NULL, '2023-10-15', FALSE),
+(2, 2, '2023-10-02', '2023-10-10', '2023-10-16', TRUE),
+(3, 3, '2023-10-03', NULL, '2023-10-17', FALSE),
+(4, 4, '2023-10-04', '2023-10-12', '2023-10-18', TRUE),
+(5, 5, '2023-10-05', NULL, '2023-10-19', FALSE);
