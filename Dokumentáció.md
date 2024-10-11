@@ -1,6 +1,5 @@
-#### Projekt név: LMS (Library Management System)
-
-# Csapatfelosztás
+<center><h1>LMS (Library Management System)</h1></center>
+<center><h1>Csapatfelosztás</h1></center>
 
 | Tóth Zoltán András              | Zsömbörgi Soma István | Vágvölgyi Máté                           |
 | ------------------------------- | --------------------- | ---------------------------------------- |
@@ -8,7 +7,9 @@
 | HTML, CSS, JavaScript           | MySQL, PHP            | C#                                       |
 | Weboldal a felhasználók részére | Háttér adatbázis      | Könyvtárosok és adminisztrátorok részére |
 
-# Adatbázis
+
+
+<center><h1>Adatbázis</h1></center>
 
 ## Books - Könyvek
 
@@ -65,6 +66,9 @@ Könyvkategóriák: Sci-fi, Tudományos, Tankönyv, Történelmi, stb.
 | CategoryID | Category |
 | ---------- | -------- |
 | 1          | Textbook |
+<div style="page-break-after: always;"></div>
+
+
 ## Publishers - Kiadó
 
 Információk a kiadóról.
@@ -85,9 +89,10 @@ Egy-több: Kiadó és könyvek, egy kiadó több könyvet is kiadhat
 - Megtekintések: Leggyakrabban megtekintett könyvek vagy leggyakrabban kölcsönzött könyvek. 
 
 
+<div style="page-break-after: always;"></div>
 
 
-# Weboldal
+<center><h1>Weboldal</h1></center>
 
 A weboldal felel a tagok kiszolgálásáért.
 ## Frontend
