@@ -6,10 +6,19 @@
 | Frontend                        | Backend               | Asztali alkalmazás                       |
 | HTML, CSS, JavaScript           | MySQL, PHP            | C#                                       |
 | Weboldal a felhasználók részére | Háttér adatbázis      | Könyvtárosok és adminisztrátorok részére |
-
-
-
 <center><h1>Adatbázis</h1></center>
+
+## Fogalmi terv
+
+Az LMS egy könyvtári rendszer, aminek adatbázisa nyilván tartja a felhasználók, könyvek és kölcsönzések adatait. Az adatbázis 8 táblát tartalmaz. 
+
+**Cél**: Egy könyvtári rendszer adatbázisának elkészítése, ami kiszolgálja a felhasználókat, könyvtárosokat és adminisztrátorokat. 
+
+**Célcsoport**: Diákok, tanárok, egyéb felhasználók
+
+**Funkciók**: A felhasználók megtekinteni, és kölcsönözni tudják a könyveket. A könyvtárosok tudják kezelni a kölcsönözhető könyveket. Az adminisztrátor hozzáfér a teljes adatbázishoz, és kezelni tudja a felhasználók adatait.
+
+**Kihívás**: Az adatbázis 3. normálformába helyezése, és az adatok könnyű hozzáférhetősége.
 
 ## Books - Könyvek
 
@@ -52,6 +61,8 @@ A rangokat tárolja el.
 | 1      | Member    |
 | 2      | Admin     |
 | 3      | Librarian |
+<div style="page-break-after: always;"></div>
+
 ## Authors - Szerzők
 
 Információkat tárol az írókról.
@@ -66,9 +77,6 @@ Könyvkategóriák: Sci-fi, Tudományos, Tankönyv, Történelmi, stb.
 | CategoryID | Category |
 | ---------- | -------- |
 | 1          | Textbook |
-<div style="page-break-after: always;"></div>
-
-
 ## Publishers - Kiadó
 
 Információk a kiadóról.
@@ -112,3 +120,4 @@ Kölcsönzéseim: Kiírja, hogy milyen könyvek vannak kikölcsönözve a bejele
 ## Weboldal fejlesztési lehetőségek:
 
 - Algoritmus, ami ajánl a felhasználónak könyveket az eddigi kölcsönzések alapján.
+- Cookie-k kezelése, local storage-ben eltárolása. 
