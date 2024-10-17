@@ -6,11 +6,19 @@
 | Frontend                        | Backend               | Asztali alkalmazás                       |
 | HTML, CSS, JavaScript           | MySQL, PHP            | C#                                       |
 | Weboldal a felhasználók részére | Háttér adatbázis      | Könyvtárosok és adminisztrátorok részére |
+<center><h1>Projekt terv</h1></center>
+##### A projekt tervezett ideje és időtartama: 2024. szeptember - 2025. május 13.
+
+**A projekt célja**: Egy könyvtári rendszer megalkotása, tagok kezelésével, könyvtárosok saját felületével és adminisztrátorokkal. 
+**A projektet megelőző tevékenységek**: 
+- Könyvtárosok véleménye, hogy milyen funkciókat látnának szívesen / hiányolnak jelenlegi rendszerükből.
+
+
 <center><h1>Adatbázis</h1></center>
 
 ## Fogalmi terv
 
-Az LMS egy könyvtári rendszer, aminek adatbázisa nyilván tartja a felhasználók, könyvek és kölcsönzések adatait. Az adatbázis 8 táblát tartalmaz. 
+Az LMS egy könyvtári rendszer, aminek adatbázisa nyilván tartja a felhasználók, könyvek és kölcsönzések adatait. Az adatbázis 8 táblát tartalmaz, és MySQL-ben írjuk.
 
 **Cél**: Egy könyvtári rendszer adatbázisának elkészítése, ami kiszolgálja a felhasználókat, könyvtárosokat és adminisztrátorokat. 
 
@@ -19,21 +27,27 @@ Az LMS egy könyvtári rendszer, aminek adatbázisa nyilván tartja a felhaszná
 **Funkciók**: A felhasználók megtekinteni, és kölcsönözni tudják a könyveket. A könyvtárosok tudják kezelni a kölcsönözhető könyveket. Az adminisztrátor hozzáfér a teljes adatbázishoz, és kezelni tudja a felhasználók adatait.
 
 **Kihívás**: Az adatbázis 3. normálformába helyezése, és az adatok könnyű hozzáférhetősége.
+<div style="page-break-after: always;"></div>
+
 
 ## Books - Könyvek
 
 Adatokat tárol a könyvekről.
 
-| BookID | PublisherID | AuthorID | CategoryID | Title       | PublicationYear | ISBN | CopiesAvailable |
-| ------ | ----------- | -------- | ---------- | ----------- | --------------- | ---- | --------------- |
-| 1      | 1           | 1        | 1          | Irodalom 9. | 2020            | 1234 | 5               |
+| BookID | PublisherID | AuthorID | CategoryID | Title       | Publication<br>Year | ISBN | Copies<br>Available |
+| ------ | ----------- | -------- | ---------- | ----------- | ------------------- | ---- | ------------------- |
+| 1      | 1           | 1        | 1          | Irodalom 9. | 2020                | 1234 | 5                   |
 ## Users - Felhasználók
 
 Adatokat tárol a felhasználókról.
 
-| UserID | FirstName | LastName | Email                  | Username     | Password         | MembershipTypeID | RoleID |
-| ------ | --------- | -------- | ---------------------- | ------------ | ---------------- | ---------------- | ------ |
-| 1      | Árpád     | Péter    | peterarpad@cicamail.hu | Peterarpad04 | !asdf123(sha512) | 1                | 1      |
+| UserID | FirstName | LastName | Email                  | Username     | Password         |
+| ------ | --------- | -------- | ---------------------- | ------------ | ---------------- |
+| 1      | Árpád     | Péter    | peterarpad@cicamail.hu | Peterarpad04 | !asdf123(sha512) |
+
+| MembershipTypeID | RoleID |
+| ---------------- | ------ |
+| 1                | 1      |
 ## Borrowings - Kölcsönzések
 
 Követi, hogy melyik könyvek vannak kikölcsönözve, és hogy kik kölcsönzik őket.
@@ -61,8 +75,6 @@ A rangokat tárolja el.
 | 1      | Member    |
 | 2      | Admin     |
 | 3      | Librarian |
-<div style="page-break-after: always;"></div>
-
 ## Authors - Szerzők
 
 Információkat tárol az írókról.
@@ -84,6 +96,10 @@ Információk a kiadóról.
 | PublisherID | Publisher |
 | ----------- | --------- |
 | 1           | Mozaik    |
+
+<div style="page-break-after: always;"></div>
+
+
 ## Kapcsolatok
 
 Több-több kapcsolat: Szerzők és könyvek, egy könyvnek lehet több szerzője, és egy szerzőnek lehet több könyve
@@ -96,13 +112,12 @@ Egy-több: Kiadó és könyvek, egy kiadó több könyvet is kiadhat
 
 - Megtekintések: Leggyakrabban megtekintett könyvek vagy leggyakrabban kölcsönzött könyvek. 
 
-
 <div style="page-break-after: always;"></div>
 
 
 <center><h1>Weboldal</h1></center>
 
-A weboldal felel a tagok kiszolgálásáért.
+A weboldal felel a tagok kiszolgálásáért. A webes felület HTML, CSS, JavaScript és React.js-ben íródott, hogy dinamikus, interaktív és reszponzív élményt nyújtson.
 ## Frontend
 
 #### Főoldal
@@ -111,13 +126,44 @@ Kereső, ahol a tagok tudnak keresni könyveket cím, szerző, műfaj vagy elér
 
 #### Tagok oldal
 
-Bejelentkezés/Regisztráció: A tagok be tudnak lépni a felhasználónevük vagy email címük és a jelszavuk megadásával. A felhasználók tudnak regisztrálni, hogy tagokká váljanak.
+**Bejelentkezés/Regisztráció**: A tagok be tudnak lépni a felhasználónevük vagy email címük és a jelszavuk megadásával. A felhasználók tudnak regisztrálni, hogy tagokká váljanak.
 
-Kölcsönzés: A tagok ki tudnak kölcsönözni könyveket.
+**Kölcsönzés**: A tagok ki tudnak kölcsönözni könyveket.
 
-Kölcsönzéseim: Kiírja, hogy milyen könyvek vannak kikölcsönözve a bejelentkezett felhasználó által. 
+**Kölcsönzéseim**: Kiírja, hogy milyen könyvek vannak kikölcsönözve a bejelentkezett felhasználó által. 
+
+**Értesítések**: Közeli határidőről figyelmeztetés küldése (erről emailt is kap).
+
+## Backend
+
+A backend felelős a weboldal működéséért. Tartalmazza a korábban leírt adatbázist, ezenfelül az adatbázisból történő lekérdezéseket, ami később továbbításra kerül a weboldalnak és az asztali alkalmazásnak. A backend részt az adatbázison kívül PHP-ban írtuk, ezen felül a Laravel keretrendszert használtuk. 
 
 ## Weboldal fejlesztési lehetőségek:
 
 - Algoritmus, ami ajánl a felhasználónak könyveket az eddigi kölcsönzések alapján.
+- Szűrés legnépszerűbb könyvekre.
 - Cookie-k kezelése, local storage-ben eltárolása. 
+
+
+<div style="page-break-after: always;"></div>
+
+
+<center><h1>Asztali alkalmazás</h1></center>
+
+Az asztali alkalmazás a könyvtárosoknak és az adminisztrátoroknak van tervezve, akik nap mint nap hajtanak végre könyvtári feladatokat. Gyors elérést biztosít kritikus funkciókhoz. Az asztali alkalmazást C#-ban írjuk (WinForm)
+
+## Fontos elemek
+
+- **Könyvek kezelése**: Könyveket lehet hozzáadni, módosítani, vagy törölni. 
+- **Könyvek kölcsönzése**: Könyveket tudnak kiadni tagok számára, vagy visszavenni azokat, amikor a tag visszahozza a könyveket. Valós idejű kommunikáció az adatbázissal.
+- **Raktáron lévő könyvek kezelése**: 
+	- Számon tartja a könyvtárban lévő könyvek számát.
+	- Számon tartja a lejárt határidejű könyveket.
+- **Tagok kezelése**: 
+	- Hozzáad új tagokat, vagy kezeli a meglévőket. (Pl.: Személyes adatok módosítása).
+	- Tagságok kezelése (Tagság megszüntetése és létrehozása).
+- Folyamatos szinkronizálás az adatbázissal.
+
+## Asztali alkalmazás fejlesztési lehetőségek:
+
+- **Folyamatos szinkronizálás kibővítése**: Helyi adatbázis nyilvántartása, ami folyamatosan frissül a fő adatbázissal. Amikor az asztali alkalmazás elveszti a kapcsolatot a fő adatbázissal, továbbra is eléri az adatokat, és módosíthatja azokat. Amikora fő adatbázissal helyreáll a kapcsolat, a helyi adatbázisban történt módosítások érvényesülnek a fő adatbázisra is. 
