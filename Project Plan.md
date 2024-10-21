@@ -7,9 +7,10 @@
 | HTML, CSS, JavaScript           | MySQL, PHP            | C#                                       |
 | Weboldal a felhasználók részére | Háttér adatbázis      | Könyvtárosok és adminisztrátorok részére |
 <center><h1>Projekt terv</h1></center>
+
 ##### A projekt tervezett ideje és időtartama: 2024. szeptember - 2025. május 13.
 
-**A projekt célja**: Egy könyvtári rendszer megalkotása, tagok kezelésével, könyvtárosok saját felületével és adminisztrátorokkal. 
+**A projekt célja**: Egy könyvtári rendszer megalkotása tagok webes felületével, könyvtárosok és adminisztrátorok saját asztali alkalmazásukkal. 
 **A projektet megelőző tevékenységek**: 
 - Könyvtárosok véleménye, hogy milyen funkciókat látnának szívesen / hiányolnak jelenlegi rendszerükből.
 
