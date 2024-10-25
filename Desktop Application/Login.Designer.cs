@@ -43,7 +43,7 @@
             login_btn.Location = new Point(182, 249);
             login_btn.Name = "login_btn";
             login_btn.Size = new Size(75, 33);
-            login_btn.TabIndex = 0;
+            login_btn.TabIndex = 2;
             login_btn.Text = "Login";
             login_btn.UseVisualStyleBackColor = true;
             login_btn.Click += LoginCheck;
@@ -53,7 +53,7 @@
             login_title.AutoSize = true;
             login_title.Font = new Font("Yu Gothic UI Semibold", 24F);
             login_title.ImeMode = ImeMode.NoControl;
-            login_title.Location = new Point(91, 48);
+            login_title.Location = new Point(91, 46);
             login_title.Name = "login_title";
             login_title.Size = new Size(101, 45);
             login_title.TabIndex = 1;
@@ -64,14 +64,15 @@
             username_textBox.Location = new Point(22, 135);
             username_textBox.Name = "username_textBox";
             username_textBox.Size = new Size(235, 23);
-            username_textBox.TabIndex = 2;
+            username_textBox.TabIndex = 0;
             // 
             // password_textBox
             // 
             password_textBox.Location = new Point(22, 198);
             password_textBox.Name = "password_textBox";
+            password_textBox.PasswordChar = '●';
             password_textBox.Size = new Size(235, 23);
-            password_textBox.TabIndex = 3;
+            password_textBox.TabIndex = 1;
             // 
             // username_label
             // 
@@ -98,7 +99,7 @@
             close_btn.AutoSize = true;
             close_btn.Cursor = Cursors.Hand;
             close_btn.Font = new Font("Yu Gothic UI Semibold", 12F);
-            close_btn.Location = new Point(252, 9);
+            close_btn.Location = new Point(253, 11);
             close_btn.Name = "close_btn";
             close_btn.Size = new Size(20, 21);
             close_btn.TabIndex = 6;
@@ -109,7 +110,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(284, 315);
+            ClientSize = new Size(284, 311);
             Controls.Add(close_btn);
             Controls.Add(password_label);
             Controls.Add(username_label);
@@ -117,9 +118,12 @@
             Controls.Add(username_textBox);
             Controls.Add(login_title);
             Controls.Add(login_btn);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
-            Load += Login_Load;
+            MouseDown += Login_MouseDown;
+            MouseMove += Login_MouseMove;
+            MouseUp += Login_MouseUp;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -28,10 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            close_btn = new Label();
-            label1 = new Label();
             panel1 = new Panel();
+            close_btn = new Label();
+            button1 = new Button();
+            panel1.SuspendLayout();
             SuspendLayout();
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(80, 77, 180);
+            panel1.Controls.Add(button1);
+            panel1.Location = new Point(0, 0);
+            panel1.MinimumSize = new Size(200, 422);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(260, 561);
+            panel1.TabIndex = 9;
             // 
             // close_btn
             // 
@@ -39,50 +50,41 @@
             close_btn.AutoSize = true;
             close_btn.Cursor = Cursors.Hand;
             close_btn.Font = new Font("Yu Gothic UI Semibold", 12F);
-            close_btn.Location = new Point(752, 9);
+            close_btn.Location = new Point(952, 9);
             close_btn.Name = "close_btn";
             close_btn.Size = new Size(20, 21);
-            close_btn.TabIndex = 7;
+            close_btn.TabIndex = 10;
             close_btn.Text = "X";
             close_btn.Click += CloseWindow;
             // 
-            // label1
+            // button1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(314, 111);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 8;
-            label1.Text = "label1";
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.FromArgb(80, 77, 180);
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(200, 422);
-            panel1.TabIndex = 9;
+            button1.Location = new Point(0, 146);
+            button1.Name = "button1";
+            button1.Size = new Size(260, 61);
+            button1.TabIndex = 0;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
             // 
             // adminPanel
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(784, 461);
-            Controls.Add(label1);
-            Controls.Add(panel1);
+            ClientSize = new Size(984, 561);
             Controls.Add(close_btn);
-            MinimumSize = new Size(800, 500);
+            Controls.Add(panel1);
             Name = "adminPanel";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Admin Panel";
             WindowState = FormWindowState.Maximized;
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Label close_btn;
-        private Label label1;
         private Panel panel1;
+        private Label close_btn;
+        private Button button1;
     }
 }
