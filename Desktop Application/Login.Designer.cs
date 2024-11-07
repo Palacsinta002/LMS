@@ -35,6 +35,7 @@
             username_label = new Label();
             password_label = new Label();
             close_btn = new Label();
+            panel1 = new Panel();
             SuspendLayout();
             // 
             // login_btn
@@ -106,6 +107,16 @@
             close_btn.Text = "X";
             close_btn.Click += CloseWindow;
             // 
+            // panel1
+            // 
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(285, 43);
+            panel1.TabIndex = 7;
+            panel1.MouseDown += Login_MouseDown;
+            panel1.MouseMove += Login_MouseMove;
+            panel1.MouseUp += Login_MouseUp;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -118,12 +129,10 @@
             Controls.Add(username_textBox);
             Controls.Add(login_title);
             Controls.Add(login_btn);
+            Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
-            MouseDown += Login_MouseDown;
-            MouseMove += Login_MouseMove;
-            MouseUp += Login_MouseUp;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -137,5 +146,6 @@
         private Label username_label;
         private Label password_label;
         private Label close_btn;
+        private Panel panel1;
     }
 }
