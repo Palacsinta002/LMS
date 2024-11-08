@@ -40,5 +40,30 @@
         {
             mouseDown = false;
         }
+
+        private void Logout(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            this.Hide();
+            login.ShowDialog();
+            this.Close();
+        }
+
+        private void HidePanels()
+        {
+
+        }
+
+        // Shows the Dashboard after hiding previous content.
+        private void ShowDashboard(object sender, EventArgs e)
+        {
+            
+        }
+
+        // Shows the Books after removing previous content.
+        private void ShowBooks(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
