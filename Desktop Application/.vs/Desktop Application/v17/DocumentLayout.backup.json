@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\vagvolgyimate\\Desktop\\LMS\\Desktop Application\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A31D7D55-1673-40E9-8122-8BD6C5D3D449}|Desktop Application.csproj|C:\\Users\\vagvolgyimate\\Desktop\\LMS\\Desktop Application\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A31D7D55-1673-40E9-8122-8BD6C5D3D449}|Desktop Application.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A31D7D55-1673-40E9-8122-8BD6C5D3D449}|Desktop Application.csproj|c:\\users\\vagvolgyimate\\desktop\\lms\\desktop application\\adminpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{A31D7D55-1673-40E9-8122-8BD6C5D3D449}|Desktop Application.csproj|solutionrelative:adminpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
@@ -15,8 +11,8 @@
       "RelativeMoniker": "D:0:0:{A31D7D55-1673-40E9-8122-8BD6C5D3D449}|Desktop Application.csproj|solutionrelative:adminpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A31D7D55-1673-40E9-8122-8BD6C5D3D449}|Desktop Application.csproj|c:\\users\\vagvolgyimate\\desktop\\lms\\desktop application\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A31D7D55-1673-40E9-8122-8BD6C5D3D449}|Desktop Application.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A31D7D55-1673-40E9-8122-8BD6C5D3D449}|Desktop Application.csproj|c:\\users\\vagvolgyimate\\desktop\\lms\\desktop application\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A31D7D55-1673-40E9-8122-8BD6C5D3D449}|Desktop Application.csproj|solutionrelative:login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,49 +22,36 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Login.cs",
-              "DocumentMoniker": "C:\\Users\\vagvolgyimate\\Desktop\\LMS\\Desktop Application\\Login.cs",
-              "RelativeDocumentMoniker": "Login.cs",
-              "ToolTip": "C:\\Users\\vagvolgyimate\\Desktop\\LMS\\Desktop Application\\Login.cs",
-              "RelativeToolTip": "Login.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAASwBYAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "AdminPanel.cs",
+              "DocumentMoniker": "C:\\Users\\vagvolgyimate\\Desktop\\LMS\\Desktop Application\\AdminPanel.cs",
+              "RelativeDocumentMoniker": "AdminPanel.cs",
+              "ToolTip": "C:\\Users\\vagvolgyimate\\Desktop\\LMS\\Desktop Application\\AdminPanel.cs",
+              "RelativeToolTip": "AdminPanel.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAiwCoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T13:12:34.261Z",
+              "WhenOpened": "2024-11-08T10:11:24.701Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Login.cs [Design]",
               "DocumentMoniker": "C:\\Users\\vagvolgyimate\\Desktop\\LMS\\Desktop Application\\Login.cs",
               "RelativeDocumentMoniker": "Login.cs",
               "ToolTip": "C:\\Users\\vagvolgyimate\\Desktop\\LMS\\Desktop Application\\Login.cs [Design]",
               "RelativeToolTip": "Login.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-25T10:39:12.322Z",
+              "WhenOpened": "2024-11-08T09:23:33.006Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AdminPanel.cs",
-              "DocumentMoniker": "C:\\Users\\vagvolgyimate\\Desktop\\LMS\\Desktop Application\\AdminPanel.cs",
-              "RelativeDocumentMoniker": "AdminPanel.cs",
-              "ToolTip": "C:\\Users\\vagvolgyimate\\Desktop\\LMS\\Desktop Application\\AdminPanel.cs",
-              "RelativeToolTip": "AdminPanel.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAwwCYAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-25T10:38:09.348Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "AdminPanel.cs [Design]",
               "DocumentMoniker": "C:\\Users\\vagvolgyimate\\Desktop\\LMS\\Desktop Application\\AdminPanel.cs",
               "RelativeDocumentMoniker": "AdminPanel.cs",

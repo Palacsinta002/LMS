@@ -36,6 +36,7 @@
             password_label = new Label();
             close_btn = new Label();
             panel1 = new Panel();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // login_btn
@@ -100,7 +101,7 @@
             close_btn.AutoSize = true;
             close_btn.Cursor = Cursors.Hand;
             close_btn.Font = new Font("Yu Gothic UI Semibold", 12F);
-            close_btn.Location = new Point(253, 11);
+            close_btn.Location = new Point(254, 9);
             close_btn.Name = "close_btn";
             close_btn.Size = new Size(20, 21);
             close_btn.TabIndex = 6;
@@ -109,6 +110,8 @@
             // 
             // panel1
             // 
+            panel1.BackColor = SystemColors.Control;
+            panel1.Controls.Add(close_btn);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(285, 43);
@@ -122,7 +125,6 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(284, 311);
-            Controls.Add(close_btn);
             Controls.Add(password_label);
             Controls.Add(username_label);
             Controls.Add(password_textBox);
@@ -133,6 +135,8 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
