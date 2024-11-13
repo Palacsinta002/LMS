@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             backPanel1 = new Panel();
-            label1 = new Label();
             logout_btn = new Button();
             librarians_btn = new Button();
             categories_btn = new Button();
@@ -37,25 +36,32 @@
             members_btn = new Button();
             books_btn = new Button();
             dashboard_btn = new Button();
+            label1 = new Label();
             close_btn = new Label();
             backPanel2 = new Panel();
             greeting_label = new Label();
             title_label = new Label();
             panel1 = new Panel();
-            label2 = new Label();
-            label3 = new Label();
-            panel4 = new Panel();
+            panel3 = new Panel();
+            pictureBox3 = new PictureBox();
             label6 = new Label();
             panel2 = new Panel();
-            label4 = new Label();
-            panel3 = new Panel();
+            pictureBox2 = new PictureBox();
             label5 = new Label();
+            panel4 = new Panel();
+            pictureBox1 = new PictureBox();
+            label4 = new Label();
+            label3 = new Label();
+            label2 = new Label();
             backPanel1.SuspendLayout();
             backPanel2.SuspendLayout();
             panel1.SuspendLayout();
-            panel4.SuspendLayout();
-            panel2.SuspendLayout();
             panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // backPanel1
@@ -73,18 +79,6 @@
             backPanel1.Name = "backPanel1";
             backPanel1.Size = new Size(260, 561);
             backPanel1.TabIndex = 9;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label1.ForeColor = Color.Black;
-            label1.Location = new Point(63, 66);
-            label1.Margin = new Padding(0);
-            label1.Name = "label1";
-            label1.Size = new Size(122, 25);
-            label1.TabIndex = 11;
-            label1.Text = "No. of Books";
             // 
             // logout_btn
             // 
@@ -199,6 +193,18 @@
             dashboard_btn.UseVisualStyleBackColor = false;
             dashboard_btn.Click += ShowDashboard;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Yu Gothic UI Semibold", 12F);
+            label1.ForeColor = Color.Black;
+            label1.Location = new Point(66, 33);
+            label1.Margin = new Padding(0);
+            label1.Name = "label1";
+            label1.Size = new Size(105, 21);
+            label1.TabIndex = 11;
+            label1.Text = "No. of Books";
+            // 
             // close_btn
             // 
             close_btn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -257,8 +263,8 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(panel2);
             panel1.Controls.Add(panel3);
+            panel1.Controls.Add(panel2);
             panel1.Controls.Add(panel4);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
@@ -268,78 +274,118 @@
             panel1.Size = new Size(709, 493);
             panel1.TabIndex = 12;
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label2.ForeColor = Color.Black;
-            label2.Location = new Point(271, 66);
-            label2.Name = "label2";
-            label2.Size = new Size(152, 25);
-            label2.TabIndex = 12;
-            label2.Text = "No. of Members";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label3.ForeColor = Color.Black;
-            label3.Location = new Point(475, 66);
-            label3.Name = "label3";
-            label3.Size = new Size(167, 25);
-            label3.TabIndex = 13;
-            label3.Text = "No. of Borrowings";
-            // 
-            // panel4
-            // 
-            panel4.Controls.Add(label6);
-            panel4.Location = new Point(69, 94);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(171, 63);
-            panel4.TabIndex = 15;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(41, 19);
-            label6.Name = "label6";
-            label6.Size = new Size(38, 15);
-            label6.TabIndex = 0;
-            label6.Text = "label6";
-            // 
-            // panel2
-            // 
-            panel2.Controls.Add(label4);
-            panel2.Location = new Point(277, 94);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(171, 63);
-            panel2.TabIndex = 16;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(41, 19);
-            label4.Name = "label4";
-            label4.Size = new Size(38, 15);
-            label4.TabIndex = 0;
-            label4.Text = "label4";
-            // 
             // panel3
             // 
-            panel3.Controls.Add(label5);
-            panel3.Location = new Point(481, 94);
+            panel3.BackColor = SystemColors.ScrollBar;
+            panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(pictureBox3);
+            panel3.Controls.Add(label6);
+            panel3.Location = new Point(478, 57);
             panel3.Name = "panel3";
             panel3.Size = new Size(171, 63);
             panel3.TabIndex = 16;
             // 
+            // pictureBox3
+            // 
+            pictureBox3.BackColor = SystemColors.ActiveCaptionText;
+            pictureBox3.Location = new Point(37, 21);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(25, 24);
+            pictureBox3.TabIndex = 1;
+            pictureBox3.TabStop = false;
+            // 
+            // label6
+            // 
+            label6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label6.Font = new Font("Yu Gothic UI Semibold", 22F);
+            label6.Location = new Point(61, 11);
+            label6.Name = "label6";
+            label6.Size = new Size(69, 41);
+            label6.TabIndex = 0;
+            label6.Text = "75";
+            label6.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = SystemColors.ScrollBar;
+            panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.Controls.Add(pictureBox2);
+            panel2.Controls.Add(label5);
+            panel2.Location = new Point(273, 57);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(171, 63);
+            panel2.TabIndex = 16;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.BackColor = SystemColors.ActiveCaptionText;
+            pictureBox2.Location = new Point(37, 21);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(25, 24);
+            pictureBox2.TabIndex = 1;
+            pictureBox2.TabStop = false;
+            // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(41, 19);
+            label5.Font = new Font("Yu Gothic UI Semibold", 22F);
+            label5.Location = new Point(63, 11);
             label5.Name = "label5";
-            label5.Size = new Size(38, 15);
+            label5.Size = new Size(68, 41);
             label5.TabIndex = 0;
-            label5.Text = "label5";
+            label5.Text = "750";
+            // 
+            // panel4
+            // 
+            panel4.BackColor = SystemColors.ScrollBar;
+            panel4.BorderStyle = BorderStyle.FixedSingle;
+            panel4.Controls.Add(pictureBox1);
+            panel4.Controls.Add(label4);
+            panel4.Location = new Point(66, 57);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(171, 63);
+            panel4.TabIndex = 15;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = SystemColors.ActiveCaptionText;
+            pictureBox1.Location = new Point(37, 21);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(25, 24);
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Yu Gothic UI Semibold", 22F);
+            label4.Location = new Point(63, 11);
+            label4.Name = "label4";
+            label4.Size = new Size(69, 41);
+            label4.TabIndex = 0;
+            label4.Text = "250";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Yu Gothic UI Semibold", 12F);
+            label3.ForeColor = Color.Black;
+            label3.Location = new Point(478, 33);
+            label3.Name = "label3";
+            label3.Size = new Size(144, 21);
+            label3.TabIndex = 13;
+            label3.Text = "No. of Borrowings";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Yu Gothic UI Semibold", 12F);
+            label2.ForeColor = Color.Black;
+            label2.Location = new Point(273, 33);
+            label2.Name = "label2";
+            label2.Size = new Size(130, 21);
+            label2.TabIndex = 12;
+            label2.Text = "No. of Members";
             // 
             // adminPanel
             // 
@@ -358,12 +404,14 @@
             backPanel2.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
+            panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -385,10 +433,13 @@
         private Panel panel4;
         private Label label3;
         private Label label2;
+        private Label label4;
+        private PictureBox pictureBox1;
+        private Panel panel3;
+        private PictureBox pictureBox3;
         private Label label6;
         private Panel panel2;
-        private Label label4;
-        private Panel panel3;
+        private PictureBox pictureBox2;
         private Label label5;
     }
 }
