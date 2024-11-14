@@ -30,7 +30,6 @@
         {
             backPanel1 = new Panel();
             logout_btn = new Button();
-            librarians_btn = new Button();
             categories_btn = new Button();
             borrowings_btn = new Button();
             members_btn = new Button();
@@ -41,7 +40,8 @@
             backPanel2 = new Panel();
             greeting_label = new Label();
             title_label = new Label();
-            panel1 = new Panel();
+            dashboardPanel = new Panel();
+            label7 = new Label();
             panel3 = new Panel();
             pictureBox3 = new PictureBox();
             label6 = new Label();
@@ -53,22 +53,23 @@
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
+            dataGridView1 = new DataGridView();
             backPanel1.SuspendLayout();
             backPanel2.SuspendLayout();
-            panel1.SuspendLayout();
+            dashboardPanel.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // backPanel1
             // 
             backPanel1.BackColor = Color.FromArgb(80, 77, 180);
             backPanel1.Controls.Add(logout_btn);
-            backPanel1.Controls.Add(librarians_btn);
             backPanel1.Controls.Add(categories_btn);
             backPanel1.Controls.Add(borrowings_btn);
             backPanel1.Controls.Add(members_btn);
@@ -95,22 +96,6 @@
             logout_btn.UseVisualStyleBackColor = false;
             logout_btn.Click += Logout;
             // 
-            // librarians_btn
-            // 
-            librarians_btn.BackColor = Color.FromArgb(80, 77, 180);
-            librarians_btn.FlatAppearance.BorderSize = 0;
-            librarians_btn.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
-            librarians_btn.FlatStyle = FlatStyle.Flat;
-            librarians_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
-            librarians_btn.ForeColor = Color.White;
-            librarians_btn.Location = new Point(1, 360);
-            librarians_btn.Name = "librarians_btn";
-            librarians_btn.Size = new Size(260, 36);
-            librarians_btn.TabIndex = 5;
-            librarians_btn.TabStop = false;
-            librarians_btn.Text = "Librarians";
-            librarians_btn.UseVisualStyleBackColor = false;
-            // 
             // categories_btn
             // 
             categories_btn.BackColor = Color.FromArgb(80, 77, 180);
@@ -119,7 +104,7 @@
             categories_btn.FlatStyle = FlatStyle.Flat;
             categories_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             categories_btn.ForeColor = Color.White;
-            categories_btn.Location = new Point(1, 318);
+            categories_btn.Location = new Point(3, 302);
             categories_btn.Name = "categories_btn";
             categories_btn.Size = new Size(260, 36);
             categories_btn.TabIndex = 4;
@@ -135,7 +120,7 @@
             borrowings_btn.FlatStyle = FlatStyle.Flat;
             borrowings_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             borrowings_btn.ForeColor = Color.White;
-            borrowings_btn.Location = new Point(1, 276);
+            borrowings_btn.Location = new Point(3, 260);
             borrowings_btn.Name = "borrowings_btn";
             borrowings_btn.Size = new Size(260, 36);
             borrowings_btn.TabIndex = 3;
@@ -151,7 +136,7 @@
             members_btn.FlatStyle = FlatStyle.Flat;
             members_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             members_btn.ForeColor = Color.White;
-            members_btn.Location = new Point(1, 234);
+            members_btn.Location = new Point(1, 344);
             members_btn.Name = "members_btn";
             members_btn.Size = new Size(260, 36);
             members_btn.TabIndex = 2;
@@ -167,7 +152,7 @@
             books_btn.FlatStyle = FlatStyle.Flat;
             books_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             books_btn.ForeColor = Color.White;
-            books_btn.Location = new Point(1, 192);
+            books_btn.Location = new Point(1, 218);
             books_btn.Name = "books_btn";
             books_btn.Size = new Size(260, 36);
             books_btn.TabIndex = 1;
@@ -184,7 +169,7 @@
             dashboard_btn.FlatStyle = FlatStyle.Flat;
             dashboard_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             dashboard_btn.ForeColor = Color.White;
-            dashboard_btn.Location = new Point(1, 150);
+            dashboard_btn.Location = new Point(1, 176);
             dashboard_btn.Name = "dashboard_btn";
             dashboard_btn.Size = new Size(260, 36);
             dashboard_btn.TabIndex = 0;
@@ -261,18 +246,32 @@
             title_label.MouseMove += Login_MouseMove;
             title_label.MouseUp += Login_MouseUp;
             // 
-            // panel1
+            // dashboardPanel
             // 
-            panel1.Controls.Add(panel3);
-            panel1.Controls.Add(panel2);
-            panel1.Controls.Add(panel4);
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(label1);
-            panel1.Location = new Point(266, 56);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(709, 493);
-            panel1.TabIndex = 12;
+            dashboardPanel.Controls.Add(dataGridView1);
+            dashboardPanel.Controls.Add(label7);
+            dashboardPanel.Controls.Add(panel3);
+            dashboardPanel.Controls.Add(panel2);
+            dashboardPanel.Controls.Add(panel4);
+            dashboardPanel.Controls.Add(label3);
+            dashboardPanel.Controls.Add(label2);
+            dashboardPanel.Controls.Add(label1);
+            dashboardPanel.Location = new Point(266, 56);
+            dashboardPanel.Name = "dashboardPanel";
+            dashboardPanel.Size = new Size(709, 493);
+            dashboardPanel.TabIndex = 12;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Yu Gothic UI Semibold", 12F);
+            label7.ForeColor = Color.Black;
+            label7.Location = new Point(59, 162);
+            label7.Margin = new Padding(0);
+            label7.Name = "label7";
+            label7.Size = new Size(163, 21);
+            label7.TabIndex = 17;
+            label7.Text = "Top Borrowed Books";
             // 
             // panel3
             // 
@@ -334,6 +333,7 @@
             label5.Size = new Size(68, 41);
             label5.TabIndex = 0;
             label5.Text = "750";
+            label5.TextAlign = ContentAlignment.TopCenter;
             // 
             // panel4
             // 
@@ -364,6 +364,7 @@
             label4.Size = new Size(69, 41);
             label4.TabIndex = 0;
             label4.Text = "250";
+            label4.TextAlign = ContentAlignment.TopCenter;
             // 
             // label3
             // 
@@ -387,12 +388,20 @@
             label2.TabIndex = 12;
             label2.Text = "No. of Members";
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(59, 195);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(590, 270);
+            dataGridView1.TabIndex = 18;
+            // 
             // adminPanel
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(984, 561);
-            Controls.Add(panel1);
+            Controls.Add(dashboardPanel);
             Controls.Add(backPanel2);
             Controls.Add(backPanel1);
             FormBorderStyle = FormBorderStyle.None;
@@ -402,8 +411,8 @@
             backPanel1.ResumeLayout(false);
             backPanel2.ResumeLayout(false);
             backPanel2.PerformLayout();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            dashboardPanel.ResumeLayout(false);
+            dashboardPanel.PerformLayout();
             panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             panel2.ResumeLayout(false);
@@ -412,6 +421,7 @@
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -426,10 +436,9 @@
         private Button members_btn;
         private Button books_btn;
         private Button logout_btn;
-        private Button librarians_btn;
         private Label greeting_label;
         private Label label1;
-        private Panel panel1;
+        private Panel dashboardPanel;
         private Panel panel4;
         private Label label3;
         private Label label2;
@@ -441,5 +450,7 @@
         private Panel panel2;
         private PictureBox pictureBox2;
         private Label label5;
+        private Label label7;
+        private DataGridView dataGridView1;
     }
 }

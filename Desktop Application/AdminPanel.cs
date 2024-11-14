@@ -51,19 +51,24 @@
 
         private void HidePanels()
         {
-
+            dashboardPanel.Visible = false;
         }
 
         // Shows the Dashboard after hiding previous content.
         private void ShowDashboard(object sender, EventArgs e)
         {
-            
+            if(dashboardPanel.Visible == false)
+            {
+                HidePanels();
+                dashboardPanel.Visible = true;
+            }
         }
 
         // Shows the Books after removing previous content.
         private void ShowBooks(object sender, EventArgs e)
         {
-            
+            HidePanels();
+            // show books panel
         }
     }
 }
