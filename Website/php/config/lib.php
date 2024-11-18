@@ -1,0 +1,5 @@
+<?php
+
+$SFO = new stdClass();
+
+?>
