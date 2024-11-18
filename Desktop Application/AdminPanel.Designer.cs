@@ -36,7 +36,6 @@
             books_btn = new Button();
             dashboard_btn = new Button();
             label1 = new Label();
-            close_btn = new Label();
             backPanel2 = new Panel();
             greeting_label = new Label();
             title_label = new Label();
@@ -54,6 +53,14 @@
             label3 = new Label();
             label2 = new Label();
             dataGridView1 = new DataGridView();
+            booksPanel = new Panel();
+            searchBox = new TextBox();
+            dataGridView2 = new DataGridView();
+            button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
+            button4 = new Button();
+            label8 = new Label();
             backPanel1.SuspendLayout();
             backPanel2.SuspendLayout();
             dashboardPanel.SuspendLayout();
@@ -64,6 +71,8 @@
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            booksPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
             // backPanel1
@@ -190,33 +199,15 @@
             label1.TabIndex = 11;
             label1.Text = "No. of Books";
             // 
-            // close_btn
-            // 
-            close_btn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            close_btn.AutoSize = true;
-            close_btn.Cursor = Cursors.Hand;
-            close_btn.Font = new Font("Yu Gothic UI Semibold", 16F);
-            close_btn.ForeColor = Color.White;
-            close_btn.Location = new Point(948, 9);
-            close_btn.Name = "close_btn";
-            close_btn.Size = new Size(27, 30);
-            close_btn.TabIndex = 10;
-            close_btn.Text = "X";
-            close_btn.Click += CloseWindow;
-            // 
             // backPanel2
             // 
             backPanel2.BackColor = Color.FromArgb(72, 69, 158);
             backPanel2.Controls.Add(greeting_label);
-            backPanel2.Controls.Add(close_btn);
             backPanel2.Controls.Add(title_label);
             backPanel2.Location = new Point(0, 0);
             backPanel2.Name = "backPanel2";
             backPanel2.Size = new Size(985, 50);
             backPanel2.TabIndex = 11;
-            backPanel2.MouseDown += Login_MouseDown;
-            backPanel2.MouseMove += Login_MouseMove;
-            backPanel2.MouseUp += Login_MouseUp;
             // 
             // greeting_label
             // 
@@ -224,13 +215,10 @@
             greeting_label.ForeColor = Color.White;
             greeting_label.Location = new Point(335, 9);
             greeting_label.Name = "greeting_label";
-            greeting_label.Size = new Size(605, 30);
+            greeting_label.Size = new Size(647, 30);
             greeting_label.TabIndex = 1;
             greeting_label.Text = "Hello, Admin 🐱‍🚀";
             greeting_label.TextAlign = ContentAlignment.TopRight;
-            greeting_label.MouseDown += Login_MouseDown;
-            greeting_label.MouseMove += Login_MouseMove;
-            greeting_label.MouseUp += Login_MouseUp;
             // 
             // title_label
             // 
@@ -242,13 +230,9 @@
             title_label.Size = new Size(296, 30);
             title_label.TabIndex = 0;
             title_label.Text = "Library Management System";
-            title_label.MouseDown += Login_MouseDown;
-            title_label.MouseMove += Login_MouseMove;
-            title_label.MouseUp += Login_MouseUp;
             // 
             // dashboardPanel
             // 
-            dashboardPanel.Controls.Add(dataGridView1);
             dashboardPanel.Controls.Add(label7);
             dashboardPanel.Controls.Add(panel3);
             dashboardPanel.Controls.Add(panel2);
@@ -256,17 +240,19 @@
             dashboardPanel.Controls.Add(label3);
             dashboardPanel.Controls.Add(label2);
             dashboardPanel.Controls.Add(label1);
+            dashboardPanel.Controls.Add(dataGridView1);
             dashboardPanel.Location = new Point(266, 56);
             dashboardPanel.Name = "dashboardPanel";
             dashboardPanel.Size = new Size(709, 493);
             dashboardPanel.TabIndex = 12;
+            dashboardPanel.Visible = false;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Yu Gothic UI Semibold", 12F);
             label7.ForeColor = Color.Black;
-            label7.Location = new Point(59, 162);
+            label7.Location = new Point(59, 171);
             label7.Margin = new Padding(0);
             label7.Name = "label7";
             label7.Size = new Size(163, 21);
@@ -391,20 +377,127 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(59, 195);
+            dataGridView1.Location = new Point(59, 204);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(590, 270);
+            dataGridView1.Size = new Size(590, 261);
             dataGridView1.TabIndex = 18;
+            // 
+            // booksPanel
+            // 
+            booksPanel.Controls.Add(label8);
+            booksPanel.Controls.Add(button4);
+            booksPanel.Controls.Add(button3);
+            booksPanel.Controls.Add(button2);
+            booksPanel.Controls.Add(button1);
+            booksPanel.Controls.Add(searchBox);
+            booksPanel.Controls.Add(dataGridView2);
+            booksPanel.Location = new Point(267, 56);
+            booksPanel.Name = "booksPanel";
+            booksPanel.Size = new Size(708, 493);
+            booksPanel.TabIndex = 13;
+            booksPanel.Visible = false;
+            // 
+            // searchBox
+            // 
+            searchBox.Font = new Font("Yu Gothic UI Semibold", 14F);
+            searchBox.Location = new Point(440, 22);
+            searchBox.Name = "searchBox";
+            searchBox.Size = new Size(208, 32);
+            searchBox.TabIndex = 1;
+            searchBox.TabStop = false;
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Location = new Point(58, 106);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.Size = new Size(590, 359);
+            dataGridView2.TabIndex = 0;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(80, 77, 180);
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Yu Gothic UI Semibold", 14F);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(237, 20);
+            button1.Name = "button1";
+            button1.Size = new Size(93, 36);
+            button1.TabIndex = 7;
+            button1.TabStop = false;
+            button1.Text = "Remove";
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.FromArgb(80, 77, 180);
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Yu Gothic UI Semibold", 14F);
+            button2.ForeColor = Color.White;
+            button2.Location = new Point(336, 20);
+            button2.Name = "button2";
+            button2.Size = new Size(93, 36);
+            button2.TabIndex = 8;
+            button2.TabStop = false;
+            button2.Text = "Add";
+            button2.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            button3.BackColor = Color.FromArgb(80, 77, 180);
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Font = new Font("Yu Gothic UI Semibold", 14F);
+            button3.ForeColor = Color.White;
+            button3.Location = new Point(138, 20);
+            button3.Name = "button3";
+            button3.Size = new Size(93, 36);
+            button3.TabIndex = 9;
+            button3.TabStop = false;
+            button3.Text = "Edit";
+            button3.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            button4.BackColor = Color.FromArgb(80, 77, 180);
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Font = new Font("Yu Gothic UI Semibold", 14F);
+            button4.ForeColor = Color.White;
+            button4.Location = new Point(58, 20);
+            button4.Name = "button4";
+            button4.Size = new Size(42, 36);
+            button4.TabIndex = 10;
+            button4.TabStop = false;
+            button4.Text = "🔁";
+            button4.UseVisualStyleBackColor = false;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label8.Location = new Point(58, 78);
+            label8.Name = "label8";
+            label8.Size = new Size(63, 25);
+            label8.TabIndex = 11;
+            label8.Text = "Books";
             // 
             // adminPanel
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(984, 561);
-            Controls.Add(dashboardPanel);
             Controls.Add(backPanel2);
             Controls.Add(backPanel1);
-            FormBorderStyle = FormBorderStyle.None;
+            Controls.Add(booksPanel);
+            Controls.Add(dashboardPanel);
+            MinimumSize = new Size(1000, 600);
             Name = "adminPanel";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Admin Panel";
@@ -422,12 +515,14 @@
             panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            booksPanel.ResumeLayout(false);
+            booksPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
         private Panel backPanel1;
-        private Label close_btn;
         private Button dashboard_btn;
         private Panel backPanel2;
         private Label title_label;
@@ -452,5 +547,13 @@
         private Label label5;
         private Label label7;
         private DataGridView dataGridView1;
+        private Panel booksPanel;
+        private TextBox searchBox;
+        private DataGridView dataGridView2;
+        private Button button2;
+        private Button button1;
+        private Button button4;
+        private Button button3;
+        private Label label8;
     }
 }
