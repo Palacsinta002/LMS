@@ -54,13 +54,14 @@
             label2 = new Label();
             dataGridView1 = new DataGridView();
             booksPanel = new Panel();
+            label8 = new Label();
+            button4 = new Button();
+            button3 = new Button();
+            button2 = new Button();
+            button1 = new Button();
             searchBox = new TextBox();
             dataGridView2 = new DataGridView();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            label8 = new Label();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             backPanel1.SuspendLayout();
             backPanel2.SuspendLayout();
             dashboardPanel.SuspendLayout();
@@ -397,70 +398,15 @@
             booksPanel.TabIndex = 13;
             booksPanel.Visible = false;
             // 
-            // searchBox
+            // label8
             // 
-            searchBox.Font = new Font("Yu Gothic UI Semibold", 14F);
-            searchBox.Location = new Point(440, 22);
-            searchBox.Name = "searchBox";
-            searchBox.Size = new Size(208, 32);
-            searchBox.TabIndex = 1;
-            searchBox.TabStop = false;
-            // 
-            // dataGridView2
-            // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(58, 106);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(590, 359);
-            dataGridView2.TabIndex = 0;
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.FromArgb(80, 77, 180);
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Yu Gothic UI Semibold", 14F);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(237, 20);
-            button1.Name = "button1";
-            button1.Size = new Size(93, 36);
-            button1.TabIndex = 7;
-            button1.TabStop = false;
-            button1.Text = "Remove";
-            button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            button2.BackColor = Color.FromArgb(80, 77, 180);
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Yu Gothic UI Semibold", 14F);
-            button2.ForeColor = Color.White;
-            button2.Location = new Point(336, 20);
-            button2.Name = "button2";
-            button2.Size = new Size(93, 36);
-            button2.TabIndex = 8;
-            button2.TabStop = false;
-            button2.Text = "Add";
-            button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            button3.BackColor = Color.FromArgb(80, 77, 180);
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Yu Gothic UI Semibold", 14F);
-            button3.ForeColor = Color.White;
-            button3.Location = new Point(138, 20);
-            button3.Name = "button3";
-            button3.Size = new Size(93, 36);
-            button3.TabIndex = 9;
-            button3.TabStop = false;
-            button3.Text = "Edit";
-            button3.UseVisualStyleBackColor = false;
+            label8.AutoSize = true;
+            label8.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label8.Location = new Point(58, 78);
+            label8.Name = "label8";
+            label8.Size = new Size(63, 25);
+            label8.TabIndex = 11;
+            label8.Text = "Books";
             // 
             // button4
             // 
@@ -478,15 +424,70 @@
             button4.Text = "🔁";
             button4.UseVisualStyleBackColor = false;
             // 
-            // label8
+            // button3
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label8.Location = new Point(58, 78);
-            label8.Name = "label8";
-            label8.Size = new Size(63, 25);
-            label8.TabIndex = 11;
-            label8.Text = "Books";
+            button3.BackColor = Color.FromArgb(80, 77, 180);
+            button3.FlatAppearance.BorderSize = 0;
+            button3.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Font = new Font("Yu Gothic UI Semibold", 14F);
+            button3.ForeColor = Color.White;
+            button3.Location = new Point(138, 20);
+            button3.Name = "button3";
+            button3.Size = new Size(93, 36);
+            button3.TabIndex = 9;
+            button3.TabStop = false;
+            button3.Text = "Edit";
+            button3.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.FromArgb(80, 77, 180);
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Yu Gothic UI Semibold", 14F);
+            button2.ForeColor = Color.White;
+            button2.Location = new Point(336, 20);
+            button2.Name = "button2";
+            button2.Size = new Size(93, 36);
+            button2.TabIndex = 8;
+            button2.TabStop = false;
+            button2.Text = "Add";
+            button2.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(80, 77, 180);
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Yu Gothic UI Semibold", 14F);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(237, 20);
+            button1.Name = "button1";
+            button1.Size = new Size(93, 36);
+            button1.TabIndex = 7;
+            button1.TabStop = false;
+            button1.Text = "Remove";
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // searchBox
+            // 
+            searchBox.Font = new Font("Yu Gothic UI Semibold", 14F);
+            searchBox.Location = new Point(440, 22);
+            searchBox.Name = "searchBox";
+            searchBox.Size = new Size(208, 32);
+            searchBox.TabIndex = 1;
+            searchBox.TabStop = false;
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Location = new Point(58, 106);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.Size = new Size(590, 359);
+            dataGridView2.TabIndex = 0;
             // 
             // adminPanel
             // 
@@ -555,5 +556,6 @@
         private Button button4;
         private Button button3;
         private Label label8;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
