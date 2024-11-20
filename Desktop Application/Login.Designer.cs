@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            login_btn = new Button();
             login_title = new Label();
             username_textBox = new TextBox();
             password_textBox = new TextBox();
@@ -36,26 +35,17 @@
             password_label = new Label();
             close_btn = new Label();
             panel1 = new Panel();
+            login_btn = new RoundedButton();
             panel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // login_btn
-            // 
-            login_btn.Font = new Font("Yu Gothic UI Semibold", 12F);
-            login_btn.Location = new Point(182, 249);
-            login_btn.Name = "login_btn";
-            login_btn.Size = new Size(75, 33);
-            login_btn.TabIndex = 2;
-            login_btn.Text = "Login";
-            login_btn.UseVisualStyleBackColor = true;
-            login_btn.Click += LoginCheck;
             // 
             // login_title
             // 
             login_title.AutoSize = true;
             login_title.Font = new Font("Yu Gothic UI Semibold", 24F);
+            login_title.ForeColor = Color.White;
             login_title.ImeMode = ImeMode.NoControl;
-            login_title.Location = new Point(91, 46);
+            login_title.Location = new Point(91, 43);
             login_title.Name = "login_title";
             login_title.Size = new Size(101, 45);
             login_title.TabIndex = 1;
@@ -63,36 +53,40 @@
             // 
             // username_textBox
             // 
+            username_textBox.Font = new Font("Yu Gothic UI Semibold", 14F);
             username_textBox.Location = new Point(22, 135);
             username_textBox.Name = "username_textBox";
-            username_textBox.Size = new Size(235, 23);
+            username_textBox.Size = new Size(235, 32);
             username_textBox.TabIndex = 0;
             // 
             // password_textBox
             // 
-            password_textBox.Location = new Point(22, 198);
+            password_textBox.Font = new Font("Yu Gothic UI Semibold", 14F);
+            password_textBox.Location = new Point(22, 211);
             password_textBox.Name = "password_textBox";
             password_textBox.PasswordChar = '●';
-            password_textBox.Size = new Size(235, 23);
+            password_textBox.Size = new Size(235, 32);
             password_textBox.TabIndex = 1;
             // 
             // username_label
             // 
             username_label.AutoSize = true;
-            username_label.Font = new Font("Yu Gothic UI Semibold", 12F);
-            username_label.Location = new Point(22, 111);
+            username_label.Font = new Font("Yu Gothic UI Semibold", 14F);
+            username_label.ForeColor = Color.White;
+            username_label.Location = new Point(22, 107);
             username_label.Name = "username_label";
-            username_label.Size = new Size(83, 21);
+            username_label.Size = new Size(98, 25);
             username_label.TabIndex = 4;
             username_label.Text = "Username";
             // 
             // password_label
             // 
             password_label.AutoSize = true;
-            password_label.Font = new Font("Yu Gothic UI Semibold", 12F);
-            password_label.Location = new Point(22, 174);
+            password_label.Font = new Font("Yu Gothic UI Semibold", 14F);
+            password_label.ForeColor = Color.White;
+            password_label.Location = new Point(22, 183);
             password_label.Name = "password_label";
-            password_label.Size = new Size(79, 21);
+            password_label.Size = new Size(92, 25);
             password_label.TabIndex = 5;
             password_label.Text = "Password";
             // 
@@ -100,17 +94,18 @@
             // 
             close_btn.AutoSize = true;
             close_btn.Cursor = Cursors.Hand;
-            close_btn.Font = new Font("Yu Gothic UI Semibold", 12F);
-            close_btn.Location = new Point(254, 9);
+            close_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
+            close_btn.ForeColor = Color.White;
+            close_btn.Location = new Point(252, 8);
             close_btn.Name = "close_btn";
-            close_btn.Size = new Size(20, 21);
+            close_btn.Size = new Size(24, 25);
             close_btn.TabIndex = 6;
             close_btn.Text = "X";
             close_btn.Click += CloseWindow;
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.Control;
+            panel1.BackColor = Color.FromArgb(80, 77, 180);
             panel1.Controls.Add(close_btn);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
@@ -120,17 +115,40 @@
             panel1.MouseMove += Login_MouseMove;
             panel1.MouseUp += Login_MouseUp;
             // 
+            // login_btn
+            // 
+            login_btn.BackColor = Color.White;
+            login_btn.BackgroundColor = Color.White;
+            login_btn.BorderColor = Color.Transparent;
+            login_btn.BorderRadius = 5;
+            login_btn.BorderSize = 0;
+            login_btn.FlatAppearance.BorderSize = 0;
+            login_btn.FlatAppearance.MouseDownBackColor = Color.Silver;
+            login_btn.FlatStyle = FlatStyle.Flat;
+            login_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
+            login_btn.ForeColor = Color.Black;
+            login_btn.Location = new Point(172, 263);
+            login_btn.Name = "login_btn";
+            login_btn.Size = new Size(85, 36);
+            login_btn.TabIndex = 24;
+            login_btn.TabStop = false;
+            login_btn.Text = "Login";
+            login_btn.TextColor = Color.Black;
+            login_btn.UseVisualStyleBackColor = false;
+            login_btn.Click += LoginCheck;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(80, 77, 180);
             ClientSize = new Size(284, 311);
+            Controls.Add(login_btn);
             Controls.Add(password_label);
             Controls.Add(username_label);
             Controls.Add(password_textBox);
             Controls.Add(username_textBox);
             Controls.Add(login_title);
-            Controls.Add(login_btn);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Login";
@@ -142,8 +160,6 @@
         }
 
         #endregion
-
-        private Button login_btn;
         private Label login_title;
         private TextBox username_textBox;
         private TextBox password_textBox;
@@ -151,5 +167,6 @@
         private Label password_label;
         private Label close_btn;
         private Panel panel1;
+        private RoundedButton login_btn;
     }
 }

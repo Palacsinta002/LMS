@@ -59,15 +59,5 @@ namespace Desktop_Application.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Elektrosztatika {
-            get {
-                object obj = ResourceManager.GetObject("Elektrosztatika", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }
