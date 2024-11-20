@@ -13,6 +13,7 @@
 **A projekt célja**: Egy könyvtári rendszer megalkotása tagok webes felületével, könyvtárosok és adminisztrátorok saját asztali alkalmazásukkal. 
 **A projektet megelőző tevékenységek**: 
 - Könyvtárosok véleménye, hogy milyen funkciókat látnának szívesen / hiányolnak jelenlegi rendszerükből.
+<div style="page-break-after: always;"></div>
 
 
 <center><h1>Adatbázis</h1></center>
@@ -28,8 +29,6 @@ Az LMS egy könyvtári rendszer, aminek adatbázisa nyilván tartja a felhaszná
 **Funkciók**: A felhasználók megtekinteni, és kölcsönözni tudják a könyveket. A könyvtárosok tudják kezelni a kölcsönözhető könyveket. Az adminisztrátor hozzáfér a teljes adatbázishoz, és kezelni tudja a felhasználók adatait.
 
 **Kihívás**: Az adatbázis 3. normálformába helyezése, és az adatok könnyű hozzáférhetősége.
-<div style="page-break-after: always;"></div>
-
 
 ## Books - Könyvek
 
@@ -65,8 +64,8 @@ A tagság típusait tárolja el.
 | ---------------- | --------------- |
 | 1                | Student         |
 | 2                | Teacher         |
-| 3                | Adult           |
-| 4                | None            |
+| 3                | Other           |
+
 ## Roles - Rangok
 
 A rangokat tárolja el. 
@@ -97,8 +96,6 @@ Információk a kiadóról.
 | PublisherID | Publisher |
 | ----------- | --------- |
 | 1           | Mozaik    |
-
-<div style="page-break-after: always;"></div>
 
 
 ## Kapcsolatok
