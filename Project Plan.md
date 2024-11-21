@@ -48,6 +48,9 @@ Adatokat tárol a felhasználókról.
 | MembershipTypeID | RoleID |
 | ---------------- | ------ |
 | 1                | 1      |
+
+<div style="page-break-after: always;"></div>
+
 ## Borrowings - Kölcsönzések
 
 Követi, hogy melyik könyvek vannak kikölcsönözve, és hogy kik kölcsönzik őket.
@@ -82,6 +85,9 @@ Információkat tárol az írókról.
 | AuthorID | Name                | Nationality |
 | -------- | ------------------- | ----------- |
 | 1        | William Shakespeare | British     |
+
+<div style="page-break-after: always;"></div>
+
 ## Categories - Kategóriák
 
 Könyvkategóriák: Sci-fi, Tudományos, Tankönyv, Történelmi, stb.
@@ -96,7 +102,6 @@ Információk a kiadóról.
 | PublisherID | Publisher |
 | ----------- | --------- |
 | 1           | Mozaik    |
-
 
 ## Kapcsolatok
 
