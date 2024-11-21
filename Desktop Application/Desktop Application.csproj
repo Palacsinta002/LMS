@@ -10,6 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\closeEmpty.png" />
+    <None Remove="Resources\closeWhite.png" />
     <None Remove="Resources\Elektrosztatika.png" />
   </ItemGroup>
 

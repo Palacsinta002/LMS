@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             login_title = new Label();
             username_textBox = new TextBox();
             password_textBox = new TextBox();
             username_label = new Label();
             password_label = new Label();
-            close_btn = new Label();
             panel1 = new Panel();
+            close_btn = new RoundedButton();
             login_btn = new RoundedButton();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -45,7 +46,7 @@
             login_title.Font = new Font("Yu Gothic UI Semibold", 24F);
             login_title.ForeColor = Color.White;
             login_title.ImeMode = ImeMode.NoControl;
-            login_title.Location = new Point(91, 43);
+            login_title.Location = new Point(93, 41);
             login_title.Name = "login_title";
             login_title.Size = new Size(101, 45);
             login_title.TabIndex = 1;
@@ -90,19 +91,6 @@
             password_label.TabIndex = 5;
             password_label.Text = "Password";
             // 
-            // close_btn
-            // 
-            close_btn.AutoSize = true;
-            close_btn.Cursor = Cursors.Hand;
-            close_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
-            close_btn.ForeColor = Color.White;
-            close_btn.Location = new Point(252, 8);
-            close_btn.Name = "close_btn";
-            close_btn.Size = new Size(24, 25);
-            close_btn.TabIndex = 6;
-            close_btn.Text = "X";
-            close_btn.Click += CloseWindow;
-            // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(80, 77, 180);
@@ -114,6 +102,30 @@
             panel1.MouseDown += Login_MouseDown;
             panel1.MouseMove += Login_MouseMove;
             panel1.MouseUp += Login_MouseUp;
+            // 
+            // close_btn
+            // 
+            close_btn.BackColor = Color.Transparent;
+            close_btn.BackgroundColor = Color.Transparent;
+            close_btn.BorderColor = Color.Transparent;
+            close_btn.BorderRadius = 0;
+            close_btn.BorderSize = 0;
+            close_btn.Cursor = Cursors.Hand;
+            close_btn.FlatAppearance.BorderSize = 0;
+            close_btn.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            close_btn.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            close_btn.FlatStyle = FlatStyle.Flat;
+            close_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
+            close_btn.ForeColor = Color.White;
+            close_btn.Image = (Image)resources.GetObject("close_btn.Image");
+            close_btn.Location = new Point(238, 10);
+            close_btn.Name = "close_btn";
+            close_btn.Size = new Size(36, 35);
+            close_btn.TabIndex = 24;
+            close_btn.TabStop = false;
+            close_btn.TextColor = Color.White;
+            close_btn.UseVisualStyleBackColor = false;
+            close_btn.Click += CloseWindow;
             // 
             // login_btn
             // 
@@ -154,7 +166,6 @@
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
             panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -165,8 +176,8 @@
         private TextBox password_textBox;
         private Label username_label;
         private Label password_label;
-        private Label close_btn;
         private Panel panel1;
         private RoundedButton login_btn;
+        private RoundedButton close_btn;
     }
 }

@@ -22,6 +22,8 @@
             borrowings_pnl.Visible = false;
             categories_pnl.Visible = false;
             members_pnl.Visible = false;
+            authors_pnl.Visible = false;
+            publishers_pnl.Visible = false;
         }
 
         // Shows the Dashboard after hiding previous content.
@@ -68,6 +70,24 @@
             {
                 HidePanels();
                 members_pnl.Visible = true;
+            }
+        }
+
+        private void ShowAuthors(object sender, EventArgs e)
+        {
+            if (authors_pnl.Visible != true)
+            {
+                HidePanels();
+                authors_pnl.Visible = true;
+            }
+        }
+
+        private void ShowPublishers(object sender, EventArgs e)
+        {
+            if (publishers_pnl.Visible != true)
+            {
+                HidePanels();
+                publishers_pnl.Visible = true;
             }
         }
     }

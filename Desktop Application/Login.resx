@@ -117,6 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="close_btn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DwAACw8BkvkDpQAAAQRJREFUWEftl0kOwjAMRRH0jPQCwK3KsOKYHxk5VeUO+W7TUiG/bTw8WUmUHA5B
+        EARBFgA1gAeAG4CjXWeRXK0htWq7PguV6/KaI6lyktvlbOPcALibooJLckROaGysGwBXW1WhJCfkhIuN
+        d5NpMCm5JNeFNnraDsobQDUj52RzFkE0bCWJ2LJyCaJxRcSsI5cg9tXUWpk9lyMzpSHWn5zFIbm9XIKQ
+        /J2cQAr2rqBNIOQS20s65BLbSe76mslM7nsgiJh1Jkk0bk8rEVtWkmjYu0qInDKSxJ4b3VdLcmn0DzEE
+        1SAjWeTBuvsn/74/TYJKyiTlf+KWS6ik1GiKyQVBEPw5H5tnB3bFN2LlAAAAAElFTkSuQmCC
+</value>
+  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>82</value>
   </metadata>
