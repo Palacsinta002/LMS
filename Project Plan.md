@@ -34,9 +34,9 @@ Az LMS egy könyvtári rendszer, aminek adatbázisa nyilván tartja a felhaszná
 
 Adatokat tárol a könyvekről.
 
-| BookID | PublisherID | AuthorID | CategoryID | Title       | Publication<br>Year | ISBN | Copies<br>Available |
-| ------ | ----------- | -------- | ---------- | ----------- | ------------------- | ---- | ------------------- |
-| 1      | 1           | 1        | 1          | Irodalom 9. | 2020                | 1234 | 5                   |
+| BookID | PublisherID | AuthorID | CategoryID | Title       | Publication<br>Year | ISBN |
+| ------ | ----------- | -------- | ---------- | ----------- | ------------------- | ---- |
+| 1      | 1           | 1        | 1          | Irodalom 9. | 2020                | 1234 |
 ## Users - Felhasználók
 
 Adatokat tárol a felhasználókról.
@@ -80,11 +80,11 @@ A rangokat tárolja el.
 | 3      | Librarian |
 ## Authors - Szerzők
 
-Információkat tárol az írókról.
+Tárolja az író nevét.
 
-| AuthorID | Name                | Nationality |
-| -------- | ------------------- | ----------- |
-| 1        | William Shakespeare | British     |
+| AuthorID | Name                |
+| -------- | ------------------- |
+| 1        | William Shakespeare |
 
 <div style="page-break-after: always;"></div>
 
