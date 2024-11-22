@@ -1397,7 +1397,6 @@ namespace Desktop_Application
             Name = "adminPanel";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Admin Panel";
-            WindowState = FormWindowState.Maximized;
             menu_pnl.ResumeLayout(false);
             menu_pnl.PerformLayout();
             header_pnl.ResumeLayout(false);
