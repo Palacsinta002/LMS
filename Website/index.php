@@ -6,6 +6,24 @@
     <title>Fosch</title>
 </head>
 <body>
-    <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"])?>" method="POST"></form>
+    <?php
+        require "FormValidation.php";
+    ?>
+    <form method="POST" action=<?php htmlspecialchars($_SERVER["PHP_SELF"])?>>
+        <table>
+            <tr>
+                <td><b>Username: </b></td>
+                <td><input type="text" name="username"></td>
+            </tr>
+            <tr>
+                <td><b>Password: </b></td>
+                <td><input type="password" name="password"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2"><input type="submit" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
 </body>
 </html>
