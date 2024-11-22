@@ -13,8 +13,7 @@
         $result = $conn->query($sql);
     
         if($result->num_rows > 0){
-            header('Location: ./books.php', true, 418);
-            
+            header('Location: ./books.php');
             exit();
         }
     
