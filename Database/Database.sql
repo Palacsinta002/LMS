@@ -59,7 +59,7 @@ CREATE TABLE Books (
     AuthorID INT,
     CategoryID INT,
     Title VARCHAR(255) NOT NULL,
-    PublicationYear YEAR,
+    PublicationYear INT(4),
     ISBN VARCHAR(13),
     FOREIGN KEY (AuthorID) REFERENCES Authors(AuthorID),
     FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID),
