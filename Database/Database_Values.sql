@@ -9,22 +9,22 @@ INSERT INTO Roles (Role) VALUES
 ('Admin'),
 ('Librarian');
 
-INSERT INTO Authors (Name, Nationality) VALUES
-('George Orwell', 'British'),
-('J.K. Rowling', 'British'),
-('Ernest Hemingway', 'American'),
-('Gabriel Garcia Marquez', 'Colombian'),
-('Fyodor Dostoevsky', 'Russian'),
-('Haruki Murakami', 'Japanese'),
-('Jane Austen', 'British'),
-('Leo Tolstoy', 'Russian'),
-('Mark Twain', 'American'),
-('Isabel Allende', 'Chilean'),
-('J.R.R. Tolkien', 'British'),
-('Agatha Christie', 'British'),
-('William Shakespeare', 'British'),
-('Charles Dickens', 'British'),
-('Franz Kafka', 'Czech');
+INSERT INTO Authors (Name) VALUES
+('George Orwell'),
+('J.K. Rowling'),
+('Ernest Hemingway'),
+('Gabriel Garcia Marquez'),
+('Fyodor Dostoevsky'),
+('Haruki Murakami'),
+('Jane Austen'),
+('Leo Tolstoy'),
+('Mark Twain'),
+('Isabel Allende'),
+('J.R.R. Tolkien'),
+('Agatha Christie'),
+('William Shakespeare'),
+('Charles Dickens'),
+('Franz Kafka');
 
 INSERT INTO Categories (Category) VALUES
 ('Fiction'),
@@ -78,22 +78,22 @@ INSERT INTO Users (FirstName, LastName, Email, Username, Password, MembershipTyp
 ('Laura', 'Harris', 'laura.harris@example.com', 'lauraharris', 'laurapass', 1, 3);
 
 
-INSERT INTO Books (PublisherID, AuthorID, CategoryID, Title, PublicationYear, ISBN, CopiesAvailable) VALUES
-(1, 1, 1, '1984', 1949, '9780451524935', 5),
-(2, 2, 4, 'Harry Potter and the Sorcerer''s Stone', 1997, '9780439708180', 3),
-(3, 3, 5, 'The Old Man and the Sea', 1952, '9780684801223', 2),
-(4, 4, 1, 'One Hundred Years of Solitude', 1967, '9780060883287', 4),
-(5, 5, 1, 'Crime and Punishment', 1866, '9780486415871', 6),
-(6, 6, 1, 'Norwegian Wood', 1987, '9780375704024', 7),
-(7, 7, 8, 'Pride and Prejudice', 1813, '9780141040349', 10),
-(8, 8, 10, 'War and Peace', 1869, '9780199232765', 2),
-(9, 9, 1, 'The Adventures of Tom Sawyer', 1876, '9780486400778', 3),
-(10, 10, 1, 'The House of the Spirits', 1982, '9781501117015', 5),
-(11, 11, 4, 'The Hobbit', 1937, '9780345339683', 4),
-(12, 12, 6, 'Murder on the Orient Express', 1934, '9780062693661', 7),
-(13, 13, 1, 'Hamlet', 1603, '9780743477123', 5),
-(14, 14, 1, 'Great Expectations', 1861, '9780486415864', 6),
-(15, 15, 1, 'The Trial', 1925, '9780805209990', 3);
+INSERT INTO Books (PublisherID, AuthorID, CategoryID, Title, PublicationYear, ISBN) VALUES
+(1, 1, 1, '1984', 1949, '9780451524935'),
+(2, 2, 4, 'Harry Potter and the Sorcerer''s Stone', 1997, '9780439708180'),
+(3, 3, 5, 'The Old Man and the Sea', 1952, '9780684801223'),
+(4, 4, 1, 'One Hundred Years of Solitude', 1967, '9780060883287'),
+(5, 5, 1, 'Crime and Punishment', 1866, '9780486415871'),
+(6, 6, 1, 'Norwegian Wood', 1987, '9780375704024'),
+(7, 7, 8, 'Pride and Prejudice', 1813, '9780141040349'),
+(8, 8, 10, 'War and Peace', 1869, '9780199232765'),
+(9, 9, 1, 'The Adventures of Tom Sawyer', 1876, '9780486400778'),
+(10, 10, 1, 'The House of the Spirits', 1982, '9781501117015'),
+(11, 11, 4, 'The Hobbit', 1937, '9780345339683'),
+(12, 12, 6, 'Murder on the Orient Express', 1934, '9780062693661'),
+(13, 13, 1, 'Hamlet', 1603, '9780743477123'),
+(14, 14, 1, 'Great Expectations', 1861, '9780486415864'),
+(15, 15, 1, 'The Trial', 1925, '9780805209990');
 
 
 INSERT INTO Borrowings (UserID, BookID, BorrowDate, DueDate, ReturnDate, IsReturned) VALUES

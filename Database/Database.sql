@@ -22,8 +22,7 @@ CREATE TABLE Roles(
 -- Create Authors table
 CREATE TABLE Authors (
     AuthorID INT AUTO_INCREMENT PRIMARY KEY,
-    Name VARCHAR(255) NOT NULL,
-    Nationality VARCHAR(100)
+    Name VARCHAR(255) NOT NULL
 );
 
 -- Create Categories table
@@ -62,7 +61,6 @@ CREATE TABLE Books (
     Title VARCHAR(255) NOT NULL,
     PublicationYear YEAR,
     ISBN VARCHAR(13),
-    CopiesAvailable INT DEFAULT 0,
     FOREIGN KEY (AuthorID) REFERENCES Authors(AuthorID),
     FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID),
     FOREIGN KEY (PublisherID) REFERENCES Publishers(PublisherID)
