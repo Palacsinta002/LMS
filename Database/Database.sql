@@ -1,5 +1,10 @@
+DROP DATABASE IF EXISTS LMS;
+
 -- Create the database
-CREATE DATABASE LMS default CHARACTER SET utf8 collate utf8_hungarian_ci;
+CREATE DATABASE LMS 
+DEFAULT CHARACTER SET utf8 
+COLLATE utf8_hungarian_ci;
+
 USE LMS;
 
 -- Create MembershipType table
