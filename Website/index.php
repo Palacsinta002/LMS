@@ -13,11 +13,11 @@
         <table>
             <tr>
                 <td><b>Username: </b></td>
-                <td><input type="text" name="username"></td>
+                <td><input type="text" name="username" value=<?php printing($username)?>><?php printing($username_error) ?></td>
             </tr>
             <tr>
                 <td><b>Password: </b></td>
-                <td><input type="password" name="password"></td>
+                <td><input type="password" name="password" value=<?php printing($password)?>><?php printing($password_error) ?></td>
             </tr>
             <tr>
                 <td></td>
@@ -25,5 +25,6 @@
             </tr>
         </table>
     </form>
+    <?php printing($error)?>
 </body>
 </html>

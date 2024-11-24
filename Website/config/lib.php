@@ -1,5 +1,6 @@
 <?php
 
-$SFO = new stdClass();
-
+$login = new stdClass();
+$login->username;
+$login->password;
 ?>
