@@ -90,5 +90,11 @@
                 publishers_pnl.Visible = true;
             }
         }
+
+        private void ShowEditBook(object sender, EventArgs e)
+        {
+            EditBook editBooks = new EditBook();
+            editBooks.ShowDialog();
+        }
     }
 }

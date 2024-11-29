@@ -7,7 +7,7 @@
 </head>
 <body>
     <?php 
-        
+        require "booksClass.php";
     ?>
     fios
 </body>
