@@ -40,5 +40,15 @@
         {
             mouseDown = false;
         }
+
+        private void SaveBook(object sender, EventArgs e)
+        {
+            // When clicked on Save button, check if the given data is correct, then save the book.
+        }
+
+        private void Cancel(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
