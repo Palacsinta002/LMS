@@ -1,6 +1,6 @@
 <?php
 global $CFG;
-new stdClass();
+$CFG= new stdClass();
 $CFG->dbhost = "localhost";
 $CFG->dbname = "LMS";
 $CFG->username = "admin";

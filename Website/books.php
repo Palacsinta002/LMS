@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>LMS</title>
 </head>
 <body>
+
+     <form method="POST" action=<?php htmlspecialchars($_SERVER["PHP_SELF"])?>>
+        <input type="text" name="title">
+        <input type="submit" value="submit">
+    </form>
     <?php 
-        require "booksClass.php";
+        require "./dbManaging/Select.php";
     ?>
-    fios
 </body>
 </html>

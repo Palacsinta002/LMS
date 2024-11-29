@@ -7,7 +7,7 @@
 </head>
 <body>
     <?php
-        require "formValidation.php";
+        require "FormValidation.php";
     ?>
     <form method="POST" action=<?php htmlspecialchars($_SERVER["PHP_SELF"])?>>
         <table>
