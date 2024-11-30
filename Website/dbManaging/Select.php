@@ -17,16 +17,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $title = "and books.title = '$title'";
     }
     if (strlen($publisher)!= 0){
-        $publisher = "and publishers.publisher = $publisher";
+        $publisher = "and publishers.publisher = '$publisher'";
     }
     if (strlen($author)!= 0){
-        $author = "and authors.name = $author";
+        $author = "and authors.name = '$author'";
     }
     if (strlen($category)!= 0){
-        $category = "and categories.category = $category";
+        $category = "and categories.category = '$category'";
     }
     if (strlen($publicationYear)!= 0){
-        $publicationYear = "and books.publicationYear = $publicationYear";
+        $publicationYear = "and books.publicationYear = '$publicationYear'";
     }
     if (strlen($ISBN)!= 0){
         $ISBN = "and books.ISBN = '$ISBN'";
