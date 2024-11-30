@@ -6,6 +6,8 @@
     <title>Select</title>
 </head>
 <body>
+    <h2>Select</h2>
+    <a href="./adminSite">AdminSite</a>
 <form method="POST" action=<?php htmlspecialchars($_SERVER["PHP_SELF"])?>>
         Title<input type="text" name="Title"><br>
         Publisher<input type="text" name="Publisher"><br>

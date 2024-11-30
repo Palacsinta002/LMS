@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ISBN = validateTheInput($_POST["ISBN"]);
     # make sure that all of the inputs are full and reforms it to be ready for a select command
     if (strlen($title)!= 0){
-        $title = "and books.title = $title";
+        $title = "and books.title = '$title'";
     }
     if (strlen($publisher)!= 0){
         $publisher = "and publishers.publisher = $publisher";
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $publicationYear = "and books.publicationYear = $publicationYear";
     }
     if (strlen($ISBN)!= 0){
-        $ISBN = "and books.ISBN = $ISBN";
+        $ISBN = "and books.ISBN = '$ISBN'";
     }
     
     # this three commands doing all of the backend jobs.
