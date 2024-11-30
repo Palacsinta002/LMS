@@ -88,9 +88,9 @@ INSERT INTO MembershipType (MembershipType) VALUES
 ('None');
 
 INSERT INTO Roles (Role) VALUES
-('Member'),
 ('Admin'),
-('Librarian');
+('Librarian'),
+('Member');
 
 INSERT INTO Authors (Name) VALUES
 ('George Orwell'),
