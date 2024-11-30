@@ -7,7 +7,7 @@
 </head>
 <body>
     <h2>Row that you would like to change</h2>
-    <a href="./adminSite">AdminSite</a>
+    <a href="./adminSite.php">AdminSite</a>
 <form method="POST" action=<?php htmlspecialchars($_SERVER["PHP_SELF"])?>>
         Title<input type="text" name="Title"><br>
         Publisher<input type="text" name="Publisher"><br>
