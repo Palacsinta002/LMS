@@ -6,13 +6,12 @@ function App() {
 
   return (
     <>
-      <section className="Hero">
+      <div className="HeroSection">
         <Header />
-        <Main />
-      </section>
-      <section className="Browse">
-        
-      </section>
+        <section className="Hero">
+          <Main />
+        </section>
+      </div>
     </>
   )
 }
