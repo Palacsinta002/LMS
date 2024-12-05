@@ -8,8 +8,14 @@
 body{
   background-color: #504DB4;
 }
-.hero{
+.HeroSection{
   height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+.Hero{
+  position: relative;
+  width: 100vw;
 }
 .header{
   height: 10vh;
@@ -84,6 +90,7 @@ body{
   float: right;
 }
 .card-container{
+  position: absolute;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -117,11 +124,11 @@ caption{
   font-weight: bold;
 }
 table{
+  position: absolute;
   background-color: #48459E;
   border: 1px #504DB4 solid;
   border-radius: 10px;
   color: white;
-  margin: auto;
   width: 50vw;
   max-width: 50vw;
   min-width: 50vw;
@@ -130,19 +137,20 @@ table{
   border-spacing: 0;
   font-size: 1vw;
   font-weight: bold;
-  margin-bottom: 5vh;
+  margin: 5vh auto;
 }
 table td{
   border: 1px #504DB4 solid;
   border-radius: 10px;
 }
-.Browse{
+.BrowseBooks{
   font-size: 2vh;
   font-weight: bold;
   color: white;
   text-align: center;
+  position: absolute;
 }
-.Browse a{
+.BrowseBooks a{
   color: white;
   text-decoration: none;
 }
