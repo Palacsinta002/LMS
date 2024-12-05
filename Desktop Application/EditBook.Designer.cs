@@ -29,188 +29,188 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditBook));
-            editBook_lbl1 = new Label();
-            editBook_lbl2 = new Label();
-            editBook_title_txt = new TextBox();
-            editBook_cancel_btn = new RoundedButton();
-            editBook_publisher_txt = new TextBox();
-            editBook_lbl4 = new Label();
-            editBook_author_txt = new TextBox();
-            editBook_lbl5 = new Label();
-            editBook_lbl6 = new Label();
-            editBook_lbl7 = new Label();
-            editBook_lbl3 = new Label();
-            editBook_isbn_txt = new TextBox();
-            editBook_publicationYear_txt = new TextBox();
-            editBook_save_btn = new RoundedButton();
+            title = new Label();
+            label_title = new Label();
+            textBox_title = new TextBox();
+            cancel = new RoundedButton();
+            textBox_publisher = new TextBox();
+            label_publisher = new Label();
+            textBox_author = new TextBox();
+            label_author = new Label();
+            label_category = new Label();
+            label_isbn = new Label();
+            label_pubYear = new Label();
+            textBox_isbn = new TextBox();
+            textBox_pubYear = new TextBox();
+            save = new RoundedButton();
             close_btn = new RoundedButton();
-            panel1 = new Panel();
-            editBook_category_dwn = new ComboBox();
-            panel1.SuspendLayout();
+            header = new Panel();
+            dropDown_category = new ComboBox();
+            header.SuspendLayout();
             SuspendLayout();
             // 
-            // editBook_lbl1
+            // title
             // 
-            editBook_lbl1.AutoSize = true;
-            editBook_lbl1.Font = new Font("Yu Gothic UI Semibold", 16F);
-            editBook_lbl1.Location = new Point(126, 12);
-            editBook_lbl1.Name = "editBook_lbl1";
-            editBook_lbl1.Size = new Size(108, 30);
-            editBook_lbl1.TabIndex = 2;
-            editBook_lbl1.Text = "Edit Book";
-            editBook_lbl1.MouseDown += EditBook_MouseDown;
-            editBook_lbl1.MouseMove += EditBook_MouseMove;
-            editBook_lbl1.MouseUp += EditBook_MouseUp;
+            title.AutoSize = true;
+            title.Font = new Font("Yu Gothic UI Semibold", 16F);
+            title.Location = new Point(126, 12);
+            title.Name = "title";
+            title.Size = new Size(108, 30);
+            title.TabIndex = 2;
+            title.Text = "Edit Book";
+            title.MouseDown += MouseDown;
+            title.MouseMove += MouseMove;
+            title.MouseUp += MouseUp;
             // 
-            // editBook_lbl2
+            // label_title
             // 
-            editBook_lbl2.AutoSize = true;
-            editBook_lbl2.Font = new Font("Yu Gothic UI Semibold", 14F);
-            editBook_lbl2.Location = new Point(12, 73);
-            editBook_lbl2.Name = "editBook_lbl2";
-            editBook_lbl2.Size = new Size(49, 25);
-            editBook_lbl2.TabIndex = 3;
-            editBook_lbl2.Text = "Title";
+            label_title.AutoSize = true;
+            label_title.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label_title.Location = new Point(12, 73);
+            label_title.Name = "label_title";
+            label_title.Size = new Size(49, 25);
+            label_title.TabIndex = 3;
+            label_title.Text = "Title";
             // 
-            // editBook_title_txt
+            // textBox_title
             // 
-            editBook_title_txt.BackColor = Color.WhiteSmoke;
-            editBook_title_txt.Font = new Font("Yu Gothic UI Semibold", 14F);
-            editBook_title_txt.Location = new Point(109, 70);
-            editBook_title_txt.Name = "editBook_title_txt";
-            editBook_title_txt.Size = new Size(243, 32);
-            editBook_title_txt.TabIndex = 9;
+            textBox_title.BackColor = Color.WhiteSmoke;
+            textBox_title.Font = new Font("Yu Gothic UI Semibold", 14F);
+            textBox_title.Location = new Point(109, 70);
+            textBox_title.Name = "textBox_title";
+            textBox_title.Size = new Size(243, 32);
+            textBox_title.TabIndex = 9;
             // 
-            // editBook_cancel_btn
+            // cancel
             // 
-            editBook_cancel_btn.BackColor = Color.WhiteSmoke;
-            editBook_cancel_btn.BackgroundColor = Color.WhiteSmoke;
-            editBook_cancel_btn.BorderColor = Color.FromArgb(80, 77, 180);
-            editBook_cancel_btn.BorderRadius = 5;
-            editBook_cancel_btn.BorderSize = 2;
-            editBook_cancel_btn.FlatAppearance.BorderSize = 0;
-            editBook_cancel_btn.FlatStyle = FlatStyle.Flat;
-            editBook_cancel_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
-            editBook_cancel_btn.ForeColor = Color.Black;
-            editBook_cancel_btn.Location = new Point(272, 312);
-            editBook_cancel_btn.Name = "editBook_cancel_btn";
-            editBook_cancel_btn.Size = new Size(80, 36);
-            editBook_cancel_btn.TabIndex = 0;
-            editBook_cancel_btn.Text = "Cancel";
-            editBook_cancel_btn.TextColor = Color.Black;
-            editBook_cancel_btn.UseVisualStyleBackColor = false;
-            editBook_cancel_btn.Click += Cancel;
+            cancel.BackColor = Color.WhiteSmoke;
+            cancel.BackgroundColor = Color.WhiteSmoke;
+            cancel.BorderColor = Color.FromArgb(80, 77, 180);
+            cancel.BorderRadius = 5;
+            cancel.BorderSize = 2;
+            cancel.FlatAppearance.BorderSize = 0;
+            cancel.FlatStyle = FlatStyle.Flat;
+            cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
+            cancel.ForeColor = Color.Black;
+            cancel.Location = new Point(272, 312);
+            cancel.Name = "cancel";
+            cancel.Size = new Size(80, 36);
+            cancel.TabIndex = 0;
+            cancel.Text = "Cancel";
+            cancel.TextColor = Color.Black;
+            cancel.UseVisualStyleBackColor = false;
+            cancel.Click += Cancel;
             // 
-            // editBook_publisher_txt
+            // textBox_publisher
             // 
-            editBook_publisher_txt.BackColor = Color.WhiteSmoke;
-            editBook_publisher_txt.Font = new Font("Yu Gothic UI Semibold", 14F);
-            editBook_publisher_txt.Location = new Point(109, 146);
-            editBook_publisher_txt.Name = "editBook_publisher_txt";
-            editBook_publisher_txt.Size = new Size(243, 32);
-            editBook_publisher_txt.TabIndex = 11;
+            textBox_publisher.BackColor = Color.WhiteSmoke;
+            textBox_publisher.Font = new Font("Yu Gothic UI Semibold", 14F);
+            textBox_publisher.Location = new Point(109, 146);
+            textBox_publisher.Name = "textBox_publisher";
+            textBox_publisher.Size = new Size(243, 32);
+            textBox_publisher.TabIndex = 11;
             // 
-            // editBook_lbl4
+            // label_publisher
             // 
-            editBook_lbl4.AutoSize = true;
-            editBook_lbl4.Font = new Font("Yu Gothic UI Semibold", 14F);
-            editBook_lbl4.Location = new Point(12, 149);
-            editBook_lbl4.Name = "editBook_lbl4";
-            editBook_lbl4.Size = new Size(91, 25);
-            editBook_lbl4.TabIndex = 10;
-            editBook_lbl4.Text = "Publisher";
+            label_publisher.AutoSize = true;
+            label_publisher.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label_publisher.Location = new Point(12, 149);
+            label_publisher.Name = "label_publisher";
+            label_publisher.Size = new Size(91, 25);
+            label_publisher.TabIndex = 10;
+            label_publisher.Text = "Publisher";
             // 
-            // editBook_author_txt
+            // textBox_author
             // 
-            editBook_author_txt.BackColor = Color.WhiteSmoke;
-            editBook_author_txt.Font = new Font("Yu Gothic UI Semibold", 14F);
-            editBook_author_txt.Location = new Point(109, 184);
-            editBook_author_txt.Name = "editBook_author_txt";
-            editBook_author_txt.Size = new Size(243, 32);
-            editBook_author_txt.TabIndex = 13;
+            textBox_author.BackColor = Color.WhiteSmoke;
+            textBox_author.Font = new Font("Yu Gothic UI Semibold", 14F);
+            textBox_author.Location = new Point(109, 184);
+            textBox_author.Name = "textBox_author";
+            textBox_author.Size = new Size(243, 32);
+            textBox_author.TabIndex = 13;
             // 
-            // editBook_lbl5
+            // label_author
             // 
-            editBook_lbl5.AutoSize = true;
-            editBook_lbl5.Font = new Font("Yu Gothic UI Semibold", 14F);
-            editBook_lbl5.Location = new Point(12, 187);
-            editBook_lbl5.Name = "editBook_lbl5";
-            editBook_lbl5.Size = new Size(72, 25);
-            editBook_lbl5.TabIndex = 12;
-            editBook_lbl5.Text = "Author";
+            label_author.AutoSize = true;
+            label_author.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label_author.Location = new Point(12, 187);
+            label_author.Name = "label_author";
+            label_author.Size = new Size(72, 25);
+            label_author.TabIndex = 12;
+            label_author.Text = "Author";
             // 
-            // editBook_lbl6
+            // label_category
             // 
-            editBook_lbl6.AutoSize = true;
-            editBook_lbl6.Font = new Font("Yu Gothic UI Semibold", 14F);
-            editBook_lbl6.Location = new Point(12, 225);
-            editBook_lbl6.Name = "editBook_lbl6";
-            editBook_lbl6.Size = new Size(90, 25);
-            editBook_lbl6.TabIndex = 14;
-            editBook_lbl6.Text = "Category";
+            label_category.AutoSize = true;
+            label_category.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label_category.Location = new Point(12, 225);
+            label_category.Name = "label_category";
+            label_category.Size = new Size(90, 25);
+            label_category.TabIndex = 14;
+            label_category.Text = "Category";
             // 
-            // editBook_lbl7
+            // label_isbn
             // 
-            editBook_lbl7.AutoSize = true;
-            editBook_lbl7.Font = new Font("Yu Gothic UI Semibold", 14F);
-            editBook_lbl7.Location = new Point(12, 263);
-            editBook_lbl7.Name = "editBook_lbl7";
-            editBook_lbl7.Size = new Size(54, 25);
-            editBook_lbl7.TabIndex = 16;
-            editBook_lbl7.Text = "ISBN";
+            label_isbn.AutoSize = true;
+            label_isbn.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label_isbn.Location = new Point(12, 263);
+            label_isbn.Name = "label_isbn";
+            label_isbn.Size = new Size(54, 25);
+            label_isbn.TabIndex = 16;
+            label_isbn.Text = "ISBN";
             // 
-            // editBook_lbl3
+            // label_pubYear
             // 
-            editBook_lbl3.AutoSize = true;
-            editBook_lbl3.Font = new Font("Yu Gothic UI Semibold", 14F);
-            editBook_lbl3.Location = new Point(12, 111);
-            editBook_lbl3.Name = "editBook_lbl3";
-            editBook_lbl3.Size = new Size(150, 25);
-            editBook_lbl3.TabIndex = 18;
-            editBook_lbl3.Text = "Publication Year";
+            label_pubYear.AutoSize = true;
+            label_pubYear.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label_pubYear.Location = new Point(12, 111);
+            label_pubYear.Name = "label_pubYear";
+            label_pubYear.Size = new Size(150, 25);
+            label_pubYear.TabIndex = 18;
+            label_pubYear.Text = "Publication Year";
             // 
-            // editBook_isbn_txt
+            // textBox_isbn
             // 
-            editBook_isbn_txt.BackColor = Color.WhiteSmoke;
-            editBook_isbn_txt.Font = new Font("Yu Gothic UI Semibold", 14F);
-            editBook_isbn_txt.Location = new Point(109, 260);
-            editBook_isbn_txt.MaxLength = 13;
-            editBook_isbn_txt.Name = "editBook_isbn_txt";
-            editBook_isbn_txt.Size = new Size(243, 32);
-            editBook_isbn_txt.TabIndex = 19;
+            textBox_isbn.BackColor = Color.WhiteSmoke;
+            textBox_isbn.Font = new Font("Yu Gothic UI Semibold", 14F);
+            textBox_isbn.Location = new Point(109, 260);
+            textBox_isbn.MaxLength = 13;
+            textBox_isbn.Name = "textBox_isbn";
+            textBox_isbn.Size = new Size(243, 32);
+            textBox_isbn.TabIndex = 19;
             // 
-            // editBook_publicationYear_txt
+            // textBox_pubYear
             // 
-            editBook_publicationYear_txt.BackColor = Color.WhiteSmoke;
-            editBook_publicationYear_txt.Font = new Font("Yu Gothic UI Semibold", 14F);
-            editBook_publicationYear_txt.Location = new Point(168, 108);
-            editBook_publicationYear_txt.MaxLength = 4;
-            editBook_publicationYear_txt.Name = "editBook_publicationYear_txt";
-            editBook_publicationYear_txt.Size = new Size(184, 32);
-            editBook_publicationYear_txt.TabIndex = 20;
-            editBook_publicationYear_txt.TextAlign = HorizontalAlignment.Center;
+            textBox_pubYear.BackColor = Color.WhiteSmoke;
+            textBox_pubYear.Font = new Font("Yu Gothic UI Semibold", 14F);
+            textBox_pubYear.Location = new Point(168, 108);
+            textBox_pubYear.MaxLength = 4;
+            textBox_pubYear.Name = "textBox_pubYear";
+            textBox_pubYear.Size = new Size(184, 32);
+            textBox_pubYear.TabIndex = 20;
+            textBox_pubYear.TextAlign = HorizontalAlignment.Center;
             // 
-            // editBook_save_btn
+            // save
             // 
-            editBook_save_btn.BackColor = Color.FromArgb(80, 77, 180);
-            editBook_save_btn.BackgroundColor = Color.FromArgb(80, 77, 180);
-            editBook_save_btn.BorderColor = Color.Transparent;
-            editBook_save_btn.BorderRadius = 5;
-            editBook_save_btn.BorderSize = 0;
-            editBook_save_btn.FlatAppearance.BorderSize = 0;
-            editBook_save_btn.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
-            editBook_save_btn.FlatStyle = FlatStyle.Flat;
-            editBook_save_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
-            editBook_save_btn.ForeColor = Color.White;
-            editBook_save_btn.Location = new Point(186, 312);
-            editBook_save_btn.Name = "editBook_save_btn";
-            editBook_save_btn.Size = new Size(80, 36);
-            editBook_save_btn.TabIndex = 21;
-            editBook_save_btn.TabStop = false;
-            editBook_save_btn.Text = "Save";
-            editBook_save_btn.TextColor = Color.White;
-            editBook_save_btn.UseVisualStyleBackColor = false;
-            editBook_save_btn.Click += SaveBook;
+            save.BackColor = Color.FromArgb(80, 77, 180);
+            save.BackgroundColor = Color.FromArgb(80, 77, 180);
+            save.BorderColor = Color.Transparent;
+            save.BorderRadius = 5;
+            save.BorderSize = 0;
+            save.FlatAppearance.BorderSize = 0;
+            save.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            save.FlatStyle = FlatStyle.Flat;
+            save.Font = new Font("Yu Gothic UI Semibold", 14F);
+            save.ForeColor = Color.White;
+            save.Location = new Point(186, 312);
+            save.Name = "save";
+            save.Size = new Size(80, 36);
+            save.TabIndex = 21;
+            save.TabStop = false;
+            save.Text = "Save";
+            save.TextColor = Color.White;
+            save.UseVisualStyleBackColor = false;
+            save.Click += Save;
             // 
             // close_btn
             // 
@@ -236,28 +236,28 @@
             close_btn.UseVisualStyleBackColor = false;
             close_btn.Click += CloseWindow;
             // 
-            // panel1
+            // header
             // 
-            panel1.BackColor = Color.White;
-            panel1.Controls.Add(editBook_lbl1);
-            panel1.Controls.Add(close_btn);
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(363, 55);
-            panel1.TabIndex = 26;
-            panel1.MouseDown += EditBook_MouseDown;
-            panel1.MouseMove += EditBook_MouseMove;
-            panel1.MouseUp += EditBook_MouseUp;
+            header.BackColor = Color.White;
+            header.Controls.Add(title);
+            header.Controls.Add(close_btn);
+            header.Location = new Point(0, 0);
+            header.Name = "header";
+            header.Size = new Size(363, 55);
+            header.TabIndex = 26;
+            header.MouseDown += MouseDown;
+            header.MouseMove += MouseMove;
+            header.MouseUp += MouseUp;
             // 
-            // editBook_category_dwn
+            // dropDown_category
             // 
-            editBook_category_dwn.BackColor = Color.WhiteSmoke;
-            editBook_category_dwn.Font = new Font("Yu Gothic UI Semibold", 14F);
-            editBook_category_dwn.FormattingEnabled = true;
-            editBook_category_dwn.Location = new Point(109, 221);
-            editBook_category_dwn.Name = "editBook_category_dwn";
-            editBook_category_dwn.Size = new Size(242, 33);
-            editBook_category_dwn.TabIndex = 27;
+            dropDown_category.BackColor = Color.WhiteSmoke;
+            dropDown_category.Font = new Font("Yu Gothic UI Semibold", 14F);
+            dropDown_category.FormattingEnabled = true;
+            dropDown_category.Location = new Point(109, 221);
+            dropDown_category.Name = "dropDown_category";
+            dropDown_category.Size = new Size(242, 33);
+            dropDown_category.TabIndex = 27;
             // 
             // EditBook
             // 
@@ -265,49 +265,49 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(363, 365);
-            Controls.Add(editBook_category_dwn);
-            Controls.Add(panel1);
-            Controls.Add(editBook_save_btn);
-            Controls.Add(editBook_publicationYear_txt);
-            Controls.Add(editBook_isbn_txt);
-            Controls.Add(editBook_lbl3);
-            Controls.Add(editBook_lbl7);
-            Controls.Add(editBook_lbl6);
-            Controls.Add(editBook_author_txt);
-            Controls.Add(editBook_lbl5);
-            Controls.Add(editBook_publisher_txt);
-            Controls.Add(editBook_lbl4);
-            Controls.Add(editBook_title_txt);
-            Controls.Add(editBook_lbl2);
-            Controls.Add(editBook_cancel_btn);
+            Controls.Add(dropDown_category);
+            Controls.Add(header);
+            Controls.Add(save);
+            Controls.Add(textBox_pubYear);
+            Controls.Add(textBox_isbn);
+            Controls.Add(label_pubYear);
+            Controls.Add(label_isbn);
+            Controls.Add(label_category);
+            Controls.Add(textBox_author);
+            Controls.Add(label_author);
+            Controls.Add(textBox_publisher);
+            Controls.Add(label_publisher);
+            Controls.Add(textBox_title);
+            Controls.Add(label_title);
+            Controls.Add(cancel);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "EditBook";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "EditBooks";
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            header.ResumeLayout(false);
+            header.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Label editBook_lbl1;
-        private Label editBook_lbl2;
-        private TextBox editBook_title_txt;
-        private RoundedButton editBook_cancel_btn;
-        private TextBox editBook_publisher_txt;
-        private Label editBook_lbl4;
-        private TextBox editBook_author_txt;
-        private Label editBook_lbl5;
-        private Label editBook_lbl6;
-        private Label editBook_lbl7;
-        private Label editBook_lbl3;
-        private TextBox editBook_isbn_txt;
-        private TextBox editBook_publicationYear_txt;
-        private RoundedButton editBook_save_btn;
+        private Label title;
+        private Label label_title;
+        private TextBox textBox_title;
+        private RoundedButton cancel;
+        private TextBox textBox_publisher;
+        private Label label_publisher;
+        private TextBox textBox_author;
+        private Label label_author;
+        private Label label_category;
+        private Label label_isbn;
+        private Label label_pubYear;
+        private TextBox textBox_isbn;
+        private TextBox textBox_pubYear;
+        private RoundedButton save;
         private RoundedButton close_btn;
-        private Panel panel1;
-        private ComboBox editBook_category_dwn;
+        private Panel header;
+        private ComboBox dropDown_category;
     }
 }
