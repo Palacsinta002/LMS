@@ -9,22 +9,22 @@
 
 <body>
     <?php
-    $alma = '<a href="test">Test é</a>';
-
-    function checkTheInput($input)
-    {
-        // Trim whitespace
-        $input = trim($input);
-
-        // Remove slashes if added by magic quotes or similar
-        $input = stripslashes($input);
-
-        // Convert to HTML entities (with proper encoding)
-        $input = htmlentities($input, ENT_QUOTES, 'UTF-8');
-
-        return $input;
+    $options = [
+        'http' => [
+            'method'  => 'POST',
+            'header'  => [
+                "Content-Type: application/x-www-form-urlencoded",
+                "Accept: application/json"
+            ]
+        ]
+    ];
+    $context = stream_context_create($options);
+    $response = file_get_contents("http://localhost/amos/Website/PHP/dbManaging/userApi", false, $context);
+    if ($response === FALSE) {
+        die('Error occurred while making the POST request.');
     }
-    echo checkTheInput($alma);
+    $responseData = json_decode($response, true);
+    print_r($responseData);
     ?>
 </body>
 
