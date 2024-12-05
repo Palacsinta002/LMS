@@ -1,4 +1,6 @@
-﻿namespace Desktop_Application
+﻿using Desktop_Application.Components;
+
+namespace Desktop_Application
 {
     partial class EditBook
     {
