@@ -16,15 +16,13 @@
         private bool mouseDown;
         private Point lastLocation;
 
-        // If the mouse button is down, it gets the location of the cursor.
-        private void EditBook_MouseDown(object sender, MouseEventArgs e)
+        private void MouseDown(object sender, MouseEventArgs e)
         {
             mouseDown = true;
             lastLocation = e.Location;
         }
 
-        // It calculates the new position of the window, based on the mouse movement.
-        private void EditBook_MouseMove(object sender, MouseEventArgs e)
+        private void MouseMove(object sender, MouseEventArgs e)
         {
             if (mouseDown)
             {
@@ -35,15 +33,15 @@
             }
         }
 
-        // When realising the mouse button, the form no longer takes the mouse's position.
-        private void EditBook_MouseUp(object sender, MouseEventArgs e)
+        private void MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
         }
 
-        private void SaveBook(object sender, EventArgs e)
+        private void Save(object sender, EventArgs e)
         {
             // When clicked on Save button, check if the given data is correct, then save the book.
+            this.Close();
         }
 
         private void Cancel(object sender, EventArgs e)
