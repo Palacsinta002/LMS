@@ -283,6 +283,7 @@ namespace Desktop_Application
             Controls.Add(label_title);
             Controls.Add(cancel);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "AddBook";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AddBook";
