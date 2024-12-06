@@ -19,7 +19,7 @@
         ]
     ];
     $context = stream_context_create($options);
-    $response = file_get_contents("http://localhost/amos/Website/PHP/dbManaging/userApi", false, $context);
+    $response = file_get_contents("http://localhost/amos/Website/PHP/dbManaging/userApi.php/selectbooks", false, $context);
     if ($response === FALSE) {
         die('Error occurred while making the POST request.');
     }
