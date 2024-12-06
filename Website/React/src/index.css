@@ -9,7 +9,7 @@ body{
   background-color: #504DB4;
 }
 .HeroSection{
-  height: 100vh;
+  height: 80vh;
   width: 100vw;
   position: relative;
 }
@@ -17,13 +17,16 @@ body{
   position: absolute;
   width: 100vw;
 }
-.header{
+header{
   height: 10vh;
   width: 100vw;
   background-color: #48459E;
   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.6);
   position: relative;
   display: inline-block;
+}
+.hidden{
+  display: none;
 }
 .title{
   font-size: 4vh;
@@ -144,7 +147,13 @@ table td{
   color: white;
   text-align: center;
   position: relative;
-  bottom: -80%;
+  bottom: -100%;
+  animation: bounce2 15s ease infinite;
+}
+@keyframes bounce2{
+  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+	40% {transform: translateY(-30px);}
+	60% {transform: translateY(-15px);}
 }
 .BrowseBooks a{
   color: white;

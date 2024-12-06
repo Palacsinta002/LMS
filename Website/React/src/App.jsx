@@ -1,19 +1,23 @@
 import React from 'react'
-import Header from "./Components/Header"
-import Main from './Components/Main'
-import HeroBrowseBooks from './Components/HeroBrowseBooks'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './Pages/Home'
+import Header from './Components/Header'
+import SignIn from './Pages/SignIn'
+import SignUp from './Pages/SignUp'
 
 function App() {
 
   return (
     <>
-      <div className="HeroSection">
+      <BrowserRouter>
         <Header />
-        <section className="Hero">
-          <Main />
-        </section>
-        <HeroBrowseBooks />
-      </div>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/SignIn" element={<SignIn />} />
+          <Route path="/SignUp" element={<SignUp />} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }

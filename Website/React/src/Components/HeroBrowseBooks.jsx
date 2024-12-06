@@ -5,7 +5,7 @@ export default function HeroBrowseBooks() {
         <div className="BrowseBooks">
             <a href="">
                 <p>Browse books</p>
-                <i class="fa fa-caret-down"></i>
+                <i className="fa fa-caret-down"></i>
             </a>
         </div>
     )
