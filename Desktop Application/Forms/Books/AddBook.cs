@@ -16,13 +16,13 @@
         private bool mouseDown;
         private Point lastLocation;
 
-        private void MouseDown(object sender, MouseEventArgs e)
+        private void Header_MouseDown(object sender, MouseEventArgs e)
         {
             mouseDown = true;
             lastLocation = e.Location;
         }
 
-        private void MouseMove(object sender, MouseEventArgs e)
+        private void Header_MouseMove(object sender, MouseEventArgs e)
         {
             if (mouseDown)
             {
@@ -33,7 +33,7 @@
             }
         }
 
-        private void MouseUp(object sender, MouseEventArgs e)
+        private void Header_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
         }
@@ -47,6 +47,11 @@
         private void Cancel(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void AddBook_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawRectangle(Pens.Black, new Rectangle(0, 0, Width - 1, Height - 1));
         }
     }
 }

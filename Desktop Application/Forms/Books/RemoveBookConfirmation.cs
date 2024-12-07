@@ -16,13 +16,13 @@
         private bool mouseDown;
         private Point lastLocation;
 
-        private void MouseDown(object sender, MouseEventArgs e)
+        private void Header_MouseDown(object sender, MouseEventArgs e)
         {
             mouseDown = true;
             lastLocation = e.Location;
         }
 
-        private void MouseMove(object sender, MouseEventArgs e)
+        private void Header_MouseMove(object sender, MouseEventArgs e)
         {
             if (mouseDown)
             {
@@ -33,17 +33,17 @@
             }
         }
 
-        private void MouseUp(object sender, MouseEventArgs e)
+        private void Header_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
         }
 
-        private void No(object sender, EventArgs e)
+        private void RemoveBook_Paint(object sender, PaintEventArgs e)
         {
-            // https://stackoverflow.com/questions/13027681/creating-a-save-button-for-a-form-in-c-sharp
+            e.Graphics.DrawRectangle(Pens.Black, new Rectangle(0, 0, Width - 1, Height - 1));
         }
 
-        private void Yes(object sender, EventArgs e)
+        private void YesOrNo(object sender, EventArgs e)
         {
 
         }
