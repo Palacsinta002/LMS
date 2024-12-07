@@ -1,15 +1,8 @@
 import React from 'react'
 import "../index.css"
 import { Link, Outlet } from 'react-router-dom'
-import { useState } from 'react'
 
-export default function Header() {
-  const [hidden, setHidden] = useState("");
-
-  function handleHidden(){
-    setHidden("hidden")
-  }
-
+export default function Header(hidden, handleHidden) {
   return (
     <header className={hidden}>
       <Link to="/"><h1 className="title">LMS</h1></Link>
