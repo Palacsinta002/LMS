@@ -638,7 +638,7 @@ namespace Desktop_Application
             books_add_btn.Text = "Add";
             books_add_btn.TextColor = Color.White;
             books_add_btn.UseVisualStyleBackColor = false;
-            books_add_btn.Click += ShowAddBook;
+            books_add_btn.Click += AddBook;
             // 
             // books_edit_btn
             // 
@@ -661,7 +661,7 @@ namespace Desktop_Application
             books_edit_btn.Text = "Edit";
             books_edit_btn.TextColor = Color.White;
             books_edit_btn.UseVisualStyleBackColor = false;
-            books_edit_btn.Click += ShowEditBook;
+            books_edit_btn.Click += EditBook;
             // 
             // books_remove_btn
             // 

@@ -98,10 +98,14 @@ namespace Desktop_Application
 
         }
 
-        private void ShowEditBook(object sender, EventArgs e)
+        private void EditBook(object sender, EventArgs e)
         {
             EditBook editBook = new EditBook();
             editBook.ShowDialog();
+            if(editBook.DialogResult == DialogResult.Cancel) // Ezt itt valami acceptre kéne rakni
+            {
+                MessageBox.Show("Nigga");
+            }
         }
 
         private void RemoveBook(object sender, EventArgs e)
@@ -110,7 +114,7 @@ namespace Desktop_Application
             removeBookConfirmation.ShowDialog();
         }
 
-        private void ShowAddBook(object sender, EventArgs e)
+        private void AddBook(object sender, EventArgs e)
         {
             AddBook addBook = new AddBook();
             addBook.ShowDialog();
