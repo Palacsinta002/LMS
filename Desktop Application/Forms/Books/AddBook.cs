@@ -40,7 +40,7 @@
 
         private void Save(object sender, EventArgs e)
         {
-            // When clicked on Save button, check if the given data is correct, then save the book.
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 

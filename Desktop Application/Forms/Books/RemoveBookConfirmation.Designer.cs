@@ -117,7 +117,7 @@
             yes.Text = "Yes";
             yes.TextColor = Color.Black;
             yes.UseVisualStyleBackColor = false;
-            yes.Click += YesOrNo;
+            yes.Click += Yes;
             // 
             // no
             // 
@@ -137,15 +137,13 @@
             no.Text = "No";
             no.TextColor = Color.White;
             no.UseVisualStyleBackColor = false;
-            no.Click += YesOrNo;
+            no.Click += No;
             // 
             // RemoveBookConfirmation
             // 
-            AcceptButton = yes;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            CancelButton = no;
             ClientSize = new Size(363, 196);
             Controls.Add(yes);
             Controls.Add(no);

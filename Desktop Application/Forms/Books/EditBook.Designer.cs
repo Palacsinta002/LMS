@@ -263,11 +263,9 @@ namespace Desktop_Application
             // 
             // EditBook
             // 
-            AcceptButton = save;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            CancelButton = cancel;
             ClientSize = new Size(363, 365);
             Controls.Add(dropDown_category);
             Controls.Add(header);

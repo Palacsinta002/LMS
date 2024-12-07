@@ -43,9 +43,15 @@
             e.Graphics.DrawRectangle(Pens.Black, new Rectangle(0, 0, Width - 1, Height - 1));
         }
 
-        private void YesOrNo(object sender, EventArgs e)
+        private void Yes(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
 
+        private void No(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

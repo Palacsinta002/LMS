@@ -102,9 +102,9 @@ namespace Desktop_Application
         {
             EditBook editBook = new EditBook();
             editBook.ShowDialog();
-            if(editBook.DialogResult == DialogResult.Cancel) // Ezt itt valami acceptre kéne rakni
+            if(editBook.DialogResult == DialogResult.OK)
             {
-                MessageBox.Show("Nigga");
+                // Update the book's details
             }
         }
 
@@ -112,12 +112,20 @@ namespace Desktop_Application
         {
             RemoveBookConfirmation removeBookConfirmation = new RemoveBookConfirmation();
             removeBookConfirmation.ShowDialog();
+            if (removeBookConfirmation.DialogResult == DialogResult.OK)
+            {
+                // Remove the book
+            }
         }
 
         private void AddBook(object sender, EventArgs e)
         {
             AddBook addBook = new AddBook();
             addBook.ShowDialog();
+            if (addBook.DialogResult == DialogResult.OK)
+            {
+                // Add the book
+            }
         }
     }
 }
