@@ -27,14 +27,14 @@ namespace Desktop_Application
         private Point lastLocation;
 
         // If the mouse button is down, it gets the location of the cursor.
-        private void Login_MouseDown(object sender, MouseEventArgs e)
+        private void Header_MouseDown(object sender, MouseEventArgs e)
         {
             mouseDown = true;
             lastLocation = e.Location;
         }
 
         // It calculates the new position of the window, based on the mouse movement.
-        private void Login_MouseMove(object sender, MouseEventArgs e)
+        private void Header_MouseMove(object sender, MouseEventArgs e)
         {
             if (mouseDown)
             {
@@ -46,7 +46,7 @@ namespace Desktop_Application
         }
 
         // When realising the mouse button, the form no longer takes the mouse's position.
-        private void Login_MouseUp(object sender, MouseEventArgs e)
+        private void Header_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
         }

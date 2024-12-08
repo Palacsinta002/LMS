@@ -1,10 +1,15 @@
-﻿namespace Desktop_Application
+﻿namespace Desktop_Application.Forms.Books
 {
-    public partial class AddBook : Form
+    public partial class PublisherDoesNotExist : Form
     {
-        public AddBook()
+        public PublisherDoesNotExist()
         {
             InitializeComponent();
+        }
+
+        private void PublisherDoesNotExist_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawRectangle(Pens.Black, new Rectangle(0, 0, Width - 1, Height - 1));
         }
 
         private void CloseWindow(object sender, EventArgs e)
@@ -38,20 +43,9 @@
             mouseDown = false;
         }
 
-        private void Save(object sender, EventArgs e)
+        private void YesOrNo(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
-            this.Close();
-        }
 
-        private void Cancel(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void AddBook_Paint(object sender, PaintEventArgs e)
-        {
-            e.Graphics.DrawRectangle(Pens.Black, new Rectangle(0, 0, Width - 1, Height - 1));
         }
     }
 }

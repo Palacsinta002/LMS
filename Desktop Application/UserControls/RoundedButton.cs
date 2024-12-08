@@ -8,10 +8,10 @@ namespace Desktop_Application.Components
         //Fields
         private int borderSize = 0;
         private int borderRadius = 20;
-        private Color borderColor = Color.PaleVioletRed;
+        private Color borderColor = Color.Black;
 
         //Properties
-        [Category("RJ Code Advance")]
+        [Category("Advanced")]
         public int BorderSize
         {
             get { return borderSize; }
@@ -22,7 +22,7 @@ namespace Desktop_Application.Components
             }
         }
 
-        [Category("RJ Code Advance")]
+        [Category("Advanced")]
         public int BorderRadius
         {
             get { return borderRadius; }
@@ -33,7 +33,7 @@ namespace Desktop_Application.Components
             }
         }
 
-        [Category("RJ Code Advance")]
+        [Category("Advanced")]
         public Color BorderColor
         {
             get { return borderColor; }
@@ -43,14 +43,14 @@ namespace Desktop_Application.Components
                 Invalidate();
             }
         }
-        [Category("RJ Code Advance")]
+        [Category("Advanced")]
         public Color BackgroundColor
         {
             get { return BackColor; }
             set { BackColor = value; }
         }
 
-        [Category("RJ Code Advance")]
+        [Category("Advanced")]
         public Color TextColor
         {
             get { return ForeColor; }

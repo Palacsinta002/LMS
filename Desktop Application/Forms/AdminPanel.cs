@@ -98,22 +98,34 @@ namespace Desktop_Application
 
         }
 
-        private void ShowEditBook(object sender, EventArgs e)
+        private void EditBook(object sender, EventArgs e)
         {
             EditBook editBook = new EditBook();
             editBook.ShowDialog();
+            if(editBook.DialogResult == DialogResult.OK)
+            {
+                // Update the book's details
+            }
         }
 
         private void RemoveBook(object sender, EventArgs e)
         {
             RemoveBookConfirmation removeBookConfirmation = new RemoveBookConfirmation();
             removeBookConfirmation.ShowDialog();
+            if (removeBookConfirmation.DialogResult == DialogResult.OK)
+            {
+                // Remove the book
+            }
         }
 
-        private void ShowAddBook(object sender, EventArgs e)
+        private void AddBook(object sender, EventArgs e)
         {
             AddBook addBook = new AddBook();
             addBook.ShowDialog();
+            if (addBook.DialogResult == DialogResult.OK)
+            {
+                // Add the book
+            }
         }
     }
 }

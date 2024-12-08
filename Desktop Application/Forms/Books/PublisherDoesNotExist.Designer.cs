@@ -1,6 +1,9 @@
-﻿namespace Desktop_Application.Forms.Books
+﻿using Desktop_Application.Properties;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
+namespace Desktop_Application.Forms.Books
 {
-    partial class RemoveBookConfirmation
+    partial class PublisherDoesNotExist
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +31,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RemoveBookConfirmation));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PublisherDoesNotExist));
             header = new Panel();
             title = new Label();
             close_btn = new Components.RoundedButton();
-            label_title = new Label();
             yes = new Components.RoundedButton();
             no = new Components.RoundedButton();
+            label_title = new Label();
             header.SuspendLayout();
             SuspendLayout();
             // 
@@ -46,7 +49,8 @@
             header.Location = new Point(1, 1);
             header.Name = "header";
             header.Size = new Size(361, 55);
-            header.TabIndex = 27;
+            header.TabIndex = 31;
+            header.Paint += PublisherDoesNotExist_Paint;
             header.MouseDown += Header_MouseDown;
             header.MouseMove += Header_MouseMove;
             header.MouseUp += Header_MouseUp;
@@ -55,14 +59,11 @@
             // 
             title.AutoSize = true;
             title.Font = new Font("Yu Gothic UI Semibold", 16F);
-            title.Location = new Point(107, 12);
+            title.Location = new Point(124, 13);
             title.Name = "title";
-            title.Size = new Size(151, 30);
+            title.Size = new Size(106, 30);
             title.TabIndex = 2;
-            title.Text = "Remove Book";
-            title.MouseDown += Header_MouseDown;
-            title.MouseMove += Header_MouseMove;
-            title.MouseUp += Header_MouseUp;
+            title.Text = "Publisher";
             // 
             // close_btn
             // 
@@ -86,16 +87,6 @@
             close_btn.TabStop = false;
             close_btn.TextColor = Color.White;
             close_btn.UseVisualStyleBackColor = false;
-            close_btn.Click += CloseWindow;
-            // 
-            // label_title
-            // 
-            label_title.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label_title.Location = new Point(12, 73);
-            label_title.Name = "label_title";
-            label_title.Size = new Size(339, 55);
-            label_title.TabIndex = 28;
-            label_title.Text = "Are you sure you want to remove this book?";
             // 
             // yes
             // 
@@ -112,12 +103,12 @@
             yes.Location = new Point(179, 148);
             yes.Name = "yes";
             yes.Size = new Size(80, 36);
-            yes.TabIndex = 30;
+            yes.TabIndex = 34;
             yes.TabStop = false;
             yes.Text = "Yes";
             yes.TextColor = Color.Black;
             yes.UseVisualStyleBackColor = false;
-            yes.Click += Yes;
+            yes.Click += YesOrNo;
             // 
             // no
             // 
@@ -133,28 +124,35 @@
             no.Location = new Point(265, 148);
             no.Name = "no";
             no.Size = new Size(80, 36);
-            no.TabIndex = 29;
+            no.TabIndex = 33;
             no.Text = "No";
             no.TextColor = Color.White;
             no.UseVisualStyleBackColor = false;
-            no.Click += No;
+            no.Click += YesOrNo;
             // 
-            // RemoveBookConfirmation
+            // label_title
+            // 
+            label_title.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label_title.Location = new Point(12, 73);
+            label_title.Name = "label_title";
+            label_title.Size = new Size(339, 55);
+            label_title.TabIndex = 32;
+            label_title.Text = "Publisher does not exist. Do you want to add it now?";
+            // 
+            // PublisherDoesNotExist
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(363, 196);
+            Controls.Add(header);
             Controls.Add(yes);
             Controls.Add(no);
             Controls.Add(label_title);
-            Controls.Add(header);
             FormBorderStyle = FormBorderStyle.None;
-            Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "RemoveBookConfirmation";
+            Name = "PublisherDoesNotExist";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "RemoveBookConfirmation";
-            Paint += RemoveBook_Paint;
+            Text = "PublisherDoesNotExist";
             header.ResumeLayout(false);
             header.PerformLayout();
             ResumeLayout(false);
@@ -165,8 +163,8 @@
         private Panel header;
         private Label title;
         private Components.RoundedButton close_btn;
-        private Label label_title;
         private Components.RoundedButton yes;
         private Components.RoundedButton no;
+        private Label label_title;
     }
 }
