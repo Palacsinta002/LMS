@@ -9,17 +9,22 @@
 
 <body>
     <?php
+    $data = http_build_query(["id" => 12]) ;
     $options = [
         'http' => [
             'method'  => 'POST',
             'header'  => [
                 "Content-Type: application/x-www-form-urlencoded",
-                "Accept: application/json"
-            ]
+                "Accept: application/json",
+                
+            ],
+            "content" => $data
+            
+
         ]
     ];
     $context = stream_context_create($options);
-    $response = file_get_contents("http://localhost/myadmin/LMS/Website/PHP/dbManaging/userApi.php/selectbooks", false, $context);
+    $response = file_get_contents("http://localhost/Website/PHP/dbManaging/userApi.php/selectbooks", false, $context);
     if ($response === FALSE) {
         die('Error occurred while making the POST request.');
     }

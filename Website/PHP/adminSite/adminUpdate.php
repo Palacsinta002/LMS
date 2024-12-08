@@ -6,6 +6,7 @@
     <title>Update</title>
 </head>
 <body>
+    <?php require __DIR__ . "/../config/loggedIn.php"?>
     <h2>Row that you would like to change</h2>
     <a href="./adminSite.php">AdminSite</a>
 <form method="POST" action=<?php htmlspecialchars($_SERVER["PHP_SELF"])?>>
