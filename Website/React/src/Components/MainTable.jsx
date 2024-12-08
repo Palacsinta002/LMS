@@ -7,9 +7,11 @@ export default function MainTable() {
             <table>
                 <caption>Top Borrowed Books</caption>
                 <thead>
-                    <th>Author</th>
-                    <th>Title</th>
-                    <th>Borrows</th>
+                    <tr>
+                        <th>Author</th>
+                        <th>Title</th>
+                        <th>Borrows</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr>

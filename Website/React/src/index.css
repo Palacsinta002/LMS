@@ -148,7 +148,7 @@ table td{
   text-align: center;
   position: relative;
   bottom: -100%;
-  animation: bounce2 15s ease infinite;
+  animation: bounce2 5s ease infinite;
 }
 @keyframes bounce2{
   0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
