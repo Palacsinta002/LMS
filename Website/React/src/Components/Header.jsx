@@ -3,7 +3,7 @@ import "../index.css"
 import { Link } from 'react-router-dom'
 
 export default function Header({ currentPage, handlePage }) {
-  const hidden = currentPage === "home" ? "hidden" : "";
+  const hidden = currentPage === "home" ? "" : "hidden";
   console.log(currentPage)
 
   return (
