@@ -64,14 +64,12 @@
         </table>
     </div>
     <script type="module">
-        import {getApiUrl} from "./adminscripts.js"
+        import {getApiUrl, validateInput} from "./adminscripts.js"
         document.getElementById("request-button").addEventListener("click", ()=>{
-            
             const data = new URLSearchParams(
                 validateInput()
-                
-            
             ) 
+
             let newurl = getApiUrl(data)
             fetch(newurl,)
                 .then(response => {
@@ -92,43 +90,12 @@
                     console.log("Error",error)
                 })
         } );
+
+
         let requestedData;
         let sendeddata = "";
 
-
-            
         
-        function validateInput(){
-            let list = {}
-
-            if (document.getElementById("ISBN").value.length != 0){
-                list["ISBN"] = document.getElementById("ISBN").value
-                
-            }
-            if (document.getElementById("Title").value.length != 0){
-                list["Title"] = document.getElementById("Title").value
-                
-            }
-            if (document.getElementById("Publisher").value.length != 0){
-                list["Publisher"] = document.getElementById("Publisher").value
-                
-            }
-            if (document.getElementById("Author").value.length != 0){
-                list["Author"] = document.getElementById("Author").value
-                
-            }
-            if (document.getElementById("Category").value.length != 0){
-                list["Category"] = document.getElementById("Category").value
-                
-            }
-            if (document.getElementById("PublicationYear").value.length != 0){
-                list["PublicationYear"] = document.getElementById("PublicationYear").value
-                
-            }
-            list["limit"] = 10
-            return list
-
-        }
         let counter = 0
         function selectByParams() {
             counter++

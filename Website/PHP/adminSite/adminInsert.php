@@ -9,18 +9,56 @@
     <?php require __DIR__ . "/../config/loggedIn.php"?>
     <h2>Insert a book</h2>
     <a href="./adminSite.php">AdminSite</a>
-    <form method="POST" action=<?php htmlspecialchars($_SERVER["PHP_SELF"])?>>
-        Title<input type="text" name="Title"><br>
-        Publisher<input type="text" name="Publisher"><br>
-        Author<input type="text" name="Author"><br>
-        Category<input type="text" name="Category"><br>
-        Year(publication)<input type="text" name="PublicationYear"><br>
-        ISBN<input type="text" name="ISBN"><br>
-        <input type="submit" value="submit">
+    <form >
+        Title<input type="text" name="Title" id="Title"><br>
+        Publisher<input type="text" name="Publisher" id="Publisher"><br>
+        Author<input type="text" name="Author" id="Author"><br>
+        Category<input type="text" name="Category" id="Category"><br>
+        Year(publication)<input type="text" name="PublicationYear" id="PublicationYear"><br>
+        ISBN<input type="text" name="ISBN" id="ISBN"><br>
+        
     </form>
+    <button id="request-button" >send</button>
+    <p id="response"></p>
+    <script type="module">
+        import {PostApiUrl,validateInput} from "./adminscripts.js"
+        const url = PostApiUrl()
+        console.log(url)
+        document.getElementById("request-button").addEventListener("click",()=>{
+            let userInput = validateInput()
+            
+            if (userInput.length == 7){
+
+                fetch(url,{
+                method: "POST",
+                header:{
+                    "Content-Type:":"application/json"
+                },
+                body: userInput
+            }
+            ).then(response=>{
+                if (!response){
+                    throw new Error("Something went wrong!");
+                }
+                else{
+                    return response.json()
+                }
+            })
+            .then(result =>{
+                document.getElementById("response").innerText = result
+            })
+            }
+            else{
+                document.getElementById("response").innerText = "You entered the data worng!"
+            }
+            
+            
+            
+        })
+
+    </script>
     <?php
     
-    require "../dbManaging/Insert.php"
     
     ?>
 </body>

@@ -14,6 +14,7 @@ function HandleUserSelect($method){
     if ($method == "POST"){
         $jsonInput = file_get_contents('php://input');
         $decoded = json_decode($jsonInput,true);
+        
     }
 
 }
