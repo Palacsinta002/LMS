@@ -19,6 +19,7 @@
         <input type="submit" value="submit">
     </form>
     <?php
+    
     require "../dbManaging/Insert.php"
     
     ?>
