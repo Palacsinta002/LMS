@@ -1,4 +1,4 @@
-export function getApiUrl(){
+export function getApiUrl(data){
     let url = window.location.pathname.split("/")
     let newurl = window.location.origin
     for (let i = 0; i < url.length-2; i++) {

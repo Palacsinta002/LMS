@@ -20,7 +20,7 @@
         ISBN<input type="text" id="ISBN"><br>
         
     </form>
-    <button onclick="sendRequest()" >send</button>
+    <button id="request-button">send</button>
     <div id="parent">
         <table id="content">
 
@@ -63,24 +63,16 @@
 
         </table>
     </div>
-
     <script type="module">
-
-        import * as a from "./adminscripts.js"
-        let requestedData;
-        let sendeddata = "";
-
-        function sendRequest() {
+        import {getApiUrl} from "./adminscripts.js"
+        document.getElementById("request-button").addEventListener("click", ()=>{
+            
             const data = new URLSearchParams(
                 validateInput()
                 
             
             ) 
-            newurl = a.getApiUrl()
-   
-            
-
-            
+            let newurl = getApiUrl(data)
             fetch(newurl,)
                 .then(response => {
                     if(!response){
@@ -99,7 +91,13 @@
                 .catch(error => {
                     console.log("Error",error)
                 })
-        }
+        } );
+        let requestedData;
+        let sendeddata = "";
+
+
+            
+        
         function validateInput(){
             let list = {}
 
@@ -148,10 +146,10 @@
         }
         function fillUpTheTable(result){
             let table =document.getElementById("content")
-                firstrow =document.createElement("tr")
+                let firstrow =document.createElement("tr")
                 table.appendChild(firstrow)
 
-                firstrowElement = document.createElement("th")
+                let firstrowElement = document.createElement("th")
                 firstrowElement.textContent = "ISBN"
                 firstrow.appendChild(firstrowElement)
 
