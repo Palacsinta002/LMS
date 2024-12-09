@@ -1,24 +1,14 @@
-namespace Desktop_Application
+﻿namespace Desktop_Application
 {
-    public partial class Login : Form
+    public partial class EditBook : Form
     {
-        public Login()
+        public EditBook()
         {
             InitializeComponent();
         }
 
-        // The X int the upper right corner closes the form.
         private void CloseWindow(object sender, EventArgs e)
         {
-            this.Close();
-        }
-
-        // WIP For now the Login button opens another form without any checking.
-        private void LoginCheck(object sender, EventArgs e)
-        {
-            adminPanel adminPanel = new adminPanel();
-            this.Hide();
-            adminPanel.ShowDialog();
             this.Close();
         }
 
@@ -26,14 +16,12 @@ namespace Desktop_Application
         private bool mouseDown;
         private Point lastLocation;
 
-        // If the mouse button is down, it gets the location of the cursor.
         private void Header_MouseDown(object sender, MouseEventArgs e)
         {
             mouseDown = true;
             lastLocation = e.Location;
         }
 
-        // It calculates the new position of the window, based on the mouse movement.
         private void Header_MouseMove(object sender, MouseEventArgs e)
         {
             if (mouseDown)
@@ -45,10 +33,25 @@ namespace Desktop_Application
             }
         }
 
-        // When realising the mouse button, the form no longer takes the mouse's position.
         private void Header_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
+        }
+
+        private void Save(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private void Cancel(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void EditBook_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawRectangle(Pens.Black, new Rectangle(0, 0, Width - 1, Height - 1));
         }
     }
 }

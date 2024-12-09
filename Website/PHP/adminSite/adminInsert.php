@@ -6,7 +6,7 @@
     <title>Insert</title>
 </head>
 <body>
-
+    <?php require __DIR__ . "/../config/loggedIn.php"?>
     <h2>Insert a book</h2>
     <a href="./adminSite.php">AdminSite</a>
     <form method="POST" action=<?php htmlspecialchars($_SERVER["PHP_SELF"])?>>
@@ -19,6 +19,7 @@
         <input type="submit" value="submit">
     </form>
     <?php
+    
     require "../dbManaging/Insert.php"
     
     ?>

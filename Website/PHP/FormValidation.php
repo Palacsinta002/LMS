@@ -36,6 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     #look for the amount of rows if it is 0 that means this user is not exist
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
+        $_SESSION["username"] = $row["username"];
         $jsondata = json_encode($row);
         if ($row["RoleID"] ==3 )
         {

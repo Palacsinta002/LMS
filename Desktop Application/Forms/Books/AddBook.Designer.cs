@@ -90,13 +90,13 @@ namespace Desktop_Application
             header.BackColor = Color.White;
             header.Controls.Add(title);
             header.Controls.Add(close_btn);
-            header.Location = new Point(0, 0);
+            header.Location = new Point(1, 1);
             header.Name = "header";
-            header.Size = new Size(363, 55);
+            header.Size = new Size(361, 55);
             header.TabIndex = 41;
-            header.MouseDown += MouseDown;
-            header.MouseMove += MouseMove;
-            header.MouseUp += MouseUp;
+            header.MouseDown += Header_MouseDown;
+            header.MouseMove += Header_MouseMove;
+            header.MouseUp += Header_MouseUp;
             // 
             // title
             // 
@@ -107,9 +107,9 @@ namespace Desktop_Application
             title.Size = new Size(111, 30);
             title.TabIndex = 2;
             title.Text = "Add Book";
-            title.MouseDown += MouseDown;
-            title.MouseMove += MouseMove;
-            title.MouseUp += MouseUp;
+            title.MouseDown += Header_MouseDown;
+            title.MouseMove += Header_MouseMove;
+            title.MouseUp += Header_MouseUp;
             // 
             // save
             // 
@@ -283,9 +283,11 @@ namespace Desktop_Application
             Controls.Add(label_title);
             Controls.Add(cancel);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "AddBook";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AddBook";
+            Paint += AddBook_Paint;
             header.ResumeLayout(false);
             header.PerformLayout();
             ResumeLayout(false);

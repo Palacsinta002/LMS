@@ -1,4 +1,6 @@
-﻿namespace Desktop_Application
+﻿using Desktop_Application.Forms.Books;
+
+namespace Desktop_Application
 {
     public partial class adminPanel : Form
     {
@@ -91,10 +93,39 @@
             }
         }
 
-        private void ShowEditBook(object sender, EventArgs e)
+        private void RefreshBooks(object sender, EventArgs e)
         {
-            EditBook editBooks = new EditBook();
-            editBooks.ShowDialog();
+
+        }
+
+        private void EditBook(object sender, EventArgs e)
+        {
+            EditBook editBook = new EditBook();
+            editBook.ShowDialog();
+            if(editBook.DialogResult == DialogResult.OK)
+            {
+                // Update the book's details
+            }
+        }
+
+        private void RemoveBook(object sender, EventArgs e)
+        {
+            RemoveBookConfirmation removeBookConfirmation = new RemoveBookConfirmation();
+            removeBookConfirmation.ShowDialog();
+            if (removeBookConfirmation.DialogResult == DialogResult.OK)
+            {
+                // Remove the book
+            }
+        }
+
+        private void AddBook(object sender, EventArgs e)
+        {
+            AddBook addBook = new AddBook();
+            addBook.ShowDialog();
+            if (addBook.DialogResult == DialogResult.OK)
+            {
+                // Add the book
+            }
         }
     }
 }

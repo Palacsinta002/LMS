@@ -101,9 +101,9 @@ namespace Desktop_Application
             panel1.Name = "panel1";
             panel1.Size = new Size(285, 43);
             panel1.TabIndex = 7;
-            panel1.MouseDown += Login_MouseDown;
-            panel1.MouseMove += Login_MouseMove;
-            panel1.MouseUp += Login_MouseUp;
+            panel1.MouseDown += Header_MouseDown;
+            panel1.MouseMove += Header_MouseMove;
+            panel1.MouseUp += Header_MouseUp;
             // 
             // close_btn
             // 
@@ -165,6 +165,7 @@ namespace Desktop_Application
             Controls.Add(login_title);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
             panel1.ResumeLayout(false);

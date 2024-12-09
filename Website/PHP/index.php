@@ -7,6 +7,7 @@
 </head>
 <body>
     <?php
+        session_start();
         require "formValidation.php";
     ?>
     <form method="POST" action=<?php htmlspecialchars($_SERVER["PHP_SELF"])?>>

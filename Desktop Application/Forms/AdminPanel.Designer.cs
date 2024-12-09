@@ -615,6 +615,7 @@ namespace Desktop_Application
             books_refresh_btn.TabStop = false;
             books_refresh_btn.TextColor = Color.White;
             books_refresh_btn.UseVisualStyleBackColor = false;
+            books_refresh_btn.Click += RefreshBooks;
             // 
             // books_add_btn
             // 
@@ -637,6 +638,7 @@ namespace Desktop_Application
             books_add_btn.Text = "Add";
             books_add_btn.TextColor = Color.White;
             books_add_btn.UseVisualStyleBackColor = false;
+            books_add_btn.Click += AddBook;
             // 
             // books_edit_btn
             // 
@@ -659,7 +661,7 @@ namespace Desktop_Application
             books_edit_btn.Text = "Edit";
             books_edit_btn.TextColor = Color.White;
             books_edit_btn.UseVisualStyleBackColor = false;
-            books_edit_btn.Click += ShowEditBook;
+            books_edit_btn.Click += EditBook;
             // 
             // books_remove_btn
             // 
@@ -682,6 +684,7 @@ namespace Desktop_Application
             books_remove_btn.Text = "Remove";
             books_remove_btn.TextColor = Color.White;
             books_remove_btn.UseVisualStyleBackColor = false;
+            books_remove_btn.Click += RemoveBook;
             // 
             // books_lbl1
             // 
