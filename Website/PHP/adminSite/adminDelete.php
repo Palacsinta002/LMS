@@ -6,6 +6,7 @@
     <title>Delete</title>
 </head>
 <body>
+    <?php require __DIR__ . "/../config/loggedIn.php"?>
     
 </body>
 </html>

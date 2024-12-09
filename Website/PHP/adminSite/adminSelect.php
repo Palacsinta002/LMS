@@ -8,6 +8,8 @@
 <body>
 <?php require __DIR__ . "/../config/loggedIn.php"?>
     <h2>Select</h2>
+    
+    
     <a href="./adminSite.php">AdminSite</a>
         <form>
         Title<input type="text" id="Title"><br>
@@ -61,19 +63,25 @@
 
         </table>
     </div>
-    <script>
+
+    <script type="module">
+
+        import * as a from "./adminscripts.js"
         let requestedData;
         let sendeddata = "";
+
         function sendRequest() {
             const data = new URLSearchParams(
                 validateInput()
                 
             
             ) 
+            newurl = a.getApiUrl()
+   
             
-            const url = `http://localhost/Website/PHP/dbManaging/BooksApi.php/books?${data.toString()}`
-            console.log(url)
-            fetch(url,)
+
+            
+            fetch(newurl,)
                 .then(response => {
                     if(!response){
                         throw new Error("Network response was not ok!")
