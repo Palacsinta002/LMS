@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { useState, useEffect } from 'react'
 import Home from './Pages/Home'
 import Header from './Components/Header'
 import SignIn from './Pages/SignIn'
 import SignUp from './Pages/SignUp'
 
 function App() {
-  const { currentPage, setCurrentPage } = useState("home");
+  const [ currentPage, setCurrentPage ] = useState("home");
 
   function handlePage(page){
     setCurrentPage(page);
@@ -15,9 +14,6 @@ function App() {
   }
   console.log(currentPage)
 
-  function handleHidden(){
-    setHidden("hidden");
-  }
   return (
     <BrowserRouter>
       <Header currentPage={currentPage} handlePage={handlePage} />
