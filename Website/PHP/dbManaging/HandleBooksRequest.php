@@ -1,7 +1,8 @@
 <?php
 function HandleUserSelect($method){
+    require __DIR__ . "/../config/config.php";
     if ($method == "GET"){
-        require __DIR__ . "/../config/config.php";
+        
 
         $limit = isset($_GET["limit"]) ? $_GET["limit"] : 15;
         $sql = "SELECT books.ISBN,books.title,books.publicationYear,publishers.publisher,Authors.name,Categories.category 
@@ -10,12 +11,28 @@ function HandleUserSelect($method){
         global $conn;
         $result = json_encode($conn->query($sql)->fetch_all()) ;
         echo $result;
+        
     }
     if ($method == "POST"){
         $jsonInput = file_get_contents('php://input');
         $decoded = json_decode($jsonInput,true);
-        
+        echo var_dump($decoded);
+        foreach ($decoded as $key => $value) {
+            echo $key .  " " .$value;
+        }
+        $publisher = checkdata("publishers",["PublisherID", "publisher"],"publisher", $decoded["Publisher"]);
+        $author = checkdata("Authors",["AuthorID", "name"],"name", $decoded["Author"]);
+        $category = checkdata("categories",["CategoryID", "Category"],"Category", $decoded["Category"]);
+        $ISBN = $decoded["ISBN"];
+        $title = $decoded["Title"];
+        $publicationYear = $decoded["publicationYear"];
+        $sql = "insert into books(publisherID,authorID,categoryID,title,ISBN,publicationYear) values('$publisher' , '$author', '$category', '$title', '$ISBN', $publicationYear)";;
+        if ($conn->query($sql)){
+            echo json_encode(["Success:" => "The line was successfully inserted!"]);
+        }
+
     }
+    $conn->close();
 
 }
 function validateInput(){
@@ -34,5 +51,25 @@ function validateInput(){
     
     return $txt;
 }
+function checkdata($table, $cols, $maincol, $element){
+    global $conn;
+    $txt = "";
+    for ($i=0; $i < count($cols); $i++) { 
+        $txt .= $table . "." . $cols[$i] . " ";
+    }
 
+    $sql = "select $txt from $table where $table.$maincol = '$element'";
+    $selectedrow = $conn->query($sql);
+    if ($selectedrow->num_rows > 0){
+        $row = $selectedrow->fetch_assoc();
+        $col = $cols[0];
+        return $row["$col"];
+        
+    }
+    else{
+        echo json_encode(["error:" =>  $element . " not in the database!"]);
+        die(); 
+    }
+
+}
 ?>

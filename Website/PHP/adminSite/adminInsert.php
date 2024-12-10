@@ -26,9 +26,10 @@
         console.log(url)
         document.getElementById("request-button").addEventListener("click",()=>{
             let userInput = validateInput()
+            console.log(userInput);
             
-            if (userInput.length == 7){
-
+            if (Object.keys(userInput).length == 7){
+                
                 fetch(url,{
                 method: "POST",
                 header:{
