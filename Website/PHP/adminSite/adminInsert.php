@@ -26,7 +26,7 @@
         console.log(url)
         document.getElementById("request-button").addEventListener("click",()=>{
             let userInput = validateInput()
-            console.log(userInput);
+            console.log(JSON.stringify(userInput));
             
             if (Object.keys(userInput).length == 7){
                 
@@ -35,10 +35,10 @@
                 header:{
                     "Content-Type:":"application/json"
                 },
-                body: userInput
+                body: JSON.stringify(userInput)
             }
             ).then(response=>{
-                if (!response){
+                if (!response.ok){
                     throw new Error("Something went wrong!");
                 }
                 else{
@@ -46,8 +46,12 @@
                 }
             })
             .then(result =>{
-                document.getElementById("response").innerText = result
+                console.log(result)
             })
+            .catch(error => {
+                    console.log("Error",error)
+                })
+
             }
             else{
                 document.getElementById("response").innerText = "You entered the data worng!"

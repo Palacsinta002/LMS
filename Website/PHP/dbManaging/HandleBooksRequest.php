@@ -13,19 +13,16 @@ function HandleUserSelect($method){
         echo $result;
         
     }
+
     if ($method == "POST"){
-        $jsonInput = file_get_contents('php://input');
-        $decoded = json_decode($jsonInput,true);
-        echo var_dump($decoded);
-        foreach ($decoded as $key => $value) {
-            echo $key .  " " .$value;
-        }
+        $rawBody = file_get_contents('php://input');
+        $decoded = json_decode($rawBody, true);
         $publisher = checkdata("publishers",["PublisherID", "publisher"],"publisher", $decoded["Publisher"]);
         $author = checkdata("Authors",["AuthorID", "name"],"name", $decoded["Author"]);
         $category = checkdata("categories",["CategoryID", "Category"],"Category", $decoded["Category"]);
         $ISBN = $decoded["ISBN"];
         $title = $decoded["Title"];
-        $publicationYear = $decoded["publicationYear"];
+        $publicationYear = $decoded["PublicationYear"];
         $sql = "insert into books(publisherID,authorID,categoryID,title,ISBN,publicationYear) values('$publisher' , '$author', '$category', '$title', '$ISBN', $publicationYear)";;
         if ($conn->query($sql)){
             echo json_encode(["Success:" => "The line was successfully inserted!"]);
@@ -55,8 +52,9 @@ function checkdata($table, $cols, $maincol, $element){
     global $conn;
     $txt = "";
     for ($i=0; $i < count($cols); $i++) { 
-        $txt .= $table . "." . $cols[$i] . " ";
+        $txt .= $table . "." . $cols[$i] . ", ";
     }
+    $txt = trim(trim($txt),",");
 
     $sql = "select $txt from $table where $table.$maincol = '$element'";
     $selectedrow = $conn->query($sql);
