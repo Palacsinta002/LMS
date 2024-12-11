@@ -23,9 +23,41 @@ function HandleUserSelect($method){
         $ISBN = $decoded["ISBN"];
         $title = $decoded["Title"];
         $publicationYear = $decoded["PublicationYear"];
-        $sql = "insert into books(publisherID,authorID,categoryID,title,ISBN,publicationYear) values('$publisher' , '$author', '$category', '$title', '$ISBN', $publicationYear)";;
+        $sql = "insert into books(publisherID,authorID,categoryID,title,ISBN,publicationYear) values('$publisher' , '$author', '$category', '$title', '$ISBN', $publicationYear)";
         if ($conn->query($sql)){
             echo json_encode(["Success:" => "The line was successfully inserted!"]);
+        }
+
+    }
+    if ($method == "patch"){
+        $rawBody = file_get_contents('php://input');
+        $decoded = json_decode($rawBody, true);
+        $current = $decoded["current"];
+        $newdata = $decoded["new"];
+        #first convert
+        if (isset($current["Publisher"])){
+            $current["Publisher"] = checkdata("publishers",["PublisherID", "publisher"],"publisher", $current["Publisher"]);
+        }
+        if (isset($current["Author"])){
+            $current["Author"] = checkdata("Authors",["AuthorID", "name"],"name", $current["Author"]);
+        }
+        if (isset($current["Category"])){
+            $current["Category"] = checkdata("categories",["CategoryID", "Category"],"Category", $current["Category"]);
+        }
+        #second convert
+        if (isset($newdata["Publisher"])){
+            $newdata["Publisher"] = checkdata("publishers",["PublisherID", "publisher"],"publisher", $newdata["Publisher"]);
+        }
+        if (isset($newdata["Author"])){
+            $newdata["Author"] = checkdata("Authors",["AuthorID", "name"],"name", $newdata["Author"]);
+        }
+        if (isset($newdata["Category"])){
+            $newdata["Category"] = checkdata("categories",["CategoryID", "Category"],"Category", $newdata["Category"]);
+        }
+        
+        $sql = "UPDATE books set ". equalize($newdata) . " where " . conditionUpdate($current);
+        if ($conn->query($sql)){
+            echo json_encode(["Success" => "row(s) successfully updated!"]);
         }
 
     }
@@ -69,5 +101,27 @@ function checkdata($table, $cols, $maincol, $element){
         die(); 
     }
 
+}
+/*function normalizeData($input){
+    $normalized = ["title" =>null,"publisher" =>null,"author" =>null,"category" =>null,"publicationYear" =>null,"ISBN" =>null ];
+    foreach ($input as $key => $value) {
+        $normalized[$key] = $input[$value];
+    }
+    return $normalized;
+    }
+*/
+function equalize($input){
+    $sql = "";
+    foreach ($input as $key => $value) {
+        $sql.= $key . " = " . $value;
+    }
+    return $sql;
+}
+function conditionUpdate ($input){
+    $sql = "";
+    foreach ($$input as $key => $value) {
+        $sql.= $key . " = " . $value;
+    }
+    return $sql;
 }
 ?>

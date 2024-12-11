@@ -9,7 +9,7 @@
     <?php require __DIR__ . "/../config/loggedIn.php"?>
     <h2>Row that you would like to change</h2>
     <a href="./adminSite.php">AdminSite</a>
-<form method="POST" action=<?php htmlspecialchars($_SERVER["PHP_SELF"])?>>
+<form>
         Title<input type="text" name="Title"><br>
         Publisher<input type="text" name="Publisher"><br>
         Author<input type="text" name="Author"><br>
@@ -24,13 +24,13 @@
         Category<input type="text" name="CategoryChanged"><br>
         Year(publication)<input type="text" name="PublicationYearChanged"><br>
         ISBN<input type="text" name="ISBNChanged"><br>
-
-        <input type="submit" value="submit">
     </form>
-    <?php
-    require "../dbManaging/Update.php"
-    
-    
-    ?>
+    <button>Update</button>
+
+    <script type="module">
+
+
+
+    </script>
 </body>
 </html>
