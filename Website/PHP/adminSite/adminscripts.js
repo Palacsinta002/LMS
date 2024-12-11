@@ -1,11 +1,13 @@
-export function getApiUrl(data){
+export function getApiUrl(endpoint,data){
     let url = window.location.pathname.split("/")
     let newurl = window.location.origin
-    for (let i = 0; i < url.length-2; i++) {
-        newurl += url[i] +"/"
-                
+    let j = 0
+    while (url[j] != "PHP") {
+        newurl += url[j] +"/"
+        j++
     }
-    newurl += `dbManaging/BooksApi.php/books?${data.toString()}`
+    newurl += "PHP/"
+    newurl += `dbManaging/BooksApi.php/${endpoint}?${data.toString()}`
     return newurl
 }
 export function PostApiUrl(){
@@ -18,9 +20,16 @@ export function PostApiUrl(){
     newurl += `dbManaging/BooksApi.php/books`
     return newurl
 }
-export function validateInput(){
+export function validateInput(key,input){
     let list = {}
-
+    for (let i = 0; i < input.length; i++) {
+        if (document.getElementById(input[i]).value.length != 0){
+            list[key[i]] = document.getElementById(input[i]).value
+            
+        }
+        
+    }
+    /* 
     if (document.getElementById("ISBN").value.length != 0){
         list["ISBN"] = document.getElementById("ISBN").value
         
@@ -45,7 +54,9 @@ export function validateInput(){
         list["PublicationYear"] = document.getElementById("PublicationYear").value
         
     }
+        */
     list["limit"] = 10
+    console.log(list)
     return list
 
 }
@@ -56,8 +67,8 @@ export function validateInputChanged(){
         list["ISBN"] = document.getElementById("ISBNChanged").value
         
     }
-    if (document.getElementById("Title").value.length != 0){
-        list["Title"] = document.getElementById("Title").value
+    if (document.getElementById("TitleChanged").value.length != 0){
+        list["Title"] = document.getElementById("TitleChanged").value
         
     }
     if (document.getElementById("PublisherChanged").value.length != 0){
@@ -76,7 +87,7 @@ export function validateInputChanged(){
         list["PublicationYear"] = document.getElementById("PublicationYearChanged").value
         
     }
-    list["limit"] = 10
+    list["limit"] = 15
     return list
 
 }

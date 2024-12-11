@@ -12,15 +12,24 @@
 <body>
 <div class="menu">
     <div class="dropdown">
-    <span>books</span>
+    <span>Books</span>
     <div class="dropdown-content">
     <a href="./adminSelect.php" >select</a>
     <a href="./adminInsert.php" >insert</a>
     <a href="./adminUpdate.php" >update</a>
+    <a href="./adminDelete.php" >Delete</a>
     </div>
     </div>
     
-<a href="./adminInsert.php">borroings</a>
+<div class="dropdown">
+    <span>Borrowings</span>
+    <div class="dropdown-content">
+    <a href="./borrowings/adminSelect.php" >select</a>
+    <a href="./borrowings/adminInsert.php" >insert</a>
+    <a href="./borrowings/adminUpdate" >update</a>
+    <a href="./borrowings/adminDelete" >Delete</a>
+    </div>
+    </div>
 <a href="./adminUpdate.php">users</a>
 
 <div class="menuUser">Welcome <?php echo $_SESSION["username"]?></div>

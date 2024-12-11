@@ -67,10 +67,11 @@
         import {getApiUrl, validateInput} from "./adminscripts.js"
         document.getElementById("request-button").addEventListener("click", ()=>{
             const data = new URLSearchParams(
-                validateInput()
+                validateInput(["Title","Publisher","Author","Category","PublicationYear","ISBN"],["Title","Publisher","Author","Category","PublicationYear","ISBN"])
             ) 
 
-            let newurl = getApiUrl(data)
+            let newurl = getApiUrl("books",data)
+            console.log(newurl)
             fetch(newurl,)
                 .then(response => {
                     if(!response){

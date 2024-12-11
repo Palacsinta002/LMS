@@ -25,7 +25,7 @@
         const url = PostApiUrl()
         console.log(url)
         document.getElementById("request-button").addEventListener("click",()=>{
-            let userInput = validateInput()
+            let userInput = validateInput(["Title","Publisher","Author","Category","PublicationYear","ISBN"],["Title","Publisher","Author","Category","PublicationYear","ISBN"])
             console.log(JSON.stringify(userInput));
             
             if (Object.keys(userInput).length == 7){
@@ -46,7 +46,7 @@
                 }
             })
             .then(result =>{
-                console.log(result)
+                document.getElementById("response").innerText = result["success"]
             })
             .catch(error => {
                     console.log("Error",error)

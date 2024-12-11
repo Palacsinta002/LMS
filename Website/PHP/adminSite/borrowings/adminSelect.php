@@ -3,74 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select</title>
+    <title>Borrowings</title>
 </head>
 <body>
-<?php require __DIR__ . "/../config/loggedIn.php"?>
-    <h2>Select</h2>
-    
-    
-    <a href="./adminSite.php">UserSite</a>
-        <form>
-        Title<input type="text" id="Title"><br>
-        Publisher<input type="text" id="Publisher"><br>
-        Author<input type="text" id="Author"><br>
-        Category<input type="text" id="Category"><br>
-        Year(publication)<input type="text" id="PublicationYear"><br>
-        ISBN<input type="text" id="ISBN"><br>
-        
+<?php require __DIR__ . "/../../config/loggedIn.php"?>
+    <h2>Insert a book</h2>
+    <a href="./../adminSite.php">AdminSite</a>
+    <form >
+        Username<input type="text" name="Username" id="Username"><br>
+        BookTitle<input type="text" name="BookTitle" id="BookTitle"><br>
+        BorrowDate<input type="text" name="BorrowDate" id="BorrowDate"><br>
+        ReturnDate<input type="text" name="ReturnDate" id="ReturnDate"><br>
+        DueDate<input type="text" name="DueDate" id="DueDate"><br>
+        Returned<input type="text" name="IsReturned" id="IsReturned"><br>
     </form>
-    <button id="request-button">send</button>
+    <button id="request-button" >send</button>
     <div id="parent">
-        <table id="content">
-
-        <?php
-            /*
-             
-            $options = ["http" => [
-                    "method" => "POST",
-                    "header" => [
-                        "Content-Type: application/x-www-form-urlencoded",
-                        "Accept: application/json"
-                    ],
-                    "content" => json_encode(["limit" => 15])
-                    
-            ]
-                ];
-                $context = stream_context_create($options);
-                $result = file_get_contents("http://localhost/Website/PHP/dbManaging/userApi.php/selectbooks",false,$context);
-                echo $result === false ?  "something went wrong" : "";
-                $data = json_decode($result, true);
-                echo "<table>";
-                echo "<tr><td>ISBN</td><td>title</td><td>Publication Year</td><td>publisher</td><td>name</td><td>category</td></tr>";
-                for ($i=0; $i < count($data); $i++) { 
-                    echo "<tr>";
-                    for ($j=0; $j < count($data[$i]); $j++) { 
-                        echo "<td>";
-                        echo $data[$i][$j];
-                        echo "</td>";
-                    }
-                    echo "</tr>";
-                }
-                
-                echo "</table>";
-
-                $options["http"]["content"] = json_encode($_POST); 
-            include "../dbManaging/Select.php"
-
-*/
-?>
-
-        </table>
+    <table id="content">
+    </table>
     </div>
     <script type="module">
-        import {getApiUrl, validateInput} from "./adminscripts.js"
+        import {getApiUrl,validateInput} from "../adminscripts.js"
         document.getElementById("request-button").addEventListener("click", ()=>{
             const data = new URLSearchParams(
-                validateInput()
+                validateInput(["Username","BookTitle","BorrowDate","ReturnDate","DueDate","IsReturned"],["Username","BookTitle","BorrowDate","ReturnDate","DueDate","IsReturned"])
             ) 
 
-            let newurl = getApiUrl(data)
+            let newurl = getApiUrl("borrowings",data)
+            console.log(newurl)
             fetch(newurl,)
                 .then(response => {
                     if(!response){
@@ -90,16 +50,9 @@
                     console.log("Error",error)
                 })
         } );
+    
 
-
-        let requestedData;
-        let sendeddata = "";
-
-        
-        let counter = 0
         function selectByParams() {
-            counter++
-            console.log(counter)
             let parent = document.getElementById("parent")
             while (parent.hasChildNodes()) {
                 parent.removeChild(parent.firstChild)
@@ -117,27 +70,27 @@
                 table.appendChild(firstrow)
 
                 let firstrowElement = document.createElement("th")
-                firstrowElement.textContent = "ISBN"
+                firstrowElement.textContent = "Username"
                 firstrow.appendChild(firstrowElement)
 
                 firstrowElement = document.createElement("th")
-                firstrowElement.textContent = "Title"
+                firstrowElement.textContent = "BookTitle"
                 firstrow.appendChild(firstrowElement)
 
                 firstrowElement = document.createElement("th")
-                firstrowElement.textContent = "Publication Year"
+                firstrowElement.textContent = "BorrowDate"
                 firstrow.appendChild(firstrowElement)
 
                 firstrowElement = document.createElement("th")
-                firstrowElement.textContent = "publisher"
+                firstrowElement.textContent = "ReturnDate"
                 firstrow.appendChild(firstrowElement)
 
                 firstrowElement = document.createElement("th")
-                firstrowElement.textContent = "name"
+                firstrowElement.textContent = "DueDate"
                 firstrow.appendChild(firstrowElement)
 
                 firstrowElement = document.createElement("th")
-                firstrowElement.textContent = "category"
+                firstrowElement.textContent = "Returned"
                 firstrow.appendChild(firstrowElement)
                 
 
@@ -156,5 +109,3 @@
     </script>
 </body>
 </html>
-
-
