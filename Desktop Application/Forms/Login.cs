@@ -1,3 +1,5 @@
+using Desktop_Application.Classes;
+
 namespace Desktop_Application
 {
     public partial class Login : Form
@@ -5,6 +7,11 @@ namespace Desktop_Application
         public Login()
         {
             InitializeComponent();
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            DragWindow.Handle(this, panel1);
         }
 
         // The X int the upper right corner closes the form.
@@ -20,35 +27,6 @@ namespace Desktop_Application
             this.Hide();
             adminPanel.ShowDialog();
             this.Close();
-        }
-
-        // Make the Login form moveable without title bar.
-        private bool mouseDown;
-        private Point lastLocation;
-
-        // If the mouse button is down, it gets the location of the cursor.
-        private void Header_MouseDown(object sender, MouseEventArgs e)
-        {
-            mouseDown = true;
-            lastLocation = e.Location;
-        }
-
-        // It calculates the new position of the window, based on the mouse movement.
-        private void Header_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (mouseDown)
-            {
-                this.Location = new Point(
-                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
-
-                this.Update();
-            }
-        }
-
-        // When realising the mouse button, the form no longer takes the mouse's position.
-        private void Header_MouseUp(object sender, MouseEventArgs e)
-        {
-            mouseDown = false;
         }
     }
 }

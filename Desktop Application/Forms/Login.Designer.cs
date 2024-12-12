@@ -1,4 +1,5 @@
-﻿using Desktop_Application.Components;
+﻿using Desktop_Application.Classes;
+using Desktop_Application.Components;
 
 namespace Desktop_Application
 {
@@ -101,9 +102,6 @@ namespace Desktop_Application
             panel1.Name = "panel1";
             panel1.Size = new Size(285, 43);
             panel1.TabIndex = 7;
-            panel1.MouseDown += Header_MouseDown;
-            panel1.MouseMove += Header_MouseMove;
-            panel1.MouseUp += Header_MouseUp;
             // 
             // close_btn
             // 
@@ -168,6 +166,7 @@ namespace Desktop_Application
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
+            Load += Login_Load;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
