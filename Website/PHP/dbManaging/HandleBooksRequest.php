@@ -68,7 +68,7 @@ function HandleBookRequest($method){
             
             $sql = "UPDATE books set ". equalize($newdata) . " where " . equalize($current);
             if ($conn->query($sql)){
-                echo json_encode(["success" => "row(s) successfully updated!"]);
+                echo json_encode(["Success" => "row(s) successfully updated!"]);
             }
             else {
                 echo json_encode(["Error" => "Something went wrong!"]);

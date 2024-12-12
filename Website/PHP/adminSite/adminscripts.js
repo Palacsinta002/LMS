@@ -10,14 +10,16 @@ export function getApiUrl(endpoint,data){
     newurl += `dbManaging/BooksApi.php/${endpoint}?${data.toString()}`
     return newurl
 }
-export function PostApiUrl(){
+export function PostApiUrl(endpoint){
     let url = window.location.pathname.split("/")
     let newurl = window.location.origin
-    for (let i = 0; i < url.length-2; i++) {
-        newurl += url[i] +"/"
-                
+    let j = 0
+    while (url[j] != "PHP") {
+        newurl += url[j] +"/"
+        j++
     }
-    newurl += `dbManaging/BooksApi.php/books`
+    newurl += "PHP/"
+    newurl += `dbManaging/BooksApi.php/${endpoint}`
     return newurl
 }
 export function validateInput(key,input){

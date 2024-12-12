@@ -24,6 +24,7 @@
     </div>
     <script type="module">
         import {getApiUrl,validateInput} from "../adminscripts.js"
+        let requestedData;
         document.getElementById("request-button").addEventListener("click", ()=>{
             const data = new URLSearchParams(
                 validateInput(["Username","BookTitle","BorrowDate","ReturnDate","DueDate","IsReturned"],["Username","BookTitle","BorrowDate","ReturnDate","DueDate","IsReturned"])
@@ -41,7 +42,6 @@
                     }
                 })
                 .then(result=>{
-                    requestedData = result
                     console.log(result)
                     selectByParams()
                     fillUpTheTable(result)
@@ -94,15 +94,16 @@
                 firstrow.appendChild(firstrowElement)
                 
 
-            
+
             result.forEach(row => {
+                
                 let th =document.createElement("tr")
                 table.appendChild(th)
-                row.forEach(element => {
+                for (let key in row) {
                     let td =document.createElement("td")
-                    td.textContent = element
+                    td.textContent = row[key]
                     th.appendChild(td)
-                });
+                };
             });
             
         }

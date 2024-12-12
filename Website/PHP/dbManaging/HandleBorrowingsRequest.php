@@ -13,6 +13,7 @@ function HandleBorrowingRequest($method){
         $sql = "SELECT Users.username, books.title, borrowings.BorrowDate, borrowings.ReturnDate, borrowings.DueDate, borrowings.IsReturned
         from books,borrowings,users
         where books.BookId = borrowings.BookID and borrowings.userID = users.userID $username $BookTitle $BorrowDate $ReturnDate $DueDate $IsReturned";
+    
         if ($result = $conn->query($sql)->fetch_all(MYSQLI_ASSOC)){
             if (count($result) > 0){
                 echo json_encode($result);
@@ -23,6 +24,24 @@ function HandleBorrowingRequest($method){
         }
         
 
+    }
+    if ($method == "POST"){
+        $rawBody = file_get_contents('php://input');
+        $decoded = json_decode($rawBody, true);
+        if (isset($decoded["ISBN"])){
+            $decoded["bookID"] = checkdata("books",["ISBN", "bookID"],"bookID", $decoded["ISBN"]);
+        }
+        if (isset($decoded["Username"])){
+            $decoded["UserID"] = checkdata("users",["Username", "UserID"],"UserID", $decoded["Username"]);
+        }
+        $sql = "insert into borrowings(userID,bookID,borrowDate,returnDate,DueDate,IsReturned) values( " . $decoded["UserID"] . " , " . $decoded["BookID"] . ", '" . $decoded["BorrowDate"] . "', '" . $decoded["ReturnDate"] . "', '" . $decoded["DueDate"] . "', " . $decoded["IsReturned"] . ")";
+        if ($conn->query($sql)){
+            echo json_encode(["Success:" => "The line was successfully inserted!"]);
+        }
+        else{
+            echo json_encode(["Success:" => "Wrong input!"]);
+        }
+        
     }
 }
 

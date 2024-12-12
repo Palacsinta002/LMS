@@ -21,6 +21,14 @@ function checkdata($table, $cols, $maincol, $element){
     }
 
 }
+function insertValues($dict){
+    $txt = "";
+    foreach ($dict as $key => $value) {
+        $txt .= "$value, ";
+    }
+    $txt = trim(trim($txt,","));
+    return $txt;
+}
 
 
 ?>

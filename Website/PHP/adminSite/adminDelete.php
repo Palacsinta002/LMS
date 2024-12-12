@@ -24,7 +24,7 @@
 
         document.getElementById("request-button").addEventListener("click",()=>{
             let userInput = validateInput(["Title","Publisher","Author","Category","PublicationYear","ISBN"],["Title","Publisher","Author","Category","PublicationYear","ISBN"])
-                const url =PostApiUrl()
+                const url =PostApiUrl("books")
                 fetch(url,{
                 method: "DELETE",
                 header:{

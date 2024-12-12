@@ -30,7 +30,7 @@
     <script type="module">
         import {validateInput,PostApiUrl} from "./adminscripts.js"
         document.getElementById("request-button").addEventListener("click",() =>{
-            const url = PostApiUrl()
+            const url = PostApiUrl("books")
             const userInput = {
                 current: validateInput(["Title","Publisher","Author","Category","PublicationYear","ISBN"],["Title","Publisher","Author","Category","PublicationYear","ISBN"]),
                 new: validateInput(["Title","Publisher","Author","Category","PublicationYear","ISBN"],["TitleChanged","PublisherChanged","AuthorChanged","CategoryChanged","PublicationYearChanged","ISBNChanged"])
@@ -52,7 +52,7 @@
                     
                 }
             }).then(result =>{
-                document.getElementById("response").textContent = result["success"]
+                document.getElementById("response").textContent = result["Success"]
             }).catch(error =>{
                 console.log("error",error);
                 

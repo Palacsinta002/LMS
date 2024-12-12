@@ -6,6 +6,57 @@
     <title>Insert</title>
 </head>
 <body>
-    
+<?php require __DIR__ . "/../../config/loggedIn.php"?>
+    <h2>Insert a book</h2>
+    <a href="./../adminSite.php">AdminSite</a>
+    <form >
+        Username<input type="text" name="Username" id="Username"><br>
+        ISBN<input type="text" name="ISBN" id="ISBN"><br>
+        BorrowDate<input type="text" name="BorrowDate" id="BorrowDate"><br>
+        ReturnDate<input type="text" name="ReturnDate" id="ReturnDate"><br>
+        DueDate<input type="text" name="DueDate" id="DueDate"><br>
+        Returned<input type="text" name="IsReturned" id="IsReturned"><br>
+    </form>
+    <button id="request-button" >send</button>
+
+    <script type="module">
+        import {PostApiUrl,validateInput} from "../adminscripts.js"
+        document.getElementById("request-button").addEventListener("click",()=>{
+            let userInput = validateInput(["Username","ISBN","BorrowDate","ReturnDate","DueDate","IsReturned"],["Username","ISBN","BorrowDate","ReturnDate","DueDate","IsReturned"])
+            console.log(JSON.stringify(userInput));
+            const url=PostApiUrl("borrowings")
+            if (Object.keys(userInput).length == 7){
+                
+                fetch(url,{
+                method: "POST",
+                header:{
+                    "Content-Type:":"application/json"
+                },
+                body: JSON.stringify(userInput)
+            }
+            ).then(response=>{
+                if (!response.ok){
+                    throw new Error("Something went wrong!");
+                }
+                else{
+                    return response.json()
+                }
+            })
+            .then(result =>{
+                document.getElementById("response").innerText = result["Success"]
+            })
+            .catch(error => {
+                    console.log("Error",error)
+                })
+
+            }
+            else{
+                document.getElementById("response").innerText = "Missing data!"
+            }
+            
+            
+            
+        })
+    </script>
 </body>
 </html>

@@ -22,7 +22,7 @@
     <p id="response"></p>
     <script type="module">
         import {PostApiUrl,validateInput} from "./adminscripts.js"
-        const url = PostApiUrl()
+        const url = PostApiUrl("books")
         console.log(url)
         document.getElementById("request-button").addEventListener("click",()=>{
             let userInput = validateInput(["Title","Publisher","Author","Category","PublicationYear","ISBN"],["Title","Publisher","Author","Category","PublicationYear","ISBN"])
@@ -46,7 +46,7 @@
                 }
             })
             .then(result =>{
-                document.getElementById("response").innerText = result["success"]
+                document.getElementById("response").innerText = result["Success"]
             })
             .catch(error => {
                     console.log("Error",error)
