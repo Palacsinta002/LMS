@@ -94,9 +94,6 @@ namespace Desktop_Application
             header.Name = "header";
             header.Size = new Size(361, 55);
             header.TabIndex = 41;
-            header.MouseDown += Header_MouseDown;
-            header.MouseMove += Header_MouseMove;
-            header.MouseUp += Header_MouseUp;
             // 
             // title
             // 
@@ -107,9 +104,6 @@ namespace Desktop_Application
             title.Size = new Size(111, 30);
             title.TabIndex = 2;
             title.Text = "Add Book";
-            title.MouseDown += Header_MouseDown;
-            title.MouseMove += Header_MouseMove;
-            title.MouseUp += Header_MouseUp;
             // 
             // save
             // 
@@ -287,6 +281,7 @@ namespace Desktop_Application
             Name = "AddBook";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AddBook";
+            Load += OnLoad;
             Paint += AddBook_Paint;
             header.ResumeLayout(false);
             header.PerformLayout();

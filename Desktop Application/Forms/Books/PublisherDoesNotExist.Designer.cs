@@ -50,10 +50,7 @@ namespace Desktop_Application.Forms.Books
             header.Name = "header";
             header.Size = new Size(361, 55);
             header.TabIndex = 31;
-            header.Paint += PublisherDoesNotExist_Paint;
-            header.MouseDown += Header_MouseDown;
-            header.MouseMove += Header_MouseMove;
-            header.MouseUp += Header_MouseUp;
+            header.Paint += Border_Paint;
             // 
             // title
             // 
@@ -153,6 +150,7 @@ namespace Desktop_Application.Forms.Books
             Name = "PublisherDoesNotExist";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "PublisherDoesNotExist";
+            Load += OnLoad;
             header.ResumeLayout(false);
             header.PerformLayout();
             ResumeLayout(false);

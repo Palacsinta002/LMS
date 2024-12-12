@@ -32,28 +32,28 @@ namespace Desktop_Application
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
-            login_title = new Label();
+            title = new Label();
             username_textBox = new TextBox();
             password_textBox = new TextBox();
             username_label = new Label();
             password_label = new Label();
-            panel1 = new Panel();
+            header = new Panel();
             close_btn = new RoundedButton();
             login_btn = new RoundedButton();
-            panel1.SuspendLayout();
+            header.SuspendLayout();
             SuspendLayout();
             // 
-            // login_title
+            // title
             // 
-            login_title.AutoSize = true;
-            login_title.Font = new Font("Yu Gothic UI Semibold", 24F);
-            login_title.ForeColor = Color.White;
-            login_title.ImeMode = ImeMode.NoControl;
-            login_title.Location = new Point(93, 41);
-            login_title.Name = "login_title";
-            login_title.Size = new Size(101, 45);
-            login_title.TabIndex = 1;
-            login_title.Text = "Login";
+            title.AutoSize = true;
+            title.Font = new Font("Yu Gothic UI Semibold", 24F);
+            title.ForeColor = Color.White;
+            title.ImeMode = ImeMode.NoControl;
+            title.Location = new Point(93, 41);
+            title.Name = "title";
+            title.Size = new Size(101, 45);
+            title.TabIndex = 1;
+            title.Text = "Login";
             // 
             // username_textBox
             // 
@@ -94,14 +94,14 @@ namespace Desktop_Application
             password_label.TabIndex = 5;
             password_label.Text = "Password";
             // 
-            // panel1
+            // header
             // 
-            panel1.BackColor = Color.FromArgb(80, 77, 180);
-            panel1.Controls.Add(close_btn);
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(285, 43);
-            panel1.TabIndex = 7;
+            header.BackColor = Color.FromArgb(80, 77, 180);
+            header.Controls.Add(close_btn);
+            header.Location = new Point(0, 0);
+            header.Name = "header";
+            header.Size = new Size(285, 43);
+            header.TabIndex = 7;
             // 
             // close_btn
             // 
@@ -160,25 +160,25 @@ namespace Desktop_Application
             Controls.Add(username_label);
             Controls.Add(password_textBox);
             Controls.Add(username_textBox);
-            Controls.Add(login_title);
-            Controls.Add(panel1);
+            Controls.Add(title);
+            Controls.Add(header);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
-            Load += Login_Load;
-            panel1.ResumeLayout(false);
+            Load += OnLoad;
+            header.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Label login_title;
+        private Label title;
         private TextBox username_textBox;
         private TextBox password_textBox;
         private Label username_label;
         private Label password_label;
-        private Panel panel1;
+        private Panel header;
         private RoundedButton login_btn;
         private RoundedButton close_btn;
     }

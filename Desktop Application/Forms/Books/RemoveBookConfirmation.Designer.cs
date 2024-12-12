@@ -47,9 +47,6 @@
             header.Name = "header";
             header.Size = new Size(361, 55);
             header.TabIndex = 27;
-            header.MouseDown += Header_MouseDown;
-            header.MouseMove += Header_MouseMove;
-            header.MouseUp += Header_MouseUp;
             // 
             // title
             // 
@@ -60,9 +57,6 @@
             title.Size = new Size(151, 30);
             title.TabIndex = 2;
             title.Text = "Remove Book";
-            title.MouseDown += Header_MouseDown;
-            title.MouseMove += Header_MouseMove;
-            title.MouseUp += Header_MouseUp;
             // 
             // close_btn
             // 
@@ -154,7 +148,8 @@
             Name = "RemoveBookConfirmation";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "RemoveBookConfirmation";
-            Paint += RemoveBook_Paint;
+            Load += OnLoad;
+            Paint += Border_Paint;
             header.ResumeLayout(false);
             header.PerformLayout();
             ResumeLayout(false);

@@ -9,9 +9,9 @@ namespace Desktop_Application
             InitializeComponent();
         }
 
-        private void Login_Load(object sender, EventArgs e)
+        private void OnLoad(object sender, EventArgs e)
         {
-            DragWindow.Handle(this, panel1);
+            DragWindow.Handle(this, header, title);
         }
 
         // The X int the upper right corner closes the form.
