@@ -25,14 +25,23 @@ function HandleBorrowingRequest($method){
         
 
     }
+
     if ($method == "POST"){
         $rawBody = file_get_contents('php://input');
         $decoded = json_decode($rawBody, true);
         if (isset($decoded["ISBN"])){
-            $decoded["bookID"] = checkdata("books",["ISBN", "bookID"],"bookID", $decoded["ISBN"]);
+            $cumo = ["BookID" => checkdata("books",["ISBN", "bookID"],"ISBN", $decoded["ISBN"])];
+
+            $decoded[] = $cumo;
+            //array_push($decoded,$cumo);
+            echo var_dump($decoded);
+            
         }
+            
+           
         if (isset($decoded["Username"])){
-            $decoded["UserID"] = checkdata("users",["Username", "UserID"],"UserID", $decoded["Username"]);
+
+            array_push($decoded,checkdata("users",["Username", "UserID"],"Username", $decoded["Username"]));
         }
         $sql = "insert into borrowings(userID,bookID,borrowDate,returnDate,DueDate,IsReturned) values( " . $decoded["UserID"] . " , " . $decoded["BookID"] . ", '" . $decoded["BorrowDate"] . "', '" . $decoded["ReturnDate"] . "', '" . $decoded["DueDate"] . "', " . $decoded["IsReturned"] . ")";
         if ($conn->query($sql)){

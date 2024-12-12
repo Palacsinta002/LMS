@@ -1,5 +1,5 @@
 <?php
-require "../config/loggedIn.php";
+
 
 header("Content-Type: Application/json");
 header("Access-Control-Allow-Origin: *");

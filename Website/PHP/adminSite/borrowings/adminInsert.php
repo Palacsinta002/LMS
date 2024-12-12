@@ -18,15 +18,16 @@
         Returned<input type="text" name="IsReturned" id="IsReturned"><br>
     </form>
     <button id="request-button" >send</button>
-
+    <p id="response"></p>
     <script type="module">
         import {PostApiUrl,validateInput} from "../adminscripts.js"
         document.getElementById("request-button").addEventListener("click",()=>{
             let userInput = validateInput(["Username","ISBN","BorrowDate","ReturnDate","DueDate","IsReturned"],["Username","ISBN","BorrowDate","ReturnDate","DueDate","IsReturned"])
             console.log(JSON.stringify(userInput));
             const url=PostApiUrl("borrowings")
+            console.log(Object.keys(userInput).length)
             if (Object.keys(userInput).length == 7){
-                
+                console.log("belement")
                 fetch(url,{
                 method: "POST",
                 header:{
@@ -43,7 +44,8 @@
                 }
             })
             .then(result =>{
-                document.getElementById("response").innerText = result["Success"]
+                console.log(result)
+                //document.getElementById("response").innerText = result["Success"]
             })
             .catch(error => {
                     console.log("Error",error)
