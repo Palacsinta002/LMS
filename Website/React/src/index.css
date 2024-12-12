@@ -165,7 +165,7 @@ table td{
   position: relative;
 }
 .login-header{
-  font-size: 10vh;
+  font-size: 4rem;
   font-size: 5vw;
   width: 30vw;
   color: white;
@@ -176,7 +176,7 @@ table td{
   z-index: 2;
 }
 .login-card{
-  width: 100%;
+  width: 100vw;
   min-width: 350px;
   max-width: 25%;
   height: 100%;
@@ -205,16 +205,16 @@ table td{
 .login-card h1{
   position: relative;
   text-align: center;
-  bottom: -30%;
+  bottom: -10%;
 }
 .login-card form{
   position: relative;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  width: 20vw;
+  width: 80%;
   left: 50%;
-  bottom: -30%;
+  bottom: -25%;
   transform: translateX(-50%);
 }
 .login-card label{
@@ -254,7 +254,10 @@ table td{
   font-size: 1.5vh;
   font-weight: 300;
   position: absolute;
-  bottom: -15%;
+  bottom: -20%;
   left: 50%;
   transform: translateX(-50%);
+}
+@media only screen and (max-width: 870){
+  
 }
