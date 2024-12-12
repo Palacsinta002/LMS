@@ -41,7 +41,9 @@
                 }
             })
             .then(result =>{
-                document.getElementById("response").innerText = result
+                for (let key in result){
+                    document.getElementById("response").innerText = result[key]
+                }
             })
             .catch(error => {
                     console.log("Error",error)

@@ -52,7 +52,9 @@
                     
                 }
             }).then(result =>{
-                document.getElementById("response").textContent = result["Success"]
+                for (let key in result){
+                    document.getElementById("response").innerText = result[key]
+                }
             }).catch(error =>{
                 console.log("error",error);
                 

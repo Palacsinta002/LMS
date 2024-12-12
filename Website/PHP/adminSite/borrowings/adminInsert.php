@@ -7,7 +7,7 @@
 </head>
 <body>
 <?php require __DIR__ . "/../../config/loggedIn.php"?>
-    <h2>Insert a book</h2>
+    <h2>Insert</h2>
     <a href="./../adminSite.php">AdminSite</a>
     <form >
         Username<input type="text" name="Username" id="Username"><br>
@@ -44,8 +44,10 @@
                 }
             })
             .then(result =>{
-                console.log(result)
-                //document.getElementById("response").innerText = result["Success"]
+                for (let key in result){
+                    document.getElementById("response").innerText = result[key]
+                }
+                
             })
             .catch(error => {
                     console.log("Error",error)
