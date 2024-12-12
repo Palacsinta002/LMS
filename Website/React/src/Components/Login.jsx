@@ -12,9 +12,9 @@ export default function Login() {
         <input type="text" />
         <label>Password</label>
         <input type="password" />
-        <span className="links"><Link>Forgot your password?</Link></span>
+        <span><Link className="link1">Forgot your password?</Link></span>
         <input type="submit" value="Sign in" />
-        <span className="links"><Link>Create new account?</Link></span>
+        <span><Link className="link2">Create new account?</Link></span>
       </form>
     </div>
   )
