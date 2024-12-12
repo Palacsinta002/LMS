@@ -176,15 +176,19 @@ table td{
   z-index: 2;
 }
 .login-card{
-  width: 25vw;
+  width: 100%;
   min-width: 25vw;
-  height: 75vh;
+  max-width: 25vw;
+  height: 100%;
+  min-height: 75vh;
+  max-height: 75vh;
   background-color: white;
   border-radius: 2vh;
   position: absolute;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  align-items: stretch;
   right: 10%;
   bottom: 50%;
   transform: translateY(50%);
@@ -208,6 +212,43 @@ table td{
   flex-direction: column;
   width: 20vw;
   left: 50%;
-  bottom: -40%;
+  bottom: -30%;
+  transform: translateX(-50%);
+}
+.login-card label{
+  font-size: 1.2em;
+  font-weight: 500;
+  margin: 3px 0;
+}
+.login-card input[type=text], input[type=password]{
+  font-size: 1.2em;
+  font-weight: 500;
+  margin: 3px 0;
+  padding: 5px 15px;
+  width: 100%;
+}
+.login-card input[type=submit]{
+  color: white;
+  font-size: 1.2em;
+  font-weight: 500;
+  border-radius: 5px;
+  margin: 5px 0;
+  background-color: #48459E;
+  padding: 5px 15px;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.6);
+  width: 100%;
+}
+.link1{
+  font-size: 1rem;
+  font-weight: 300;
+  margin: 5px;
+  float: right;
+}
+.link2{
+  font-size: 0.8vw;
+  font-weight: 300;
+  position: absolute;
+  bottom: -25%;
+  left: 50%;
   transform: translateX(-50%);
 }
