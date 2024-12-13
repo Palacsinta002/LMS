@@ -136,7 +136,6 @@ namespace Desktop_Application
             textBox_pubYear.Name = "textBox_pubYear";
             textBox_pubYear.Size = new Size(184, 32);
             textBox_pubYear.TabIndex = 39;
-            textBox_pubYear.TextAlign = HorizontalAlignment.Center;
             // 
             // textBox_isbn
             // 
@@ -282,7 +281,7 @@ namespace Desktop_Application
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AddBook";
             Load += OnLoad;
-            Paint += AddBook_Paint;
+            Paint += Border_Paint;
             header.ResumeLayout(false);
             header.PerformLayout();
             ResumeLayout(false);
