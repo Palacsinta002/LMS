@@ -21,13 +21,59 @@ function checkdata($table, $cols, $maincol, $element){
     }
 
 }
-function insertValues($dict){
-    $txt = "";
-    foreach ($dict as $key => $value) {
-        $txt .= "$value, ";
+
+function equalize($input,$IDs){
+    $sql = "";
+    unset($input["limit"]);
+    $IsID = false;
+    foreach ($input as $key => $value) {
+        $IsID = false;
+        foreach ($IDs as $Idkey) {
+            if ($Idkey == $key){
+                $IsID = true;
+                unset($IDs[$key]);
+                break;
+            }
+        }
+        
+        if($IsID == false){
+            $sql.= "$key = '$value', " ;
+        }
+        else{
+            $sql.= $key."ID = $value, ";
+        }
+        
+        
     }
-    $txt = trim(trim($txt,","));
-    return $txt;
+    $sql = trim(trim($sql),",");
+    return $sql;
+}
+
+function equalizeAND($input,$IDs){
+    $sql = "";
+    unset($input["limit"]);
+    $IsID = false;
+    foreach ($input as $key => $value) {
+        $IsID = false;
+        foreach ($IDs as $Idkey) {
+            if ($Idkey == $key){
+                $IsID = true;
+                unset($IDs[$key]);
+                break;
+            }
+        }
+        
+        if($IsID == false){
+            $sql.= "$key = '$value' and " ;
+        }
+        else{
+            $sql.= $key."ID = $value and  ";
+        }
+        
+        
+    }
+    $sql = trim(trim($sql),"and ");
+    return $sql;
 }
 
 

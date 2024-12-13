@@ -14,6 +14,11 @@ namespace Desktop_Application
             DragWindow.Handle(this, header, title);
         }
 
+        private void Border_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawRectangle(Pens.Black, new Rectangle(0, 0, Width - 1, Height - 1));
+        }
+
         private void CloseWindow(object sender, EventArgs e)
         {
             this.Close();
@@ -28,11 +33,6 @@ namespace Desktop_Application
         private void Cancel(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void EditBook_Paint(object sender, PaintEventArgs e)
-        {
-            e.Graphics.DrawRectangle(Pens.Black, new Rectangle(0, 0, Width - 1, Height - 1));
         }
     }
 }

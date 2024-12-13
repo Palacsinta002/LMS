@@ -7,7 +7,7 @@
 </head>
 <body>
 <?php require __DIR__ . "/../../config/loggedIn.php"?>
-    <h2>Insert a book</h2>
+    <h2>Select</h2>
     <a href="./../adminSite.php">AdminSite</a>
     <form >
         Username<input type="text" name="Username" id="Username"><br>
@@ -29,7 +29,7 @@
             const data = new URLSearchParams(
                 validateInput(["Username","BookTitle","BorrowDate","ReturnDate","DueDate","IsReturned"],["Username","BookTitle","BorrowDate","ReturnDate","DueDate","IsReturned"])
             ) 
-
+            console.log(data)
             let newurl = getApiUrl("borrowings",data)
             console.log(newurl)
             fetch(newurl,)

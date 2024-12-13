@@ -187,7 +187,6 @@ namespace Desktop_Application
             textBox_pubYear.Name = "textBox_pubYear";
             textBox_pubYear.Size = new Size(184, 32);
             textBox_pubYear.TabIndex = 20;
-            textBox_pubYear.TextAlign = HorizontalAlignment.Center;
             // 
             // save
             // 
@@ -282,7 +281,7 @@ namespace Desktop_Application
             StartPosition = FormStartPosition.CenterScreen;
             Text = "EditBooks";
             Load += OnLoad;
-            Paint += EditBook_Paint;
+            Paint += Border_Paint;
             header.ResumeLayout(false);
             header.PerformLayout();
             ResumeLayout(false);
