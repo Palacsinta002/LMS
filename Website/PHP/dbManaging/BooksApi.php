@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . "/../config/loggedIn.php";
+//require __DIR__ . "/../config/loggedIn.php";
 
 header("Content-Type: Application/json");
 header("Access-Control-Allow-Origin: *");
@@ -15,13 +15,13 @@ if ($uri[count($uri)-1] === "books") {
     HandleBookRequest($requestmethod);
 }
 elseif($uri[count($uri)-1] === "borrowings" ){
-    if ($_SESSION["RoleID"] < 3){
+    //if ($_SESSION["RoleID"] < 3){
         require __DIR__ ."/HandleBorrowingsRequest.php";
         HandleBorrowingRequest($requestmethod);
-    }
+    /* }
     else{
         echo json_encode(["Error" => "You don't have permission for this request!"]);
-    }
+    }*/
         
     
 }

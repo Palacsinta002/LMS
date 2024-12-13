@@ -13,8 +13,7 @@ function HandleBorrowingRequest($method){
         $DueDate = isset($_GET["DueDate"])? " and borrowings.DueDate = '" .  $_GET["DueDate"] . "'" : "";
         $IsReturned = isset($_GET["IsReturned"])? " and borrowings.IsReturned =" .   $_GET["IsReturned"] : "";
         $sql = "SELECT Users.username, books.title, borrowings.BorrowDate, borrowings.ReturnDate, borrowings.DueDate, borrowings.IsReturned from books,borrowings,users where books.BookId = borrowings.BookID and borrowings.userID = users.userID $username $BookTitle $BorrowDate $ReturnDate $DueDate $IsReturned";
-        echo json_encode(["xddd" => $sql]);
-        die();
+
         if ($result = $conn->query($sql)->fetch_all(MYSQLI_ASSOC)){
             if (count($result) > 0){
                 echo json_encode($result);
@@ -22,6 +21,9 @@ function HandleBorrowingRequest($method){
             else{
                 echo json_encode(["Error" => "There are no rows with these parameters!"]);
             }
+        }
+        else{
+            echo json_encode(["Error" => "There are no rows with these parameters!"]);
         }
         
 
