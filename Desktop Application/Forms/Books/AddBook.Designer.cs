@@ -83,7 +83,6 @@ namespace Desktop_Application
             close_btn.TabStop = false;
             close_btn.TextColor = Color.White;
             close_btn.UseVisualStyleBackColor = false;
-            close_btn.Click += CloseWindow;
             // 
             // header
             // 
@@ -252,7 +251,6 @@ namespace Desktop_Application
             cancel.Text = "Cancel";
             cancel.TextColor = Color.Black;
             cancel.UseVisualStyleBackColor = false;
-            cancel.Click += Cancel;
             // 
             // AddBook
             // 
@@ -281,7 +279,6 @@ namespace Desktop_Application
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AddBook";
             Load += OnLoad;
-            Paint += Border_Paint;
             header.ResumeLayout(false);
             header.PerformLayout();
             ResumeLayout(false);

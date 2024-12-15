@@ -3,17 +3,14 @@ namespace Desktop_Application.Classes
 {
     internal class DragWindow
     {
-        Form _form;
-        Panel _panel;
-        Label _title;
+        private Form _form;
 
-        Point _mouseDown;
+        private bool _mouseDown;
+        private Point _lastLocation;
 
         public DragWindow(Form form, Panel panel, Label title)
         {
             _form = form;
-            _panel = panel;
-            _title = title;
 
             panel.MouseDown += OnPanelMouseDown;
             panel.MouseMove += OnPanelMouseMove;
@@ -31,19 +28,20 @@ namespace Desktop_Application.Classes
 
         void OnPanelMouseDown(object sender, MouseEventArgs e)
         {
-            _mouseDown = e.Location;
+            _mouseDown = true;
+            _lastLocation = e.Location;
         }
 
         void OnPanelMouseMove(object sender, MouseEventArgs e)
         {
-            if (_mouseDown == default) return;
-            Point offset = new(e.X - _mouseDown.X, e.Y - _mouseDown.Y);
+            if (!_mouseDown) return;
+            Point offset = new(e.X - _lastLocation.X, e.Y - _lastLocation.Y);
             _form.Location = new(_form.Location.X + offset.X, _form.Location.Y + offset.Y);
         }
 
         void OnPanelMouseUp(object sender, MouseEventArgs e)
         {
-            _mouseDown = default;
+            _mouseDown = false;
         }
     }
 }

@@ -50,7 +50,6 @@ namespace Desktop_Application.Forms.Books
             header.Name = "header";
             header.Size = new Size(361, 55);
             header.TabIndex = 31;
-            header.Paint += Border_Paint;
             // 
             // title
             // 
@@ -147,6 +146,7 @@ namespace Desktop_Application.Forms.Books
             Controls.Add(no);
             Controls.Add(label_title);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "PublisherDoesNotExist";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "PublisherDoesNotExist";

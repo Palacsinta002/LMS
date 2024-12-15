@@ -34,9 +34,9 @@ Az LMS egy könyvtári rendszer, aminek adatbázisa nyilván tartja a felhaszná
 
 Adatokat tárol a könyvekről.
 
-| BookID | PublisherID | AuthorID | CategoryID | Title       | Publication<br>Year | ISBN |
-| ------ | ----------- | -------- | ---------- | ----------- | ------------------- | ---- |
-| 1      | 1           | 1        | 1          | Irodalom 9. | 2020                | 1234 |
+| ISBN          | PublisherID | AuthorID | CategoryID | Title       | Publication<br>Year |
+| ------------- | ----------- | -------- | ---------- | ----------- | ------------------- |
+| 1234567890123 | 1           | 1        | 1          | Irodalom 9. | 2020                |
 ## Users - Felhasználók
 
 Adatokat tárol a felhasználókról.

@@ -125,7 +125,6 @@ namespace Desktop_Application
             close_btn.TabStop = false;
             close_btn.TextColor = Color.White;
             close_btn.UseVisualStyleBackColor = false;
-            close_btn.Click += CloseWindow;
             // 
             // login_btn
             // 
