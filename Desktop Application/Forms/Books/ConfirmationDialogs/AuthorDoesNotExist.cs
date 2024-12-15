@@ -1,10 +1,10 @@
 ﻿using Desktop_Application.Classes;
 
-namespace Desktop_Application.Forms.Books
+namespace Desktop_Application.Forms.Books.ConfirmationDialogues
 {
-    public partial class RemoveBookConfirmation : Form
+    public partial class AuthorDoesNotExist : Form
     {
-        public RemoveBookConfirmation()
+        public AuthorDoesNotExist()
         {
             InitializeComponent();
         }
@@ -14,17 +14,13 @@ namespace Desktop_Application.Forms.Books
             DragWindow.Handle(this, header, title);
             BorderPaint.Handle(this);
             CloseThisWindow.Handle(this, close_btn);
+            CloseThisWindow.Handle(this, no);
         }
 
-        private void Yes(object sender, EventArgs e)
+        private void AddAuthor(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
-            this.Close();
-        }
-
-        private void No(object sender, EventArgs e)
-        {
-            this.Close();
+            // Add the given author to the database
         }
     }
 }

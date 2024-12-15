@@ -130,7 +130,6 @@
             no.Text = "No";
             no.TextColor = Color.White;
             no.UseVisualStyleBackColor = false;
-            no.Click += No;
             // 
             // RemoveBookConfirmation
             // 

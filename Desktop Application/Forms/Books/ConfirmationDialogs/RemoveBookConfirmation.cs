@@ -2,9 +2,9 @@
 
 namespace Desktop_Application.Forms.Books
 {
-    public partial class PublisherDoesNotExist : Form
+    public partial class RemoveBookConfirmation : Form
     {
-        public PublisherDoesNotExist()
+        public RemoveBookConfirmation()
         {
             InitializeComponent();
         }
@@ -14,11 +14,13 @@ namespace Desktop_Application.Forms.Books
             DragWindow.Handle(this, header, title);
             BorderPaint.Handle(this);
             CloseThisWindow.Handle(this, close_btn);
+            CloseThisWindow.Handle(this, no);
         }
 
-        private void YesOrNo(object sender, EventArgs e)
+        private void Yes(object sender, EventArgs e)
         {
-
+            this.DialogResult = DialogResult.OK;
+            // Remove the book from the database
         }
     }
 }

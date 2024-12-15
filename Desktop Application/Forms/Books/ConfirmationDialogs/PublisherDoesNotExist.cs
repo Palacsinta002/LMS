@@ -1,10 +1,10 @@
 ﻿using Desktop_Application.Classes;
 
-namespace Desktop_Application
+namespace Desktop_Application.Forms.Books
 {
-    public partial class AddBook : Form
+    public partial class PublisherDoesNotExist : Form
     {
-        public AddBook()
+        public PublisherDoesNotExist()
         {
             InitializeComponent();
         }
@@ -14,13 +14,13 @@ namespace Desktop_Application
             DragWindow.Handle(this, header, title);
             BorderPaint.Handle(this);
             CloseThisWindow.Handle(this, close_btn);
-            CloseThisWindow.Handle(this, cancel);
+            CloseThisWindow.Handle(this, no);
         }
 
-        private void Save(object sender, EventArgs e)
+        private void AddPublisher(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
-            // Check if author and publisher exists and then save data to database
+            // Add the given publisher to the database
         }
     }
 }
