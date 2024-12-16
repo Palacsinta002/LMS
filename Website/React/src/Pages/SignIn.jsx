@@ -16,7 +16,7 @@ export default function SignIn() {
           <input type="password" />
           <span><Link className="link1">Forgot your password?</Link></span>
           <input type="submit" value="Sign in" />
-          <span><Link className="link2">Create new account?</Link></span>
+          <span><Link to="/signup" className="link2">Create new account?</Link></span>
         </form>
       </div>
     </div>

@@ -44,7 +44,7 @@ export default function SignUp() {
           
           <div className="actions">
             <input type="submit" value="Sign in" />
-            <span><Link className="link2">I already have an account!</Link></span>
+            <span><Link to="/signin" className="link2">I already have an account!</Link></span>
           </div>
         </form>
       </div>
