@@ -54,13 +54,12 @@ CREATE TABLE Users (
 
 -- Create Books table
 CREATE TABLE Books (
-    BookID INT AUTO_INCREMENT PRIMARY KEY,
+    ISBN BIGINT(13) PRIMARY KEY,
     PublisherID INT,
     AuthorID INT,
     CategoryID INT,
     Title VARCHAR(255) NOT NULL,
     PublicationYear INT(4),
-    ISBN VARCHAR(13),
     FOREIGN KEY (AuthorID) REFERENCES Authors(AuthorID),
     FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID),
     FOREIGN KEY (PublisherID) REFERENCES Publishers(PublisherID)
@@ -70,13 +69,13 @@ CREATE TABLE Books (
 CREATE TABLE Borrowings (
     BorrowID INT AUTO_INCREMENT PRIMARY KEY,
     UserID INT NOT NULL,
-    BookID INT NOT NULL,
+    ISBN BIGINT NOT NULL,
     BorrowDate DATE NOT NULL,
     ReturnDate Date,
     DueDate Date not null,
     IsReturned boolean,
     FOREIGN KEY (UserID) REFERENCES Users(UserID),
-    FOREIGN KEY (BookID) REFERENCES Books(BookID)
+    FOREIGN KEY (ISBN) REFERENCES Books(ISBN)
 );
 
 
@@ -160,36 +159,36 @@ INSERT INTO Users (FirstName, LastName, Email, Username, Password, MembershipTyp
 ('Jack', 'Young', 'jack.young@example.com', 'jackyoung', 'jackpass', 2, 3),
 ('Laura', 'Harris', 'laura.harris@example.com', 'lauraharris', 'laurapass', 1, 3);
 
-INSERT INTO Books (PublisherID, AuthorID, CategoryID, Title, PublicationYear, ISBN) VALUES
-(1, 1, 1, '1984', 1949, '9780451524935'),
-(2, 2, 4, 'Harry Potter and the Sorcerer''s Stone', 1997, '9780439708180'),
-(3, 3, 5, 'The Old Man and the Sea', 1952, '9780684801223'),
-(4, 4, 1, 'One Hundred Years of Solitude', 1967, '9780060883287'),
-(5, 5, 1, 'Crime and Punishment', 1866, '9780486415871'),
-(6, 6, 1, 'Norwegian Wood', 1987, '9780375704024'),
-(7, 7, 8, 'Pride and Prejudice', 1813, '9780141040349'),
-(8, 8, 10, 'War and Peace', 1869, '9780199232765'),
-(9, 9, 1, 'The Adventures of Tom Sawyer', 1876, '9780486400778'),
-(10, 10, 1, 'The House of the Spirits', 1982, '9781501117015'),
-(11, 11, 4, 'The Hobbit', 1937, '9780345339683'),
-(12, 12, 6, 'Murder on the Orient Express', 1934, '9780062693661'),
-(13, 13, 1, 'Hamlet', 1603, '9780743477123'),
-(14, 14, 1, 'Great Expectations', 1861, '9780486415864'),
-(15, 15, 1, 'The Trial', 1925, '9780805209990');
+INSERT INTO Books (ISBN, PublisherID, AuthorID, CategoryID, Title, PublicationYear) VALUES
+(9780451524935, 1, 1, 1, '1984', 1949),
+(9780439708180, 2, 2, 4, 'Harry Potter and the Sorcerer''s Stone', 1997),
+(9780684801223, 3, 3, 5, 'The Old Man and the Sea', 1952),
+(9780060883287, 4, 4, 1, 'One Hundred Years of Solitude', 1967),
+(9780486415871, 5, 5, 1, 'Crime and Punishment', 1866),
+(9780375704024, 6, 6, 1, 'Norwegian Wood', 1987),
+(9780141040349, 7, 7, 8, 'Pride and Prejudice', 1813),
+(9780199232765, 8, 8, 10, 'War and Peace', 1869),
+(9780486400778, 9, 9, 1, 'The Adventures of Tom Sawyer', 1876),
+(9781501117015, 10, 10, 1, 'The House of the Spirits', 1982),
+(9780345339683, 11, 11, 4, 'The Hobbit', 1937),
+(9780062693661, 12, 12, 6, 'Murder on the Orient Express', 1934),
+(9780743477123, 13, 13, 1, 'Hamlet', 1603),
+(9780486415864, 14, 14, 1, 'Great Expectations', 1861),
+(9780805209990, 15, 15, 1, 'The Trial', 1925);
 
-INSERT INTO Borrowings (UserID, BookID, BorrowDate, DueDate, ReturnDate, IsReturned) VALUES
-(1, 1, '2024-09-01', '2024-09-15', '2024-09-14', TRUE),
-(2, 2, '2024-09-05', '2024-09-19', '2024-09-19', TRUE),
-(3, 3, '2024-09-10', '2024-09-24', NULL, FALSE),
-(4, 4, '2024-09-12', '2024-09-26', '2024-09-25', TRUE),
-(5, 5, '2024-09-15', '2024-09-29', NULL, FALSE),
-(6, 6, '2024-09-20', '2024-10-04', NULL, FALSE),
-(7, 7, '2024-09-25', '2024-10-09', NULL, FALSE),
-(8, 8, '2024-09-27', '2024-10-11', NULL, FALSE),
-(9, 9, '2024-09-30', '2024-10-14', NULL, FALSE),
-(10, 10, '2024-10-01', '2024-10-15', NULL, FALSE),
-(11, 11, '2024-10-02', '2024-10-16', NULL, FALSE),
-(12, 12, '2024-10-03', '2024-10-17', NULL, FALSE),
-(13, 13, '2024-10-04', '2024-10-18', NULL, FALSE),
-(14, 14, '2024-10-05', '2024-10-19', NULL, FALSE),
-(15, 15, '2024-10-06', '2024-10-20', NULL, FALSE);
+INSERT INTO Borrowings (UserID, ISBN, BorrowDate, DueDate, ReturnDate, IsReturned) VALUES
+(1, 9780451524935, '2024-09-01', '2024-09-15', '2024-09-14', TRUE),
+(2, 9780439708180, '2024-09-05', '2024-09-19', '2024-09-19', TRUE),
+(3, 9780684801223, '2024-09-10', '2024-09-24', NULL, FALSE),
+(4, 9780060883287, '2024-09-12', '2024-09-26', '2024-09-25', TRUE),
+(5, 9780486415871, '2024-09-15', '2024-09-29', NULL, FALSE),
+(6, 9780375704024, '2024-09-20', '2024-10-04', NULL, FALSE),
+(7, 9780141040349, '2024-09-25', '2024-10-09', NULL, FALSE),
+(8, 9780199232765, '2024-09-27', '2024-10-11', NULL, FALSE),
+(9, 9780486400778, '2024-09-30', '2024-10-14', NULL, FALSE),
+(10, 9781501117015, '2024-10-01', '2024-10-15', NULL, FALSE),
+(11, 9780345339683, '2024-10-02', '2024-10-16', NULL, FALSE),
+(12, 9780062693661, '2024-10-03', '2024-10-17', NULL, FALSE),
+(13, 9780743477123, '2024-10-04', '2024-10-18', NULL, FALSE),
+(14, 9780486415864, '2024-10-05', '2024-10-19', NULL, FALSE),
+(15, 9780805209990, '2024-10-06', '2024-10-20', NULL, FALSE);
