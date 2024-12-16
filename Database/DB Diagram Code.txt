@@ -1,0 +1,54 @@
+Table Authors{
+  autohorID int [primary key, increment]
+  name varchar(255)
+}
+Table Categories{
+  categoryID int [primary key, increment]
+  category varchar(100) [not null]
+}
+Table Books {
+  ISBN bigint(13) [primary key]
+  pusblisherID int
+  authorID int 
+  categoryID int
+  title varchar(255) [not null]
+  publicationYear int(4)
+}
+Table Users{
+  userID int [primary key, increment]
+  firstName varchar(100) [not null]
+  lastName varchar(100) [not null]
+  email varchar(100) [not null]
+  username varchar(100) [not null]
+  password varchar(255) [not null]
+  roleID int
+}
+Table Roles{
+  roleID int
+  role varchar(20) [not null]
+} 
+Table Borrowings{
+  borrowID int [primary key, increment]
+  userID int
+  ISBN bigint
+  borrowDate date [not null]
+  returnDate date
+  dueDate date [not null]
+}
+table Publishers{
+  publisherID int [primary key, increment]
+  publisher varchar(100)
+}
+
+
+Ref: "Authors"."autohorID" < "Books"."authorID"
+
+Ref: "Categories"."categoryID" < "Books"."categoryID"
+
+Ref: "Publishers"."publisherID" < "Books"."pusblisherID"
+
+Ref: "Users"."userID" < "Borrowings"."userID"
+
+Ref: "Borrowings"."ISBN" < "Books"."ISBN"
+
+Ref: "Roles"."roleID" < "Users"."roleID"

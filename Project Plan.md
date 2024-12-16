@@ -34,9 +34,9 @@ Az LMS egy könyvtári rendszer, aminek adatbázisa nyilván tartja a felhaszná
 
 Adatokat tárol a könyvekről.
 
-| BookID | PublisherID | AuthorID | CategoryID | Title       | Publication<br>Year | ISBN |
-| ------ | ----------- | -------- | ---------- | ----------- | ------------------- | ---- |
-| 1      | 1           | 1        | 1          | Irodalom 9. | 2020                | 1234 |
+| ISBN          | PublisherID | AuthorID | CategoryID | Title       | Publication<br>Year |
+| ------------- | ----------- | -------- | ---------- | ----------- | ------------------- |
+| 1234567890123 | 1           | 1        | 1          | Irodalom 9. | 2020                |
 ## Users - Felhasználók
 
 Adatokat tárol a felhasználókról.
@@ -45,9 +45,9 @@ Adatokat tárol a felhasználókról.
 | ------ | --------- | -------- | ---------------------- | ------------ | ---------------- |
 | 1      | Árpád     | Péter    | peterarpad@cicamail.hu | Peterarpad04 | !asdf123(sha512) |
 
-| MembershipTypeID | RoleID |
-| ---------------- | ------ |
-| 1                | 1      |
+| RoleID |
+| ------ |
+| 1      |
 
 <div style="page-break-after: always;"></div>
 
@@ -55,19 +55,10 @@ Adatokat tárol a felhasználókról.
 
 Követi, hogy melyik könyvek vannak kikölcsönözve, és hogy kik kölcsönzik őket.
 
-| BorrowID | UserID | BookID | BorrowDate | ReturnDate | DueDate    | IsReturned |
-| -------- | ------ | ------ | ---------- | ---------- | ---------- | ---------- |
-| 1        | 1      | 1      | 12/07/2023 | null       | 12/07/2024 | false      |
-| 2        | 2      | 2      | 03/22/2024 | 06/15/2024 | 03/22/2025 | true       |
-## MembershipType - Tagság típus
-
-A tagság típusait tárolja el. 
-
-| MembershipTypeID | MemebershipType |
-| ---------------- | --------------- |
-| 1                | Student         |
-| 2                | Teacher         |
-| 3                | Other           |
+| BorrowID | UserID | BookID | BorrowDate | ReturnDate | DueDate    |
+| -------- | ------ | ------ | ---------- | ---------- | ---------- |
+| 1        | 1      | 1      | 12/07/2023 | null       | 12/07/2024 |
+| 2        | 2      | 2      | 03/22/2024 | 06/15/2024 | 03/22/2025 |
 
 ## Roles - Rangok
 

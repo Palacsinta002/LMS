@@ -2,6 +2,23 @@
 {
     internal class BorderPaint
     {
-        // Ide kell majd berakni azt a Border_Paint függvényeket
+        private Form _form;
+
+        public BorderPaint(Form form)
+        {
+            _form = form;
+
+            form.Paint += Border_Paint;
+        }
+
+        public static void Handle(Form form)
+        {
+            new BorderPaint(form);
+        }
+
+        public void Border_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawRectangle(Pens.Black, new Rectangle(0, 0, _form.Width - 1, _form.Height - 1));
+        }
     }
 }

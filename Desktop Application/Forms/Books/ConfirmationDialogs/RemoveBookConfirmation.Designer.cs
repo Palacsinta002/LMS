@@ -80,7 +80,6 @@
             close_btn.TabStop = false;
             close_btn.TextColor = Color.White;
             close_btn.UseVisualStyleBackColor = false;
-            close_btn.Click += CloseWindow;
             // 
             // label_title
             // 
@@ -131,7 +130,6 @@
             no.Text = "No";
             no.TextColor = Color.White;
             no.UseVisualStyleBackColor = false;
-            no.Click += No;
             // 
             // RemoveBookConfirmation
             // 
@@ -149,7 +147,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "RemoveBookConfirmation";
             Load += OnLoad;
-            Paint += Border_Paint;
             header.ResumeLayout(false);
             header.PerformLayout();
             ResumeLayout(false);

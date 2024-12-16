@@ -95,7 +95,7 @@ namespace Desktop_Application
 
         private void RefreshBooks(object sender, EventArgs e)
         {
-
+            // Refresh the table of books from the database
         }
 
         private void EditBook(object sender, EventArgs e)

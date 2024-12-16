@@ -1,9 +1,9 @@
 ﻿using Desktop_Application.Properties;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace Desktop_Application.Forms.Books
+namespace Desktop_Application.Forms.Books.ConfirmationDialogues
 {
-    partial class PublisherDoesNotExist
+    partial class AuthorDoesNotExist
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@ namespace Desktop_Application.Forms.Books
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PublisherDoesNotExist));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthorDoesNotExist));
             header = new Panel();
             title = new Label();
             close_btn = new Components.RoundedButton();
@@ -49,18 +49,17 @@ namespace Desktop_Application.Forms.Books
             header.Location = new Point(1, 1);
             header.Name = "header";
             header.Size = new Size(361, 55);
-            header.TabIndex = 31;
-            header.Paint += Border_Paint;
+            header.TabIndex = 35;
             // 
             // title
             // 
             title.AutoSize = true;
             title.Font = new Font("Yu Gothic UI Semibold", 16F);
-            title.Location = new Point(124, 13);
+            title.Location = new Point(133, 11);
             title.Name = "title";
-            title.Size = new Size(106, 30);
+            title.Size = new Size(83, 30);
             title.TabIndex = 2;
-            title.Text = "Publisher";
+            title.Text = "Author";
             // 
             // close_btn
             // 
@@ -100,12 +99,12 @@ namespace Desktop_Application.Forms.Books
             yes.Location = new Point(179, 148);
             yes.Name = "yes";
             yes.Size = new Size(80, 36);
-            yes.TabIndex = 34;
+            yes.TabIndex = 38;
             yes.TabStop = false;
             yes.Text = "Yes";
             yes.TextColor = Color.Black;
             yes.UseVisualStyleBackColor = false;
-            yes.Click += YesOrNo;
+            yes.Click += AddAuthor;
             // 
             // no
             // 
@@ -121,11 +120,10 @@ namespace Desktop_Application.Forms.Books
             no.Location = new Point(265, 148);
             no.Name = "no";
             no.Size = new Size(80, 36);
-            no.TabIndex = 33;
+            no.TabIndex = 37;
             no.Text = "No";
             no.TextColor = Color.White;
             no.UseVisualStyleBackColor = false;
-            no.Click += YesOrNo;
             // 
             // label_title
             // 
@@ -133,10 +131,10 @@ namespace Desktop_Application.Forms.Books
             label_title.Location = new Point(12, 73);
             label_title.Name = "label_title";
             label_title.Size = new Size(339, 55);
-            label_title.TabIndex = 32;
-            label_title.Text = "Publisher does not exist. Do you want to add it now?";
+            label_title.TabIndex = 36;
+            label_title.Text = "Author does not exist. Do you want to add it now?";
             // 
-            // PublisherDoesNotExist
+            // AuthorDoesNotExist
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -147,9 +145,9 @@ namespace Desktop_Application.Forms.Books
             Controls.Add(no);
             Controls.Add(label_title);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "PublisherDoesNotExist";
+            Name = "AuthorDoesNotExist";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "PublisherDoesNotExist";
+            Text = "AuthorDoesNotExist";
             Load += OnLoad;
             header.ResumeLayout(false);
             header.PerformLayout();

@@ -12,12 +12,8 @@ namespace Desktop_Application
         private void OnLoad(object sender, EventArgs e)
         {
             DragWindow.Handle(this, header, title);
-        }
-
-        // The X int the upper right corner closes the form.
-        private void CloseWindow(object sender, EventArgs e)
-        {
-            this.Close();
+            BorderPaint.Handle(this);
+            CloseThisWindow.Handle(this, close_btn);
         }
 
         // WIP For now the Login button opens another form without any checking.

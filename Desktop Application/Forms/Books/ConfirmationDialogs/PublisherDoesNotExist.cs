@@ -12,21 +12,15 @@ namespace Desktop_Application.Forms.Books
         private void OnLoad(object sender, EventArgs e)
         {
             DragWindow.Handle(this, header, title);
+            BorderPaint.Handle(this);
+            CloseThisWindow.Handle(this, close_btn);
+            CloseThisWindow.Handle(this, no);
         }
 
-        private void Border_Paint(object sender, PaintEventArgs e)
+        private void AddPublisher(object sender, EventArgs e)
         {
-            e.Graphics.DrawRectangle(Pens.Black, new Rectangle(0, 0, Width - 1, Height - 1));
-        }
-
-        private void CloseWindow(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void YesOrNo(object sender, EventArgs e)
-        {
-
+            this.DialogResult = DialogResult.OK;
+            // Add the given publisher to the database
         }
     }
 }
