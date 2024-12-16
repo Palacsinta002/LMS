@@ -1,0 +1,131 @@
+.register {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.register-header {
+    font-size: 4rem;
+    font-size: 5vw;
+    width: 30vw;
+    color: white;
+    position: relative;
+}
+
+.register-container {
+    width: 100vw;
+    min-width: 550px;
+    max-width: 25%;
+    height: auto;
+    min-height: 75vh;
+    max-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 calc(50% - 15px);
+    width: 90%;
+    max-width: 400px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.register-container i {
+    font-size: 16vh;
+    justify-content: center;
+}
+
+.register-container h1 {
+    text-align: center;
+}
+
+.register-container form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 15px;
+    width: 100%;
+}
+.register-card-holder{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 10px;
+    margin-top: 10%;
+}
+.register-card {
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.register-container label {
+    font-size: 1.2em;
+    font-weight: 500;
+    margin: 3px 0;
+}
+
+.register-container input[type=text],
+input[type=password],
+input[type=email] {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.register-container input[type=submit] {
+    color: white;
+    font-size: 1.2em;
+    font-weight: 500;
+    border-radius: 5px;
+    margin: 5% 0;
+    background-color: #48459E;
+    padding: 2% 0;
+    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: auto;
+}
+
+.link2 {
+    font-size: 1.5vh;
+    font-weight: 300;
+}
+
+@media only screen and (max-width: 870px) {
+    .register {
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        overflow-y: hidden;
+        overflow-x: hidden;
+    }
+
+    .register-header {
+        width: 100vw;
+        text-align: center;
+    }
+}
