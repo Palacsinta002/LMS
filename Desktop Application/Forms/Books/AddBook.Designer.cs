@@ -41,13 +41,13 @@ namespace Desktop_Application
             label_pubYear = new Label();
             label_isbn = new Label();
             label_category = new Label();
-            textBox_author = new TextBox();
             label_author = new Label();
-            textBox_publisher = new TextBox();
             label_publisher = new Label();
             textBox_title = new TextBox();
             label_title = new Label();
             cancel = new RoundedButton();
+            dropDown_publisher = new ComboBox();
+            dropDown_author = new ComboBox();
             header.SuspendLayout();
             SuspendLayout();
             // 
@@ -176,15 +176,6 @@ namespace Desktop_Application
             label_category.TabIndex = 35;
             label_category.Text = "Category";
             // 
-            // textBox_author
-            // 
-            textBox_author.BackColor = Color.WhiteSmoke;
-            textBox_author.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_author.Location = new Point(109, 184);
-            textBox_author.Name = "textBox_author";
-            textBox_author.Size = new Size(243, 32);
-            textBox_author.TabIndex = 34;
-            // 
             // label_author
             // 
             label_author.AutoSize = true;
@@ -194,15 +185,6 @@ namespace Desktop_Application
             label_author.Size = new Size(72, 25);
             label_author.TabIndex = 33;
             label_author.Text = "Author";
-            // 
-            // textBox_publisher
-            // 
-            textBox_publisher.BackColor = Color.WhiteSmoke;
-            textBox_publisher.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_publisher.Location = new Point(109, 146);
-            textBox_publisher.Name = "textBox_publisher";
-            textBox_publisher.Size = new Size(243, 32);
-            textBox_publisher.TabIndex = 32;
             // 
             // label_publisher
             // 
@@ -252,12 +234,34 @@ namespace Desktop_Application
             cancel.TextColor = Color.Black;
             cancel.UseVisualStyleBackColor = false;
             // 
+            // dropDown_publisher
+            // 
+            dropDown_publisher.BackColor = Color.WhiteSmoke;
+            dropDown_publisher.Font = new Font("Yu Gothic UI Semibold", 14F);
+            dropDown_publisher.FormattingEnabled = true;
+            dropDown_publisher.Location = new Point(109, 146);
+            dropDown_publisher.Name = "dropDown_publisher";
+            dropDown_publisher.Size = new Size(242, 33);
+            dropDown_publisher.TabIndex = 43;
+            // 
+            // dropDown_author
+            // 
+            dropDown_author.BackColor = Color.WhiteSmoke;
+            dropDown_author.Font = new Font("Yu Gothic UI Semibold", 14F);
+            dropDown_author.FormattingEnabled = true;
+            dropDown_author.Location = new Point(109, 184);
+            dropDown_author.Name = "dropDown_author";
+            dropDown_author.Size = new Size(242, 33);
+            dropDown_author.TabIndex = 44;
+            // 
             // AddBook
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(363, 365);
+            Controls.Add(dropDown_author);
+            Controls.Add(dropDown_publisher);
             Controls.Add(dropDown_category);
             Controls.Add(header);
             Controls.Add(save);
@@ -266,9 +270,7 @@ namespace Desktop_Application
             Controls.Add(label_pubYear);
             Controls.Add(label_isbn);
             Controls.Add(label_category);
-            Controls.Add(textBox_author);
             Controls.Add(label_author);
-            Controls.Add(textBox_publisher);
             Controls.Add(label_publisher);
             Controls.Add(textBox_title);
             Controls.Add(label_title);
@@ -297,12 +299,12 @@ namespace Desktop_Application
         private Label label_pubYear;
         private Label label_isbn;
         private Label label_category;
-        private TextBox textBox_author;
         private Label label_author;
-        private TextBox textBox_publisher;
         private Label label_publisher;
         private TextBox textBox_title;
         private Label label_title;
         private RoundedButton cancel;
+        private ComboBox dropDown_publisher;
+        private ComboBox dropDown_author;
     }
 }

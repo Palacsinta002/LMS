@@ -49,7 +49,7 @@ namespace Desktop_Application
             title.Font = new Font("Yu Gothic UI Semibold", 24F);
             title.ForeColor = Color.White;
             title.ImeMode = ImeMode.NoControl;
-            title.Location = new Point(93, 41);
+            title.Location = new Point(93, 39);
             title.Name = "title";
             title.Size = new Size(101, 45);
             title.TabIndex = 1;
@@ -98,9 +98,9 @@ namespace Desktop_Application
             // 
             header.BackColor = Color.FromArgb(80, 77, 180);
             header.Controls.Add(close_btn);
-            header.Location = new Point(0, 0);
+            header.Location = new Point(1, 1);
             header.Name = "header";
-            header.Size = new Size(285, 43);
+            header.Size = new Size(282, 43);
             header.TabIndex = 7;
             // 
             // close_btn
@@ -118,7 +118,7 @@ namespace Desktop_Application
             close_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             close_btn.ForeColor = Color.White;
             close_btn.Image = (Image)resources.GetObject("close_btn.Image");
-            close_btn.Location = new Point(238, 10);
+            close_btn.Location = new Point(237, 7);
             close_btn.Name = "close_btn";
             close_btn.Size = new Size(36, 35);
             close_btn.TabIndex = 24;
@@ -154,13 +154,13 @@ namespace Desktop_Application
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(80, 77, 180);
             ClientSize = new Size(284, 311);
+            Controls.Add(header);
             Controls.Add(login_btn);
             Controls.Add(password_label);
             Controls.Add(username_label);
             Controls.Add(password_textBox);
             Controls.Add(username_textBox);
             Controls.Add(title);
-            Controls.Add(header);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Login";

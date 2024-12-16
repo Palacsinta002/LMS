@@ -28,14 +28,14 @@ namespace Desktop_Application
                 if (publisherDoesNotExist.DialogResult != DialogResult.OK) return;
             }
 
-            if(textBox_publisher.Text == "a") // If the author does not exist
+            if(dropDown_publisher.Text == "a") // If the author does not exist
             {
                 AuthorDoesNotExist authorDoesNotExist = new AuthorDoesNotExist();
                 authorDoesNotExist.ShowDialog();
                 if (authorDoesNotExist.DialogResult != DialogResult.OK) return;
             }
 
-            if(textBox_title.Text == string.Empty || textBox_publisher.Text == string.Empty) // Here we will have to validate the input
+            if(textBox_title.Text == string.Empty || dropDown_publisher.Text == string.Empty) // Here we will have to validate the input
             {
                 MessageBox.Show("Title and publisher is required!");
             }

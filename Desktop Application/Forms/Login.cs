@@ -12,6 +12,7 @@ namespace Desktop_Application
         private void OnLoad(object sender, EventArgs e)
         {
             DragWindow.Handle(this, header, title);
+            BorderPaint.Handle(this);
             CloseThisWindow.Handle(this, close_btn);
         }
 
