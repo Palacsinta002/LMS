@@ -55,10 +55,10 @@ Adatokat tárol a felhasználókról.
 
 Követi, hogy melyik könyvek vannak kikölcsönözve, és hogy kik kölcsönzik őket.
 
-| BorrowID | UserID | BookID | BorrowDate | ReturnDate | DueDate    | IsReturned |
-| -------- | ------ | ------ | ---------- | ---------- | ---------- | ---------- |
-| 1        | 1      | 1      | 12/07/2023 | null       | 12/07/2024 | false      |
-| 2        | 2      | 2      | 03/22/2024 | 06/15/2024 | 03/22/2025 | true       |
+| BorrowID | UserID | BookID | BorrowDate | ReturnDate | DueDate    |
+| -------- | ------ | ------ | ---------- | ---------- | ---------- |
+| 1        | 1      | 1      | 12/07/2023 | null       | 12/07/2024 |
+| 2        | 2      | 2      | 03/22/2024 | 06/15/2024 | 03/22/2025 |
 
 ## Roles - Rangok
 
