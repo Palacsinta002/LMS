@@ -10,9 +10,15 @@
     overflow-x: hidden;
 }
 
-.register-header {
-    font-size: 4rem;
+.register-top {
     font-size: 5vw;
+    width: 30vw;
+    color: white;
+    position: relative;
+}
+
+.register-bottom {
+    font-size: 2vw;
     width: 30vw;
     color: white;
     position: relative;
@@ -29,8 +35,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex: 1 1 calc(50% - 15px);
-    width: 90%;
+    width: 100%;
     max-width: 400px;
     background-color: white;
     border-radius: 8px;
@@ -46,32 +51,16 @@
 .register-container h1 {
     text-align: center;
 }
-
-.register-container form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 15px;
-    width: 100%;
-}
 .register-card-holder{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 50px);
     width: 100%;
-    gap: 10px;
-    margin-top: 10%;
+    gap: 30px;
+    margin-top: 20%;
 }
-.register-card {
-    gap: 15px;
-    margin-bottom: 15px;
-}
-
 .actions {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin-top: 10%;
     width: 50%;
 }
 
@@ -120,12 +109,12 @@ input[type=email] {
         flex-wrap: wrap;
         justify-content: space-around;
         align-items: center;
-        overflow-y: hidden;
-        overflow-x: hidden;
+        
     }
 
     .register-header {
         width: 100vw;
         text-align: center;
+        
     }
 }

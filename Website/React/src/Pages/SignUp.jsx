@@ -5,7 +5,10 @@ import "./SignUp.css"
 export default function SignUp() {
   return (
     <div className="register">
-      <h1 className="register-header">Library Management System</h1>
+      <div className="register-header">
+        <h1 className="register-top">Welcome to</h1>
+        <h2 className="register-bottom">Library Management System</h2>
+      </div>
       <div className="register-container">
         <i className="fa fa-user"></i>
         <h1>Register Account</h1>
@@ -41,11 +44,12 @@ export default function SignUp() {
               <input type="password" />
             </div>
           </div>
-          
-          <div className="actions">
-            <input type="submit" value="Sign in" />
-            <span><Link to="/signin" className="link2">I already have an account!</Link></span>
-          </div>
+          <center>
+            <div className="actions">
+              <input type="submit" value="Sign in" />
+              <span><Link to="/signin" className="link2">I already have an account!</Link></span>
+            </div>
+          </center>
         </form>
       </div>
     </div>
