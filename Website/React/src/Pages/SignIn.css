@@ -1,102 +1,117 @@
-.login{
+.login {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.login-header {
+  font-size: 5vw;
+  width: 30vw;
+  color: white;
+  position: relative;
+  text-shadow: 2px 3px 1px black;
+}
+
+.login-card {
+  width: 100vw;
+  min-width: 350px;
+  max-width: 25%;
+  height: auto;
+  min-height: 75vh;
+  max-height: 75vh;
+  background-color: white;
+  border-radius: 2vh;
+  display: grid;
+  box-shadow: 2px 3px 6px 1px rgba(0, 0, 0, 0.6);
+}
+
+.login-card i {
+  font-size: 16vh;
+  text-align: center;
+  grid-column-start: 1;
+}
+
+.login-card h1 {
+  text-align: center;
+}
+
+.login-card form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 100%;
+  padding: 10%;
+  margin-top: 15%;
+}
+
+.login-card label {
+  font-size: 1.2em;
+  font-weight: 500;
+  margin: 3px 0;
+}
+
+.login-card input[type=text],
+input[type=password] {
+  font-size: 1.2em;
+  font-weight: 500;
+  margin: 3px 0;
+  padding: 2% 0;
+  width: 100%;
+  height: auto;
+}
+
+.login-card input[type=submit] {
+  color: white;
+  font-size: 1.2em;
+  font-weight: 500;
+  border-radius: 5px;
+  margin: 5% 0;
+  background-color: #504DB4;
+  padding: 2% 0;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: auto;
+  transition: 0.5s;
+}
+
+.login-card input[type=submit]:hover {
+  background-color: #48459E;
+}
+
+.link1 {
+  height: auto;
+  font-size: 1rem;
+  font-weight: 300;
+  margin: 5px;
+  float: right;
+}
+
+.link2 {
+  display: grid;
+  font-size: 1.5vh;
+  font-weight: 300;
+  text-align: center;
+}
+
+@media only screen and (max-width: 870px) {
+  .login {
     width: 100vw;
     height: 100vh;
     position: absolute;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
     overflow-y: hidden;
     overflow-x: hidden;
   }
-  .login-header{
-    font-size: 4rem;
-    font-size: 5vw;
-    width: 30vw;
-    color: white;
-    position: relative;
-  }
-  .login-card{
+
+  .login-header {
     width: 100vw;
-    min-width: 350px;
-    max-width: 25%;
-    height: auto;
-    min-height: 75vh;
-    max-height: 75vh;
-    background-color: white;
-    border-radius: 2vh;
-    display: grid;
-    box-shadow: 2px 3px 6px 1px rgba(0, 0, 0, 0.6);
-  }
-  .login-card i{
-    font-size: 16vh;
-    text-align: center;
-    grid-column-start: 1;
-  }
-  .login-card h1{
     text-align: center;
   }
-  .login-card form{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    width: 100%;
-    padding: 10%;
-    margin-top: 15%;
-  }
-  .login-card label{
-    font-size: 1.2em;
-    font-weight: 500;
-    margin: 3px 0;
-  }
-  .login-card input[type=text], input[type=password]{
-    font-size: 1.2em;
-    font-weight: 500;
-    margin: 3px 0;
-    padding: 2% 0;
-    width: 100%;
-    height: auto;
-  }
-  .login-card input[type=submit]{
-    color: white;
-    font-size: 1.2em;
-    font-weight: 500;
-    border-radius: 5px;
-    margin: 5% 0;
-    background-color: #48459E;
-    padding: 2% 0;
-    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.6);
-    width: 100%;
-    height: auto;
-  }
-  .link1{
-    height: auto;
-    font-size: 1rem;
-    font-weight: 300;
-    margin: 5px;
-    float: right;
-  }
-  .link2{
-    display: grid;
-    font-size: 1.5vh;
-    font-weight: 300;
-    text-align: center;
-  }
-  @media only screen and (max-width: 870px){
-    .login{
-      width: 100vw;
-      height: 100vh;
-      position: absolute;
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      align-items: center;
-      overflow-y: hidden;
-      overflow-x: hidden;
-    }
-    .login-header{
-      width: 100vw;
-      text-align: center;
-    }
 }
