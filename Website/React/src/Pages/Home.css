@@ -10,6 +10,7 @@ body{
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
+    text-shadow: 2px 3px 1px black;
   }
   .logReg{
     position: absolute;
