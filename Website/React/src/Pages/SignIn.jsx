@@ -9,6 +9,13 @@ export default function SignIn() {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  function UsernameOnChange(event){
+    setUsername(event.target.value);
+  }
+  function PasswordOnChange(event){
+    setPassword(event.target.value);
+  }
+
   function handleSubmit(event){
     event.preventDefault();
     axios
@@ -18,14 +25,17 @@ export default function SignIn() {
     })
     .then((response) => {
       if(response.data.status === "successs"){
-        sessionStorage.setItem("loggedIn", true);
-        sessionStorage.setItem("userData",
+        localStorage.setItem("loggedIn", true);
+        localStorage.setItem("userData",
           JSON.stringify(response.data.data));
         window.location.href = "/home"
       }
       else{
         setError(response.data.message);
       }
+    })
+    .catch((error) => {
+      console.error(error);
     })
   }
   return (
@@ -36,11 +46,11 @@ export default function SignIn() {
         <h1>Login</h1>
         <form action="">
           <label>Username</label>
-          <input type="text" />
+          <input type="text" onChange={UsernameOnChange}/>
           <label>Password</label>
-          <input type="password" />
+          <input type="password" onChange={PasswordOnChange}/>
           <span><Link className="link1">Forgot your password?</Link></span>
-          <input type="submit" value="Sign in" />
+          <input type="submit" handleSubmit={handleSubmit} value="Sign in" />
           <span><Link to="/signup" className="link2">Create new account?</Link></span>
         </form>
       </div>
