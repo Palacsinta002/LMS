@@ -1,8 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
+import axios from "axios"
 import { Link } from 'react-router-dom'
 import "./SignIn.css"
 
 export default function SignIn() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
+  function handleSubmit(event){
+    event.preventDefault();
+    axios
+    .post("vagvolgyinas.synology.me",{
+      username: username,
+      password: password
+    })
+    .then((response) => {
+      if(response.data.status === "successs"){
+        sessionStorage.setItem("loggedIn", true);
+        sessionStorage.setItem("userData",
+          JSON.stringify(response.data.data));
+        window.location.href = "/home"
+      }
+      else{
+        setError(response.data.message);
+      }
+    })
+  }
   return (
     <div className="login">
       <h1 className="login-header">Library Management System</h1>
