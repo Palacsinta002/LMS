@@ -19,7 +19,7 @@
         }
 
         // Initialize values
-        private void SetConnection()
+        internal void SetConnection()
         {
             // Login info
             _server = "vagvolgyinas.synology.me";
@@ -60,6 +60,23 @@
                 MessageBox.Show(ex.Message);
                 return false;
             }
+        }
+
+        internal List<string> Select(string sql)
+        {
+            List<string> list = new List<string>();
+
+            if (OpenConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand(sql, _connection);
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+
+                }
+            }
+            return list;
         }
     }
 }

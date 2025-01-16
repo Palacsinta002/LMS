@@ -1,4 +1,5 @@
-﻿using Desktop_Application.Forms.Books;
+﻿using Desktop_Application.Classes;
+using Desktop_Application.Forms.Books;
 
 namespace Desktop_Application
 {
@@ -31,7 +32,7 @@ namespace Desktop_Application
         // Shows the Dashboard after hiding previous content.
         private void ShowDashboard(object sender, EventArgs e)
         {
-            if (dashboard_pnl.Visible != true)
+            if (!dashboard_pnl.Visible)
             {
                 HidePanels();
                 dashboard_pnl.Visible = true;
@@ -41,16 +42,20 @@ namespace Desktop_Application
         // Shows the Books after removing previous content.
         private void ShowBooks(object sender, EventArgs e)
         {
-            if (books_pnl.Visible != true)
+            if (!books_pnl.Visible)
             {
                 HidePanels();
                 books_pnl.Visible = true;
+                string sql = "";
+                Connection connection = new Connection();
+                connection.Select(sql);
             }
+
         }
 
         private void ShowBorrowings(object sender, EventArgs e)
         {
-            if (borrowings_pnl.Visible != true)
+            if (!borrowings_pnl.Visible)
             {
                 HidePanels();
                 borrowings_pnl.Visible = true;
@@ -59,7 +64,7 @@ namespace Desktop_Application
 
         private void ShowCategories(object sender, EventArgs e)
         {
-            if (categories_pnl.Visible != true)
+            if (!categories_pnl.Visible)
             {
                 HidePanels();
                 categories_pnl.Visible = true;
@@ -77,7 +82,7 @@ namespace Desktop_Application
 
         private void ShowAuthors(object sender, EventArgs e)
         {
-            if (authors_pnl.Visible != true)
+            if (!authors_pnl.Visible)
             {
                 HidePanels();
                 authors_pnl.Visible = true;
@@ -86,7 +91,7 @@ namespace Desktop_Application
 
         private void ShowPublishers(object sender, EventArgs e)
         {
-            if (publishers_pnl.Visible != true)
+            if (!publishers_pnl.Visible)
             {
                 HidePanels();
                 publishers_pnl.Visible = true;
