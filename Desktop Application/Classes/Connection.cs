@@ -1,5 +1,6 @@
 ﻿namespace Desktop_Application.Classes
 {
+    using System.Text.RegularExpressions;
     using MySql.Data.MySqlClient;
 
     internal class Connection
@@ -62,21 +63,42 @@
             }
         }
 
-        internal List<string> Select(string sql)
+        internal List<string>[] Select(string query)
         {
-            List<string> list = new List<string>();
+            string[] columns = ExtractColumns(query);
+
+            List<string>[] result = new List<string>[columns.Length];
+            for (int i = 0; i < columns.Length; i++)
+            {
+                result[i] = new List<string>();
+            }
 
             if (OpenConnection())
             {
-                MySqlCommand cmd = new MySqlCommand(sql, _connection);
+                MySqlCommand cmd = new MySqlCommand(query, _connection);
                 MySqlDataReader dataReader = cmd.ExecuteReader();
 
                 while (dataReader.Read())
                 {
-
+                    for (int i = 0; i < columns.Length; i++)
+                    {
+                        result[i].Add(dataReader[columns[i]] + "");
+                    }
                 }
+                CloseConnection();
             }
-            return list;
+            return result;
+        }
+
+        private string[] ExtractColumns(string query)
+        {
+            var match = Regex.Match(query, @"SELECT (.+?) FROM", RegexOptions.IgnoreCase);
+            string[] columns = match.Groups[1].Value.Split(',');
+            for(int i = 0; i < columns.Length; i++)
+            {
+                columns[i] = columns[i].Trim();
+            }
+            return columns;
         }
     }
 }

@@ -46,11 +46,10 @@ namespace Desktop_Application
             {
                 HidePanels();
                 books_pnl.Visible = true;
-                string sql = "";
                 Connection connection = new Connection();
-                connection.Select(sql);
+                string query = "SELECT ISBN, Title, PublicationYear FROM Books";
+                List<string>[] result = connection.Select(query);
             }
-
         }
 
         private void ShowBorrowings(object sender, EventArgs e)
