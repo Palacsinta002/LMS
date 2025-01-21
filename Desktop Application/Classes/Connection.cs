@@ -23,7 +23,7 @@
         internal void SetConnection()
         {
             // Login info
-            _server = "vagvolgyinas.synology.me";
+            _server = "localhost";
             _database = "LMS";
             _uid = "mysql";
             _password = "!LibraryMS25";
@@ -72,17 +72,17 @@
             {
                 result[i] = new List<string>();
             }
-
             if (OpenConnection())
             {
-                MySqlCommand cmd = new MySqlCommand(query, _connection);
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-
-                while (dataReader.Read())
+                using (var cmd = new MySqlCommand(query, _connection))
+                using (var dataReader = cmd.ExecuteReader())
                 {
-                    for (int i = 0; i < columns.Length; i++)
+                    while (dataReader.Read())
                     {
-                        result[i].Add(dataReader[columns[i]] + "");
+                        for (int i = 0; i < columns.Length; i++)
+                        {
+                            result[i].Add(dataReader[columns[i]].ToString());
+                        }
                     }
                 }
                 CloseConnection();
@@ -93,12 +93,24 @@
         private string[] ExtractColumns(string query)
         {
             var match = Regex.Match(query, @"SELECT (.+?) FROM", RegexOptions.IgnoreCase);
-            string[] columns = match.Groups[1].Value.Split(',');
-            for(int i = 0; i < columns.Length; i++)
+            if (!match.Success)
             {
-                columns[i] = columns[i].Trim();
+                MessageBox.Show("Unable to extract columns from query.");
+                throw new InvalidOperationException("Unable to extract columns from query.");
             }
-            return columns;
+            return match.Groups[1].Value
+            .Split(',')
+            .Select(col =>
+            {
+                col = col.Trim();
+                if (col.Contains(" AS ", StringComparison.OrdinalIgnoreCase))
+                {
+                    // Handle alias
+                    return col.Split([" AS "], StringSplitOptions.None)[1].Trim();
+                }
+                return col.Split(' ').Last(); // Fallback for functions or spaces
+            })
+            .ToArray();
         }
     }
 }
