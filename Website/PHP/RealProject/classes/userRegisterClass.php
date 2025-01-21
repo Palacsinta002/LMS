@@ -62,16 +62,15 @@ class UserRegisterClass{
     public function getConn():mysqli{
         require __DIR__ . "/../config/connect.php";
         return $conn;
+        
     }
     public function sendVerificationEmail(){
         
     }
-    public function verifyEmail(){
+    public function verifyEmail() {
         if (filter_var($this->email, FILTER_VALIDATE_EMAIL)){
-            global $conn; 
-            $conn = $this->getConn();
-            
-
+            require __DIR__ . "/../config/connect.php";
+            $conn = connect();
             
         }
         else{
