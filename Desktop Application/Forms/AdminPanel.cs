@@ -1,4 +1,5 @@
-﻿using Desktop_Application.Classes;
+﻿using System.Security.Policy;
+using Desktop_Application.Classes;
 using Desktop_Application.Forms.Books;
 
 namespace Desktop_Application
@@ -47,8 +48,14 @@ namespace Desktop_Application
                 HidePanels();
                 books_pnl.Visible = true;
                 Connection connection = new Connection();
-                string query = "SELECT ISBN, Title, PublicationYear FROM Books";
-                List<string>[] result = connection.Select(query);
+                string query =
+                    "SELECT Books.ISBN AS ISBN, Publishers.Publisher AS Publisher, Authors.Name AS Author, Categories.Category AS Category, Books.Title AS Title, Books.PublicationYear AS PublicationYear " +
+                    "FROM Books, Publishers, Authors, Categories " +
+                    "WHERE Books.PublisherID = Publishers.PublisherID " +
+                    "AND Books.AuthorID = Authors.AuthorID " +
+                    "AND Books.CategoryID = Categories.CategoryID";
+                var result = connection.Select(query);
+                FillGrid.Fill(books_grd, result);
             }
         }
 
@@ -106,7 +113,7 @@ namespace Desktop_Application
         {
             EditBook editBook = new EditBook();
             editBook.ShowDialog();
-            if(editBook.DialogResult == DialogResult.OK)
+            if (editBook.DialogResult == DialogResult.OK)
             {
                 // Update the book's details
             }
