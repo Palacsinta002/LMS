@@ -56,6 +56,7 @@ namespace Desktop_Application
                     "AND Books.CategoryID = Categories.CategoryID";
                 var result = connection.Select(query);
                 FillGrid.Fill(books_grd, result);
+                //https://youtu.be/eJi02kg-S8g
             }
         }
 
