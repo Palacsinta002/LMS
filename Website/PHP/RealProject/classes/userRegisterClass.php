@@ -65,16 +65,32 @@ class UserRegisterClass{
         
     }
     public function sendVerificationEmail(){
-        
+        if ($this->verifyEmail() == true){
+            $verifyCode = "";
+            for ($i=0; $i < 6; $i++) {
+                $randomNumb = rand(0,10);
+                $verifyCode.= "$randomNumb";
+            }
+        };
     }
     public function verifyEmail() {
         if (filter_var($this->email, FILTER_VALIDATE_EMAIL)){
-            require __DIR__ . "/../config/connect.php";
+            require_once __DIR__ . "/../config/connect.php";
             $conn = connect();
+            $sql = "SELECT Email from users where Email = '$this->email'";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0){
+                return true;
+            }
+            else{
+                echo json_encode(["error" => "1"]);
+                die();
+            }
             
         }
         else{
             echo json_encode(["error" => "0"]);
+            die();
         }
     }
     

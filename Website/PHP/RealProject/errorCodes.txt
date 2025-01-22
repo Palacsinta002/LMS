@@ -1,1 +1,2 @@
 0 : wrong email format;
+1 : email already exists;
