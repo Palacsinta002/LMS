@@ -1,2 +1,6 @@
 0 : wrong email format;
 1 : email already exists;
+2 : SMTP couldnt send email;
+3 : invalid username;
+4 : invalid firstname;
+5 : invalid lastname;

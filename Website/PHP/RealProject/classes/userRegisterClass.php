@@ -1,57 +1,124 @@
 <?php
+####################    ####################
 
 class UserRegisterClass{
     
     private $email;
+    ####################  setting Email and validate the input  ####################
     public function setEmail($email){
-        $this->email = $email;
+        $email = validateTheInput($email);
+        if (filter_var($this->email, FILTER_VALIDATE_EMAIL)){
+            require_once __DIR__ . "/../config/connect.php";
+            $conn = connect();
+            $sql = "SELECT Email from users where Email = '$this->email'";
+            $result = $conn->query($sql);
+            if ($result->num_rows == 0){
+                $this->email = $email;
+                $conn->close();
+            }
+            else{
+                $conn->close();
+                errorOutput("1");
+                
+            }
+            
+        }
+        else{
+            errorOutput("0");
+        }
+        
     }
+    ####################  Get the Email  ####################
     public function getEmail(){
         return($this->email);
     }
     
     private $username;
-    public function setusername($username){
-        $this->username = $username;
+    ####################  Set the username and validate the input  ####################
+    public function setUsername($username){
+        $username = validateTheInput($username);
+        
+        if (strlen($username) < 30){
+            $this->username = $username;
+        }
+        else{
+            errorOutput("3");
+        }
+        
     }
-    public function getusername(){
+    ####################  Get the username  ####################
+    public function getUsername(){
         return($this->username);
+        
     }
-
+    
     private $firstName;
-    public function setfirstName($firstName){
-        $this->firstName = $firstName;
+    ####################  Set the firstname and validate the input  ####################
+    public function setFirstName($firstName){
+        $pattern = "/^[A-Z][a-z]+$/";
+        if (preg_match($pattern,$firstName)){
+            $firstName = validateTheInput($firstName);
+            if (strlen($firstName) < 30){
+                $this->firstName = $firstName;
+            }
+            else{
+                errorOutput("4");
+            }
+        }
+        else{
+            errorOutput("4");
+        }
+       
+        
     }
-    public function getfirstName(){
+    ####################  Get the firstname  ####################
+    public function getFirstName(){
         return($this->firstName);
     }
 
     private $lastName;
-    public function setlastName($lastName){
-        $this->lastName = $lastName;
+
+    ####################  Set the lastname and validate the input  ####################
+    public function setLastName($lastName){
+        $pattern = "/^[A-Z][a-z]+$/";
+        if (preg_match($pattern,$lastName)){
+            $lastName = validateTheInput($lastName);
+            if (strlen($lastName) < 30){
+                $this->lastName = $lastName;
+            }
+            else{
+                errorOutput("5");
+            }
+        }
+        else{
+            errorOutput("5");
+        }
+        
     }
-    public function getlastName(){
+    ####################  Get the lastname  ####################
+    public function getLastName(){
         return($this->lastName);
     }
 
     private $password;
-    public function setpassword($password){
+    public function setPassword($password){
         $this->password = $password;
     }
-    public function getpassword(){
+    public function getPassword(){
         return($this->password);
     }
 
     private $password2;
-    public function setpassword2($password2){
+    public function setPassword2($password2){
         $this->password2 = $password2;
     }
-    public function getpassword2(){
+    public function getPassword2(){
         return($this->password2);
     }
     
 
     public function __construct($email,$username,$firstName,$lastName,$password,$password2) {
+        require_once __DIR__ . "/../InputMethods.php";
         $this->email = $email;
         $this->username = $username;
         $this->firstName = $firstName;
@@ -59,18 +126,16 @@ class UserRegisterClass{
         $this->password = $password;
         $this->password2 = $password2;
     }
-    public function getConn():mysqli{
-        require __DIR__ . "/../config/connect.php";
-        return $conn;
-        
-    }
+    
     public function sendVerificationEmail(){
         if ($this->verifyEmail() == true){
             $verifyCode = "";
-            for ($i=0; $i < 6; $i++) {
+            for ($i=0; $i < 5; $i++) {
                 $randomNumb = rand(0,10);
                 $verifyCode.= "$randomNumb";
             }
+            require_once __DIR__ . "/../sendEmail/sendEmail.php";
+            sendEmail($this->email,$this->lastName,"It is your verification Email","<html> <p>Your verification code is <b>$verifyCode</b> . <br> Please enter this code to the field on the main page.</p> <p>This is an automatic message. Don't answer to this mail!</p> <html>");
         };
     }
     public function verifyEmail() {
@@ -79,11 +144,14 @@ class UserRegisterClass{
             $conn = connect();
             $sql = "SELECT Email from users where Email = '$this->email'";
             $result = $conn->query($sql);
-            if ($result->num_rows > 0){
+            if ($result->num_rows == 0){
+                $conn->close();
                 return true;
+                
             }
             else{
                 echo json_encode(["error" => "1"]);
+                $conn->close();
                 die();
             }
             
@@ -96,6 +164,8 @@ class UserRegisterClass{
     
 
 }
+$user = new UserRegisterClass("zsomborgisoma@gmail.com","almásfagyi","Zsömbörgi", "Soma","kecskeragu","kecskeragu");
+$user->sendVerificationEmail();
 
 
 
