@@ -25,7 +25,7 @@
             // Login info
             _server = "localhost";
             _database = "LMS";
-            _uid = "mysql";
+            _uid = "lms";
             _password = "!LibraryMS25";
 
             // Connection string: Defines the login info for the database
@@ -63,6 +63,27 @@
             }
         }
 
+        internal List<List<string>> Select(string query)
+        {
+            List<List<string>> result = new List<List<string>>();
+            if (OpenConnection())
+            {
+                using var cmd = new MySqlCommand(query, _connection);
+                using var dataReader = cmd.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    int i = 0;
+                    foreach(var item in dataReader)
+                    {
+                        result[i].Add(item.ToString() ?? string.Empty);
+                        i++;//a result hossza mindig 0 lesz nigga result zarojelkezdodik i zarojelbezar mindig null vagesz mer resulthoz nem adsz hozza csak result i edik elemehez
+                    }
+                }
+                CloseConnection();
+            }
+            return result;
+        }
+
         internal List<string>[] SelectOutOfDate(string query)
         {
             string[] columns = ExtractColumns(query);
@@ -81,7 +102,7 @@
                     {
                         for (int i = 0; i < columns.Length; i++)
                         {
-                            result[i].Add(dataReader[columns[i]].ToString());
+                            result[i].Add(dataReader[columns[i]]?.ToString() ?? string.Empty);
                         }
                     }
                 }
