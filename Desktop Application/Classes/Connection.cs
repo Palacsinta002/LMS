@@ -63,7 +63,7 @@
             }
         }
 
-        internal List<string>[] Select(string query)
+        internal List<string>[] SelectOutOfDate(string query)
         {
             string[] columns = ExtractColumns(query);
 
