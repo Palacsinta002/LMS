@@ -7,6 +7,7 @@ use PHPMailer\PHPMailer\SMTP;
 require __DIR__ . '/phpmailer/src/Exception.php';
 require __DIR__ . '/phpmailer/src/PHPMailer.php';
 require __DIR__ . '/phpmailer/src/SMTP.php';
+require __DIR__ . '/../InputMethods.php';
 
 //Create an instance; passing `true` enables exceptions
 
@@ -36,7 +37,6 @@ try {
     $mail->send();
     return true;
 } catch (Exception $e) {
-    echo json_encode(["error" => "2"]);
-    return false;
+    errorOutput("2");
 }
 }

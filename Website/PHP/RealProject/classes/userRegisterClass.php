@@ -101,9 +101,25 @@ class UserRegisterClass{
     }
 
     private $password;
+
+    ####################  Set the password and validate the input  ####################
     public function setPassword($password){
-        $this->password = $password;
+        if (strlen($password > 8) && strlen($password) < 16){
+            
+            if (preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d\W]).+$/', $password)){
+                
+                $this->password = validateTheInput($password);
+            }
+            else{
+                errorOutput("6");
+            }
+        }
+        else{
+            errorOutput("6");
+        }
+        
     }
+    ####################  Get the password  ####################
     public function getPassword(){
         return($this->password);
     }
@@ -119,11 +135,11 @@ class UserRegisterClass{
 
     public function __construct($email,$username,$firstName,$lastName,$password,$password2) {
         require_once __DIR__ . "/../InputMethods.php";
-        $this->email = $email;
-        $this->username = $username;
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->password = $password;
+        $this->setEmail($email);
+        $this->setUsername($username);
+        $this->setFirstName($firstName);
+        $this->setLastName($lastName);
+        $this->setPassword($password);
         $this->password2 = $password2;
     }
     

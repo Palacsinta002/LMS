@@ -4,3 +4,4 @@
 3 : invalid username;
 4 : invalid firstname;
 5 : invalid lastname;
+6 : ivalid password;
