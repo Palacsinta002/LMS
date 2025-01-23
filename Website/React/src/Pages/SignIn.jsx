@@ -16,7 +16,9 @@ export default function SignIn() {
   function PasswordOnChange(event){
     setPassword(event.target.value);
   }
-
+  /*function TogglePassword(){
+    setShowPassword(!showpassword);
+  }*/
   const handleSubmit = async () => {
     try {
       const response = await axios.post("http://localhost/LMS/Website/PHP/realproject/users/userapi.php", {
