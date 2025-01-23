@@ -16,27 +16,22 @@ export default function SignIn() {
     setPassword(event.target.value);
   }
 
-  function handleSubmit(event){
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    axios
-    .post("vagvolgyinas.synology.me",{
-      username: username,
-      password: password
-    })
-    .then((response) => {
-      if(response.data.status === "successs"){
-        localStorage.setItem("loggedIn", true);
-        localStorage.setItem("userData",
-          JSON.stringify(response.data.data));
-        window.location.href = "/home"
-      }
-      else{
-        setError(response.data.message);
-      }
-    })
-    .catch((error) => {
+    try{
+      const response = await axios.post("http://localhost/LMS/Website/PHP/realproject/users/userapi.php", data, {
+        headers: {
+          "Content-Type": "application/json"
+        },
+        username,
+        password
+      });
+      setError(response.data.message);
+    }
+    catch(error){
+      setError("Something went wrong...");
       console.error(error);
-    })
+    }
   }
   return (
     <div className="login">
@@ -50,7 +45,7 @@ export default function SignIn() {
           <label>Password</label>
           <input type="password" onChange={PasswordOnChange}/>
           <span><Link className="link1">Forgot your password?</Link></span>
-          <input type="submit" handleSubmit={handleSubmit} value="Sign in" />
+          <input type="submit" onClick={handleSubmit} value="Sign in" />
           <span><Link to="/signup" className="link2">Create new account?</Link></span>
         </form>
       </div>
