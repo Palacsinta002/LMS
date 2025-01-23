@@ -20,11 +20,23 @@ export default function SignIn() {
     setShowPassword(!showpassword);
   }*/
   const handleSubmit = async () => {
-    try {
-      const response = await axios.post("http://localhost/LMS/Website/PHP/realproject/users/userapi.php", {
+    const requestMethod = {
+      method: "POST",
+      header: {"Content-Type": "application/json"},
+      body: JSON.stringify({username: username, password: password}),
+      mode: "CORS"
+    };
+    await axios.post("http://localhost/LMS/Website/PHP/realproject/users/userapi.php", requestMethod)
+    .then(response => console.log(JSON.stringify(response)))
+    .catch(error => console.log(error));
+
+    /*try {
+      const response = await axios.post("", {
         username,
-        password
-      }, {
+        password,
+        method: "POST",
+      },
+      {
         headers: {
           "Content-Type": "application/json"
         }
@@ -34,7 +46,7 @@ export default function SignIn() {
     } catch (error) {
       setError("Something went wrong...");
       console.error(error);
-    }
+    }*/
   }
   return (
     <div className="login">
