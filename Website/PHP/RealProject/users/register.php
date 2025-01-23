@@ -6,7 +6,7 @@ function register(){
     //$email,$username,$firstName,$lastName,$password,$password2
     $rawbody = file_get_contents("php://input");
     $decoded = json_decode($rawbody, true);
-    
+    var_dump($decoded);
     $user = new UserRegisterClass($decoded["email"],$decoded["username"],$decoded["firstname"],$decoded["lastname"],$decoded["password"],$decoded["password2"]);
     var_dump($user);
     $user->sendVerificationEmail();

@@ -6,8 +6,7 @@ class UserRegisterClass{
     private $email;
     ####################  setting Email and validate the input  ####################
     public function setEmail($email){
-        $email = validateTheInput($email);
-        if (filter_var($this->email, FILTER_VALIDATE_EMAIL)){
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)){
             require_once __DIR__ . "/../config/connect.php";
             $conn = connect();
             $sql = "SELECT Email from users where Email = '$this->email'";
@@ -55,13 +54,13 @@ class UserRegisterClass{
     private $firstName;
     ####################  Set the firstname and validate the input  ####################
     public function setFirstName($firstName){
-        $pattern = "/^[A-Z][a-z]+$/";
+        $pattern = "/^[A-ZÁRVÍZTŰRŐTÜKÖRFÚRÓGÉP][a-zárvíztűrőtükörfúrógép]+$/";
         if (preg_match($pattern,$firstName)){
-            $firstName = validateTheInput($firstName);
             if (strlen($firstName) < 30){
                 $this->firstName = $firstName;
             }
             else{
+                
                 errorOutput("4");
             }
         }
@@ -80,9 +79,8 @@ class UserRegisterClass{
 
     ####################  Set the lastname and validate the input  ####################
     public function setLastName($lastName){
-        $pattern = "/^[A-Z][a-z]+$/";
+        $pattern = "/^[A-ZÁRVÍZTŰRŐTÜKÖRFÚRÓGÉP][a-zárvíztűrőtükörfúrógép]+$/";
         if (preg_match($pattern,$lastName)){
-            $lastName = validateTheInput($lastName);
             if (strlen($lastName) < 30){
                 $this->lastName = $lastName;
             }
@@ -180,8 +178,7 @@ class UserRegisterClass{
     
 
 }
-$user = new UserRegisterClass("zsomborgisoma@gmail.com","almásfagyi","Zsömbörgi", "Soma","kecskeragu","kecskeragu");
-$user->sendVerificationEmail();
+
 
 
 
