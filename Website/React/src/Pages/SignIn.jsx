@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import "./SignIn.css"
 
 export default function SignIn() {
+  axios.defaults.withCredentials = true;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -16,19 +17,19 @@ export default function SignIn() {
     setPassword(event.target.value);
   }
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try{
-      const response = await axios.post("http://localhost/LMS/Website/PHP/realproject/users/userapi.php", data, {
-        headers: {
-          "Content-Type": "application/json"
-        },
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post("http://localhost/LMS/Website/PHP/realproject/users/userapi.php", {
         username,
         password
+      }, {
+        headers: {
+          "Content-Type": "application/json"
+        }
       });
       setError(response.data.message);
-    }
-    catch(error){
+      console.log(response.data.message);
+    } catch (error) {
       setError("Something went wrong...");
       console.error(error);
     }
