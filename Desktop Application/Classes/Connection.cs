@@ -65,7 +65,7 @@
 
         internal List<List<string>> Select(string query)
         {
-            List<List<string>> result = new List<List<string>>();
+            List<List<string>> result = [];
             if (OpenConnection())
             {
                 using var cmd = new MySqlCommand(query, _connection);
@@ -75,8 +75,15 @@
                     int i = 0;
                     foreach(var item in dataReader)
                     {
-                        result[i].Add(item.ToString() ?? string.Empty);
-                        i++;//a result hossza mindig 0 lesz nigga result zarojelkezdodik i zarojelbezar mindig null vagesz mer resulthoz nem adsz hozza csak result i edik elemehez
+                        if (result[i] == null)
+                        {
+                            result.Add([]);
+                        }
+                        else
+                        {
+                            result[i].Add(item.ToString() ?? string.Empty);
+                            i++;
+                        }
                     }
                 }
                 CloseConnection();
