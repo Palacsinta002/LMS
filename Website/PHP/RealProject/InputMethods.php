@@ -6,6 +6,10 @@ function validateTheInput($input)
     $input = trim($input);
     return $input;
 }
+function errorOutput($errorCode){
+    echo json_encode(["error" => "$errorCode"]);
+    die();
+}
 
 
 ?>

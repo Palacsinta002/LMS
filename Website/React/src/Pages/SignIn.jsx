@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from "axios"
-import { Link } from 'react-router-dom'
+import { Link, resolvePath } from 'react-router-dom'
 import "./SignIn.css"
 
 export default function SignIn() {
+  axios.defaults.withCredentials = true;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -15,29 +16,27 @@ export default function SignIn() {
   function PasswordOnChange(event){
     setPassword(event.target.value);
   }
-
-  function handleSubmit(event){
-    event.preventDefault();
-    axios
-    .post("vagvolgyinas.synology.me",{
+  /*function TogglePassword(){
+    setShowPassword(!showpassword);
+  }*/
+  
+  async function HandleSubmit(e) {
+    e.preventDefault();
+    await axios.post("http://localhost/LMS/Website/PHP/realproject/users/userapi.php", {
+      header:{
+        "Allow-Control-Allow-Origin" : "*",
+        "Content-Type": "application/json"
+      },
+      proxy:{
+        port: 5173
+      },
       username: username,
       password: password
     })
-    .then((response) => {
-      if(response.data.status === "successs"){
-        localStorage.setItem("loggedIn", true);
-        localStorage.setItem("userData",
-          JSON.stringify(response.data.data));
-        window.location.href = "/home"
-      }
-      else{
-        setError(response.data.message);
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-    })
+    .then(response => console.log(JSON.stringify(response)))
+    .catch(error => console.log(error))
   }
+
   return (
     <div className="login">
       <h1 className="login-header">Library Management System</h1>
@@ -50,7 +49,7 @@ export default function SignIn() {
           <label>Password</label>
           <input type="password" onChange={PasswordOnChange}/>
           <span><Link className="link1">Forgot your password?</Link></span>
-          <input type="submit" handleSubmit={handleSubmit} value="Sign in" />
+          <input type="submit" onClick={HandleSubmit} value="Sign in" />
           <span><Link to="/signup" className="link2">Create new account?</Link></span>
         </form>
       </div>
