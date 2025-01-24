@@ -19,12 +19,12 @@ export default function SignIn() {
   function handleSubmit(event){
     event.preventDefault();
     axios
-    .post("vagvolgyinas.synology.me",{
+    .post("localhost/5173/register.php",{
       username: username,
       password: password
     })
     .then((response) => {
-      if(response.data.status === "successs"){
+      if(response.data.status === "success"){
         localStorage.setItem("loggedIn", true);
         localStorage.setItem("userData",
           JSON.stringify(response.data.data));
