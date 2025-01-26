@@ -8,6 +8,7 @@ class UserRegisterClass{
     public function setEmail($email){
         if (filter_var($email, FILTER_VALIDATE_EMAIL)){
             require_once __DIR__ . "/../config/connect.php";
+            $email = validateTheInput($email);
             $conn = connect();
             $sql = "SELECT Email from users where Email = '$this->email'";
             $result = $conn->query($sql);
