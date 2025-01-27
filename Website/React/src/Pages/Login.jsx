@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from "axios"
 import { Link } from 'react-router-dom'
-import "./SignIn.css"
+import "./Login.css"
 
 export default function SignIn() {
   axios.defaults.withCredentials = true;
@@ -22,7 +22,7 @@ export default function SignIn() {
   
   async function HandleSubmit(e) {
     e.preventDefault();
-    await axios.post("http://localhost/_LMS/Website/PHP/RealProject/users/userapi.php/register", {
+    await axios.post("http://localhost/_LMS/Website/PHP/RealProject/users/userapi.php/login", {
       header:{
         "Allow-Control-Allow-Origin" : "*",
         "Content-Type": "application/json"

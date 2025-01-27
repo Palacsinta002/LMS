@@ -10,8 +10,8 @@ export default function Header() {
     <header className={hidden}>
       <Link to="/"><h1 className="title">LMS</h1></Link>
       <div className="logReg">
-        <Link to="/signup" className="signup">Sign Up</Link>
-        <Link to="/signin" className="signin">Sign In</Link>
+        <Link to="/register" className="signup">Register</Link>
+        <Link to="/login" className="signin">Login</Link>
       </div>
     </header>
   )
