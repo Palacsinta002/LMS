@@ -22,7 +22,7 @@ export default function SignIn() {
   
   async function HandleSubmit(e) {
     e.preventDefault();
-    await axios.post("http://localhost/_LMS/Website/PHP/RealProject/users/userapi.php/login", {
+    await axios.post("http://localhost/LMS/Website/PHP/RealProject/users/userapi.php/login", {
       header:{
         "Allow-Control-Allow-Origin" : "*",
         "Content-Type": "application/json"
