@@ -22,7 +22,7 @@ export default function SignIn() {
   
   async function HandleSubmit(e) {
     e.preventDefault();
-    await axios.post("http://localhost/LMS/Website/PHP/realproject/users/userapi.php", {
+    await axios.post("http://localhost/_LMS/Website/PHP/RealProject/users/userapi.php/register", {
       header:{
         "Allow-Control-Allow-Origin" : "*",
         "Content-Type": "application/json"
@@ -36,7 +36,29 @@ export default function SignIn() {
     .then(response => console.log(JSON.stringify(response)))
     .catch(error => console.log(error))
   }
-
+  /*async function HandleSubmit(event){
+    event.preventDefault();
+    await axios
+    .post("http://localhost/_LMS/Website/PHP/RealProject/users/userapi.php/register",{
+      username: username,
+      password: password
+    })
+    .then((response) => {
+      if(response.data.status === "successs"){
+        localStorage.setItem("loggedIn", true);
+        localStorage.setItem("userData",
+          JSON.stringify(response.data.data));
+        window.location.href = "/home"
+      }
+      else{
+        setError(response.data.message);
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    })
+  }
+*/
   return (
     <div className="login">
       <h1 className="login-header">Library Management System</h1>
