@@ -5,3 +5,4 @@
 4 : invalid firstname;
 5 : invalid lastname;
 6 : ivalid password;
+7 : wrong username or password;
