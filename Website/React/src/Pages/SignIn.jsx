@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import axios from "axios"
-import { Link, resolvePath } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import "./SignIn.css"
 
 export default function SignIn() {
