@@ -1,8 +1,10 @@
 0 : wrong email format;
 1 : email already exists;
-2 : SMTP couldnt send email;
+2 : SMTP couldn't send email;
 3 : invalid username;
 4 : invalid firstname;
 5 : invalid lastname;
 6 : ivalid password;
 7 : wrong username or password;
+8 : username is required;
+9 : password is required;

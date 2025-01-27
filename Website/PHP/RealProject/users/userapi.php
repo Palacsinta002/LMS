@@ -1,4 +1,5 @@
 <?php
+session_start();
 ####################  Set up the headers  ####################
 header("Content-Type: Application/json");
 header("Access-Control-Allow-Origin: http://localhost:5173");
@@ -24,6 +25,9 @@ if ($uri[count($uri)-1] == "register"){
 elseif($uri[count($uri)-1] == "login"){
     require_once "login.php";
     login();
+}
+elseif($uri[count($uri)-1] == "logout"){
+    require_once "logout.php";
 }
 else{
     echo json_encode(["error"=> "Endpoint not found!"]);
