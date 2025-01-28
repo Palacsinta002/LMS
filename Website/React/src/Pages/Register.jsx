@@ -14,23 +14,11 @@ export default function Register() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  async function HandleSubmit(e) {
-    e.preventDefault();
-    await axios.post("http://localhost/LMS/Website/PHP/RealProject/users/userapi.php/register", {
-      username: username,
-      password: password,
-      email: email,
-      firstname: firstname,
-      lastname: lastname,
-      passwordAgain: passwordAgain
-    })
-    .then(response => console.log(JSON.stringify(response)))
-    .catch(error => console.log(error))
-  }
   async function HandleSubmit(event){
     event.preventDefault();
     try{
-      const response = await axios.post("http://localhost/LMS/Website/PHP/RealProject/users/userapi.php/login", {username, password, email, firstname, lastname, passwordAgain})
+      const response = await axios.post("http://localhost/LMS/Website/PHP/RealProject/users/userapi.php/login", {"username": username, "password": password, "email": email, "firstname": firstname, "lastname": lastname, "passwordAgain": passwordAgain})
+      console.log(response.data)
       navigate("/login");
     }
     catch(error){

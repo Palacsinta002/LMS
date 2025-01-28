@@ -14,12 +14,14 @@ export default function Login() {
   async function HandleSubmit(event){
     event.preventDefault();
     try{
-      const response = await axios.post("http://localhost/LMS/Website/PHP/RealProject/users/userapi.php/login", {username, password})
+      const response = await axios.post("http://localhost/LMS/Website/PHP/RealProject/users/userapi.php/login", {username: username, password: password})
+      console.log(response.data)
       localStorage.setItem("token", response.data.token);
       navigate("/dashboard");
     }
     catch(error){
       console.error(error);
+      console.error(response.data)
       setError("Not authorized!")
     }
   }
