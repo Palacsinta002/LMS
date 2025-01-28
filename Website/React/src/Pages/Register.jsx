@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import "./Register.css"
 import FormCard from '../Components/FormCard'
@@ -10,20 +10,39 @@ export default function Register() {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordAgain, setPasswordAgain] = useState("");
+  const [passwordagain, setPasswordAgain] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  async function HandleSubmit(event){
+  async function HandleSubmit(event) {
     event.preventDefault();
-    try{
-      const response = await axios.post("/api/users/register.php", {headers: {"Content-Type": "application/json"}}, {username: username, password: password, email: email, firstname: firstname, lastname: lastname, passwordAgain: passwordAgain})
-      console.log(response.data)
-      navigate("/login");
-    }
-    catch(error){
-      console.log(error);
-      setError("Not authorized!");
+  
+    try {
+      const response = await axios.post(
+        "/api/users/register.php",
+        {
+          username: username,
+          password: password,
+          email: email,
+          firstname: firstname,
+          lastname: lastname,
+          passwordagain: passwordagain,
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+  
+      console.log(response.data);
+      if(response.data.success){
+        navigate("/login");
+      }
+      else{
+        setError(response.data.message);
+      }
+    } catch (error) {
+      console.error("Registery error:", error);
+      setError("Registery error!");
     }
   }
   return (

@@ -15,8 +15,8 @@ export default function Login() {
     event.preventDefault();
     try{
       const response = await axios.post("/api/users/login.php", {headers: {"Content-Type": "application/json"}}, {username: username, password: password})
-      console.log(response.data)
       localStorage.setItem("token", response.data.token);
+      console.log(response.data.token)
       navigate("/dashboard");
     }
     catch(error){
