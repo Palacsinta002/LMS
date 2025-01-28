@@ -1,64 +1,28 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from "axios"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import "./Login.css"
 
-export default function SignIn() {
+export default function Login() {
   axios.defaults.withCredentials = true;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
-  function UsernameOnChange(event){
-    setUsername(event.target.value);
-  }
-  function PasswordOnChange(event){
-    setPassword(event.target.value);
-  }
-  /*function TogglePassword(){
-    setShowPassword(!showpassword);
-  }*/
-  
-  async function HandleSubmit(e) {
-    e.preventDefault();
-    await axios.post("http://localhost/LMS/Website/PHP/RealProject/users/userapi.php/login", {
-      header:{
-        "Allow-Control-Allow-Origin" : "*",
-        "Content-Type": "application/json"
-      },
-      proxy:{
-        port: 5173
-      },
-      username: username,
-      password: password
-    })
-    .then(response => console.log(JSON.stringify(response)))
-    .catch(error => console.log(error))
-  }
-  /*async function HandleSubmit(event){
+  async function HandleSubmit(event){
     event.preventDefault();
-    await axios
-    .post("http://localhost/_LMS/Website/PHP/RealProject/users/userapi.php/register",{
-      username: username,
-      password: password
-    })
-    .then((response) => {
-      if(response.data.status === "successs"){
-        localStorage.setItem("loggedIn", true);
-        localStorage.setItem("userData",
-          JSON.stringify(response.data.data));
-        window.location.href = "/home"
-      }
-      else{
-        setError(response.data.message);
-      }
-    })
-    .catch((error) => {
+    try{
+      const response = await axios.post("http://localhost/LMS/Website/PHP/RealProject/users/userapi.php/login", {username, password})
+      localStorage.setItem("token", response.data.token);
+      navigate("/dashboard");
+    }
+    catch(error){
       console.error(error);
-    })
+      setError("Not authorized!")
+    }
   }
-*/
   return (
     <div className="login">
       <h1 className="login-header">Library Management System</h1>
@@ -67,12 +31,12 @@ export default function SignIn() {
         <h1>Login</h1>
         <form action="">
           <label>Username</label>
-          <input type="text" onChange={UsernameOnChange}/>
+          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
           <label>Password</label>
-          <input type="password" onChange={PasswordOnChange}/>
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
           <span><Link className="link1">Forgot your password?</Link></span>
-          <input type="submit" onClick={HandleSubmit} value="Sign in" />
-          <span><Link to="/signup" className="link2">Create new account?</Link></span>
+          <input type="submit" onSubmit={HandleSubmit} value="Sign in" />
+          <span><Link to="/register" className="link2">Create new account?</Link></span>
         </form>
       </div>
     </div>
