@@ -101,14 +101,14 @@ label{
 .link2 {
     display: block;
     margin-top: 1rem;
-    color: #504DB4;
+    color: #48459E;
     text-decoration: underline;
     font-size: 0.9rem;
     transition: color 0.2s ease;
 }
 
 .link2:hover {
-    color: #48459E;
+    color: #504DB4;
 }
 
 @media (max-width: 768px) {

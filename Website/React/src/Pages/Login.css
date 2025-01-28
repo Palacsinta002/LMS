@@ -69,7 +69,7 @@ input[type=password] {
   font-weight: 500;
   border-radius: 5px;
   margin: 5% 0;
-  background-color: #504DB4;
+  background-color: #48459E;
   padding: 2% 0;
   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.6);
   width: 100%;
@@ -78,7 +78,7 @@ input[type=password] {
 }
 
 .login-card input[type=submit]:hover {
-  background-color: #48459E;
+  background-color: #504DB4;
 }
 
 .link1 {
