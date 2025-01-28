@@ -14,7 +14,7 @@ export default function Login() {
   async function HandleSubmit(event){
     event.preventDefault();
     try{
-      const response = await axios.post("http://localhost/LMS/Website/PHP/RealProject/users/userapi.php/login", {username: username, password: password})
+      const response = await axios.post("/api/users/login.php", {headers: {"Content-Type": "application/json"}}, {username: username, password: password})
       console.log(response.data)
       localStorage.setItem("token", response.data.token);
       navigate("/dashboard");

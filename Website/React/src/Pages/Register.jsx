@@ -17,7 +17,7 @@ export default function Register() {
   async function HandleSubmit(event){
     event.preventDefault();
     try{
-      const response = await axios.post("http://localhost/LMS/Website/PHP/RealProject/users/userapi.php/login", {"username": username, "password": password, "email": email, "firstname": firstname, "lastname": lastname, "passwordAgain": passwordAgain})
+      const response = await axios.post("/api/users/register.php", {headers: {"Content-Type": "application/json"}}, {username: username, password: password, email: email, firstname: firstname, lastname: lastname, passwordAgain: passwordAgain})
       console.log(response.data)
       navigate("/login");
     }
