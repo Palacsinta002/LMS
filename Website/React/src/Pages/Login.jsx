@@ -31,13 +31,13 @@ export default function Login() {
       <div className="login-card">
         <i className="fa fa-user"></i>
         <h1>Login</h1>
-        <form action="">
+        <form onSubmit={HandleSubmit}>
           <label>Username</label>
           <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
           <label>Password</label>
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
           <span><Link className="link1">Forgot your password?</Link></span>
-          <input type="submit" onSubmit={HandleSubmit} value="Sign in" />
+          <input type="submit"  value="Sign in" />
           <span><Link to="/register" className="link2">Create new account?</Link></span>
         </form>
       </div>
