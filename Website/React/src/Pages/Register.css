@@ -1,121 +1,144 @@
 .register {
     display: flex;
     flex-direction: row;
+    align-items: center;
     flex-wrap: wrap;
     justify-content: space-around;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
+    padding: 2rem;
+    background-color: #504DB4;
+    color: white;
+    min-height: 100vh;
 }
 
 .register-header {
     text-align: center;
+    margin-bottom: 2rem;
 }
 
 .register-top {
-    font-size: 5vw;
-    width: 30vw;
+    font-size: 5rem;
     color: white;
     text-shadow: 2px 3px 1px black;
 }
 
 .register-bottom {
-    font-size: 2vw;
-    width: 30vw;
+    font-size: 3rem;
     color: white;
     text-shadow: 2px 3px 1px black;
 }
 
 .register-container {
-    width: 100vw;
-    min-width: 550px;
-    max-width: 25%;
-    height: auto;
-    min-height: 75vh;
-    max-height: 75vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 400px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 2px 3px 10px 1px rgba(0, 0, 0, 0.6);
-    padding: 20px;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+    color: black;
 }
-
-.register-container i {
+.register-container i{
     font-size: 16vh;
-    justify-content: center;
 }
 
 .register-container h1 {
-    text-align: center;
+    margin-bottom: 1.5rem;
 }
 
 .register-card-holder {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 50px);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
     width: 100%;
-    gap: 30px;
-    margin-top: 20%;
+}
+
+.register-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 48%;
+}
+
+.register-card input {
+    padding: 0.75rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .actions {
-    margin-top: 10%;
-    width: 50%;
+    margin-top: 1rem;
 }
 
-.register-container label {
-    font-size: 1.2em;
-    font-weight: 500;
-    margin: 3px 0;
-}
-
-.register-container input[type=text],
-input[type=password],
-input[type=email] {
-    width: 100%;
-    height: auto;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1em;
-}
-
-.register-container input[type=submit] {
+.actions input[type="submit"] {
+    background-color: #504DB4;
     color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
     font-size: 1.2em;
     font-weight: 500;
     border-radius: 5px;
     margin: 5% 0;
-    background-color: #504DB4;
     padding: 2% 0;
     box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.6);
-    width: 100%;
-    height: auto;
-    transition: 0.5s;
+    width: 50%;
 }
-.register-container input[type=submit]:hover{
+
+.actions input[type="submit"]:hover {
     background-color: #48459E;
+    color: white;
 }
-
+label{
+    color: black;
+    font-size: 1.2em;
+    font-weight: 500;
+}
 .link2 {
-    font-size: 1.5vh;
-    font-weight: 300;
+    display: block;
+    margin-top: 1rem;
+    color: #504DB4;
+    text-decoration: underline;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
 }
 
-@media only screen and (max-width: 930px) {
-    .register {
-        width: 100vw;
-        height: 100vh;
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        align-items: center;
+.link2:hover {
+    color: #48459E;
+}
+
+@media (max-width: 768px) {
+    .register-card-holder {
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .register-card {
+        min-width: 100%;
+    }
+    .register-top{
+        font-size: 2.5rem;
+    }
+    .register-bottom{
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .register-container {
+        padding: 1rem;
+    }
+
+    .actions input[type="submit"] {
+        width: 50%;
+    }
+
+    .register-card input {
+        padding: 0.5rem;
+        font-size: 0.9rem;
     }
 }
