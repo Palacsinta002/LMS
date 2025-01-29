@@ -72,19 +72,12 @@
                 using var dataReader = cmd.ExecuteReader();
                 while (dataReader.Read())
                 {
-                    int i = 0;
+                    List<string> row = [];
                     foreach(var item in dataReader)
                     {
-                        if (result[i] == null)
-                        {
-                            result.Add([]);
-                        }
-                        else
-                        {
-                            result[i].Add(item.ToString() ?? string.Empty);
-                            i++;
-                        }
+                        row.Add(item?.ToString() ?? string.Empty);
                     }
+                    result.Add(row);
                 }
                 CloseConnection();
             }
