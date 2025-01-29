@@ -35,7 +35,8 @@ try {
     
 
     $mail->send();
-    return true;
+    echo json_encode(["Success" => "Email sent"]);
+    die();
 } catch (Exception $e) {
     errorOutput("2");
 }
