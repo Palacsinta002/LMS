@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import axios from "axios"
 import { Link, useNavigate } from 'react-router-dom'
 import "./Login.css"
-import RandomCircles from '../Components/RandomCircles';
 
 export default function Login() {
   axios.defaults.withCredentials = true;
@@ -46,7 +45,6 @@ export default function Login() {
   }
   return (
     <div className="login">
-    <RandomCircles />
       <h1 className="login-header">Library Management System</h1>
       <div className="login-card">
         <i className="fa fa-user"></i>
