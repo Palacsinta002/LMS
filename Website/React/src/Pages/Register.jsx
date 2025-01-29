@@ -10,7 +10,7 @@ export default function Register() {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordagain, setPasswordAgain] = useState("");
+  const [passwordAgain, setPasswordAgain] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -19,14 +19,14 @@ export default function Register() {
   
     try {
       const response = await axios.post(
-        "/api/users/register.php",
+        "/api/users/userapi.php/register",
         {
           username: username,
           password: password,
           email: email,
           firstname: firstname,
           lastname: lastname,
-          passwordagain: passwordagain,
+          passwordAgain: passwordAgain,
         },
         {
           headers: { "Content-Type": "application/json" },
@@ -35,7 +35,7 @@ export default function Register() {
   
       console.log(response.data);
       if(response.data.success){
-        navigate("/login");
+        navigate("/verify");
       }
       else{
         setError(response.data.message);
