@@ -14,14 +14,15 @@ export default function Login() {
   async function HandleSubmit(event){
     event.preventDefault();
     try{
-      const response = await axios.post("/api/users/login.php", {headers: {"Content-Type": "application/json"}}, {username: username, password: password})
+      const response = await axios.post("/api/users/userapi.php/login", {headers: {"Content-Type": "application/json"}}, {username: username, password: password})
       localStorage.setItem("token", response.data.token);
-      console.log(response.data.token)
+      setError(response.data.token)
+      console.log(response)
       navigate("/dashboard");
     }
     catch(error){
       console.error(error);
-      console.error(response.data)
+      console.error(response.data.message)
       setError("Not authorized!")
     }
   }

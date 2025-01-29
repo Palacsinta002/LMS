@@ -39,6 +39,7 @@ export default function Register() {
       }
       else{
         setError(response.data.message);
+        console.log(response)
       }
     } catch (error) {
       console.error("Registery error:", error);

@@ -8,9 +8,6 @@ import Dashboard from './Pages/Dashboard';
 import PrivateRoute from './Hooks/PrivateRoute';
 
 function App() {
-
-const isAuthorized = !!localStorage.getItem("token");
-
   return (
     <BrowserRouter>
       <Header />
