@@ -15,7 +15,7 @@ export default function Login() {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "/api/users/userapi.php/login.php",
+        "/api/users/userapi.php/login",
         { username: username, password: password },
         {
           headers: {
@@ -25,7 +25,7 @@ export default function Login() {
       );
       localStorage.setItem("token", response.data.token);
       console.log(response);
-      if(response.data.success){
+      if(response.data.Success){
         navigate("/dashboard");
       }
       else if(response.data.message){
