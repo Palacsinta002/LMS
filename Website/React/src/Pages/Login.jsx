@@ -15,7 +15,7 @@ export default function Login() {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "/api/users/userapi.php/login",
+        "/api/users/userapi.php/login.php",
         { username: username, password: password },
         {
           headers: {
@@ -23,7 +23,6 @@ export default function Login() {
           },
         }
       );
-      
       localStorage.setItem("token", response.data.token);
       console.log(response);
       if(response.data.success){
