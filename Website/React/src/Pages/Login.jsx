@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import axios from "axios"
 import { Link, useNavigate } from 'react-router-dom'
 import "./Login.css"
@@ -11,19 +11,37 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
-  async function HandleSubmit(event){
+  async function HandleSubmit(event) {
     event.preventDefault();
-    try{
-      const response = await axios.post("/api/users/userapi.php/login", {headers: {"Content-Type": "application/json"}}, {username: username, password: password})
+    try {
+      const response = await axios.post(
+        "/api/users/userapi.php/login",
+        { username: username, password: password },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      
       localStorage.setItem("token", response.data.token);
-      setError(response.data.token)
-      console.log(response)
-      navigate("/dashboard");
-    }
-    catch(error){
+      console.log(response);
+      if(response.data.success){
+        navigate("/dashboard");
+      }
+      else if(response.data.message){
+        setError(response.data.message);
+        console.log(response)
+      }
+    } catch (error) {
       console.error(error);
-      console.error(response.data.message)
-      setError("Not authorized!")
+  
+      if (error.response && error.response.data && error.response.data.message) {
+        console.error(error.response.data.message);
+        setError(error.response.data.message);
+      } else {
+        setError("Not authorized!");
+      }
     }
   }
   return (
@@ -34,11 +52,11 @@ export default function Login() {
         <h1>Login</h1>
         <form onSubmit={HandleSubmit}>
           <label>Username</label>
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
+          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
           <label>Password</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
           <span><Link className="link1">Forgot your password?</Link></span>
-          <input type="submit"  value="Sign in" />
+          <input type="submit" value="Sign in" />
           <span><Link to="/register" className="link2">Create new account?</Link></span>
         </form>
       </div>
