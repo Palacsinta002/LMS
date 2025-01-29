@@ -149,6 +149,13 @@ class UserRegisterClass{
                 $randomNumb = rand(0,10);
                 $verifyCode.= "$randomNumb";
             }
+            $_SESSION["verifyCode"] = $verifyCode;
+            $_SESSION["register"] = ["email" =>"$this->email",
+                                    "username" =>"$this->username",
+                                    "firstName" => "$this->firstName",
+                                    "lastname" => "$this->lastName",
+                                    "password" => "$this->password"
+                                    ];
             require_once __DIR__ . "/../sendEmail/sendEmail.php";
             sendEmail($this->email,$this->lastName,"It is your verification Email","<html> <p>Your verification code is <b>$verifyCode</b> . <br> Please enter this code to the field on the main page.</p> <p>This is an automatic message. Don't answer to this mail!</p> <html>");
         

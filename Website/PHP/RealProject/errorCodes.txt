@@ -8,3 +8,7 @@
 7 : wrong username or password;
 8 : username is required;
 9 : password is required;
+10 : missing verify code;
+11 : wrong verify code;
+12 : missing register;
+13 : could not register the user;
