@@ -32,15 +32,8 @@ export default function Register() {
           headers: { "Content-Type": "application/json" },
         }
       );
-  
       console.log(response.data);
-      if(response.data.success){
-        navigate("/verify");
-      }
-      else{
-        setError(response.data.message);
-        console.log(response)
-      }
+      navigate("/verify");
     } catch (error) {
       console.error("Registery error:", error);
       setError("Registery error!");
