@@ -153,7 +153,7 @@ class UserRegisterClass{
             $_SESSION["register"] = ["email" =>"$this->email",
                                     "username" =>"$this->username",
                                     "firstName" => "$this->firstName",
-                                    "lastname" => "$this->lastName",
+                                    "lastName" => "$this->lastName",
                                     "password" => "$this->password"
                                     ];
             require_once __DIR__ . "/../sendEmail/sendEmail.php";
@@ -186,6 +186,7 @@ class UserRegisterClass{
     
 
 }
+
 
 
 

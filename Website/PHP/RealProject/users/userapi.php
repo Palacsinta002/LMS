@@ -29,6 +29,10 @@ elseif($uri[count($uri)-1] == "login"){
 elseif($uri[count($uri)-1] == "logout"){
     require_once "logout.php";
 }
+elseif($uri[count($uri)-1] == "verify"){
+    require_once "verify.php";
+    verify();
+}
 else{
     echo json_encode(["error"=> "Endpoint not found!"]);
 }
