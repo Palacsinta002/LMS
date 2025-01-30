@@ -31,14 +31,13 @@ CREATE TABLE Publishers (
     Publisher VARCHAR(255) NOT NULL
 );
 
-
 -- Create Users table (previously called Members)
 CREATE TABLE Users (
     UserID INT AUTO_INCREMENT PRIMARY KEY,
     FirstName VARCHAR(100) NOT NULL,
     LastName VARCHAR(100) NOT NULL,
-    Email Varchar(50) not Null,
-    Username Varchar(25) not null,
+    Email Varchar(50) NOT Null UNIQUE,
+    Username Varchar(25) not null UNIQUE,
     Password varchar(100) not null,
     RoleID INT NOT NULL,
     FOREIGN KEY (RoleID) REFERENCES Roles(RoleID)
@@ -48,34 +47,48 @@ CREATE TABLE Users (
 CREATE TABLE Books (
     ISBN BIGINT(13) PRIMARY KEY,
     PublisherID INT,
-    AuthorID INT,
-    CategoryID INT,
     Title VARCHAR(255) NOT NULL,
-    PublicationYear INT(4),
-    FOREIGN KEY (AuthorID) REFERENCES Authors(AuthorID),
-    FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID),
+    PublicationYear YEAR,
     FOREIGN KEY (PublisherID) REFERENCES Publishers(PublisherID)
+);
+
+-- Create Books_Authors table to handle multiple authors per book
+CREATE TABLE Books_Authors (
+    ISBN BIGINT(13) NOT NULL,
+    AuthorID INT NOT NULL,
+    PRIMARY KEY (ISBN, AuthorID),
+    FOREIGN KEY (ISBN) REFERENCES Books(ISBN),
+    FOREIGN KEY (AuthorID) REFERENCES Authors(AuthorID)
+);
+
+-- Create Books_Categories table to handle multiple categories per book
+CREATE TABLE Books_Categories (
+    ISBN BIGINT(13) NOT NULL,
+    CategoryID INT NOT NULL,
+    PRIMARY KEY (ISBN, CategoryID),
+    FOREIGN KEY (ISBN) REFERENCES Books(ISBN),
+    FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
 );
 
 -- Create Borrowings table
 CREATE TABLE Borrowings (
-    BorrowID INT AUTO_INCREMENT PRIMARY KEY,
-    UserID INT NOT NULL,
-    ISBN BIGINT NOT NULL,
-    BorrowDate DATE NOT NULL,
-    ReturnDate Date,
-    DueDate Date not null,
+    BorrowID INT AUTO_INCREMENT PRIMARY KEY,  -- unique borrowing identifier
+    UserID INT NOT NULL,  -- user ID
+    ISBN BIGINT(13) NOT NULL,  -- ISBN of the book
+    BorrowDate DATE NOT NULL,  -- date of borrowing
+    DueDate DATE NOT NULL,  -- due date for returning
+    ReturnDate DATE,  -- actual return date (if returned)
     FOREIGN KEY (UserID) REFERENCES Users(UserID),
     FOREIGN KEY (ISBN) REFERENCES Books(ISBN)
 );
 
-
--- Values
+-- Insert values into Roles table
 INSERT INTO Roles (Role) VALUES
 ('Admin'),
 ('Librarian'),
 ('Member');
 
+-- Insert values into Authors table
 INSERT INTO Authors (Name) VALUES
 ('George Orwell'),
 ('J.K. Rowling'),
@@ -93,6 +106,7 @@ INSERT INTO Authors (Name) VALUES
 ('Charles Dickens'),
 ('Franz Kafka');
 
+-- Insert values into Categories table
 INSERT INTO Categories (Category) VALUES
 ('Fiction'),
 ('Non-fiction'),
@@ -110,6 +124,7 @@ INSERT INTO Categories (Category) VALUES
 ('Horror'),
 ('Poetry');
 
+-- Insert values into Publishers table
 INSERT INTO Publishers (Publisher) VALUES
 ('Penguin Random House'),
 ('HarperCollins'),
@@ -127,6 +142,7 @@ INSERT INTO Publishers (Publisher) VALUES
 ('Cambridge University Press'),
 ('Bloomsbury Publishing');
 
+-- Insert values into Users table
 INSERT INTO Users (FirstName, LastName, Email, Username, Password, RoleID) VALUES
 ('John', 'Doe', 'john.doe@example.com', 'johndoe', 'password123', 3),
 ('Jane', 'Smith', 'jane.smith@example.com', 'janesmith', 'password123', 3),
@@ -144,23 +160,61 @@ INSERT INTO Users (FirstName, LastName, Email, Username, Password, RoleID) VALUE
 ('Jack', 'Young', 'jack.young@example.com', 'jackyoung', 'jackpass', 3),
 ('Laura', 'Harris', 'laura.harris@example.com', 'lauraharris', 'laurapass', 3);
 
-INSERT INTO Books (ISBN, PublisherID, AuthorID, CategoryID, Title, PublicationYear) VALUES
-(9780451524935, 1, 1, 1, '1984', 1949),
-(9780439708180, 2, 2, 4, 'Harry Potter and the Sorcerer''s Stone', 1997),
-(9780684801223, 3, 3, 5, 'The Old Man and the Sea', 1952),
-(9780060883287, 4, 4, 1, 'One Hundred Years of Solitude', 1967),
-(9780486415871, 5, 5, 1, 'Crime and Punishment', 1866),
-(9780375704024, 6, 6, 1, 'Norwegian Wood', 1987),
-(9780141040349, 7, 7, 8, 'Pride and Prejudice', 1813),
-(9780199232765, 8, 8, 10, 'War and Peace', 1869),
-(9780486400778, 9, 9, 1, 'The Adventures of Tom Sawyer', 1876),
-(9781501117015, 10, 10, 1, 'The House of the Spirits', 1982),
-(9780345339683, 11, 11, 4, 'The Hobbit', 1937),
-(9780062693661, 12, 12, 6, 'Murder on the Orient Express', 1934),
-(9780743477123, 13, 13, 1, 'Hamlet', 1603),
-(9780486415864, 14, 14, 1, 'Great Expectations', 1861),
-(9780805209990, 15, 15, 1, 'The Trial', 1925);
+-- Insert values into Books table
+INSERT INTO Books (ISBN, PublisherID, Title, PublicationYear) VALUES
+(9780451524935, 1, '1984', 1949),
+(9780439708180, 2, 'Harry Potter and the Sorcerer''s Stone', 1997),
+(9780684801223, 3, 'The Old Man and the Sea', 1952),
+(9780060883287, 4, 'One Hundred Years of Solitude', 1967),
+(9780486415871, 5, 'Crime and Punishment', 1866),
+(9780375704024, 6, 'Norwegian Wood', 1987),
+(9780141040349, 7, 'Pride and Prejudice', 1813),
+(9780199232765, 8, 'War and Peace', 1869),
+(9780486400778, 9, 'The Adventures of Tom Sawyer', 1876),
+(9781501117015, 10, 'The House of the Spirits', 1982),
+(9780345339683, 11, 'The Hobbit', 1937),
+(9780062693661, 12, 'Murder on the Orient Express', 1934),
+(9780743477123, 13, 'Hamlet', 1603),
+(9780486415864, 14, 'Great Expectations', 1861),
+(9780805209990, 15, 'The Trial', 1925);
 
+-- Insert values into Books_Authors table
+INSERT INTO Books_Authors (ISBN, AuthorID) VALUES
+(9780451524935, 1),
+(9780439708180, 2),
+(9780684801223, 3),
+(9780060883287, 4),
+(9780486415871, 5),
+(9780375704024, 6),
+(9780141040349, 7),
+(9780199232765, 8),
+(9780486400778, 9),
+(9781501117015, 10),
+(9780345339683, 11),
+(9780062693661, 12),
+(9780743477123, 13),
+(9780486415864, 14),
+(9780805209990, 15);
+
+-- Insert values into Books_Categories table
+INSERT INTO Books_Categories (ISBN, CategoryID) VALUES
+(9780451524935, 1),
+(9780439708180, 4),
+(9780684801223, 5),
+(9780060883287, 1),
+(9780486415871, 1),
+(9780375704024, 1),
+(9780141040349, 8),
+(9780199232765, 10),
+(9780486400778, 1),
+(9781501117015, 1),
+(9780345339683, 4),
+(9780062693661, 6),
+(9780743477123, 1),
+(9780486415864, 1),
+(9780805209990, 1);
+
+-- Insert values into Borrowings table
 INSERT INTO Borrowings (UserID, ISBN, BorrowDate, DueDate, ReturnDate) VALUES
 (1, 9780451524935, '2024-09-01', '2024-09-15', '2024-09-14'),
 (2, 9780439708180, '2024-09-05', '2024-09-19', '2024-09-19'),
