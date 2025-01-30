@@ -1,21 +1,21 @@
+table Publishers{
+  id int [primary key, increment]
+  publisher varchar(100)
+}
 Table Authors{
-  autohorID int [primary key, increment]
-  name varchar(255)
+  id int [primary key, increment]
+  author varchar(255)
 }
 Table Categories{
-  categoryID int [primary key, increment]
+  id int [primary key, increment]
   category varchar(100) [not null]
 }
-Table Books {
-  ISBN bigint(13) [primary key]
-  pusblisherID int
-  authorID int 
-  categoryID int
-  title varchar(255) [not null]
-  publicationYear int(4)
+Table Roles{
+  id int [primary key, increment]
+  role varchar(20) [not null]
 }
 Table Users{
-  userID int [primary key, increment]
+  id int [primary key, increment]
   firstName varchar(100) [not null]
   lastName varchar(100) [not null]
   email varchar(100) [not null]
@@ -23,32 +23,35 @@ Table Users{
   password varchar(255) [not null]
   roleID int
 }
-Table Roles{
-  roleID int
-  role varchar(20) [not null]
-} 
+Table Books {
+  ISBN bigint(13) [primary key]
+  pusblisherID int
+  title varchar(255) [not null]
+  publicationYear int(4)
+}
 Table Borrowings{
-  borrowID int [primary key, increment]
-  userID int
+  id int [primary key, increment]
   ISBN bigint
+  userID int
   borrowDate date [not null]
   returnDate date
   dueDate date [not null]
 }
-table Publishers{
-  publisherID int [primary key, increment]
-  publisher varchar(100)
+Table Books_Authors{
+  Books_ISBN int(13)
+  Authors_id int(13)
+}
+Table Books_Categories{
+  Books_ISBN int(13)
+  Categories_id int(13)
 }
 
 
-Ref: "Authors"."autohorID" < "Books"."authorID"
-
-Ref: "Categories"."categoryID" < "Books"."categoryID"
-
-Ref: "Publishers"."publisherID" < "Books"."pusblisherID"
-
-Ref: "Users"."userID" < "Borrowings"."userID"
-
-Ref: "Borrowings"."ISBN" < "Books"."ISBN"
-
-Ref: "Roles"."roleID" < "Users"."roleID"
+Ref: "Books"."ISBN" < "Borrowings"."ISBN"
+  Ref: "Borrowings"."userID" > "Users"."id"
+    Ref: "Users"."roleID" > "Roles"."id"
+  Ref: "Books"."pusblisherID" > "Publishers"."id"
+  Ref: "Books"."ISBN" > "Books_Authors"."Books_ISBN"
+    Ref: "Books_Authors"."Authors_id" < "Authors"."id"
+  Ref: "Books"."ISBN" > "Books_Categories"."Books_ISBN"
+    Ref: "Books_Categories"."Categories_id" < "Categories"."id"
