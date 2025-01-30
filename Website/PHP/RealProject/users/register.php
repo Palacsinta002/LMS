@@ -8,7 +8,7 @@ function register(){
     $decoded = json_decode($rawbody, true);
 
     ####################  making class and verify the given data  ####################
-    $user = new UserRegisterClass($decoded["email"],$decoded["username"],$decoded["firstname"],$decoded["lastname"],$decoded["password"],$decoded["passwordagain"]);
+    $user = new UserRegisterClass($decoded["email"],$decoded["username"],$decoded["firstname"],$decoded["lastname"],$decoded["password"],$decoded["passwordAgain"]);
     $user->sendVerificationEmail();
 }
 

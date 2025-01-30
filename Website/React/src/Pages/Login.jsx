@@ -23,10 +23,9 @@ export default function Login() {
           },
         }
       );
-      
       localStorage.setItem("token", response.data.token);
       console.log(response);
-      if(response.data.success){
+      if(response.data.Success){
         navigate("/dashboard");
       }
       else if(response.data.message){
@@ -36,11 +35,11 @@ export default function Login() {
     } catch (error) {
       console.error(error);
   
-      if (error.response && error.response.data && error.response.data.message) {
-        console.error(error.response.data.message);
-        setError(error.response.data.message);
+      if (error.response) {
+        console.error(error.response.data.error);
+        setError(error.response.data.error || "Login failed");
       } else {
-        setError("Not authorized!");
+        setError("Network error");
       }
     }
   }

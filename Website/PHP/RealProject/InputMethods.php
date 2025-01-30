@@ -11,5 +11,10 @@ function errorOutput($errorCode){
     die();
 }
 
+function getPostBody(){
+    $rawbody = file_get_contents("php://input");
+    $decoded = json_decode($rawbody, true);
+    return $decoded;
+}
 
 ?>
