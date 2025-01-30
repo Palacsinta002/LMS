@@ -9,38 +9,38 @@ USE LMS;
 
 -- Create Roles table
 CREATE TABLE Roles(
-    RoleID INT AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     Role VARCHAR(100) NOT NULL
 );
 
 -- Create Authors table
 CREATE TABLE Authors (
-    AuthorID INT AUTO_INCREMENT PRIMARY KEY,
-    Name VARCHAR(255) NOT NULL
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    Author VARCHAR(255) NOT NULL
 );
 
 -- Create Categories table
 CREATE TABLE Categories (
-    CategoryID INT AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     Category VARCHAR(100) NOT NULL
 );
 
 -- Create Publisher table
 CREATE TABLE Publishers (
-    PublisherID INT AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     Publisher VARCHAR(255) NOT NULL
 );
 
 -- Create Users table (previously called Members)
 CREATE TABLE Users (
-    UserID INT AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     FirstName VARCHAR(100) NOT NULL,
     LastName VARCHAR(100) NOT NULL,
     Email Varchar(50) NOT Null UNIQUE,
     Username Varchar(25) not null UNIQUE,
     Password varchar(100) not null,
     RoleID INT NOT NULL,
-    FOREIGN KEY (RoleID) REFERENCES Roles(RoleID)
+    FOREIGN KEY (RoleID) REFERENCES Roles(id)
 );
 
 -- Create Books table
@@ -49,16 +49,16 @@ CREATE TABLE Books (
     PublisherID INT,
     Title VARCHAR(255) NOT NULL,
     PublicationYear YEAR,
-    FOREIGN KEY (PublisherID) REFERENCES Publishers(PublisherID)
+    FOREIGN KEY (PublisherID) REFERENCES Publishers(id) ON DELETE CASCADE
 );
 
 -- Create Books_Authors table to handle multiple authors per book
-CREATE TABLE Books_Authors (
+CREATE TABLE Books_Authors(
     ISBN BIGINT(13) NOT NULL,
     AuthorID INT NOT NULL,
     PRIMARY KEY (ISBN, AuthorID),
-    FOREIGN KEY (ISBN) REFERENCES Books(ISBN),
-    FOREIGN KEY (AuthorID) REFERENCES Authors(AuthorID)
+    FOREIGN KEY (ISBN) REFERENCES Books(ISBN) ON DELETE CASCADE,
+    FOREIGN KEY (AuthorID) REFERENCES Authors(id) ON DELETE CASCADE
 );
 
 -- Create Books_Categories table to handle multiple categories per book
@@ -66,20 +66,20 @@ CREATE TABLE Books_Categories (
     ISBN BIGINT(13) NOT NULL,
     CategoryID INT NOT NULL,
     PRIMARY KEY (ISBN, CategoryID),
-    FOREIGN KEY (ISBN) REFERENCES Books(ISBN),
-    FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
+    FOREIGN KEY (ISBN) REFERENCES Books(ISBN) ON DELETE CASCADE,
+    FOREIGN KEY (CategoryID) REFERENCES Categories(id) ON DELETE CASCADE
 );
 
 -- Create Borrowings table
 CREATE TABLE Borrowings (
-    BorrowID INT AUTO_INCREMENT PRIMARY KEY,  -- unique borrowing identifier
-    UserID INT NOT NULL,  -- user ID
-    ISBN BIGINT(13) NOT NULL,  -- ISBN of the book
-    BorrowDate DATE NOT NULL,  -- date of borrowing
-    DueDate DATE NOT NULL,  -- due date for returning
-    ReturnDate DATE,  -- actual return date (if returned)
-    FOREIGN KEY (UserID) REFERENCES Users(UserID),
-    FOREIGN KEY (ISBN) REFERENCES Books(ISBN)
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    UserID INT NOT NULL,
+    ISBN BIGINT(13) NOT NULL,
+    BorrowDate DATE NOT NULL,
+    DueDate DATE NOT NULL,
+    ReturnDate DATE,
+    FOREIGN KEY (UserID) REFERENCES Users(id) ON DELETE SET NULL, -- Itt valami fos
+    FOREIGN KEY (ISBN) REFERENCES Books(ISBN) ON DELETE SET NULL
 );
 
 -- Insert values into Roles table
@@ -89,7 +89,7 @@ INSERT INTO Roles (Role) VALUES
 ('Member');
 
 -- Insert values into Authors table
-INSERT INTO Authors (Name) VALUES
+INSERT INTO Authors (Author) VALUES
 ('George Orwell'),
 ('J.K. Rowling'),
 ('Ernest Hemingway'),
