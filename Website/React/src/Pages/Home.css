@@ -66,6 +66,54 @@ body{
     border-radius: 5px;
     float: right;
   }
+  .dashboard{
+    font-size: 2vh;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    background-color: #504DB4;
+    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.6); 
+    padding: 1vh;
+    border-radius: 5px;
+    float: right;
+    margin-right: 2vw;
+    transition: .3s ease-in-out;
+  }
+  .dashboard:hover{
+    font-size: 2vh;
+    font-weight: bold;
+    color: #504DB4;
+    text-decoration: none;
+    background-color: white;
+    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.6); 
+    padding: 1vh;
+    border-radius: 5px;
+    float: right;
+  }
+  .logout{
+    font-size: 2vh;
+    font-weight: bold;
+    color: #504DB4;
+    text-decoration: none;
+    background-color: white;
+    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.6); 
+    padding: 1vh;
+    border-radius: 5px;
+    float: right;
+    margin-right: 2vw;
+    transition: .3s ease-in-out;
+  }
+  .logout:hover{
+    font-size: 2vh;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    background-color: #504DB4;
+    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.6); 
+    padding: 1vh;
+    border-radius: 5px;
+    float: right;
+  }
   .card-container{
     position: relative;
     display: flex;

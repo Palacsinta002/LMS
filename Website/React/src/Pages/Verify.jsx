@@ -25,7 +25,7 @@ export default function Verify() {
       
           console.log(response.data);
           if(response.data.Success){
-            navigate("/");
+            navigate("/login");
           }
           else{
             setError(response.data.message);
