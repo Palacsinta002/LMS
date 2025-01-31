@@ -102,10 +102,6 @@ BEGIN
     VALUES (NEW.id, NEW.UserID, NEW.ISBN, NEW.BorrowDate, NEW.DueDate, NEW.ReturnDate);
 END $$
 
-DELIMITER ;
-
-DELIMITER $$
-
 CREATE TRIGGER after_borrowing_update
 AFTER UPDATE ON Borrowings
 FOR EACH ROW
