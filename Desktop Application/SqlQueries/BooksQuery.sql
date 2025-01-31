@@ -1,8 +1,8 @@
 SELECT 
     Books.Title,
-    GROUP_CONCAT(DISTINCT Authors.Author ORDER BY Authors.Author SEPARATOR ', '),
+    GROUP_CONCAT(DISTINCT Authors.Author SEPARATOR ', '),
     Books.PublicationYear,
-    GROUP_CONCAT(DISTINCT Categories.Category ORDER BY Categories.Category SEPARATOR ', '),
+    GROUP_CONCAT(DISTINCT Categories.Category SEPARATOR ', '),
     Publishers.Publisher,
     Books.ISBN
 FROM Books
