@@ -48,7 +48,7 @@ CREATE TABLE Books (
     ISBN BIGINT(13) PRIMARY KEY,
     PublisherID INT,
     Title VARCHAR(255) NOT NULL,
-    PublicationYear YEAR,
+    PublicationYear int(4),
     FOREIGN KEY (PublisherID) REFERENCES Publishers(id) ON DELETE CASCADE
 );
 
@@ -78,9 +78,49 @@ CREATE TABLE Borrowings (
     BorrowDate DATE NOT NULL,
     DueDate DATE NOT NULL,
     ReturnDate DATE,
-    FOREIGN KEY (UserID) REFERENCES Users(id) ON DELETE SET NULL, -- Itt valami fos
-    FOREIGN KEY (ISBN) REFERENCES Books(ISBN) ON DELETE SET NULL
+    FOREIGN KEY (UserID) REFERENCES Users(id),
+    FOREIGN KEY (ISBN) REFERENCES Books(ISBN)
 );
+
+-- Create Borrowings_backup table
+CREATE TABLE Borrowings_backup (
+    id INT,
+    UserID INT,
+    ISBN BIGINT(13),
+    BorrowDate DATE,
+    DueDate DATE,
+    ReturnDate DATE
+);
+
+DELIMITER $$
+
+CREATE TRIGGER after_borrowing_insert
+AFTER INSERT ON Borrowings
+FOR EACH ROW
+BEGIN
+    INSERT INTO Borrowings_backup (id, UserID, ISBN, BorrowDate, DueDate, ReturnDate)
+    VALUES (NEW.id, NEW.UserID, NEW.ISBN, NEW.BorrowDate, NEW.DueDate, NEW.ReturnDate);
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE TRIGGER after_borrowing_update
+AFTER UPDATE ON Borrowings
+FOR EACH ROW
+BEGIN
+    UPDATE Borrowings_backup
+    SET 
+        UserID = NEW.UserID,
+        ISBN = NEW.ISBN,
+        BorrowDate = NEW.BorrowDate,
+        DueDate = NEW.DueDate,
+        ReturnDate = NEW.ReturnDate
+    WHERE id = OLD.id;
+END $$
+
+DELIMITER ;
 
 -- Insert values into Roles table
 INSERT INTO Roles (Role) VALUES
