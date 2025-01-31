@@ -5,6 +5,10 @@ CREATE DATABASE LMS
 DEFAULT CHARACTER SET utf8 
 COLLATE utf8_hungarian_ci;
 
+-- Create lms user
+CREATE USER IF NOT EXISTS "lms"@"%" IDENTIFIED BY "!LibraryMS25";
+GRANT SELECT, INSERT, UPDATE, DELETE ON LMS.* TO "lms"@"%";
+
 USE LMS;
 
 -- Create Roles table
