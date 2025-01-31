@@ -1,10 +1,10 @@
 table Publishers{
   id int [primary key, increment]
-  publisher varchar(100)
+  publisher varchar(100) [not null]
 }
 Table Authors{
   id int [primary key, increment]
-  author varchar(255)
+  author varchar(255) [not null]
 }
 Table Categories{
   id int [primary key, increment]
@@ -20,30 +20,38 @@ Table Users{
   lastName varchar(100) [not null]
   email varchar(100) [not null]
   username varchar(100) [not null]
-  password varchar(255) [not null]
-  roleID int
+  password varchar(128) [not null]
+  roleID int [not null]
 }
 Table Books {
   ISBN bigint(13) [primary key]
-  pusblisherID int
+  pusblisherID int [not null]
   title varchar(255) [not null]
-  publicationYear int(4)
+  publicationYear int(4) [not null]
 }
 Table Borrowings{
   id int [primary key, increment]
-  ISBN bigint
-  userID int
+  ISBN bigint [not null]
+  userID int [not null]
   borrowDate date [not null]
   returnDate date
   dueDate date [not null]
 }
+Table Borrowings_backup{
+  id int
+  ISBN bigint
+  userID int
+  borrowDate date
+  returnDate date
+  dueDate date
+}
 Table Books_Authors{
-  Books_ISBN int(13)
-  Authors_id int(13)
+  Books_ISBN int(13) [primary key, not null]
+  Authors_id int(13) [primary key, not null]
 }
 Table Books_Categories{
-  Books_ISBN int(13)
-  Categories_id int(13)
+  Books_ISBN int(13) [primary key, not null]
+  Categories_id int(13) [primary key, not null]
 }
 
 
@@ -51,7 +59,7 @@ Ref: "Books"."ISBN" < "Borrowings"."ISBN"
   Ref: "Borrowings"."userID" > "Users"."id"
     Ref: "Users"."roleID" > "Roles"."id"
   Ref: "Books"."pusblisherID" > "Publishers"."id"
-  Ref: "Books"."ISBN" > "Books_Authors"."Books_ISBN"
-    Ref: "Books_Authors"."Authors_id" < "Authors"."id"
-  Ref: "Books"."ISBN" > "Books_Categories"."Books_ISBN"
-    Ref: "Books_Categories"."Categories_id" < "Categories"."id"
+  Ref: "Books"."ISBN" < "Books_Authors"."Books_ISBN"
+    Ref: "Books_Authors"."Authors_id" > "Authors"."id"
+  Ref: "Books"."ISBN" < "Books_Categories"."Books_ISBN"
+    Ref: "Books_Categories"."Categories_id" > "Categories"."id"
