@@ -2,6 +2,8 @@
 using System.Security.Policy;
 using Desktop_Application.Classes;
 using Desktop_Application.Forms.Books;
+using Mysqlx.Crud;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace Desktop_Application
 {
@@ -10,14 +12,6 @@ namespace Desktop_Application
         public adminPanel()
         {
             InitializeComponent();
-        }
-
-        private void Logout(object sender, EventArgs e)
-        {
-            Login login = new Login();
-            this.Hide();
-            login.ShowDialog();
-            this.Close();
         }
 
         private void HidePanels()
@@ -29,6 +23,16 @@ namespace Desktop_Application
             members_pnl.Visible = false;
             authors_pnl.Visible = false;
             publishers_pnl.Visible = false;
+        }
+
+        // Select books and fill the grid with data
+        private void ListBooks()
+        {
+            Connection connection = new();
+            string filePath = @"SqlQueries\BooksQuery.sql";
+            string query = File.ReadAllText(filePath);
+            var result = connection.Select(query);
+            FillGrid.Fill(books_grd, result);
         }
 
         // Shows the Dashboard after hiding previous content.
@@ -48,15 +52,7 @@ namespace Desktop_Application
             {
                 HidePanels();
                 books_pnl.Visible = true;
-                Connection connection = new Connection();
-                string query =
-                    "SELECT Books.ISBN, Publishers.Publisher, Authors.Name, Categories.Category, Books.Title, Books.PublicationYear " +
-                    "FROM Books, Publishers, Authors, Categories " +
-                    "WHERE Books.PublisherID = Publishers.PublisherID " +
-                    "AND Books.AuthorID = Authors.AuthorID " +
-                    "AND Books.CategoryID = Categories.CategoryID";
-                var result = connection.Select(query);
-                FillGrid.Fill(books_grd, result);
+                ListBooks();
             }
         }
 
@@ -107,7 +103,7 @@ namespace Desktop_Application
 
         private void RefreshBooks(object sender, EventArgs e)
         {
-            // Refresh the table of books from the database
+            ListBooks();
         }
 
         private void EditBook(object sender, EventArgs e)
@@ -138,6 +134,14 @@ namespace Desktop_Application
             {
                 // Add the book
             }
+        }
+
+        private void Logout(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            this.Hide();
+            login.ShowDialog();
+            this.Close();
         }
     }
 }
