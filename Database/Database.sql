@@ -44,7 +44,7 @@ CREATE TABLE Users (
     Username Varchar(25) not null UNIQUE,
     Password varchar(100) not null,
     RoleID INT NOT NULL,
-    FOREIGN KEY (RoleID) REFERENCES Roles(id)
+    FOREIGN KEY (RoleID) REFERENCES Roles(id) ON DELETE CASCADE
 );
 
 -- Create Books table
