@@ -1,9 +1,5 @@
-﻿using System.IO.Enumeration;
-using System.Security.Policy;
-using Desktop_Application.Classes;
+﻿using Desktop_Application.Classes;
 using Desktop_Application.Forms.Books;
-using Mysqlx.Crud;
-using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace Desktop_Application
 {
@@ -25,16 +21,6 @@ namespace Desktop_Application
             publishers_pnl.Visible = false;
         }
 
-        // Select books and fill the grid with data
-        private void ListBooks()
-        {
-            Connection connection = new();
-            string filePath = @"SqlQueries\BooksQuery.sql";
-            string query = File.ReadAllText(filePath);
-            var result = connection.Select(query);
-            FillGrid.Fill(books_grd, result);
-        }
-
         // Shows the Dashboard after hiding previous content.
         private void ShowDashboard(object sender, EventArgs e)
         {
@@ -52,7 +38,7 @@ namespace Desktop_Application
             {
                 HidePanels();
                 books_pnl.Visible = true;
-                ListBooks();
+                HandleQueries.ListBooks(books_grd);
             }
         }
 
@@ -103,7 +89,7 @@ namespace Desktop_Application
 
         private void RefreshBooks(object sender, EventArgs e)
         {
-            ListBooks();
+            HandleQueries.ListBooks(books_grd);
         }
 
         private void EditBook(object sender, EventArgs e)
@@ -122,7 +108,12 @@ namespace Desktop_Application
             removeBookConfirmation.ShowDialog();
             if (removeBookConfirmation.DialogResult == DialogResult.OK)
             {
-                // Remove the book
+                List<string> selectedISBNs = [];
+                foreach(DataGridViewRow row in books_grd.SelectedRows)
+                {
+                    selectedISBNs.Add(row.Cells["ISBN"].Value.ToString() ?? string.Empty);
+                }
+                HandleQueries.DeleteBooks(books_grd, selectedISBNs);
             }
         }
 

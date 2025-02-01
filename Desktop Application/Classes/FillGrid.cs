@@ -4,7 +4,7 @@
     {
         public static void Fill(DataGridView grid, List<object[]> data)
         {
-            // Cleans the grid
+            // Clears the grid
             grid.Rows.Clear();
 
             foreach (var row in data)
