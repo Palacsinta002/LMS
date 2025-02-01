@@ -61,8 +61,8 @@
             List<object[]> result = [];
             if (OpenConnection())
             {
-                using var cmd = new MySqlCommand(query, _connection);
-                using var dataReader = cmd.ExecuteReader();
+                var cmd = new MySqlCommand(query, _connection);
+                var dataReader = cmd.ExecuteReader();
                 while (dataReader.Read())
                 {
                     object[] row = new object[dataReader.FieldCount];
@@ -74,11 +74,12 @@
             return result;
         }
 
-        internal void Delete(string query)
+        // Insert and delete because it does the same but with a different query
+        internal void InsertDelete(string query)
         {
             if (OpenConnection())
             {
-                MySqlCommand cmd = new MySqlCommand(query, _connection);
+                MySqlCommand cmd = new(query, _connection);
                 cmd.ExecuteNonQuery();
                 CloseConnection();
             }

@@ -31,7 +31,6 @@ namespace Desktop_Application
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddBook));
-            dropDown_category = new ComboBox();
             close_btn = new RoundedButton();
             header = new Panel();
             title = new Label();
@@ -47,19 +46,12 @@ namespace Desktop_Application
             label_title = new Label();
             cancel = new RoundedButton();
             dropDown_publisher = new ComboBox();
-            dropDown_author = new ComboBox();
+            textBox_author = new TextBox();
+            textBox_category = new TextBox();
+            chooseAuthor = new Button();
+            chooseCategory = new Button();
             header.SuspendLayout();
             SuspendLayout();
-            // 
-            // dropDown_category
-            // 
-            dropDown_category.BackColor = Color.WhiteSmoke;
-            dropDown_category.Font = new Font("Yu Gothic UI Semibold", 14F);
-            dropDown_category.FormattingEnabled = true;
-            dropDown_category.Location = new Point(109, 221);
-            dropDown_category.Name = "dropDown_category";
-            dropDown_category.Size = new Size(242, 33);
-            dropDown_category.TabIndex = 42;
             // 
             // close_btn
             // 
@@ -237,22 +229,54 @@ namespace Desktop_Application
             // dropDown_publisher
             // 
             dropDown_publisher.BackColor = Color.WhiteSmoke;
+            dropDown_publisher.DropDownStyle = ComboBoxStyle.DropDownList;
             dropDown_publisher.Font = new Font("Yu Gothic UI Semibold", 14F);
             dropDown_publisher.FormattingEnabled = true;
             dropDown_publisher.Location = new Point(109, 146);
+            dropDown_publisher.MaxDropDownItems = 10;
             dropDown_publisher.Name = "dropDown_publisher";
-            dropDown_publisher.Size = new Size(242, 33);
+            dropDown_publisher.Size = new Size(243, 33);
             dropDown_publisher.TabIndex = 43;
             // 
-            // dropDown_author
+            // textBox_author
             // 
-            dropDown_author.BackColor = Color.WhiteSmoke;
-            dropDown_author.Font = new Font("Yu Gothic UI Semibold", 14F);
-            dropDown_author.FormattingEnabled = true;
-            dropDown_author.Location = new Point(109, 184);
-            dropDown_author.Name = "dropDown_author";
-            dropDown_author.Size = new Size(242, 33);
-            dropDown_author.TabIndex = 44;
+            textBox_author.BackColor = Color.WhiteSmoke;
+            textBox_author.Enabled = false;
+            textBox_author.Font = new Font("Yu Gothic UI Semibold", 14F);
+            textBox_author.Location = new Point(109, 184);
+            textBox_author.Name = "textBox_author";
+            textBox_author.Size = new Size(200, 32);
+            textBox_author.TabIndex = 45;
+            // 
+            // textBox_category
+            // 
+            textBox_category.BackColor = Color.WhiteSmoke;
+            textBox_category.Enabled = false;
+            textBox_category.Font = new Font("Yu Gothic UI Semibold", 14F);
+            textBox_category.Location = new Point(109, 222);
+            textBox_category.Name = "textBox_category";
+            textBox_category.Size = new Size(200, 32);
+            textBox_category.TabIndex = 46;
+            // 
+            // chooseAuthor
+            // 
+            chooseAuthor.Location = new Point(315, 184);
+            chooseAuthor.Name = "chooseAuthor";
+            chooseAuthor.Size = new Size(37, 32);
+            chooseAuthor.TabIndex = 47;
+            chooseAuthor.Text = "...";
+            chooseAuthor.UseVisualStyleBackColor = true;
+            chooseAuthor.Click += OpenChooseAuthor;
+            // 
+            // chooseCategory
+            // 
+            chooseCategory.Location = new Point(315, 222);
+            chooseCategory.Name = "chooseCategory";
+            chooseCategory.Size = new Size(37, 32);
+            chooseCategory.TabIndex = 48;
+            chooseCategory.Text = "...";
+            chooseCategory.UseVisualStyleBackColor = true;
+            chooseCategory.Click += OpenChooseCategory;
             // 
             // AddBook
             // 
@@ -260,9 +284,11 @@ namespace Desktop_Application
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(363, 365);
-            Controls.Add(dropDown_author);
+            Controls.Add(chooseCategory);
+            Controls.Add(chooseAuthor);
+            Controls.Add(textBox_category);
+            Controls.Add(textBox_author);
             Controls.Add(dropDown_publisher);
-            Controls.Add(dropDown_category);
             Controls.Add(header);
             Controls.Add(save);
             Controls.Add(textBox_pubYear);
@@ -288,8 +314,6 @@ namespace Desktop_Application
         }
 
         #endregion
-
-        private ComboBox dropDown_category;
         private RoundedButton close_btn;
         private Panel header;
         private Label title;
@@ -305,6 +329,10 @@ namespace Desktop_Application
         private Label label_title;
         private RoundedButton cancel;
         private ComboBox dropDown_publisher;
-        private ComboBox dropDown_author;
+        private ComboBox dropDown_category;
+        private TextBox textBox_author;
+        private TextBox textBox_category;
+        private Button chooseAuthor;
+        private Button chooseCategory;
     }
 }

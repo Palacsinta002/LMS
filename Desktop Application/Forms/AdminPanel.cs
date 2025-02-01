@@ -98,7 +98,7 @@ namespace Desktop_Application
             editBook.ShowDialog();
             if (editBook.DialogResult == DialogResult.OK)
             {
-                // Update the book's details
+                MessageBox.Show("Book updated succesfully!");
             }
         }
 
@@ -108,12 +108,7 @@ namespace Desktop_Application
             removeBookConfirmation.ShowDialog();
             if (removeBookConfirmation.DialogResult == DialogResult.OK)
             {
-                List<string> selectedISBNs = [];
-                foreach(DataGridViewRow row in books_grd.SelectedRows)
-                {
-                    selectedISBNs.Add(row.Cells["ISBN"].Value.ToString() ?? string.Empty);
-                }
-                HandleQueries.DeleteBooks(books_grd, selectedISBNs);
+                HandleQueries.DeleteBooks(books_grd);
             }
         }
 
@@ -123,7 +118,7 @@ namespace Desktop_Application
             addBook.ShowDialog();
             if (addBook.DialogResult == DialogResult.OK)
             {
-                // Add the book
+                MessageBox.Show("Book uploaded succesfully!");
             }
         }
 

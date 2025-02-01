@@ -7,16 +7,13 @@
     <Compile Update="Forms\AdminPanel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Books\ConfirmationDialogs\AuthorDoesNotExist.cs">
+    <Compile Update="Forms\Books\ChooseAuthor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Books\EditBook.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Books\ConfirmationDialogs\PublisherDoesNotExist.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\Books\ConfirmationDialogs\RemoveBookConfirmation.cs">
+    <Compile Update="Forms\Books\RemoveBookConfirmation.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Login.cs">
