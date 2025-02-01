@@ -70,7 +70,7 @@ CREATE TABLE Books_Categories (
     ISBN BIGINT(13) NOT NULL,
     CategoryID INT NOT NULL,
     PRIMARY KEY (ISBN, CategoryID),
-    FOREIGN KEY (ISBN) REFERENCES Books(ISBN),
+    FOREIGN KEY (ISBN) REFERENCES Books(ISBN) ON DELETE CASCADE,
     FOREIGN KEY (CategoryID) REFERENCES Categories(id) ON DELETE CASCADE
 );
 
@@ -118,6 +118,30 @@ BEGIN
         DueDate = NEW.DueDate,
         ReturnDate = NEW.ReturnDate
     WHERE id = OLD.id;
+END $$
+
+CREATE TRIGGER delete_authors_and_books
+BEFORE DELETE ON Authors
+FOR EACH ROW
+BEGIN
+    DELETE FROM Books
+    WHERE ISBN IN (
+        SELECT ISBN FROM Books_Authors WHERE AuthorID = OLD.id
+    ) AND NOT EXISTS (
+        SELECT ISBN FROM Books_Authors WHERE Books_Authors.ISBN = Books.ISBN AND Books_Authors.AuthorID != OLD.id
+    );
+END $$
+
+CREATE TRIGGER delete_categories_and_books
+BEFORE DELETE ON Categories
+FOR EACH ROW
+BEGIN
+    DELETE FROM Books
+    WHERE ISBN IN (
+        SELECT ISBN FROM Books_Categories WHERE CategoryID = OLD.id
+    ) AND NOT EXISTS (
+        SELECT ISBN FROM Books_Categories WHERE Books_Categories.ISBN = Books.ISBN AND Books_Categories.CategoryID != OLD.id
+    );
 END $$
 
 DELIMITER ;
