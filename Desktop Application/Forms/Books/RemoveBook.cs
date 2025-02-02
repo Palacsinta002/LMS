@@ -2,9 +2,9 @@
 
 namespace Desktop_Application.Forms.Books
 {
-    public partial class RemoveBookConfirmation : Form
+    public partial class RemoveBook : Form
     {
-        public RemoveBookConfirmation()
+        public RemoveBook()
         {
             InitializeComponent();
         }
@@ -19,8 +19,10 @@ namespace Desktop_Application.Forms.Books
 
         private void Yes(object sender, EventArgs e)
         {
-            HandleQueries.DeleteBooks(adminPanel.books_grd);
-            this.DialogResult = DialogResult.OK;
+            HandleQueries.Delete(adminPanel.books_grd, "Books", "ISBN");
+            HandleQueries.SelectFill(adminPanel.books_grd, "BookSelect");
+            MessageBox.Show("Book removed succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
         }
     }
 }

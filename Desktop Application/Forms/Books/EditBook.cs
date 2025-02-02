@@ -19,7 +19,7 @@ namespace Desktop_Application
 
         private void Save(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Book updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

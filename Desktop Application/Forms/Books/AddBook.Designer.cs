@@ -122,7 +122,7 @@ namespace Desktop_Application
             // 
             textBox_pubYear.BackColor = Color.WhiteSmoke;
             textBox_pubYear.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_pubYear.Location = new Point(168, 108);
+            textBox_pubYear.Location = new Point(168, 146);
             textBox_pubYear.MaxLength = 4;
             textBox_pubYear.Name = "textBox_pubYear";
             textBox_pubYear.Size = new Size(56, 32);
@@ -142,7 +142,7 @@ namespace Desktop_Application
             // 
             label_pubYear.AutoSize = true;
             label_pubYear.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label_pubYear.Location = new Point(12, 111);
+            label_pubYear.Location = new Point(12, 149);
             label_pubYear.Name = "label_pubYear";
             label_pubYear.Size = new Size(150, 25);
             label_pubYear.TabIndex = 37;
@@ -162,7 +162,7 @@ namespace Desktop_Application
             // 
             label_category.AutoSize = true;
             label_category.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label_category.Location = new Point(12, 225);
+            label_category.Location = new Point(12, 187);
             label_category.Name = "label_category";
             label_category.Size = new Size(90, 25);
             label_category.TabIndex = 35;
@@ -172,7 +172,7 @@ namespace Desktop_Application
             // 
             label_author.AutoSize = true;
             label_author.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label_author.Location = new Point(12, 187);
+            label_author.Location = new Point(12, 111);
             label_author.Name = "label_author";
             label_author.Size = new Size(72, 25);
             label_author.TabIndex = 33;
@@ -182,7 +182,7 @@ namespace Desktop_Application
             // 
             label_publisher.AutoSize = true;
             label_publisher.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label_publisher.Location = new Point(12, 149);
+            label_publisher.Location = new Point(12, 225);
             label_publisher.Name = "label_publisher";
             label_publisher.Size = new Size(91, 25);
             label_publisher.TabIndex = 31;
@@ -232,7 +232,7 @@ namespace Desktop_Application
             dropDown_publisher.DropDownStyle = ComboBoxStyle.DropDownList;
             dropDown_publisher.Font = new Font("Yu Gothic UI Semibold", 14F);
             dropDown_publisher.FormattingEnabled = true;
-            dropDown_publisher.Location = new Point(109, 146);
+            dropDown_publisher.Location = new Point(109, 222);
             dropDown_publisher.MaxDropDownItems = 10;
             dropDown_publisher.Name = "dropDown_publisher";
             dropDown_publisher.Size = new Size(379, 33);
@@ -243,7 +243,7 @@ namespace Desktop_Application
             textBox_author.BackColor = Color.WhiteSmoke;
             textBox_author.Enabled = false;
             textBox_author.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_author.Location = new Point(109, 184);
+            textBox_author.Location = new Point(109, 108);
             textBox_author.Name = "textBox_author";
             textBox_author.Size = new Size(336, 32);
             textBox_author.TabIndex = 45;
@@ -253,14 +253,14 @@ namespace Desktop_Application
             textBox_category.BackColor = Color.WhiteSmoke;
             textBox_category.Enabled = false;
             textBox_category.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_category.Location = new Point(109, 222);
+            textBox_category.Location = new Point(109, 184);
             textBox_category.Name = "textBox_category";
             textBox_category.Size = new Size(336, 32);
             textBox_category.TabIndex = 46;
             // 
             // chooseAuthor
             // 
-            chooseAuthor.Location = new Point(451, 184);
+            chooseAuthor.Location = new Point(451, 108);
             chooseAuthor.Name = "chooseAuthor";
             chooseAuthor.Size = new Size(37, 32);
             chooseAuthor.TabIndex = 47;
@@ -270,7 +270,7 @@ namespace Desktop_Application
             // 
             // chooseCategory
             // 
-            chooseCategory.Location = new Point(451, 222);
+            chooseCategory.Location = new Point(451, 184);
             chooseCategory.Name = "chooseCategory";
             chooseCategory.Size = new Size(37, 32);
             chooseCategory.TabIndex = 48;

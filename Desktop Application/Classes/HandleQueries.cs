@@ -1,6 +1,4 @@
-﻿using MySqlX.XDevAPI.Common;
-
-namespace Desktop_Application.Classes
+﻿namespace Desktop_Application.Classes
 {
     internal class HandleQueries
     {
@@ -43,8 +41,9 @@ namespace Desktop_Application.Classes
 
         // Insert functions
         // Insert book what is given by the user
-        internal static void InsertBook()
+        internal static void Insert()
         {
+            Connection connection = new();
 
         }
 
@@ -52,22 +51,15 @@ namespace Desktop_Application.Classes
 
         // Delete functions
         // Delete books and refresh the grid
-        internal static void DeleteBooks(DataGridView books_grd)
+        internal static void Delete(DataGridView grd, string table, string col)
         {
-            List<string> selectedISBNs = [];
-            foreach (DataGridViewRow row in books_grd.SelectedRows)
-            {
-                selectedISBNs.Add(row.Cells["ISBN"].Value.ToString() ?? string.Empty);
-            }
-
             Connection connection = new();
-            foreach (string ISBN in selectedISBNs)
+            foreach (DataGridViewRow row in grd.SelectedRows)
             {
-                string query = $"DELETE FROM Books WHERE ISBN = {ISBN}";
+                string item = row.Cells[col].Value.ToString() ?? string.Empty;
+                string query = $"DELETE FROM {table} WHERE {col} = {item}";
                 connection.Delete(query);
             }
-
-            SelectFill(books_grd, "BookSelect");
         }
     }
 }

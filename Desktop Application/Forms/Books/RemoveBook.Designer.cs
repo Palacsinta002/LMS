@@ -1,6 +1,6 @@
 ﻿namespace Desktop_Application.Forms.Books
 {
-    partial class RemoveBookConfirmation
+    partial class RemoveBook
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RemoveBookConfirmation));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RemoveBook));
             header = new Panel();
             title = new Label();
             close_btn = new Components.RoundedButton();

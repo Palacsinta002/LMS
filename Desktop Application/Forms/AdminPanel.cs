@@ -96,30 +96,18 @@ namespace Desktop_Application
         {
             EditBook editBook = new();
             editBook.ShowDialog();
-            if (editBook.DialogResult == DialogResult.OK)
-            {
-                MessageBox.Show("Book updated succesfully!");
-            }
         }
 
         private void RemoveBook(object sender, EventArgs e)
         {
-            RemoveBookConfirmation removeBookConfirmation = new();
+            RemoveBook removeBookConfirmation = new();
             removeBookConfirmation.ShowDialog();
-            if (removeBookConfirmation.DialogResult == DialogResult.OK)
-            {
-                MessageBox.Show("Book removed succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
 
         private void AddBook(object sender, EventArgs e)
         {
-            AddBook addBook = new AddBook();
+            AddBook addBook = new();
             addBook.ShowDialog();
-            if (addBook.DialogResult == DialogResult.OK)
-            {
-                MessageBox.Show("Book uploaded succesfully!");
-            }
         }
 
         private void Logout(object sender, EventArgs e)

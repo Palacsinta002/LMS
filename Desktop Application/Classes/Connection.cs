@@ -28,6 +28,7 @@
             _connection = new MySqlConnection(connectionString);
         }
 
+        // Opens connection with the defined database
         private bool OpenConnection()
         {
             try
@@ -42,6 +43,7 @@
             }
         }
 
+        // Closes connection with the defined database
         private bool CloseConnection()
         {
             try
@@ -56,6 +58,7 @@
             }
         }
 
+        // Accepts a query and returns an object array list with the results
         internal List<object[]> Select(string query)
         {
             List<object[]> result = [];
@@ -74,8 +77,8 @@
             return result;
         }
 
-        // Insert and delete because it does the same but with a different query
-        internal void Delete(string query)
+        // Accepts a query and runs it
+        internal void SqlCmd(string query)
         {
             if (OpenConnection())
             {
@@ -84,14 +87,10 @@
                 CloseConnection();
             }
         }
-        internal void Insert(string query)
-        {
-            if (OpenConnection())
-            {
-                MySqlCommand cmd = new(query, _connection);
-                cmd.ExecuteNonQuery();
-                CloseConnection();
-            }
-        }
+
+        // Delegates for the SqlCmd because they do the same: Accept a query string and run it.
+        internal Action<string> Insert => SqlCmd;
+        internal Action<string> Update => SqlCmd;
+        internal Action<string> Delete => SqlCmd;
     }
 }

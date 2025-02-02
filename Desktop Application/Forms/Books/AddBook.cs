@@ -25,7 +25,8 @@ namespace Desktop_Application
         {
             if (ValidateInput())
             {
-                this.DialogResult = DialogResult.OK;
+
+                MessageBox.Show("Book uploaded succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
         }
