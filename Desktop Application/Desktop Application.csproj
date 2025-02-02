@@ -35,16 +35,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="SqlQueries\AuthorsSelect.sql">
+    <None Update="SqlQueries\AuthorSelect.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="SqlQueries\BooksSelect.sql">
+    <None Update="SqlQueries\BookSelect.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="SqlQueries\CategoriesSelect.sql">
+    <None Update="SqlQueries\CategorySelect.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="SqlQueries\PublishersSelect.sql">
+    <None Update="SqlQueries\PublisherSelect.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

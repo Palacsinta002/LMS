@@ -18,7 +18,7 @@ namespace Desktop_Application
             CloseThisWindow.Handle(this, close_btn);
             CloseThisWindow.Handle(this, cancel);
 
-            HandleQueries.ListPublisher(dropDown_publisher);
+            HandleQueries.SelectFill(dropDown_publisher, "PublisherSelect");
         }
 
         private void Save(object sender, EventArgs e)

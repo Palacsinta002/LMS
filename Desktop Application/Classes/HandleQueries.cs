@@ -1,7 +1,10 @@
-﻿namespace Desktop_Application.Classes
+﻿using MySqlX.XDevAPI.Common;
+
+namespace Desktop_Application.Classes
 {
     internal class HandleQueries
     {
+        // Requires a grid and an object array list and fills the grid with the data
         private static void FillGrid(DataGridView grd, List<object[]> data)
         {
             // Clears the grid
@@ -13,22 +16,41 @@
             }
         }
 
-        // Select books and fill the grid
-        internal static void ListBooks(DataGridView grd)
+        // Takes a grid and fills it with the Select result of the given filename
+        internal static void SelectFill(DataGridView grd, string fileName)
         {
             Connection connection = new();
-            string filePath = @"SqlQueries\BooksSelect.sql";
+            string filePath = @"SqlQueries\" + fileName + ".sql";
             string query = File.ReadAllText(filePath);
             var result = connection.Select(query);
             FillGrid(grd, result);
         }
 
+        // OVERLOAD Takes a combobox and fills it with the Select result of the given filename
+        internal static void SelectFill(ComboBox cb, string fileName)
+        {
+            Connection connection = new();
+            string filePath = @"SqlQueries\" + fileName + ".sql";
+            string query = File.ReadAllText(filePath);
+            var result = connection.Select(query);
+            foreach (var item in result)
+            {
+                cb.Items.Add(item[0].ToString() ?? string.Empty);
+            }
+        }
+
+
+
+        // Insert functions
         // Insert book what is given by the user
         internal static void InsertBook()
         {
 
         }
 
+
+
+        // Delete functions
         // Delete books and refresh the grid
         internal static void DeleteBooks(DataGridView books_grd)
         {
@@ -45,42 +67,7 @@
                 connection.Delete(query);
             }
 
-            ListBooks(books_grd);
-        }
-
-
-
-        // Select publishers and fill the grid
-        internal static void ListPublisher(DataGridView grd)
-        {
-            Connection connection = new();
-            string filePath = @"SqlQueries\PublishersSelect.sql";
-            string query = File.ReadAllText(filePath);
-            var result = connection.Select(query);
-            FillGrid(grd, result);
-        }
-
-        // Select publishers and fill the dropdown menu overload
-        internal static void ListPublisher(ComboBox cb)
-        {
-            Connection connection = new();
-            string filePath = @"SqlQueries\PublishersSelect.sql";
-            string query = File.ReadAllText(filePath);
-            var result = connection.Select(query);
-            foreach (var item in result)
-            {
-                cb.Items.Add(item[0].ToString() ?? string.Empty);
-            }
-        }
-
-        // Select authors and fill the grid
-        internal static void ListAuthors(DataGridView grd)
-        {
-            Connection connection = new();
-            string filePath = @"SqlQueries\AuthorsSelect.sql";
-            string query = File.ReadAllText(filePath);
-            var result = connection.Select(query);
-            FillGrid(grd, result);
+            SelectFill(books_grd, "BookSelect");
         }
     }
 }

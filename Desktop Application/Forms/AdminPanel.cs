@@ -38,7 +38,7 @@ namespace Desktop_Application
             {
                 HidePanels();
                 books_pnl.Visible = true;
-                HandleQueries.ListBooks(books_grd);
+                HandleQueries.SelectFill(books_grd, "BookSelect");
             }
         }
 
@@ -89,7 +89,7 @@ namespace Desktop_Application
 
         private void RefreshBooks(object sender, EventArgs e)
         {
-            HandleQueries.ListBooks(books_grd);
+            HandleQueries.SelectFill(books_grd, "BookSelect");
         }
 
         private void EditBook(object sender, EventArgs e)

@@ -23,16 +23,7 @@ namespace Desktop_Application.Forms.Books
             CloseThisWindow.Handle(this, close_btn);
             CloseThisWindow.Handle(this, cancel);
 
-            Connection connection = new();
-            string filePath = @"SqlQueries\CategoriesSelect.sql";
-            string query = File.ReadAllText(filePath);
-            var result = connection.Select(query);
-
-            chooseCategory_grd.Rows.Clear();
-            foreach (var row in result)
-            {
-                chooseCategory_grd.Rows.Add(row[0]);
-            }
+            HandleQueries.SelectFill(chooseCategory_grd, "CategorySelect");
         }
 
         private void Ok(object sender, EventArgs e)

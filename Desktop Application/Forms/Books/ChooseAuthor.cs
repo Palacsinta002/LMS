@@ -23,18 +23,7 @@ namespace Desktop_Application.Forms.Books
             CloseThisWindow.Handle(this, close_btn);
             CloseThisWindow.Handle(this, cancel);
 
-            HandleQueries.ListAuthors(chooseAuthor_grd);
-
-            Connection connection = new();
-            string filePath = @"SqlQueries\AuthorsSelect.sql";
-            string query = File.ReadAllText(filePath);
-            var result = connection.Select(query);
-
-            chooseAuthor_grd.Rows.Clear();
-            foreach (var row in result)
-            {
-                chooseAuthor_grd.Rows.Add(row[0]);
-            }
+            HandleQueries.SelectFill(chooseAuthor_grd, "AuthorSelect");
         }
 
         private void Ok(object sender, EventArgs e)
