@@ -1,9 +1,18 @@
-﻿using MySqlX.XDevAPI.Common;
-
-namespace Desktop_Application.Classes
+﻿namespace Desktop_Application.Classes
 {
     internal class HandleQueries
     {
+        private static void FillGrid(DataGridView grd, List<object[]> data)
+        {
+            // Clears the grid
+            grd.Rows.Clear();
+
+            foreach (var row in data)
+            {
+                grd.Rows.Add(row.ToArray());
+            }
+        }
+
         // Select books and fill the grid
         internal static void ListBooks(DataGridView grd)
         {
@@ -11,7 +20,7 @@ namespace Desktop_Application.Classes
             string filePath = @"SqlQueries\BooksSelect.sql";
             string query = File.ReadAllText(filePath);
             var result = connection.Select(query);
-            FillGrid.Fill(grd, result);
+            FillGrid(grd, result);
         }
 
         // Insert book what is given by the user
@@ -33,7 +42,7 @@ namespace Desktop_Application.Classes
             foreach (string ISBN in selectedISBNs)
             {
                 string query = $"DELETE FROM Books WHERE ISBN = {ISBN}";
-                connection.InsertDelete(query);
+                connection.Delete(query);
             }
 
             ListBooks(books_grd);
@@ -48,7 +57,7 @@ namespace Desktop_Application.Classes
             string filePath = @"SqlQueries\PublishersSelect.sql";
             string query = File.ReadAllText(filePath);
             var result = connection.Select(query);
-            FillGrid.Fill(grd, result);
+            FillGrid(grd, result);
         }
 
         // Select publishers and fill the dropdown menu overload
@@ -71,7 +80,7 @@ namespace Desktop_Application.Classes
             string filePath = @"SqlQueries\AuthorsSelect.sql";
             string query = File.ReadAllText(filePath);
             var result = connection.Select(query);
-            FillGrid.Fill(grd, result);
+            FillGrid(grd, result);
         }
     }
 }

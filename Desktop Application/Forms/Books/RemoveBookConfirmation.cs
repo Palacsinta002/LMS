@@ -19,8 +19,8 @@ namespace Desktop_Application.Forms.Books
 
         private void Yes(object sender, EventArgs e)
         {
+            HandleQueries.DeleteBooks(adminPanel.books_grd);
             this.DialogResult = DialogResult.OK;
-            // Remove the book from the database
         }
     }
 }

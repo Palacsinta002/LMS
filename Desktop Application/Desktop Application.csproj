@@ -41,6 +41,9 @@
     <None Update="SqlQueries\BooksSelect.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="SqlQueries\CategoriesSelect.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="SqlQueries\PublishersSelect.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

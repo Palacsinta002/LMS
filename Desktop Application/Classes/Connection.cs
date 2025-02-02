@@ -75,7 +75,16 @@
         }
 
         // Insert and delete because it does the same but with a different query
-        internal void InsertDelete(string query)
+        internal void Delete(string query)
+        {
+            if (OpenConnection())
+            {
+                MySqlCommand cmd = new(query, _connection);
+                cmd.ExecuteNonQuery();
+                CloseConnection();
+            }
+        }
+        internal void Insert(string query)
         {
             if (OpenConnection())
             {

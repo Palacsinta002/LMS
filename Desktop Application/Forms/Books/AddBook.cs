@@ -25,8 +25,6 @@ namespace Desktop_Application
         {
             if (ValidateInput())
             {
-                //HandleQueries.InsertBook();
-                // Itt insertelni kell az author-okat, meg azok kapcsolatait ChooseAuthor.SelectedAuthor-al. Ide majd jön ugyan így a category illetve a többi adat pl: textBox_title.Text -> Title oszlop az adatbázisban
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -79,12 +77,15 @@ namespace Desktop_Application
             ChooseAuthor chooseAuthor = new();
             chooseAuthor.ShowDialog();
 
-            textBox_author.Text = string.Join(';', ChooseAuthor.SelectedAuthors);
+            textBox_author.Text = string.Join(", ", ChooseAuthor.SelectedAuthors);
         }
 
         private void OpenChooseCategory(object sender, EventArgs e)
         {
+            ChooseCategory chooseCategory = new();
+            chooseCategory.ShowDialog();
 
+            textBox_category.Text = string.Join(", ", ChooseCategory.SelectedCategories);
         }
     }
 }

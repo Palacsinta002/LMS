@@ -2,16 +2,16 @@
 
 namespace Desktop_Application.Forms.Books
 {
-    public partial class ChooseAuthor : Form
+    public partial class ChooseCategory : Form
     {
-        private static List<string> selectedAuthors = [];
-        public static List<string> SelectedAuthors
+        private static List<string> selectedCategories = [];
+        public static List<string> SelectedCategories
         {
-            get { return selectedAuthors; }
-            set { selectedAuthors = value; }
+            get { return selectedCategories; }
+            set { selectedCategories = value; }
         }
 
-        public ChooseAuthor()
+        public ChooseCategory()
         {
             InitializeComponent();
         }
@@ -23,26 +23,24 @@ namespace Desktop_Application.Forms.Books
             CloseThisWindow.Handle(this, close_btn);
             CloseThisWindow.Handle(this, cancel);
 
-            HandleQueries.ListAuthors(chooseAuthor_grd);
-
             Connection connection = new();
-            string filePath = @"SqlQueries\AuthorsSelect.sql";
+            string filePath = @"SqlQueries\CategoriesSelect.sql";
             string query = File.ReadAllText(filePath);
             var result = connection.Select(query);
 
-            chooseAuthor_grd.Rows.Clear();
+            chooseCategory_grd.Rows.Clear();
             foreach (var row in result)
             {
-                chooseAuthor_grd.Rows.Add(row[0]);
+                chooseCategory_grd.Rows.Add(row[0]);
             }
         }
 
         private void Ok(object sender, EventArgs e)
         {
-            selectedAuthors = [];
-            foreach (DataGridViewRow row in chooseAuthor_grd.SelectedRows)
+            selectedCategories = [];
+            foreach (DataGridViewRow row in chooseCategory_grd.SelectedRows)
             {
-                selectedAuthors.Add(row.Cells["Author"].Value.ToString() ?? string.Empty);
+                selectedCategories.Add(row.Cells["Category"].Value.ToString() ?? string.Empty);
             }
             this.Close();
         }

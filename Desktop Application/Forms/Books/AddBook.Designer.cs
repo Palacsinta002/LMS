@@ -68,7 +68,7 @@ namespace Desktop_Application
             close_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             close_btn.ForeColor = Color.White;
             close_btn.Image = (Image)resources.GetObject("close_btn.Image");
-            close_btn.Location = new Point(315, 10);
+            close_btn.Location = new Point(450, 11);
             close_btn.Name = "close_btn";
             close_btn.Size = new Size(36, 35);
             close_btn.TabIndex = 25;
@@ -83,14 +83,14 @@ namespace Desktop_Application
             header.Controls.Add(close_btn);
             header.Location = new Point(1, 1);
             header.Name = "header";
-            header.Size = new Size(361, 55);
+            header.Size = new Size(497, 55);
             header.TabIndex = 41;
             // 
             // title
             // 
             title.AutoSize = true;
             title.Font = new Font("Yu Gothic UI Semibold", 16F);
-            title.Location = new Point(126, 12);
+            title.Location = new Point(197, 12);
             title.Name = "title";
             title.Size = new Size(111, 30);
             title.TabIndex = 2;
@@ -108,7 +108,7 @@ namespace Desktop_Application
             save.FlatStyle = FlatStyle.Flat;
             save.Font = new Font("Yu Gothic UI Semibold", 14F);
             save.ForeColor = Color.White;
-            save.Location = new Point(186, 312);
+            save.Location = new Point(173, 317);
             save.Name = "save";
             save.Size = new Size(80, 36);
             save.TabIndex = 40;
@@ -125,7 +125,7 @@ namespace Desktop_Application
             textBox_pubYear.Location = new Point(168, 108);
             textBox_pubYear.MaxLength = 4;
             textBox_pubYear.Name = "textBox_pubYear";
-            textBox_pubYear.Size = new Size(184, 32);
+            textBox_pubYear.Size = new Size(56, 32);
             textBox_pubYear.TabIndex = 39;
             // 
             // textBox_isbn
@@ -135,7 +135,7 @@ namespace Desktop_Application
             textBox_isbn.Location = new Point(109, 260);
             textBox_isbn.MaxLength = 13;
             textBox_isbn.Name = "textBox_isbn";
-            textBox_isbn.Size = new Size(243, 32);
+            textBox_isbn.Size = new Size(379, 32);
             textBox_isbn.TabIndex = 38;
             // 
             // label_pubYear
@@ -194,7 +194,7 @@ namespace Desktop_Application
             textBox_title.Font = new Font("Yu Gothic UI Semibold", 14F);
             textBox_title.Location = new Point(109, 70);
             textBox_title.Name = "textBox_title";
-            textBox_title.Size = new Size(243, 32);
+            textBox_title.Size = new Size(379, 32);
             textBox_title.TabIndex = 30;
             // 
             // label_title
@@ -218,7 +218,7 @@ namespace Desktop_Application
             cancel.FlatStyle = FlatStyle.Flat;
             cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
             cancel.ForeColor = Color.Black;
-            cancel.Location = new Point(272, 312);
+            cancel.Location = new Point(259, 317);
             cancel.Name = "cancel";
             cancel.Size = new Size(80, 36);
             cancel.TabIndex = 28;
@@ -235,7 +235,7 @@ namespace Desktop_Application
             dropDown_publisher.Location = new Point(109, 146);
             dropDown_publisher.MaxDropDownItems = 10;
             dropDown_publisher.Name = "dropDown_publisher";
-            dropDown_publisher.Size = new Size(243, 33);
+            dropDown_publisher.Size = new Size(379, 33);
             dropDown_publisher.TabIndex = 43;
             // 
             // textBox_author
@@ -245,7 +245,7 @@ namespace Desktop_Application
             textBox_author.Font = new Font("Yu Gothic UI Semibold", 14F);
             textBox_author.Location = new Point(109, 184);
             textBox_author.Name = "textBox_author";
-            textBox_author.Size = new Size(200, 32);
+            textBox_author.Size = new Size(336, 32);
             textBox_author.TabIndex = 45;
             // 
             // textBox_category
@@ -255,12 +255,12 @@ namespace Desktop_Application
             textBox_category.Font = new Font("Yu Gothic UI Semibold", 14F);
             textBox_category.Location = new Point(109, 222);
             textBox_category.Name = "textBox_category";
-            textBox_category.Size = new Size(200, 32);
+            textBox_category.Size = new Size(336, 32);
             textBox_category.TabIndex = 46;
             // 
             // chooseAuthor
             // 
-            chooseAuthor.Location = new Point(315, 184);
+            chooseAuthor.Location = new Point(451, 184);
             chooseAuthor.Name = "chooseAuthor";
             chooseAuthor.Size = new Size(37, 32);
             chooseAuthor.TabIndex = 47;
@@ -270,7 +270,7 @@ namespace Desktop_Application
             // 
             // chooseCategory
             // 
-            chooseCategory.Location = new Point(315, 222);
+            chooseCategory.Location = new Point(451, 222);
             chooseCategory.Name = "chooseCategory";
             chooseCategory.Size = new Size(37, 32);
             chooseCategory.TabIndex = 48;
@@ -283,7 +283,7 @@ namespace Desktop_Application
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(363, 365);
+            ClientSize = new Size(500, 365);
             Controls.Add(chooseCategory);
             Controls.Add(chooseAuthor);
             Controls.Add(textBox_category);

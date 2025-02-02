@@ -1514,7 +1514,7 @@ namespace Desktop_Application
         private Label dashboard_lbl4;
         private DataGridView dashboard_grd;
         private Panel books_pnl;
-        private DataGridView books_grd;
+        internal static DataGridView books_grd;
         private Label books_lbl1;
         private RoundedButton books_remove_btn;
         private RoundedButton books_add_btn;

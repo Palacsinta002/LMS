@@ -94,7 +94,7 @@ namespace Desktop_Application
 
         private void EditBook(object sender, EventArgs e)
         {
-            EditBook editBook = new EditBook();
+            EditBook editBook = new();
             editBook.ShowDialog();
             if (editBook.DialogResult == DialogResult.OK)
             {
@@ -104,11 +104,11 @@ namespace Desktop_Application
 
         private void RemoveBook(object sender, EventArgs e)
         {
-            RemoveBookConfirmation removeBookConfirmation = new RemoveBookConfirmation();
+            RemoveBookConfirmation removeBookConfirmation = new();
             removeBookConfirmation.ShowDialog();
             if (removeBookConfirmation.DialogResult == DialogResult.OK)
             {
-                HandleQueries.DeleteBooks(books_grd);
+                MessageBox.Show("Book removed succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -124,7 +124,7 @@ namespace Desktop_Application
 
         private void Logout(object sender, EventArgs e)
         {
-            Login login = new Login();
+            Login login = new();
             this.Hide();
             login.ShowDialog();
             this.Close();
