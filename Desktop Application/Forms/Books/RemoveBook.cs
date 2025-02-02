@@ -20,8 +20,8 @@ namespace Desktop_Application.Forms.Books
         private void Yes(object sender, EventArgs e)
         {
             HandleQueries.Delete(adminPanel.books_grd, "Books", "ISBN");
-            HandleQueries.SelectFill(adminPanel.books_grd, "BookSelect");
             MessageBox.Show("Book removed succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            HandleQueries.SelectFill(adminPanel.books_grd, "BookSelect");
             this.Close();
         }
     }

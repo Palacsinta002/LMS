@@ -25,8 +25,9 @@ namespace Desktop_Application
         {
             if (ValidateInput())
             {
-
+                HandleQueries.InsertBook(textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, ChooseAuthor.SelectedAuthors, ChooseCategory.SelectedCategories);
                 MessageBox.Show("Book uploaded succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                HandleQueries.SelectFill(adminPanel.books_grd, "BookSelect");
                 this.Close();
             }
         }

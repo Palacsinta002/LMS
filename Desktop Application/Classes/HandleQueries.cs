@@ -40,11 +40,23 @@
 
 
         // Insert functions
-        // Insert book what is given by the user
-        internal static void Insert()
+        // Insert book with the given arguments
+        internal static void InsertBook(string isbn, string publisher, string title, string pubYear, List<string> authors, List<string> categories)
         {
             Connection connection = new();
+            string query = $"INSERT INTO Books (ISBN, PublisherID, Title, PublicationYear) VALUES ({isbn}, (SELECT id FROM Publishers WHERE Publisher = '{publisher}'), '{title}', {pubYear})";
+            connection.Insert(query);
 
+            for (int i = 0; i < authors.Count; i++)
+            {
+                query = $"INSERT INTO Books_Authors (ISBN, AuthorID) VALUES ({isbn}, (SELECT id FROM Authors WHERE Author = '{authors[i].ToString()}'))";
+                connection.Insert(query);
+            }
+            for (int i = 0; i < categories.Count; i++)
+            {
+                query = $"INSERT INTO Books_Categories (ISBN, CategoryID) VALUES ({isbn}, (SELECT id FROM Categories WHERE Category = '{categories[i].ToString()}'))";
+                connection.Insert(query);
+            }
         }
 
 

@@ -193,6 +193,7 @@ namespace Desktop_Application
             textBox_title.BackColor = Color.WhiteSmoke;
             textBox_title.Font = new Font("Yu Gothic UI Semibold", 14F);
             textBox_title.Location = new Point(109, 70);
+            textBox_title.MaxLength = 255;
             textBox_title.Name = "textBox_title";
             textBox_title.Size = new Size(379, 32);
             textBox_title.TabIndex = 30;
@@ -329,7 +330,6 @@ namespace Desktop_Application
         private Label label_title;
         private RoundedButton cancel;
         private ComboBox dropDown_publisher;
-        private ComboBox dropDown_category;
         private TextBox textBox_author;
         private TextBox textBox_category;
         private Button chooseAuthor;
