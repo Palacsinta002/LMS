@@ -25,7 +25,7 @@ namespace Desktop_Application
         {
             if (ValidateInput())
             {
-                HandleQueries.InsertBook(textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, ChooseAuthor.SelectedAuthors, ChooseCategory.SelectedCategories);
+                HandleQueries.InsertBook(textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, textBox_author.Text, textBox_category.Text);
                 MessageBox.Show("Book uploaded succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 HandleQueries.SelectFill(adminPanel.books_grd, "BookSelect");
                 this.Close();
@@ -67,7 +67,7 @@ namespace Desktop_Application
 
             if (!Regex.IsMatch(textBox_isbn.Text, "^[0-9]{13}$"))
             {
-                MessageBox.Show("ISBN number must be a 4 digit number!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("ISBN number must be a 13 digit number!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 

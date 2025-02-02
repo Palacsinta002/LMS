@@ -122,7 +122,7 @@ namespace Desktop_Application
             // 
             textBox_pubYear.BackColor = Color.WhiteSmoke;
             textBox_pubYear.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_pubYear.Location = new Point(168, 146);
+            textBox_pubYear.Location = new Point(168, 108);
             textBox_pubYear.MaxLength = 4;
             textBox_pubYear.Name = "textBox_pubYear";
             textBox_pubYear.Size = new Size(56, 32);
@@ -132,17 +132,17 @@ namespace Desktop_Application
             // 
             textBox_isbn.BackColor = Color.WhiteSmoke;
             textBox_isbn.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_isbn.Location = new Point(109, 260);
+            textBox_isbn.Location = new Point(109, 261);
             textBox_isbn.MaxLength = 13;
             textBox_isbn.Name = "textBox_isbn";
-            textBox_isbn.Size = new Size(379, 32);
+            textBox_isbn.Size = new Size(152, 32);
             textBox_isbn.TabIndex = 38;
             // 
             // label_pubYear
             // 
             label_pubYear.AutoSize = true;
             label_pubYear.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label_pubYear.Location = new Point(12, 149);
+            label_pubYear.Location = new Point(12, 111);
             label_pubYear.Name = "label_pubYear";
             label_pubYear.Size = new Size(150, 25);
             label_pubYear.TabIndex = 37;
@@ -152,7 +152,7 @@ namespace Desktop_Application
             // 
             label_isbn.AutoSize = true;
             label_isbn.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label_isbn.Location = new Point(12, 263);
+            label_isbn.Location = new Point(12, 264);
             label_isbn.Name = "label_isbn";
             label_isbn.Size = new Size(54, 25);
             label_isbn.TabIndex = 36;
@@ -172,7 +172,7 @@ namespace Desktop_Application
             // 
             label_author.AutoSize = true;
             label_author.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label_author.Location = new Point(12, 111);
+            label_author.Location = new Point(12, 149);
             label_author.Name = "label_author";
             label_author.Size = new Size(72, 25);
             label_author.TabIndex = 33;
@@ -244,7 +244,7 @@ namespace Desktop_Application
             textBox_author.BackColor = Color.WhiteSmoke;
             textBox_author.Enabled = false;
             textBox_author.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_author.Location = new Point(109, 108);
+            textBox_author.Location = new Point(109, 146);
             textBox_author.Name = "textBox_author";
             textBox_author.Size = new Size(336, 32);
             textBox_author.TabIndex = 45;
@@ -261,7 +261,7 @@ namespace Desktop_Application
             // 
             // chooseAuthor
             // 
-            chooseAuthor.Location = new Point(451, 108);
+            chooseAuthor.Location = new Point(451, 146);
             chooseAuthor.Name = "chooseAuthor";
             chooseAuthor.Size = new Size(37, 32);
             chooseAuthor.TabIndex = 47;

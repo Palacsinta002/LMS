@@ -94,6 +94,11 @@ namespace Desktop_Application
 
         private void EditBook(object sender, EventArgs e)
         {
+            if (books_grd.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("You can only edit one book at a time!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             EditBook editBook = new();
             editBook.ShowDialog();
         }

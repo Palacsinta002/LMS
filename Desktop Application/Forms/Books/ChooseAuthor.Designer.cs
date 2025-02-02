@@ -49,7 +49,7 @@ namespace Desktop_Application.Forms.Books
             // 
             title.AutoSize = true;
             title.Font = new Font("Yu Gothic UI Semibold", 16F);
-            title.Location = new Point(70, 13);
+            title.Location = new Point(156, 13);
             title.Name = "title";
             title.Size = new Size(163, 30);
             title.TabIndex = 2;
@@ -62,7 +62,7 @@ namespace Desktop_Application.Forms.Books
             header.Controls.Add(close_btn);
             header.Location = new Point(1, 1);
             header.Name = "header";
-            header.Size = new Size(311, 55);
+            header.Size = new Size(474, 55);
             header.TabIndex = 60;
             // 
             // close_btn
@@ -80,7 +80,7 @@ namespace Desktop_Application.Forms.Books
             close_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             close_btn.ForeColor = Color.White;
             close_btn.Image = (Image)resources.GetObject("close_btn.Image");
-            close_btn.Location = new Point(265, 8);
+            close_btn.Location = new Point(427, 8);
             close_btn.Name = "close_btn";
             close_btn.Size = new Size(36, 35);
             close_btn.TabIndex = 25;
@@ -99,7 +99,7 @@ namespace Desktop_Application.Forms.Books
             cancel.FlatStyle = FlatStyle.Flat;
             cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
             cancel.ForeColor = Color.Black;
-            cancel.Location = new Point(157, 387);
+            cancel.Location = new Point(240, 387);
             cancel.Name = "cancel";
             cancel.Size = new Size(80, 36);
             cancel.TabIndex = 49;
@@ -119,7 +119,7 @@ namespace Desktop_Application.Forms.Books
             save.FlatStyle = FlatStyle.Flat;
             save.Font = new Font("Yu Gothic UI Semibold", 14F);
             save.ForeColor = Color.White;
-            save.Location = new Point(71, 387);
+            save.Location = new Point(154, 387);
             save.Name = "save";
             save.Size = new Size(80, 36);
             save.TabIndex = 59;
@@ -148,7 +148,7 @@ namespace Desktop_Application.Forms.Books
             chooseAuthor_grd.ShowCellToolTips = false;
             chooseAuthor_grd.ShowEditingIcon = false;
             chooseAuthor_grd.ShowRowErrors = false;
-            chooseAuthor_grd.Size = new Size(292, 310);
+            chooseAuthor_grd.Size = new Size(452, 310);
             chooseAuthor_grd.TabIndex = 0;
             // 
             // Author
@@ -160,17 +160,17 @@ namespace Desktop_Application.Forms.Books
             // 
             // Books
             // 
-            Books.HeaderText = "Books";
+            Books.HeaderText = "Author's Books";
             Books.Name = "Books";
             Books.ReadOnly = true;
-            Books.Width = 64;
+            Books.Width = 112;
             // 
             // ChooseAuthor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(314, 435);
+            ClientSize = new Size(476, 435);
             Controls.Add(chooseAuthor_grd);
             Controls.Add(header);
             Controls.Add(cancel);

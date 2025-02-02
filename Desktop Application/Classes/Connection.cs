@@ -5,7 +5,6 @@
     internal class Connection
     {
         //https://youtu.be/eJi02kg-S8g - Grid design
-        // https://www.codeproject.com/Articles/43438/Connect-Csharp-to-MySQL
 
         private MySqlConnection _connection;
         private string _server;
