@@ -23,7 +23,7 @@ class UserClass{
         $username = validateTheInput($username);
         $password = validateTheInput($password);
         
-        $sql = "SELECT users.userid, users.username, users.roleID, users.firstname, users.lastname, users.email from users where username = '$username' and password = '$password'";
+        $sql = "SELECT users.id, users.username, users.roleID, users.firstname, users.lastname, users.email from users where username = '$username' and password = '$password'";
         $result = $conn->query($sql);
         ####################  logged in  ####################
         if ($result->num_rows > 0){
