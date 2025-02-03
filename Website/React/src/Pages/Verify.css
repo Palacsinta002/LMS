@@ -1,3 +1,7 @@
+body {
+    background-image: url(../circles.png);
+}
+
 .verify {
     display: flex;
     flex-direction: row;
@@ -5,7 +9,6 @@
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 2rem;
-    background-color: #504DB4;
     color: white;
     min-height: 100vh;
 }
@@ -36,7 +39,8 @@
     width: 90%;
     color: black;
 }
-.verify-container i{
+
+.verify-container i {
     font-size: 16vh;
     display: flex;
     justify-content: center;
@@ -97,11 +101,13 @@
     background-color: #48459E;
     color: white;
 }
-label{
+
+label {
     color: black;
     font-size: 1.2em;
     font-weight: 500;
 }
+
 .link2 {
     display: block;
     margin-top: 1rem;
@@ -124,10 +130,12 @@ label{
     .verify-card {
         min-width: 100%;
     }
-    .verify-top{
+
+    .verify-top {
         font-size: 2.5rem;
     }
-    .verify-bottom{
+
+    .verify-bottom {
         font-size: 2rem;
     }
 }
