@@ -1,7 +1,7 @@
 ﻿SELECT 
 	Authors.Author,
-    GROUP_CONCAT(DISTINCT Books.Title SEPARATOR ', ')
+    COALESCE(GROUP_CONCAT(DISTINCT Books.Title SEPARATOR ', '), "-")
 FROM Authors
-JOIN Books_Authors ON Authors.id = Books_Authors.AuthorID
-JOIN Books ON Books_Authors.ISBN = Books.ISBN
+LEFT JOIN Books_Authors ON Authors.id = Books_Authors.AuthorID
+LEFT JOIN Books ON Books_Authors.ISBN = Books.ISBN
 GROUP BY Author;

@@ -77,7 +77,7 @@
         }
 
         // Accepts a query and runs it
-        internal void SqlCmd(string query)
+        internal void RunSqlCommand(string query)
         {
             if (OpenConnection())
             {
@@ -86,10 +86,5 @@
                 CloseConnection();
             }
         }
-
-        // Delegates for the SqlCmd because they do the same: Accept a query string and run it.
-        internal Action<string> Insert => SqlCmd;
-        internal Action<string> Update => SqlCmd;
-        internal Action<string> Delete => SqlCmd;
     }
 }

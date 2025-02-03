@@ -50,17 +50,17 @@ namespace Desktop_Application.Classes
 
             Connection connection = new();
             string query = $"INSERT INTO Books (ISBN, PublisherID, Title, PublicationYear) VALUES ({isbn}, (SELECT id FROM Publishers WHERE Publisher = \"{publisher}\"), \"{title}\", {pubYear})";
-            connection.Insert(query);
+            connection.RunSqlCommand(query);
 
             for (int i = 0; i < authors.Count; i++)
             {
                 query = $"INSERT INTO Books_Authors (ISBN, AuthorID) VALUES ({isbn}, (SELECT id FROM Authors WHERE Author = \"{authors[i]}\"))";
-                connection.Insert(query);
+                connection.RunSqlCommand(query);
             }
             for (int i = 0; i < categories.Count; i++)
             {
                 query = $"INSERT INTO Books_Categories (ISBN, CategoryID) VALUES ({isbn}, (SELECT id FROM Categories WHERE Category = \"{categories[i]}\"))";
-                connection.Insert(query);
+                connection.RunSqlCommand(query);
             }
         }
 
@@ -86,7 +86,7 @@ namespace Desktop_Application.Classes
             {
                 string item = row.Cells[col].Value.ToString() ?? string.Empty;
                 string query = $"DELETE FROM {table} WHERE {col} = {item}";
-                connection.Delete(query);
+                connection.RunSqlCommand(query);
             }
         }
     }
