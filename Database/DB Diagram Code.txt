@@ -46,11 +46,11 @@ Table Borrowings_backup{
   dueDate date
 }
 Table Books_Authors{
-  Books_ISBN int(13) [primary key, not null]
+  Books_ISBN bigint(13) [primary key, not null]
   Authors_id int(13) [primary key, not null]
 }
 Table Books_Categories{
-  Books_ISBN int(13) [primary key, not null]
+  Books_ISBN bigint(13) [primary key, not null]
   Categories_id int(13) [primary key, not null]
 }
 
