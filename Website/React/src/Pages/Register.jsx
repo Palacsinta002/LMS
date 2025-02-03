@@ -33,7 +33,9 @@ export default function Register() {
         }
       );
       console.log(response.data);
-      navigate("/verify");
+      if(response.data.Success){
+        navigate("/verify");
+      }
     } catch (error) {
       console.error("Registery error:", error);
       setError("Registery error!");
