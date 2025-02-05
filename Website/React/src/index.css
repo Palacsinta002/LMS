@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -5,6 +9,7 @@
   box-sizing: border-box;
   margin: 0;
 }
+
 .HeroSection{
   height: 80vh;
   width: 100vw;
