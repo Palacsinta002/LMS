@@ -47,12 +47,6 @@ namespace Desktop_Application
                 return false;
             }
 
-            if (dropDown_publisher.Text == string.Empty)
-            {
-                MessageBox.Show("You must choose a publisher from the dropdown menu!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
             if (textBox_author.Text == string.Empty)
             {
                 MessageBox.Show("You must choose at least one author!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -62,6 +56,12 @@ namespace Desktop_Application
             if (textBox_category.Text == string.Empty)
             {
                 MessageBox.Show("You must choose at least one vategory!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (dropDown_publisher.Text == string.Empty)
+            {
+                MessageBox.Show("You must choose a publisher from the dropdown menu!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 

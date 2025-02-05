@@ -43,21 +43,15 @@ namespace Desktop_Application
         // returns true if everything is correct
         private bool ValidateInput()
         {
-            if (textBox_title.Text == string.Empty)
+            if (!Regex.IsMatch(textBox_title.Text, @"^([a-z][A-Z][0-9]:',-/s\(\)!\?\.ÖÜÓŐÚÉÁŰÍöüóőúéáűí)+$")) //:',-/s()!?.ÖÜÓŐÚÉÁŰÍöüóőúéáűí 
             {
-                MessageBox.Show("Title is required!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Title is required and must be in the correct format!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
-            if (!Regex.IsMatch(textBox_pubYear.Text, "^[0-9]{4}$"))
+            if (!Regex.IsMatch(textBox_pubYear.Text, @"^[0-9]{4}$"))
             {
                 MessageBox.Show("Publication year must be a 4 digit number!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            if (dropDown_publisher.Text == string.Empty)
-            {
-                MessageBox.Show("You must choose a publisher from the dropdown menu!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
@@ -73,7 +67,13 @@ namespace Desktop_Application
                 return false;
             }
 
-            if (!Regex.IsMatch(textBox_isbn.Text, "^[0-9]{13}$"))
+            if (dropDown_publisher.Text == string.Empty)
+            {
+                MessageBox.Show("You must choose a publisher from the dropdown menu!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (!Regex.IsMatch(textBox_isbn.Text, @"^[0-9]{13}$"))
             {
                 MessageBox.Show("ISBN number must be a 13 digit number!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
