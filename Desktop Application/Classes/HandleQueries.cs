@@ -1,6 +1,4 @@
-﻿using System.Security.Policy;
-
-namespace Desktop_Application.Classes
+﻿namespace Desktop_Application.Classes
 {
     internal class HandleQueries
     {

@@ -111,7 +111,7 @@ namespace Desktop_Application
             save.Location = new Point(173, 317);
             save.Name = "save";
             save.Size = new Size(80, 36);
-            save.TabIndex = 40;
+            save.TabIndex = 7;
             save.TabStop = false;
             save.Text = "Save";
             save.TextColor = Color.White;
@@ -126,7 +126,7 @@ namespace Desktop_Application
             textBox_pubYear.MaxLength = 4;
             textBox_pubYear.Name = "textBox_pubYear";
             textBox_pubYear.Size = new Size(56, 32);
-            textBox_pubYear.TabIndex = 39;
+            textBox_pubYear.TabIndex = 2;
             // 
             // textBox_isbn
             // 
@@ -136,7 +136,7 @@ namespace Desktop_Application
             textBox_isbn.MaxLength = 13;
             textBox_isbn.Name = "textBox_isbn";
             textBox_isbn.Size = new Size(152, 32);
-            textBox_isbn.TabIndex = 38;
+            textBox_isbn.TabIndex = 6;
             // 
             // label_pubYear
             // 
@@ -196,7 +196,7 @@ namespace Desktop_Application
             textBox_title.MaxLength = 255;
             textBox_title.Name = "textBox_title";
             textBox_title.Size = new Size(379, 32);
-            textBox_title.TabIndex = 30;
+            textBox_title.TabIndex = 1;
             // 
             // label_title
             // 
@@ -222,7 +222,7 @@ namespace Desktop_Application
             cancel.Location = new Point(259, 317);
             cancel.Name = "cancel";
             cancel.Size = new Size(80, 36);
-            cancel.TabIndex = 28;
+            cancel.TabIndex = 8;
             cancel.Text = "Cancel";
             cancel.TextColor = Color.Black;
             cancel.UseVisualStyleBackColor = false;
@@ -237,7 +237,7 @@ namespace Desktop_Application
             dropDown_publisher.MaxDropDownItems = 10;
             dropDown_publisher.Name = "dropDown_publisher";
             dropDown_publisher.Size = new Size(379, 33);
-            dropDown_publisher.TabIndex = 43;
+            dropDown_publisher.TabIndex = 5;
             // 
             // textBox_author
             // 
@@ -264,7 +264,7 @@ namespace Desktop_Application
             chooseAuthor.Location = new Point(451, 146);
             chooseAuthor.Name = "chooseAuthor";
             chooseAuthor.Size = new Size(37, 32);
-            chooseAuthor.TabIndex = 47;
+            chooseAuthor.TabIndex = 3;
             chooseAuthor.Text = "...";
             chooseAuthor.UseVisualStyleBackColor = true;
             chooseAuthor.Click += OpenChooseAuthor;
@@ -274,7 +274,7 @@ namespace Desktop_Application
             chooseCategory.Location = new Point(451, 184);
             chooseCategory.Name = "chooseCategory";
             chooseCategory.Size = new Size(37, 32);
-            chooseCategory.TabIndex = 48;
+            chooseCategory.TabIndex = 4;
             chooseCategory.Text = "...";
             chooseCategory.UseVisualStyleBackColor = true;
             chooseCategory.Click += OpenChooseCategory;

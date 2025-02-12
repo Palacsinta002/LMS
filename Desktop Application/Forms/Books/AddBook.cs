@@ -40,6 +40,11 @@ namespace Desktop_Application
                 MessageBox.Show("Title is required!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
+            else if (!Regex.IsMatch(textBox_title.Text, @"^[a-zA-Z0-9\s\-,\.:()'?öüóőúéáűíÖÜÓŐÚÉÁŰÍ]+$"))
+            {
+                MessageBox.Show("Title is not in the correct format! Please check your special characters!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
 
             if (!Regex.IsMatch(textBox_pubYear.Text, "^[0-9]{4}$"))
             {
