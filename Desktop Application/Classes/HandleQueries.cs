@@ -69,6 +69,7 @@
         // Update book with the given arguments
         internal static void UpdateBook(string isbn, string publisher, string title, string pubYear, string authorsString, string categoriesString)
         {
+            AdminPanel adminPanel = new();
             Delete(adminPanel.books_grd, "Books", "ISBN");
 
             InsertBook(isbn, publisher, title, pubYear, authorsString, categoriesString);

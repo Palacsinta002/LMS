@@ -2,7 +2,7 @@
 
 namespace Desktop_Application
 {
-    partial class adminPanel
+    partial class AdminPanel
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace Desktop_Application
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(adminPanel));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminPanel));
             menu_pnl = new Panel();
             panel2 = new Panel();
             button2 = new Button();
@@ -714,6 +714,7 @@ namespace Desktop_Application
             books_src.Size = new Size(208, 32);
             books_src.TabIndex = 1;
             books_src.TabStop = false;
+            books_src.TextChanged += LiveSearch;
             // 
             // books_grd
             // 
@@ -1514,7 +1515,6 @@ namespace Desktop_Application
         private Label dashboard_lbl4;
         private DataGridView dashboard_grd;
         private Panel books_pnl;
-        internal static DataGridView books_grd;
         private Label books_lbl1;
         private RoundedButton books_remove_btn;
         private RoundedButton books_add_btn;
@@ -1584,5 +1584,6 @@ namespace Desktop_Application
         private DataGridViewTextBoxColumn category;
         private DataGridViewTextBoxColumn publisher;
         private DataGridViewTextBoxColumn isbn;
+        internal DataGridView books_grd;
     }
 }

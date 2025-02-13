@@ -18,6 +18,7 @@ namespace Desktop_Application
             CloseThisWindow.Handle(this, close_btn);
             CloseThisWindow.Handle(this, cancel);
 
+            AdminPanel adminPanel = new();
             var selectedRow = adminPanel.books_grd.SelectedRows[0].Cells;
 
             textBox_title.Text = selectedRow["title"].Value.ToString();
@@ -35,6 +36,7 @@ namespace Desktop_Application
             {
                 HandleQueries.UpdateBook(textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, textBox_author.Text, textBox_category.Text);
                 MessageBox.Show("Book updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                AdminPanel adminPanel = new();
                 HandleQueries.SelectFill(adminPanel.books_grd, "BookSelect");
                 this.Close();
             }

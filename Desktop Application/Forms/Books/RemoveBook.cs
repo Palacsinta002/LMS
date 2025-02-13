@@ -19,6 +19,7 @@ namespace Desktop_Application.Forms.Books
 
         private void Yes(object sender, EventArgs e)
         {
+            AdminPanel adminPanel = new();
             HandleQueries.Delete(adminPanel.books_grd, "Books", "ISBN");
             MessageBox.Show("Book removed succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             HandleQueries.SelectFill(adminPanel.books_grd, "BookSelect");

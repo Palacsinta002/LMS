@@ -3,9 +3,9 @@ using Desktop_Application.Forms.Books;
 
 namespace Desktop_Application
 {
-    public partial class adminPanel : Form
+    public partial class AdminPanel : Form
     {
-        public adminPanel()
+        public AdminPanel()
         {
             InitializeComponent();
         }
@@ -121,6 +121,11 @@ namespace Desktop_Application
             this.Hide();
             login.ShowDialog();
             this.Close();
+        }
+
+        private void LiveSearch(object sender, EventArgs e)
+        {
+            //(books_grd.DataSource as DataTable).DefaultView.RowFilter = string.Format("Name LIKE '%{0}%' OR ID LIKE '%{0}%'", books_src.Text);
         }
     }
 }
