@@ -1,14 +1,21 @@
 <?php
 session_start();
-
+$_SESSION["userID"] ?? header("Location: login.php");
 // Adatbázis kapcsolat
-$pdo = new PDO('mysql:host=localhost;dbname=book_rental;charset=utf8', 'root', '');
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+require_once 'conn.php';
+$pdo = connect();
+
 
 // Könyvek lekérdezése az adatbázisból
+
 $stmt = $pdo->query("SELECT * FROM books");
 $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+function resetBooks(){
+    $pdo = connect();
+    $stmt = $pdo->query("SELECT * FROM books");
+    $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $books;
+}
 // Kosár inicializálása
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
@@ -17,7 +24,7 @@ if (!isset($_SESSION['cart'])) {
 // Könyv hozzáadása a kosárhoz, ha elérhető
 if (isset($_GET['add'])) {
     $bookId = (int)$_GET['add'];
-    $stmt = $pdo->prepare("SELECT * FROM books WHERE id = ? AND quantity > 0");
+    $stmt = $pdo->prepare("SELECT * FROM books WHERE id = ?");
     $stmt->execute([$bookId]);
     $book = $stmt->fetch(PDO::FETCH_ASSOC);
     
@@ -40,10 +47,33 @@ if (isset($_GET['clear'])) {
 // Kölcsönzés véglegesítése
 if (isset($_GET['checkout']) && !empty($_SESSION['cart'])) {
     foreach ($_SESSION['cart'] as $bookId => $book) {
-        $pdo->prepare("INSERT INTO rentals (book_id, rented_at) VALUES (?, NOW())")->execute([$bookId]);
+        $pdo->prepare("INSERT INTO rentals (user_id, book_id, rented_at) VALUES (?, ?, NOW())")->execute([$_SESSION["userID"],$bookId]);
         $pdo->prepare("UPDATE books SET quantity = quantity - 1 WHERE id = ?")->execute([$bookId]);
+        $books = resetBooks();
     }
     $_SESSION['cart'] = [];
+}
+if (isset($_GET['reset'])) {
+    $pdo->prepare("UPDATE books SET quantity = 5")->execute();
+    $pdo->prepare("DELETE FROM rentals")->execute();
+    $books = resetBooks();
+    $_SESSION['cart'] = [];
+}
+function renderBooks($books) {
+    foreach ($books as $book) {
+        echo '<div class="book-card">';
+        echo '<strong>' . htmlspecialchars($book['title']) . '</strong><br>';
+        echo htmlspecialchars($book['author']) . '<br>';
+        echo '(' . $book['quantity'] . ' db)';
+        
+        if ($book['quantity'] > 0) {
+            echo ' <a href="?add=' . $book['id'] . '">Kölcsönzés</a>';
+        } else {
+            echo ' <p style="color: red;">Nincs elérhető példány</p>';
+        }
+        
+        echo '</div>';
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -129,18 +159,7 @@ if (isset($_GET['checkout']) && !empty($_SESSION['cart'])) {
         <h1>Könyvkölcsönzés</h1>
         <h2>Elérhető könyvek</h2>
         <div class="book-list">
-            <?php foreach ($books as $book): ?>
-                <div class="book-card">
-                    <strong><?= htmlspecialchars($book['title']) ?></strong><br>
-                    <?= htmlspecialchars($book['author']) ?><br>
-                    (<?= $book['quantity'] ?> db)
-                    <?php if ($book['quantity'] > 0): ?>
-                        <a href="?add=<?= $book['id'] ?>">Kölcsönzés</a>
-                    <?php else: ?>
-                        <p style="color: red;">Nincs elérhető példány</p>
-                    <?php endif; ?>
-                </div>
-            <?php endforeach; ?>
+            <?php renderBooks($books); ?>
         </div>
         
         <h2>Kosár</h2>
@@ -158,6 +177,7 @@ if (isset($_GET['checkout']) && !empty($_SESSION['cart'])) {
         <div class="buttons">
             <a href="?clear=1">Kosár ürítése</a>
             <a href="?checkout=1">Kölcsönzés véglegesítése</a>
+            <a href="?reset">feltöltés</a>
         </div>
     </div>
 </body>
