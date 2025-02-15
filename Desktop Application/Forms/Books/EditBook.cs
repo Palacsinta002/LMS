@@ -53,7 +53,7 @@ namespace Library_Management_System
                 MessageBox.Show("Title is required!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-            else if (!Regex.IsMatch(textBox_title.Text, @"^[a-zA-Z0-9\s\-,\.:()'?öüóőúéáűíÖÜÓŐÚÉÁŰÍ]+$"))
+            else if (!Regex.IsMatch(textBox_title.Text, @"^[^""\\]+$"))
             {
                 MessageBox.Show("Title is not in the correct format! Please check your special characters!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;

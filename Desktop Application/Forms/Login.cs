@@ -1,3 +1,4 @@
+﻿using System.Text.RegularExpressions;
 using Library_Management_System.Classes;
 
 namespace Library_Management_System
@@ -21,22 +22,51 @@ namespace Library_Management_System
         {
             string username = username_textBox.Text;
             string password = password_textBox.Text;
-
-
-
-            bool isAdmin;
-            if(username_textBox.Text == "admin")
+            if (ValidateInput(username, password))
             {
-                isAdmin = true;
+
+
+
+                bool isAdmin;
+                if (username_textBox.Text == "admin")
+                {
+                    isAdmin = true;
+                }
+                else
+                {
+                    isAdmin = false;
+                }
+                AdminPanel adminPanel = new(/*firstname lastname*/username_textBox.Text, isAdmin);
+                this.Hide();
+                adminPanel.ShowDialog();
+                this.Close();
             }
-            else
+        }
+
+        private bool ValidateInput(string username, string password)
+        {
+            if (username == string.Empty)
             {
-                isAdmin = false;
+                MessageBox.Show("Username is required!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
             }
-            AdminPanel adminPanel = new(/*firstname lastname*/username_textBox.Text, isAdmin);
-            this.Hide();
-            adminPanel.ShowDialog();
-            this.Close();
+            else if (!Regex.IsMatch(username, @"^[^""\\]+$"))
+            {
+                MessageBox.Show("Username is not in the correct format! Please check your special characters!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (password == string.Empty)
+            {
+                MessageBox.Show("Password is required!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            else if (!Regex.IsMatch(password, @"^[^""\\]+$"))
+            {
+                MessageBox.Show("Password is not in the correct format! Please check your special characters!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
         }
     }
 }
