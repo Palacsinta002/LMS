@@ -8,7 +8,6 @@ namespace Desktop_Application.Forms.Books
         public static List<string> SelectedAuthors
         {
             get { return selectedAuthors; }
-            set { selectedAuthors = value; }
         }
 
         public ChooseAuthor()

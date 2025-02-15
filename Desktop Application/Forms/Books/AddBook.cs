@@ -6,8 +6,11 @@ namespace Desktop_Application
 {
     public partial class AddBook : Form
     {
-        public AddBook()
+        private readonly DataGridView _books_grd;
+
+        public AddBook(DataGridView books_grd)
         {
+            _books_grd = books_grd;
             InitializeComponent();
         }
 
@@ -26,9 +29,8 @@ namespace Desktop_Application
             if (ValidateInput())
             {
                 HandleQueries.InsertBook(textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, textBox_author.Text, textBox_category.Text);
+                HandleQueries.SelectFill(_books_grd, "BookSelect");
                 MessageBox.Show("Book uploaded succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                AdminPanel adminPanel = new();
-                HandleQueries.SelectFill(adminPanel.books_grd, "BookSelect");
                 this.Close();
             }
         }

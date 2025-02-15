@@ -1,0 +1,36 @@
+﻿namespace Desktop_Application.Classes
+{
+    internal class HandleGrids
+    {
+        // Requires a grid and an object array list and fills the grid with the data
+        internal static void FillGrid(DataGridView grd, List<object[]> data)
+        {
+            // Clears the grid
+            grd.Rows.Clear();
+
+            foreach (var row in data)
+            {
+                grd.Rows.Add(row.ToArray());
+            }
+        }
+
+        internal static void SearchGrid(DataGridView grd, string filterText)
+        {
+            filterText = filterText.Trim().ToLower();
+
+            foreach (DataGridViewRow row in grd.Rows)
+            {
+                string[] cols = { "title", "publicationYear", "isbn" };
+                for(int i = 0; i < cols.Length; i++)
+                {
+                    if (row.Cells[cols[i]].Value.ToString().ToLower().Contains(filterText))
+                    {
+                        row.Visible = true;
+                        break;
+                    }
+                    else row.Visible = false;
+                }
+            }
+        }
+    }
+}

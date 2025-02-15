@@ -6,8 +6,11 @@ namespace Desktop_Application
 {
     public partial class EditBook : Form
     {
-        public EditBook()
+        private readonly DataGridView _books_grd;
+
+        public EditBook(DataGridView books_grd)
         {
+            _books_grd = books_grd;
             InitializeComponent();
         }
 
@@ -18,8 +21,7 @@ namespace Desktop_Application
             CloseThisWindow.Handle(this, close_btn);
             CloseThisWindow.Handle(this, cancel);
 
-            AdminPanel adminPanel = new();
-            var selectedRow = adminPanel.books_grd.SelectedRows[0].Cells;
+            var selectedRow = _books_grd.SelectedRows[0].Cells;
 
             textBox_title.Text = selectedRow["title"].Value.ToString();
             textBox_pubYear.Text = selectedRow["publicationYear"].Value.ToString();
@@ -34,10 +36,9 @@ namespace Desktop_Application
         {
             if (ValidateInput())
             {
-                HandleQueries.UpdateBook(textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, textBox_author.Text, textBox_category.Text);
+                HandleQueries.UpdateBook(_books_grd, textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, textBox_author.Text, textBox_category.Text);
+                HandleQueries.SelectFill(_books_grd, "BookSelect");
                 MessageBox.Show("Book updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                AdminPanel adminPanel = new();
-                HandleQueries.SelectFill(adminPanel.books_grd, "BookSelect");
                 this.Close();
             }
         }

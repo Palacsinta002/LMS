@@ -2,18 +2,6 @@
 {
     internal class HandleQueries
     {
-        // Requires a grid and an object array list and fills the grid with the data
-        private static void FillGrid(DataGridView grd, List<object[]> data)
-        {
-            // Clears the grid
-            grd.Rows.Clear();
-
-            foreach (var row in data)
-            {
-                grd.Rows.Add(row.ToArray());
-            }
-        }
-
         // Takes a grid and fills it with the Select result of the given filename
         internal static void SelectFill(DataGridView grd, string fileName)
         {
@@ -21,7 +9,7 @@
             string filePath = @"SqlQueries\" + fileName + ".sql";
             string query = File.ReadAllText(filePath);
             var result = connection.Select(query);
-            FillGrid(grd, result);
+            HandleGrids.FillGrid(grd, result);
         }
 
         // OVERLOAD Takes a combobox and fills it with the Select result of the given filename
@@ -67,10 +55,9 @@
 
         // Update functions
         // Update book with the given arguments
-        internal static void UpdateBook(string isbn, string publisher, string title, string pubYear, string authorsString, string categoriesString)
+        internal static void UpdateBook(DataGridView books_grd, string isbn, string publisher, string title, string pubYear, string authorsString, string categoriesString)
         {
-            AdminPanel adminPanel = new();
-            Delete(adminPanel.books_grd, "Books", "ISBN");
+            Delete(books_grd, "Books", "ISBN");
 
             InsertBook(isbn, publisher, title, pubYear, authorsString, categoriesString);
         }

@@ -423,6 +423,7 @@ namespace Desktop_Application
             dashboard_pnl.Name = "dashboard_pnl";
             dashboard_pnl.Size = new Size(709, 493);
             dashboard_pnl.TabIndex = 12;
+            dashboard_pnl.Visible = false;
             // 
             // panel5
             // 
@@ -714,7 +715,7 @@ namespace Desktop_Application
             books_src.Size = new Size(208, 32);
             books_src.TabIndex = 1;
             books_src.TabStop = false;
-            books_src.TextChanged += LiveSearch;
+            books_src.TextChanged += SearchBook;
             // 
             // books_grd
             // 
@@ -1443,7 +1444,7 @@ namespace Desktop_Application
             publishers_grd.Size = new Size(604, 359);
             publishers_grd.TabIndex = 16;
             // 
-            // adminPanel
+            // AdminPanel
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -1451,18 +1452,19 @@ namespace Desktop_Application
             ClientSize = new Size(984, 561);
             Controls.Add(header_pnl);
             Controls.Add(menu_pnl);
-            Controls.Add(books_pnl);
             Controls.Add(dashboard_pnl);
             Controls.Add(publishers_pnl);
             Controls.Add(authors_pnl);
             Controls.Add(categories_pnl);
             Controls.Add(borrowings_pnl);
             Controls.Add(members_pnl);
+            Controls.Add(books_pnl);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(1000, 600);
-            Name = "adminPanel";
+            Name = "AdminPanel";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Admin Panel";
+            Load += ShowDashboard;
             menu_pnl.ResumeLayout(false);
             menu_pnl.PerformLayout();
             header_pnl.ResumeLayout(false);
@@ -1584,6 +1586,6 @@ namespace Desktop_Application
         private DataGridViewTextBoxColumn category;
         private DataGridViewTextBoxColumn publisher;
         private DataGridViewTextBoxColumn isbn;
-        internal DataGridView books_grd;
+        private DataGridView books_grd;
     }
 }

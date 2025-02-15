@@ -6,19 +6,15 @@
     {
         //https://youtu.be/eJi02kg-S8g - Grid design
 
-        private MySqlConnection _connection;
-        private string _server;
-        private string _database;
-        private string _uid;
-        private string _password;
+        private readonly MySqlConnection _connection;
 
         // Constructor - initialize database
         public Connection()
         {
-            _server = "localhost";
-            _database = "LMS";
-            _uid = "lms";
-            _password = "!LibraryMS25";
+            string _server = "localhost";
+            string _database = "LMS";
+            string _uid = "lms";
+            string _password = "!LibraryMS25";
 
             // Connection string: Defines the login info for the database
             string connectionString = $"SERVER={_server};DATABASE={_database};UID={_uid};PASSWORD={_password};";

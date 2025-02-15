@@ -10,6 +10,7 @@ namespace Desktop_Application
             InitializeComponent();
         }
 
+        // Hides every panel so there will be room for the opened panel
         private void HidePanels()
         {
             dashboard_pnl.Visible = false;
@@ -21,17 +22,29 @@ namespace Desktop_Application
             publishers_pnl.Visible = false;
         }
 
-        // Shows the Dashboard after hiding previous content.
+        #region
+        // Shows the Dashboard
         private void ShowDashboard(object sender, EventArgs e)
         {
             if (!dashboard_pnl.Visible)
             {
                 HidePanels();
                 dashboard_pnl.Visible = true;
+
+                ShowStatistics();
             }
         }
 
-        // Shows the Books after removing previous content.
+        // Show statistics about our books
+        private void ShowStatistics()
+        {
+
+        }
+        #endregion
+
+        // Books
+        #region
+        // Shows Books page and hides other pages
         private void ShowBooks(object sender, EventArgs e)
         {
             if (!books_pnl.Visible)
@@ -42,6 +55,47 @@ namespace Desktop_Application
             }
         }
 
+        // Selects from the database again
+        private void RefreshBooks(object sender, EventArgs e)
+        {
+            HandleQueries.SelectFill(books_grd, "BookSelect");
+        }
+
+        // Edit the selected book from the grid and then updates in the database
+        private void EditBook(object sender, EventArgs e)
+        {
+            if (books_grd.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("You can only edit one book at a time!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            EditBook editBook = new(books_grd);
+            editBook.ShowDialog();
+        }
+
+        // Removes book from the database
+        private void RemoveBook(object sender, EventArgs e)
+        {
+            RemoveBook removeBook = new(books_grd);
+            removeBook.ShowDialog();
+        }
+
+        // Adds a book to the database
+        private void AddBook(object sender, EventArgs e)
+        {
+            AddBook addBook = new(books_grd);
+            addBook.ShowDialog();
+        }
+
+        // Live search through the grid which is already filled with content from the database
+        private void SearchBook(object sender, EventArgs e)
+        {
+            HandleGrids.SearchGrid(books_grd, books_src.Text);
+        }
+        #endregion
+
+        // Borrowings
+        #region
         private void ShowBorrowings(object sender, EventArgs e)
         {
             if (!borrowings_pnl.Visible)
@@ -50,7 +104,10 @@ namespace Desktop_Application
                 borrowings_pnl.Visible = true;
             }
         }
+        #endregion
 
+        // Categories
+        #region
         private void ShowCategories(object sender, EventArgs e)
         {
             if (!categories_pnl.Visible)
@@ -59,7 +116,10 @@ namespace Desktop_Application
                 categories_pnl.Visible = true;
             }
         }
+        #endregion
 
+        // Members
+        #region
         private void ShowMembers(object sender, EventArgs e)
         {
             if (members_pnl.Visible != true)
@@ -68,7 +128,10 @@ namespace Desktop_Application
                 members_pnl.Visible = true;
             }
         }
+        #endregion
 
+        // Authors
+        #region
         private void ShowAuthors(object sender, EventArgs e)
         {
             if (!authors_pnl.Visible)
@@ -77,7 +140,10 @@ namespace Desktop_Application
                 authors_pnl.Visible = true;
             }
         }
+        #endregion
 
+        // Publishers
+        #region
         private void ShowPublishers(object sender, EventArgs e)
         {
             if (!publishers_pnl.Visible)
@@ -86,46 +152,15 @@ namespace Desktop_Application
                 publishers_pnl.Visible = true;
             }
         }
+        #endregion
 
-        private void RefreshBooks(object sender, EventArgs e)
-        {
-            HandleQueries.SelectFill(books_grd, "BookSelect");
-        }
-
-        private void EditBook(object sender, EventArgs e)
-        {
-            if (books_grd.SelectedRows.Count != 1)
-            {
-                MessageBox.Show("You can only edit one book at a time!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            EditBook editBook = new();
-            editBook.ShowDialog();
-        }
-
-        private void RemoveBook(object sender, EventArgs e)
-        {
-            RemoveBook removeBookConfirmation = new();
-            removeBookConfirmation.ShowDialog();
-        }
-
-        private void AddBook(object sender, EventArgs e)
-        {
-            AddBook addBook = new();
-            addBook.ShowDialog();
-        }
-
+        // Logs out and drops back to the login screen
         private void Logout(object sender, EventArgs e)
         {
             Login login = new();
             this.Hide();
             login.ShowDialog();
             this.Close();
-        }
-
-        private void LiveSearch(object sender, EventArgs e)
-        {
-            //(books_grd.DataSource as DataTable).DefaultView.RowFilter = string.Format("Name LIKE '%{0}%' OR ID LIKE '%{0}%'", books_src.Text);
         }
     }
 }

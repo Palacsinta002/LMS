@@ -2,7 +2,7 @@
 {
     internal class BorderPaint
     {
-        private Form _form;
+        private readonly Form _form;
 
         public BorderPaint(Form form)
         {
@@ -13,7 +13,7 @@
 
         public static void Handle(Form form)
         {
-            new BorderPaint(form);
+            _ = new BorderPaint(form);
         }
 
         public void Border_Paint(object sender, PaintEventArgs e)

@@ -4,8 +4,11 @@ namespace Desktop_Application.Forms.Books
 {
     public partial class RemoveBook : Form
     {
-        public RemoveBook()
+        private readonly DataGridView _books_grd;
+
+        public RemoveBook(DataGridView books_grd)
         {
+            _books_grd = books_grd;
             InitializeComponent();
         }
 
@@ -19,10 +22,9 @@ namespace Desktop_Application.Forms.Books
 
         private void Yes(object sender, EventArgs e)
         {
-            AdminPanel adminPanel = new();
-            HandleQueries.Delete(adminPanel.books_grd, "Books", "ISBN");
+            HandleQueries.Delete(_books_grd, "Books", "ISBN");
+            HandleQueries.SelectFill(_books_grd, "BookSelect");
             MessageBox.Show("Book removed succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            HandleQueries.SelectFill(adminPanel.books_grd, "BookSelect");
             this.Close();
         }
     }

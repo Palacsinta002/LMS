@@ -8,7 +8,6 @@ namespace Desktop_Application.Forms.Books
         public static List<string> SelectedCategories
         {
             get { return selectedCategories; }
-            set { selectedCategories = value; }
         }
 
         public ChooseCategory()
