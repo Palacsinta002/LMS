@@ -21,7 +21,8 @@ namespace Desktop_Application
             CloseThisWindow.Handle(this, close_btn);
             CloseThisWindow.Handle(this, cancel);
 
-            HandleQueries.SelectFill(dropDown_publisher, "PublisherSelect");
+            var result = HandleQueries.Select("PublisherSelect");
+            HandleGrids.Fill(dropDown_publisher, result);
         }
 
         private void Save(object sender, EventArgs e)
@@ -29,7 +30,8 @@ namespace Desktop_Application
             if (ValidateInput())
             {
                 HandleQueries.InsertBook(textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, textBox_author.Text, textBox_category.Text);
-                HandleQueries.SelectFill(_books_grd, "BookSelect");
+                var result = HandleQueries.Select("BookSelect");
+                HandleGrids.Fill(_books_grd, result);
                 MessageBox.Show("Book uploaded succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }

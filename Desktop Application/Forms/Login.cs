@@ -19,7 +19,16 @@ namespace Desktop_Application
         // WIP For now the Login button opens another form without any checking.
         private void LoginCheck(object sender, EventArgs e)
         {
-            AdminPanel adminPanel = new();
+            bool isAdmin;
+            if(username_textBox.Text == "admin")
+            {
+                isAdmin = true;
+            }
+            else
+            {
+                isAdmin = false;
+            }
+            AdminPanel adminPanel = new(isAdmin);
             this.Hide();
             adminPanel.ShowDialog();
             this.Close();

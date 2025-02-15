@@ -59,8 +59,8 @@
             List<object[]> result = [];
             if (OpenConnection())
             {
-                var cmd = new MySqlCommand(query, _connection);
-                var dataReader = cmd.ExecuteReader();
+                MySqlCommand cmd = new(query, _connection);
+                MySqlDataReader dataReader = cmd.ExecuteReader();
                 while (dataReader.Read())
                 {
                     object[] row = new object[dataReader.FieldCount];

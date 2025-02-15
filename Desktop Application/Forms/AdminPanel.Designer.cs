@@ -55,12 +55,16 @@ namespace Desktop_Application
             dashboard_borrowings = new RoundedButton();
             label3 = new Label();
             panel4 = new Panel();
-            dashboard_members = new RoundedButton();
+            dashboard_users = new RoundedButton();
             label2 = new Label();
             panel3 = new Panel();
             dashboard_books = new RoundedButton();
             panel6 = new Panel();
             dashboard_grd = new DataGridView();
+            dashboard_count = new DataGridViewTextBoxColumn();
+            dashboard_title = new DataGridViewTextBoxColumn();
+            dashboard_author = new DataGridViewTextBoxColumn();
+            dashboard_publicationYear = new DataGridViewTextBoxColumn();
             label4 = new Label();
             books_pnl = new Panel();
             books_refresh_btn = new RoundedButton();
@@ -476,36 +480,36 @@ namespace Desktop_Application
             // 
             panel4.Anchor = AnchorStyles.Top;
             panel4.AutoSize = true;
-            panel4.Controls.Add(dashboard_members);
+            panel4.Controls.Add(dashboard_users);
             panel4.Controls.Add(label2);
             panel4.Location = new Point(256, 41);
             panel4.Name = "panel4";
             panel4.Size = new Size(200, 100);
             panel4.TabIndex = 23;
             // 
-            // dashboard_members
+            // dashboard_users
             // 
-            dashboard_members.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dashboard_members.AutoSize = true;
-            dashboard_members.BackColor = Color.FromArgb(80, 77, 180);
-            dashboard_members.BackgroundColor = Color.FromArgb(80, 77, 180);
-            dashboard_members.BorderColor = Color.Transparent;
-            dashboard_members.BorderRadius = 10;
-            dashboard_members.BorderSize = 0;
-            dashboard_members.FlatAppearance.BorderSize = 0;
-            dashboard_members.FlatAppearance.MouseDownBackColor = Color.FromArgb(80, 77, 180);
-            dashboard_members.FlatAppearance.MouseOverBackColor = Color.FromArgb(80, 77, 180);
-            dashboard_members.FlatStyle = FlatStyle.Flat;
-            dashboard_members.Font = new Font("Yu Gothic UI Semibold", 22F);
-            dashboard_members.ForeColor = Color.White;
-            dashboard_members.Location = new Point(15, 30);
-            dashboard_members.MaximumSize = new Size(250, 100);
-            dashboard_members.Name = "dashboard_members";
-            dashboard_members.Size = new Size(171, 63);
-            dashboard_members.TabIndex = 19;
-            dashboard_members.Text = "0";
-            dashboard_members.TextColor = Color.White;
-            dashboard_members.UseVisualStyleBackColor = false;
+            dashboard_users.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dashboard_users.AutoSize = true;
+            dashboard_users.BackColor = Color.FromArgb(80, 77, 180);
+            dashboard_users.BackgroundColor = Color.FromArgb(80, 77, 180);
+            dashboard_users.BorderColor = Color.Transparent;
+            dashboard_users.BorderRadius = 10;
+            dashboard_users.BorderSize = 0;
+            dashboard_users.FlatAppearance.BorderSize = 0;
+            dashboard_users.FlatAppearance.MouseDownBackColor = Color.FromArgb(80, 77, 180);
+            dashboard_users.FlatAppearance.MouseOverBackColor = Color.FromArgb(80, 77, 180);
+            dashboard_users.FlatStyle = FlatStyle.Flat;
+            dashboard_users.Font = new Font("Yu Gothic UI Semibold", 22F);
+            dashboard_users.ForeColor = Color.White;
+            dashboard_users.Location = new Point(15, 30);
+            dashboard_users.MaximumSize = new Size(250, 100);
+            dashboard_users.Name = "dashboard_users";
+            dashboard_users.Size = new Size(171, 63);
+            dashboard_users.TabIndex = 19;
+            dashboard_users.Text = "0";
+            dashboard_users.TextColor = Color.White;
+            dashboard_users.UseVisualStyleBackColor = false;
             // 
             // label2
             // 
@@ -517,7 +521,7 @@ namespace Desktop_Application
             label2.Name = "label2";
             label2.Size = new Size(164, 21);
             label2.TabIndex = 11;
-            label2.Text = "No. of Members";
+            label2.Text = "No. of Users";
             // 
             // panel3
             // 
@@ -566,13 +570,54 @@ namespace Desktop_Application
             // 
             // dashboard_grd
             // 
+            dashboard_grd.AllowUserToAddRows = false;
+            dashboard_grd.AllowUserToDeleteRows = false;
+            dashboard_grd.AllowUserToResizeColumns = false;
+            dashboard_grd.AllowUserToResizeRows = false;
             dashboard_grd.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dashboard_grd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dashboard_grd.BackgroundColor = Color.FromArgb(224, 224, 224);
             dashboard_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dashboard_grd.Columns.AddRange(new DataGridViewColumn[] { dashboard_count, dashboard_title, dashboard_author, dashboard_publicationYear });
             dashboard_grd.Location = new Point(15, 39);
             dashboard_grd.Name = "dashboard_grd";
+            dashboard_grd.ReadOnly = true;
+            dashboard_grd.RowHeadersVisible = false;
+            dashboard_grd.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dashboard_grd.ShowCellErrors = false;
+            dashboard_grd.ShowCellToolTips = false;
+            dashboard_grd.ShowEditingIcon = false;
+            dashboard_grd.ShowRowErrors = false;
             dashboard_grd.Size = new Size(604, 273);
             dashboard_grd.TabIndex = 18;
+            // 
+            // dashboard_count
+            // 
+            dashboard_count.HeaderText = "#";
+            dashboard_count.Name = "dashboard_count";
+            dashboard_count.ReadOnly = true;
+            dashboard_count.Width = 39;
+            // 
+            // dashboard_title
+            // 
+            dashboard_title.HeaderText = "Title";
+            dashboard_title.Name = "dashboard_title";
+            dashboard_title.ReadOnly = true;
+            dashboard_title.Width = 54;
+            // 
+            // dashboard_author
+            // 
+            dashboard_author.HeaderText = "Author";
+            dashboard_author.Name = "dashboard_author";
+            dashboard_author.ReadOnly = true;
+            dashboard_author.Width = 69;
+            // 
+            // dashboard_publicationYear
+            // 
+            dashboard_publicationYear.HeaderText = "Publication Year";
+            dashboard_publicationYear.Name = "dashboard_publicationYear";
+            dashboard_publicationYear.ReadOnly = true;
+            dashboard_publicationYear.Width = 107;
             // 
             // label4
             // 
@@ -1452,13 +1497,13 @@ namespace Desktop_Application
             ClientSize = new Size(984, 561);
             Controls.Add(header_pnl);
             Controls.Add(menu_pnl);
+            Controls.Add(books_pnl);
             Controls.Add(dashboard_pnl);
             Controls.Add(publishers_pnl);
             Controls.Add(authors_pnl);
             Controls.Add(categories_pnl);
             Controls.Add(borrowings_pnl);
             Controls.Add(members_pnl);
-            Controls.Add(books_pnl);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(1000, 600);
             Name = "AdminPanel";
@@ -1574,7 +1619,7 @@ namespace Desktop_Application
         private DataGridView publishers_grd;
         private Panel panel3;
         private Panel panel4;
-        private RoundedButton dashboard_members;
+        private RoundedButton dashboard_users;
         private Label label2;
         private Panel panel5;
         private RoundedButton dashboard_borrowings;
@@ -1587,5 +1632,9 @@ namespace Desktop_Application
         private DataGridViewTextBoxColumn publisher;
         private DataGridViewTextBoxColumn isbn;
         private DataGridView books_grd;
+        private DataGridViewTextBoxColumn dashboard_count;
+        private DataGridViewTextBoxColumn dashboard_title;
+        private DataGridViewTextBoxColumn dashboard_author;
+        private DataGridViewTextBoxColumn dashboard_publicationYear;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Desktop_Application.Classes;
+using MySqlX.XDevAPI.Common;
 
 namespace Desktop_Application.Forms.Books
 {
@@ -22,7 +23,8 @@ namespace Desktop_Application.Forms.Books
             CloseThisWindow.Handle(this, close_btn);
             CloseThisWindow.Handle(this, cancel);
 
-            HandleQueries.SelectFill(chooseAuthor_grd, "AuthorSelect");
+            var result = HandleQueries.Select("AuthorSelect");
+            HandleGrids.Fill(chooseAuthor_grd, result);
         }
 
         private void Ok(object sender, EventArgs e)

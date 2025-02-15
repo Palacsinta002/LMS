@@ -27,7 +27,8 @@ namespace Desktop_Application
             textBox_pubYear.Text = selectedRow["publicationYear"].Value.ToString();
             textBox_author.Text = selectedRow["author"].Value.ToString();
             textBox_category.Text = selectedRow["category"].Value.ToString();
-            HandleQueries.SelectFill(dropDown_publisher, "PublisherSelect");
+            var result = HandleQueries.Select("PublisherSelect");
+            HandleGrids.Fill(dropDown_publisher, result);
             dropDown_publisher.Text = selectedRow["publisher"].Value.ToString();
             textBox_isbn.Text = selectedRow["isbn"].Value.ToString();
         }
@@ -37,7 +38,8 @@ namespace Desktop_Application
             if (ValidateInput())
             {
                 HandleQueries.UpdateBook(_books_grd, textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, textBox_author.Text, textBox_category.Text);
-                HandleQueries.SelectFill(_books_grd, "BookSelect");
+                var result = HandleQueries.Select("BookSelect");
+                HandleGrids.Fill(_books_grd, result);
                 MessageBox.Show("Book updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
@@ -46,9 +48,14 @@ namespace Desktop_Application
         // returns true if everything is correct
         private bool ValidateInput()
         {
-            if (!Regex.IsMatch(textBox_title.Text, @"^([a-z][A-Z][0-9]:',-/s\(\)!\?\.ÖÜÓŐÚÉÁŰÍöüóőúéáűí)+$")) //:',-/s()!?.ÖÜÓŐÚÉÁŰÍöüóőúéáűí 
+            if (textBox_title.Text == string.Empty)
             {
-                MessageBox.Show("Title is required and must be in the correct format!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Title is required!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            else if (!Regex.IsMatch(textBox_title.Text, @"^[a-zA-Z0-9\s\-,\.:()'?öüóőúéáűíÖÜÓŐÚÉÁŰÍ]+$"))
+            {
+                MessageBox.Show("Title is not in the correct format! Please check your special characters!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 

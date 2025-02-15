@@ -1,11 +1,12 @@
 ﻿using Desktop_Application.Classes;
 using Desktop_Application.Forms.Books;
+using MySqlX.XDevAPI.Common;
 
 namespace Desktop_Application
 {
     public partial class AdminPanel : Form
     {
-        public AdminPanel()
+        public AdminPanel(bool isAdmin)
         {
             InitializeComponent();
         }
@@ -31,14 +32,20 @@ namespace Desktop_Application
                 HidePanels();
                 dashboard_pnl.Visible = true;
 
-                ShowStatistics();
+                // Show statistics about our books
+                List<object[]> result;
+                result = HandleQueries.Select("BookCountSelect");
+                dashboard_books.Text = result[0][0].ToString();
+
+                result = HandleQueries.Select("UserCountSelect");
+                dashboard_users.Text = result[0][0].ToString();
+
+                result = HandleQueries.Select("BorrowingCountSelect");
+                dashboard_borrowings.Text = result[0][0].ToString();
+
+                result = HandleQueries.Select("BookTopBorrowedSelect");
+                HandleGrids.Fill(dashboard_grd, result);
             }
-        }
-
-        // Show statistics about our books
-        private void ShowStatistics()
-        {
-
         }
         #endregion
 
@@ -51,14 +58,16 @@ namespace Desktop_Application
             {
                 HidePanels();
                 books_pnl.Visible = true;
-                HandleQueries.SelectFill(books_grd, "BookSelect");
+                var result = HandleQueries.Select("BookSelect");
+                HandleGrids.Fill(books_grd, result);
             }
         }
 
         // Selects from the database again
         private void RefreshBooks(object sender, EventArgs e)
         {
-            HandleQueries.SelectFill(books_grd, "BookSelect");
+            var result = HandleQueries.Select("BookSelect");
+            HandleGrids.Fill(books_grd, result);
         }
 
         // Edit the selected book from the grid and then updates in the database

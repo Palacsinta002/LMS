@@ -3,7 +3,7 @@
     internal class HandleGrids
     {
         // Requires a grid and an object array list and fills the grid with the data
-        internal static void FillGrid(DataGridView grd, List<object[]> data)
+        internal static void Fill(DataGridView grd, List<object[]> data)
         {
             // Clears the grid
             grd.Rows.Clear();
@@ -11,6 +11,15 @@
             foreach (var row in data)
             {
                 grd.Rows.Add(row.ToArray());
+            }
+        }
+
+        // OVERLOAD Requires a combobox and an object array list and fills the combobox with the data
+        internal static void Fill(ComboBox cb, List<object[]> data)
+        {
+            foreach (var item in data)
+            {
+                cb.Items.Add(item[0].ToString() ?? string.Empty);
             }
         }
 

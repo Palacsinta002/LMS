@@ -1,3 +1,2 @@
-﻿SELECT 
-    Categories.Category
+﻿SELECT Category
 FROM Categories;
