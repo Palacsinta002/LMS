@@ -46,22 +46,22 @@ namespace Desktop_Application
             members_btn = new Button();
             books_btn = new Button();
             dashboard_btn = new Button();
-            dashboard_lbl1 = new Label();
+            label1 = new Label();
             header_pnl = new Panel();
             greeting_lbl = new Label();
             title_lbl = new Label();
             dashboard_pnl = new Panel();
             panel5 = new Panel();
-            roundedButton2 = new RoundedButton();
-            label2 = new Label();
+            dashboard_borrowings = new RoundedButton();
+            label3 = new Label();
             panel4 = new Panel();
-            roundedButton1 = new RoundedButton();
-            label1 = new Label();
+            dashboard_members = new RoundedButton();
+            label2 = new Label();
             panel3 = new Panel();
-            dashboard_btn1 = new RoundedButton();
+            dashboard_books = new RoundedButton();
             panel6 = new Panel();
             dashboard_grd = new DataGridView();
-            dashboard_lbl4 = new Label();
+            label4 = new Label();
             books_pnl = new Panel();
             books_refresh_btn = new RoundedButton();
             books_add_btn = new RoundedButton();
@@ -364,17 +364,17 @@ namespace Desktop_Application
             dashboard_btn.UseVisualStyleBackColor = false;
             dashboard_btn.Click += ShowDashboard;
             // 
-            // dashboard_lbl1
+            // label1
             // 
-            dashboard_lbl1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            dashboard_lbl1.Font = new Font("Yu Gothic UI Semibold", 12F);
-            dashboard_lbl1.ForeColor = Color.Black;
-            dashboard_lbl1.Location = new Point(22, 6);
-            dashboard_lbl1.Margin = new Padding(0);
-            dashboard_lbl1.Name = "dashboard_lbl1";
-            dashboard_lbl1.Size = new Size(105, 21);
-            dashboard_lbl1.TabIndex = 11;
-            dashboard_lbl1.Text = "No. of Books";
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label1.Font = new Font("Yu Gothic UI Semibold", 12F);
+            label1.ForeColor = Color.Black;
+            label1.Location = new Point(22, 6);
+            label1.Margin = new Padding(0);
+            label1.Name = "label1";
+            label1.Size = new Size(164, 21);
+            label1.TabIndex = 11;
+            label1.Text = "No. of Books";
             // 
             // header_pnl
             // 
@@ -429,36 +429,83 @@ namespace Desktop_Application
             // 
             panel5.Anchor = AnchorStyles.Top;
             panel5.AutoSize = true;
-            panel5.Controls.Add(roundedButton2);
-            panel5.Controls.Add(label2);
+            panel5.Controls.Add(dashboard_borrowings);
+            panel5.Controls.Add(label3);
             panel5.Location = new Point(458, 41);
             panel5.Name = "panel5";
             panel5.Size = new Size(200, 100);
             panel5.TabIndex = 23;
             // 
-            // roundedButton2
+            // dashboard_borrowings
             // 
-            roundedButton2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            roundedButton2.AutoSize = true;
-            roundedButton2.BackColor = Color.FromArgb(80, 77, 180);
-            roundedButton2.BackgroundColor = Color.FromArgb(80, 77, 180);
-            roundedButton2.BorderColor = Color.Transparent;
-            roundedButton2.BorderRadius = 10;
-            roundedButton2.BorderSize = 0;
-            roundedButton2.FlatAppearance.BorderSize = 0;
-            roundedButton2.FlatAppearance.MouseDownBackColor = Color.FromArgb(80, 77, 180);
-            roundedButton2.FlatAppearance.MouseOverBackColor = Color.FromArgb(80, 77, 180);
-            roundedButton2.FlatStyle = FlatStyle.Flat;
-            roundedButton2.Font = new Font("Yu Gothic UI Semibold", 22F);
-            roundedButton2.ForeColor = Color.White;
-            roundedButton2.Location = new Point(15, 30);
-            roundedButton2.MaximumSize = new Size(250, 100);
-            roundedButton2.Name = "roundedButton2";
-            roundedButton2.Size = new Size(171, 63);
-            roundedButton2.TabIndex = 19;
-            roundedButton2.Text = "250";
-            roundedButton2.TextColor = Color.White;
-            roundedButton2.UseVisualStyleBackColor = false;
+            dashboard_borrowings.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dashboard_borrowings.AutoSize = true;
+            dashboard_borrowings.BackColor = Color.FromArgb(80, 77, 180);
+            dashboard_borrowings.BackgroundColor = Color.FromArgb(80, 77, 180);
+            dashboard_borrowings.BorderColor = Color.Transparent;
+            dashboard_borrowings.BorderRadius = 10;
+            dashboard_borrowings.BorderSize = 0;
+            dashboard_borrowings.FlatAppearance.BorderSize = 0;
+            dashboard_borrowings.FlatAppearance.MouseDownBackColor = Color.FromArgb(80, 77, 180);
+            dashboard_borrowings.FlatAppearance.MouseOverBackColor = Color.FromArgb(80, 77, 180);
+            dashboard_borrowings.FlatStyle = FlatStyle.Flat;
+            dashboard_borrowings.Font = new Font("Yu Gothic UI Semibold", 22F);
+            dashboard_borrowings.ForeColor = Color.White;
+            dashboard_borrowings.Location = new Point(15, 30);
+            dashboard_borrowings.MaximumSize = new Size(250, 100);
+            dashboard_borrowings.Name = "dashboard_borrowings";
+            dashboard_borrowings.Size = new Size(171, 63);
+            dashboard_borrowings.TabIndex = 19;
+            dashboard_borrowings.Text = "0";
+            dashboard_borrowings.TextColor = Color.White;
+            dashboard_borrowings.UseVisualStyleBackColor = false;
+            // 
+            // label3
+            // 
+            label3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label3.Font = new Font("Yu Gothic UI Semibold", 12F);
+            label3.ForeColor = Color.Black;
+            label3.Location = new Point(22, 6);
+            label3.Margin = new Padding(0);
+            label3.Name = "label3";
+            label3.Size = new Size(164, 21);
+            label3.TabIndex = 11;
+            label3.Text = "No. of Borrowings";
+            // 
+            // panel4
+            // 
+            panel4.Anchor = AnchorStyles.Top;
+            panel4.AutoSize = true;
+            panel4.Controls.Add(dashboard_members);
+            panel4.Controls.Add(label2);
+            panel4.Location = new Point(256, 41);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(200, 100);
+            panel4.TabIndex = 23;
+            // 
+            // dashboard_members
+            // 
+            dashboard_members.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dashboard_members.AutoSize = true;
+            dashboard_members.BackColor = Color.FromArgb(80, 77, 180);
+            dashboard_members.BackgroundColor = Color.FromArgb(80, 77, 180);
+            dashboard_members.BorderColor = Color.Transparent;
+            dashboard_members.BorderRadius = 10;
+            dashboard_members.BorderSize = 0;
+            dashboard_members.FlatAppearance.BorderSize = 0;
+            dashboard_members.FlatAppearance.MouseDownBackColor = Color.FromArgb(80, 77, 180);
+            dashboard_members.FlatAppearance.MouseOverBackColor = Color.FromArgb(80, 77, 180);
+            dashboard_members.FlatStyle = FlatStyle.Flat;
+            dashboard_members.Font = new Font("Yu Gothic UI Semibold", 22F);
+            dashboard_members.ForeColor = Color.White;
+            dashboard_members.Location = new Point(15, 30);
+            dashboard_members.MaximumSize = new Size(250, 100);
+            dashboard_members.Name = "dashboard_members";
+            dashboard_members.Size = new Size(171, 63);
+            dashboard_members.TabIndex = 19;
+            dashboard_members.Text = "0";
+            dashboard_members.TextColor = Color.White;
+            dashboard_members.UseVisualStyleBackColor = false;
             // 
             // label2
             // 
@@ -468,97 +515,50 @@ namespace Desktop_Application
             label2.Location = new Point(22, 6);
             label2.Margin = new Padding(0);
             label2.Name = "label2";
-            label2.Size = new Size(105, 21);
+            label2.Size = new Size(164, 21);
             label2.TabIndex = 11;
-            label2.Text = "No. of Books";
-            // 
-            // panel4
-            // 
-            panel4.Anchor = AnchorStyles.Top;
-            panel4.AutoSize = true;
-            panel4.Controls.Add(roundedButton1);
-            panel4.Controls.Add(label1);
-            panel4.Location = new Point(256, 41);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(200, 100);
-            panel4.TabIndex = 23;
-            // 
-            // roundedButton1
-            // 
-            roundedButton1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            roundedButton1.AutoSize = true;
-            roundedButton1.BackColor = Color.FromArgb(80, 77, 180);
-            roundedButton1.BackgroundColor = Color.FromArgb(80, 77, 180);
-            roundedButton1.BorderColor = Color.Transparent;
-            roundedButton1.BorderRadius = 10;
-            roundedButton1.BorderSize = 0;
-            roundedButton1.FlatAppearance.BorderSize = 0;
-            roundedButton1.FlatAppearance.MouseDownBackColor = Color.FromArgb(80, 77, 180);
-            roundedButton1.FlatAppearance.MouseOverBackColor = Color.FromArgb(80, 77, 180);
-            roundedButton1.FlatStyle = FlatStyle.Flat;
-            roundedButton1.Font = new Font("Yu Gothic UI Semibold", 22F);
-            roundedButton1.ForeColor = Color.White;
-            roundedButton1.Location = new Point(15, 30);
-            roundedButton1.MaximumSize = new Size(250, 100);
-            roundedButton1.Name = "roundedButton1";
-            roundedButton1.Size = new Size(171, 63);
-            roundedButton1.TabIndex = 19;
-            roundedButton1.Text = "250";
-            roundedButton1.TextColor = Color.White;
-            roundedButton1.UseVisualStyleBackColor = false;
-            // 
-            // label1
-            // 
-            label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label1.Font = new Font("Yu Gothic UI Semibold", 12F);
-            label1.ForeColor = Color.Black;
-            label1.Location = new Point(22, 6);
-            label1.Margin = new Padding(0);
-            label1.Name = "label1";
-            label1.Size = new Size(105, 21);
-            label1.TabIndex = 11;
-            label1.Text = "No. of Books";
+            label2.Text = "No. of Members";
             // 
             // panel3
             // 
             panel3.Anchor = AnchorStyles.Top;
             panel3.AutoSize = true;
-            panel3.Controls.Add(dashboard_btn1);
-            panel3.Controls.Add(dashboard_lbl1);
+            panel3.Controls.Add(dashboard_books);
+            panel3.Controls.Add(label1);
             panel3.Location = new Point(54, 41);
             panel3.Name = "panel3";
             panel3.Size = new Size(200, 100);
             panel3.TabIndex = 22;
             // 
-            // dashboard_btn1
+            // dashboard_books
             // 
-            dashboard_btn1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dashboard_btn1.AutoSize = true;
-            dashboard_btn1.BackColor = Color.FromArgb(80, 77, 180);
-            dashboard_btn1.BackgroundColor = Color.FromArgb(80, 77, 180);
-            dashboard_btn1.BorderColor = Color.Transparent;
-            dashboard_btn1.BorderRadius = 10;
-            dashboard_btn1.BorderSize = 0;
-            dashboard_btn1.FlatAppearance.BorderSize = 0;
-            dashboard_btn1.FlatAppearance.MouseDownBackColor = Color.FromArgb(80, 77, 180);
-            dashboard_btn1.FlatAppearance.MouseOverBackColor = Color.FromArgb(80, 77, 180);
-            dashboard_btn1.FlatStyle = FlatStyle.Flat;
-            dashboard_btn1.Font = new Font("Yu Gothic UI Semibold", 22F);
-            dashboard_btn1.ForeColor = Color.White;
-            dashboard_btn1.Location = new Point(15, 30);
-            dashboard_btn1.MaximumSize = new Size(250, 100);
-            dashboard_btn1.Name = "dashboard_btn1";
-            dashboard_btn1.Size = new Size(171, 63);
-            dashboard_btn1.TabIndex = 19;
-            dashboard_btn1.Text = "250";
-            dashboard_btn1.TextColor = Color.White;
-            dashboard_btn1.UseVisualStyleBackColor = false;
+            dashboard_books.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dashboard_books.AutoSize = true;
+            dashboard_books.BackColor = Color.FromArgb(80, 77, 180);
+            dashboard_books.BackgroundColor = Color.FromArgb(80, 77, 180);
+            dashboard_books.BorderColor = Color.Transparent;
+            dashboard_books.BorderRadius = 10;
+            dashboard_books.BorderSize = 0;
+            dashboard_books.FlatAppearance.BorderSize = 0;
+            dashboard_books.FlatAppearance.MouseDownBackColor = Color.FromArgb(80, 77, 180);
+            dashboard_books.FlatAppearance.MouseOverBackColor = Color.FromArgb(80, 77, 180);
+            dashboard_books.FlatStyle = FlatStyle.Flat;
+            dashboard_books.Font = new Font("Yu Gothic UI Semibold", 22F);
+            dashboard_books.ForeColor = Color.White;
+            dashboard_books.Location = new Point(15, 30);
+            dashboard_books.MaximumSize = new Size(250, 100);
+            dashboard_books.Name = "dashboard_books";
+            dashboard_books.Size = new Size(171, 63);
+            dashboard_books.TabIndex = 19;
+            dashboard_books.Text = "0";
+            dashboard_books.TextColor = Color.White;
+            dashboard_books.UseVisualStyleBackColor = false;
             // 
             // panel6
             // 
             panel6.Anchor = AnchorStyles.Top;
             panel6.Controls.Add(dashboard_grd);
-            panel6.Controls.Add(dashboard_lbl4);
+            panel6.Controls.Add(label4);
             panel6.Location = new Point(39, 155);
             panel6.Name = "panel6";
             panel6.Size = new Size(635, 325);
@@ -574,17 +574,17 @@ namespace Desktop_Application
             dashboard_grd.Size = new Size(604, 273);
             dashboard_grd.TabIndex = 18;
             // 
-            // dashboard_lbl4
+            // label4
             // 
-            dashboard_lbl4.AutoSize = true;
-            dashboard_lbl4.Font = new Font("Yu Gothic UI Semibold", 12F);
-            dashboard_lbl4.ForeColor = Color.Black;
-            dashboard_lbl4.Location = new Point(13, 11);
-            dashboard_lbl4.Margin = new Padding(0);
-            dashboard_lbl4.Name = "dashboard_lbl4";
-            dashboard_lbl4.Size = new Size(163, 21);
-            dashboard_lbl4.TabIndex = 17;
-            dashboard_lbl4.Text = "Top Borrowed Books";
+            label4.AutoSize = true;
+            label4.Font = new Font("Yu Gothic UI Semibold", 12F);
+            label4.ForeColor = Color.Black;
+            label4.Location = new Point(13, 11);
+            label4.Margin = new Padding(0);
+            label4.Name = "label4";
+            label4.Size = new Size(163, 21);
+            label4.TabIndex = 17;
+            label4.Text = "Top Borrowed Books";
             // 
             // books_pnl
             // 
@@ -1512,9 +1512,9 @@ namespace Desktop_Application
         private Button members_btn;
         private Button books_btn;
         private Label greeting_lbl;
-        private Label dashboard_lbl1;
+        private Label label1;
         private Panel dashboard_pnl;
-        private Label dashboard_lbl4;
+        private Label label4;
         private DataGridView dashboard_grd;
         private Panel books_pnl;
         private Label books_lbl1;
@@ -1522,7 +1522,7 @@ namespace Desktop_Application
         private RoundedButton books_add_btn;
         private RoundedButton books_edit_btn;
         private RoundedButton books_refresh_btn;
-        private RoundedButton dashboard_btn1;
+        private RoundedButton dashboard_books;
         private TextBox books_src;
         private Panel borrowings_pnl;
         private RoundedButton logout_btn;
@@ -1574,11 +1574,11 @@ namespace Desktop_Application
         private DataGridView publishers_grd;
         private Panel panel3;
         private Panel panel4;
-        private RoundedButton roundedButton1;
-        private Label label1;
-        private Panel panel5;
-        private RoundedButton roundedButton2;
+        private RoundedButton dashboard_members;
         private Label label2;
+        private Panel panel5;
+        private RoundedButton dashboard_borrowings;
+        private Label label3;
         private Panel panel6;
         private DataGridViewTextBoxColumn title;
         private DataGridViewTextBoxColumn author;

@@ -9,7 +9,7 @@
             string filePath = @"SqlQueries\" + fileName + ".sql";
             string query = File.ReadAllText(filePath);
             var result = connection.Select(query);
-            HandleGrids.FillGrid(grd, result);
+            HandleGrids.FillGrid(grd, result); // ezt a sort a gridnél kéne meghívni, mert semmi köze a lekérdezésekhez. A másik Select fill így nem fog kelleni. A result-ot returnöli. Így tudok olyan lekérdezést csinálni, ami a COUNT-ot adja vissza.
         }
 
         // OVERLOAD Takes a combobox and fills it with the Select result of the given filename
