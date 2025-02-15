@@ -1,7 +1,7 @@
-﻿using Desktop_Application.Classes;
-using Desktop_Application.Components;
+﻿using Library_Management_System.Classes;
+using Library_Management_System.Components;
 
-namespace Desktop_Application
+namespace Library_Management_System
 {
     partial class Login
     {

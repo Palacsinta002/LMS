@@ -10,9 +10,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\book.ico" />
     <None Remove="Resources\closeEmpty.png" />
     <None Remove="Resources\closeWhite.png" />
     <None Remove="Resources\Elektrosztatika.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\book.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -35,28 +42,28 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="SqlQueries\AuthorSelect.sql">
+    <None Update="SqlQueries\SelectAuthor.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="SqlQueries\BookCountSelect.sql">
+    <None Update="SqlQueries\SelectBookCount.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="SqlQueries\BookSelect.sql">
+    <None Update="SqlQueries\SelectBook.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="SqlQueries\BookTopBorrowedSelect.sql">
+    <None Update="SqlQueries\SelectTopBorrowedBook.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="SqlQueries\BorrowingCountSelect.sql">
+    <None Update="SqlQueries\SelectBorrowingCount.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="SqlQueries\CategorySelect.sql">
+    <None Update="SqlQueries\SelectCategory.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="SqlQueries\UserCountSelect.sql">
+    <None Update="SqlQueries\SelectUserCount.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="SqlQueries\PublisherSelect.sql">
+    <None Update="SqlQueries\SelectPublisher.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

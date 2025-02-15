@@ -1,7 +1,7 @@
-﻿using Desktop_Application.Classes;
+﻿using Library_Management_System.Classes;
 using MySqlX.XDevAPI.Common;
 
-namespace Desktop_Application.Forms.Books
+namespace Library_Management_System.Forms.Books
 {
     public partial class ChooseAuthor : Form
     {
@@ -23,7 +23,7 @@ namespace Desktop_Application.Forms.Books
             CloseThisWindow.Handle(this, close_btn);
             CloseThisWindow.Handle(this, cancel);
 
-            var result = HandleQueries.Select("AuthorSelect");
+            var result = HandleQueries.Select("SelectAuthor");
             HandleGrids.Fill(chooseAuthor_grd, result);
         }
 

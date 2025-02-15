@@ -1,6 +1,6 @@
-using Desktop_Application.Classes;
+using Library_Management_System.Classes;
 
-namespace Desktop_Application
+namespace Library_Management_System
 {
     public partial class Login : Form
     {
@@ -19,6 +19,11 @@ namespace Desktop_Application
         // WIP For now the Login button opens another form without any checking.
         private void LoginCheck(object sender, EventArgs e)
         {
+            string username = username_textBox.Text;
+            string password = password_textBox.Text;
+
+
+
             bool isAdmin;
             if(username_textBox.Text == "admin")
             {
@@ -28,7 +33,7 @@ namespace Desktop_Application
             {
                 isAdmin = false;
             }
-            AdminPanel adminPanel = new(isAdmin);
+            AdminPanel adminPanel = new(/*firstname lastname*/username_textBox.Text, isAdmin);
             this.Hide();
             adminPanel.ShowDialog();
             this.Close();

@@ -1,8 +1,8 @@
 ﻿using System.Text.RegularExpressions;
-using Desktop_Application.Classes;
-using Desktop_Application.Forms.Books;
+using Library_Management_System.Classes;
+using Library_Management_System.Forms.Books;
 
-namespace Desktop_Application
+namespace Library_Management_System
 {
     public partial class AddBook : Form
     {
@@ -21,7 +21,7 @@ namespace Desktop_Application
             CloseThisWindow.Handle(this, close_btn);
             CloseThisWindow.Handle(this, cancel);
 
-            var result = HandleQueries.Select("PublisherSelect");
+            var result = HandleQueries.Select("SelectPublisher");
             HandleGrids.Fill(dropDown_publisher, result);
         }
 
@@ -30,7 +30,7 @@ namespace Desktop_Application
             if (ValidateInput())
             {
                 HandleQueries.InsertBook(textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, textBox_author.Text, textBox_category.Text);
-                var result = HandleQueries.Select("BookSelect");
+                var result = HandleQueries.Select("SelectBook");
                 HandleGrids.Fill(_books_grd, result);
                 MessageBox.Show("Book uploaded succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();

@@ -1,26 +1,28 @@
-﻿using Desktop_Application.Classes;
-using Desktop_Application.Forms.Books;
-using MySqlX.XDevAPI.Common;
+﻿using Library_Management_System.Classes;
+using Library_Management_System.Forms.Books;
 
-namespace Desktop_Application
+namespace Library_Management_System
 {
     public partial class AdminPanel : Form
     {
-        public AdminPanel(bool isAdmin)
+        private readonly string _name;
+        private readonly bool _isAdmin;
+
+        public AdminPanel(string name, bool isAdmin)
         {
+            _name = name;
+            _isAdmin = isAdmin;
             InitializeComponent();
         }
 
-        // Hides every panel so there will be room for the opened panel
-        private void HidePanels()
+        private void OnLoad(object sender, EventArgs e)
         {
-            dashboard_pnl.Visible = false;
-            books_pnl.Visible = false;
-            borrowings_pnl.Visible = false;
-            categories_pnl.Visible = false;
-            members_pnl.Visible = false;
-            authors_pnl.Visible = false;
-            publishers_pnl.Visible = false;
+            members_btn.Visible = _isAdmin;
+            divider_pnl4.Visible = _isAdmin;
+
+            hello_lbl.Text = $"Hello {_name}!";
+
+            ShowDashboard(sender, e);
         }
 
         #region
@@ -34,16 +36,16 @@ namespace Desktop_Application
 
                 // Show statistics about our books
                 List<object[]> result;
-                result = HandleQueries.Select("BookCountSelect");
+                result = HandleQueries.Select("SelectBookCount");
                 dashboard_books.Text = result[0][0].ToString();
 
-                result = HandleQueries.Select("UserCountSelect");
+                result = HandleQueries.Select("SelectUserCount");
                 dashboard_users.Text = result[0][0].ToString();
 
-                result = HandleQueries.Select("BorrowingCountSelect");
+                result = HandleQueries.Select("SelectBorrowingCount");
                 dashboard_borrowings.Text = result[0][0].ToString();
 
-                result = HandleQueries.Select("BookTopBorrowedSelect");
+                result = HandleQueries.Select("SelectTopBorrowedBook");
                 HandleGrids.Fill(dashboard_grd, result);
             }
         }
@@ -58,7 +60,7 @@ namespace Desktop_Application
             {
                 HidePanels();
                 books_pnl.Visible = true;
-                var result = HandleQueries.Select("BookSelect");
+                var result = HandleQueries.Select("SelectBook");
                 HandleGrids.Fill(books_grd, result);
             }
         }
@@ -66,7 +68,7 @@ namespace Desktop_Application
         // Selects from the database again
         private void RefreshBooks(object sender, EventArgs e)
         {
-            var result = HandleQueries.Select("BookSelect");
+            var result = HandleQueries.Select("SelectBook");
             HandleGrids.Fill(books_grd, result);
         }
 
@@ -162,6 +164,18 @@ namespace Desktop_Application
             }
         }
         #endregion
+
+        // Hides every panel so there will be room for the opened panel
+        private void HidePanels()
+        {
+            dashboard_pnl.Visible = false;
+            books_pnl.Visible = false;
+            borrowings_pnl.Visible = false;
+            categories_pnl.Visible = false;
+            members_pnl.Visible = false;
+            authors_pnl.Visible = false;
+            publishers_pnl.Visible = false;
+        }
 
         // Logs out and drops back to the login screen
         private void Logout(object sender, EventArgs e)

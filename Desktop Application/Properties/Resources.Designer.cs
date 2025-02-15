@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Desktop_Application.Properties {
+namespace Library_Management_System.Properties {
     using System;
     
     

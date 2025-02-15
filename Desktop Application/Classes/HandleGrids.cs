@@ -1,4 +1,4 @@
-﻿namespace Desktop_Application.Classes
+﻿namespace Library_Management_System.Classes
 {
     internal class HandleGrids
     {

@@ -1,4 +1,4 @@
-namespace Desktop_Application
+namespace Library_Management_System
 {
     internal static class Program
     {

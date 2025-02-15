@@ -1,7 +1,7 @@
-﻿using Desktop_Application.Components;
-using Desktop_Application.Forms.Books;
+﻿using Library_Management_System.Components;
+using Library_Management_System.Forms.Books;
 
-namespace Desktop_Application
+namespace Library_Management_System
 {
     partial class EditBook
     {

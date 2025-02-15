@@ -1,4 +1,4 @@
-﻿namespace Desktop_Application.Forms.Books
+﻿namespace Library_Management_System.Forms.Books
 {
     partial class RemoveBook
     {

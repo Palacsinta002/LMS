@@ -1,7 +1,7 @@
 ﻿using System.Drawing.Drawing2D;
 using System.ComponentModel;
 
-namespace Desktop_Application.Components
+namespace Library_Management_System.Components
 {
     public class RoundedButton : Button
     {

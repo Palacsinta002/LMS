@@ -1,8 +1,8 @@
 ﻿using System.Text.RegularExpressions;
-using Desktop_Application.Classes;
-using Desktop_Application.Forms.Books;
+using Library_Management_System.Classes;
+using Library_Management_System.Forms.Books;
 
-namespace Desktop_Application
+namespace Library_Management_System
 {
     public partial class EditBook : Form
     {
@@ -27,7 +27,7 @@ namespace Desktop_Application
             textBox_pubYear.Text = selectedRow["publicationYear"].Value.ToString();
             textBox_author.Text = selectedRow["author"].Value.ToString();
             textBox_category.Text = selectedRow["category"].Value.ToString();
-            var result = HandleQueries.Select("PublisherSelect");
+            var result = HandleQueries.Select("SelectPublisher");
             HandleGrids.Fill(dropDown_publisher, result);
             dropDown_publisher.Text = selectedRow["publisher"].Value.ToString();
             textBox_isbn.Text = selectedRow["isbn"].Value.ToString();
@@ -38,7 +38,7 @@ namespace Desktop_Application
             if (ValidateInput())
             {
                 HandleQueries.UpdateBook(_books_grd, textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, textBox_author.Text, textBox_category.Text);
-                var result = HandleQueries.Select("BookSelect");
+                var result = HandleQueries.Select("SelectBook");
                 HandleGrids.Fill(_books_grd, result);
                 MessageBox.Show("Book updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();

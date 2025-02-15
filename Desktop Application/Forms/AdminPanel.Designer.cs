@@ -1,6 +1,6 @@
-﻿using Desktop_Application.Components;
+﻿using Library_Management_System.Components;
 
-namespace Desktop_Application
+namespace Library_Management_System
 {
     partial class AdminPanel
     {
@@ -48,7 +48,7 @@ namespace Desktop_Application
             dashboard_btn = new Button();
             label1 = new Label();
             header_pnl = new Panel();
-            greeting_lbl = new Label();
+            hello_lbl = new Label();
             title_lbl = new Label();
             dashboard_pnl = new Panel();
             panel5 = new Panel();
@@ -385,24 +385,24 @@ namespace Desktop_Application
             header_pnl.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             header_pnl.AutoScroll = true;
             header_pnl.BackColor = Color.FromArgb(72, 69, 158);
-            header_pnl.Controls.Add(greeting_lbl);
+            header_pnl.Controls.Add(hello_lbl);
             header_pnl.Controls.Add(title_lbl);
             header_pnl.Location = new Point(0, 0);
             header_pnl.Name = "header_pnl";
             header_pnl.Size = new Size(985, 50);
             header_pnl.TabIndex = 11;
             // 
-            // greeting_lbl
+            // hello_lbl
             // 
-            greeting_lbl.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            greeting_lbl.Font = new Font("Yu Gothic UI Semibold", 16F);
-            greeting_lbl.ForeColor = Color.White;
-            greeting_lbl.Location = new Point(318, 9);
-            greeting_lbl.Name = "greeting_lbl";
-            greeting_lbl.Size = new Size(664, 30);
-            greeting_lbl.TabIndex = 1;
-            greeting_lbl.Text = "Hello, Admin 🐱‍🚀";
-            greeting_lbl.TextAlign = ContentAlignment.TopRight;
+            hello_lbl.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            hello_lbl.Font = new Font("Yu Gothic UI Semibold", 16F);
+            hello_lbl.ForeColor = Color.White;
+            hello_lbl.Location = new Point(318, 9);
+            hello_lbl.Name = "hello_lbl";
+            hello_lbl.Size = new Size(664, 30);
+            hello_lbl.TabIndex = 1;
+            hello_lbl.Text = "Hello, Admin 🐱‍🚀";
+            hello_lbl.TextAlign = ContentAlignment.TopRight;
             // 
             // title_lbl
             // 
@@ -435,7 +435,7 @@ namespace Desktop_Application
             panel5.AutoSize = true;
             panel5.Controls.Add(dashboard_borrowings);
             panel5.Controls.Add(label3);
-            panel5.Location = new Point(458, 41);
+            panel5.Location = new Point(458, 30);
             panel5.Name = "panel5";
             panel5.Size = new Size(200, 100);
             panel5.TabIndex = 23;
@@ -482,7 +482,7 @@ namespace Desktop_Application
             panel4.AutoSize = true;
             panel4.Controls.Add(dashboard_users);
             panel4.Controls.Add(label2);
-            panel4.Location = new Point(256, 41);
+            panel4.Location = new Point(256, 30);
             panel4.Name = "panel4";
             panel4.Size = new Size(200, 100);
             panel4.TabIndex = 23;
@@ -529,7 +529,7 @@ namespace Desktop_Application
             panel3.AutoSize = true;
             panel3.Controls.Add(dashboard_books);
             panel3.Controls.Add(label1);
-            panel3.Location = new Point(54, 41);
+            panel3.Location = new Point(54, 30);
             panel3.Name = "panel3";
             panel3.Size = new Size(200, 100);
             panel3.TabIndex = 22;
@@ -563,9 +563,9 @@ namespace Desktop_Application
             panel6.Anchor = AnchorStyles.Top;
             panel6.Controls.Add(dashboard_grd);
             panel6.Controls.Add(label4);
-            panel6.Location = new Point(39, 155);
+            panel6.Location = new Point(39, 144);
             panel6.Name = "panel6";
-            panel6.Size = new Size(635, 325);
+            panel6.Size = new Size(635, 335);
             panel6.TabIndex = 24;
             // 
             // dashboard_grd
@@ -579,7 +579,7 @@ namespace Desktop_Application
             dashboard_grd.BackgroundColor = Color.FromArgb(224, 224, 224);
             dashboard_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dashboard_grd.Columns.AddRange(new DataGridViewColumn[] { dashboard_count, dashboard_title, dashboard_author, dashboard_publicationYear });
-            dashboard_grd.Location = new Point(15, 39);
+            dashboard_grd.Location = new Point(15, 32);
             dashboard_grd.Name = "dashboard_grd";
             dashboard_grd.ReadOnly = true;
             dashboard_grd.RowHeadersVisible = false;
@@ -588,7 +588,7 @@ namespace Desktop_Application
             dashboard_grd.ShowCellToolTips = false;
             dashboard_grd.ShowEditingIcon = false;
             dashboard_grd.ShowRowErrors = false;
-            dashboard_grd.Size = new Size(604, 273);
+            dashboard_grd.Size = new Size(604, 290);
             dashboard_grd.TabIndex = 18;
             // 
             // dashboard_count
@@ -624,7 +624,7 @@ namespace Desktop_Application
             label4.AutoSize = true;
             label4.Font = new Font("Yu Gothic UI Semibold", 12F);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(13, 11);
+            label4.Location = new Point(13, 8);
             label4.Margin = new Padding(0);
             label4.Name = "label4";
             label4.Size = new Size(163, 21);
@@ -1497,19 +1497,19 @@ namespace Desktop_Application
             ClientSize = new Size(984, 561);
             Controls.Add(header_pnl);
             Controls.Add(menu_pnl);
-            Controls.Add(books_pnl);
             Controls.Add(dashboard_pnl);
             Controls.Add(publishers_pnl);
             Controls.Add(authors_pnl);
             Controls.Add(categories_pnl);
             Controls.Add(borrowings_pnl);
             Controls.Add(members_pnl);
+            Controls.Add(books_pnl);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(1000, 600);
             Name = "AdminPanel";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Admin Panel";
-            Load += ShowDashboard;
+            Load += OnLoad;
             menu_pnl.ResumeLayout(false);
             menu_pnl.PerformLayout();
             header_pnl.ResumeLayout(false);
@@ -1556,7 +1556,7 @@ namespace Desktop_Application
         private Button borrowings_btn;
         private Button members_btn;
         private Button books_btn;
-        private Label greeting_lbl;
+        private Label hello_lbl;
         private Label label1;
         private Panel dashboard_pnl;
         private Label label4;

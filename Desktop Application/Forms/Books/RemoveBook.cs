@@ -1,6 +1,6 @@
-﻿using Desktop_Application.Classes;
+﻿using Library_Management_System.Classes;
 
-namespace Desktop_Application.Forms.Books
+namespace Library_Management_System.Forms.Books
 {
     public partial class RemoveBook : Form
     {
