@@ -25,37 +25,40 @@ namespace Desktop_Application
         // On Login if the username and password are in the correct format it starts checking the credentials
         private void LoginCheck(object sender, EventArgs e)
         {
-            if (usernameError_lbl.Text == "" && passwordError_lbl.Text == "")
-            {
-                string hashedPassword = HashPassword(_password);
+            //if (usernameError_lbl.Text == "" && passwordError_lbl.Text == "")
+            //{
+            //    string query = $"SELECT Users.FirstName, Users.LastName, Users.Username, Users.Password, Roles.Role FROM Users JOIN Roles ON Roles.id = Users.RoleID WHERE Username = '{_username}'";
+            //    Connection conn = new();
+            //    var result = conn.Select(query);
 
-                string query = $"SELECT Users.FirstName, Users.LastName, Users.Username, Users.Password, Roles.Role FROM Users JOIN Roles ON Roles.id = Users.RoleID WHERE Username = '{_username}' AND Password = '{hashedPassword}'";
-                Connection conn = new();
-                var result = conn.Select(query);
+            //    if (result.Count == 1)
+            //    {
+            //        string hashPassword = result[0][3].ToString();
 
-                if (result.Count == 1)
-                {
-                    bool isAdmin = false;
-                    if (result[0][4].ToString() == "Admin")
-                    {
-                        isAdmin = true;
-                    }
+            //        // Takes the given password and the hashed password from the database. Then matches them, if they match the user is allowed to log in.
+            //        if (BCrypt.Net.BCrypt.Verify(_password, hashPassword))
+            //        {
+            //            bool isAdmin = false;
+            //            if (result[0][4].ToString() == "Admin")
+            //            {
+            //                isAdmin = true;
+            //            }
 
-                    AdminPanel adminPanel = new(username_textBox.Text, isAdmin);
-                    this.Hide();
-                    adminPanel.ShowDialog();
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Wrong username or password!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-        }
-
-        private string HashPassword(string password)
-        {
-            return "";
+            //            AdminPanel adminPanel = new(username_textBox.Text, isAdmin);
+            //            this.Hide();
+            //            adminPanel.ShowDialog();
+            //            this.Close();
+            //        }
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Wrong username or password!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    }
+            //}
+            AdminPanel adminPanel = new(username_textBox.Text, true);
+            this.Hide();
+            adminPanel.ShowDialog();
+            this.Close();
         }
 
         // On username change it writes out to the user what is wrong with the given text

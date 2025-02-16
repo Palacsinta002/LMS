@@ -4,8 +4,6 @@
 
     internal class Connection
     {
-        //https://youtu.be/eJi02kg-S8g - Grid design
-
         private readonly MySqlConnection _connection;
 
         // Constructor - initialize database
@@ -59,14 +57,14 @@
             List<object[]> result = [];
             if (OpenConnection())
             {
-                MySqlCommand cmd = new(query, _connection);
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-                while (dataReader.Read())
-                {
-                    object[] row = new object[dataReader.FieldCount];
-                    dataReader.GetValues(row);
-                    result.Add(row);
-                }
+                using (MySqlCommand cmd = new(query, _connection))
+                using (MySqlDataReader dataReader = cmd.ExecuteReader())
+                    while (dataReader.Read())
+                    {
+                        object[] row = new object[dataReader.FieldCount];
+                        dataReader.GetValues(row);
+                        result.Add(row);
+                    }
                 CloseConnection();
             }
             return result;
@@ -77,8 +75,8 @@
         {
             if (OpenConnection())
             {
-                MySqlCommand cmd = new(query, _connection);
-                cmd.ExecuteNonQuery();
+                using (MySqlCommand cmd = new(query, _connection))
+                    cmd.ExecuteNonQuery();
                 CloseConnection();
             }
         }
