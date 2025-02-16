@@ -1,24 +1,22 @@
 import React from 'react'
 import "../index.css"
 
+const cardData = [
+  { icon: "fa-bookmark", title: "Books", count: 123 },
+  { icon: "fa-search", title: "Members", count: 123 },
+  { icon: "fa-user", title: "Borrows", count: 123 },
+];
+
 export default function MainCardContainer() {
-    return (
-        <div className="card-container">
-            <div className="cards">
-                <i className="fa fa-bookmark"></i>
-                <h2>Books</h2>
-                <p>123</p>
-            </div>
-            <div className="cards">
-                <i className="fa fa-search"></i>
-                <h2>Members</h2>
-                <p>123</p>
-            </div>
-            <div className="cards">
-                <i className="fa fa-user"></i>
-                <h2>Borrows</h2>
-                <p>123</p>
-            </div>
+  return (
+    <div className="card-container">
+      {cardData.map((card, index) => (
+        <div className="cards" key={index}>
+          <i className={`fa ${card.icon}`}></i>
+          <h2>{card.title}</h2>
+          <p>{card.count}</p>
         </div>
-    )
+      ))}
+    </div>
+  )
 }
