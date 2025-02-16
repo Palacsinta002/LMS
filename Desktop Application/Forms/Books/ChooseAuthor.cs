@@ -1,7 +1,7 @@
-﻿using Library_Management_System.Classes;
+﻿using Desktop_Application.Classes;
 using MySqlX.XDevAPI.Common;
 
-namespace Library_Management_System.Forms.Books
+namespace Desktop_Application.Forms.Books
 {
     public partial class ChooseAuthor : Form
     {

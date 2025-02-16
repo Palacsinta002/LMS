@@ -1,6 +1,6 @@
-﻿using Library_Management_System.Components;
+﻿using Desktop_Application.Components;
 
-namespace Library_Management_System.Classes
+namespace Desktop_Application.Classes
 {
     internal class CloseThisWindow
     {

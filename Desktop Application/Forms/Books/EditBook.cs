@@ -1,8 +1,8 @@
 ﻿using System.Text.RegularExpressions;
-using Library_Management_System.Classes;
-using Library_Management_System.Forms.Books;
+using Desktop_Application.Classes;
+using Desktop_Application.Forms.Books;
 
-namespace Library_Management_System
+namespace Desktop_Application
 {
     public partial class EditBook : Form
     {

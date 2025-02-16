@@ -1,8 +1,8 @@
 ﻿using System.Security.Policy;
-using Library_Management_System.Components;
+using Desktop_Application.Components;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace Library_Management_System.Forms.Books
+namespace Desktop_Application.Forms.Books
 {
     partial class ChooseAuthor
     {

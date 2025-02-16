@@ -1,13 +1,18 @@
 ﻿using System.Text.RegularExpressions;
-using Library_Management_System.Classes;
+using Desktop_Application.Classes;
 
-namespace Library_Management_System
+namespace Desktop_Application
 {
     public partial class Login : Form
     {
+        private string _username;
+        private string _password;
+
         public Login()
         {
             InitializeComponent();
+            _username = "";
+            _password = "";
         }
 
         private void OnLoad(object sender, EventArgs e)
@@ -17,56 +22,78 @@ namespace Library_Management_System
             CloseThisWindow.Handle(this, close_btn);
         }
 
-        // WIP For now the Login button opens another form without any checking.
+        // On Login if the username and password are in the correct format it starts checking the credentials
         private void LoginCheck(object sender, EventArgs e)
         {
-            string username = username_textBox.Text;
-            string password = password_textBox.Text;
-            if (ValidateInput(username, password))
+            if (usernameError_lbl.Text == "" && passwordError_lbl.Text == "")
             {
+                string hashedPassword = HashPassword(_password);
 
+                string query = $"SELECT Users.FirstName, Users.LastName, Users.Username, Users.Password, Roles.Role FROM Users JOIN Roles ON Roles.id = Users.RoleID WHERE Username = '{_username}' AND Password = '{hashedPassword}'";
+                Connection conn = new();
+                var result = conn.Select(query);
 
-
-                bool isAdmin;
-                if (username_textBox.Text == "admin")
+                if (result.Count == 1)
                 {
-                    isAdmin = true;
+                    bool isAdmin = false;
+                    if (result[0][4].ToString() == "Admin")
+                    {
+                        isAdmin = true;
+                    }
+
+                    AdminPanel adminPanel = new(username_textBox.Text, isAdmin);
+                    this.Hide();
+                    adminPanel.ShowDialog();
+                    this.Close();
                 }
                 else
                 {
-                    isAdmin = false;
+                    MessageBox.Show("Wrong username or password!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                AdminPanel adminPanel = new(/*firstname lastname*/username_textBox.Text, isAdmin);
-                this.Hide();
-                adminPanel.ShowDialog();
-                this.Close();
             }
         }
 
-        private bool ValidateInput(string username, string password)
+        private string HashPassword(string password)
         {
-            if (username == string.Empty)
-            {
-                MessageBox.Show("Username is required!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            else if (!Regex.IsMatch(username, @"^[^""\\]+$"))
-            {
-                MessageBox.Show("Username is not in the correct format! Please check your special characters!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
+            return "";
+        }
 
-            if (password == string.Empty)
+        // On username change it writes out to the user what is wrong with the given text
+        private void UsernameTextChanged(object sender, EventArgs e)
+        {
+            _username = username_textBox.Text;
+
+            if (_username == string.Empty)
             {
-                MessageBox.Show("Password is required!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+                usernameError_lbl.Text = "Username is required!";
             }
-            else if (!Regex.IsMatch(password, @"^[^""\\]+$"))
+            else if (!Regex.IsMatch(_username, @"^[^""\\]+$"))
             {
-                MessageBox.Show("Password is not in the correct format! Please check your special characters!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+                usernameError_lbl.Text = "Not allowed special characters!";
             }
-            return true;
+            else
+            {
+                usernameError_lbl.Text = "";
+            }
+        }
+
+        // On password change it writes out to the user what is wrong with the given text
+        private void PasswordTextChanged(object sender, EventArgs e)
+        {
+            _password = password_textBox.Text;
+
+            if (_password == string.Empty)
+            {
+                passwordError_lbl.Text = "Password is required!";
+            }
+            else if (!Regex.IsMatch(_password, @"^[^""\\]+$"))
+            {
+                passwordError_lbl.Text = "Not allowed special characters!";
+            }
+            else
+            {
+                passwordError_lbl.Text = "";
+            }
         }
     }
 }

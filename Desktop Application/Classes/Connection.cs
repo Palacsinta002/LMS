@@ -1,4 +1,4 @@
-﻿namespace Library_Management_System.Classes
+﻿namespace Desktop_Application.Classes
 {
     using MySql.Data.MySqlClient;
 
