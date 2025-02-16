@@ -9,13 +9,14 @@
         // Constructor - initialize database
         public Connection()
         {
-            string _server = "localhost";
-            string _database = "LMS";
-            string _uid = "lms";
-            string _password = "!LibraryMS25";
+            string server = "vagvolgyinas.synology.me";
+            string port = "3306";
+            string database = "LMS";
+            string uid = "lms";
+            string password = "!LibraryMS25";
 
             // Connection string: Defines the login info for the database
-            string connectionString = $"SERVER={_server};DATABASE={_database};UID={_uid};PASSWORD={_password};";
+            string connectionString = $"Server={server};Port={port};Database={database};User Id={uid};Password={password};";
 
             // Sets up the connection using connection string
             _connection = new MySqlConnection(connectionString);
@@ -31,7 +32,7 @@
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
         }
@@ -46,7 +47,7 @@
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
         }

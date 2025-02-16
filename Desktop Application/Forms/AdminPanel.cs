@@ -35,18 +35,25 @@ namespace Desktop_Application
                 dashboard_pnl.Visible = true;
 
                 // Show statistics about our books
-                List<object[]> result;
-                result = HandleQueries.Select("SelectBookCount");
-                dashboard_books.Text = result[0][0].ToString();
+                try
+                {
+                    List<object[]> result;
+                    result = HandleQueries.Select("SelectBookCount");
+                    dashboard_books.Text = result[0][0].ToString();
 
-                result = HandleQueries.Select("SelectUserCount");
-                dashboard_users.Text = result[0][0].ToString();
+                    result = HandleQueries.Select("SelectUserCount");
+                    dashboard_users.Text = result[0][0].ToString();
 
-                result = HandleQueries.Select("SelectBorrowingCount");
-                dashboard_borrowings.Text = result[0][0].ToString();
+                    result = HandleQueries.Select("SelectBorrowingCount");
+                    dashboard_borrowings.Text = result[0][0].ToString();
 
-                result = HandleQueries.Select("SelectTopBorrowedBook");
-                HandleGrids.Fill(dashboard_grd, result);
+                    result = HandleQueries.Select("SelectTopBorrowedBook");
+                    HandleGrids.Fill(dashboard_grd, result);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("There is something wrong with the connection to the database, we couldn't list top borrowed books!\nError: " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
         #endregion
