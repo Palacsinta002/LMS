@@ -103,19 +103,25 @@ class UserRegisterClass{
 
     ####################  Set the password and validate the input  ####################
     public function setPassword($password){
-        if (strlen($password > 8) && strlen($password) < 16){
+        if ($password == $this->password2){
+            if (strlen($password > 8) && strlen($password) < 16){
             
-            if (preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d\W]).+$/', $password)){
-                
-                $this->password = validateTheInput($password);
+                if (preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d\W]).+$/', $password)){
+                    
+                    $this->password = validateTheInput($password);
+                }
+                else{
+                    errorOutput("6");
+                }
             }
             else{
                 errorOutput("6");
             }
         }
         else{
-            errorOutput("6");
+            errorOutput("15");
         }
+        
         
     }
     ####################  Get the password  ####################
