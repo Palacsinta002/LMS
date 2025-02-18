@@ -9,14 +9,13 @@
         // Constructor - initialize database
         public Connection()
         {
-            string server = "vagvolgyinas.synology.me";
-            string port = "3306";
+            string server = "localhost";
             string database = "LMS";
             string uid = "lms";
             string password = "!LibraryMS25";
 
             // Connection string: Defines the login info for the database
-            string connectionString = $"Server={server};Port={port};Database={database};User Id={uid};Password={password};";
+            string connectionString = $"Server={server};Database={database};User Id={uid};Password={password};";
 
             // Sets up the connection using connection string
             _connection = new MySqlConnection(connectionString);
