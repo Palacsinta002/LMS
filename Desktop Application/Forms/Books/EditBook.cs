@@ -4,11 +4,11 @@ using Desktop_Application.Forms.Books;
 
 namespace Desktop_Application
 {
-    public partial class EditBorrowing : Form
+    public partial class EditBook : Form
     {
         private readonly DataGridView _books_grd;
 
-        public EditBorrowing(DataGridView books_grd)
+        public EditBook(DataGridView books_grd)
         {
             _books_grd = books_grd;
             InitializeComponent();

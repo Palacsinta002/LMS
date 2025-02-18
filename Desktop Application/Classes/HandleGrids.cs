@@ -23,13 +23,12 @@
             }
         }
 
-        internal static void SearchGrid(DataGridView grd, string filterText)
+        internal static void SearchGrid(DataGridView grd, string filterText, string[] cols)
         {
             filterText = filterText.Trim().ToLower();
 
             foreach (DataGridViewRow row in grd.Rows)
             {
-                string[] cols = { "title", "publicationYear", "isbn" };
                 for(int i = 0; i < cols.Length; i++)
                 {
                     if (row.Cells[cols[i]].Value.ToString().ToLower().Contains(filterText))

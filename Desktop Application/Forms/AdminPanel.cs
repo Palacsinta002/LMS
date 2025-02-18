@@ -1,5 +1,6 @@
 ﻿using Desktop_Application.Classes;
 using Desktop_Application.Forms.Books;
+using Desktop_Application.Forms.Borrowings;
 
 namespace Desktop_Application
 {
@@ -78,6 +79,20 @@ namespace Desktop_Application
             HandleGrids.Fill(books_grd, result);
         }
 
+        // Live search through the grid which is already filled with content from the database
+        private void SearchBook(object sender, EventArgs e)
+        {
+            string[] cols = ["title", "publicationYear", "isbn"];
+            HandleGrids.SearchGrid(books_grd, books_src.Text, cols);
+        }
+
+        // Adds a book to the database
+        private void AddBook(object sender, EventArgs e)
+        {
+            AddBook addBook = new(books_grd);
+            addBook.ShowDialog();
+        }
+
         // Edit the selected book from the grid and then updates in the database
         private void EditBook(object sender, EventArgs e)
         {
@@ -86,28 +101,15 @@ namespace Desktop_Application
                 MessageBox.Show("You must select one book to edit!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            EditBorrowing editBook = new(books_grd);
+            EditBook editBook = new(books_grd);
             editBook.ShowDialog();
         }
 
         // Removes book from the database
         private void RemoveBook(object sender, EventArgs e)
         {
-            RemoveBorrowing removeBook = new(books_grd);
+            RemoveBook removeBook = new(books_grd);
             removeBook.ShowDialog();
-        }
-
-        // Adds a book to the database
-        private void AddBook(object sender, EventArgs e)
-        {
-            AddBorrowing addBook = new(books_grd);
-            addBook.ShowDialog();
-        }
-
-        // Live search through the grid which is already filled with content from the database
-        private void SearchBook(object sender, EventArgs e)
-        {
-            HandleGrids.SearchGrid(books_grd, books_src.Text);
         }
         #endregion
 
@@ -129,6 +131,18 @@ namespace Desktop_Application
             HandleGrids.Fill(borrowings_grd, result);
         }
 
+        private void SearchBorrowings(object sender, EventArgs e)
+        {
+            string[] cols = ["borrowingsUser", "borrowingsTitle", "borrowingsIsbn"];
+            HandleGrids.SearchGrid(borrowings_grd, borrowings_src.Text, cols);
+        }
+
+        private void AddBorrowing(object sender, EventArgs e)
+        {
+            AddBorrowing addBorrowing = new(borrowings_grd);
+            addBorrowing.ShowDialog();
+        }
+
         private void EditBorrowing(object sender, EventArgs e)
         {
             if (borrowings_grd.SelectedRows.Count != 1)
@@ -136,25 +150,14 @@ namespace Desktop_Application
                 MessageBox.Show("You must select one borrowing to edit!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            EditBorrowing editBorrowing = new(borrowings_grd);
+            EditBook editBorrowing = new(borrowings_grd);
             editBorrowing.ShowDialog();
         }
 
         private void RemoveBorrowing(object sender, EventArgs e)
         {
-            RemoveBorrowing removeBorrowing = new(borrowings_grd);
+            RemoveBook removeBorrowing = new(borrowings_grd);
             removeBorrowing.ShowDialog();
-        }
-
-        private void AddBorrowing(object sender, EventArgs e)
-        {
-            AddBorrowing lendBook = new(borrowings_grd);
-            lendBook.ShowDialog();
-        }
-
-        private void SearchBorrowings(object sender, EventArgs e)
-        {
-            HandleGrids.SearchGrid(borrowings_grd, borrowings_src.Text);
         }
         #endregion
 

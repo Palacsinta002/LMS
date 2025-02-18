@@ -2,7 +2,7 @@
 
 namespace Desktop_Application
 {
-    partial class AddBorrowing
+    partial class AddBook
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace Desktop_Application
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddBorrowing));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddBook));
             close_btn = new RoundedButton();
             header = new Panel();
             title = new Label();

@@ -1,6 +1,8 @@
-﻿using Desktop_Application.Components;
+﻿using Desktop_Application.Forms.Books;
+using Desktop_Application.Properties;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace Desktop_Application
+namespace Desktop_Application.Forms.Borrowings
 {
     partial class AddBorrowing
     {
@@ -31,27 +33,43 @@ namespace Desktop_Application
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddBorrowing));
-            close_btn = new RoundedButton();
             header = new Panel();
             title = new Label();
-            save = new RoundedButton();
-            textBox_pubYear = new TextBox();
-            textBox_isbn = new TextBox();
-            label_pubYear = new Label();
-            label_isbn = new Label();
-            label_category = new Label();
-            label_author = new Label();
+            close_btn = new Components.RoundedButton();
+            save = new Components.RoundedButton();
+            textBox_isbn = new System.Windows.Forms.TextBox();
+            label2 = new Label();
+            cancel = new Components.RoundedButton();
+            label3 = new Label();
+            borrowDate_datePicker = new DateTimePicker();
+            returnDate_datePicker = new DateTimePicker();
+            label4 = new Label();
+            dueDate_datePicker = new DateTimePicker();
+            label5 = new Label();
+            dropDown_user = new System.Windows.Forms.ComboBox();
             label_publisher = new Label();
-            textBox_title = new TextBox();
-            label_title = new Label();
-            cancel = new RoundedButton();
-            dropDown_publisher = new ComboBox();
-            textBox_author = new TextBox();
-            textBox_category = new TextBox();
-            chooseAuthor = new Button();
-            chooseCategory = new Button();
             header.SuspendLayout();
             SuspendLayout();
+            // 
+            // header
+            // 
+            header.BackColor = Color.White;
+            header.Controls.Add(title);
+            header.Controls.Add(close_btn);
+            header.Location = new Point(1, 1);
+            header.Name = "header";
+            header.Size = new Size(383, 55);
+            header.TabIndex = 61;
+            // 
+            // title
+            // 
+            title.AutoSize = true;
+            title.Font = new Font("Yu Gothic UI Semibold", 16F);
+            title.Location = new Point(107, 11);
+            title.Name = "title";
+            title.Size = new Size(164, 30);
+            title.TabIndex = 2;
+            title.Text = "Add Borrowing";
             // 
             // close_btn
             // 
@@ -68,33 +86,13 @@ namespace Desktop_Application
             close_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             close_btn.ForeColor = Color.White;
             close_btn.Image = (Image)resources.GetObject("close_btn.Image");
-            close_btn.Location = new Point(450, 11);
+            close_btn.Location = new Point(336, 10);
             close_btn.Name = "close_btn";
             close_btn.Size = new Size(36, 35);
             close_btn.TabIndex = 25;
             close_btn.TabStop = false;
             close_btn.TextColor = Color.White;
             close_btn.UseVisualStyleBackColor = false;
-            // 
-            // header
-            // 
-            header.BackColor = Color.White;
-            header.Controls.Add(title);
-            header.Controls.Add(close_btn);
-            header.Location = new Point(1, 1);
-            header.Name = "header";
-            header.Size = new Size(497, 55);
-            header.TabIndex = 41;
-            // 
-            // title
-            // 
-            title.AutoSize = true;
-            title.Font = new Font("Yu Gothic UI Semibold", 16F);
-            title.Location = new Point(197, 12);
-            title.Name = "title";
-            title.Size = new Size(111, 30);
-            title.TabIndex = 2;
-            title.Text = "Add Book";
             // 
             // save
             // 
@@ -108,105 +106,35 @@ namespace Desktop_Application
             save.FlatStyle = FlatStyle.Flat;
             save.Font = new Font("Yu Gothic UI Semibold", 14F);
             save.ForeColor = Color.White;
-            save.Location = new Point(173, 317);
+            save.Location = new Point(108, 271);
             save.Name = "save";
             save.Size = new Size(80, 36);
-            save.TabIndex = 7;
+            save.TabIndex = 6;
             save.TabStop = false;
             save.Text = "Save";
             save.TextColor = Color.White;
             save.UseVisualStyleBackColor = false;
             save.Click += Save;
             // 
-            // textBox_pubYear
-            // 
-            textBox_pubYear.BackColor = Color.WhiteSmoke;
-            textBox_pubYear.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_pubYear.Location = new Point(168, 108);
-            textBox_pubYear.MaxLength = 4;
-            textBox_pubYear.Name = "textBox_pubYear";
-            textBox_pubYear.Size = new Size(56, 32);
-            textBox_pubYear.TabIndex = 2;
-            // 
             // textBox_isbn
             // 
             textBox_isbn.BackColor = Color.WhiteSmoke;
             textBox_isbn.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_isbn.Location = new Point(109, 261);
+            textBox_isbn.Location = new Point(72, 108);
             textBox_isbn.MaxLength = 13;
             textBox_isbn.Name = "textBox_isbn";
             textBox_isbn.Size = new Size(152, 32);
-            textBox_isbn.TabIndex = 6;
+            textBox_isbn.TabIndex = 2;
             // 
-            // label_pubYear
+            // label2
             // 
-            label_pubYear.AutoSize = true;
-            label_pubYear.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label_pubYear.Location = new Point(12, 111);
-            label_pubYear.Name = "label_pubYear";
-            label_pubYear.Size = new Size(150, 25);
-            label_pubYear.TabIndex = 37;
-            label_pubYear.Text = "Publication Year";
-            // 
-            // label_isbn
-            // 
-            label_isbn.AutoSize = true;
-            label_isbn.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label_isbn.Location = new Point(12, 264);
-            label_isbn.Name = "label_isbn";
-            label_isbn.Size = new Size(54, 25);
-            label_isbn.TabIndex = 36;
-            label_isbn.Text = "ISBN";
-            // 
-            // label_category
-            // 
-            label_category.AutoSize = true;
-            label_category.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label_category.Location = new Point(12, 187);
-            label_category.Name = "label_category";
-            label_category.Size = new Size(90, 25);
-            label_category.TabIndex = 35;
-            label_category.Text = "Category";
-            // 
-            // label_author
-            // 
-            label_author.AutoSize = true;
-            label_author.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label_author.Location = new Point(12, 149);
-            label_author.Name = "label_author";
-            label_author.Size = new Size(72, 25);
-            label_author.TabIndex = 33;
-            label_author.Text = "Author";
-            // 
-            // label_publisher
-            // 
-            label_publisher.AutoSize = true;
-            label_publisher.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label_publisher.Location = new Point(12, 225);
-            label_publisher.Name = "label_publisher";
-            label_publisher.Size = new Size(91, 25);
-            label_publisher.TabIndex = 31;
-            label_publisher.Text = "Publisher";
-            // 
-            // textBox_title
-            // 
-            textBox_title.BackColor = Color.WhiteSmoke;
-            textBox_title.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_title.Location = new Point(109, 70);
-            textBox_title.MaxLength = 255;
-            textBox_title.Name = "textBox_title";
-            textBox_title.Size = new Size(379, 32);
-            textBox_title.TabIndex = 1;
-            // 
-            // label_title
-            // 
-            label_title.AutoSize = true;
-            label_title.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label_title.Location = new Point(12, 73);
-            label_title.Name = "label_title";
-            label_title.Size = new Size(49, 25);
-            label_title.TabIndex = 29;
-            label_title.Text = "Title";
+            label2.AutoSize = true;
+            label2.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label2.Location = new Point(12, 111);
+            label2.Name = "label2";
+            label2.Size = new Size(54, 25);
+            label2.TabIndex = 59;
+            label2.Text = "ISBN";
             // 
             // cancel
             // 
@@ -219,94 +147,119 @@ namespace Desktop_Application
             cancel.FlatStyle = FlatStyle.Flat;
             cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
             cancel.ForeColor = Color.Black;
-            cancel.Location = new Point(259, 317);
+            cancel.Location = new Point(194, 271);
             cancel.Name = "cancel";
             cancel.Size = new Size(80, 36);
-            cancel.TabIndex = 8;
+            cancel.TabIndex = 7;
             cancel.Text = "Cancel";
             cancel.TextColor = Color.Black;
             cancel.UseVisualStyleBackColor = false;
             // 
-            // dropDown_publisher
+            // label3
             // 
-            dropDown_publisher.BackColor = Color.WhiteSmoke;
-            dropDown_publisher.DropDownStyle = ComboBoxStyle.DropDownList;
-            dropDown_publisher.Font = new Font("Yu Gothic UI Semibold", 14F);
-            dropDown_publisher.FormattingEnabled = true;
-            dropDown_publisher.Location = new Point(109, 222);
-            dropDown_publisher.MaxDropDownItems = 10;
-            dropDown_publisher.Name = "dropDown_publisher";
-            dropDown_publisher.Size = new Size(379, 33);
-            dropDown_publisher.TabIndex = 5;
+            label3.AutoSize = true;
+            label3.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label3.Location = new Point(12, 149);
+            label3.Name = "label3";
+            label3.Size = new Size(119, 25);
+            label3.TabIndex = 64;
+            label3.Text = "Borrow Date";
             // 
-            // textBox_author
+            // borrowDate_datePicker
             // 
-            textBox_author.BackColor = Color.WhiteSmoke;
-            textBox_author.Enabled = false;
-            textBox_author.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_author.Location = new Point(109, 146);
-            textBox_author.Name = "textBox_author";
-            textBox_author.Size = new Size(336, 32);
-            textBox_author.TabIndex = 45;
+            borrowDate_datePicker.CalendarFont = new Font("Yu Gothic UI Semibold", 14F);
+            borrowDate_datePicker.Font = new Font("Yu Gothic UI Semibold", 14F);
+            borrowDate_datePicker.Format = DateTimePickerFormat.Short;
+            borrowDate_datePicker.Location = new Point(137, 146);
+            borrowDate_datePicker.Name = "borrowDate_datePicker";
+            borrowDate_datePicker.Size = new Size(124, 32);
+            borrowDate_datePicker.TabIndex = 3;
             // 
-            // textBox_category
+            // returnDate_datePicker
             // 
-            textBox_category.BackColor = Color.WhiteSmoke;
-            textBox_category.Enabled = false;
-            textBox_category.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_category.Location = new Point(109, 184);
-            textBox_category.Name = "textBox_category";
-            textBox_category.Size = new Size(336, 32);
-            textBox_category.TabIndex = 46;
+            returnDate_datePicker.CalendarFont = new Font("Yu Gothic UI Semibold", 14F);
+            returnDate_datePicker.Font = new Font("Yu Gothic UI Semibold", 14F);
+            returnDate_datePicker.Format = DateTimePickerFormat.Short;
+            returnDate_datePicker.Location = new Point(137, 184);
+            returnDate_datePicker.Name = "returnDate_datePicker";
+            returnDate_datePicker.Size = new Size(124, 32);
+            returnDate_datePicker.TabIndex = 4;
             // 
-            // chooseAuthor
+            // label4
             // 
-            chooseAuthor.Location = new Point(451, 146);
-            chooseAuthor.Name = "chooseAuthor";
-            chooseAuthor.Size = new Size(37, 32);
-            chooseAuthor.TabIndex = 3;
-            chooseAuthor.Text = "...";
-            chooseAuthor.UseVisualStyleBackColor = true;
-            chooseAuthor.Click += OpenChooseAuthor;
+            label4.AutoSize = true;
+            label4.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label4.Location = new Point(12, 187);
+            label4.Name = "label4";
+            label4.Size = new Size(116, 25);
+            label4.TabIndex = 66;
+            label4.Text = "Return Date";
             // 
-            // chooseCategory
+            // dueDate_datePicker
             // 
-            chooseCategory.Location = new Point(451, 184);
-            chooseCategory.Name = "chooseCategory";
-            chooseCategory.Size = new Size(37, 32);
-            chooseCategory.TabIndex = 4;
-            chooseCategory.Text = "...";
-            chooseCategory.UseVisualStyleBackColor = true;
-            chooseCategory.Click += OpenChooseCategory;
+            dueDate_datePicker.CalendarFont = new Font("Yu Gothic UI Semibold", 14F);
+            dueDate_datePicker.Font = new Font("Yu Gothic UI Semibold", 14F);
+            dueDate_datePicker.Format = DateTimePickerFormat.Short;
+            dueDate_datePicker.Location = new Point(137, 222);
+            dueDate_datePicker.Name = "dueDate_datePicker";
+            dueDate_datePicker.Size = new Size(124, 32);
+            dueDate_datePicker.TabIndex = 5;
             // 
-            // AddBook
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label5.Location = new Point(12, 225);
+            label5.Name = "label5";
+            label5.Size = new Size(93, 25);
+            label5.TabIndex = 68;
+            label5.Text = "Due Date";
+            // 
+            // dropDown_user
+            // 
+            dropDown_user.BackColor = Color.WhiteSmoke;
+            dropDown_user.DropDownStyle = ComboBoxStyle.DropDownList;
+            dropDown_user.Font = new Font("Yu Gothic UI Semibold", 14F);
+            dropDown_user.FormattingEnabled = true;
+            dropDown_user.Location = new Point(72, 69);
+            dropDown_user.MaxDropDownItems = 10;
+            dropDown_user.Name = "dropDown_user";
+            dropDown_user.Size = new Size(296, 33);
+            dropDown_user.TabIndex = 1;
+            // 
+            // label_publisher
+            // 
+            label_publisher.AutoSize = true;
+            label_publisher.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label_publisher.Location = new Point(12, 72);
+            label_publisher.Name = "label_publisher";
+            label_publisher.Size = new Size(50, 25);
+            label_publisher.TabIndex = 71;
+            label_publisher.Text = "User";
+            // 
+            // AddBorrowing
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(500, 365);
-            Controls.Add(chooseCategory);
-            Controls.Add(chooseAuthor);
-            Controls.Add(textBox_category);
-            Controls.Add(textBox_author);
-            Controls.Add(dropDown_publisher);
+            ClientSize = new Size(385, 319);
+            Controls.Add(dropDown_user);
+            Controls.Add(label_publisher);
+            Controls.Add(dueDate_datePicker);
+            Controls.Add(label5);
+            Controls.Add(returnDate_datePicker);
+            Controls.Add(label4);
+            Controls.Add(borrowDate_datePicker);
+            Controls.Add(label3);
             Controls.Add(header);
             Controls.Add(save);
-            Controls.Add(textBox_pubYear);
             Controls.Add(textBox_isbn);
-            Controls.Add(label_pubYear);
-            Controls.Add(label_isbn);
-            Controls.Add(label_category);
-            Controls.Add(label_author);
-            Controls.Add(label_publisher);
-            Controls.Add(textBox_title);
-            Controls.Add(label_title);
+            Controls.Add(label2);
             Controls.Add(cancel);
             FormBorderStyle = FormBorderStyle.None;
-            Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "AddBook";
+            Name = "AddBorrowing";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "AddBook";
+            Text = "AddBorrowing";
             Load += OnLoad;
             header.ResumeLayout(false);
             header.PerformLayout();
@@ -315,24 +268,28 @@ namespace Desktop_Application
         }
 
         #endregion
-        private RoundedButton close_btn;
+
+        private System.Windows.Forms.Button chooseCategory;
+        private System.Windows.Forms.TextBox textBox_category;
+        private System.Windows.Forms.ComboBox dropDown_user;
         private Panel header;
         private Label title;
-        private RoundedButton save;
-        private TextBox textBox_pubYear;
-        private TextBox textBox_isbn;
+        private Components.RoundedButton close_btn;
+        private Components.RoundedButton save;
+        private System.Windows.Forms.TextBox textBox_pubYear;
+        private System.Windows.Forms.TextBox textBox_isbn;
         private Label label_pubYear;
-        private Label label_isbn;
+        private Label label2;
         private Label label_category;
-        private Label label_author;
         private Label label_publisher;
-        private TextBox textBox_title;
+        private System.Windows.Forms.TextBox textBox_title;
+        private Components.RoundedButton cancel;
         private Label label_title;
-        private RoundedButton cancel;
-        private ComboBox dropDown_publisher;
-        private TextBox textBox_author;
-        private TextBox textBox_category;
-        private Button chooseAuthor;
-        private Button chooseCategory;
+        private Label label3;
+        private DateTimePicker borrowDate_datePicker;
+        private DateTimePicker returnDate_datePicker;
+        private Label label4;
+        private DateTimePicker dueDate_datePicker;
+        private Label label5;
     }
 }

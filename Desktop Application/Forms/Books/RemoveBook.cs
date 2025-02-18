@@ -2,11 +2,11 @@
 
 namespace Desktop_Application.Forms.Books
 {
-    public partial class RemoveBorrowing : Form
+    public partial class RemoveBook : Form
     {
         private readonly DataGridView _books_grd;
 
-        public RemoveBorrowing(DataGridView books_grd)
+        public RemoveBook(DataGridView books_grd)
         {
             _books_grd = books_grd;
             InitializeComponent();

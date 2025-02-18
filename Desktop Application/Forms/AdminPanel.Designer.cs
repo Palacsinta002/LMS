@@ -82,12 +82,6 @@ namespace Desktop_Application
             isbn = new DataGridViewTextBoxColumn();
             borrowings_pnl = new Panel();
             borrowings_grd = new DataGridView();
-            user = new DataGridViewTextBoxColumn();
-            borrowing_title = new DataGridViewTextBoxColumn();
-            borrowings_isbn = new DataGridViewTextBoxColumn();
-            borrowDate = new DataGridViewTextBoxColumn();
-            returnDate = new DataGridViewTextBoxColumn();
-            dueDate = new DataGridViewTextBoxColumn();
             borrowings_refresh_btn = new RoundedButton();
             borrowings_borrow_btn = new RoundedButton();
             borrowings_edit_btn = new RoundedButton();
@@ -125,6 +119,12 @@ namespace Desktop_Application
             publishers_lbl1 = new Label();
             publishers_src = new TextBox();
             publishers_grd = new DataGridView();
+            borrowingsUser = new DataGridViewTextBoxColumn();
+            borrowingsTitle = new DataGridViewTextBoxColumn();
+            borrowingsIsbn = new DataGridViewTextBoxColumn();
+            borrowDate = new DataGridViewTextBoxColumn();
+            returnDate = new DataGridViewTextBoxColumn();
+            dueDate = new DataGridViewTextBoxColumn();
             menu_pnl.SuspendLayout();
             header_pnl.SuspendLayout();
             dashboard_pnl.SuspendLayout();
@@ -872,7 +872,7 @@ namespace Desktop_Application
             borrowings_grd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             borrowings_grd.BackgroundColor = Color.White;
             borrowings_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            borrowings_grd.Columns.AddRange(new DataGridViewColumn[] { user, borrowing_title, borrowings_isbn, borrowDate, returnDate, dueDate });
+            borrowings_grd.Columns.AddRange(new DataGridViewColumn[] { borrowingsUser, borrowingsTitle, borrowingsIsbn, borrowDate, returnDate, dueDate });
             borrowings_grd.Location = new Point(52, 108);
             borrowings_grd.Name = "borrowings_grd";
             borrowings_grd.ReadOnly = true;
@@ -885,48 +885,6 @@ namespace Desktop_Application
             borrowings_grd.ShowRowErrors = false;
             borrowings_grd.Size = new Size(604, 359);
             borrowings_grd.TabIndex = 30;
-            // 
-            // user
-            // 
-            user.HeaderText = "User";
-            user.Name = "user";
-            user.ReadOnly = true;
-            user.Width = 55;
-            // 
-            // borrowing_title
-            // 
-            borrowing_title.HeaderText = "Title";
-            borrowing_title.Name = "borrowing_title";
-            borrowing_title.ReadOnly = true;
-            borrowing_title.Width = 54;
-            // 
-            // borrowings_isbn
-            // 
-            borrowings_isbn.HeaderText = "ISBN";
-            borrowings_isbn.Name = "borrowings_isbn";
-            borrowings_isbn.ReadOnly = true;
-            borrowings_isbn.Width = 57;
-            // 
-            // borrowDate
-            // 
-            borrowDate.HeaderText = "Borrow Date";
-            borrowDate.Name = "borrowDate";
-            borrowDate.ReadOnly = true;
-            borrowDate.Width = 97;
-            // 
-            // returnDate
-            // 
-            returnDate.HeaderText = "Return Date";
-            returnDate.Name = "returnDate";
-            returnDate.ReadOnly = true;
-            returnDate.Width = 94;
-            // 
-            // dueDate
-            // 
-            dueDate.HeaderText = "Due Date";
-            dueDate.Name = "dueDate";
-            dueDate.ReadOnly = true;
-            dueDate.Width = 80;
             // 
             // borrowings_refresh_btn
             // 
@@ -1572,6 +1530,48 @@ namespace Desktop_Application
             publishers_grd.Size = new Size(604, 359);
             publishers_grd.TabIndex = 16;
             // 
+            // borrowingsUser
+            // 
+            borrowingsUser.HeaderText = "User";
+            borrowingsUser.Name = "borrowingsUser";
+            borrowingsUser.ReadOnly = true;
+            borrowingsUser.Width = 55;
+            // 
+            // borrowingsTitle
+            // 
+            borrowingsTitle.HeaderText = "Title";
+            borrowingsTitle.Name = "borrowingsTitle";
+            borrowingsTitle.ReadOnly = true;
+            borrowingsTitle.Width = 54;
+            // 
+            // borrowingsIsbn
+            // 
+            borrowingsIsbn.HeaderText = "ISBN";
+            borrowingsIsbn.Name = "borrowingsIsbn";
+            borrowingsIsbn.ReadOnly = true;
+            borrowingsIsbn.Width = 57;
+            // 
+            // borrowDate
+            // 
+            borrowDate.HeaderText = "Borrow Date";
+            borrowDate.Name = "borrowDate";
+            borrowDate.ReadOnly = true;
+            borrowDate.Width = 97;
+            // 
+            // returnDate
+            // 
+            returnDate.HeaderText = "Return Date";
+            returnDate.Name = "returnDate";
+            returnDate.ReadOnly = true;
+            returnDate.Width = 94;
+            // 
+            // dueDate
+            // 
+            dueDate.HeaderText = "Due Date";
+            dueDate.Name = "dueDate";
+            dueDate.ReadOnly = true;
+            dueDate.Width = 80;
+            // 
             // AdminPanel
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1719,9 +1719,9 @@ namespace Desktop_Application
         private DataGridViewTextBoxColumn dashboard_author;
         private DataGridViewTextBoxColumn dashboard_publicationYear;
         private DataGridView borrowings_grd;
-        private DataGridViewTextBoxColumn user;
-        private DataGridViewTextBoxColumn borrowing_title;
-        private DataGridViewTextBoxColumn borrowings_isbn;
+        private DataGridViewTextBoxColumn borrowingsUser;
+        private DataGridViewTextBoxColumn borrowingsTitle;
+        private DataGridViewTextBoxColumn borrowingsIsbn;
         private DataGridViewTextBoxColumn borrowDate;
         private DataGridViewTextBoxColumn returnDate;
         private DataGridViewTextBoxColumn dueDate;
