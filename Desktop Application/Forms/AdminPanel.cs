@@ -17,7 +17,7 @@ namespace Desktop_Application
 
         private void OnLoad(object sender, EventArgs e)
         {
-            members_btn.Visible = _isAdmin;
+            users_btn.Visible = _isAdmin;
             divider_pnl4.Visible = _isAdmin;
 
             hello_lbl.Text = $"Hello {_name}!";
@@ -58,8 +58,7 @@ namespace Desktop_Application
         }
         #endregion
 
-        // Books
-        #region
+        #region Books
         // Shows Books page and hides other pages
         private void ShowBooks(object sender, EventArgs e)
         {
@@ -84,24 +83,24 @@ namespace Desktop_Application
         {
             if (books_grd.SelectedRows.Count != 1)
             {
-                MessageBox.Show("You can only edit one book at a time!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("You must select one book to edit!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            EditBook editBook = new(books_grd);
+            EditBorrowing editBook = new(books_grd);
             editBook.ShowDialog();
         }
 
         // Removes book from the database
         private void RemoveBook(object sender, EventArgs e)
         {
-            RemoveBook removeBook = new(books_grd);
+            RemoveBorrowing removeBook = new(books_grd);
             removeBook.ShowDialog();
         }
 
         // Adds a book to the database
         private void AddBook(object sender, EventArgs e)
         {
-            AddBook addBook = new(books_grd);
+            AddBorrowing addBook = new(books_grd);
             addBook.ShowDialog();
         }
 
@@ -112,20 +111,54 @@ namespace Desktop_Application
         }
         #endregion
 
-        // Borrowings
-        #region
+        #region Borrowings
         private void ShowBorrowings(object sender, EventArgs e)
         {
             if (!borrowings_pnl.Visible)
             {
                 HidePanels();
                 borrowings_pnl.Visible = true;
+                var result = HandleQueries.Select("SelectBorrowing");
+                HandleGrids.Fill(borrowings_grd, result);
             }
+        }
+
+        private void RefreshBorrowings(object sender, EventArgs e)
+        {
+            var result = HandleQueries.Select("SelectBorrowing");
+            HandleGrids.Fill(borrowings_grd, result);
+        }
+
+        private void EditBorrowing(object sender, EventArgs e)
+        {
+            if (borrowings_grd.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("You must select one borrowing to edit!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            EditBorrowing editBorrowing = new(borrowings_grd);
+            editBorrowing.ShowDialog();
+        }
+
+        private void RemoveBorrowing(object sender, EventArgs e)
+        {
+            RemoveBorrowing removeBorrowing = new(borrowings_grd);
+            removeBorrowing.ShowDialog();
+        }
+
+        private void AddBorrowing(object sender, EventArgs e)
+        {
+            AddBorrowing lendBook = new(borrowings_grd);
+            lendBook.ShowDialog();
+        }
+
+        private void SearchBorrowings(object sender, EventArgs e)
+        {
+            HandleGrids.SearchGrid(borrowings_grd, borrowings_src.Text);
         }
         #endregion
 
-        // Categories
-        #region
+        #region Categories
         private void ShowCategories(object sender, EventArgs e)
         {
             if (!categories_pnl.Visible)
@@ -134,10 +167,9 @@ namespace Desktop_Application
                 categories_pnl.Visible = true;
             }
         }
-        #endregion
+        #endregion 
 
-        // Members
-        #region
+        #region Users
         private void ShowMembers(object sender, EventArgs e)
         {
             if (members_pnl.Visible != true)
@@ -148,8 +180,7 @@ namespace Desktop_Application
         }
         #endregion
 
-        // Authors
-        #region
+        #region Authors
         private void ShowAuthors(object sender, EventArgs e)
         {
             if (!authors_pnl.Visible)
@@ -160,8 +191,7 @@ namespace Desktop_Application
         }
         #endregion
 
-        // Publishers
-        #region
+        #region Publishers
         private void ShowPublishers(object sender, EventArgs e)
         {
             if (!publishers_pnl.Visible)

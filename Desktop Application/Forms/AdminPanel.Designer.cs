@@ -43,7 +43,7 @@ namespace Desktop_Application
             logout_btn = new RoundedButton();
             categories_btn = new Button();
             borrowings_btn = new Button();
-            members_btn = new Button();
+            users_btn = new Button();
             books_btn = new Button();
             dashboard_btn = new Button();
             label1 = new Label();
@@ -81,6 +81,13 @@ namespace Desktop_Application
             publisher = new DataGridViewTextBoxColumn();
             isbn = new DataGridViewTextBoxColumn();
             borrowings_pnl = new Panel();
+            borrowings_grd = new DataGridView();
+            user = new DataGridViewTextBoxColumn();
+            borrowing_title = new DataGridViewTextBoxColumn();
+            borrowings_isbn = new DataGridViewTextBoxColumn();
+            borrowDate = new DataGridViewTextBoxColumn();
+            returnDate = new DataGridViewTextBoxColumn();
+            dueDate = new DataGridViewTextBoxColumn();
             borrowings_refresh_btn = new RoundedButton();
             borrowings_borrow_btn = new RoundedButton();
             borrowings_edit_btn = new RoundedButton();
@@ -118,13 +125,6 @@ namespace Desktop_Application
             publishers_lbl1 = new Label();
             publishers_src = new TextBox();
             publishers_grd = new DataGridView();
-            dataGridView1 = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
             menu_pnl.SuspendLayout();
             header_pnl.SuspendLayout();
             dashboard_pnl.SuspendLayout();
@@ -136,6 +136,7 @@ namespace Desktop_Application
             books_pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)books_grd).BeginInit();
             borrowings_pnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)borrowings_grd).BeginInit();
             categories_pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)categories_grd).BeginInit();
             members_pnl.SuspendLayout();
@@ -144,7 +145,6 @@ namespace Desktop_Application
             ((System.ComponentModel.ISupportInitialize)authors_grd).BeginInit();
             publishers_pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)publishers_grd).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // menu_pnl
@@ -162,7 +162,7 @@ namespace Desktop_Application
             menu_pnl.Controls.Add(logout_btn);
             menu_pnl.Controls.Add(categories_btn);
             menu_pnl.Controls.Add(borrowings_btn);
-            menu_pnl.Controls.Add(members_btn);
+            menu_pnl.Controls.Add(users_btn);
             menu_pnl.Controls.Add(books_btn);
             menu_pnl.Controls.Add(dashboard_btn);
             menu_pnl.Location = new Point(0, 0);
@@ -320,23 +320,23 @@ namespace Desktop_Application
             borrowings_btn.UseVisualStyleBackColor = false;
             borrowings_btn.Click += ShowBorrowings;
             // 
-            // members_btn
+            // users_btn
             // 
-            members_btn.AutoSize = true;
-            members_btn.BackColor = Color.FromArgb(80, 77, 180);
-            members_btn.FlatAppearance.BorderSize = 0;
-            members_btn.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
-            members_btn.FlatStyle = FlatStyle.Flat;
-            members_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
-            members_btn.ForeColor = Color.White;
-            members_btn.Location = new Point(0, 374);
-            members_btn.Name = "members_btn";
-            members_btn.Size = new Size(263, 42);
-            members_btn.TabIndex = 2;
-            members_btn.TabStop = false;
-            members_btn.Text = "Members";
-            members_btn.UseVisualStyleBackColor = false;
-            members_btn.Click += ShowMembers;
+            users_btn.AutoSize = true;
+            users_btn.BackColor = Color.FromArgb(80, 77, 180);
+            users_btn.FlatAppearance.BorderSize = 0;
+            users_btn.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            users_btn.FlatStyle = FlatStyle.Flat;
+            users_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
+            users_btn.ForeColor = Color.White;
+            users_btn.Location = new Point(0, 374);
+            users_btn.Name = "users_btn";
+            users_btn.Size = new Size(263, 42);
+            users_btn.TabIndex = 2;
+            users_btn.TabStop = false;
+            users_btn.Text = "Users";
+            users_btn.UseVisualStyleBackColor = false;
+            users_btn.Click += ShowMembers;
             // 
             // books_btn
             // 
@@ -849,7 +849,7 @@ namespace Desktop_Application
             // 
             borrowings_pnl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             borrowings_pnl.BackColor = Color.White;
-            borrowings_pnl.Controls.Add(dataGridView1);
+            borrowings_pnl.Controls.Add(borrowings_grd);
             borrowings_pnl.Controls.Add(borrowings_refresh_btn);
             borrowings_pnl.Controls.Add(borrowings_borrow_btn);
             borrowings_pnl.Controls.Add(borrowings_edit_btn);
@@ -861,6 +861,72 @@ namespace Desktop_Application
             borrowings_pnl.Size = new Size(708, 493);
             borrowings_pnl.TabIndex = 14;
             borrowings_pnl.Visible = false;
+            // 
+            // borrowings_grd
+            // 
+            borrowings_grd.AllowUserToAddRows = false;
+            borrowings_grd.AllowUserToDeleteRows = false;
+            borrowings_grd.AllowUserToResizeColumns = false;
+            borrowings_grd.AllowUserToResizeRows = false;
+            borrowings_grd.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            borrowings_grd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            borrowings_grd.BackgroundColor = Color.White;
+            borrowings_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            borrowings_grd.Columns.AddRange(new DataGridViewColumn[] { user, borrowing_title, borrowings_isbn, borrowDate, returnDate, dueDate });
+            borrowings_grd.Location = new Point(52, 108);
+            borrowings_grd.Name = "borrowings_grd";
+            borrowings_grd.ReadOnly = true;
+            borrowings_grd.RowHeadersVisible = false;
+            borrowings_grd.RowHeadersWidth = 51;
+            borrowings_grd.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            borrowings_grd.ShowCellErrors = false;
+            borrowings_grd.ShowCellToolTips = false;
+            borrowings_grd.ShowEditingIcon = false;
+            borrowings_grd.ShowRowErrors = false;
+            borrowings_grd.Size = new Size(604, 359);
+            borrowings_grd.TabIndex = 30;
+            // 
+            // user
+            // 
+            user.HeaderText = "User";
+            user.Name = "user";
+            user.ReadOnly = true;
+            user.Width = 55;
+            // 
+            // borrowing_title
+            // 
+            borrowing_title.HeaderText = "Title";
+            borrowing_title.Name = "borrowing_title";
+            borrowing_title.ReadOnly = true;
+            borrowing_title.Width = 54;
+            // 
+            // borrowings_isbn
+            // 
+            borrowings_isbn.HeaderText = "ISBN";
+            borrowings_isbn.Name = "borrowings_isbn";
+            borrowings_isbn.ReadOnly = true;
+            borrowings_isbn.Width = 57;
+            // 
+            // borrowDate
+            // 
+            borrowDate.HeaderText = "Borrow Date";
+            borrowDate.Name = "borrowDate";
+            borrowDate.ReadOnly = true;
+            borrowDate.Width = 97;
+            // 
+            // returnDate
+            // 
+            returnDate.HeaderText = "Return Date";
+            returnDate.Name = "returnDate";
+            returnDate.ReadOnly = true;
+            returnDate.Width = 94;
+            // 
+            // dueDate
+            // 
+            dueDate.HeaderText = "Due Date";
+            dueDate.Name = "dueDate";
+            dueDate.ReadOnly = true;
+            dueDate.Width = 80;
             // 
             // borrowings_refresh_btn
             // 
@@ -882,6 +948,7 @@ namespace Desktop_Application
             borrowings_refresh_btn.TabStop = false;
             borrowings_refresh_btn.TextColor = Color.White;
             borrowings_refresh_btn.UseVisualStyleBackColor = false;
+            borrowings_refresh_btn.Click += RefreshBorrowings;
             // 
             // borrowings_borrow_btn
             // 
@@ -896,14 +963,15 @@ namespace Desktop_Application
             borrowings_borrow_btn.FlatStyle = FlatStyle.Flat;
             borrowings_borrow_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             borrowings_borrow_btn.ForeColor = Color.White;
-            borrowings_borrow_btn.Location = new Point(349, 26);
+            borrowings_borrow_btn.Location = new Point(342, 26);
             borrowings_borrow_btn.Name = "borrowings_borrow_btn";
-            borrowings_borrow_btn.Size = new Size(93, 36);
+            borrowings_borrow_btn.Size = new Size(100, 36);
             borrowings_borrow_btn.TabIndex = 28;
             borrowings_borrow_btn.TabStop = false;
-            borrowings_borrow_btn.Text = "Borrow";
+            borrowings_borrow_btn.Text = "Lend";
             borrowings_borrow_btn.TextColor = Color.White;
             borrowings_borrow_btn.UseVisualStyleBackColor = false;
+            borrowings_borrow_btn.Click += AddBorrowing;
             // 
             // borrowings_edit_btn
             // 
@@ -918,14 +986,15 @@ namespace Desktop_Application
             borrowings_edit_btn.FlatStyle = FlatStyle.Flat;
             borrowings_edit_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             borrowings_edit_btn.ForeColor = Color.White;
-            borrowings_edit_btn.Location = new Point(151, 26);
+            borrowings_edit_btn.Location = new Point(130, 26);
             borrowings_edit_btn.Name = "borrowings_edit_btn";
-            borrowings_edit_btn.Size = new Size(93, 36);
+            borrowings_edit_btn.Size = new Size(100, 36);
             borrowings_edit_btn.TabIndex = 27;
             borrowings_edit_btn.TabStop = false;
             borrowings_edit_btn.Text = "Edit";
             borrowings_edit_btn.TextColor = Color.White;
             borrowings_edit_btn.UseVisualStyleBackColor = false;
+            borrowings_edit_btn.Click += EditBorrowing;
             // 
             // borrowings_return_btn
             // 
@@ -940,14 +1009,15 @@ namespace Desktop_Application
             borrowings_return_btn.FlatStyle = FlatStyle.Flat;
             borrowings_return_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             borrowings_return_btn.ForeColor = Color.White;
-            borrowings_return_btn.Location = new Point(250, 26);
+            borrowings_return_btn.Location = new Point(236, 26);
             borrowings_return_btn.Name = "borrowings_return_btn";
-            borrowings_return_btn.Size = new Size(93, 36);
+            borrowings_return_btn.Size = new Size(100, 36);
             borrowings_return_btn.TabIndex = 26;
             borrowings_return_btn.TabStop = false;
             borrowings_return_btn.Text = "Return";
             borrowings_return_btn.TextColor = Color.White;
             borrowings_return_btn.UseVisualStyleBackColor = false;
+            borrowings_return_btn.Click += RemoveBorrowing;
             // 
             // borrowings_lbl1
             // 
@@ -971,6 +1041,7 @@ namespace Desktop_Application
             borrowings_src.Size = new Size(208, 32);
             borrowings_src.TabIndex = 24;
             borrowings_src.TabStop = false;
+            borrowings_src.TextChanged += SearchBorrowings;
             // 
             // categories_pnl
             // 
@@ -1023,9 +1094,9 @@ namespace Desktop_Application
             categories_add_btn.FlatStyle = FlatStyle.Flat;
             categories_add_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             categories_add_btn.ForeColor = Color.White;
-            categories_add_btn.Location = new Point(349, 26);
+            categories_add_btn.Location = new Point(342, 26);
             categories_add_btn.Name = "categories_add_btn";
-            categories_add_btn.Size = new Size(93, 36);
+            categories_add_btn.Size = new Size(100, 36);
             categories_add_btn.TabIndex = 21;
             categories_add_btn.TabStop = false;
             categories_add_btn.Text = "Add";
@@ -1045,9 +1116,9 @@ namespace Desktop_Application
             categories_edit_btn.FlatStyle = FlatStyle.Flat;
             categories_edit_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             categories_edit_btn.ForeColor = Color.White;
-            categories_edit_btn.Location = new Point(151, 26);
+            categories_edit_btn.Location = new Point(130, 26);
             categories_edit_btn.Name = "categories_edit_btn";
-            categories_edit_btn.Size = new Size(93, 36);
+            categories_edit_btn.Size = new Size(100, 36);
             categories_edit_btn.TabIndex = 20;
             categories_edit_btn.TabStop = false;
             categories_edit_btn.Text = "Edit";
@@ -1067,9 +1138,9 @@ namespace Desktop_Application
             categories_remove_btn.FlatStyle = FlatStyle.Flat;
             categories_remove_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             categories_remove_btn.ForeColor = Color.White;
-            categories_remove_btn.Location = new Point(250, 26);
+            categories_remove_btn.Location = new Point(236, 26);
             categories_remove_btn.Name = "categories_remove_btn";
-            categories_remove_btn.Size = new Size(93, 36);
+            categories_remove_btn.Size = new Size(100, 36);
             categories_remove_btn.TabIndex = 19;
             categories_remove_btn.TabStop = false;
             categories_remove_btn.Text = "Remove";
@@ -1159,9 +1230,9 @@ namespace Desktop_Application
             members_remove_btn.FlatStyle = FlatStyle.Flat;
             members_remove_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             members_remove_btn.ForeColor = Color.White;
-            members_remove_btn.Location = new Point(349, 26);
+            members_remove_btn.Location = new Point(342, 26);
             members_remove_btn.Name = "members_remove_btn";
-            members_remove_btn.Size = new Size(93, 36);
+            members_remove_btn.Size = new Size(100, 36);
             members_remove_btn.TabIndex = 14;
             members_remove_btn.TabStop = false;
             members_remove_btn.Text = "Remove";
@@ -1181,9 +1252,9 @@ namespace Desktop_Application
             members_edit_btn.FlatStyle = FlatStyle.Flat;
             members_edit_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             members_edit_btn.ForeColor = Color.White;
-            members_edit_btn.Location = new Point(250, 26);
+            members_edit_btn.Location = new Point(236, 26);
             members_edit_btn.Name = "members_edit_btn";
-            members_edit_btn.Size = new Size(93, 36);
+            members_edit_btn.Size = new Size(100, 36);
             members_edit_btn.TabIndex = 12;
             members_edit_btn.TabStop = false;
             members_edit_btn.Text = "Edit";
@@ -1196,9 +1267,9 @@ namespace Desktop_Application
             members_lbl1.Font = new Font("Yu Gothic UI Semibold", 14F);
             members_lbl1.Location = new Point(52, 80);
             members_lbl1.Name = "members_lbl1";
-            members_lbl1.Size = new Size(93, 25);
+            members_lbl1.Size = new Size(58, 25);
             members_lbl1.TabIndex = 11;
-            members_lbl1.Text = "Members";
+            members_lbl1.Text = "Users";
             // 
             // members_src
             // 
@@ -1275,9 +1346,9 @@ namespace Desktop_Application
             authors_add_btn.FlatStyle = FlatStyle.Flat;
             authors_add_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             authors_add_btn.ForeColor = Color.White;
-            authors_add_btn.Location = new Point(349, 26);
+            authors_add_btn.Location = new Point(342, 26);
             authors_add_btn.Name = "authors_add_btn";
-            authors_add_btn.Size = new Size(93, 36);
+            authors_add_btn.Size = new Size(100, 36);
             authors_add_btn.TabIndex = 21;
             authors_add_btn.TabStop = false;
             authors_add_btn.Text = "Add";
@@ -1297,9 +1368,9 @@ namespace Desktop_Application
             authors_edit_btn.FlatStyle = FlatStyle.Flat;
             authors_edit_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             authors_edit_btn.ForeColor = Color.White;
-            authors_edit_btn.Location = new Point(151, 26);
+            authors_edit_btn.Location = new Point(130, 26);
             authors_edit_btn.Name = "authors_edit_btn";
-            authors_edit_btn.Size = new Size(93, 36);
+            authors_edit_btn.Size = new Size(100, 36);
             authors_edit_btn.TabIndex = 20;
             authors_edit_btn.TabStop = false;
             authors_edit_btn.Text = "Edit";
@@ -1319,9 +1390,9 @@ namespace Desktop_Application
             authors_remove_btn.FlatStyle = FlatStyle.Flat;
             authors_remove_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             authors_remove_btn.ForeColor = Color.White;
-            authors_remove_btn.Location = new Point(250, 26);
+            authors_remove_btn.Location = new Point(236, 26);
             authors_remove_btn.Name = "authors_remove_btn";
-            authors_remove_btn.Size = new Size(93, 36);
+            authors_remove_btn.Size = new Size(100, 36);
             authors_remove_btn.TabIndex = 19;
             authors_remove_btn.TabStop = false;
             authors_remove_btn.Text = "Remove";
@@ -1414,9 +1485,9 @@ namespace Desktop_Application
             publishers_add_btn.FlatStyle = FlatStyle.Flat;
             publishers_add_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             publishers_add_btn.ForeColor = Color.White;
-            publishers_add_btn.Location = new Point(340, 26);
+            publishers_add_btn.Location = new Point(342, 26);
             publishers_add_btn.Name = "publishers_add_btn";
-            publishers_add_btn.Size = new Size(102, 36);
+            publishers_add_btn.Size = new Size(100, 36);
             publishers_add_btn.TabIndex = 21;
             publishers_add_btn.TabStop = false;
             publishers_add_btn.Text = "Add";
@@ -1436,9 +1507,9 @@ namespace Desktop_Application
             publishers_edit_btn.FlatStyle = FlatStyle.Flat;
             publishers_edit_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             publishers_edit_btn.ForeColor = Color.White;
-            publishers_edit_btn.Location = new Point(124, 27);
+            publishers_edit_btn.Location = new Point(130, 26);
             publishers_edit_btn.Name = "publishers_edit_btn";
-            publishers_edit_btn.Size = new Size(102, 36);
+            publishers_edit_btn.Size = new Size(100, 36);
             publishers_edit_btn.TabIndex = 20;
             publishers_edit_btn.TabStop = false;
             publishers_edit_btn.Text = "Edit";
@@ -1458,9 +1529,9 @@ namespace Desktop_Application
             publishers_remove_btn.FlatStyle = FlatStyle.Flat;
             publishers_remove_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             publishers_remove_btn.ForeColor = Color.White;
-            publishers_remove_btn.Location = new Point(232, 27);
+            publishers_remove_btn.Location = new Point(236, 26);
             publishers_remove_btn.Name = "publishers_remove_btn";
-            publishers_remove_btn.Size = new Size(102, 36);
+            publishers_remove_btn.Size = new Size(100, 36);
             publishers_remove_btn.TabIndex = 19;
             publishers_remove_btn.TabStop = false;
             publishers_remove_btn.Text = "Remove";
@@ -1500,78 +1571,6 @@ namespace Desktop_Application
             publishers_grd.RowHeadersWidth = 51;
             publishers_grd.Size = new Size(604, 359);
             publishers_grd.TabIndex = 16;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AllowUserToResizeColumns = false;
-            dataGridView1.AllowUserToResizeRows = false;
-            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6 });
-            dataGridView1.Location = new Point(52, 108);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.ShowCellErrors = false;
-            dataGridView1.ShowCellToolTips = false;
-            dataGridView1.ShowEditingIcon = false;
-            dataGridView1.ShowRowErrors = false;
-            dataGridView1.Size = new Size(604, 359);
-            dataGridView1.TabIndex = 30;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.HeaderText = "Title";
-            dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.ReadOnly = true;
-            dataGridViewTextBoxColumn1.Width = 54;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.HeaderText = "Author";
-            dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.ReadOnly = true;
-            dataGridViewTextBoxColumn2.Width = 69;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.HeaderText = "Publication Year";
-            dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.ReadOnly = true;
-            dataGridViewTextBoxColumn3.Width = 107;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.HeaderText = "Categroy";
-            dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            dataGridViewTextBoxColumn4.ReadOnly = true;
-            dataGridViewTextBoxColumn4.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewTextBoxColumn5.HeaderText = "Publisher";
-            dataGridViewTextBoxColumn5.MinimumWidth = 6;
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.ReadOnly = true;
-            dataGridViewTextBoxColumn5.Width = 81;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            dataGridViewTextBoxColumn6.HeaderText = "ISBN";
-            dataGridViewTextBoxColumn6.MinimumWidth = 6;
-            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            dataGridViewTextBoxColumn6.ReadOnly = true;
-            dataGridViewTextBoxColumn6.Width = 57;
             // 
             // AdminPanel
             // 
@@ -1614,6 +1613,7 @@ namespace Desktop_Application
             ((System.ComponentModel.ISupportInitialize)books_grd).EndInit();
             borrowings_pnl.ResumeLayout(false);
             borrowings_pnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)borrowings_grd).EndInit();
             categories_pnl.ResumeLayout(false);
             categories_pnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)categories_grd).EndInit();
@@ -1626,7 +1626,6 @@ namespace Desktop_Application
             publishers_pnl.ResumeLayout(false);
             publishers_pnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)publishers_grd).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1638,7 +1637,7 @@ namespace Desktop_Application
         private Label title_lbl;
         private Button categories_btn;
         private Button borrowings_btn;
-        private Button members_btn;
+        private Button users_btn;
         private Button books_btn;
         private Label hello_lbl;
         private Label label1;
@@ -1719,12 +1718,12 @@ namespace Desktop_Application
         private DataGridViewTextBoxColumn dashboard_title;
         private DataGridViewTextBoxColumn dashboard_author;
         private DataGridViewTextBoxColumn dashboard_publicationYear;
-        private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private DataGridView borrowings_grd;
+        private DataGridViewTextBoxColumn user;
+        private DataGridViewTextBoxColumn borrowing_title;
+        private DataGridViewTextBoxColumn borrowings_isbn;
+        private DataGridViewTextBoxColumn borrowDate;
+        private DataGridViewTextBoxColumn returnDate;
+        private DataGridViewTextBoxColumn dueDate;
     }
 }

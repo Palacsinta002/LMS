@@ -23,6 +23,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Forms\Borrowings\AddBorrowing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Borrowings\ChooseAuthor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Borrowings\EditBorrowing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Borrowings\RemoveBorrowing.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -56,6 +68,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="SqlQueries\SelectBook.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SqlQueries\SelectBorrowing.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="SqlQueries\SelectTopBorrowedBook.sql">
