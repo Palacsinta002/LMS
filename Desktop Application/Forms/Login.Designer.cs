@@ -42,6 +42,7 @@ namespace Desktop_Application
             login_btn = new RoundedButton();
             usernameError_lbl = new Label();
             passwordError_lbl = new Label();
+            showPassword_btn = new Button();
             header.SuspendLayout();
             SuspendLayout();
             // 
@@ -72,7 +73,7 @@ namespace Desktop_Application
             password_textBox.Location = new Point(22, 207);
             password_textBox.MaxLength = 20;
             password_textBox.Name = "password_textBox";
-            password_textBox.PasswordChar = '●';
+            password_textBox.PasswordChar = '*';
             password_textBox.Size = new Size(235, 32);
             password_textBox.TabIndex = 1;
             password_textBox.TextChanged += PasswordTextChanged;
@@ -175,12 +176,29 @@ namespace Desktop_Application
             passwordError_lbl.TabIndex = 26;
             passwordError_lbl.Text = " ";
             // 
+            // showPassword_btn
+            // 
+            showPassword_btn.BackColor = Color.White;
+            showPassword_btn.Cursor = Cursors.Hand;
+            showPassword_btn.FlatAppearance.BorderSize = 0;
+            showPassword_btn.FlatAppearance.MouseDownBackColor = Color.White;
+            showPassword_btn.FlatAppearance.MouseOverBackColor = Color.White;
+            showPassword_btn.FlatStyle = FlatStyle.Flat;
+            showPassword_btn.Image = (Image)resources.GetObject("showPassword_btn.Image");
+            showPassword_btn.Location = new Point(225, 208);
+            showPassword_btn.Name = "showPassword_btn";
+            showPassword_btn.Size = new Size(30, 30);
+            showPassword_btn.TabIndex = 27;
+            showPassword_btn.UseVisualStyleBackColor = false;
+            showPassword_btn.Click += ShowPassword;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(80, 77, 180);
             ClientSize = new Size(284, 311);
+            Controls.Add(showPassword_btn);
             Controls.Add(passwordError_lbl);
             Controls.Add(usernameError_lbl);
             Controls.Add(header);
@@ -211,5 +229,6 @@ namespace Desktop_Application
         private RoundedButton close_btn;
         private Label usernameError_lbl;
         private Label passwordError_lbl;
+        private Button showPassword_btn;
     }
 }

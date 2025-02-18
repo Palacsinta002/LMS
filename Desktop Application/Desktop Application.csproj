@@ -43,6 +43,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Resources\hideIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\showIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="SqlQueries\SelectAuthor.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

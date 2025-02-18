@@ -50,7 +50,7 @@ namespace Desktop_Application
                     result = HandleQueries.Select("SelectTopBorrowedBook");
                     HandleGrids.Fill(dashboard_grd, result);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show("There is something wrong with the connection to the database, we couldn't list top borrowed books!\nError: " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }

@@ -20,12 +20,20 @@ namespace Desktop_Application
             DragWindow.Handle(this, header, title);
             BorderPaint.Handle(this);
             CloseThisWindow.Handle(this, close_btn);
+            AdminPanel adminPanel = new(username_textBox.Text, true);
+            this.Hide();
+            adminPanel.ShowDialog();
+            this.Close();
         }
 
         // On Login if the username and password are in the correct format it starts checking the credentials
         private void LoginCheck(object sender, EventArgs e)
         {
-            if (usernameError_lbl.Text == "" && passwordError_lbl.Text == "")
+            if(_username == string.Empty || _password == string.Empty)
+            {
+                //MessageBox.Show("Username and password are required!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (usernameError_lbl.Text == "" && passwordError_lbl.Text == "")
             {
                 string query = $"SELECT Users.FirstName, Users.LastName, Users.Username, Users.Password, Roles.Role FROM Users JOIN Roles ON Roles.id = Users.RoleID WHERE Username = '{_username}'";
                 Connection conn = new();
@@ -33,7 +41,7 @@ namespace Desktop_Application
 
                 if (result.Count == 1)
                 {
-                    string hashPassword = result[0][3].ToString();
+                    string hashPassword = result[0][3].ToString() ?? string.Empty;
 
                     // Takes the given password and the hashed password from the database. Then matches them, if they match the user is allowed to log in.
                     if (BCrypt.Net.BCrypt.Verify(_password, hashPassword))
@@ -52,13 +60,9 @@ namespace Desktop_Application
                 }
                 else
                 {
-                    MessageBox.Show("Wrong username or password!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Wrong username or password!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            //AdminPanel adminPanel = new(username_textBox.Text, true);
-            //this.Hide();
-            //adminPanel.ShowDialog();
-            //this.Close();
         }
 
         // On username change it writes out to the user what is wrong with the given text
@@ -96,6 +100,20 @@ namespace Desktop_Application
             else
             {
                 passwordError_lbl.Text = "";
+            }
+        }
+
+        private void ShowPassword(object sender, EventArgs e)
+        {
+            if(password_textBox.PasswordChar == '*')
+            {
+                password_textBox.PasswordChar = '\0';
+                showPassword_btn.Image = Image.FromFile(@"Resources\hideIcon.png");
+            }
+            else
+            {
+                password_textBox.PasswordChar = '*';
+                showPassword_btn.Image = Image.FromFile(@"Resources\showIcon.png");
             }
         }
     }
