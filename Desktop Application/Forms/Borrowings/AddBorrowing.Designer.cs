@@ -42,8 +42,6 @@ namespace Desktop_Application.Forms.Borrowings
             cancel = new Components.RoundedButton();
             label3 = new Label();
             borrowDate_datePicker = new DateTimePicker();
-            returnDate_datePicker = new DateTimePicker();
-            label4 = new Label();
             dueDate_datePicker = new DateTimePicker();
             label5 = new Label();
             dropDown_user = new System.Windows.Forms.ComboBox();
@@ -106,7 +104,7 @@ namespace Desktop_Application.Forms.Borrowings
             save.FlatStyle = FlatStyle.Flat;
             save.Font = new Font("Yu Gothic UI Semibold", 14F);
             save.ForeColor = Color.White;
-            save.Location = new Point(108, 271);
+            save.Location = new Point(110, 232);
             save.Name = "save";
             save.Size = new Size(80, 36);
             save.TabIndex = 6;
@@ -147,7 +145,7 @@ namespace Desktop_Application.Forms.Borrowings
             cancel.FlatStyle = FlatStyle.Flat;
             cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
             cancel.ForeColor = Color.Black;
-            cancel.Location = new Point(194, 271);
+            cancel.Location = new Point(196, 232);
             cancel.Name = "cancel";
             cancel.Size = new Size(80, 36);
             cancel.TabIndex = 7;
@@ -172,44 +170,24 @@ namespace Desktop_Application.Forms.Borrowings
             borrowDate_datePicker.Format = DateTimePickerFormat.Short;
             borrowDate_datePicker.Location = new Point(137, 146);
             borrowDate_datePicker.Name = "borrowDate_datePicker";
-            borrowDate_datePicker.Size = new Size(124, 32);
+            borrowDate_datePicker.Size = new Size(135, 32);
             borrowDate_datePicker.TabIndex = 3;
-            // 
-            // returnDate_datePicker
-            // 
-            returnDate_datePicker.CalendarFont = new Font("Yu Gothic UI Semibold", 14F);
-            returnDate_datePicker.Font = new Font("Yu Gothic UI Semibold", 14F);
-            returnDate_datePicker.Format = DateTimePickerFormat.Short;
-            returnDate_datePicker.Location = new Point(137, 184);
-            returnDate_datePicker.Name = "returnDate_datePicker";
-            returnDate_datePicker.Size = new Size(124, 32);
-            returnDate_datePicker.TabIndex = 4;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label4.Location = new Point(12, 187);
-            label4.Name = "label4";
-            label4.Size = new Size(116, 25);
-            label4.TabIndex = 66;
-            label4.Text = "Return Date";
             // 
             // dueDate_datePicker
             // 
             dueDate_datePicker.CalendarFont = new Font("Yu Gothic UI Semibold", 14F);
             dueDate_datePicker.Font = new Font("Yu Gothic UI Semibold", 14F);
             dueDate_datePicker.Format = DateTimePickerFormat.Short;
-            dueDate_datePicker.Location = new Point(137, 222);
+            dueDate_datePicker.Location = new Point(137, 184);
             dueDate_datePicker.Name = "dueDate_datePicker";
-            dueDate_datePicker.Size = new Size(124, 32);
+            dueDate_datePicker.Size = new Size(135, 32);
             dueDate_datePicker.TabIndex = 5;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label5.Location = new Point(12, 225);
+            label5.Location = new Point(12, 187);
             label5.Name = "label5";
             label5.Size = new Size(93, 25);
             label5.TabIndex = 68;
@@ -242,13 +220,11 @@ namespace Desktop_Application.Forms.Borrowings
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(385, 319);
+            ClientSize = new Size(385, 283);
             Controls.Add(dropDown_user);
             Controls.Add(label_publisher);
             Controls.Add(dueDate_datePicker);
             Controls.Add(label5);
-            Controls.Add(returnDate_datePicker);
-            Controls.Add(label4);
             Controls.Add(borrowDate_datePicker);
             Controls.Add(label3);
             Controls.Add(header);
@@ -287,8 +263,6 @@ namespace Desktop_Application.Forms.Borrowings
         private Label label_title;
         private Label label3;
         private DateTimePicker borrowDate_datePicker;
-        private DateTimePicker returnDate_datePicker;
-        private Label label4;
         private DateTimePicker dueDate_datePicker;
         private Label label5;
     }

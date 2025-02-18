@@ -89,8 +89,10 @@ namespace Desktop_Application
         // Adds a book to the database
         private void AddBook(object sender, EventArgs e)
         {
-            AddBook addBook = new(books_grd);
+            AddBook addBook = new();
             addBook.ShowDialog();
+            var result = HandleQueries.Select("SelectBook");
+            HandleGrids.Fill(books_grd, result);
         }
 
         // Edit the selected book from the grid and then updates in the database
@@ -133,13 +135,15 @@ namespace Desktop_Application
 
         private void SearchBorrowings(object sender, EventArgs e)
         {
-            string[] cols = ["borrowingsUser", "borrowingsTitle", "borrowingsIsbn"];
+            string[] cols = ["borrowingsUsername", "borrowingsTitle", "borrowingsIsbn"];
             HandleGrids.SearchGrid(borrowings_grd, borrowings_src.Text, cols);
         }
 
         private void AddBorrowing(object sender, EventArgs e)
         {
-            AddBorrowing addBorrowing = new(borrowings_grd);
+            AddBorrowing addBorrowing = new();
+            var result = HandleQueries.Select("SelectBorrowing");
+            HandleGrids.Fill(borrowings_grd, result);
             addBorrowing.ShowDialog();
         }
 

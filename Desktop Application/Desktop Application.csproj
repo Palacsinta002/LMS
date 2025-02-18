@@ -76,6 +76,9 @@
     <None Update="SqlQueries\SelectPublisher.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="SqlQueries\SelectUsername.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

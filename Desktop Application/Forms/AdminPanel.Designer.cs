@@ -61,10 +61,6 @@ namespace Desktop_Application
             dashboard_books = new RoundedButton();
             panel6 = new Panel();
             dashboard_grd = new DataGridView();
-            dashboard_count = new DataGridViewTextBoxColumn();
-            dashboard_title = new DataGridViewTextBoxColumn();
-            dashboard_author = new DataGridViewTextBoxColumn();
-            dashboard_publicationYear = new DataGridViewTextBoxColumn();
             label4 = new Label();
             books_pnl = new Panel();
             books_refresh_btn = new RoundedButton();
@@ -82,6 +78,12 @@ namespace Desktop_Application
             isbn = new DataGridViewTextBoxColumn();
             borrowings_pnl = new Panel();
             borrowings_grd = new DataGridView();
+            borrowingsUsername = new DataGridViewTextBoxColumn();
+            borrowingsTitle = new DataGridViewTextBoxColumn();
+            borrowingsIsbn = new DataGridViewTextBoxColumn();
+            borrowDate = new DataGridViewTextBoxColumn();
+            returnDate = new DataGridViewTextBoxColumn();
+            dueDate = new DataGridViewTextBoxColumn();
             borrowings_refresh_btn = new RoundedButton();
             borrowings_borrow_btn = new RoundedButton();
             borrowings_edit_btn = new RoundedButton();
@@ -119,12 +121,11 @@ namespace Desktop_Application
             publishers_lbl1 = new Label();
             publishers_src = new TextBox();
             publishers_grd = new DataGridView();
-            borrowingsUser = new DataGridViewTextBoxColumn();
-            borrowingsTitle = new DataGridViewTextBoxColumn();
-            borrowingsIsbn = new DataGridViewTextBoxColumn();
-            borrowDate = new DataGridViewTextBoxColumn();
-            returnDate = new DataGridViewTextBoxColumn();
-            dueDate = new DataGridViewTextBoxColumn();
+            dashboard_count = new DataGridViewTextBoxColumn();
+            dashboard_title = new DataGridViewTextBoxColumn();
+            dashboard_author = new DataGridViewTextBoxColumn();
+            dashboard_publicationYear = new DataGridViewTextBoxColumn();
+            dashboard_category = new DataGridViewTextBoxColumn();
             menu_pnl.SuspendLayout();
             header_pnl.SuspendLayout();
             dashboard_pnl.SuspendLayout();
@@ -584,7 +585,7 @@ namespace Desktop_Application
             dashboard_grd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dashboard_grd.BackgroundColor = Color.FromArgb(224, 224, 224);
             dashboard_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dashboard_grd.Columns.AddRange(new DataGridViewColumn[] { dashboard_count, dashboard_title, dashboard_author, dashboard_publicationYear });
+            dashboard_grd.Columns.AddRange(new DataGridViewColumn[] { dashboard_count, dashboard_title, dashboard_author, dashboard_publicationYear, dashboard_category });
             dashboard_grd.Location = new Point(15, 32);
             dashboard_grd.Name = "dashboard_grd";
             dashboard_grd.ReadOnly = true;
@@ -597,38 +598,6 @@ namespace Desktop_Application
             dashboard_grd.ShowRowErrors = false;
             dashboard_grd.Size = new Size(604, 290);
             dashboard_grd.TabIndex = 18;
-            // 
-            // dashboard_count
-            // 
-            dashboard_count.HeaderText = "#";
-            dashboard_count.MinimumWidth = 6;
-            dashboard_count.Name = "dashboard_count";
-            dashboard_count.ReadOnly = true;
-            dashboard_count.Width = 39;
-            // 
-            // dashboard_title
-            // 
-            dashboard_title.HeaderText = "Title";
-            dashboard_title.MinimumWidth = 6;
-            dashboard_title.Name = "dashboard_title";
-            dashboard_title.ReadOnly = true;
-            dashboard_title.Width = 54;
-            // 
-            // dashboard_author
-            // 
-            dashboard_author.HeaderText = "Author";
-            dashboard_author.MinimumWidth = 6;
-            dashboard_author.Name = "dashboard_author";
-            dashboard_author.ReadOnly = true;
-            dashboard_author.Width = 69;
-            // 
-            // dashboard_publicationYear
-            // 
-            dashboard_publicationYear.HeaderText = "Publication Year";
-            dashboard_publicationYear.MinimumWidth = 6;
-            dashboard_publicationYear.Name = "dashboard_publicationYear";
-            dashboard_publicationYear.ReadOnly = true;
-            dashboard_publicationYear.Width = 107;
             // 
             // label4
             // 
@@ -872,7 +841,7 @@ namespace Desktop_Application
             borrowings_grd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             borrowings_grd.BackgroundColor = Color.White;
             borrowings_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            borrowings_grd.Columns.AddRange(new DataGridViewColumn[] { borrowingsUser, borrowingsTitle, borrowingsIsbn, borrowDate, returnDate, dueDate });
+            borrowings_grd.Columns.AddRange(new DataGridViewColumn[] { borrowingsUsername, borrowingsTitle, borrowingsIsbn, borrowDate, returnDate, dueDate });
             borrowings_grd.Location = new Point(52, 108);
             borrowings_grd.Name = "borrowings_grd";
             borrowings_grd.ReadOnly = true;
@@ -885,6 +854,48 @@ namespace Desktop_Application
             borrowings_grd.ShowRowErrors = false;
             borrowings_grd.Size = new Size(604, 359);
             borrowings_grd.TabIndex = 30;
+            // 
+            // borrowingsUsername
+            // 
+            borrowingsUsername.HeaderText = "Username";
+            borrowingsUsername.Name = "borrowingsUsername";
+            borrowingsUsername.ReadOnly = true;
+            borrowingsUsername.Width = 85;
+            // 
+            // borrowingsTitle
+            // 
+            borrowingsTitle.HeaderText = "Title";
+            borrowingsTitle.Name = "borrowingsTitle";
+            borrowingsTitle.ReadOnly = true;
+            borrowingsTitle.Width = 54;
+            // 
+            // borrowingsIsbn
+            // 
+            borrowingsIsbn.HeaderText = "ISBN";
+            borrowingsIsbn.Name = "borrowingsIsbn";
+            borrowingsIsbn.ReadOnly = true;
+            borrowingsIsbn.Width = 57;
+            // 
+            // borrowDate
+            // 
+            borrowDate.HeaderText = "Borrow Date";
+            borrowDate.Name = "borrowDate";
+            borrowDate.ReadOnly = true;
+            borrowDate.Width = 97;
+            // 
+            // returnDate
+            // 
+            returnDate.HeaderText = "Return Date";
+            returnDate.Name = "returnDate";
+            returnDate.ReadOnly = true;
+            returnDate.Width = 94;
+            // 
+            // dueDate
+            // 
+            dueDate.HeaderText = "Due Date";
+            dueDate.Name = "dueDate";
+            dueDate.ReadOnly = true;
+            dueDate.Width = 80;
             // 
             // borrowings_refresh_btn
             // 
@@ -1530,47 +1541,44 @@ namespace Desktop_Application
             publishers_grd.Size = new Size(604, 359);
             publishers_grd.TabIndex = 16;
             // 
-            // borrowingsUser
+            // dashboard_count
             // 
-            borrowingsUser.HeaderText = "User";
-            borrowingsUser.Name = "borrowingsUser";
-            borrowingsUser.ReadOnly = true;
-            borrowingsUser.Width = 55;
+            dashboard_count.HeaderText = "#";
+            dashboard_count.MinimumWidth = 6;
+            dashboard_count.Name = "dashboard_count";
+            dashboard_count.ReadOnly = true;
+            dashboard_count.Width = 39;
             // 
-            // borrowingsTitle
+            // dashboard_title
             // 
-            borrowingsTitle.HeaderText = "Title";
-            borrowingsTitle.Name = "borrowingsTitle";
-            borrowingsTitle.ReadOnly = true;
-            borrowingsTitle.Width = 54;
+            dashboard_title.HeaderText = "Title";
+            dashboard_title.MinimumWidth = 6;
+            dashboard_title.Name = "dashboard_title";
+            dashboard_title.ReadOnly = true;
+            dashboard_title.Width = 54;
             // 
-            // borrowingsIsbn
+            // dashboard_author
             // 
-            borrowingsIsbn.HeaderText = "ISBN";
-            borrowingsIsbn.Name = "borrowingsIsbn";
-            borrowingsIsbn.ReadOnly = true;
-            borrowingsIsbn.Width = 57;
+            dashboard_author.HeaderText = "Author";
+            dashboard_author.MinimumWidth = 6;
+            dashboard_author.Name = "dashboard_author";
+            dashboard_author.ReadOnly = true;
+            dashboard_author.Width = 69;
             // 
-            // borrowDate
+            // dashboard_publicationYear
             // 
-            borrowDate.HeaderText = "Borrow Date";
-            borrowDate.Name = "borrowDate";
-            borrowDate.ReadOnly = true;
-            borrowDate.Width = 97;
+            dashboard_publicationYear.HeaderText = "Publication Year";
+            dashboard_publicationYear.MinimumWidth = 6;
+            dashboard_publicationYear.Name = "dashboard_publicationYear";
+            dashboard_publicationYear.ReadOnly = true;
+            dashboard_publicationYear.Width = 107;
             // 
-            // returnDate
+            // dashboard_category
             // 
-            returnDate.HeaderText = "Return Date";
-            returnDate.Name = "returnDate";
-            returnDate.ReadOnly = true;
-            returnDate.Width = 94;
-            // 
-            // dueDate
-            // 
-            dueDate.HeaderText = "Due Date";
-            dueDate.Name = "dueDate";
-            dueDate.ReadOnly = true;
-            dueDate.Width = 80;
+            dashboard_category.HeaderText = "Category";
+            dashboard_category.Name = "dashboard_category";
+            dashboard_category.ReadOnly = true;
+            dashboard_category.Width = 80;
             // 
             // AdminPanel
             // 
@@ -1580,13 +1588,13 @@ namespace Desktop_Application
             ClientSize = new Size(984, 561);
             Controls.Add(header_pnl);
             Controls.Add(menu_pnl);
-            Controls.Add(borrowings_pnl);
-            Controls.Add(members_pnl);
-            Controls.Add(books_pnl);
             Controls.Add(dashboard_pnl);
             Controls.Add(publishers_pnl);
             Controls.Add(authors_pnl);
             Controls.Add(categories_pnl);
+            Controls.Add(borrowings_pnl);
+            Controls.Add(members_pnl);
+            Controls.Add(books_pnl);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(1000, 598);
             Name = "AdminPanel";
@@ -1714,16 +1722,17 @@ namespace Desktop_Application
         private DataGridViewTextBoxColumn publisher;
         private DataGridViewTextBoxColumn isbn;
         private DataGridView books_grd;
-        private DataGridViewTextBoxColumn dashboard_count;
-        private DataGridViewTextBoxColumn dashboard_title;
-        private DataGridViewTextBoxColumn dashboard_author;
-        private DataGridViewTextBoxColumn dashboard_publicationYear;
         private DataGridView borrowings_grd;
-        private DataGridViewTextBoxColumn borrowingsUser;
+        private DataGridViewTextBoxColumn borrowingsUsername;
         private DataGridViewTextBoxColumn borrowingsTitle;
         private DataGridViewTextBoxColumn borrowingsIsbn;
         private DataGridViewTextBoxColumn borrowDate;
         private DataGridViewTextBoxColumn returnDate;
         private DataGridViewTextBoxColumn dueDate;
+        private DataGridViewTextBoxColumn dashboard_count;
+        private DataGridViewTextBoxColumn dashboard_title;
+        private DataGridViewTextBoxColumn dashboard_author;
+        private DataGridViewTextBoxColumn dashboard_publicationYear;
+        private DataGridViewTextBoxColumn dashboard_category;
     }
 }

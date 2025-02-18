@@ -1,4 +1,13 @@
-﻿namespace Desktop_Application.Classes
+﻿
+using Microsoft.VisualBasic.ApplicationServices;
+using Microsoft.VisualBasic;
+using Mysqlx.Crud;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Windows.Forms;
+using System.Security.Policy;
+
+namespace Desktop_Application.Classes
 {
     internal class HandleQueries
     {
@@ -34,6 +43,13 @@
                 query = $"INSERT INTO Books_Categories (ISBN, CategoryID) VALUES ({isbn}, (SELECT id FROM Categories WHERE Category = \"{categories[i]}\"))";
                 connection.RunSqlCommand(query);
             }
+        }
+        internal static void InsertBorrowing(string username, string isbn, DateTime borrowDate, DateTime dueDate)
+        {
+            Connection connection = new();
+            string query = $"INSERT INTO Borrowings(UserID, ISBN, BorrowDate, DueDate) VALUES((SELECT id FROM Users WHERE Username = \"{username}\"), {isbn}," +
+                $"\"{borrowDate.Year}-{borrowDate.Month}-{borrowDate.Day}\", \"{dueDate.Year}-{dueDate.Month}-{dueDate.Day}\")";
+            connection.RunSqlCommand(query);
         }
 
 

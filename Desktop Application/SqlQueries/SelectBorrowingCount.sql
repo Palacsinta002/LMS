@@ -1,2 +1,2 @@
 ﻿SELECT COUNT(id)
-FROM Borrowings
+FROM Borrowings_storage

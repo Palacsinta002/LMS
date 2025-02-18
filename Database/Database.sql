@@ -87,9 +87,11 @@ CREATE TABLE Borrowings (
 );
 
 -- Create Borrowings_backup table
-CREATE TABLE Borrowings_backup (
+CREATE TABLE Borrowings_storage (
     id INT,
     UserID INT,
+    Username VARCHAR(25),
+    Title VARCHAR(255),
     ISBN BIGINT(13),
     BorrowDate DATE,
     DueDate DATE,
@@ -102,17 +104,19 @@ CREATE TRIGGER after_borrowing_insert
 AFTER INSERT ON Borrowings
 FOR EACH ROW
 BEGIN
-    INSERT INTO Borrowings_backup (id, UserID, ISBN, BorrowDate, DueDate, ReturnDate)
-    VALUES (NEW.id, NEW.UserID, NEW.ISBN, NEW.BorrowDate, NEW.DueDate, NEW.ReturnDate);
+    INSERT INTO Borrowings_storage (id, UserID, Username, Title, ISBN, BorrowDate, DueDate, ReturnDate)
+    VALUES (NEW.id, NEW.UserID, (SELECT Username FROM Users WHERE id = NEW.UserID), (SELECT Title FROM Books WHERE ISBN = NEW.ISBN), NEW.ISBN, NEW.BorrowDate, NEW.DueDate, NEW.ReturnDate);
 END $$
 
 CREATE TRIGGER after_borrowing_update
 AFTER UPDATE ON Borrowings
 FOR EACH ROW
 BEGIN
-    UPDATE Borrowings_backup
+    UPDATE Borrowings_storage
     SET 
         UserID = NEW.UserID,
+        Username = (SELECT Username FROM Users WHERE id = NEW.UserID),
+        Title = (SELECT Title FROM Books WHERE ISBN = NEW.ISBN),
         ISBN = NEW.ISBN,
         BorrowDate = NEW.BorrowDate,
         DueDate = NEW.DueDate,
