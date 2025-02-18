@@ -102,13 +102,13 @@ class UserRegisterClass{
     private $password;
 
     ####################  Set the password and validate the input  ####################
-    public function setPassword($password){
-        if ($password == $this->password2){
+    public function setPassword($password, $password2){
+        if ($password == $password2){
             if (strlen($password > 8) && strlen($password) < 16){
             
                 if (preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d\W]).+$/', $password)){
                     
-                    $this->password = validateTheInput($password);
+                    $this->password = password_hash(validateTheInput($password), PASSWORD_BCRYPT) ;
                 }
                 else{
                     errorOutput("6");
@@ -144,8 +144,7 @@ class UserRegisterClass{
         $this->setUsername($username);
         $this->setFirstName($firstName);
         $this->setLastName($lastName);
-        $this->setPassword($password);
-        $this->password2 = $password2;
+        $this->setPassword($password,$password2);
     }
     
     public function sendVerificationEmail(){

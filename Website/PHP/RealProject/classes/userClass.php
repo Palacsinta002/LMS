@@ -23,11 +23,13 @@ class UserClass{
         $username = validateTheInput($username);
         $password = validateTheInput($password);
         
-        $sql = "SELECT users.id, users.username, users.roleID, users.firstname, users.lastname, users.email from users where username = '$username' and password = '$password'";
+        $sql = "SELECT users.id, users.username, users.password, users.roleID, users.firstname, users.lastname, users.email from users where username = '$username'";
         $result = $conn->query($sql);
         ####################  logged in  ####################
         if ($result->num_rows > 0){
+            
             $data = $result -> fetch_all(MYSQLI_ASSOC);
+            if (password_verify($password,$data[0]["password"])){
             $this->username = html_entity_decode($data[0]["username"]);
             $this->roleID = html_entity_decode($data[0]["roleID"]);
             $this->firstName = html_entity_decode($data[0]["firstname"]);
@@ -35,6 +37,9 @@ class UserClass{
             $this->email = html_entity_decode($data[0]["email"]);
             
             echo json_encode(["Success"=> "Successfully logged in as $username"]);
+        }
+        else{
+            errorOutput("7");}
         }
         else{
             errorOutput("7");
