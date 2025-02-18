@@ -2,9 +2,9 @@
     GROUP_CONCAT(users.FirstName,' ', users.LastName),
     books.Title,
     books.ISBN,
-    borrowings.BorrowDate,
-    borrowings.ReturnDate,
-    borrowings.DueDate
+    DATE_FORMAT(borrowings.BorrowDate, "%d %M %Y"),
+    DATE_FORMAT(borrowings.ReturnDate, "%d %M %Y"),
+    DATE_FORMAT(borrowings.DueDate, "%d %M %Y")
 FROM borrowings
 JOIN Users ON users.id = borrowings.UserID
 JOIN Books ON books.ISBN = borrowings.ISBN
