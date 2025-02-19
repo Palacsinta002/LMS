@@ -214,7 +214,7 @@ namespace Desktop_Application.Forms.Borrowings
             chooseBooks.TabIndex = 72;
             chooseBooks.Text = "...";
             chooseBooks.UseVisualStyleBackColor = true;
-            chooseBooks.Click += ChooseBooks;
+            chooseBooks.Click += OpenChooseBooks;
             // 
             // textBox_books
             // 

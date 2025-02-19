@@ -58,6 +58,9 @@
     <None Update="SqlQueries\SelectBook.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="SqlQueries\SelectBookForBorrowings.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="SqlQueries\SelectBorrowing.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

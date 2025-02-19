@@ -1,5 +1,4 @@
-﻿using System.Text.RegularExpressions;
-using Desktop_Application.Classes;
+﻿using Desktop_Application.Classes;
 
 namespace Desktop_Application.Forms.Borrowings
 {
@@ -84,9 +83,12 @@ namespace Desktop_Application.Forms.Borrowings
             return false;
         }
 
-        private void ChooseBooks(object sender, EventArgs e)
+        private void OpenChooseBooks(object sender, EventArgs e)
         {
+            ChooseBooks chooseBooks = new();
+            chooseBooks.ShowDialog();
 
+            textBox_books.Text = string.Join(", ", ChooseBooks.SelectedBooks);
         }
     }
 }

@@ -1588,13 +1588,13 @@ namespace Desktop_Application
             ClientSize = new Size(984, 561);
             Controls.Add(header_pnl);
             Controls.Add(menu_pnl);
-            Controls.Add(borrowings_pnl);
-            Controls.Add(members_pnl);
             Controls.Add(books_pnl);
             Controls.Add(dashboard_pnl);
             Controls.Add(publishers_pnl);
             Controls.Add(authors_pnl);
             Controls.Add(categories_pnl);
+            Controls.Add(borrowings_pnl);
+            Controls.Add(members_pnl);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(1000, 598);
             Name = "AdminPanel";
