@@ -1,4 +1,6 @@
 <?php
+# This file contains the user calss this class is for the user login.
+# 
 
 class UserClass{
     private $username;
@@ -17,7 +19,7 @@ class UserClass{
         
     }
 
-    function setUsernameAndPassword($username,$password){
+    public function setUsernameAndPassword($username,$password){
         require_once __DIR__ . "/../config/connect.php";
         $conn = connect();
         $username = validateTheInput($username);
@@ -35,7 +37,6 @@ class UserClass{
             $this->firstName = html_entity_decode($data[0]["firstname"]);
             $this->lastName = html_entity_decode($data[0]["lastname"]);
             $this->email = html_entity_decode($data[0]["email"]);
-            
             echo json_encode(["Success"=> "Successfully logged in as $username"]);
         }
         else{

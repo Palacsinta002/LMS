@@ -1,5 +1,7 @@
 <?php
-####################    ####################
+# This file contains the class for the user registration.
+# Handle all verification and store the user information in the session storage.
+# If the verification was successful, then send an email to the given email address.
 
 class UserRegisterClass{
     
