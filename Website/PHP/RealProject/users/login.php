@@ -1,5 +1,5 @@
 <?php
-
+####################  This file handle the /login request  ####################
 function login(){
     require_once __DIR__ . "/../InputMethods.php";
     require_once __DIR__ . "/../classes/userClass.php";

@@ -1,4 +1,5 @@
 <?php
+# This file handle the connection between the database and the php files
 function connect(){
     $conn = new mysqli("localhost", "lms", "!LibraryMS25", "LMS");
     if ($conn->connect_error) {

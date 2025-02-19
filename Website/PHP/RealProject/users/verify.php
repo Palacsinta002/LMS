@@ -1,4 +1,6 @@
 <?php
+####################  This function send an email to the current user who tried to register.                        ####################
+####################  Get the user information from session storage and destroy if the verification was successful.  ####################
 function verify(){
     require_once __DIR__ . "/../InputMethods.php";
     $_SESSION["verifyCode"] ?? errorOutput("10");
