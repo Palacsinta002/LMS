@@ -61,6 +61,11 @@ namespace Desktop_Application
             dashboard_books = new RoundedButton();
             panel6 = new Panel();
             dashboard_grd = new DataGridView();
+            dashboard_count = new DataGridViewTextBoxColumn();
+            dashboard_title = new DataGridViewTextBoxColumn();
+            dashboard_author = new DataGridViewTextBoxColumn();
+            dashboard_publicationYear = new DataGridViewTextBoxColumn();
+            dashboard_category = new DataGridViewTextBoxColumn();
             label4 = new Label();
             books_pnl = new Panel();
             books_refresh_btn = new RoundedButton();
@@ -121,11 +126,6 @@ namespace Desktop_Application
             publishers_lbl1 = new Label();
             publishers_src = new TextBox();
             publishers_grd = new DataGridView();
-            dashboard_count = new DataGridViewTextBoxColumn();
-            dashboard_title = new DataGridViewTextBoxColumn();
-            dashboard_author = new DataGridViewTextBoxColumn();
-            dashboard_publicationYear = new DataGridViewTextBoxColumn();
-            dashboard_category = new DataGridViewTextBoxColumn();
             menu_pnl.SuspendLayout();
             header_pnl.SuspendLayout();
             dashboard_pnl.SuspendLayout();
@@ -598,6 +598,45 @@ namespace Desktop_Application
             dashboard_grd.ShowRowErrors = false;
             dashboard_grd.Size = new Size(604, 290);
             dashboard_grd.TabIndex = 18;
+            // 
+            // dashboard_count
+            // 
+            dashboard_count.HeaderText = "#";
+            dashboard_count.MinimumWidth = 6;
+            dashboard_count.Name = "dashboard_count";
+            dashboard_count.ReadOnly = true;
+            dashboard_count.Width = 39;
+            // 
+            // dashboard_title
+            // 
+            dashboard_title.HeaderText = "Title";
+            dashboard_title.MinimumWidth = 6;
+            dashboard_title.Name = "dashboard_title";
+            dashboard_title.ReadOnly = true;
+            dashboard_title.Width = 54;
+            // 
+            // dashboard_author
+            // 
+            dashboard_author.HeaderText = "Author";
+            dashboard_author.MinimumWidth = 6;
+            dashboard_author.Name = "dashboard_author";
+            dashboard_author.ReadOnly = true;
+            dashboard_author.Width = 69;
+            // 
+            // dashboard_publicationYear
+            // 
+            dashboard_publicationYear.HeaderText = "Publication Year";
+            dashboard_publicationYear.MinimumWidth = 6;
+            dashboard_publicationYear.Name = "dashboard_publicationYear";
+            dashboard_publicationYear.ReadOnly = true;
+            dashboard_publicationYear.Width = 107;
+            // 
+            // dashboard_category
+            // 
+            dashboard_category.HeaderText = "Category";
+            dashboard_category.Name = "dashboard_category";
+            dashboard_category.ReadOnly = true;
+            dashboard_category.Width = 80;
             // 
             // label4
             // 
@@ -1541,45 +1580,6 @@ namespace Desktop_Application
             publishers_grd.Size = new Size(604, 359);
             publishers_grd.TabIndex = 16;
             // 
-            // dashboard_count
-            // 
-            dashboard_count.HeaderText = "#";
-            dashboard_count.MinimumWidth = 6;
-            dashboard_count.Name = "dashboard_count";
-            dashboard_count.ReadOnly = true;
-            dashboard_count.Width = 39;
-            // 
-            // dashboard_title
-            // 
-            dashboard_title.HeaderText = "Title";
-            dashboard_title.MinimumWidth = 6;
-            dashboard_title.Name = "dashboard_title";
-            dashboard_title.ReadOnly = true;
-            dashboard_title.Width = 54;
-            // 
-            // dashboard_author
-            // 
-            dashboard_author.HeaderText = "Author";
-            dashboard_author.MinimumWidth = 6;
-            dashboard_author.Name = "dashboard_author";
-            dashboard_author.ReadOnly = true;
-            dashboard_author.Width = 69;
-            // 
-            // dashboard_publicationYear
-            // 
-            dashboard_publicationYear.HeaderText = "Publication Year";
-            dashboard_publicationYear.MinimumWidth = 6;
-            dashboard_publicationYear.Name = "dashboard_publicationYear";
-            dashboard_publicationYear.ReadOnly = true;
-            dashboard_publicationYear.Width = 107;
-            // 
-            // dashboard_category
-            // 
-            dashboard_category.HeaderText = "Category";
-            dashboard_category.Name = "dashboard_category";
-            dashboard_category.ReadOnly = true;
-            dashboard_category.Width = 80;
-            // 
             // AdminPanel
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1588,13 +1588,13 @@ namespace Desktop_Application
             ClientSize = new Size(984, 561);
             Controls.Add(header_pnl);
             Controls.Add(menu_pnl);
+            Controls.Add(borrowings_pnl);
+            Controls.Add(members_pnl);
+            Controls.Add(books_pnl);
             Controls.Add(dashboard_pnl);
             Controls.Add(publishers_pnl);
             Controls.Add(authors_pnl);
             Controls.Add(categories_pnl);
-            Controls.Add(borrowings_pnl);
-            Controls.Add(members_pnl);
-            Controls.Add(books_pnl);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(1000, 598);
             Name = "AdminPanel";

@@ -1,13 +1,4 @@
-﻿
-using Microsoft.VisualBasic.ApplicationServices;
-using Microsoft.VisualBasic;
-using Mysqlx.Crud;
-using static System.ComponentModel.Design.ObjectSelectorEditor;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
-using System.Windows.Forms;
-using System.Security.Policy;
-
-namespace Desktop_Application.Classes
+﻿namespace Desktop_Application.Classes
 {
     internal class HandleQueries
     {
