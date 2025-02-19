@@ -28,7 +28,7 @@ namespace Desktop_Application.Forms.Borrowings
         {
             if (ValidateInput())
             {
-                HandleQueries.InsertBorrowing(dropDown_user.Text, textBox_isbn.Text, _borrowDate, _dueDate);
+                HandleQueries.InsertBorrowing(dropDown_user.Text, textBox_books.Text, _borrowDate, _dueDate);
                 MessageBox.Show("Book lent succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
@@ -43,14 +43,14 @@ namespace Desktop_Application.Forms.Borrowings
                 return false;
             }
 
-            if (!Regex.IsMatch(textBox_isbn.Text, "^[0-9]{13}$"))
+            if (textBox_books.Text == string.Empty)
             {
-                MessageBox.Show("ISBN number must be a 13 digit number!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Books are required!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
-            else if (!CheckISBN(textBox_isbn.Text))
+            else if (!CheckBook(textBox_books.Text))
             {
-                MessageBox.Show("ISBN doesn't exist in the database!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("You cannot lend this book because it is already lent!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
 
@@ -60,7 +60,7 @@ namespace Desktop_Application.Forms.Borrowings
             int[] dDate = dueDate_datePicker.Text.Split('/').Select(int.Parse).ToArray();
             _dueDate = new(dDate[2], dDate[1], dDate[0]);
 
-            if(_borrowDate > _dueDate)
+            if (_borrowDate > _dueDate)
             {
                 MessageBox.Show("Due date cannot be earlier than borrow date!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
@@ -69,11 +69,11 @@ namespace Desktop_Application.Forms.Borrowings
         }
 
         // Check if the ISBN given by the user is exist in the database
-        private static bool CheckISBN(string isbn)
+        private static bool CheckBook(string isbn)
         {
             var result = HandleQueries.Select("SelectBook");
 
-            foreach(var item in result)
+            foreach (var item in result)
             {
                 // index = 5, because the 5th column in the select is the ISBN
                 if (item[5].ToString() == isbn)
@@ -82,6 +82,11 @@ namespace Desktop_Application.Forms.Borrowings
                 }
             }
             return false;
+        }
+
+        private void ChooseBooks(object sender, EventArgs e)
+        {
+
         }
     }
 }

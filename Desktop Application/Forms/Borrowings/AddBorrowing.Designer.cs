@@ -37,7 +37,6 @@ namespace Desktop_Application.Forms.Borrowings
             title = new Label();
             close_btn = new Components.RoundedButton();
             save = new Components.RoundedButton();
-            textBox_isbn = new System.Windows.Forms.TextBox();
             label2 = new Label();
             cancel = new Components.RoundedButton();
             label3 = new Label();
@@ -46,6 +45,8 @@ namespace Desktop_Application.Forms.Borrowings
             label5 = new Label();
             dropDown_user = new System.Windows.Forms.ComboBox();
             label_publisher = new Label();
+            chooseBooks = new System.Windows.Forms.Button();
+            textBox_books = new System.Windows.Forms.TextBox();
             header.SuspendLayout();
             SuspendLayout();
             // 
@@ -114,25 +115,15 @@ namespace Desktop_Application.Forms.Borrowings
             save.UseVisualStyleBackColor = false;
             save.Click += Save;
             // 
-            // textBox_isbn
-            // 
-            textBox_isbn.BackColor = Color.WhiteSmoke;
-            textBox_isbn.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_isbn.Location = new Point(72, 108);
-            textBox_isbn.MaxLength = 13;
-            textBox_isbn.Name = "textBox_isbn";
-            textBox_isbn.Size = new Size(152, 32);
-            textBox_isbn.TabIndex = 2;
-            // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Yu Gothic UI Semibold", 14F);
             label2.Location = new Point(12, 111);
             label2.Name = "label2";
-            label2.Size = new Size(54, 25);
+            label2.Size = new Size(63, 25);
             label2.TabIndex = 59;
-            label2.Text = "ISBN";
+            label2.Text = "Books";
             // 
             // cancel
             // 
@@ -199,10 +190,10 @@ namespace Desktop_Application.Forms.Borrowings
             dropDown_user.DropDownStyle = ComboBoxStyle.DropDownList;
             dropDown_user.Font = new Font("Yu Gothic UI Semibold", 14F);
             dropDown_user.FormattingEnabled = true;
-            dropDown_user.Location = new Point(72, 69);
+            dropDown_user.Location = new Point(81, 69);
             dropDown_user.MaxDropDownItems = 10;
             dropDown_user.Name = "dropDown_user";
-            dropDown_user.Size = new Size(296, 33);
+            dropDown_user.Size = new Size(287, 33);
             dropDown_user.TabIndex = 1;
             // 
             // label_publisher
@@ -215,12 +206,34 @@ namespace Desktop_Application.Forms.Borrowings
             label_publisher.TabIndex = 71;
             label_publisher.Text = "User";
             // 
+            // chooseBooks
+            // 
+            chooseBooks.Location = new Point(331, 108);
+            chooseBooks.Name = "chooseBooks";
+            chooseBooks.Size = new Size(37, 32);
+            chooseBooks.TabIndex = 72;
+            chooseBooks.Text = "...";
+            chooseBooks.UseVisualStyleBackColor = true;
+            chooseBooks.Click += ChooseBooks;
+            // 
+            // textBox_books
+            // 
+            textBox_books.BackColor = Color.WhiteSmoke;
+            textBox_books.Enabled = false;
+            textBox_books.Font = new Font("Yu Gothic UI Semibold", 14F);
+            textBox_books.Location = new Point(81, 108);
+            textBox_books.Name = "textBox_books";
+            textBox_books.Size = new Size(244, 32);
+            textBox_books.TabIndex = 73;
+            // 
             // AddBorrowing
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(385, 283);
+            Controls.Add(chooseBooks);
+            Controls.Add(textBox_books);
             Controls.Add(dropDown_user);
             Controls.Add(label_publisher);
             Controls.Add(dueDate_datePicker);
@@ -229,7 +242,6 @@ namespace Desktop_Application.Forms.Borrowings
             Controls.Add(label3);
             Controls.Add(header);
             Controls.Add(save);
-            Controls.Add(textBox_isbn);
             Controls.Add(label2);
             Controls.Add(cancel);
             FormBorderStyle = FormBorderStyle.None;
@@ -253,7 +265,6 @@ namespace Desktop_Application.Forms.Borrowings
         private Components.RoundedButton close_btn;
         private Components.RoundedButton save;
         private System.Windows.Forms.TextBox textBox_pubYear;
-        private System.Windows.Forms.TextBox textBox_isbn;
         private Label label_pubYear;
         private Label label2;
         private Label label_category;
@@ -265,5 +276,7 @@ namespace Desktop_Application.Forms.Borrowings
         private DateTimePicker borrowDate_datePicker;
         private DateTimePicker dueDate_datePicker;
         private Label label5;
+        private System.Windows.Forms.Button chooseBooks;
+        private System.Windows.Forms.TextBox textBox_books;
     }
 }

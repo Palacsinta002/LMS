@@ -26,7 +26,7 @@ namespace Desktop_Application
             ShowDashboard(sender, e);
         }
 
-        #region
+        #region Dashboard
         // Shows the Dashboard
         private void ShowDashboard(object sender, EventArgs e)
         {
