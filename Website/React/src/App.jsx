@@ -7,6 +7,9 @@ import Register from './Pages/Register';
 import Dashboard from './Pages/Dashboard';
 import PrivateRoute from './Hooks/PrivateRoute';
 import Verify from './Pages/Verify';
+import Borrowings from './Pages/Borrowings';
+import Reservations from './Pages/Reservations';
+import Profile from './Pages/Profile';
 
 function App() {
   return (
@@ -16,8 +19,11 @@ function App() {
         <Route path="/" exact element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
         <Route path="/verify" element={<Verify />} />
+        <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+        <Route path='/dashboard/borrowings' element={<Borrowings />} />
+        <Route path='/dashboard/reservations' element={<Reservations />} />
+        <Route path='/dashboard/profile' element={<Profile />} />
       </Routes>
     </BrowserRouter>
   );

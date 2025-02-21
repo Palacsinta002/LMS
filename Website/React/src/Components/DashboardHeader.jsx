@@ -13,9 +13,9 @@ export default function DashboardHeader() {
             <h1>Hi, {name}</h1>
             <nav>
                 <Link to="/">Dashboard</Link>
-                <Link to="/borrowings">Borrowings</Link>
-                <Link to="/reservations">Reservations</Link>
-                <Link to="/profile">Profile</Link>
+                <Link to="/dashboard/borrowings">Borrowings</Link>
+                <Link to="/dashboard/reservations">Reservations</Link>
+                <Link to="/dashboard/profile">Profile</Link>
             </nav>
         </div>
     )
