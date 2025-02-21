@@ -10,6 +10,7 @@ import Verify from './Pages/Verify';
 import Borrowings from './Pages/Borrowings';
 import Reservations from './Pages/Reservations';
 import Profile from './Pages/Profile';
+import NotFound from './Pages/NotFound';
 
 function App() {
   return (
@@ -20,10 +21,12 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/verify" element={<Verify />} />
-        <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
-        <Route path='/dashboard/borrowings' element={<Borrowings />} />
-        <Route path='/dashboard/reservations' element={<Reservations />} />
-        <Route path='/dashboard/profile' element={<Profile />} />
+        <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}>
+          <Route path="borrowings" element={<Borrowings />} />
+          <Route path="reservations" element={<Reservations />} />
+          <Route path="profile" element={<Profile />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
