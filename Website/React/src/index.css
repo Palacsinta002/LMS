@@ -1,10 +1,13 @@
+
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 *{
   box-sizing: border-box;
   margin: 0;
 }
+
 .HeroSection{
   height: 80vh;
   width: 100vw;
@@ -17,11 +20,28 @@
 header{
   height: 10vh;
   width: 100vw;
-  background-color: #48459E;
+  background-color: rgb(72, 69, 158);
   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.6);
   position: relative;
   display: inline-block;
 }
 .hidden{
   display: none;
+}
+.background-circles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.circle {
+  position: relative;
+  width: 25vh;
+  height: 25vh;
+  background-color: #48459E;
+  border-radius: 50%;
 }

@@ -1,40 +1,27 @@
 ﻿namespace Desktop_Application.Classes
 {
-    using System.Text.RegularExpressions;
     using MySql.Data.MySqlClient;
 
     internal class Connection
     {
-        // https://www.codeproject.com/Articles/43438/Connect-Csharp-to-MySQL
+        private readonly MySqlConnection _connection;
 
-        private MySqlConnection _connection;
-        private string _server;
-        private string _database;
-        private string _uid;
-        private string _password;
-
-        // Constructor
+        // Constructor - initialize database
         public Connection()
         {
-            SetConnection();
-        }
-
-        // Initialize values
-        internal void SetConnection()
-        {
-            // Login info
-            _server = "vagvolgyinas.synology.me";
-            _database = "LMS";
-            _uid = "mysql";
-            _password = "!LibraryMS25";
+            string server = "localhost";
+            string database = "LMS";
+            string uid = "lms";
+            string password = "!LibraryMS25";
 
             // Connection string: Defines the login info for the database
-            string connectionString = $"SERVER={_server};DATABASE={_database};UID={_uid};PASSWORD={_password};";
+            string connectionString = $"Server={server};Database={database};User Id={uid};Password={password};";
 
-            // Sets the connection string to the database
+            // Sets up the connection using connection string
             _connection = new MySqlConnection(connectionString);
         }
 
+        // Opens connection with the defined database
         private bool OpenConnection()
         {
             try
@@ -44,11 +31,12 @@
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
         }
 
+        // Closes connection with the defined database
         private bool CloseConnection()
         {
             try
@@ -58,47 +46,39 @@
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
         }
 
-        internal List<string>[] Select(string query)
+        // Accepts a query and returns an object array list with the results
+        internal List<object[]> Select(string query)
         {
-            string[] columns = ExtractColumns(query);
-
-            List<string>[] result = new List<string>[columns.Length];
-            for (int i = 0; i < columns.Length; i++)
-            {
-                result[i] = new List<string>();
-            }
-
+            List<object[]> result = [];
             if (OpenConnection())
             {
-                MySqlCommand cmd = new MySqlCommand(query, _connection);
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-
-                while (dataReader.Read())
-                {
-                    for (int i = 0; i < columns.Length; i++)
+                using (MySqlCommand cmd = new(query, _connection))
+                using (MySqlDataReader dataReader = cmd.ExecuteReader())
+                    while (dataReader.Read())
                     {
-                        result[i].Add(dataReader[columns[i]] + "");
+                        object[] row = new object[dataReader.FieldCount];
+                        dataReader.GetValues(row);
+                        result.Add(row);
                     }
-                }
                 CloseConnection();
             }
             return result;
         }
 
-        private string[] ExtractColumns(string query)
+        // Accepts a query and runs it
+        internal void RunSqlCommand(string query)
         {
-            var match = Regex.Match(query, @"SELECT (.+?) FROM", RegexOptions.IgnoreCase);
-            string[] columns = match.Groups[1].Value.Split(',');
-            for(int i = 0; i < columns.Length; i++)
+            if (OpenConnection())
             {
-                columns[i] = columns[i].Trim();
+                using (MySqlCommand cmd = new(query, _connection))
+                    cmd.ExecuteNonQuery();
+                CloseConnection();
             }
-            return columns;
         }
     }
 }

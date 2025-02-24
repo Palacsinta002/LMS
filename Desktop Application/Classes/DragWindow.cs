@@ -3,7 +3,7 @@ namespace Desktop_Application.Classes
 {
     internal class DragWindow
     {
-        private Form _form;
+        private readonly Form _form;
 
         private bool _mouseDown;
         private Point _lastLocation;
@@ -23,7 +23,7 @@ namespace Desktop_Application.Classes
 
         public static void Handle(Form form, Panel panel, Label title)
         {
-            new DragWindow(form, panel, title);
+            _ = new DragWindow(form, panel, title);
         }
 
         void OnPanelMouseDown(object sender, MouseEventArgs e)
