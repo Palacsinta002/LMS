@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import { Link } from 'react-router-dom'
 import "./SignIn.css"
@@ -15,29 +15,33 @@ export default function SignIn() {
   function PasswordOnChange(event){
     setPassword(event.target.value);
   }
+  useEffect(() =>{
+    function handleSubmit(event){
+      event.preventDefault();
+      axios
+      .post("vagvolgyinas.synology.me",{
+        username: username,
+        password: password
+      })
+      .then((response) => {
+        if(response.data.status === "successs"){
+          localStorage.setItem("loggedIn", true);
+          localStorage.setItem("userData",
+            JSON.stringify(response.data.data));
+          window.location.href = "/home"
+        }
+        else{
+          setError(response.data.message);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+    }
 
-  function handleSubmit(event){
-    event.preventDefault();
-    axios
-    .post("vagvolgyinas.synology.me",{
-      username: username,
-      password: password
-    })
-    .then((response) => {
-      if(response.data.status === "successs"){
-        localStorage.setItem("loggedIn", true);
-        localStorage.setItem("userData",
-          JSON.stringify(response.data.data));
-        window.location.href = "/home"
-      }
-      else{
-        setError(response.data.message);
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-    })
-  }
+    handleSubmit();
+  }, [])
+  
   return (
     <div className="login">
       <h1 className="login-header">Library Management System</h1>
@@ -50,7 +54,7 @@ export default function SignIn() {
           <label>Password</label>
           <input type="password" onChange={PasswordOnChange}/>
           <span><Link className="link1">Forgot your password?</Link></span>
-          <input type="submit" handleSubmit={handleSubmit} value="Sign in" />
+          <input type="submit" handleSubmit={handleSubmit()} value="Sign in" />
           <span><Link to="/signup" className="link2">Create new account?</Link></span>
         </form>
       </div>
