@@ -8,16 +8,20 @@ export default function DashboardHeader() {
     useEffect(() =>{
         axios.get()
     }, [])*/
-    const name = "Johndoe"    
+    const name = "Johndoe"
     return (
-        <div className='dashboardHeader'>
-            <h1>Hi, {name}</h1>
-            <nav>
-                <Link to="/dashboard">Dashboard</Link>
-                <Link to="/dashboard/borrowings">Borrowings</Link>
-                <Link to="/dashboard/reservations">Reservations</Link>
-                <Link to="/dashboard/profile">Profile</Link>
+        <>
+            <div className="dashboardHeader">
+                <Link to="/"><h1 className="headerLink">LMS</h1></Link>
+                <h1 className="headerH1">Hi, {name}</h1>
+            </div>
+
+            <nav className="navigation">
+                <Link className="link" to="/dashboard/borrowings">Borrowings</Link>
+                <Link className="link" to="/dashboard/reservations">Reservations</Link>
+                <Link className="link" to="/dashboard/charts">Charts</Link>
+                <Link className="link" to="/dashboard/profile">Profile</Link>
             </nav>
-        </div>
+        </>
     )
 }
