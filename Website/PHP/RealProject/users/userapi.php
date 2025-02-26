@@ -34,7 +34,6 @@ elseif(seacrhURLElement($uri,"books") >= 0){
     $uriData = array_slice($uri,$booksPlace, count($uri)-$booksPlace);
     require_once "getbooks.php";
     getbooks($uriData);
-    
 }
 elseif($uri[count($uri)-1] == "verify"){
     require_once "verify.php";
