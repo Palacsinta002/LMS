@@ -38,7 +38,7 @@ namespace Desktop_Application
                 // Show statistics about our books
                 try
                 {
-                    List<object[]> result;
+                    List<string[]> result;
                     result = HandleQueries.Select("SelectBookCount");
                     dashboard_books.Text = result[0][0].ToString();
 

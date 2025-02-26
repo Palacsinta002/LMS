@@ -3,7 +3,7 @@
     internal class HandleQueries
     {
         // Takes a grid and fills it with the Select result of the given filename
-        internal static List<object[]> Select(string fileName)
+        internal static List<string[]> Select(string fileName)
         {
             Connection connection = new();
             string filePath = @"SqlQueries\" + fileName + ".sql";

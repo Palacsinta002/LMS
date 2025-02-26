@@ -64,7 +64,7 @@ internal class Connection
                     string[] row = new string[dataReader.FieldCount];
                     for(int i = 0; i < dataReader.FieldCount; i++)
                     {
-                        row[i] = dataReader.IsDBNull(i) ? string.Empty : dataReader.GetValue(i).ToString();
+                        row[i] = dataReader.GetValue(i).ToString() ?? string.Empty;
                     }
                     result.Add(row);
                 }
