@@ -9,10 +9,12 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   async function HandleSubmit(event) {
     event.preventDefault();
+    setLoading(true);
     try {
       const response = await axios.post(
         "/api/users/userapi.php/login",
@@ -23,9 +25,9 @@ export default function Login() {
           },
         }
       );
-      localStorage.setItem("token", response.data.token);
       console.log(response);
       if(response.data.Success){
+        localStorage.setItem("token", response.data.token);
         navigate("/dashboard");
       }
       else if(response.data.message){
@@ -41,10 +43,14 @@ export default function Login() {
       } else {
         setError("Network error");
       }
+    } finally {
+      setLoading(false);
     }
   }
+
   return (
     <div className="login">
+      <Link to="/" className="back-to-home">Back to Home</Link>
       <h1 className="login-header">Library Management System</h1>
       <div className="login-card">
         <i className="fa fa-user"></i>
@@ -53,9 +59,23 @@ export default function Login() {
           <label>Username</label>
           <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
           <label>Password</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <div className="password-input">
+            <input 
+              type={showPassword ? "text" : "password"} 
+              value={password} 
+              onChange={(e) => setPassword(e.target.value)} 
+            />
+            <button 
+              type="button" 
+              onClick={() => setShowPassword(!showPassword)}
+              className="toggle-password"
+            >
+              {showPassword ? "Hide" : "Show"}
+            </button>
+          </div>
+          {error && <p className="error-message">{error}</p>}
           <span><Link className="link1">Forgot your password?</Link></span>
-          <input type="submit" value="Sign in" />
+          <input type="submit" value="Sign in" disabled={loading} />
           <span><Link to="/register" className="link2">Create new account?</Link></span>
         </form>
       </div>

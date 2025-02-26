@@ -18,7 +18,8 @@ namespace Desktop_Application
             CloseThisWindow.Handle(this, close_btn);
             CloseThisWindow.Handle(this, cancel);
 
-            HandleQueries.SelectFill(dropDown_publisher, "PublisherSelect");
+            var result = HandleQueries.Select("SelectPublisher");
+            HandleGrids.Fill(dropDown_publisher, result);
         }
 
         private void Save(object sender, EventArgs e)
@@ -27,7 +28,6 @@ namespace Desktop_Application
             {
                 HandleQueries.InsertBook(textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, textBox_author.Text, textBox_category.Text);
                 MessageBox.Show("Book uploaded succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                HandleQueries.SelectFill(adminPanel.books_grd, "BookSelect");
                 this.Close();
             }
         }
@@ -37,40 +37,44 @@ namespace Desktop_Application
         {
             if (textBox_title.Text == string.Empty)
             {
-                MessageBox.Show("Title is required!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Title is required!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            else if (!Regex.IsMatch(textBox_title.Text, @"^[^""\\]+$"))
+            {
+                MessageBox.Show("Title is not in the correct format! Please check your special characters!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
 
             if (!Regex.IsMatch(textBox_pubYear.Text, "^[0-9]{4}$"))
             {
-                MessageBox.Show("Publication year must be a 4 digit number!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            if (dropDown_publisher.Text == string.Empty)
-            {
-                MessageBox.Show("You must choose a publisher from the dropdown menu!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Publication year must be a 4 digit number!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
 
             if (textBox_author.Text == string.Empty)
             {
-                MessageBox.Show("You must choose at least one author!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("You must choose at least one author!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
 
             if (textBox_category.Text == string.Empty)
             {
-                MessageBox.Show("You must choose at least one vategory!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("You must choose at least one vategory!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+
+            if (dropDown_publisher.Text == string.Empty)
+            {
+                MessageBox.Show("You must choose a publisher from the dropdown menu!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
 
             if (!Regex.IsMatch(textBox_isbn.Text, "^[0-9]{13}$"))
             {
-                MessageBox.Show("ISBN number must be a 13 digit number!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("ISBN number must be a 13 digit number!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
-
             return true;
         }
 

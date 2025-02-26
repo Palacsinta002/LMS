@@ -6,10 +6,12 @@ import "./Home.css"
 export default function Home() {
   return (
     <div className="HeroSection">
-          <section className="Hero">
-            <Main />
-          </section>
-          <HeroBrowseBooks />
+      <section className="Hero">
+        <Main />
+      </section>
+      <section className="BrowseBooks">
+        <HeroBrowseBooks />
+      </section>
     </div>
   )
 }

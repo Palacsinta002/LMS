@@ -12,3 +12,5 @@
 11 : wrong verify code;
 12 : missing register;
 13 : could not register the user;
+14 : query with database was not good;
+15 : passwords are not the same;

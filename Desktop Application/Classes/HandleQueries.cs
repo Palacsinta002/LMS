@@ -2,39 +2,13 @@
 {
     internal class HandleQueries
     {
-        // Requires a grid and an object array list and fills the grid with the data
-        private static void FillGrid(DataGridView grd, List<object[]> data)
-        {
-            // Clears the grid
-            grd.Rows.Clear();
-
-            foreach (var row in data)
-            {
-                grd.Rows.Add(row.ToArray());
-            }
-        }
-
         // Takes a grid and fills it with the Select result of the given filename
-        internal static void SelectFill(DataGridView grd, string fileName)
+        internal static List<object[]> Select(string fileName)
         {
             Connection connection = new();
             string filePath = @"SqlQueries\" + fileName + ".sql";
             string query = File.ReadAllText(filePath);
-            var result = connection.Select(query);
-            FillGrid(grd, result);
-        }
-
-        // OVERLOAD Takes a combobox and fills it with the Select result of the given filename
-        internal static void SelectFill(ComboBox cb, string fileName)
-        {
-            Connection connection = new();
-            string filePath = @"SqlQueries\" + fileName + ".sql";
-            string query = File.ReadAllText(filePath);
-            var result = connection.Select(query);
-            foreach (var item in result)
-            {
-                cb.Items.Add(item[0].ToString() ?? string.Empty);
-            }
+            return connection.Select(query);
         }
 
 
@@ -61,15 +35,22 @@
                 connection.RunSqlCommand(query);
             }
         }
+        internal static void InsertBorrowing(string username, string isbn, DateTime borrowDate, DateTime dueDate)
+        {
+            Connection connection = new();
+            string query = $"INSERT INTO Borrowings(UserID, ISBN, BorrowDate, DueDate) VALUES((SELECT id FROM Users WHERE Username = \"{username}\"), {isbn}," +
+                $"\"{borrowDate.Year}-{borrowDate.Month}-{borrowDate.Day}\", \"{dueDate.Year}-{dueDate.Month}-{dueDate.Day}\")";
+            connection.RunSqlCommand(query);
+        }
 
 
 
 
         // Update functions
         // Update book with the given arguments
-        internal static void UpdateBook(string isbn, string publisher, string title, string pubYear, string authorsString, string categoriesString)
+        internal static void UpdateBook(DataGridView books_grd, string isbn, string publisher, string title, string pubYear, string authorsString, string categoriesString)
         {
-            Delete(adminPanel.books_grd, "Books", "ISBN");
+            Delete(books_grd, "Books", "ISBN");
 
             InsertBook(isbn, publisher, title, pubYear, authorsString, categoriesString);
         }

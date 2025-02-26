@@ -87,9 +87,11 @@ CREATE TABLE Borrowings (
 );
 
 -- Create Borrowings_backup table
-CREATE TABLE Borrowings_backup (
+CREATE TABLE Borrowings_storage (
     id INT,
     UserID INT,
+    Username VARCHAR(25),
+    Title VARCHAR(255),
     ISBN BIGINT(13),
     BorrowDate DATE,
     DueDate DATE,
@@ -102,17 +104,19 @@ CREATE TRIGGER after_borrowing_insert
 AFTER INSERT ON Borrowings
 FOR EACH ROW
 BEGIN
-    INSERT INTO Borrowings_backup (id, UserID, ISBN, BorrowDate, DueDate, ReturnDate)
-    VALUES (NEW.id, NEW.UserID, NEW.ISBN, NEW.BorrowDate, NEW.DueDate, NEW.ReturnDate);
+    INSERT INTO Borrowings_storage (id, UserID, Username, Title, ISBN, BorrowDate, DueDate, ReturnDate)
+    VALUES (NEW.id, NEW.UserID, (SELECT Username FROM Users WHERE id = NEW.UserID), (SELECT Title FROM Books WHERE ISBN = NEW.ISBN), NEW.ISBN, NEW.BorrowDate, NEW.DueDate, NEW.ReturnDate);
 END $$
 
 CREATE TRIGGER after_borrowing_update
 AFTER UPDATE ON Borrowings
 FOR EACH ROW
 BEGIN
-    UPDATE Borrowings_backup
+    UPDATE Borrowings_storage
     SET 
         UserID = NEW.UserID,
+        Username = (SELECT Username FROM Users WHERE id = NEW.UserID),
+        Title = (SELECT Title FROM Books WHERE ISBN = NEW.ISBN),
         ISBN = NEW.ISBN,
         BorrowDate = NEW.BorrowDate,
         DueDate = NEW.DueDate,
@@ -208,21 +212,21 @@ INSERT INTO Publishers (Publisher) VALUES
 
 -- Insert values into Users table
 INSERT INTO Users (FirstName, LastName, Email, Username, Password, RoleID) VALUES
-('John', 'Doe', 'john.doe@example.com', 'johndoe', 'password123', 3),
-('Jane', 'Smith', 'jane.smith@example.com', 'janesmith', 'password123', 3),
-('Admin', 'User', 'admin@example.com', 'admin', 'adminpassword', 1),
-('Librarian', 'One', 'librarian1@example.com', 'librarian1', 'libpass', 2),
-('Alice', 'Johnson', 'alice.j@example.com', 'alicej', 'alice123', 3),
-('Bob', 'Brown', 'bob.brown@example.com', 'bobbrown', 'bobpass', 3),
-('Clara', 'Olsen', 'clara.olsen@example.com', 'clarao', 'clarapass', 3),
-('David', 'White', 'david.white@example.com', 'davidwhite', 'davidpass', 3),
-('Eve', 'Green', 'eve.green@example.com', 'evegreen', 'evepass', 3),
-('Frank', 'Moore', 'frank.moore@example.com', 'frankmoore', 'frankpass', 3),
-('Grace', 'Lee', 'grace.lee@example.com', 'gracelee', 'gracepass', 3),
-('Hannah', 'Scott', 'hannah.scott@example.com', 'hannahscott', 'hannahpass', 3),
-('Ian', 'Walker', 'ian.walker@example.com', 'ianwalker', 'ianpass', 3),
-('Jack', 'Young', 'jack.young@example.com', 'jackyoung', 'jackpass', 3),
-('Laura', 'Harris', 'laura.harris@example.com', 'lauraharris', 'laurapass', 3);
+('John', 'Doe', 'john.doe@example.com', 'johndoe', '$2y$10$s6wDg2g6WyuxoOrDg4wv4O2hfGcgGaLMhaMWSlNLu048HpF5snqIq', 3),
+('Jane', 'Smith', 'jane.smith@example.com', 'janesmith', '$2y$10$0rK/0Ny/pPudrVWaCKCDfuViT9DiyBvXQjbkIODHGdjkRGgvDt/NO', 3),
+('Admin', 'User', 'admin@example.com', 'admin', '$2y$10$M6a/92XfuWaAymQ3uTScju2in8rSdkRbdGPIeP.HFC2h.mODuqT4O', 1),
+('Librarian', 'One', 'librarian1@example.com', 'librarian1', '$2y$10$85fqudNMJZc2lm.CBnznQ.2C9Z265MIIx6kJaMmlwNX8Q3u6wtG4G', 2),
+('Alice', 'Johnson', 'alice.j@example.com', 'alicej', '$2y$10$GTQ29D1QP3PWG2ldSc.rnOdLnzN7NP1P4VvtIpuzU0NHtX4PLqIu.', 3),
+('Bob', 'Brown', 'bob.brown@example.com', 'bobbrown', '$2y$10$0zrLGHesWh.0VJ9l57Kc8.6p7DI5LWTAU7kg27P5KK1M1aaOvdwhu', 3),
+('Clara', 'Olsen', 'clara.olsen@example.com', 'clarao', '$2y$10$iJFpcy.LqYyqt00QQTpNAu4W7Tl5C44Hq9L3h7GTXmcsmHQP03OBO', 3),
+('David', 'White', 'david.white@example.com', 'davidwhite', '$2y$10$4fXmOd1EXoX5ZKnWfS1L2eDRrS8WKqqGEFCkwlEhxzfycoT26u/ga', 3),
+('Eve', 'Green', 'eve.green@example.com', 'evegreen', '$2y$10$mRlPDwVGnY5Nm.Zwhv/v.eBJqnmGaqfLEMLienuMGJ2FoMAev6iw6', 3),
+('Frank', 'Moore', 'frank.moore@example.com', 'frankmoore', '$2y$10$ssUsidw4bUT1.9rcHzkUH.l.Hxeq5PzLXhE4W.V2kPwrcqAGp.3B6', 3),
+('Grace', 'Lee', 'grace.lee@example.com', 'gracelee', '$2y$10$UqvjfjlxgpVC4yzcfMvhNutNJpSP5gnjKaizOV36Ad4hr/XLxhf2q', 3),
+('Hannah', 'Scott', 'hannah.scott@example.com', 'hannahscott', '$2y$10$y/MlLUAOqRhK3h/STvJHl.xavuT57tQk6gze37FlYQ4RYmjPO0ox6', 3),
+('Ian', 'Walker', 'ian.walker@example.com', 'ianwalker', '$2y$10$CQDXhfODyjHT34GHjaqSCeu3FKF.hFotCrzLAXsgRxF1JvK77nW6W', 3),
+('Jack', 'Young', 'jack.young@example.com', 'jackyoung', '$2y$10$i7JYPvFT/sa6od7vlhp3oOJm2oV9XcGPjRxUR8RR11LhqmEfvQegu', 3),
+('Laura', 'Harris', 'laura.harris@example.com', 'lauraharris', '$2y$10$7ohuabBRz5sXx2/0sFP4nOKcJl3XunwqNigHdTtQCsRosjmDFx0VW', 3);
 
 -- Insert values into Books table
 INSERT INTO Books (ISBN, PublisherID, Title, PublicationYear) VALUES

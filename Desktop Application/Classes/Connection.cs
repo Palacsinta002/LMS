@@ -4,24 +4,18 @@
 
     internal class Connection
     {
-        //https://youtu.be/eJi02kg-S8g - Grid design
-
-        private MySqlConnection _connection;
-        private string _server;
-        private string _database;
-        private string _uid;
-        private string _password;
+        private readonly MySqlConnection _connection;
 
         // Constructor - initialize database
         public Connection()
         {
-            _server = "localhost";
-            _database = "LMS";
-            _uid = "lms";
-            _password = "!LibraryMS25";
+            string server = "localhost";
+            string database = "LMS";
+            string uid = "lms";
+            string password = "!LibraryMS25";
 
             // Connection string: Defines the login info for the database
-            string connectionString = $"SERVER={_server};DATABASE={_database};UID={_uid};PASSWORD={_password};";
+            string connectionString = $"Server={server};Database={database};User Id={uid};Password={password};";
 
             // Sets up the connection using connection string
             _connection = new MySqlConnection(connectionString);
@@ -37,7 +31,7 @@
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
         }
@@ -52,7 +46,7 @@
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
         }
@@ -63,14 +57,14 @@
             List<object[]> result = [];
             if (OpenConnection())
             {
-                var cmd = new MySqlCommand(query, _connection);
-                var dataReader = cmd.ExecuteReader();
-                while (dataReader.Read())
-                {
-                    object[] row = new object[dataReader.FieldCount];
-                    dataReader.GetValues(row);
-                    result.Add(row);
-                }
+                using (MySqlCommand cmd = new(query, _connection))
+                using (MySqlDataReader dataReader = cmd.ExecuteReader())
+                    while (dataReader.Read())
+                    {
+                        object[] row = new object[dataReader.FieldCount];
+                        dataReader.GetValues(row);
+                        result.Add(row);
+                    }
                 CloseConnection();
             }
             return result;
@@ -81,8 +75,8 @@
         {
             if (OpenConnection())
             {
-                MySqlCommand cmd = new(query, _connection);
-                cmd.ExecuteNonQuery();
+                using (MySqlCommand cmd = new(query, _connection))
+                    cmd.ExecuteNonQuery();
                 CloseConnection();
             }
         }

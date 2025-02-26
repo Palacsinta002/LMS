@@ -4,7 +4,7 @@ namespace Desktop_Application.Classes
 {
     internal class CloseThisWindow
     {
-        private Form _form;
+        private readonly Form _form;
 
         public CloseThisWindow(Form form, RoundedButton roundedButton)
         {
@@ -15,7 +15,7 @@ namespace Desktop_Application.Classes
 
         public static void Handle(Form form, RoundedButton roundedButton)
         {
-            new CloseThisWindow(form, roundedButton);
+            _ = new CloseThisWindow(form, roundedButton);
         }
 
         public void WindowClose(object sender, EventArgs e)

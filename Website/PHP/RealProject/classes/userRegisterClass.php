@@ -1,5 +1,7 @@
 <?php
-####################    ####################
+# This file contains the class for the user registration.
+# Handle all verification and store the user information in the session storage.
+# If the verification was successful, then send an email to the given email address.
 
 class UserRegisterClass{
     
@@ -102,20 +104,26 @@ class UserRegisterClass{
     private $password;
 
     ####################  Set the password and validate the input  ####################
-    public function setPassword($password){
-        if (strlen($password > 8) && strlen($password) < 16){
+    public function setPassword($password, $password2){
+        if ($password == $password2){
+            if (strlen($password > 8) && strlen($password) < 16){
             
-            if (preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d\W]).+$/', $password)){
-                
-                $this->password = validateTheInput($password);
+                if (preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d\W]).+$/', $password)){
+                    
+                    $this->password = password_hash(validateTheInput($password), PASSWORD_BCRYPT) ;
+                }
+                else{
+                    errorOutput("6");
+                }
             }
             else{
                 errorOutput("6");
             }
         }
         else{
-            errorOutput("6");
+            errorOutput("15");
         }
+        
         
     }
     ####################  Get the password  ####################
@@ -138,8 +146,7 @@ class UserRegisterClass{
         $this->setUsername($username);
         $this->setFirstName($firstName);
         $this->setLastName($lastName);
-        $this->setPassword($password);
-        $this->password2 = $password2;
+        $this->setPassword($password,$password2);
     }
     
     public function sendVerificationEmail(){

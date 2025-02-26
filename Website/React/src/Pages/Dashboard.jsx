@@ -1,7 +1,11 @@
 import React from 'react'
+import DashboardHeader from '../Components/DashboardHeader';
 
 export default function Dashboard() {
+
   return (
-    <div>Dashboard</div>
+    <div>
+      <DashboardHeader />
+    </div>
   )
 }

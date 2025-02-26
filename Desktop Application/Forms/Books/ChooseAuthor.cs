@@ -8,7 +8,6 @@ namespace Desktop_Application.Forms.Books
         public static List<string> SelectedAuthors
         {
             get { return selectedAuthors; }
-            set { selectedAuthors = value; }
         }
 
         public ChooseAuthor()
@@ -23,7 +22,8 @@ namespace Desktop_Application.Forms.Books
             CloseThisWindow.Handle(this, close_btn);
             CloseThisWindow.Handle(this, cancel);
 
-            HandleQueries.SelectFill(chooseAuthor_grd, "AuthorSelect");
+            var result = HandleQueries.Select("SelectAuthor");
+            HandleGrids.Fill(chooseAuthor_grd, result);
         }
 
         private void Ok(object sender, EventArgs e)

@@ -40,6 +40,9 @@ namespace Desktop_Application
             header = new Panel();
             close_btn = new RoundedButton();
             login_btn = new RoundedButton();
+            usernameError_lbl = new Label();
+            passwordError_lbl = new Label();
+            showPassword_btn = new Button();
             header.SuspendLayout();
             SuspendLayout();
             // 
@@ -49,7 +52,7 @@ namespace Desktop_Application
             title.Font = new Font("Yu Gothic UI Semibold", 24F);
             title.ForeColor = Color.White;
             title.ImeMode = ImeMode.NoControl;
-            title.Location = new Point(93, 39);
+            title.Location = new Point(93, 32);
             title.Name = "title";
             title.Size = new Size(101, 45);
             title.TabIndex = 1;
@@ -58,26 +61,29 @@ namespace Desktop_Application
             // username_textBox
             // 
             username_textBox.Font = new Font("Yu Gothic UI Semibold", 14F);
-            username_textBox.Location = new Point(22, 135);
+            username_textBox.Location = new Point(22, 131);
             username_textBox.Name = "username_textBox";
             username_textBox.Size = new Size(235, 32);
             username_textBox.TabIndex = 0;
+            username_textBox.TextChanged += UsernameTextChanged;
             // 
             // password_textBox
             // 
             password_textBox.Font = new Font("Yu Gothic UI Semibold", 14F);
-            password_textBox.Location = new Point(22, 211);
+            password_textBox.Location = new Point(22, 207);
+            password_textBox.MaxLength = 20;
             password_textBox.Name = "password_textBox";
-            password_textBox.PasswordChar = '●';
+            password_textBox.PasswordChar = '*';
             password_textBox.Size = new Size(235, 32);
             password_textBox.TabIndex = 1;
+            password_textBox.TextChanged += PasswordTextChanged;
             // 
             // username_label
             // 
             username_label.AutoSize = true;
             username_label.Font = new Font("Yu Gothic UI Semibold", 14F);
             username_label.ForeColor = Color.White;
-            username_label.Location = new Point(22, 107);
+            username_label.Location = new Point(22, 103);
             username_label.Name = "username_label";
             username_label.Size = new Size(98, 25);
             username_label.TabIndex = 4;
@@ -88,7 +94,7 @@ namespace Desktop_Application
             password_label.AutoSize = true;
             password_label.Font = new Font("Yu Gothic UI Semibold", 14F);
             password_label.ForeColor = Color.White;
-            password_label.Location = new Point(22, 183);
+            password_label.Location = new Point(22, 179);
             password_label.Name = "password_label";
             password_label.Size = new Size(92, 25);
             password_label.TabIndex = 5;
@@ -148,12 +154,53 @@ namespace Desktop_Application
             login_btn.UseVisualStyleBackColor = false;
             login_btn.Click += LoginCheck;
             // 
+            // usernameError_lbl
+            // 
+            usernameError_lbl.AutoSize = true;
+            usernameError_lbl.Font = new Font("Yu Gothic UI Semibold", 9F);
+            usernameError_lbl.ForeColor = Color.White;
+            usernameError_lbl.Location = new Point(22, 164);
+            usernameError_lbl.Name = "usernameError_lbl";
+            usernameError_lbl.Size = new Size(10, 15);
+            usernameError_lbl.TabIndex = 25;
+            usernameError_lbl.Text = " ";
+            // 
+            // passwordError_lbl
+            // 
+            passwordError_lbl.AutoSize = true;
+            passwordError_lbl.Font = new Font("Yu Gothic UI Semibold", 9F);
+            passwordError_lbl.ForeColor = Color.White;
+            passwordError_lbl.Location = new Point(22, 240);
+            passwordError_lbl.Name = "passwordError_lbl";
+            passwordError_lbl.Size = new Size(10, 15);
+            passwordError_lbl.TabIndex = 26;
+            passwordError_lbl.Text = " ";
+            // 
+            // showPassword_btn
+            // 
+            showPassword_btn.BackColor = Color.White;
+            showPassword_btn.Cursor = Cursors.Hand;
+            showPassword_btn.FlatAppearance.BorderSize = 0;
+            showPassword_btn.FlatAppearance.MouseDownBackColor = Color.White;
+            showPassword_btn.FlatAppearance.MouseOverBackColor = Color.White;
+            showPassword_btn.FlatStyle = FlatStyle.Flat;
+            showPassword_btn.Image = (Image)resources.GetObject("showPassword_btn.Image");
+            showPassword_btn.Location = new Point(225, 208);
+            showPassword_btn.Name = "showPassword_btn";
+            showPassword_btn.Size = new Size(30, 30);
+            showPassword_btn.TabIndex = 27;
+            showPassword_btn.UseVisualStyleBackColor = false;
+            showPassword_btn.Click += ShowPassword;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(80, 77, 180);
             ClientSize = new Size(284, 311);
+            Controls.Add(showPassword_btn);
+            Controls.Add(passwordError_lbl);
+            Controls.Add(usernameError_lbl);
             Controls.Add(header);
             Controls.Add(login_btn);
             Controls.Add(password_label);
@@ -180,5 +227,8 @@ namespace Desktop_Application
         private Panel header;
         private RoundedButton login_btn;
         private RoundedButton close_btn;
+        private Label usernameError_lbl;
+        private Label passwordError_lbl;
+        private Button showPassword_btn;
     }
 }

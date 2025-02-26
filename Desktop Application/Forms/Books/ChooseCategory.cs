@@ -1,4 +1,5 @@
 ﻿using Desktop_Application.Classes;
+using MySqlX.XDevAPI.Common;
 
 namespace Desktop_Application.Forms.Books
 {
@@ -8,7 +9,6 @@ namespace Desktop_Application.Forms.Books
         public static List<string> SelectedCategories
         {
             get { return selectedCategories; }
-            set { selectedCategories = value; }
         }
 
         public ChooseCategory()
@@ -23,7 +23,8 @@ namespace Desktop_Application.Forms.Books
             CloseThisWindow.Handle(this, close_btn);
             CloseThisWindow.Handle(this, cancel);
 
-            HandleQueries.SelectFill(chooseCategory_grd, "CategorySelect");
+            var result = HandleQueries.Select("SelectCategory");
+            HandleGrids.Fill(chooseCategory_grd, result);
         }
 
         private void Ok(object sender, EventArgs e)

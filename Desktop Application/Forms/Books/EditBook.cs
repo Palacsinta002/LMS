@@ -6,8 +6,11 @@ namespace Desktop_Application
 {
     public partial class EditBook : Form
     {
-        public EditBook()
+        private readonly DataGridView _books_grd;
+
+        public EditBook(DataGridView books_grd)
         {
+            _books_grd = books_grd;
             InitializeComponent();
         }
 
@@ -18,13 +21,14 @@ namespace Desktop_Application
             CloseThisWindow.Handle(this, close_btn);
             CloseThisWindow.Handle(this, cancel);
 
-            var selectedRow = adminPanel.books_grd.SelectedRows[0].Cells;
+            var selectedRow = _books_grd.SelectedRows[0].Cells;
 
             textBox_title.Text = selectedRow["title"].Value.ToString();
             textBox_pubYear.Text = selectedRow["publicationYear"].Value.ToString();
             textBox_author.Text = selectedRow["author"].Value.ToString();
             textBox_category.Text = selectedRow["category"].Value.ToString();
-            HandleQueries.SelectFill(dropDown_publisher, "PublisherSelect");
+            var result = HandleQueries.Select("SelectPublisher");
+            HandleGrids.Fill(dropDown_publisher, result);
             dropDown_publisher.Text = selectedRow["publisher"].Value.ToString();
             textBox_isbn.Text = selectedRow["isbn"].Value.ToString();
         }
@@ -33,9 +37,10 @@ namespace Desktop_Application
         {
             if (ValidateInput())
             {
-                HandleQueries.UpdateBook(textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, textBox_author.Text, textBox_category.Text);
+                HandleQueries.UpdateBook(_books_grd, textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, textBox_author.Text, textBox_category.Text);
+                var result = HandleQueries.Select("SelectBook");
+                HandleGrids.Fill(_books_grd, result);
                 MessageBox.Show("Book updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                HandleQueries.SelectFill(adminPanel.books_grd, "BookSelect");
                 this.Close();
             }
         }
@@ -48,16 +53,15 @@ namespace Desktop_Application
                 MessageBox.Show("Title is required!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
-            if (!Regex.IsMatch(textBox_pubYear.Text, "^[0-9]{4}$"))
+            else if (!Regex.IsMatch(textBox_title.Text, @"^[^""\\]+$"))
             {
-                MessageBox.Show("Publication year must be a 4 digit number!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Title is not in the correct format! Please check your special characters!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
-            if (dropDown_publisher.Text == string.Empty)
+            if (!Regex.IsMatch(textBox_pubYear.Text, @"^[0-9]{4}$"))
             {
-                MessageBox.Show("You must choose a publisher from the dropdown menu!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Publication year must be a 4 digit number!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
@@ -73,7 +77,13 @@ namespace Desktop_Application
                 return false;
             }
 
-            if (!Regex.IsMatch(textBox_isbn.Text, "^[0-9]{13}$"))
+            if (dropDown_publisher.Text == string.Empty)
+            {
+                MessageBox.Show("You must choose a publisher from the dropdown menu!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (!Regex.IsMatch(textBox_isbn.Text, @"^[0-9]{13}$"))
             {
                 MessageBox.Show("ISBN number must be a 13 digit number!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;

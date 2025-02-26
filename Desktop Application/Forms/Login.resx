@@ -129,6 +129,18 @@
         JM8nyfuGc8WjQeUJZxiG8ddU1QubZwd2MRS7zwAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="showPassword_btn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
+        pQAAAKUBcMTeVQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAE6SURBVEhLtZQx
+        bgJBDEVNQQkICU7CBVIhOmpqaiSa9DlB2pyAggPQ5Aip0oSWiipNekQ2/xGzmkUuxyM9yf72/N31wFjT
+        NKmEYk1CsSahWJNQLNHqi4V4Fm8OMVo/2lMSiqA1Eq/iWyDA1bnn1OgZRR4Qi2ZLcRYk74I3fhIDhxiN
+        Gj30LkOvTmI2EXtBchRz1zHdip1DPPDaXNBLwt5Jx7MNzKbiS5C8iNt8tWbiJEh+HGK0mfdwTuwhwWPa
+        +nrDWHyKX7Fpi/9vjhEj4FB7DjEatduXeP9G4IHX2DUbig/B4a3vzV5kFASLUvcaDyHYPuhrgReeeNtB
+        XMSqbPRm5s1IekGNL6G2C2orgSfe+Q/IHZGLeYdcFPN+pm2S+UfriFlXRYlW3mVXopVzXdciFGsSijUJ
+        xXo09gdw5Ze9aKmEJQAAAABJRU5ErkJggg==
+</value>
+  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>82</value>
   </metadata>
