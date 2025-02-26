@@ -257,21 +257,14 @@ namespace Desktop_Application.Forms.Borrowings
 
         #endregion
 
-        private System.Windows.Forms.Button chooseCategory;
-        private System.Windows.Forms.TextBox textBox_category;
         private System.Windows.Forms.ComboBox dropDown_user;
         private Panel header;
         private Label title;
         private Components.RoundedButton close_btn;
         private Components.RoundedButton save;
-        private System.Windows.Forms.TextBox textBox_pubYear;
-        private Label label_pubYear;
         private Label label2;
-        private Label label_category;
         private Label label_publisher;
-        private System.Windows.Forms.TextBox textBox_title;
         private Components.RoundedButton cancel;
-        private Label label_title;
         private Label label3;
         private DateTimePicker borrowDate_datePicker;
         private DateTimePicker dueDate_datePicker;

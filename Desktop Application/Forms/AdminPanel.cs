@@ -160,7 +160,7 @@ namespace Desktop_Application
 
         private void RemoveBorrowing(object sender, EventArgs e)
         {
-            RemoveBook removeBorrowing = new(borrowings_grd);
+            ReturnBook removeBorrowing = new(borrowings_grd);
             removeBorrowing.ShowDialog();
         }
         #endregion

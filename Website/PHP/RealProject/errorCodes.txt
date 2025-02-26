@@ -14,3 +14,5 @@
 13 : could not register the user;
 14 : query with database was not good;
 15 : passwords are not the same;
+16 : Img file is missing;
+17 : wrong request method;

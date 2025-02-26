@@ -30,7 +30,7 @@ function getbooks($uriData){
             }
         }
     }
-        $sql = "SELECT books.ISBN, publishers.publisher, books.title, GROUP_CONCAT(DISTINCT Authors.Author SEPARATOR ','), GROUP_CONCAT(DISTINCT categories.category SEPARATOR ','), books.publicationYear
+        $sql = "SELECT books.ISBN, publishers.Publisher, books.Title, GROUP_CONCAT(DISTINCT Authors.Author SEPARATOR ',') as 'Authors', GROUP_CONCAT(DISTINCT categories.category SEPARATOR ',') as 'Categories', books.publicationYear,books.ImgUrl
                 from books, publishers, books_authors, authors, books_categories, categories
                 where books.ISBN = books_authors.ISBN and books_authors.AuthorID = authors.id and books.ISBN = books_categories.ISBN and books_categories.CategoryID = categories.id and books.publisherid = publishers.id" ;
     # add the options to the sql query
