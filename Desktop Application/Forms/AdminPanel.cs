@@ -2,232 +2,245 @@
 using Desktop_Application.Forms.Books;
 using Desktop_Application.Forms.Borrowings;
 
-namespace Desktop_Application
+namespace Desktop_Application;
+public partial class AdminPanel : Form
 {
-    public partial class AdminPanel : Form
+    private readonly string _name;
+    private readonly bool _isAdmin;
+
+    public AdminPanel(string name, bool isAdmin)
     {
-        private readonly string _name;
-        private readonly bool _isAdmin;
+        _name = name;
+        _isAdmin = isAdmin;
+        InitializeComponent();
+    }
 
-        public AdminPanel(string name, bool isAdmin)
+    private void OnLoad(object sender, EventArgs e)
+    {
+        users_btn.Visible = _isAdmin;
+        divider_pnl4.Visible = _isAdmin;
+
+        hello_lbl.Text = $"Hello {_name}!";
+
+        ShowDashboard(sender, e);
+    }
+
+    #region Dashboard
+    // Shows the Dashboard
+    private void ShowDashboard(object sender, EventArgs e)
+    {
+        if (!dashboard_pnl.Visible)
         {
-            _name = name;
-            _isAdmin = isAdmin;
-            InitializeComponent();
-        }
+            HidePanels();
+            dashboard_pnl.Visible = true;
 
-        private void OnLoad(object sender, EventArgs e)
-        {
-            users_btn.Visible = _isAdmin;
-            divider_pnl4.Visible = _isAdmin;
-
-            hello_lbl.Text = $"Hello {_name}!";
-
-            ShowDashboard(sender, e);
-        }
-
-        #region Dashboard
-        // Shows the Dashboard
-        private void ShowDashboard(object sender, EventArgs e)
-        {
-            if (!dashboard_pnl.Visible)
+            // Show statistics about our books
+            try
             {
-                HidePanels();
-                dashboard_pnl.Visible = true;
+                List<string[]> result;
+                result = HandleQueries.Select("SelectBookCount");
+                dashboard_books.Text = result[0][0].ToString();
 
-                // Show statistics about our books
-                try
-                {
-                    List<string[]> result;
-                    result = HandleQueries.Select("SelectBookCount");
-                    dashboard_books.Text = result[0][0].ToString();
+                result = HandleQueries.Select("SelectUserCount");
+                dashboard_users.Text = result[0][0].ToString();
 
-                    result = HandleQueries.Select("SelectUserCount");
-                    dashboard_users.Text = result[0][0].ToString();
+                result = HandleQueries.Select("SelectBorrowingCount");
+                dashboard_borrowings.Text = result[0][0].ToString();
 
-                    result = HandleQueries.Select("SelectBorrowingCount");
-                    dashboard_borrowings.Text = result[0][0].ToString();
-
-                    result = HandleQueries.Select("SelectTopBorrowedBook");
-                    HandleGrids.Fill(dashboard_grd, result);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("There is something wrong with the connection to the database, we couldn't list top borrowed books!\nError: " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                result = HandleQueries.Select("SelectTopBorrowedBook");
+                HandleGrids.Fill(dashboard_grd, result);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There is something wrong with the connection to the database, we couldn't list top borrowed books!\nError: " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        #endregion
+    }
+    #endregion
 
-        #region Books
-        // Shows Books page and hides other pages
-        private void ShowBooks(object sender, EventArgs e)
+    #region Books
+    // Shows Books page and hides other pages
+    private void ShowBooks(object sender, EventArgs e)
+    {
+        if (!books_pnl.Visible)
         {
-            if (!books_pnl.Visible)
-            {
-                HidePanels();
-                books_pnl.Visible = true;
-                var result = HandleQueries.Select("SelectBook");
-                HandleGrids.Fill(books_grd, result);
-            }
+            HidePanels();
+            books_pnl.Visible = true;
+            RefreshBooks(sender, e);
         }
+    }
 
-        // Selects from the database again
-        private void RefreshBooks(object sender, EventArgs e)
-        {
-            var result = HandleQueries.Select("SelectBook");
-            HandleGrids.Fill(books_grd, result);
-        }
+    // Selects from the database again
+    private void RefreshBooks(object sender, EventArgs e)
+    {
+        var result = HandleQueries.Select("SelectBook");
+        HandleGrids.Fill(books_grd, result);
+    }
 
-        // Live search through the grid which is already filled with content from the database
-        private void SearchBook(object sender, EventArgs e)
-        {
-            string[] cols = ["title", "publicationYear", "isbn"];
-            HandleGrids.SearchGrid(books_grd, books_src.Text, cols);
-        }
+    // Live search through the grid which is already filled with content from the database
+    private void SearchBook(object sender, EventArgs e)
+    {
+        string[] cols = ["title", "publicationYear", "isbn"];
+        HandleGrids.SearchGrid(books_grd, books_src.Text, cols);
+    }
 
-        // Adds a book to the database
-        private void AddBook(object sender, EventArgs e)
-        {
-            AddBook addBook = new();
-            addBook.ShowDialog();
-            var result = HandleQueries.Select("SelectBook");
-            HandleGrids.Fill(books_grd, result);
-        }
+    // Adds a book to the database
+    private void AddBook(object sender, EventArgs e)
+    {
+        AddBook addBook = new();
+        addBook.ShowDialog();
+        RefreshBooks(sender, e);
+    }
 
-        // Edit the selected book from the grid and then updates in the database
-        private void EditBook(object sender, EventArgs e)
+    // Edit the selected book from the grid and then updates in the database
+    private void EditBook(object sender, EventArgs e)
+    {
+        if (books_grd.SelectedRows.Count != 1)
         {
-            if (books_grd.SelectedRows.Count != 1)
-            {
-                MessageBox.Show("You must select one book to edit!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            EditBook editBook = new(books_grd);
-            editBook.ShowDialog();
+            MessageBox.Show("You must select ONE book to edit!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return;
         }
+        EditBook editBook = new(books_grd);
+        editBook.ShowDialog();
+        RefreshBooks(sender, e);
+    }
 
-        // Removes book from the database
-        private void RemoveBook(object sender, EventArgs e)
-        {
-            RemoveBook removeBook = new(books_grd);
-            removeBook.ShowDialog();
-        }
-        #endregion
+    // Removes book from the database
+    private void RemoveBook(object sender, EventArgs e)
+    {
+        RemoveBook removeBook = new(books_grd);
+        removeBook.ShowDialog();
+        RefreshBooks(sender, e);
+    }
+    #endregion
 
-        #region Borrowings
-        private void ShowBorrowings(object sender, EventArgs e)
+    #region Borrowings
+    private void ShowBorrowings(object sender, EventArgs e)
+    {
+        if (!borrowings_pnl.Visible)
         {
-            if (!borrowings_pnl.Visible)
-            {
-                HidePanels();
-                borrowings_pnl.Visible = true;
-                var result = HandleQueries.Select("SelectBorrowing");
-                HandleGrids.Fill(borrowings_grd, result);
-            }
+            HidePanels();
+            borrowings_pnl.Visible = true;
+            RefreshBorrowings(sender, e);
         }
+    }
 
-        private void RefreshBorrowings(object sender, EventArgs e)
+    internal void RefreshBorrowings(object sender, EventArgs e)
+    {
+        List<string[]> result;
+        if (checkBox_currentBorrowings.Checked)
         {
-            var result = HandleQueries.Select("SelectBorrowing");
-            HandleGrids.Fill(borrowings_grd, result);
+            borrowings_grd.Columns["returnDate"].Visible = false;
+            result = HandleQueries.Select("SelectCurrentBorrowing");
         }
+        else
+        {
+            borrowings_grd.Columns["returnDate"].Visible = true;
+            result = HandleQueries.Select("SelectAllBorrowing");
+        }
+        HandleGrids.Fill(borrowings_grd, result);
+    }
 
-        private void SearchBorrowings(object sender, EventArgs e)
-        {
-            string[] cols = ["borrowingsUsername", "borrowingsTitle", "borrowingsIsbn"];
-            HandleGrids.SearchGrid(borrowings_grd, borrowings_src.Text, cols);
-        }
+    private void SearchBorrowings(object sender, EventArgs e)
+    {
+        string[] cols = ["borrowingsUsername", "borrowingsTitle", "borrowingsIsbn"];
+        HandleGrids.SearchGrid(borrowings_grd, borrowings_src.Text, cols);
+    }
 
-        private void AddBorrowing(object sender, EventArgs e)
-        {
-            LendBook addBorrowing = new();
-            var result = HandleQueries.Select("SelectBorrowing");
-            HandleGrids.Fill(borrowings_grd, result);
-            addBorrowing.ShowDialog();
-        }
+    private void AddBorrowing(object sender, EventArgs e)
+    {
+        LendBook addBorrowing = new();
+        addBorrowing.ShowDialog();
+        RefreshBorrowings(sender, e);
+    }
 
-        private void EditBorrowing(object sender, EventArgs e)
+    private void EditBorrowing(object sender, EventArgs e)
+    {
+        if (borrowings_grd.SelectedRows.Count != 1)
         {
-            if (borrowings_grd.SelectedRows.Count != 1)
-            {
-                MessageBox.Show("You must select one borrowing to edit!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            EditBook editBorrowing = new(borrowings_grd);
-            editBorrowing.ShowDialog();
+            MessageBox.Show("You must select ONE borrowing to edit!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return;
         }
+        else if(borrowings_grd.SelectedRows[0].Cells["returnDate"].Value.ToString() != string.Empty)
+        {
+            MessageBox.Show("You can't edit returned borrowings!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return;
+        }
+        EditBorrowing editBorrowing = new(borrowings_grd);
+        editBorrowing.ShowDialog();
+        RefreshBorrowings(sender, e);
+    }
 
-        private void RemoveBorrowing(object sender, EventArgs e)
-        {
-            ReturnBook removeBorrowing = new(borrowings_grd);
-            removeBorrowing.ShowDialog();
-        }
-        #endregion
+    private void RemoveBorrowing(object sender, EventArgs e)
+    {
+        ReturnBook removeBorrowing = new(borrowings_grd);
+        removeBorrowing.ShowDialog();
+        RefreshBorrowings(sender, e);
+    }
+    #endregion
 
-        #region Categories
-        private void ShowCategories(object sender, EventArgs e)
+    #region Categories
+    private void ShowCategories(object sender, EventArgs e)
+    {
+        if (!categories_pnl.Visible)
         {
-            if (!categories_pnl.Visible)
-            {
-                HidePanels();
-                categories_pnl.Visible = true;
-            }
+            HidePanels();
+            categories_pnl.Visible = true;
         }
-        #endregion 
+    }
+    #endregion
 
-        #region Users
-        private void ShowMembers(object sender, EventArgs e)
+    #region Users
+    private void ShowMembers(object sender, EventArgs e)
+    {
+        if (members_pnl.Visible != true)
         {
-            if (members_pnl.Visible != true)
-            {
-                HidePanels();
-                members_pnl.Visible = true;
-            }
+            HidePanels();
+            members_pnl.Visible = true;
         }
-        #endregion
+    }
+    #endregion
 
-        #region Authors
-        private void ShowAuthors(object sender, EventArgs e)
+    #region Authors
+    private void ShowAuthors(object sender, EventArgs e)
+    {
+        if (!authors_pnl.Visible)
         {
-            if (!authors_pnl.Visible)
-            {
-                HidePanels();
-                authors_pnl.Visible = true;
-            }
+            HidePanels();
+            authors_pnl.Visible = true;
         }
-        #endregion
+    }
+    #endregion
 
-        #region Publishers
-        private void ShowPublishers(object sender, EventArgs e)
+    #region Publishers
+    private void ShowPublishers(object sender, EventArgs e)
+    {
+        if (!publishers_pnl.Visible)
         {
-            if (!publishers_pnl.Visible)
-            {
-                HidePanels();
-                publishers_pnl.Visible = true;
-            }
+            HidePanels();
+            publishers_pnl.Visible = true;
         }
-        #endregion
+    }
+    #endregion
 
-        // Hides every panel so there will be room for the opened panel
-        private void HidePanels()
-        {
-            dashboard_pnl.Visible = false;
-            books_pnl.Visible = false;
-            borrowings_pnl.Visible = false;
-            categories_pnl.Visible = false;
-            members_pnl.Visible = false;
-            authors_pnl.Visible = false;
-            publishers_pnl.Visible = false;
-        }
+    // Hides every panel so there will be room for the opened panel
+    private void HidePanels()
+    {
+        dashboard_pnl.Visible = false;
+        books_pnl.Visible = false;
+        borrowings_pnl.Visible = false;
+        categories_pnl.Visible = false;
+        members_pnl.Visible = false;
+        authors_pnl.Visible = false;
+        publishers_pnl.Visible = false;
+    }
 
-        // Logs out and drops back to the login screen
-        private void Logout(object sender, EventArgs e)
-        {
-            Login login = new();
-            this.Hide();
-            login.ShowDialog();
-            this.Close();
-        }
+    // Logs out and drops back to the login screen
+    private void Logout(object sender, EventArgs e)
+    {
+        Login login = new();
+        this.Hide();
+        login.ShowDialog();
+        this.Close();
     }
 }

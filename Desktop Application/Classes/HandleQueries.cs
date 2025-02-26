@@ -55,13 +55,25 @@
             InsertBook(isbn, publisher, title, pubYear, authorsString, categoriesString);
         }
 
+        // Update borrowing
+        internal static void UpdateBorrowing(string username, string isbn, DateTime borrowDate, DateTime dueDate)
+        {
+            string borrowDateString = $"{borrowDate.Year}-{borrowDate.Month}-{borrowDate.Day}";
+            string dueDateString = $"{dueDate.Year}-{dueDate.Month}-{dueDate.Day}";
+            Connection connection = new();
+            string query = $"UPDATE Borrowings SET UserID = (SELECT id FROM Users WHERE Username = \"{username}\"), ISBN = {isbn}, " +
+                $"BorrowDate = \"{borrowDateString}\", DueDate = \"{dueDateString}\" " +
+                $"WHERE ISBN = {isbn}";
+            connection.RunSqlCommand(query);
+        }
+
         // Update borrowing - mark as returned
         internal static void UpdateBorrowing(DataGridView borrowings_grd, string returnDate)
         {
             Connection connection = new();
-            foreach(DataGridViewRow row in borrowings_grd.SelectedRows)
+            foreach (DataGridViewRow row in borrowings_grd.SelectedRows)
             {
-                string query = $"UPDATE Borrowings SET ReturnDate = \"{returnDate}\" WHERE ISBN = {row.Cells[2].Value};";
+                string query = $"UPDATE Borrowings SET ReturnDate = \"{returnDate}\" WHERE ISBN = {row.Cells[2].Value}";
                 connection.RunSqlCommand(query);
             }
         }

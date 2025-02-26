@@ -33,9 +33,6 @@ public partial class ReturnBook : Form
             // Remove it from the Borrowings table so it only remains in Borrowings_storage
             HandleQueries.Delete(_borrowings_grd, "Borrowings", "borrowingsIsbn", "ISBN");
 
-            // Update the grid
-            var result = HandleQueries.Select("SelectBorrowing");
-            HandleGrids.Fill(_borrowings_grd, result);
             MessageBox.Show("Borrowing marked as returned succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
@@ -45,9 +42,9 @@ public partial class ReturnBook : Form
     {
         foreach(DataGridViewRow row in _borrowings_grd.SelectedRows)
         {
-            if (row.Cells["returnDate"].Value != null)
+            if (row.Cells["returnDate"].Value.ToString() != string.Empty)
             {
-                MessageBox.Show("The selected borrowing is already returned, you can't return it again!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("There is at least one book selected which is already returned!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
         }

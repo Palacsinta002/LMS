@@ -23,8 +23,6 @@ public partial class RemoveBook : Form
     private void Yes(object sender, EventArgs e)
     {
         HandleQueries.Delete(_books_grd, "Books", "ISBN", "ISBN");
-        var result = HandleQueries.Select("SelectBook");
-        HandleGrids.Fill(_books_grd, result);
         MessageBox.Show("Book removed succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         this.Close();
     }

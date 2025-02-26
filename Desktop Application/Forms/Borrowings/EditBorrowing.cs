@@ -1,13 +1,17 @@
 ﻿using Desktop_Application.Classes;
 
 namespace Desktop_Application.Forms.Borrowings;
-public partial class LendBook : Form
+
+public partial class EditBorrowing : Form
 {
+    private readonly DataGridView _borrowings_grd;
+
     private DateTime _borrowDate;
     private DateTime _dueDate;
 
-    public LendBook()
+    public EditBorrowing(DataGridView borrowings_grd)
     {
+        _borrowings_grd = borrowings_grd;
         InitializeComponent();
     }
 
@@ -20,27 +24,27 @@ public partial class LendBook : Form
 
         var result = HandleQueries.Select("SelectUsername");
         HandleGrids.Fill(dropDown_user, result);
+
+        var selectedRow = _borrowings_grd.SelectedRows[0].Cells;
+
+        dropDown_user.Text = selectedRow["borrowingsUsername"].Value.ToString();
+        textBox_books.Text = selectedRow["borrowingsIsbn"].Value.ToString();
+        borrowDate_datePicker.Text = selectedRow["borrowDate"].Value.ToString();
+        dueDate_datePicker.Text = selectedRow["dueDate"].Value.ToString();
     }
 
     private void Save(object sender, EventArgs e)
     {
         if (ValidateInput())
         {
-            HandleQueries.InsertBorrowing(dropDown_user.Text, textBox_books.Text, _borrowDate, _dueDate);
-            MessageBox.Show("Book lent succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            HandleQueries.UpdateBorrowing(dropDown_user.Text, textBox_books.Text, _borrowDate, _dueDate);
+            MessageBox.Show("Borrowing updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
     }
 
-    // returns true if everything is correct
     private bool ValidateInput()
     {
-        if (dropDown_user.Text == string.Empty)
-        {
-            MessageBox.Show("Username is required!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            return false;
-        }
-
         if (textBox_books.Text == string.Empty)
         {
             MessageBox.Show("Books are required!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -59,13 +63,5 @@ public partial class LendBook : Form
             return false;
         }
         return true;
-    }
-
-    private void OpenChooseBooks(object sender, EventArgs e)
-    {
-        ChooseBooks chooseBooks = new();
-        chooseBooks.ShowDialog();
-
-        textBox_books.Text = string.Join(", ", ChooseBooks.SelectedBooks);
     }
 }

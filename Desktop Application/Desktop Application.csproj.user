@@ -19,6 +19,9 @@
     <Compile Update="Forms\Books\RemoveBook.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Borrowings\EditBorrowing.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Borrowings\LendBook.cs">
       <SubType>Form</SubType>
     </Compile>
