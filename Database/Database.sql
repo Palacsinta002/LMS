@@ -53,6 +53,7 @@ CREATE TABLE Books (
     PublisherID INT,
     Title VARCHAR(255) NOT NULL,
     PublicationYear int(4),
+    ImgUrl varchar(255),
     FOREIGN KEY (PublisherID) REFERENCES Publishers(id) ON DELETE CASCADE
 );
 
