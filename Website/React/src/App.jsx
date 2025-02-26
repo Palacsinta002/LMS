@@ -23,7 +23,6 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/verify" element={<Verify />} />
         <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}>
-          <Route index element={<Borrowings />} />
           <Route path="borrowings" element={<Borrowings />} />
           <Route path="reservations" element={<Reservations />} />
           <Route path="charts" element={<Charts />} />
