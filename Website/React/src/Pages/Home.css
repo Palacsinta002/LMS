@@ -7,7 +7,7 @@ body {
   color: white;
   float: left;
   position: absolute;
-  padding-left: 2vw;
+  padding-left: 2vh;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
