@@ -50,21 +50,32 @@
         // Update book with the given arguments
         internal static void UpdateBook(DataGridView books_grd, string isbn, string publisher, string title, string pubYear, string authorsString, string categoriesString)
         {
-            Delete(books_grd, "Books", "ISBN");
+            Delete(books_grd, "Books", "ISBN", "ISBN");
 
             InsertBook(isbn, publisher, title, pubYear, authorsString, categoriesString);
+        }
+
+        // Update borrowing - mark as returned
+        internal static void UpdateBorrowing(DataGridView borrowings_grd, string returnDate)
+        {
+            Connection connection = new();
+            foreach(DataGridViewRow row in borrowings_grd.SelectedRows)
+            {
+                string query = $"UPDATE Borrowings SET ReturnDate = \"{returnDate}\" WHERE ISBN = {row.Cells[2].Value};";
+                connection.RunSqlCommand(query);
+            }
         }
 
 
 
         // Deletes the selected item in the given grid from the given table based on the given column
-        internal static void Delete(DataGridView grd, string table, string col)
+        internal static void Delete(DataGridView grd, string table, string grdcol, string dbcol)
         {
             Connection connection = new();
             foreach (DataGridViewRow row in grd.SelectedRows)
             {
-                string item = row.Cells[col].Value.ToString() ?? string.Empty;
-                string query = $"DELETE FROM {table} WHERE {col} = {item}";
+                string item = row.Cells[grdcol].Value.ToString() ?? string.Empty;
+                string query = $"DELETE FROM {table} WHERE {dbcol} = {item}";
                 connection.RunSqlCommand(query);
             }
         }
