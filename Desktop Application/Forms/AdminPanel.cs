@@ -141,7 +141,7 @@ namespace Desktop_Application
 
         private void AddBorrowing(object sender, EventArgs e)
         {
-            AddBorrowing addBorrowing = new();
+            LendBook addBorrowing = new();
             var result = HandleQueries.Select("SelectBorrowing");
             HandleGrids.Fill(borrowings_grd, result);
             addBorrowing.ShowDialog();

@@ -2,12 +2,12 @@
 
 namespace Desktop_Application.Forms.Borrowings
 {
-    public partial class AddBorrowing : Form
+    public partial class LendBook : Form
     {
         private DateTime _borrowDate;
         private DateTime _dueDate;
 
-        public AddBorrowing()
+        public LendBook()
         {
             InitializeComponent();
         }

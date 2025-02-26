@@ -22,19 +22,35 @@ public partial class ReturnBook : Form
 
     private void Yes(object sender, EventArgs e)
     {
-        // Mark the borrowing as returned
-        DateTime currentDate = DateTime.Now;
-        string returnDate = $"{currentDate.Year}-{currentDate.Month}-{currentDate.Day}";
+        if (CheckReturnDate())
+        {
+            // Mark the borrowing as returned
+            DateTime currentDate = DateTime.Now;
+            string returnDate = $"{currentDate.Year}-{currentDate.Month}-{currentDate.Day}";
 
-        HandleQueries.UpdateBorrowing(_borrowings_grd, returnDate);
+            HandleQueries.UpdateBorrowing(_borrowings_grd, returnDate);
 
-        // Remove it from the Borrowings table so it only remains in Borrowings_storage
-        HandleQueries.Delete(_borrowings_grd, "Borrowings", "borrowingsIsbn", "ISBN");
+            // Remove it from the Borrowings table so it only remains in Borrowings_storage
+            HandleQueries.Delete(_borrowings_grd, "Borrowings", "borrowingsIsbn", "ISBN");
 
-        // Update the grid
-        var result = HandleQueries.Select("SelectBorrowing");
-        HandleGrids.Fill(_borrowings_grd, result);
-        MessageBox.Show("Borrowing marked as returned succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        this.Close();
+            // Update the grid
+            var result = HandleQueries.Select("SelectBorrowing");
+            HandleGrids.Fill(_borrowings_grd, result);
+            MessageBox.Show("Borrowing marked as returned succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
+        }
+    }
+
+    private static bool CheckReturnDate()
+    {
+        foreach(DataGridViewRow row in _borrowings_grd.SelectedRows)
+        {
+            if (row.Cells["returnDate"].Value != null)
+            {
+                MessageBox.Show("The selected borrowing is already returned, you can't return it again!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+        }
+        return true;
     }
 }
