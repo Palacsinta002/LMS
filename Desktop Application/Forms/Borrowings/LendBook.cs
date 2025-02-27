@@ -63,9 +63,10 @@ public partial class LendBook : Form
 
     private void OpenChooseBooks(object sender, EventArgs e)
     {
-        ChooseBooks chooseBooks = new();
+        List<string> selectedISBNs = textBox_books.Text.Split(", ").ToList();
+        ChooseBooks chooseBooks = new(selectedISBNs);
         chooseBooks.ShowDialog();
 
-        textBox_books.Text = string.Join(", ", ChooseBooks.SelectedBooks);
+        textBox_books.Text = string.Join(", ", ChooseBooks.SelectedISBNs);
     }
 }

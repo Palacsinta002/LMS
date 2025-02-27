@@ -84,6 +84,12 @@ namespace Desktop_Application
             borrowings_pnl = new Panel();
             checkBox_currentBorrowings = new CheckBox();
             borrowings_grd = new DataGridView();
+            borrowings_username = new DataGridViewTextBoxColumn();
+            borrowings_title = new DataGridViewTextBoxColumn();
+            borrowings_isbn = new DataGridViewTextBoxColumn();
+            borrowings_borrowDate = new DataGridViewTextBoxColumn();
+            borrowings_dueDate = new DataGridViewTextBoxColumn();
+            borrowings_returnDate = new DataGridViewTextBoxColumn();
             borrowings_refresh_btn = new RoundedButton();
             borrowings_borrow_btn = new RoundedButton();
             borrowings_edit_btn = new RoundedButton();
@@ -97,7 +103,6 @@ namespace Desktop_Application
             categories_remove_btn = new RoundedButton();
             categories_lbl1 = new Label();
             categories_src = new TextBox();
-            categories_grd = new DataGridView();
             users_pnl = new Panel();
             roundedButton2 = new RoundedButton();
             roundedButton3 = new RoundedButton();
@@ -105,7 +110,6 @@ namespace Desktop_Application
             roundedButton4 = new RoundedButton();
             users_lbl1 = new Label();
             users_src = new TextBox();
-            users_grd = new DataGridView();
             authors_pnl = new Panel();
             authors_refresh_btn = new RoundedButton();
             authors_add_btn = new RoundedButton();
@@ -113,7 +117,6 @@ namespace Desktop_Application
             authors_remove_btn = new RoundedButton();
             authors_lbl1 = new Label();
             authors_src = new TextBox();
-            authors_grd = new DataGridView();
             publishers_pnl = new Panel();
             publishers_refresh_btn = new RoundedButton();
             publishers_add_btn = new RoundedButton();
@@ -121,13 +124,8 @@ namespace Desktop_Application
             publishers_remove_btn = new RoundedButton();
             publishers_lbl1 = new Label();
             publishers_src = new TextBox();
-            publishers_grd = new DataGridView();
-            borrowings_username = new DataGridViewTextBoxColumn();
-            borrowings_title = new DataGridViewTextBoxColumn();
-            borrowings_isbn = new DataGridViewTextBoxColumn();
-            borrowings_borrowDate = new DataGridViewTextBoxColumn();
-            borrowings_dueDate = new DataGridViewTextBoxColumn();
-            borrowings_returnDate = new DataGridViewTextBoxColumn();
+            categories_grd = new DataGridView();
+            categories_category = new DataGridViewTextBoxColumn();
             menu_pnl.SuspendLayout();
             header_pnl.SuspendLayout();
             dashboard_pnl.SuspendLayout();
@@ -141,13 +139,10 @@ namespace Desktop_Application
             borrowings_pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)borrowings_grd).BeginInit();
             categories_pnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)categories_grd).BeginInit();
             users_pnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)users_grd).BeginInit();
             authors_pnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)authors_grd).BeginInit();
             publishers_pnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)publishers_grd).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)categories_grd).BeginInit();
             SuspendLayout();
             // 
             // menu_pnl
@@ -945,6 +940,54 @@ namespace Desktop_Application
             borrowings_grd.Size = new Size(690, 479);
             borrowings_grd.TabIndex = 30;
             // 
+            // borrowings_username
+            // 
+            borrowings_username.HeaderText = "Username";
+            borrowings_username.MinimumWidth = 6;
+            borrowings_username.Name = "borrowings_username";
+            borrowings_username.ReadOnly = true;
+            borrowings_username.Width = 104;
+            // 
+            // borrowings_title
+            // 
+            borrowings_title.HeaderText = "Title";
+            borrowings_title.MinimumWidth = 6;
+            borrowings_title.Name = "borrowings_title";
+            borrowings_title.ReadOnly = true;
+            borrowings_title.Width = 67;
+            // 
+            // borrowings_isbn
+            // 
+            borrowings_isbn.HeaderText = "ISBN";
+            borrowings_isbn.MinimumWidth = 6;
+            borrowings_isbn.Name = "borrowings_isbn";
+            borrowings_isbn.ReadOnly = true;
+            borrowings_isbn.Width = 70;
+            // 
+            // borrowings_borrowDate
+            // 
+            borrowings_borrowDate.HeaderText = "Borrow Date";
+            borrowings_borrowDate.MinimumWidth = 6;
+            borrowings_borrowDate.Name = "borrowings_borrowDate";
+            borrowings_borrowDate.ReadOnly = true;
+            borrowings_borrowDate.Width = 122;
+            // 
+            // borrowings_dueDate
+            // 
+            borrowings_dueDate.HeaderText = "Due Date";
+            borrowings_dueDate.MinimumWidth = 6;
+            borrowings_dueDate.Name = "borrowings_dueDate";
+            borrowings_dueDate.ReadOnly = true;
+            borrowings_dueDate.Width = 101;
+            // 
+            // borrowings_returnDate
+            // 
+            borrowings_returnDate.HeaderText = "Return Date";
+            borrowings_returnDate.MinimumWidth = 6;
+            borrowings_returnDate.Name = "borrowings_returnDate";
+            borrowings_returnDate.ReadOnly = true;
+            borrowings_returnDate.Width = 117;
+            // 
             // borrowings_refresh_btn
             // 
             borrowings_refresh_btn.BackColor = Color.FromArgb(80, 77, 180);
@@ -1069,13 +1112,13 @@ namespace Desktop_Application
             // 
             categories_pnl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             categories_pnl.BackColor = Color.White;
+            categories_pnl.Controls.Add(categories_grd);
             categories_pnl.Controls.Add(categories_refresh_btn);
             categories_pnl.Controls.Add(categories_add_btn);
             categories_pnl.Controls.Add(categories_edit_btn);
             categories_pnl.Controls.Add(categories_remove_btn);
             categories_pnl.Controls.Add(categories_lbl1);
             categories_pnl.Controls.Add(categories_src);
-            categories_pnl.Controls.Add(categories_grd);
             categories_pnl.Location = new Point(304, 75);
             categories_pnl.Margin = new Padding(3, 4, 3, 4);
             categories_pnl.Name = "categories_pnl";
@@ -1203,18 +1246,6 @@ namespace Desktop_Application
             categories_src.TabStop = false;
             categories_src.TextChanged += SearchCategories;
             // 
-            // categories_grd
-            // 
-            categories_grd.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            categories_grd.BackgroundColor = Color.White;
-            categories_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            categories_grd.Location = new Point(59, 144);
-            categories_grd.Margin = new Padding(3, 4, 3, 4);
-            categories_grd.Name = "categories_grd";
-            categories_grd.RowHeadersWidth = 51;
-            categories_grd.Size = new Size(690, 479);
-            categories_grd.TabIndex = 16;
-            // 
             // users_pnl
             // 
             users_pnl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -1224,7 +1255,6 @@ namespace Desktop_Application
             users_pnl.Controls.Add(roundedButton4);
             users_pnl.Controls.Add(users_lbl1);
             users_pnl.Controls.Add(users_src);
-            users_pnl.Controls.Add(users_grd);
             users_pnl.Location = new Point(304, 75);
             users_pnl.Margin = new Padding(3, 4, 3, 4);
             users_pnl.Name = "users_pnl";
@@ -1325,7 +1355,7 @@ namespace Desktop_Application
             roundedButton4.Text = "Remove";
             roundedButton4.TextColor = Color.White;
             roundedButton4.UseVisualStyleBackColor = false;
-            roundedButton4.Click += Removeusers;
+            roundedButton4.Click += RemoveUsers;
             // 
             // users_lbl1
             // 
@@ -1352,18 +1382,6 @@ namespace Desktop_Application
             users_src.TabStop = false;
             users_src.TextChanged += SearchUsers;
             // 
-            // users_grd
-            // 
-            users_grd.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            users_grd.BackgroundColor = Color.White;
-            users_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            users_grd.Location = new Point(59, 144);
-            users_grd.Margin = new Padding(3, 4, 3, 4);
-            users_grd.Name = "users_grd";
-            users_grd.RowHeadersWidth = 51;
-            users_grd.Size = new Size(690, 479);
-            users_grd.TabIndex = 0;
-            // 
             // authors_pnl
             // 
             authors_pnl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -1374,7 +1392,6 @@ namespace Desktop_Application
             authors_pnl.Controls.Add(authors_remove_btn);
             authors_pnl.Controls.Add(authors_lbl1);
             authors_pnl.Controls.Add(authors_src);
-            authors_pnl.Controls.Add(authors_grd);
             authors_pnl.Location = new Point(304, 75);
             authors_pnl.Margin = new Padding(3, 4, 3, 4);
             authors_pnl.Name = "authors_pnl";
@@ -1403,6 +1420,7 @@ namespace Desktop_Application
             authors_refresh_btn.TabStop = false;
             authors_refresh_btn.TextColor = Color.White;
             authors_refresh_btn.UseVisualStyleBackColor = false;
+            authors_refresh_btn.Click += RefreshAuthors;
             // 
             // authors_add_btn
             // 
@@ -1426,6 +1444,7 @@ namespace Desktop_Application
             authors_add_btn.Text = "Add";
             authors_add_btn.TextColor = Color.White;
             authors_add_btn.UseVisualStyleBackColor = false;
+            authors_add_btn.Click += AddAuthor;
             // 
             // authors_edit_btn
             // 
@@ -1449,6 +1468,7 @@ namespace Desktop_Application
             authors_edit_btn.Text = "Edit";
             authors_edit_btn.TextColor = Color.White;
             authors_edit_btn.UseVisualStyleBackColor = false;
+            authors_edit_btn.Click += EditAuthor;
             // 
             // authors_remove_btn
             // 
@@ -1472,6 +1492,7 @@ namespace Desktop_Application
             authors_remove_btn.Text = "Remove";
             authors_remove_btn.TextColor = Color.White;
             authors_remove_btn.UseVisualStyleBackColor = false;
+            authors_remove_btn.Click += RemoveAuthor;
             // 
             // authors_lbl1
             // 
@@ -1496,18 +1517,7 @@ namespace Desktop_Application
             authors_src.Size = new Size(237, 39);
             authors_src.TabIndex = 17;
             authors_src.TabStop = false;
-            // 
-            // authors_grd
-            // 
-            authors_grd.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            authors_grd.BackgroundColor = Color.White;
-            authors_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            authors_grd.Location = new Point(59, 144);
-            authors_grd.Margin = new Padding(3, 4, 3, 4);
-            authors_grd.Name = "authors_grd";
-            authors_grd.RowHeadersWidth = 51;
-            authors_grd.Size = new Size(690, 479);
-            authors_grd.TabIndex = 16;
+            authors_src.TextChanged += SearchAuthors;
             // 
             // publishers_pnl
             // 
@@ -1520,7 +1530,6 @@ namespace Desktop_Application
             publishers_pnl.Controls.Add(publishers_remove_btn);
             publishers_pnl.Controls.Add(publishers_lbl1);
             publishers_pnl.Controls.Add(publishers_src);
-            publishers_pnl.Controls.Add(publishers_grd);
             publishers_pnl.Location = new Point(304, 75);
             publishers_pnl.Margin = new Padding(3, 4, 3, 4);
             publishers_pnl.Name = "publishers_pnl";
@@ -1549,6 +1558,7 @@ namespace Desktop_Application
             publishers_refresh_btn.TabStop = false;
             publishers_refresh_btn.TextColor = Color.White;
             publishers_refresh_btn.UseVisualStyleBackColor = false;
+            publishers_refresh_btn.Click += RefreshPublishers;
             // 
             // publishers_add_btn
             // 
@@ -1572,6 +1582,7 @@ namespace Desktop_Application
             publishers_add_btn.Text = "Add";
             publishers_add_btn.TextColor = Color.White;
             publishers_add_btn.UseVisualStyleBackColor = false;
+            publishers_add_btn.Click += AddPublisher;
             // 
             // publishers_edit_btn
             // 
@@ -1595,6 +1606,7 @@ namespace Desktop_Application
             publishers_edit_btn.Text = "Edit";
             publishers_edit_btn.TextColor = Color.White;
             publishers_edit_btn.UseVisualStyleBackColor = false;
+            publishers_edit_btn.Click += EditPublisher;
             // 
             // publishers_remove_btn
             // 
@@ -1618,6 +1630,7 @@ namespace Desktop_Application
             publishers_remove_btn.Text = "Remove";
             publishers_remove_btn.TextColor = Color.White;
             publishers_remove_btn.UseVisualStyleBackColor = false;
+            publishers_remove_btn.Click += RemovePublishers;
             // 
             // publishers_lbl1
             // 
@@ -1642,66 +1655,40 @@ namespace Desktop_Application
             publishers_src.Size = new Size(237, 39);
             publishers_src.TabIndex = 17;
             publishers_src.TabStop = false;
+            publishers_src.TextChanged += SearchPublishers;
             // 
-            // publishers_grd
+            // categories_grd
             // 
-            publishers_grd.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            publishers_grd.BackgroundColor = Color.White;
-            publishers_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            publishers_grd.Location = new Point(59, 144);
-            publishers_grd.Margin = new Padding(3, 4, 3, 4);
-            publishers_grd.Name = "publishers_grd";
-            publishers_grd.RowHeadersWidth = 51;
-            publishers_grd.Size = new Size(690, 479);
-            publishers_grd.TabIndex = 16;
+            categories_grd.AllowUserToAddRows = false;
+            categories_grd.AllowUserToDeleteRows = false;
+            categories_grd.AllowUserToResizeColumns = false;
+            categories_grd.AllowUserToResizeRows = false;
+            categories_grd.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            categories_grd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            categories_grd.BackgroundColor = Color.White;
+            categories_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            categories_grd.Columns.AddRange(new DataGridViewColumn[] { categories_category });
+            categories_grd.Location = new Point(59, 144);
+            categories_grd.Margin = new Padding(3, 4, 3, 4);
+            categories_grd.Name = "categories_grd";
+            categories_grd.ReadOnly = true;
+            categories_grd.RowHeadersVisible = false;
+            categories_grd.RowHeadersWidth = 51;
+            categories_grd.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            categories_grd.ShowCellErrors = false;
+            categories_grd.ShowCellToolTips = false;
+            categories_grd.ShowEditingIcon = false;
+            categories_grd.ShowRowErrors = false;
+            categories_grd.Size = new Size(690, 479);
+            categories_grd.TabIndex = 31;
             // 
-            // borrowings_username
+            // categories_category
             // 
-            borrowings_username.HeaderText = "Username";
-            borrowings_username.MinimumWidth = 6;
-            borrowings_username.Name = "borrowings_username";
-            borrowings_username.ReadOnly = true;
-            borrowings_username.Width = 104;
-            // 
-            // borrowings_title
-            // 
-            borrowings_title.HeaderText = "Title";
-            borrowings_title.MinimumWidth = 6;
-            borrowings_title.Name = "borrowings_title";
-            borrowings_title.ReadOnly = true;
-            borrowings_title.Width = 67;
-            // 
-            // borrowings_isbn
-            // 
-            borrowings_isbn.HeaderText = "ISBN";
-            borrowings_isbn.MinimumWidth = 6;
-            borrowings_isbn.Name = "borrowings_isbn";
-            borrowings_isbn.ReadOnly = true;
-            borrowings_isbn.Width = 70;
-            // 
-            // borrowings_borrowDate
-            // 
-            borrowings_borrowDate.HeaderText = "Borrow Date";
-            borrowings_borrowDate.MinimumWidth = 6;
-            borrowings_borrowDate.Name = "borrowings_borrowDate";
-            borrowings_borrowDate.ReadOnly = true;
-            borrowings_borrowDate.Width = 122;
-            // 
-            // borrowings_dueDate
-            // 
-            borrowings_dueDate.HeaderText = "Due Date";
-            borrowings_dueDate.MinimumWidth = 6;
-            borrowings_dueDate.Name = "borrowings_dueDate";
-            borrowings_dueDate.ReadOnly = true;
-            borrowings_dueDate.Width = 101;
-            // 
-            // borrowings_returnDate
-            // 
-            borrowings_returnDate.HeaderText = "Return Date";
-            borrowings_returnDate.MinimumWidth = 6;
-            borrowings_returnDate.Name = "borrowings_returnDate";
-            borrowings_returnDate.ReadOnly = true;
-            borrowings_returnDate.Width = 117;
+            categories_category.HeaderText = "Category";
+            categories_category.MinimumWidth = 6;
+            categories_category.Name = "categories_category";
+            categories_category.ReadOnly = true;
+            categories_category.Width = 98;
             // 
             // AdminPanel
             // 
@@ -1711,13 +1698,13 @@ namespace Desktop_Application
             ClientSize = new Size(1125, 748);
             Controls.Add(header_pnl);
             Controls.Add(menu_pnl);
+            Controls.Add(categories_pnl);
             Controls.Add(borrowings_pnl);
             Controls.Add(users_pnl);
             Controls.Add(books_pnl);
             Controls.Add(dashboard_pnl);
             Controls.Add(publishers_pnl);
             Controls.Add(authors_pnl);
-            Controls.Add(categories_pnl);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
             MinimumSize = new Size(1140, 779);
@@ -1748,16 +1735,13 @@ namespace Desktop_Application
             ((System.ComponentModel.ISupportInitialize)borrowings_grd).EndInit();
             categories_pnl.ResumeLayout(false);
             categories_pnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)categories_grd).EndInit();
             users_pnl.ResumeLayout(false);
             users_pnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)users_grd).EndInit();
             authors_pnl.ResumeLayout(false);
             authors_pnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)authors_grd).EndInit();
             publishers_pnl.ResumeLayout(false);
             publishers_pnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)publishers_grd).EndInit();
+            ((System.ComponentModel.ISupportInitialize)categories_grd).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1797,7 +1781,6 @@ namespace Desktop_Application
         private RoundedButton categories_remove_btn;
         private Label users_lbl1;
         private TextBox categories_src;
-        private DataGridView categories_grd;
         private Label categories_lbl1;
         private RoundedButton borrowings_refresh_btn;
         private RoundedButton borrowings_borrow_btn;
@@ -1807,7 +1790,6 @@ namespace Desktop_Application
         private TextBox borrowings_src;
         private Panel users_pnl;
         private TextBox users_src;
-        private DataGridView users_grd;
         private Panel panel1;
         private Button button1;
         private Panel panel2;
@@ -1819,7 +1801,6 @@ namespace Desktop_Application
         private RoundedButton authors_remove_btn;
         private Label authors_lbl1;
         private TextBox authors_src;
-        private DataGridView authors_grd;
         private Panel publishers_pnl;
         private RoundedButton publishers_refresh_btn;
         private RoundedButton publishers_add_btn;
@@ -1827,7 +1808,6 @@ namespace Desktop_Application
         private RoundedButton publishers_remove_btn;
         private Label publishers_lbl1;
         private TextBox publishers_src;
-        private DataGridView publishers_grd;
         private Panel panel3;
         private Panel panel4;
         private RoundedButton dashboard_users;
@@ -1860,5 +1840,7 @@ namespace Desktop_Application
         private DataGridViewTextBoxColumn borrowings_borrowDate;
         private DataGridViewTextBoxColumn borrowings_dueDate;
         private DataGridViewTextBoxColumn borrowings_returnDate;
+        private DataGridView categories_grd;
+        private DataGridViewTextBoxColumn categories_category;
     }
 }

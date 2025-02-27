@@ -31,7 +31,7 @@ public partial class ReturnBook : Form
             HandleQueries.UpdateBorrowing(_borrowings_grd, returnDate);
 
             // Remove it from the Borrowings table so it only remains in Borrowings_storage
-            HandleQueries.Delete(_borrowings_grd, "Borrowings", "borrowingsIsbn", "ISBN");
+            HandleQueries.Delete(_borrowings_grd, "Borrowings", "borrowings_isbn", "ISBN");
 
             MessageBox.Show("Borrowing marked as returned succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
@@ -42,7 +42,7 @@ public partial class ReturnBook : Form
     {
         foreach(DataGridViewRow row in _borrowings_grd.SelectedRows)
         {
-            if (row.Cells["returnDate"].Value.ToString() != string.Empty)
+            if (row.Cells["borrowings_returnDate"].Value.ToString() != string.Empty)
             {
                 MessageBox.Show("There is at least one book selected which is already returned!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;

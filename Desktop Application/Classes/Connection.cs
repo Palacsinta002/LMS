@@ -74,7 +74,7 @@ internal class Connection
         return result;
     }
 
-    // Accepts a query and runs it
+    // Requires a query and runs it
     internal void RunSqlCommand(string query)
     {
         if (OpenConnection())
