@@ -37,7 +37,7 @@ class UserClass{
             $this->firstName = html_entity_decode($data[0]["firstname"]);
             $this->lastName = html_entity_decode($data[0]["lastname"]);
             $this->email = html_entity_decode($data[0]["email"]);
-            echo json_encode(["Success"=> "token"]);
+            echo json_encode(["token" =>"anyád"]);
         }
         else{
             errorOutput("7");}
