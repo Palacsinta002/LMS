@@ -40,6 +40,14 @@
     font-size: 2vh;
     color: white;
     text-decoration: none;
-    padding: 0vh 1vh;
+    padding: 0vh 2vh;
     font-weight: bold;
+}
+
+.hr{
+    margin: auto;
+    width: 30vw;
+    height: 0.1vh;
+    background-color: white;
+    margin-top: 1vh;
 }
