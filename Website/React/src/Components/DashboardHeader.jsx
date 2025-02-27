@@ -22,6 +22,7 @@ export default function DashboardHeader() {
                 <Link className="link" to="/dashboard/charts">Charts</Link>
                 <Link className="link" to="/dashboard/profile">Profile</Link>
             </nav>
+            <hr className="hr" />
         </>
     )
 }
