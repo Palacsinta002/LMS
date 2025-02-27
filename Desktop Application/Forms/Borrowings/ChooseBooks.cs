@@ -23,7 +23,24 @@ namespace Desktop_Application.Forms.Borrowings
             CloseThisWindow.Handle(this, cancel);
 
             var result = HandleQueries.Select("SelectBookForBorrowings");
-            HandleGrids.Fill(allBooks_grd, result);
+            if (selectedBooks.Count > 0)
+            {
+                foreach (var item in result)
+                {
+                    if (selectedBooks.Contains(item[3]))
+                    {
+                        selectedBooks_grd.Rows.Add(item);
+                    }
+                    else
+                    {
+                        allBooks_grd.Rows.Add(item);
+                    }
+                }
+            }
+            else
+            {
+                HandleGrids.Fill(allBooks_grd, result);
+            }
         }
 
         private void Ok(object sender, EventArgs e)
@@ -38,7 +55,7 @@ namespace Desktop_Application.Forms.Borrowings
 
         private void MoveRight(object sender, EventArgs e)
         {
-            foreach(DataGridViewRow row in allBooks_grd.SelectedRows)
+            foreach (DataGridViewRow row in allBooks_grd.SelectedRows)
             {
                 allBooks_grd.Rows.Remove(row);
                 selectedBooks_grd.Rows.Add(row);
