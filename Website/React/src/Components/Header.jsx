@@ -5,10 +5,10 @@ import { Link, useLocation } from 'react-router-dom';
 export default function Header() {
   const location = useLocation();
   const hidden = location.pathname !== "/" ? "hidden" : "";
-  const isAuthorized = !!localStorage.getItem("token");
+  const isAuthorized = !!sessionStorage.getItem("token");
 
   function Logout() {
-    localStorage.removeItem("token");
+    sessionStorage.removeItem("token");
     window.location.href = "/";
   }
 

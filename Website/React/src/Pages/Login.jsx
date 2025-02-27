@@ -27,7 +27,7 @@ export default function Login() {
       );
       console.log(response);
       if(response.data.Success){
-        localStorage.setItem("token", response.data.token);
+        sessionStorage.setItem("token", response.data.Success);
         navigate("/dashboard");
       }
       else if(response.data.message){

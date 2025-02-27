@@ -12,7 +12,7 @@ export default function DashboardHeader() {
     return (
         <>
             <div className="dashboardHeader">
-                <Link to="/"><h1 className="headerLink">LMS</h1></Link>
+                <Link to="/home"><h1 className="headerLink">LMS</h1></Link>
                 <h1 className="headerH1">Hi, {name}</h1>
             </div>
 
