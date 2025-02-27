@@ -22,4 +22,13 @@ function getPostBody(){
     return $decoded;
 }
 
+####################  Making an api endpoints  ####################
+function makePostApiEndpoints($endpoints, $uri, $folder){
+    for ($i=0; $i < count($endpoints); $i++) { 
+        if ($uri[count($uri)-1] == $endpoints[$i]){
+            require_once __DIR__ . "/../$folder/" . $endpoints[$i];
+        }
+    }
+}
+
 ?>
