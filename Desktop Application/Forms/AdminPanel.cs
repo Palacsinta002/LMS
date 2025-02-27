@@ -1,8 +1,10 @@
-﻿using Desktop_Application.Classes;
+﻿// Négy fázisú bukófrekvenciás félhomálytizedelő
+namespace Desktop_Application;
+
+using Desktop_Application.Classes;
 using Desktop_Application.Forms.Books;
 using Desktop_Application.Forms.Borrowings;
 
-namespace Desktop_Application;
 public partial class AdminPanel : Form
 {
     private readonly string _name;
@@ -39,26 +41,28 @@ public partial class AdminPanel : Form
             {
                 List<string[]> result;
                 result = HandleQueries.Select("SelectBookCount");
-                dashboard_books.Text = result[0][0].ToString();
+                dashboard_books.Text = result[0][0];
 
                 result = HandleQueries.Select("SelectUserCount");
-                dashboard_users.Text = result[0][0].ToString();
+                dashboard_users.Text = result[0][0];
 
                 result = HandleQueries.Select("SelectBorrowingCount");
-                dashboard_borrowings.Text = result[0][0].ToString();
+                dashboard_borrowings.Text = result[0][0];
 
                 result = HandleQueries.Select("SelectTopBorrowedBook");
                 HandleGrids.Fill(dashboard_grd, result);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("There is something wrong with the connection to the database, we couldn't list top borrowed books!\nError: " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("There is something wrong with the connection to the database, we can't show statistics!\nError: " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Close();
             }
         }
     }
     #endregion
 
     #region Books
+    // BOOKS
     // Shows Books page and hides other pages
     private void ShowBooks(object sender, EventArgs e)
     {
@@ -70,15 +74,15 @@ public partial class AdminPanel : Form
         }
     }
 
-    // Selects from the database again
+    // Select books from the database and fills the grid
     private void RefreshBooks(object sender, EventArgs e)
     {
         var result = HandleQueries.Select("SelectBook");
         HandleGrids.Fill(books_grd, result);
     }
 
-    // Live search through the grid which is already filled with content from the database
-    private void SearchBook(object sender, EventArgs e)
+    // Live search - Searches title, publication year or isbn in the grid
+    private void SearchBooks(object sender, EventArgs e)
     {
         string[] cols = ["title", "publicationYear", "isbn"];
         HandleGrids.SearchGrid(books_grd, books_src.Text, cols);
@@ -92,7 +96,7 @@ public partial class AdminPanel : Form
         RefreshBooks(sender, e);
     }
 
-    // Edit the selected book from the grid and then updates in the database
+    // Edit the selected book from the grid and then updates it in the database
     private void EditBook(object sender, EventArgs e)
     {
         if (books_grd.SelectedRows.Count != 1)
@@ -106,7 +110,7 @@ public partial class AdminPanel : Form
     }
 
     // Removes book from the database
-    private void RemoveBook(object sender, EventArgs e)
+    private void RemoveBooks(object sender, EventArgs e)
     {
         RemoveBook removeBook = new(books_grd);
         removeBook.ShowDialog();
@@ -115,6 +119,8 @@ public partial class AdminPanel : Form
     #endregion
 
     #region Borrowings
+    // BORROWINGS
+    // Shows Borrowings page and hides other pages
     private void ShowBorrowings(object sender, EventArgs e)
     {
         if (!borrowings_pnl.Visible)
@@ -125,28 +131,31 @@ public partial class AdminPanel : Form
         }
     }
 
+    // Select borrowings from the database and fills the grid
     internal void RefreshBorrowings(object sender, EventArgs e)
     {
         List<string[]> result;
         if (checkBox_currentBorrowings.Checked)
         {
-            borrowings_grd.Columns["returnDate"].Visible = false;
+            borrowings_grd.Columns["borrowings_returnDate"].Visible = false;
             result = HandleQueries.Select("SelectCurrentBorrowing");
         }
         else
         {
-            borrowings_grd.Columns["returnDate"].Visible = true;
+            borrowings_grd.Columns["borrowings_returnDate"].Visible = true;
             result = HandleQueries.Select("SelectAllBorrowing");
         }
         HandleGrids.Fill(borrowings_grd, result);
     }
 
+    // Live search - Searches username, title or isbn in the grid
     private void SearchBorrowings(object sender, EventArgs e)
     {
-        string[] cols = ["borrowingsUsername", "borrowingsTitle", "borrowingsIsbn"];
+        string[] cols = ["borrowings_username", "borrowings_title", "borrowings_isbn"];
         HandleGrids.SearchGrid(borrowings_grd, borrowings_src.Text, cols);
     }
 
+    // Adds a borrowing to the database - Lends a book
     private void AddBorrowing(object sender, EventArgs e)
     {
         LendBook addBorrowing = new();
@@ -154,6 +163,7 @@ public partial class AdminPanel : Form
         RefreshBorrowings(sender, e);
     }
 
+    // Edit the selected borrowing from the grid and then updates it in the database
     private void EditBorrowing(object sender, EventArgs e)
     {
         if (borrowings_grd.SelectedRows.Count != 1)
@@ -161,7 +171,7 @@ public partial class AdminPanel : Form
             MessageBox.Show("You must select ONE borrowing to edit!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             return;
         }
-        else if(borrowings_grd.SelectedRows[0].Cells["returnDate"].Value.ToString() != string.Empty)
+        else if (borrowings_grd.SelectedRows[0].Cells["borrowings_returnDate"].Value.ToString() != string.Empty)
         {
             MessageBox.Show("You can't edit returned borrowings!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             return;
@@ -171,7 +181,8 @@ public partial class AdminPanel : Form
         RefreshBorrowings(sender, e);
     }
 
-    private void RemoveBorrowing(object sender, EventArgs e)
+    // Removes borrowing from the database - Marks the book as returned
+    private void RemoveBorrowings(object sender, EventArgs e)
     {
         ReturnBook removeBorrowing = new(borrowings_grd);
         removeBorrowing.ShowDialog();
@@ -180,6 +191,8 @@ public partial class AdminPanel : Form
     #endregion
 
     #region Categories
+    // CATEGORIES
+    // Shows Categories page and hides other pages
     private void ShowCategories(object sender, EventArgs e)
     {
         if (!categories_pnl.Visible)
@@ -188,16 +201,78 @@ public partial class AdminPanel : Form
             categories_pnl.Visible = true;
         }
     }
+
+    // Select categories from the database and fills the grid
+    private void RefreshCategories(object sender, EventArgs e)
+    {
+
+    }
+
+    // Live search - Searches category in the grid
+    private void SearchCategories(object sender, EventArgs e)
+    {
+
+    }
+
+    // Adds a category to the database
+    private void AddCategory(object sender, EventArgs e)
+    {
+
+    }
+
+    // Edit the selected category from the grid and then updates it in the database
+    private void EditCategory(object sender, EventArgs e)
+    {
+
+    }
+
+    // Removes category from the database - Marks the book as returned
+    private void RemoveCategories(object sender, EventArgs e)
+    {
+
+    }
     #endregion
 
     #region Users
-    private void ShowMembers(object sender, EventArgs e)
+    // USERS
+    // Shows Users page and hides other pages
+    private void ShowUsers(object sender, EventArgs e)
     {
-        if (members_pnl.Visible != true)
+        if (users_pnl.Visible != true)
         {
             HidePanels();
-            members_pnl.Visible = true;
+            users_pnl.Visible = true;
         }
+    }
+
+    // Select users from the database and fills the grid
+    private void RefreshUsers(object sender, EventArgs e)
+    {
+
+    }
+
+    // Live search - Searches users in the grid
+    private void SearchUsers(object sender, EventArgs e)
+    {
+
+    }
+
+    // Adds a user to the database
+    private void AddUser(object sender, EventArgs e)
+    {
+
+    }
+
+    // Edit the selected user from the grid and then updates it in the database
+    private void EditUser(object sender, EventArgs e)
+    {
+
+    }
+
+    // Removes user from the database - Marks the book as returned
+    private void Removeusers(object sender, EventArgs e)
+    {
+
     }
     #endregion
 
@@ -230,7 +305,7 @@ public partial class AdminPanel : Form
         books_pnl.Visible = false;
         borrowings_pnl.Visible = false;
         categories_pnl.Visible = false;
-        members_pnl.Visible = false;
+        users_pnl.Visible = false;
         authors_pnl.Visible = false;
         publishers_pnl.Visible = false;
     }

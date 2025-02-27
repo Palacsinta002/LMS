@@ -27,10 +27,10 @@ public partial class EditBorrowing : Form
 
         var selectedRow = _borrowings_grd.SelectedRows[0].Cells;
 
-        dropDown_user.Text = selectedRow["borrowingsUsername"].Value.ToString();
-        textBox_books.Text = selectedRow["borrowingsIsbn"].Value.ToString();
-        borrowDate_datePicker.Text = selectedRow["borrowDate"].Value.ToString();
-        dueDate_datePicker.Text = selectedRow["dueDate"].Value.ToString();
+        dropDown_user.Text = selectedRow["borrowings_username"].Value.ToString();
+        textBox_books.Text = selectedRow["borrowings_isbn"].Value.ToString();
+        borrowDate_datePicker.Text = selectedRow["borrowings_borrowDate"].Value.ToString();
+        dueDate_datePicker.Text = selectedRow["borrowings_dueDate"].Value.ToString();
     }
 
     private void Save(object sender, EventArgs e)
@@ -63,5 +63,13 @@ public partial class EditBorrowing : Form
             return false;
         }
         return true;
+    }
+
+    private void OpenChooseBooks(object sender, EventArgs e)
+    {
+        ChooseBooks chooseBooks = new();
+        chooseBooks.ShowDialog();
+
+        textBox_books.Text = string.Join(", ", ChooseBooks.SelectedBooks);
     }
 }
