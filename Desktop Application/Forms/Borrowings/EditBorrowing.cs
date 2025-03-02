@@ -67,9 +67,10 @@ public partial class EditBorrowing : Form
 
     private void OpenChooseBooks(object sender, EventArgs e)
     {
-        ChooseBooks chooseBooks = new();
+        List<string> selectedBooks = textBox_books.Text.Split(", ").ToList();
+        ChooseBooks chooseBooks = new(selectedBooks);
         chooseBooks.ShowDialog();
 
-        textBox_books.Text = string.Join(", ", ChooseBooks.SelectedBooks);
+        textBox_books.Text = string.Join(", ", ChooseBooks.SelectedISBNs);
     }
 }

@@ -205,7 +205,8 @@ public partial class AdminPanel : Form
     // Select categories from the database and fills the grid
     private void RefreshCategories(object sender, EventArgs e)
     {
-
+        var result = HandleQueries.Select("SelectCategory");
+        HandleGrids.Fill(categories_grd, result);
     }
 
     // Live search - Searches category in the grid
@@ -270,13 +271,15 @@ public partial class AdminPanel : Form
     }
 
     // Removes user from the database - Marks the book as returned
-    private void Removeusers(object sender, EventArgs e)
+    private void RemoveUsers(object sender, EventArgs e)
     {
 
     }
     #endregion
 
     #region Authors
+    // AUTHORS
+    // Shows Authors page and hides other pages
     private void ShowAuthors(object sender, EventArgs e)
     {
         if (!authors_pnl.Visible)
@@ -285,9 +288,41 @@ public partial class AdminPanel : Form
             authors_pnl.Visible = true;
         }
     }
+
+    // Select authors from the database and fills the grid
+    private void RefreshAuthors(object sender, EventArgs e)
+    {
+
+    }
+
+    // Live search - Searches authors in the grid
+    private void SearchAuthors(object sender, EventArgs e)
+    {
+
+    }
+
+    // Adds an author to the database
+    private void AddAuthor(object sender, EventArgs e)
+    {
+
+    }
+
+    // Edit the selected author from the grid and then updates it in the database
+    private void EditAuthor(object sender, EventArgs e)
+    {
+
+    }
+
+    // Removes authors from the database - Marks the book as returned
+    private void RemoveAuthor(object sender, EventArgs e)
+    {
+
+    }
     #endregion
 
     #region Publishers
+    // PUBLISHERS
+    // Shows Publishers page and hides other pages
     private void ShowPublishers(object sender, EventArgs e)
     {
         if (!publishers_pnl.Visible)
@@ -295,6 +330,36 @@ public partial class AdminPanel : Form
             HidePanels();
             publishers_pnl.Visible = true;
         }
+    }
+
+    // Select publishers from the database and fills the grid
+    private void RefreshPublishers(object sender, EventArgs e)
+    {
+
+    }
+
+    // Live search - Searches publishers in the grid
+    private void SearchPublishers(object sender, EventArgs e)
+    {
+
+    }
+
+    // Adds a publisher to the database
+    private void AddPublisher(object sender, EventArgs e)
+    {
+
+    }
+
+    // Edit the selected publisher from the grid and then updates it in the database
+    private void EditPublisher(object sender, EventArgs e)
+    {
+
+    }
+
+    // Removes publishers from the database - Marks the book as returned
+    private void RemovePublishers(object sender, EventArgs e)
+    {
+
     }
     #endregion
 
