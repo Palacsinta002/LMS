@@ -199,6 +199,7 @@ public partial class AdminPanel : Form
         {
             HidePanels();
             categories_pnl.Visible = true;
+            RefreshCategories(sender, e);
         }
     }
 
@@ -212,7 +213,8 @@ public partial class AdminPanel : Form
     // Live search - Searches category in the grid
     private void SearchCategories(object sender, EventArgs e)
     {
-
+        string[] cols = ["categories_category"];
+        HandleGrids.SearchGrid(categories_grd, categories_src.Text, cols);
     }
 
     // Adds a category to the database
