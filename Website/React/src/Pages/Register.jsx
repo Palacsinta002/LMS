@@ -29,7 +29,7 @@ export default function Register() {
 
     try {
       const response = await axios.post(
-        "/api/users/userapi.php/register",
+        "/api/register",
         {
           username: username,
           password: password,

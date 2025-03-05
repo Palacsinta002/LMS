@@ -17,7 +17,7 @@ export default function Verify() {
 
     try {
       const response = await axios.post(
-        "/api/users/userapi.php/verify",
+        "/api/verify",
         {
           verifyCode: code
         },
