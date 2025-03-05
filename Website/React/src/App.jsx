@@ -12,25 +12,29 @@ import Reservations from './Pages/Reservations';
 import Charts from './Pages/Charts';
 import Profile from './Pages/Profile';
 import NotFound from './Pages/NotFound';
+import Provider from 'react-redux'
+import Store from './Hooks/Store'
 
 function App() {
   return (
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" exact element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/verify" element={<Verify />} />
-        <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}>
-          <Route path="borrowings" element={<Borrowings />} />
-          <Route path="reservations" element={<Reservations />} />
-          <Route path="charts" element={<Charts />} />
-          <Route path="profile" element={<Profile />} />
-        </Route>
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <Provider store={Store} >
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" exact element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/verify" element={<Verify />} />
+          <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}>
+            <Route path="borrowings" element={<Borrowings />} />
+            <Route path="reservations" element={<Reservations />} />
+            <Route path="charts" element={<Charts />} />
+            <Route path="profile" element={<Profile />} />
+          </Route>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
