@@ -1,5 +1,4 @@
-﻿// Négy fázisú bukófrekvenciás félhomálytizedelő
-namespace Desktop_Application;
+﻿namespace Desktop_Application;
 
 using Desktop_Application.Classes;
 using Desktop_Application.Forms.Books;
@@ -244,49 +243,6 @@ public partial class AdminPanel : Form
     }
     #endregion
 
-    #region Users
-    // USERS
-    // Shows Users page and hides other pages
-    private void ShowUsers(object sender, EventArgs e)
-    {
-        if (users_pnl.Visible != true)
-        {
-            HidePanels();
-            users_pnl.Visible = true;
-        }
-    }
-
-    // Select users from the database and fills the grid
-    private void RefreshUsers(object sender, EventArgs e)
-    {
-
-    }
-
-    // Live search - Searches users in the grid
-    private void SearchUsers(object sender, EventArgs e)
-    {
-
-    }
-
-    // Adds a user to the database
-    private void AddUser(object sender, EventArgs e)
-    {
-
-    }
-
-    // Edit the selected user from the grid and then updates it in the database
-    private void EditUser(object sender, EventArgs e)
-    {
-
-    }
-
-    // Removes user from the database - Marks the book as returned
-    private void RemoveUsers(object sender, EventArgs e)
-    {
-
-    }
-    #endregion
-
     #region Authors
     // AUTHORS
     // Shows Authors page and hides other pages
@@ -368,6 +324,54 @@ public partial class AdminPanel : Form
 
     // Removes publishers from the database - Marks the book as returned
     private void RemovePublishers(object sender, EventArgs e)
+    {
+
+    }
+    #endregion
+
+    #region Users
+    // USERS
+    // Shows Users page and hides other pages
+    private void ShowUsers(object sender, EventArgs e)
+    {
+        if (users_pnl.Visible != true)
+        {
+            HidePanels();
+            users_pnl.Visible = true;
+            RefreshUsers(sender, e);
+        }
+    }
+
+    // Select users from the database and fills the grid
+    private void RefreshUsers(object sender, EventArgs e)
+    {
+        var result = HandleQueries.Select("SelectUser");
+        HandleGrids.Fill(users_grd, result);
+    }
+
+    // Live search - Searches users in the grid
+    private void SearchUsers(object sender, EventArgs e)
+    {
+        string[] cols = ["users_name", "users_username"];
+        HandleGrids.SearchGrid(users_grd, users_src.Text, cols);
+    }
+
+    // Adds a user to the database
+    private void AddUser(object sender, EventArgs e)
+    {
+        AddUser addUser = new();
+        addUser.ShowDialog();
+        RefreshUsers(sender, e);
+    }
+
+    // Edit the selected user from the grid and then updates it in the database
+    private void EditUser(object sender, EventArgs e)
+    {
+
+    }
+
+    // Removes user from the database - Marks the book as returned
+    private void RemoveUsers(object sender, EventArgs e)
     {
 
     }

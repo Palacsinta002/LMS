@@ -36,9 +36,7 @@ namespace Desktop_Application.Forms.Borrowings
             header = new Panel();
             title = new Label();
             close_btn = new Desktop_Application.Components.RoundedButton();
-            save = new Desktop_Application.Components.RoundedButton();
             label2 = new Label();
-            cancel = new Desktop_Application.Components.RoundedButton();
             label3 = new Label();
             borrowDate_datePicker = new DateTimePicker();
             dueDate_datePicker = new DateTimePicker();
@@ -47,6 +45,8 @@ namespace Desktop_Application.Forms.Borrowings
             label_publisher = new Label();
             chooseBooks = new System.Windows.Forms.Button();
             textBox_books = new System.Windows.Forms.TextBox();
+            save = new Desktop_Application.Components.RoundedButton();
+            cancel = new Desktop_Application.Components.RoundedButton();
             header.SuspendLayout();
             SuspendLayout();
             // 
@@ -95,29 +95,6 @@ namespace Desktop_Application.Forms.Borrowings
             close_btn.TextColor = Color.White;
             close_btn.UseVisualStyleBackColor = false;
             // 
-            // save
-            // 
-            save.BackColor = Color.FromArgb(80, 77, 180);
-            save.BackgroundColor = Color.FromArgb(80, 77, 180);
-            save.BorderColor = Color.Transparent;
-            save.BorderRadius = 5;
-            save.BorderSize = 0;
-            save.FlatAppearance.BorderSize = 0;
-            save.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
-            save.FlatStyle = FlatStyle.Flat;
-            save.Font = new Font("Yu Gothic UI Semibold", 14F);
-            save.ForeColor = Color.White;
-            save.Location = new Point(126, 309);
-            save.Margin = new Padding(3, 4, 3, 4);
-            save.Name = "save";
-            save.Size = new Size(91, 48);
-            save.TabIndex = 6;
-            save.TabStop = false;
-            save.Text = "Save";
-            save.TextColor = Color.White;
-            save.UseVisualStyleBackColor = false;
-            save.Click += Save;
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -127,26 +104,6 @@ namespace Desktop_Application.Forms.Borrowings
             label2.Size = new Size(80, 32);
             label2.TabIndex = 59;
             label2.Text = "Books";
-            // 
-            // cancel
-            // 
-            cancel.BackColor = Color.WhiteSmoke;
-            cancel.BackgroundColor = Color.WhiteSmoke;
-            cancel.BorderColor = Color.FromArgb(80, 77, 180);
-            cancel.BorderRadius = 5;
-            cancel.BorderSize = 2;
-            cancel.FlatAppearance.BorderSize = 0;
-            cancel.FlatStyle = FlatStyle.Flat;
-            cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
-            cancel.ForeColor = Color.Black;
-            cancel.Location = new Point(224, 309);
-            cancel.Margin = new Padding(3, 4, 3, 4);
-            cancel.Name = "cancel";
-            cancel.Size = new Size(91, 48);
-            cancel.TabIndex = 7;
-            cancel.Text = "Cancel";
-            cancel.TextColor = Color.Black;
-            cancel.UseVisualStyleBackColor = false;
             // 
             // label3
             // 
@@ -235,12 +192,57 @@ namespace Desktop_Application.Forms.Borrowings
             textBox_books.Size = new Size(278, 39);
             textBox_books.TabIndex = 73;
             // 
+            // save
+            // 
+            save.BackColor = Color.FromArgb(80, 77, 180);
+            save.BackgroundColor = Color.FromArgb(80, 77, 180);
+            save.BorderColor = Color.Transparent;
+            save.BorderRadius = 5;
+            save.BorderSize = 0;
+            save.FlatAppearance.BorderSize = 0;
+            save.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            save.FlatStyle = FlatStyle.Flat;
+            save.Font = new Font("Yu Gothic UI Semibold", 14F);
+            save.ForeColor = Color.White;
+            save.Location = new Point(120, 316);
+            save.Margin = new Padding(3, 4, 3, 4);
+            save.Name = "save";
+            save.Size = new Size(97, 48);
+            save.TabIndex = 81;
+            save.TabStop = false;
+            save.Text = "Save";
+            save.TextColor = Color.White;
+            save.UseVisualStyleBackColor = false;
+            save.Click += Save;
+            // 
+            // cancel
+            // 
+            cancel.BackColor = Color.WhiteSmoke;
+            cancel.BackgroundColor = Color.WhiteSmoke;
+            cancel.BorderColor = Color.FromArgb(80, 77, 180);
+            cancel.BorderRadius = 5;
+            cancel.BorderSize = 2;
+            cancel.FlatAppearance.BorderSize = 0;
+            cancel.FlatStyle = FlatStyle.Flat;
+            cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
+            cancel.ForeColor = Color.Black;
+            cancel.Location = new Point(223, 316);
+            cancel.Margin = new Padding(3, 4, 3, 4);
+            cancel.Name = "cancel";
+            cancel.Size = new Size(97, 48);
+            cancel.TabIndex = 82;
+            cancel.Text = "Cancel";
+            cancel.TextColor = Color.Black;
+            cancel.UseVisualStyleBackColor = false;
+            // 
             // LendBook
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(440, 377);
+            Controls.Add(save);
+            Controls.Add(cancel);
             Controls.Add(chooseBooks);
             Controls.Add(textBox_books);
             Controls.Add(dropDown_user);
@@ -250,9 +252,7 @@ namespace Desktop_Application.Forms.Borrowings
             Controls.Add(borrowDate_datePicker);
             Controls.Add(label3);
             Controls.Add(header);
-            Controls.Add(save);
             Controls.Add(label2);
-            Controls.Add(cancel);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 4, 3, 4);
             Name = "LendBook";
@@ -271,15 +271,15 @@ namespace Desktop_Application.Forms.Borrowings
         private Panel header;
         private Label title;
         private Components.RoundedButton close_btn;
-        private Components.RoundedButton save;
         private Label label2;
         private Label label_publisher;
-        private Components.RoundedButton cancel;
         private Label label3;
         private DateTimePicker borrowDate_datePicker;
         private DateTimePicker dueDate_datePicker;
         private Label label5;
         private System.Windows.Forms.Button chooseBooks;
         private System.Windows.Forms.TextBox textBox_books;
+        private Components.RoundedButton save;
+        private Components.RoundedButton cancel;
     }
 }

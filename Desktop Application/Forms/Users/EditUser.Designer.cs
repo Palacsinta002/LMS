@@ -3,7 +3,7 @@ using Desktop_Application.Forms.Books;
 
 namespace Desktop_Application
 {
-    partial class EditBook
+    partial class EditUser
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@ namespace Desktop_Application
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditBook));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditUser));
             label_title = new Label();
             textBox_title = new TextBox();
             label_publisher = new Label();

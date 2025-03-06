@@ -1,3 +1,2 @@
-﻿SELECT
-    Username
+﻿SELECT Username
 FROM Users
