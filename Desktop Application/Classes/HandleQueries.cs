@@ -1,4 +1,6 @@
-﻿namespace Desktop_Application.Classes;
+﻿using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+
+namespace Desktop_Application.Classes;
 internal class HandleQueries
 {
     // Takes a grid and fills it with the Select result of the given filename
@@ -12,7 +14,7 @@ internal class HandleQueries
 
 
 
-    // Insert functions
+    // INSERT functions
     // Insert book with the given arguments
     internal static void InsertBook(string isbn, string publisher, string title, string pubYear, string authorsString, string categoriesString)
     {
@@ -34,6 +36,7 @@ internal class HandleQueries
             connection.RunSqlCommand(query);
         }
     }
+    // Insert borrowing with the given arguments
     internal static void InsertBorrowing(string username, string isbn, DateTime borrowDate, DateTime dueDate)
     {
         string borrowDateString = $"{borrowDate.Year}-{borrowDate.Month}-{borrowDate.Day}";
@@ -43,11 +46,18 @@ internal class HandleQueries
             $"\"{borrowDateString}\", \"{dueDateString}\")";
         connection.RunSqlCommand(query);
     }
+    // Insert category with the given arguments
+    internal static void InsertCategory(string category)
+    {
+        Connection connection = new();
+        string query = $"INSERT INTO Categories(Category) VALUES(\"{category}\")";
+        connection.RunSqlCommand(query);
+    }
 
 
 
 
-    // Update functions
+    // UPDATE functions
     // Update book with the given arguments
     internal static void UpdateBook(DataGridView books_grd, string isbn, string publisher, string title, string pubYear, string authorsString, string categoriesString)
     {
@@ -78,6 +88,16 @@ internal class HandleQueries
             connection.RunSqlCommand(query);
         }
     }
+    // Update category with the given arguments
+    internal static void UpdateCategory(DataGridView categories_grd, string category)
+    {
+        Connection connection = new();
+        foreach (DataGridViewRow row in categories_grd.SelectedRows)
+        {
+            string query = $"UPDATE Categories SET Category = \"{category}\" WHERE Category = \"{row.Cells[0].Value}\"";
+            connection.RunSqlCommand(query);
+        }
+    }
 
 
 
@@ -88,7 +108,7 @@ internal class HandleQueries
         foreach (DataGridViewRow row in grd.SelectedRows)
         {
             string item = row.Cells[grdcol].Value.ToString() ?? string.Empty;
-            string query = $"DELETE FROM {table} WHERE {dbcol} = {item}";
+            string query = $"DELETE FROM {table} WHERE {dbcol} = \"{item}\"";
             connection.RunSqlCommand(query);
         }
     }

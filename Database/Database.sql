@@ -1,4 +1,5 @@
 DROP DATABASE IF EXISTS LMS;
+DROP USER IF EXISTS "lms"@"%";
 
 -- Create the database
 CREATE DATABASE LMS 

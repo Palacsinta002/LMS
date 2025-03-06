@@ -2,13 +2,13 @@
 
 namespace Desktop_Application.Forms.Books;
 
-public partial class RemoveBooks : Form
+public partial class RemoveCategories : Form
 {
-    private readonly DataGridView _books_grd;
+    private readonly DataGridView _categories_grd;
 
-    public RemoveBooks(DataGridView books_grd)
+    public RemoveCategories(DataGridView categories_grd)
     {
-        _books_grd = books_grd;
+        _categories_grd = categories_grd;
         InitializeComponent();
     }
 
@@ -22,8 +22,8 @@ public partial class RemoveBooks : Form
 
     private void Yes(object sender, EventArgs e)
     {
-        HandleQueries.Delete(_books_grd, "Books", "ISBN", "ISBN");
-        MessageBox.Show("Book removed succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        HandleQueries.Delete(_categories_grd, "Categories", "categories_category", "Category");
+        MessageBox.Show("Categories removed succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         this.Close();
     }
 }
