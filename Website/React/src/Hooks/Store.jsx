@@ -1,8 +1,11 @@
-import configureStore from '@reduxjs/toolkit';
-import tokenReducer from './TokenSlice';
+import { configureStore } from '@reduxjs/toolkit';
+import TokenSlice from './TokenSlice';
 
-export default configureStore({
+
+export const store = configureStore({
   reducer: {
-    token: tokenReducer
+    token: TokenSlice
   }
 });
+
+export default store;

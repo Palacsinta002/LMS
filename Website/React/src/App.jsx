@@ -12,7 +12,7 @@ import Reservations from './Pages/Reservations';
 import Charts from './Pages/Charts';
 import Profile from './Pages/Profile';
 import NotFound from './Pages/NotFound';
-import Provider from 'react-redux'
+import { Provider } from 'react-redux'
 import Store from './Hooks/Store'
 
 function App() {

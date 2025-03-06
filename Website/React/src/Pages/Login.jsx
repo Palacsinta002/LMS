@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import axios from "axios"
 import { Link, useNavigate } from 'react-router-dom'
 import "./Login.css"
+import { useDispatch, useSelector } from 'react-redux'
+import { login, logout } from '../Hooks/TokenSlice'
 
 export default function Login() {
   axios.defaults.withCredentials = true;
@@ -11,6 +13,9 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const login = useSelector((state) => state.login);
+
 
   async function HandleSubmit(event) {
     event.preventDefault();
@@ -25,7 +30,14 @@ export default function Login() {
           },
         }
       );
-      console.log(response);
+
+      if(response.data.token){
+        dispatch(login(response.data.token));
+        sessionStorage.setItem("token", response.data.token);
+        navigate("/dashboard");
+      }
+
+      /*console.log(response);
       if(response.data.token == "anyád"){
         sessionStorage.setItem("token", response.data.Success);
         navigate("/dashboard");
@@ -33,7 +45,7 @@ export default function Login() {
       else if(response.data.message){
         setError(response.data.message);
         console.log(response)
-      }
+      }*/
     } catch (error) {
       console.error(error);
   
