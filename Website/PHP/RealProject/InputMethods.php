@@ -24,17 +24,16 @@ function getPostBody(){
 
 ####################  Making an api endpoints  ####################
 function makePostApiEndpoints($endpoints, $uri, $folder){
-    $found = false;
     for ($i=0; $i < count($endpoints); $i++) { 
+        echo $uri[count($uri)-1];
         if ($uri[count($uri)-1] == $endpoints[$i]){
-            $found = true;
             require_once __DIR__ . "/$folder" . "/" . $endpoints[$i].".php";
             call_user_func($endpoints[$i]);
         }
+        
     }
-    if ($found == false){
-        echo json_encode(["error"=> "Endpoint not found!"]);
-    }
+    errorOutput("0");
+    
 }
 
 ?>

@@ -15,7 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 require_once __DIR__ . "/InputMethods.php";
 $uri = parse_url( $_SERVER["REQUEST_URI"],PHP_URL_PATH);
 $uri = explode("/", trim($uri,"/"));
-
+unset($uri[0]);
+echo var_dump($uri);
 makePostApiEndpoints(["register","login", "logout", "verify"],$uri,"users");
 
 function seacrhURLElement($uri, $element){
