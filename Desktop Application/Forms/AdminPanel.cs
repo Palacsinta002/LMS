@@ -4,6 +4,7 @@ namespace Desktop_Application;
 using Desktop_Application.Classes;
 using Desktop_Application.Forms.Books;
 using Desktop_Application.Forms.Borrowings;
+using Desktop_Application.Forms.Categories;
 
 public partial class AdminPanel : Form
 {
@@ -112,7 +113,7 @@ public partial class AdminPanel : Form
     // Removes book from the database
     private void RemoveBooks(object sender, EventArgs e)
     {
-        RemoveBook removeBook = new(books_grd);
+        RemoveBooks removeBook = new(books_grd);
         removeBook.ShowDialog();
         RefreshBooks(sender, e);
     }
@@ -220,18 +221,25 @@ public partial class AdminPanel : Form
     // Adds a category to the database
     private void AddCategory(object sender, EventArgs e)
     {
-
+        AddCategory addCategory = new();
+        addCategory.ShowDialog();
+        RefreshCategories(sender, e);
     }
 
     // Edit the selected category from the grid and then updates it in the database
     private void EditCategory(object sender, EventArgs e)
     {
-
+        EditCategory editCategory = new(categories_grd);
+        editCategory.ShowDialog();
+        RefreshCategories(sender, e);
     }
 
     // Removes category from the database - Marks the book as returned
     private void RemoveCategories(object sender, EventArgs e)
     {
+        RemoveCategories removeCategories = new(categories_grd);
+        removeCategories.ShowDialog();
+        RefreshCategories(sender, e);
 
     }
     #endregion
