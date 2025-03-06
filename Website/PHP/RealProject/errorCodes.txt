@@ -16,3 +16,4 @@
 15 : passwords are not the same;
 16 : Img file is missing;
 17 : wrong request method;
+18 : Endpoint not Found;
