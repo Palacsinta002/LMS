@@ -1,7 +1,9 @@
 SELECT 
-	CONCAT(Users.FirstName, " ", Users.LastName),
+	Users.FirstName,
+    Users.LastName,
+    Users.Username,
     Users.Email,
-    Users.Username, 
+    Users.Address,
     Roles.Role
 FROM Users
 JOIN Roles ON Roles.id = Users.RoleID;

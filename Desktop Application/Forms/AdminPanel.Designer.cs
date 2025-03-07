@@ -107,14 +107,16 @@ namespace Desktop_Application
             categories_src = new TextBox();
             users_pnl = new Panel();
             users_grd = new DataGridView();
-            users_name = new DataGridViewTextBoxColumn();
-            users_email = new DataGridViewTextBoxColumn();
+            users_firstName = new DataGridViewTextBoxColumn();
+            users_lastName = new DataGridViewTextBoxColumn();
             users_username = new DataGridViewTextBoxColumn();
+            users_email = new DataGridViewTextBoxColumn();
+            users_address = new DataGridViewTextBoxColumn();
             users_role = new DataGridViewTextBoxColumn();
             roundedButton2 = new RoundedButton();
             roundedButton1 = new RoundedButton();
-            roundedButton3 = new RoundedButton();
-            roundedButton4 = new RoundedButton();
+            users_button_edit = new RoundedButton();
+            users_button_remove = new RoundedButton();
             users_lbl1 = new Label();
             users_src = new TextBox();
             authors_pnl = new Panel();
@@ -1295,8 +1297,8 @@ namespace Desktop_Application
             users_pnl.Controls.Add(users_grd);
             users_pnl.Controls.Add(roundedButton2);
             users_pnl.Controls.Add(roundedButton1);
-            users_pnl.Controls.Add(roundedButton3);
-            users_pnl.Controls.Add(roundedButton4);
+            users_pnl.Controls.Add(users_button_edit);
+            users_pnl.Controls.Add(users_button_remove);
             users_pnl.Controls.Add(users_lbl1);
             users_pnl.Controls.Add(users_src);
             users_pnl.Location = new Point(304, 75);
@@ -1316,7 +1318,7 @@ namespace Desktop_Application
             users_grd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             users_grd.BackgroundColor = Color.White;
             users_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            users_grd.Columns.AddRange(new DataGridViewColumn[] { users_name, users_email, users_username, users_role });
+            users_grd.Columns.AddRange(new DataGridViewColumn[] { users_firstName, users_lastName, users_username, users_email, users_address, users_role });
             users_grd.Location = new Point(59, 144);
             users_grd.Margin = new Padding(3, 4, 3, 4);
             users_grd.Name = "users_grd";
@@ -1331,13 +1333,29 @@ namespace Desktop_Application
             users_grd.Size = new Size(690, 479);
             users_grd.TabIndex = 32;
             // 
-            // users_name
+            // users_firstName
             // 
-            users_name.HeaderText = "Name";
-            users_name.MinimumWidth = 6;
-            users_name.Name = "users_name";
-            users_name.ReadOnly = true;
-            users_name.Width = 78;
+            users_firstName.HeaderText = "First Name";
+            users_firstName.MinimumWidth = 6;
+            users_firstName.Name = "users_firstName";
+            users_firstName.ReadOnly = true;
+            users_firstName.Width = 109;
+            // 
+            // users_lastName
+            // 
+            users_lastName.HeaderText = "Last Name";
+            users_lastName.MinimumWidth = 6;
+            users_lastName.Name = "users_lastName";
+            users_lastName.ReadOnly = true;
+            users_lastName.Width = 108;
+            // 
+            // users_username
+            // 
+            users_username.HeaderText = "Username";
+            users_username.MinimumWidth = 6;
+            users_username.Name = "users_username";
+            users_username.ReadOnly = true;
+            users_username.Width = 104;
             // 
             // users_email
             // 
@@ -1347,13 +1365,13 @@ namespace Desktop_Application
             users_email.ReadOnly = true;
             users_email.Width = 75;
             // 
-            // users_username
+            // users_address
             // 
-            users_username.HeaderText = "Username";
-            users_username.MinimumWidth = 6;
-            users_username.Name = "users_username";
-            users_username.ReadOnly = true;
-            users_username.Width = 104;
+            users_address.HeaderText = "Address";
+            users_address.MinimumWidth = 6;
+            users_address.Name = "users_address";
+            users_address.ReadOnly = true;
+            users_address.Width = 91;
             // 
             // users_role
             // 
@@ -1410,53 +1428,53 @@ namespace Desktop_Application
             roundedButton1.UseVisualStyleBackColor = false;
             roundedButton1.Click += RefreshUsers;
             // 
-            // roundedButton3
+            // users_button_edit
             // 
-            roundedButton3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            roundedButton3.BackColor = Color.FromArgb(80, 77, 180);
-            roundedButton3.BackgroundColor = Color.FromArgb(80, 77, 180);
-            roundedButton3.BorderColor = Color.Transparent;
-            roundedButton3.BorderRadius = 5;
-            roundedButton3.BorderSize = 0;
-            roundedButton3.FlatAppearance.BorderSize = 0;
-            roundedButton3.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
-            roundedButton3.FlatStyle = FlatStyle.Flat;
-            roundedButton3.Font = new Font("Yu Gothic UI Semibold", 14F);
-            roundedButton3.ForeColor = Color.White;
-            roundedButton3.Location = new Point(150, 35);
-            roundedButton3.Margin = new Padding(3, 4, 3, 4);
-            roundedButton3.Name = "roundedButton3";
-            roundedButton3.Size = new Size(114, 48);
-            roundedButton3.TabIndex = 28;
-            roundedButton3.TabStop = false;
-            roundedButton3.Text = "Edit";
-            roundedButton3.TextColor = Color.White;
-            roundedButton3.UseVisualStyleBackColor = false;
-            roundedButton3.Click += EditUser;
+            users_button_edit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            users_button_edit.BackColor = Color.FromArgb(80, 77, 180);
+            users_button_edit.BackgroundColor = Color.FromArgb(80, 77, 180);
+            users_button_edit.BorderColor = Color.Transparent;
+            users_button_edit.BorderRadius = 5;
+            users_button_edit.BorderSize = 0;
+            users_button_edit.FlatAppearance.BorderSize = 0;
+            users_button_edit.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            users_button_edit.FlatStyle = FlatStyle.Flat;
+            users_button_edit.Font = new Font("Yu Gothic UI Semibold", 14F);
+            users_button_edit.ForeColor = Color.White;
+            users_button_edit.Location = new Point(150, 35);
+            users_button_edit.Margin = new Padding(3, 4, 3, 4);
+            users_button_edit.Name = "users_button_edit";
+            users_button_edit.Size = new Size(114, 48);
+            users_button_edit.TabIndex = 28;
+            users_button_edit.TabStop = false;
+            users_button_edit.Text = "Edit";
+            users_button_edit.TextColor = Color.White;
+            users_button_edit.UseVisualStyleBackColor = false;
+            users_button_edit.Click += EditUser;
             // 
-            // roundedButton4
+            // users_button_remove
             // 
-            roundedButton4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            roundedButton4.BackColor = Color.FromArgb(80, 77, 180);
-            roundedButton4.BackgroundColor = Color.FromArgb(80, 77, 180);
-            roundedButton4.BorderColor = Color.Transparent;
-            roundedButton4.BorderRadius = 5;
-            roundedButton4.BorderSize = 0;
-            roundedButton4.FlatAppearance.BorderSize = 0;
-            roundedButton4.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
-            roundedButton4.FlatStyle = FlatStyle.Flat;
-            roundedButton4.Font = new Font("Yu Gothic UI Semibold", 14F);
-            roundedButton4.ForeColor = Color.White;
-            roundedButton4.Location = new Point(271, 35);
-            roundedButton4.Margin = new Padding(3, 4, 3, 4);
-            roundedButton4.Name = "roundedButton4";
-            roundedButton4.Size = new Size(114, 48);
-            roundedButton4.TabIndex = 27;
-            roundedButton4.TabStop = false;
-            roundedButton4.Text = "Remove";
-            roundedButton4.TextColor = Color.White;
-            roundedButton4.UseVisualStyleBackColor = false;
-            roundedButton4.Click += RemoveUsers;
+            users_button_remove.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            users_button_remove.BackColor = Color.FromArgb(80, 77, 180);
+            users_button_remove.BackgroundColor = Color.FromArgb(80, 77, 180);
+            users_button_remove.BorderColor = Color.Transparent;
+            users_button_remove.BorderRadius = 5;
+            users_button_remove.BorderSize = 0;
+            users_button_remove.FlatAppearance.BorderSize = 0;
+            users_button_remove.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            users_button_remove.FlatStyle = FlatStyle.Flat;
+            users_button_remove.Font = new Font("Yu Gothic UI Semibold", 14F);
+            users_button_remove.ForeColor = Color.White;
+            users_button_remove.Location = new Point(271, 35);
+            users_button_remove.Margin = new Padding(3, 4, 3, 4);
+            users_button_remove.Name = "users_button_remove";
+            users_button_remove.Size = new Size(114, 48);
+            users_button_remove.TabIndex = 27;
+            users_button_remove.TabStop = false;
+            users_button_remove.Text = "Remove";
+            users_button_remove.TextColor = Color.White;
+            users_button_remove.UseVisualStyleBackColor = false;
+            users_button_remove.Click += RemoveUsers;
             // 
             // users_lbl1
             // 
@@ -1958,17 +1976,19 @@ namespace Desktop_Application
         private DataGridView categories_grd;
         private DataGridViewTextBoxColumn categories_category;
         private RoundedButton roundedButton2;
-        private RoundedButton roundedButton3;
-        private RoundedButton roundedButton4;
+        private RoundedButton users_button_edit;
+        private RoundedButton users_button_remove;
         private RoundedButton roundedButton5;
         private RoundedButton roundedButton6;
         private RoundedButton roundedButton7;
         private DataGridView users_grd;
         private DataGridView authors_grd;
         private DataGridView publishers_grd;
-        private DataGridViewTextBoxColumn users_name;
-        private DataGridViewTextBoxColumn users_email;
+        private DataGridViewTextBoxColumn users_firstName;
+        private DataGridViewTextBoxColumn users_lastName;
         private DataGridViewTextBoxColumn users_username;
+        private DataGridViewTextBoxColumn users_email;
+        private DataGridViewTextBoxColumn users_address;
         private DataGridViewTextBoxColumn users_role;
     }
 }

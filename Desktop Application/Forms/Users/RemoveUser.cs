@@ -4,11 +4,11 @@ namespace Desktop_Application.Forms.Books;
 
 public partial class RemoveUser : Form
 {
-    private readonly DataGridView _books_grd;
+    private readonly DataGridView _users_grd;
 
-    public RemoveUser(DataGridView books_grd)
+    public RemoveUser(DataGridView users_grd)
     {
-        _books_grd = books_grd;
+        _users_grd = users_grd;
         InitializeComponent();
     }
 
@@ -22,8 +22,8 @@ public partial class RemoveUser : Form
 
     private void Yes(object sender, EventArgs e)
     {
-        HandleQueries.Delete(_books_grd, "Books", "ISBN", "ISBN");
-        MessageBox.Show("Book removed succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        HandleQueries.Delete(_users_grd, "Users", "users_username", "Username");
+        MessageBox.Show("User removed succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         this.Close();
     }
 }

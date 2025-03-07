@@ -20,10 +20,10 @@ public partial class Login : Form
         DragWindow.Handle(this, header, title);
         BorderPaint.Handle(this);
         CloseThisWindow.Handle(this, close_btn);
-        AdminPanel adminPanel = new(username_textBox.Text, true);
-        this.Hide();
-        adminPanel.ShowDialog();
-        this.Close();
+        //AdminPanel adminPanel = new(username_textBox.Text, true);
+        //this.Hide();
+        //adminPanel.ShowDialog();
+        //this.Close();
     }
 
     //On Login if the username and password are in the correct format it starts checking the credentials
@@ -31,23 +31,23 @@ public partial class Login : Form
     {
         if (_username == string.Empty || _password == string.Empty)
         {
-            //MessageBox.Show("Username and password are required!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Username and password are required!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         else if (usernameError_lbl.Text == "" && passwordError_lbl.Text == "")
         {
-            string query = $"SELECT Users.FirstName, Users.LastName, Users.Username, Users.Password, Roles.Role FROM Users JOIN Roles ON Roles.id = Users.RoleID WHERE Username = '{_username}'";
+            string query = $"SELECT Users.Password, Roles.Role FROM Users JOIN Roles ON Roles.id = Users.RoleID WHERE Username = '{_username}'";
             Connection conn = new();
             var result = conn.Select(query);
 
             if (result.Count == 1)
             {
-                string hashPassword = result[0][3].ToString() ?? string.Empty;
+                string hashPassword = result[0][0].ToString() ?? string.Empty;
 
                 // Takes the given password and the hashed password from the database. Then matches them, if they match the user is allowed to log in.
                 if (BCrypt.Net.BCrypt.Verify(_password, hashPassword))
                 {
                     bool isAdmin = false;
-                    if (result[0][4].ToString() == "Admin")
+                    if (result[0][1].ToString() == "Admin")
                     {
                         isAdmin = true;
                     }
@@ -57,11 +57,19 @@ public partial class Login : Form
                     adminPanel.ShowDialog();
                     this.Close();
                 }
+                else
+                {
+                    MessageBox.Show("Wrong username or password!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             else
             {
                 MessageBox.Show("Wrong username or password!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+        else
+        {
+            MessageBox.Show("There are errors in the username or password!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 
@@ -115,5 +123,10 @@ public partial class Login : Form
             password_textBox.PasswordChar = '*';
             showPassword_btn.Image = Image.FromFile(@"Resources\showIcon.png");
         }
+    }
+
+    private void OnKeyPress(object sender, KeyPressEventArgs e)
+    {
+        if (e.KeyChar == 13) LoginCheck(sender, e);
     }
 }
