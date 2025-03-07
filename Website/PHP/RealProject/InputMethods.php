@@ -36,4 +36,16 @@ function makePostApiEndpoints($endpoints, $uri, $folder){
     
 }
 
+function deleteFromList($list,$index){
+    $found = false;
+    foreach ($list as $key => $value) {
+        if ($key == $index) {
+            unset($list[$key]); 
+            $found = true;
+            break;
+        }
+
+
+    }
+}
 ?>
