@@ -68,7 +68,10 @@ namespace Desktop_Application
             dashboard_category = new DataGridViewTextBoxColumn();
             label4 = new Label();
             books_pnl = new Panel();
+            roundedButton5 = new RoundedButton();
+            roundedButton6 = new RoundedButton();
             books_refresh_btn = new RoundedButton();
+            roundedButton7 = new RoundedButton();
             books_lbl1 = new Label();
             books_src = new TextBox();
             books_grd = new DataGridView();
@@ -103,10 +106,19 @@ namespace Desktop_Application
             categories_lbl1 = new Label();
             categories_src = new TextBox();
             users_pnl = new Panel();
+            users_grd = new DataGridView();
+            users_name = new DataGridViewTextBoxColumn();
+            users_email = new DataGridViewTextBoxColumn();
+            users_username = new DataGridViewTextBoxColumn();
+            users_role = new DataGridViewTextBoxColumn();
+            roundedButton2 = new RoundedButton();
             roundedButton1 = new RoundedButton();
+            roundedButton3 = new RoundedButton();
+            roundedButton4 = new RoundedButton();
             users_lbl1 = new Label();
             users_src = new TextBox();
             authors_pnl = new Panel();
+            authors_grd = new DataGridView();
             authors_refresh_btn = new RoundedButton();
             authors_add_btn = new RoundedButton();
             authors_edit_btn = new RoundedButton();
@@ -114,18 +126,13 @@ namespace Desktop_Application
             authors_lbl1 = new Label();
             authors_src = new TextBox();
             publishers_pnl = new Panel();
+            publishers_grd = new DataGridView();
             publishers_refresh_btn = new RoundedButton();
             publishers_add_btn = new RoundedButton();
             publishers_edit_btn = new RoundedButton();
             publishers_remove_btn = new RoundedButton();
             publishers_lbl1 = new Label();
             publishers_src = new TextBox();
-            roundedButton2 = new RoundedButton();
-            roundedButton3 = new RoundedButton();
-            roundedButton4 = new RoundedButton();
-            roundedButton5 = new RoundedButton();
-            roundedButton6 = new RoundedButton();
-            roundedButton7 = new RoundedButton();
             menu_pnl.SuspendLayout();
             header_pnl.SuspendLayout();
             dashboard_pnl.SuspendLayout();
@@ -141,8 +148,11 @@ namespace Desktop_Application
             categories_pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)categories_grd).BeginInit();
             users_pnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)users_grd).BeginInit();
             authors_pnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)authors_grd).BeginInit();
             publishers_pnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)publishers_grd).BeginInit();
             SuspendLayout();
             // 
             // menu_pnl
@@ -690,6 +700,54 @@ namespace Desktop_Application
             books_pnl.TabIndex = 13;
             books_pnl.Visible = false;
             // 
+            // roundedButton5
+            // 
+            roundedButton5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            roundedButton5.BackColor = Color.FromArgb(80, 77, 180);
+            roundedButton5.BackgroundColor = Color.FromArgb(80, 77, 180);
+            roundedButton5.BorderColor = Color.Transparent;
+            roundedButton5.BorderRadius = 5;
+            roundedButton5.BorderSize = 0;
+            roundedButton5.FlatAppearance.BorderSize = 0;
+            roundedButton5.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            roundedButton5.FlatStyle = FlatStyle.Flat;
+            roundedButton5.Font = new Font("Yu Gothic UI Semibold", 14F);
+            roundedButton5.ForeColor = Color.White;
+            roundedButton5.Location = new Point(392, 35);
+            roundedButton5.Margin = new Padding(3, 4, 3, 4);
+            roundedButton5.Name = "roundedButton5";
+            roundedButton5.Size = new Size(114, 48);
+            roundedButton5.TabIndex = 29;
+            roundedButton5.TabStop = false;
+            roundedButton5.Text = "Add";
+            roundedButton5.TextColor = Color.White;
+            roundedButton5.UseVisualStyleBackColor = false;
+            roundedButton5.Click += AddBook;
+            // 
+            // roundedButton6
+            // 
+            roundedButton6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            roundedButton6.BackColor = Color.FromArgb(80, 77, 180);
+            roundedButton6.BackgroundColor = Color.FromArgb(80, 77, 180);
+            roundedButton6.BorderColor = Color.Transparent;
+            roundedButton6.BorderRadius = 5;
+            roundedButton6.BorderSize = 0;
+            roundedButton6.FlatAppearance.BorderSize = 0;
+            roundedButton6.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            roundedButton6.FlatStyle = FlatStyle.Flat;
+            roundedButton6.Font = new Font("Yu Gothic UI Semibold", 14F);
+            roundedButton6.ForeColor = Color.White;
+            roundedButton6.Location = new Point(150, 35);
+            roundedButton6.Margin = new Padding(3, 4, 3, 4);
+            roundedButton6.Name = "roundedButton6";
+            roundedButton6.Size = new Size(114, 48);
+            roundedButton6.TabIndex = 28;
+            roundedButton6.TabStop = false;
+            roundedButton6.Text = "Edit";
+            roundedButton6.TextColor = Color.White;
+            roundedButton6.UseVisualStyleBackColor = false;
+            roundedButton6.Click += EditBook;
+            // 
             // books_refresh_btn
             // 
             books_refresh_btn.BackColor = Color.FromArgb(80, 77, 180);
@@ -706,12 +764,36 @@ namespace Desktop_Application
             books_refresh_btn.Location = new Point(59, 35);
             books_refresh_btn.Margin = new Padding(3, 4, 3, 4);
             books_refresh_btn.Name = "books_refresh_btn";
-            books_refresh_btn.Size = new Size(41, 48);
+            books_refresh_btn.Size = new Size(48, 48);
             books_refresh_btn.TabIndex = 15;
             books_refresh_btn.TabStop = false;
             books_refresh_btn.TextColor = Color.White;
             books_refresh_btn.UseVisualStyleBackColor = false;
             books_refresh_btn.Click += RefreshBooks;
+            // 
+            // roundedButton7
+            // 
+            roundedButton7.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            roundedButton7.BackColor = Color.FromArgb(80, 77, 180);
+            roundedButton7.BackgroundColor = Color.FromArgb(80, 77, 180);
+            roundedButton7.BorderColor = Color.Transparent;
+            roundedButton7.BorderRadius = 5;
+            roundedButton7.BorderSize = 0;
+            roundedButton7.FlatAppearance.BorderSize = 0;
+            roundedButton7.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            roundedButton7.FlatStyle = FlatStyle.Flat;
+            roundedButton7.Font = new Font("Yu Gothic UI Semibold", 14F);
+            roundedButton7.ForeColor = Color.White;
+            roundedButton7.Location = new Point(271, 35);
+            roundedButton7.Margin = new Padding(3, 4, 3, 4);
+            roundedButton7.Name = "roundedButton7";
+            roundedButton7.Size = new Size(114, 48);
+            roundedButton7.TabIndex = 27;
+            roundedButton7.TabStop = false;
+            roundedButton7.Text = "Remove";
+            roundedButton7.TextColor = Color.White;
+            roundedButton7.UseVisualStyleBackColor = false;
+            roundedButton7.Click += RemoveBooks;
             // 
             // books_lbl1
             // 
@@ -932,7 +1014,7 @@ namespace Desktop_Application
             borrowings_refresh_btn.Location = new Point(59, 35);
             borrowings_refresh_btn.Margin = new Padding(3, 4, 3, 4);
             borrowings_refresh_btn.Name = "borrowings_refresh_btn";
-            borrowings_refresh_btn.Size = new Size(41, 48);
+            borrowings_refresh_btn.Size = new Size(48, 48);
             borrowings_refresh_btn.TabIndex = 29;
             borrowings_refresh_btn.TabStop = false;
             borrowings_refresh_btn.TextColor = Color.White;
@@ -1103,7 +1185,7 @@ namespace Desktop_Application
             categories_refresh_btn.Location = new Point(59, 35);
             categories_refresh_btn.Margin = new Padding(3, 4, 3, 4);
             categories_refresh_btn.Name = "categories_refresh_btn";
-            categories_refresh_btn.Size = new Size(41, 48);
+            categories_refresh_btn.Size = new Size(48, 48);
             categories_refresh_btn.TabIndex = 22;
             categories_refresh_btn.TabStop = false;
             categories_refresh_btn.TextColor = Color.White;
@@ -1210,6 +1292,7 @@ namespace Desktop_Application
             // users_pnl
             // 
             users_pnl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            users_pnl.Controls.Add(users_grd);
             users_pnl.Controls.Add(roundedButton2);
             users_pnl.Controls.Add(roundedButton1);
             users_pnl.Controls.Add(roundedButton3);
@@ -1222,6 +1305,87 @@ namespace Desktop_Application
             users_pnl.Size = new Size(809, 657);
             users_pnl.TabIndex = 24;
             users_pnl.Visible = false;
+            // 
+            // users_grd
+            // 
+            users_grd.AllowUserToAddRows = false;
+            users_grd.AllowUserToDeleteRows = false;
+            users_grd.AllowUserToResizeColumns = false;
+            users_grd.AllowUserToResizeRows = false;
+            users_grd.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            users_grd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            users_grd.BackgroundColor = Color.White;
+            users_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            users_grd.Columns.AddRange(new DataGridViewColumn[] { users_name, users_email, users_username, users_role });
+            users_grd.Location = new Point(59, 144);
+            users_grd.Margin = new Padding(3, 4, 3, 4);
+            users_grd.Name = "users_grd";
+            users_grd.ReadOnly = true;
+            users_grd.RowHeadersVisible = false;
+            users_grd.RowHeadersWidth = 51;
+            users_grd.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            users_grd.ShowCellErrors = false;
+            users_grd.ShowCellToolTips = false;
+            users_grd.ShowEditingIcon = false;
+            users_grd.ShowRowErrors = false;
+            users_grd.Size = new Size(690, 479);
+            users_grd.TabIndex = 32;
+            // 
+            // users_name
+            // 
+            users_name.HeaderText = "Name";
+            users_name.MinimumWidth = 6;
+            users_name.Name = "users_name";
+            users_name.ReadOnly = true;
+            users_name.Width = 78;
+            // 
+            // users_email
+            // 
+            users_email.HeaderText = "Email";
+            users_email.MinimumWidth = 6;
+            users_email.Name = "users_email";
+            users_email.ReadOnly = true;
+            users_email.Width = 75;
+            // 
+            // users_username
+            // 
+            users_username.HeaderText = "Username";
+            users_username.MinimumWidth = 6;
+            users_username.Name = "users_username";
+            users_username.ReadOnly = true;
+            users_username.Width = 104;
+            // 
+            // users_role
+            // 
+            users_role.HeaderText = "Role";
+            users_role.MinimumWidth = 6;
+            users_role.Name = "users_role";
+            users_role.ReadOnly = true;
+            users_role.Width = 68;
+            // 
+            // roundedButton2
+            // 
+            roundedButton2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            roundedButton2.BackColor = Color.FromArgb(80, 77, 180);
+            roundedButton2.BackgroundColor = Color.FromArgb(80, 77, 180);
+            roundedButton2.BorderColor = Color.Transparent;
+            roundedButton2.BorderRadius = 5;
+            roundedButton2.BorderSize = 0;
+            roundedButton2.FlatAppearance.BorderSize = 0;
+            roundedButton2.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            roundedButton2.FlatStyle = FlatStyle.Flat;
+            roundedButton2.Font = new Font("Yu Gothic UI Semibold", 14F);
+            roundedButton2.ForeColor = Color.White;
+            roundedButton2.Location = new Point(392, 35);
+            roundedButton2.Margin = new Padding(3, 4, 3, 4);
+            roundedButton2.Name = "roundedButton2";
+            roundedButton2.Size = new Size(114, 48);
+            roundedButton2.TabIndex = 29;
+            roundedButton2.TabStop = false;
+            roundedButton2.Text = "Add";
+            roundedButton2.TextColor = Color.White;
+            roundedButton2.UseVisualStyleBackColor = false;
+            roundedButton2.Click += AddUser;
             // 
             // roundedButton1
             // 
@@ -1239,12 +1403,60 @@ namespace Desktop_Application
             roundedButton1.Location = new Point(59, 35);
             roundedButton1.Margin = new Padding(3, 4, 3, 4);
             roundedButton1.Name = "roundedButton1";
-            roundedButton1.Size = new Size(41, 48);
+            roundedButton1.Size = new Size(48, 48);
             roundedButton1.TabIndex = 16;
             roundedButton1.TabStop = false;
             roundedButton1.TextColor = Color.White;
             roundedButton1.UseVisualStyleBackColor = false;
             roundedButton1.Click += RefreshUsers;
+            // 
+            // roundedButton3
+            // 
+            roundedButton3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            roundedButton3.BackColor = Color.FromArgb(80, 77, 180);
+            roundedButton3.BackgroundColor = Color.FromArgb(80, 77, 180);
+            roundedButton3.BorderColor = Color.Transparent;
+            roundedButton3.BorderRadius = 5;
+            roundedButton3.BorderSize = 0;
+            roundedButton3.FlatAppearance.BorderSize = 0;
+            roundedButton3.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            roundedButton3.FlatStyle = FlatStyle.Flat;
+            roundedButton3.Font = new Font("Yu Gothic UI Semibold", 14F);
+            roundedButton3.ForeColor = Color.White;
+            roundedButton3.Location = new Point(150, 35);
+            roundedButton3.Margin = new Padding(3, 4, 3, 4);
+            roundedButton3.Name = "roundedButton3";
+            roundedButton3.Size = new Size(114, 48);
+            roundedButton3.TabIndex = 28;
+            roundedButton3.TabStop = false;
+            roundedButton3.Text = "Edit";
+            roundedButton3.TextColor = Color.White;
+            roundedButton3.UseVisualStyleBackColor = false;
+            roundedButton3.Click += EditUser;
+            // 
+            // roundedButton4
+            // 
+            roundedButton4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            roundedButton4.BackColor = Color.FromArgb(80, 77, 180);
+            roundedButton4.BackgroundColor = Color.FromArgb(80, 77, 180);
+            roundedButton4.BorderColor = Color.Transparent;
+            roundedButton4.BorderRadius = 5;
+            roundedButton4.BorderSize = 0;
+            roundedButton4.FlatAppearance.BorderSize = 0;
+            roundedButton4.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            roundedButton4.FlatStyle = FlatStyle.Flat;
+            roundedButton4.Font = new Font("Yu Gothic UI Semibold", 14F);
+            roundedButton4.ForeColor = Color.White;
+            roundedButton4.Location = new Point(271, 35);
+            roundedButton4.Margin = new Padding(3, 4, 3, 4);
+            roundedButton4.Name = "roundedButton4";
+            roundedButton4.Size = new Size(114, 48);
+            roundedButton4.TabIndex = 27;
+            roundedButton4.TabStop = false;
+            roundedButton4.Text = "Remove";
+            roundedButton4.TextColor = Color.White;
+            roundedButton4.UseVisualStyleBackColor = false;
+            roundedButton4.Click += RemoveUsers;
             // 
             // users_lbl1
             // 
@@ -1275,6 +1487,7 @@ namespace Desktop_Application
             // 
             authors_pnl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             authors_pnl.BackColor = Color.White;
+            authors_pnl.Controls.Add(authors_grd);
             authors_pnl.Controls.Add(authors_refresh_btn);
             authors_pnl.Controls.Add(authors_add_btn);
             authors_pnl.Controls.Add(authors_edit_btn);
@@ -1287,6 +1500,30 @@ namespace Desktop_Application
             authors_pnl.Size = new Size(809, 657);
             authors_pnl.TabIndex = 25;
             authors_pnl.Visible = false;
+            // 
+            // authors_grd
+            // 
+            authors_grd.AllowUserToAddRows = false;
+            authors_grd.AllowUserToDeleteRows = false;
+            authors_grd.AllowUserToResizeColumns = false;
+            authors_grd.AllowUserToResizeRows = false;
+            authors_grd.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            authors_grd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            authors_grd.BackgroundColor = Color.White;
+            authors_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            authors_grd.Location = new Point(59, 144);
+            authors_grd.Margin = new Padding(3, 4, 3, 4);
+            authors_grd.Name = "authors_grd";
+            authors_grd.ReadOnly = true;
+            authors_grd.RowHeadersVisible = false;
+            authors_grd.RowHeadersWidth = 51;
+            authors_grd.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            authors_grd.ShowCellErrors = false;
+            authors_grd.ShowCellToolTips = false;
+            authors_grd.ShowEditingIcon = false;
+            authors_grd.ShowRowErrors = false;
+            authors_grd.Size = new Size(690, 479);
+            authors_grd.TabIndex = 33;
             // 
             // authors_refresh_btn
             // 
@@ -1304,7 +1541,7 @@ namespace Desktop_Application
             authors_refresh_btn.Location = new Point(59, 35);
             authors_refresh_btn.Margin = new Padding(3, 4, 3, 4);
             authors_refresh_btn.Name = "authors_refresh_btn";
-            authors_refresh_btn.Size = new Size(41, 48);
+            authors_refresh_btn.Size = new Size(48, 48);
             authors_refresh_btn.TabIndex = 22;
             authors_refresh_btn.TabStop = false;
             authors_refresh_btn.TextColor = Color.White;
@@ -1413,6 +1650,7 @@ namespace Desktop_Application
             publishers_pnl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             publishers_pnl.AutoSize = true;
             publishers_pnl.BackColor = Color.White;
+            publishers_pnl.Controls.Add(publishers_grd);
             publishers_pnl.Controls.Add(publishers_refresh_btn);
             publishers_pnl.Controls.Add(publishers_add_btn);
             publishers_pnl.Controls.Add(publishers_edit_btn);
@@ -1425,6 +1663,30 @@ namespace Desktop_Application
             publishers_pnl.Size = new Size(809, 657);
             publishers_pnl.TabIndex = 26;
             publishers_pnl.Visible = false;
+            // 
+            // publishers_grd
+            // 
+            publishers_grd.AllowUserToAddRows = false;
+            publishers_grd.AllowUserToDeleteRows = false;
+            publishers_grd.AllowUserToResizeColumns = false;
+            publishers_grd.AllowUserToResizeRows = false;
+            publishers_grd.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            publishers_grd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            publishers_grd.BackgroundColor = Color.White;
+            publishers_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            publishers_grd.Location = new Point(59, 144);
+            publishers_grd.Margin = new Padding(3, 4, 3, 4);
+            publishers_grd.Name = "publishers_grd";
+            publishers_grd.ReadOnly = true;
+            publishers_grd.RowHeadersVisible = false;
+            publishers_grd.RowHeadersWidth = 51;
+            publishers_grd.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            publishers_grd.ShowCellErrors = false;
+            publishers_grd.ShowCellToolTips = false;
+            publishers_grd.ShowEditingIcon = false;
+            publishers_grd.ShowRowErrors = false;
+            publishers_grd.Size = new Size(690, 479);
+            publishers_grd.TabIndex = 33;
             // 
             // publishers_refresh_btn
             // 
@@ -1442,7 +1704,7 @@ namespace Desktop_Application
             publishers_refresh_btn.Location = new Point(59, 35);
             publishers_refresh_btn.Margin = new Padding(3, 4, 3, 4);
             publishers_refresh_btn.Name = "publishers_refresh_btn";
-            publishers_refresh_btn.Size = new Size(41, 48);
+            publishers_refresh_btn.Size = new Size(48, 48);
             publishers_refresh_btn.TabIndex = 22;
             publishers_refresh_btn.TabStop = false;
             publishers_refresh_btn.TextColor = Color.White;
@@ -1546,150 +1808,6 @@ namespace Desktop_Application
             publishers_src.TabStop = false;
             publishers_src.TextChanged += SearchPublishers;
             // 
-            // roundedButton2
-            // 
-            roundedButton2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            roundedButton2.BackColor = Color.FromArgb(80, 77, 180);
-            roundedButton2.BackgroundColor = Color.FromArgb(80, 77, 180);
-            roundedButton2.BorderColor = Color.Transparent;
-            roundedButton2.BorderRadius = 5;
-            roundedButton2.BorderSize = 0;
-            roundedButton2.FlatAppearance.BorderSize = 0;
-            roundedButton2.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
-            roundedButton2.FlatStyle = FlatStyle.Flat;
-            roundedButton2.Font = new Font("Yu Gothic UI Semibold", 14F);
-            roundedButton2.ForeColor = Color.White;
-            roundedButton2.Location = new Point(392, 35);
-            roundedButton2.Margin = new Padding(3, 4, 3, 4);
-            roundedButton2.Name = "roundedButton2";
-            roundedButton2.Size = new Size(114, 48);
-            roundedButton2.TabIndex = 29;
-            roundedButton2.TabStop = false;
-            roundedButton2.Text = "Add";
-            roundedButton2.TextColor = Color.White;
-            roundedButton2.UseVisualStyleBackColor = false;
-            roundedButton2.Click += AddUser;
-            // 
-            // roundedButton3
-            // 
-            roundedButton3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            roundedButton3.BackColor = Color.FromArgb(80, 77, 180);
-            roundedButton3.BackgroundColor = Color.FromArgb(80, 77, 180);
-            roundedButton3.BorderColor = Color.Transparent;
-            roundedButton3.BorderRadius = 5;
-            roundedButton3.BorderSize = 0;
-            roundedButton3.FlatAppearance.BorderSize = 0;
-            roundedButton3.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
-            roundedButton3.FlatStyle = FlatStyle.Flat;
-            roundedButton3.Font = new Font("Yu Gothic UI Semibold", 14F);
-            roundedButton3.ForeColor = Color.White;
-            roundedButton3.Location = new Point(150, 35);
-            roundedButton3.Margin = new Padding(3, 4, 3, 4);
-            roundedButton3.Name = "roundedButton3";
-            roundedButton3.Size = new Size(114, 48);
-            roundedButton3.TabIndex = 28;
-            roundedButton3.TabStop = false;
-            roundedButton3.Text = "Edit";
-            roundedButton3.TextColor = Color.White;
-            roundedButton3.UseVisualStyleBackColor = false;
-            roundedButton3.Click += EditUser;
-            // 
-            // roundedButton4
-            // 
-            roundedButton4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            roundedButton4.BackColor = Color.FromArgb(80, 77, 180);
-            roundedButton4.BackgroundColor = Color.FromArgb(80, 77, 180);
-            roundedButton4.BorderColor = Color.Transparent;
-            roundedButton4.BorderRadius = 5;
-            roundedButton4.BorderSize = 0;
-            roundedButton4.FlatAppearance.BorderSize = 0;
-            roundedButton4.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
-            roundedButton4.FlatStyle = FlatStyle.Flat;
-            roundedButton4.Font = new Font("Yu Gothic UI Semibold", 14F);
-            roundedButton4.ForeColor = Color.White;
-            roundedButton4.Location = new Point(271, 35);
-            roundedButton4.Margin = new Padding(3, 4, 3, 4);
-            roundedButton4.Name = "roundedButton4";
-            roundedButton4.Size = new Size(114, 48);
-            roundedButton4.TabIndex = 27;
-            roundedButton4.TabStop = false;
-            roundedButton4.Text = "Remove";
-            roundedButton4.TextColor = Color.White;
-            roundedButton4.UseVisualStyleBackColor = false;
-            roundedButton4.Click += RemoveUsers;
-            // 
-            // roundedButton5
-            // 
-            roundedButton5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            roundedButton5.BackColor = Color.FromArgb(80, 77, 180);
-            roundedButton5.BackgroundColor = Color.FromArgb(80, 77, 180);
-            roundedButton5.BorderColor = Color.Transparent;
-            roundedButton5.BorderRadius = 5;
-            roundedButton5.BorderSize = 0;
-            roundedButton5.FlatAppearance.BorderSize = 0;
-            roundedButton5.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
-            roundedButton5.FlatStyle = FlatStyle.Flat;
-            roundedButton5.Font = new Font("Yu Gothic UI Semibold", 14F);
-            roundedButton5.ForeColor = Color.White;
-            roundedButton5.Location = new Point(392, 35);
-            roundedButton5.Margin = new Padding(3, 4, 3, 4);
-            roundedButton5.Name = "roundedButton5";
-            roundedButton5.Size = new Size(114, 48);
-            roundedButton5.TabIndex = 29;
-            roundedButton5.TabStop = false;
-            roundedButton5.Text = "Add";
-            roundedButton5.TextColor = Color.White;
-            roundedButton5.UseVisualStyleBackColor = false;
-            roundedButton5.Click += AddBook;
-            // 
-            // roundedButton6
-            // 
-            roundedButton6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            roundedButton6.BackColor = Color.FromArgb(80, 77, 180);
-            roundedButton6.BackgroundColor = Color.FromArgb(80, 77, 180);
-            roundedButton6.BorderColor = Color.Transparent;
-            roundedButton6.BorderRadius = 5;
-            roundedButton6.BorderSize = 0;
-            roundedButton6.FlatAppearance.BorderSize = 0;
-            roundedButton6.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
-            roundedButton6.FlatStyle = FlatStyle.Flat;
-            roundedButton6.Font = new Font("Yu Gothic UI Semibold", 14F);
-            roundedButton6.ForeColor = Color.White;
-            roundedButton6.Location = new Point(150, 35);
-            roundedButton6.Margin = new Padding(3, 4, 3, 4);
-            roundedButton6.Name = "roundedButton6";
-            roundedButton6.Size = new Size(114, 48);
-            roundedButton6.TabIndex = 28;
-            roundedButton6.TabStop = false;
-            roundedButton6.Text = "Edit";
-            roundedButton6.TextColor = Color.White;
-            roundedButton6.UseVisualStyleBackColor = false;
-            roundedButton6.Click += EditBook;
-            // 
-            // roundedButton7
-            // 
-            roundedButton7.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            roundedButton7.BackColor = Color.FromArgb(80, 77, 180);
-            roundedButton7.BackgroundColor = Color.FromArgb(80, 77, 180);
-            roundedButton7.BorderColor = Color.Transparent;
-            roundedButton7.BorderRadius = 5;
-            roundedButton7.BorderSize = 0;
-            roundedButton7.FlatAppearance.BorderSize = 0;
-            roundedButton7.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
-            roundedButton7.FlatStyle = FlatStyle.Flat;
-            roundedButton7.Font = new Font("Yu Gothic UI Semibold", 14F);
-            roundedButton7.ForeColor = Color.White;
-            roundedButton7.Location = new Point(271, 35);
-            roundedButton7.Margin = new Padding(3, 4, 3, 4);
-            roundedButton7.Name = "roundedButton7";
-            roundedButton7.Size = new Size(114, 48);
-            roundedButton7.TabIndex = 27;
-            roundedButton7.TabStop = false;
-            roundedButton7.Text = "Remove";
-            roundedButton7.TextColor = Color.White;
-            roundedButton7.UseVisualStyleBackColor = false;
-            roundedButton7.Click += RemoveBooks;
-            // 
             // AdminPanel
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -1698,13 +1816,13 @@ namespace Desktop_Application
             ClientSize = new Size(1125, 748);
             Controls.Add(header_pnl);
             Controls.Add(menu_pnl);
-            Controls.Add(categories_pnl);
-            Controls.Add(borrowings_pnl);
             Controls.Add(users_pnl);
             Controls.Add(books_pnl);
             Controls.Add(dashboard_pnl);
             Controls.Add(publishers_pnl);
             Controls.Add(authors_pnl);
+            Controls.Add(categories_pnl);
+            Controls.Add(borrowings_pnl);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
             MinimumSize = new Size(1140, 779);
@@ -1738,10 +1856,13 @@ namespace Desktop_Application
             ((System.ComponentModel.ISupportInitialize)categories_grd).EndInit();
             users_pnl.ResumeLayout(false);
             users_pnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)users_grd).EndInit();
             authors_pnl.ResumeLayout(false);
             authors_pnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)authors_grd).EndInit();
             publishers_pnl.ResumeLayout(false);
             publishers_pnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)publishers_grd).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1842,5 +1963,12 @@ namespace Desktop_Application
         private RoundedButton roundedButton5;
         private RoundedButton roundedButton6;
         private RoundedButton roundedButton7;
+        private DataGridView users_grd;
+        private DataGridView authors_grd;
+        private DataGridView publishers_grd;
+        private DataGridViewTextBoxColumn users_name;
+        private DataGridViewTextBoxColumn users_email;
+        private DataGridViewTextBoxColumn users_username;
+        private DataGridViewTextBoxColumn users_role;
     }
 }
