@@ -1,5 +1,4 @@
 ﻿using System.Text.RegularExpressions;
-using BCrypt.Net;
 using Desktop_Application.Classes;
 
 namespace Desktop_Application
@@ -23,9 +22,10 @@ namespace Desktop_Application
         {
             if (ValidateInput())
             {
-                const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-                Random random = new();
-                string randomPassword = Enumerable.Range(0, 12).Select(_ => chars[random.Next(chars.Length)]).ToString();
+                string randomPassword = GeneratePassword(12);
+                MessageBox.Show(randomPassword);
+
+                Mailer.SendMail(textBox_email.Text, textBox_username.Text, randomPassword);
 
                 string hashedPassword = BCrypt.Net.BCrypt.HashPassword(randomPassword);
 
@@ -108,6 +108,18 @@ namespace Desktop_Application
                 if (item[0] == username) return true;
             }
             return false;
+        }
+
+        private static string GeneratePassword(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            Random random = new();
+            string randomPassword = "";
+            while(0 < length--)
+            {
+                randomPassword += chars[random.Next(chars.Length)];
+            }
+            return randomPassword;
         }
     }
 }

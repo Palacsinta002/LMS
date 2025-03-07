@@ -158,7 +158,6 @@ DELIMITER ;
 INSERT INTO Roles (Role) VALUES
 ('Admin'),
 ('Librarian'),
-('Verified Member'),
 ('Member');
 
 -- Insert values into Authors table

@@ -57,7 +57,7 @@ internal class HandleQueries
     internal static void InsertUser(string firstName, string lastName, string email, string username, string hashedPassword, string address)
     {
         Connection connection = new();
-        string query = $"INSERT INTO Users(FirstName, LastName, Email, Username, Password, Address, RoleID) VALUES(\"{firstName}\", \"{lastName}\", \"{email}\", \"{username}\", \"{hashedPassword}\", \"{address}\", 4)";
+        string query = $"INSERT INTO Users(FirstName, LastName, Email, Username, Password, Address, RoleID) VALUES(\"{firstName}\", \"{lastName}\", \"{email}\", \"{username}\", \"{hashedPassword}\", \"{address}\", 3)";
         connection.RunSqlCommand(query);
     }
 
