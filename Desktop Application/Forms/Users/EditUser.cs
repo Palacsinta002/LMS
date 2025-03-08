@@ -1,108 +1,117 @@
 ﻿using System.Text.RegularExpressions;
 using Desktop_Application.Classes;
-using Desktop_Application.Forms.Books;
 
-namespace Desktop_Application;
-public partial class EditUser : Form
+namespace Desktop_Application
 {
-    private readonly DataGridView _books_grd;
-
-    public EditUser(DataGridView books_grd)
+    public partial class EditUser : Form
     {
-        _books_grd = books_grd;
-        InitializeComponent();
-    }
+        private readonly DataGridView _users_grd;
 
-    private void OnLoad(object sender, EventArgs e)
-    {
-        DragWindow.Handle(this, header, title);
-        BorderPaint.Handle(this);
-        CloseThisWindow.Handle(this, close_btn);
-        CloseThisWindow.Handle(this, cancel);
-
-        var result = HandleQueries.Select("SelectPublisher");
-        HandleGrids.Fill(dropDown_publisher, result);
-
-        var selectedRow = _books_grd.SelectedRows[0].Cells;
-
-        textBox_title.Text = selectedRow["title"].Value.ToString();
-        textBox_pubYear.Text = selectedRow["publicationYear"].Value.ToString();
-        textBox_author.Text = selectedRow["author"].Value.ToString();
-        textBox_category.Text = selectedRow["category"].Value.ToString();
-        dropDown_publisher.Text = selectedRow["publisher"].Value.ToString();
-        textBox_isbn.Text = selectedRow["isbn"].Value.ToString();
-    }
-
-    private void Save(object sender, EventArgs e)
-    {
-        if (ValidateInput())
+        public EditUser(DataGridView users_grd)
         {
-            HandleQueries.UpdateBook(_books_grd, textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, textBox_author.Text, textBox_category.Text);
-            MessageBox.Show("Book updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
+            _users_grd = users_grd;
+            InitializeComponent();
         }
-    }
 
-    // returns true if everything is correct
-    private bool ValidateInput()
-    {
-        if (textBox_title.Text == string.Empty)
+        private void OnLoad(object sender, EventArgs e)
         {
-            MessageBox.Show("Title is required!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            DragWindow.Handle(this, header, title);
+            BorderPaint.Handle(this);
+            CloseThisWindow.Handle(this, close_btn);
+            CloseThisWindow.Handle(this, cancel);
+
+            var selectedRow = _users_grd.SelectedRows[0].Cells;
+
+            textBox_firstName.Text = selectedRow["users_firstName"].Value.ToString();
+            textBox_lastName.Text = selectedRow["users_lastName"].Value.ToString();
+            textBox_username.Text = selectedRow["users_username"].Value.ToString();
+            textBox_email.Text = selectedRow["users_email"].Value.ToString();
+            textBox_address.Text = selectedRow["users_address"].Value.ToString();
+        }
+
+        private void Save(object sender, EventArgs e)
+        {
+            if (ValidateInput())
+            {
+                HandleQueries.UpdatetUser(_users_grd, textBox_firstName.Text, textBox_lastName.Text, textBox_email.Text, textBox_username.Text, textBox_address.Text);
+                MessageBox.Show("User updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+        }
+
+        // returns true if everything is correct
+        private bool ValidateInput()
+        {
+            if (textBox_firstName.Text == string.Empty)
+            {
+                MessageBox.Show("First name is required!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            else if (!Regex.IsMatch(textBox_firstName.Text, @"^[^""\\]+$"))
+            {
+                MessageBox.Show("First name is not in the correct format! Please check your special characters!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+
+            if (textBox_lastName.Text == string.Empty)
+            {
+                MessageBox.Show("Last name is required!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            else if (!Regex.IsMatch(textBox_lastName.Text, @"^[^""\\]+$"))
+            {
+                MessageBox.Show("Last name is not in the correct format! Please check your special characters!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+
+            if (textBox_email.Text == string.Empty)
+            {
+                MessageBox.Show("Email is required!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            else if (!Regex.IsMatch(textBox_email.Text, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"))
+            {
+                MessageBox.Show("Email is not in the correct format! Please check your special characters!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+
+            if (textBox_username.Text == string.Empty)
+            {
+                MessageBox.Show("Address is required!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            else if (!Regex.IsMatch(textBox_username.Text, @"^[^""\\]+$"))
+            {
+                MessageBox.Show("Address is not in the correct format! Please check your special characters!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            else if (CheckUsername(textBox_username.Text))
+            {
+                MessageBox.Show("Username already exists!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+
+            if (textBox_address.Text == string.Empty)
+            {
+                MessageBox.Show("Address is required!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            else if (!Regex.IsMatch(textBox_address.Text, @"^[^""\\]+$"))
+            {
+                MessageBox.Show("Address is not in the correct format! Please check your special characters!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            return true;
+        }
+
+        private static bool CheckUsername(string username)
+        {
+            List<string[]> result = HandleQueries.Select("SelectUsername");
+            foreach(string[] item in result)
+            {
+                if (item[0] == username) return true;
+            }
             return false;
         }
-        else if (!Regex.IsMatch(textBox_title.Text, @"^[^""\\]+$"))
-        {
-            MessageBox.Show("Title is not in the correct format! Please check your special characters!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            return false;
-        }
-
-        if (!Regex.IsMatch(textBox_pubYear.Text, @"^[0-9]{4}$"))
-        {
-            MessageBox.Show("Publication year must be a 4 digit number!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            return false;
-        }
-
-        if (textBox_author.Text == string.Empty)
-        {
-            MessageBox.Show("You must choose at least one author!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            return false;
-        }
-
-        if (textBox_category.Text == string.Empty)
-        {
-            MessageBox.Show("You must choose at least one vategory!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            return false;
-        }
-
-        if (dropDown_publisher.Text == string.Empty)
-        {
-            MessageBox.Show("You must choose a publisher from the dropdown menu!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            return false;
-        }
-
-        if (!Regex.IsMatch(textBox_isbn.Text, @"^[0-9]{13}$"))
-        {
-            MessageBox.Show("ISBN number must be a 13 digit number!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            return false;
-        }
-
-        return true;
-    }
-
-    private void OpenChooseAuthor(object sender, EventArgs e)
-    {
-        ChooseAuthor chooseAuthor = new();
-        chooseAuthor.ShowDialog();
-
-        textBox_author.Text = string.Join(", ", ChooseAuthor.SelectedAuthors);
-    }
-
-    private void OpenChooseCategory(object sender, EventArgs e)
-    {
-        ChooseCategory chooseCategory = new();
-        chooseCategory.ShowDialog();
-
-        textBox_category.Text = string.Join(", ", ChooseCategory.SelectedCategories);
     }
 }

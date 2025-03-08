@@ -4,7 +4,7 @@ import TokenSlice from './TokenSlice';
 
 export const store = configureStore({
   reducer: {
-    token: TokenSlice
+    auth: TokenSlice
   }
 });
 

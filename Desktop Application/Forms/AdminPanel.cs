@@ -19,8 +19,8 @@ public partial class AdminPanel : Form
 
     private void OnLoad(object sender, EventArgs e)
     {
-        users_btn.Visible = _isAdmin;
-        divider_pnl4.Visible = _isAdmin;
+        users_button_edit.Visible = _isAdmin;
+        users_button_remove.Visible = _isAdmin;
 
         hello_lbl.Text = $"Hello {_name}!";
 
@@ -228,6 +228,11 @@ public partial class AdminPanel : Form
     // Edit the selected category from the grid and then updates it in the database
     private void EditCategory(object sender, EventArgs e)
     {
+        if (categories_grd.SelectedRows.Count != 1)
+        {
+            MessageBox.Show("You must select ONE category to edit!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return;
+        }
         EditCategory editCategory = new(categories_grd);
         editCategory.ShowDialog();
         RefreshCategories(sender, e);
@@ -367,13 +372,22 @@ public partial class AdminPanel : Form
     // Edit the selected user from the grid and then updates it in the database
     private void EditUser(object sender, EventArgs e)
     {
-
+        if (users_grd.SelectedRows.Count != 1)
+        {
+            MessageBox.Show("You must select ONE user to edit!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return;
+        }
+        EditUser editUser = new(users_grd);
+        editUser.ShowDialog();
+        RefreshUsers(sender, e);
     }
 
     // Removes user from the database - Marks the book as returned
     private void RemoveUsers(object sender, EventArgs e)
     {
-
+        RemoveUser removeUser = new(users_grd);
+        removeUser.ShowDialog();
+        RefreshUsers(sender, e);
     }
     #endregion
 

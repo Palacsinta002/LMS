@@ -1,62 +1,26 @@
-import React, { useState } from 'react'
-import axios from "axios"
-import { Link, useNavigate } from 'react-router-dom'
-import "./Login.css"
-import { useDispatch, useSelector } from 'react-redux'
-import { login as loginAction } from '../Hooks/TokenSlice'
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { loginUser } from "../Hooks/TokenSlice"; // Import the thunk
+import "./Login.css";
 
 export default function Login() {
-  axios.defaults.withCredentials = true;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const loginState = useSelector((state) => state.loginAction);
-
+  
+  const { loading, error, isAuthenticated } = useSelector((state) => state.auth);
 
   async function HandleSubmit(event) {
     event.preventDefault();
-    setLoading(true);
-    try {
-      const response = await axios.post(
-        "/api/login",
-        { username: username, password: password },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+    
+    const result = await dispatch(loginUser({ username, password }));
 
-      if(response.data.token){
-        dispatch(loginAction(response.data.token));
-        sessionStorage.setItem("token", response.data.token);
-        navigate("/dashboard");
-      }
-
-      /*console.log(response);
-      if(response.data.token == "anyád"){
-        sessionStorage.setItem("token", response.data.Success);
-        navigate("/dashboard");
-      }
-      else if(response.data.message){
-        setError(response.data.message);
-        console.log(response)
-      }*/
-    } catch (error) {
-      console.error(error);
-  
-      if (error.response) {
-        console.error(error.response.data.error);
-        setError(error.response.data.error || "Login failed");
-      } else {
-        setError("Network error");
-      }
-    } finally {
-      setLoading(false);
+    // Check if login was successful
+    if (loginUser.fulfilled.match(result)) {
+      navigate("/dashboard");
     }
   }
 
@@ -70,6 +34,7 @@ export default function Login() {
         <form onSubmit={HandleSubmit}>
           <label>Username</label>
           <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+
           <label>Password</label>
           <div className="password-input">
             <input 
@@ -85,12 +50,14 @@ export default function Login() {
               {showPassword ? "Hide" : "Show"}
             </button>
           </div>
+
           {error && <p className="error-message">{error}</p>}
-          <span><Link className="link1">Forgot your password?</Link></span>
-          <input type="submit" value="Sign in" disabled={loading} />
+
+          <span><Link to="/forgot-password" className="link1">Forgot your password?</Link></span>
+          <input type="submit" value={loading ? "Signing in..." : "Sign in"} disabled={loading} />
           <span><Link to="/register" className="link2">Create new account?</Link></span>
         </form>
       </div>
     </div>
-  )
+  );
 }

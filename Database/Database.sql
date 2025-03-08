@@ -44,7 +44,7 @@ CREATE TABLE Users (
     Email Varchar(50) NOT Null UNIQUE,
     Username Varchar(25) not null UNIQUE,
     Password varchar(100) not null,
-    Address varchar(150) not null,
+    Address varchar(255) not null,
     webtoken varchar(80),
     RoleID INT NOT NULL,
     FOREIGN KEY (RoleID) REFERENCES Roles(id) ON DELETE CASCADE

@@ -38,10 +38,14 @@ namespace Desktop_Application
             title = new Label();
             close_btn = new RoundedButton();
             label2 = new Label();
-            textBox_category = new TextBox();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            textBox_lastName = new TextBox();
+            textBox_firstName = new TextBox();
+            textBox_email = new TextBox();
             label1 = new Label();
+            textBox_address = new TextBox();
+            label3 = new Label();
+            textBox_username = new TextBox();
+            label4 = new Label();
             header.SuspendLayout();
             SuspendLayout();
             // 
@@ -57,15 +61,16 @@ namespace Desktop_Application
             save.FlatStyle = FlatStyle.Flat;
             save.Font = new Font("Yu Gothic UI Semibold", 14F);
             save.ForeColor = Color.White;
-            save.Location = new Point(120, 316);
+            save.Location = new Point(196, 355);
             save.Margin = new Padding(3, 4, 3, 4);
             save.Name = "save";
             save.Size = new Size(97, 48);
-            save.TabIndex = 93;
+            save.TabIndex = 5;
             save.TabStop = false;
             save.Text = "Save";
             save.TextColor = Color.White;
             save.UseVisualStyleBackColor = false;
+            save.Click += Save;
             // 
             // cancel
             // 
@@ -78,11 +83,11 @@ namespace Desktop_Application
             cancel.FlatStyle = FlatStyle.Flat;
             cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
             cancel.ForeColor = Color.Black;
-            cancel.Location = new Point(223, 316);
+            cancel.Location = new Point(299, 355);
             cancel.Margin = new Padding(3, 4, 3, 4);
             cancel.Name = "cancel";
             cancel.Size = new Size(97, 48);
-            cancel.TabIndex = 94;
+            cancel.TabIndex = 6;
             cancel.Text = "Cancel";
             cancel.TextColor = Color.Black;
             cancel.UseVisualStyleBackColor = false;
@@ -105,14 +110,14 @@ namespace Desktop_Application
             header.Location = new Point(1, 1);
             header.Margin = new Padding(3, 4, 3, 4);
             header.Name = "header";
-            header.Size = new Size(438, 73);
+            header.Size = new Size(592, 73);
             header.TabIndex = 87;
             // 
             // title
             // 
             title.AutoSize = true;
             title.Font = new Font("Yu Gothic UI Semibold", 16F);
-            title.Location = new Point(153, 15);
+            title.Location = new Point(235, 15);
             title.Name = "title";
             title.Size = new Size(129, 37);
             title.TabIndex = 2;
@@ -120,6 +125,7 @@ namespace Desktop_Application
             // 
             // close_btn
             // 
+            close_btn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             close_btn.BackColor = Color.Transparent;
             close_btn.BackgroundColor = Color.Transparent;
             close_btn.BorderColor = Color.Transparent;
@@ -133,7 +139,7 @@ namespace Desktop_Application
             close_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             close_btn.ForeColor = Color.White;
             close_btn.Image = (Image)resources.GetObject("close_btn.Image");
-            close_btn.Location = new Point(384, 13);
+            close_btn.Location = new Point(538, 13);
             close_btn.Margin = new Padding(3, 4, 3, 4);
             close_btn.Name = "close_btn";
             close_btn.Size = new Size(41, 47);
@@ -152,56 +158,100 @@ namespace Desktop_Application
             label2.TabIndex = 86;
             label2.Text = "Last name";
             // 
-            // textBox_category
+            // textBox_lastName
             // 
-            textBox_category.BackColor = Color.WhiteSmoke;
-            textBox_category.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_category.Location = new Point(144, 148);
-            textBox_category.Margin = new Padding(3, 4, 3, 4);
-            textBox_category.Name = "textBox_category";
-            textBox_category.Size = new Size(294, 39);
-            textBox_category.TabIndex = 95;
+            textBox_lastName.BackColor = Color.WhiteSmoke;
+            textBox_lastName.Font = new Font("Yu Gothic UI Semibold", 14F);
+            textBox_lastName.Location = new Point(144, 148);
+            textBox_lastName.Margin = new Padding(3, 4, 3, 4);
+            textBox_lastName.Name = "textBox_lastName";
+            textBox_lastName.Size = new Size(436, 39);
+            textBox_lastName.TabIndex = 2;
             // 
-            // textBox1
+            // textBox_firstName
             // 
-            textBox1.BackColor = Color.WhiteSmoke;
-            textBox1.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox1.Location = new Point(144, 101);
-            textBox1.Margin = new Padding(3, 4, 3, 4);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(294, 39);
-            textBox1.TabIndex = 96;
+            textBox_firstName.BackColor = Color.WhiteSmoke;
+            textBox_firstName.Font = new Font("Yu Gothic UI Semibold", 14F);
+            textBox_firstName.Location = new Point(144, 101);
+            textBox_firstName.Margin = new Padding(3, 4, 3, 4);
+            textBox_firstName.Name = "textBox_firstName";
+            textBox_firstName.Size = new Size(436, 39);
+            textBox_firstName.TabIndex = 1;
             // 
-            // textBox2
+            // textBox_email
             // 
-            textBox2.BackColor = Color.WhiteSmoke;
-            textBox2.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox2.Location = new Point(144, 195);
-            textBox2.Margin = new Padding(3, 4, 3, 4);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(294, 39);
-            textBox2.TabIndex = 98;
+            textBox_email.BackColor = Color.WhiteSmoke;
+            textBox_email.Font = new Font("Yu Gothic UI Semibold", 14F);
+            textBox_email.Location = new Point(144, 242);
+            textBox_email.Margin = new Padding(3, 4, 3, 4);
+            textBox_email.Name = "textBox_email";
+            textBox_email.Size = new Size(436, 39);
+            textBox_email.TabIndex = 3;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label1.Location = new Point(12, 198);
+            label1.Location = new Point(12, 245);
             label1.Name = "label1";
             label1.Size = new Size(72, 32);
             label1.TabIndex = 97;
             label1.Text = "Email";
+            // 
+            // textBox_address
+            // 
+            textBox_address.BackColor = Color.WhiteSmoke;
+            textBox_address.Font = new Font("Yu Gothic UI Semibold", 14F);
+            textBox_address.Location = new Point(144, 289);
+            textBox_address.Margin = new Padding(3, 4, 3, 4);
+            textBox_address.Name = "textBox_address";
+            textBox_address.Size = new Size(436, 39);
+            textBox_address.TabIndex = 4;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label3.Location = new Point(12, 292);
+            label3.Name = "label3";
+            label3.Size = new Size(100, 32);
+            label3.TabIndex = 99;
+            label3.Text = "Address";
+            // 
+            // textBox_username
+            // 
+            textBox_username.BackColor = Color.WhiteSmoke;
+            textBox_username.Font = new Font("Yu Gothic UI Semibold", 14F);
+            textBox_username.Location = new Point(144, 195);
+            textBox_username.Margin = new Padding(3, 4, 3, 4);
+            textBox_username.Name = "textBox_username";
+            textBox_username.Size = new Size(436, 39);
+            textBox_username.TabIndex = 100;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label4.Location = new Point(12, 198);
+            label4.Name = "label4";
+            label4.Size = new Size(124, 32);
+            label4.TabIndex = 101;
+            label4.Text = "Username";
             // 
             // AddUser
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(571, 487);
-            Controls.Add(textBox2);
+            ClientSize = new Size(594, 416);
+            Controls.Add(textBox_username);
+            Controls.Add(label4);
+            Controls.Add(textBox_address);
+            Controls.Add(label3);
+            Controls.Add(textBox_email);
             Controls.Add(label1);
-            Controls.Add(textBox1);
-            Controls.Add(textBox_category);
+            Controls.Add(textBox_firstName);
+            Controls.Add(textBox_lastName);
             Controls.Add(save);
             Controls.Add(cancel);
             Controls.Add(label_publisher);
@@ -229,9 +279,13 @@ namespace Desktop_Application
         private Label title;
         private RoundedButton close_btn;
         private Label label2;
-        private TextBox textBox_category;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox textBox_lastName;
+        private TextBox textBox_firstName;
+        private TextBox textBox_email;
         private Label label1;
+        private TextBox textBox_address;
+        private Label label3;
+        private TextBox textBox_username;
+        private Label label4;
     }
 }
