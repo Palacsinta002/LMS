@@ -5,16 +5,9 @@
 class UserClass{
     private $username;
 
-    private $roleID;
-
-    private $firstName;
-
-    private $lastName;
-
-    private $email;
-
     public function __construct($username,$password) {
         require_once __DIR__ . "/../InputMethods.php";
+        
         $this->setUsernameAndPassword($username,$password);
         
     }
@@ -32,13 +25,10 @@ class UserClass{
             
             $data = $result -> fetch_all(MYSQLI_ASSOC);
             if (password_verify($password,$data[0]["password"])){
-            $this->username = html_entity_decode($data[0]["username"]);
-            $this->roleID = html_entity_decode($data[0]["roleID"]);
-            $this->firstName = html_entity_decode($data[0]["firstname"]);
-            $this->lastName = html_entity_decode($data[0]["lastname"]);
-            $this->email = html_entity_decode($data[0]["email"]);
-            echo json_encode(["token" =>"anyád"]);
-        }
+                $envVariables = include_once __DIR__ ."/../config/config.php";
+                $JWT_KEY = $envVariables["JWT_KEY"];
+                echo json_encode(["token" => makeToken($JWT_KEY,$data[0]["username"],$data[0]["id"])]);
+            }
         else{
             errorOutput("7");}
         }
@@ -49,14 +39,7 @@ class UserClass{
         $conn->close();
         
 
-    }
-
-    function getUsername(){
-        return $this->username;
-    }
-
-    
-
+    } 
 
 }
 

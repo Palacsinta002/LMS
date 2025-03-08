@@ -1,11 +1,16 @@
 <?php
 ####################  This file is a helper file for the rest of the .php files.   ####################
 
+require 'vendor/autoload.php';
+
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
 
 ####################  This is a simple validate function. Require before making any queries  ####################
 function validateTheInput($input)
 {
-    $input = htmlentities($input);
+    $input = htmlspecialchars($input);
     $input = stripcslashes($input);
     $input = trim($input);
     return $input;
@@ -25,27 +30,49 @@ function getPostBody(){
 ####################  Making an api endpoints  ####################
 function makePostApiEndpoints($endpoints, $uri, $folder){
     for ($i=0; $i < count($endpoints); $i++) { 
-        echo $uri[count($uri)-1];
-        if ($uri[count($uri)-1] == $endpoints[$i]){
-            require_once __DIR__ . "/$folder" . "/" . $endpoints[$i].".php";
-            call_user_func($endpoints[$i]);
+        for ($j= 0; $j < count($endpoints[$i]); $j++){
+            if ($uri[count($uri)-1] == $endpoints[$i][$j]){
+                require_once __DIR__ . "/" . $folder[$i] . "/" . $endpoints[$i][$j].".php";
+                call_user_func($endpoints[$i][$j]);
+                die();
+            }
         }
         
+        
     }
-    errorOutput("0");
+    errorOutput("18");
     
 }
 
+####################  Delete from list and reseting its keys  ####################
 function deleteFromList($list,$index){
-    $found = false;
-    foreach ($list as $key => $value) {
-        if ($key == $index) {
-            unset($list[$key]); 
-            $found = true;
-            break;
-        }
+    for ($i= $index; $i < count($list)-1; $i++){
+        $list[$i] = $list[$i+1];
+    }
+    unset($list[count($list)-1]);
+    return $list;
+}
 
+####################  Make a token with HS256 hash key and with the secret key  ####################
 
+function makeToken($secretKey,$username,$userID) {
+    $payload = [
+        "sub" => $username,
+        "iss" => "http://localhost:5173",
+        "iat" => time(),
+        "exp" => time() + 3600,
+        "user_id" => $userID
+    ];
+    return JWT::encode($payload, $secretKey, 'HS256');
+    }
+
+####################  Decode the token by the secret key and HS256 hash  ####################
+function decodeToken($token,$secretKey){
+    try {
+        $decoded = JWT::decode($token, new Key($secretKey, 'HS256'));
+        echo json_encode(["Token" => "valid"]);
+    } catch (Exception $e) {
+        echo json_encode(["Invalid Token: " => $e->getMessage()]);
     }
 }
 ?>

@@ -17,3 +17,5 @@
 16 : Img file is missing;
 17 : wrong request method;
 18 : Endpoint not Found;
+19 : Not allowed origin;
+20 : Expired token;
