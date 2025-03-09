@@ -1,17 +1,8 @@
-<<<<<<< HEAD
-import React, { useState } from 'react'
-import axios from "axios"
-import { data, Link, useNavigate } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import { setter } from '../Hooks/TokenSlice'
-import "./Login.css"
-=======
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../Hooks/TokenSlice"; // Import the thunk
 import "./Login.css";
->>>>>>> 0d84cecf17424e82cf860f3a653a686fa207ac1f
 
 export default function Login() {
   const [username, setUsername] = useState("");
