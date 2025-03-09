@@ -13,7 +13,6 @@ function getbooks($uriData){
                 "category" =>" and categories.category =",
                 "publicationYear" =>" and books.publicationYear ="
             ];
-    $sqlParamaters = [];
     # ignore the last element if the uriData is odd
     $lengthOfUriDoubles = (count($uriData)-1) %2 == 0 ? count($uriData)-1 : count($uriData)-2;
     # loop through the uriData and add the data to the options array

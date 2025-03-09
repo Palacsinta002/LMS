@@ -1,18 +1,24 @@
+<<<<<<< HEAD
 import React, { useState } from 'react'
 import axios from "axios"
 import { data, Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { setter } from '../Hooks/TokenSlice'
 import "./Login.css"
+=======
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { loginUser } from "../Hooks/TokenSlice"; // Import the thunk
+import "./Login.css";
+>>>>>>> 0d84cecf17424e82cf860f3a653a686fa207ac1f
 
 export default function Login() {
-  axios.defaults.withCredentials = true;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+<<<<<<< HEAD
   const token = useSelector((state) => state.token.value);
   const dispatch = useDispatch();
 
@@ -47,6 +53,20 @@ export default function Login() {
       }
     } finally {
       setLoading(false);
+=======
+  const dispatch = useDispatch();
+  
+  const { loading, error, isAuthenticated } = useSelector((state) => state.auth);
+
+  async function HandleSubmit(event) {
+    event.preventDefault();
+    
+    const result = await dispatch(loginUser({ username, password }));
+
+    // Check if login was successful
+    if (loginUser.fulfilled.match(result)) {
+      navigate("/dashboard");
+>>>>>>> 0d84cecf17424e82cf860f3a653a686fa207ac1f
     }
   }
 
@@ -60,6 +80,7 @@ export default function Login() {
         <form onSubmit={HandleSubmit}>
           <label>Username</label>
           <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+
           <label>Password</label>
           <div className="password-input">
             <input 
@@ -75,12 +96,14 @@ export default function Login() {
               {showPassword ? "Hide" : "Show"}
             </button>
           </div>
+
           {error && <p className="error-message">{error}</p>}
-          <span><Link className="link1">Forgot your password?</Link></span>
-          <input type="submit" value="Sign in" disabled={loading} />
+
+          <span><Link to="/forgot-password" className="link1">Forgot your password?</Link></span>
+          <input type="submit" value={loading ? "Signing in..." : "Sign in"} disabled={loading} />
           <span><Link to="/register" className="link2">Create new account?</Link></span>
         </form>
       </div>
     </div>
-  )
+  );
 }

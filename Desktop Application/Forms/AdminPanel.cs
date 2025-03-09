@@ -1,9 +1,9 @@
-﻿// Négy fázisú bukófrekvenciás félhomálytizedelő
-namespace Desktop_Application;
+﻿namespace Desktop_Application;
 
 using Desktop_Application.Classes;
 using Desktop_Application.Forms.Books;
 using Desktop_Application.Forms.Borrowings;
+using Desktop_Application.Forms.Categories;
 
 public partial class AdminPanel : Form
 {
@@ -19,8 +19,8 @@ public partial class AdminPanel : Form
 
     private void OnLoad(object sender, EventArgs e)
     {
-        users_btn.Visible = _isAdmin;
-        divider_pnl4.Visible = _isAdmin;
+        users_button_edit.Visible = _isAdmin;
+        users_button_remove.Visible = _isAdmin;
 
         hello_lbl.Text = $"Hello {_name}!";
 
@@ -112,7 +112,7 @@ public partial class AdminPanel : Form
     // Removes book from the database
     private void RemoveBooks(object sender, EventArgs e)
     {
-        RemoveBook removeBook = new(books_grd);
+        RemoveBooks removeBook = new(books_grd);
         removeBook.ShowDialog();
         RefreshBooks(sender, e);
     }
@@ -220,61 +220,30 @@ public partial class AdminPanel : Form
     // Adds a category to the database
     private void AddCategory(object sender, EventArgs e)
     {
-
+        AddCategory addCategory = new();
+        addCategory.ShowDialog();
+        RefreshCategories(sender, e);
     }
 
     // Edit the selected category from the grid and then updates it in the database
     private void EditCategory(object sender, EventArgs e)
     {
-
+        if (categories_grd.SelectedRows.Count != 1)
+        {
+            MessageBox.Show("You must select ONE category to edit!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return;
+        }
+        EditCategory editCategory = new(categories_grd);
+        editCategory.ShowDialog();
+        RefreshCategories(sender, e);
     }
 
     // Removes category from the database - Marks the book as returned
     private void RemoveCategories(object sender, EventArgs e)
     {
-
-    }
-    #endregion
-
-    #region Users
-    // USERS
-    // Shows Users page and hides other pages
-    private void ShowUsers(object sender, EventArgs e)
-    {
-        if (users_pnl.Visible != true)
-        {
-            HidePanels();
-            users_pnl.Visible = true;
-        }
-    }
-
-    // Select users from the database and fills the grid
-    private void RefreshUsers(object sender, EventArgs e)
-    {
-
-    }
-
-    // Live search - Searches users in the grid
-    private void SearchUsers(object sender, EventArgs e)
-    {
-
-    }
-
-    // Adds a user to the database
-    private void AddUser(object sender, EventArgs e)
-    {
-
-    }
-
-    // Edit the selected user from the grid and then updates it in the database
-    private void EditUser(object sender, EventArgs e)
-    {
-
-    }
-
-    // Removes user from the database - Marks the book as returned
-    private void RemoveUsers(object sender, EventArgs e)
-    {
+        RemoveCategories removeCategories = new(categories_grd);
+        removeCategories.ShowDialog();
+        RefreshCategories(sender, e);
 
     }
     #endregion
@@ -362,6 +331,63 @@ public partial class AdminPanel : Form
     private void RemovePublishers(object sender, EventArgs e)
     {
 
+    }
+    #endregion
+
+    #region Users
+    // USERS
+    // Shows Users page and hides other pages
+    private void ShowUsers(object sender, EventArgs e)
+    {
+        if (users_pnl.Visible != true)
+        {
+            HidePanels();
+            users_pnl.Visible = true;
+            RefreshUsers(sender, e);
+        }
+    }
+
+    // Select users from the database and fills the grid
+    private void RefreshUsers(object sender, EventArgs e)
+    {
+        var result = HandleQueries.Select("SelectUser");
+        HandleGrids.Fill(users_grd, result);
+    }
+
+    // Live search - Searches users in the grid
+    private void SearchUsers(object sender, EventArgs e)
+    {
+        string[] cols = ["users_name", "users_username"];
+        HandleGrids.SearchGrid(users_grd, users_src.Text, cols);
+    }
+
+    // Adds a user to the database
+    private void AddUser(object sender, EventArgs e)
+    {
+        AddUser addUser = new();
+        addUser.ShowDialog();
+        RefreshUsers(sender, e);
+    }
+
+    // Edit the selected user from the grid and then updates it in the database
+    private void EditUser(object sender, EventArgs e)
+    {
+        if (users_grd.SelectedRows.Count != 1)
+        {
+            MessageBox.Show("You must select ONE user to edit!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return;
+        }
+        EditUser editUser = new(users_grd);
+        editUser.ShowDialog();
+        RefreshUsers(sender, e);
+    }
+
+    // Removes user from the database - Marks the book as returned
+    private void RemoveUsers(object sender, EventArgs e)
+    {
+        RemoveUser removeUser = new(users_grd);
+        removeUser.ShowDialog();
+        RefreshUsers(sender, e);
     }
     #endregion
 

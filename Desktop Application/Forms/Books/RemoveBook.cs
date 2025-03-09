@@ -2,11 +2,11 @@
 
 namespace Desktop_Application.Forms.Books;
 
-public partial class RemoveBook : Form
+public partial class RemoveBooks : Form
 {
     private readonly DataGridView _books_grd;
 
-    public RemoveBook(DataGridView books_grd)
+    public RemoveBooks(DataGridView books_grd)
     {
         _books_grd = books_grd;
         InitializeComponent();

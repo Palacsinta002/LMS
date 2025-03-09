@@ -33,21 +33,21 @@ namespace Desktop_Application.Forms.Borrowings
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChooseBooks));
             header = new Panel();
             title = new Label();
-            close_btn = new Components.RoundedButton();
+            close_btn = new Desktop_Application.Components.RoundedButton();
             allBooks_grd = new DataGridView();
             allBooks_title = new DataGridViewTextBoxColumn();
             allBooks_author = new DataGridViewTextBoxColumn();
             allBooks_pubYear = new DataGridViewTextBoxColumn();
             allBooks_isbn = new DataGridViewTextBoxColumn();
             selectedBooks_grd = new DataGridView();
-            save = new Components.RoundedButton();
-            cancel = new Components.RoundedButton();
-            rightArrow_btn = new Components.RoundedButton();
-            leftArrow_btn = new Components.RoundedButton();
             selectedBooks_title = new DataGridViewTextBoxColumn();
             selectedBooks_author = new DataGridViewTextBoxColumn();
             selectedBooks_pubYear = new DataGridViewTextBoxColumn();
             selectedBooks_isbn = new DataGridViewTextBoxColumn();
+            rightArrow_btn = new Desktop_Application.Components.RoundedButton();
+            leftArrow_btn = new Desktop_Application.Components.RoundedButton();
+            save = new Desktop_Application.Components.RoundedButton();
+            cancel = new Desktop_Application.Components.RoundedButton();
             header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)allBooks_grd).BeginInit();
             ((System.ComponentModel.ISupportInitialize)selectedBooks_grd).BeginInit();
@@ -59,17 +59,18 @@ namespace Desktop_Application.Forms.Borrowings
             header.Controls.Add(title);
             header.Controls.Add(close_btn);
             header.Location = new Point(1, 1);
+            header.Margin = new Padding(3, 4, 3, 4);
             header.Name = "header";
-            header.Size = new Size(998, 55);
+            header.Size = new Size(1141, 73);
             header.TabIndex = 62;
             // 
             // title
             // 
             title.AutoSize = true;
             title.Font = new Font("Yu Gothic UI Semibold", 16F);
-            title.Location = new Point(422, 10);
+            title.Location = new Point(482, 13);
             title.Name = "title";
-            title.Size = new Size(153, 30);
+            title.Size = new Size(189, 37);
             title.TabIndex = 2;
             title.Text = "Choose Books";
             // 
@@ -89,9 +90,10 @@ namespace Desktop_Application.Forms.Borrowings
             close_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             close_btn.ForeColor = Color.White;
             close_btn.Image = (Image)resources.GetObject("close_btn.Image");
-            close_btn.Location = new Point(952, 9);
+            close_btn.Location = new Point(1088, 12);
+            close_btn.Margin = new Padding(3, 4, 3, 4);
             close_btn.Name = "close_btn";
-            close_btn.Size = new Size(36, 35);
+            close_btn.Size = new Size(41, 47);
             close_btn.TabIndex = 25;
             close_btn.TabStop = false;
             close_btn.TextColor = Color.White;
@@ -108,7 +110,8 @@ namespace Desktop_Application.Forms.Borrowings
             allBooks_grd.BackgroundColor = Color.White;
             allBooks_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             allBooks_grd.Columns.AddRange(new DataGridViewColumn[] { allBooks_title, allBooks_author, allBooks_pubYear, allBooks_isbn });
-            allBooks_grd.Location = new Point(12, 62);
+            allBooks_grd.Location = new Point(14, 83);
+            allBooks_grd.Margin = new Padding(3, 4, 3, 4);
             allBooks_grd.Name = "allBooks_grd";
             allBooks_grd.ReadOnly = true;
             allBooks_grd.RowHeadersVisible = false;
@@ -118,7 +121,7 @@ namespace Desktop_Application.Forms.Borrowings
             allBooks_grd.ShowCellToolTips = false;
             allBooks_grd.ShowEditingIcon = false;
             allBooks_grd.ShowRowErrors = false;
-            allBooks_grd.Size = new Size(453, 472);
+            allBooks_grd.Size = new Size(518, 629);
             allBooks_grd.TabIndex = 63;
             // 
             // allBooks_title
@@ -127,7 +130,7 @@ namespace Desktop_Application.Forms.Borrowings
             allBooks_title.MinimumWidth = 6;
             allBooks_title.Name = "allBooks_title";
             allBooks_title.ReadOnly = true;
-            allBooks_title.Width = 54;
+            allBooks_title.Width = 67;
             // 
             // allBooks_author
             // 
@@ -135,7 +138,7 @@ namespace Desktop_Application.Forms.Borrowings
             allBooks_author.MinimumWidth = 6;
             allBooks_author.Name = "allBooks_author";
             allBooks_author.ReadOnly = true;
-            allBooks_author.Width = 69;
+            allBooks_author.Width = 83;
             // 
             // allBooks_pubYear
             // 
@@ -143,7 +146,7 @@ namespace Desktop_Application.Forms.Borrowings
             allBooks_pubYear.MinimumWidth = 6;
             allBooks_pubYear.Name = "allBooks_pubYear";
             allBooks_pubYear.ReadOnly = true;
-            allBooks_pubYear.Width = 107;
+            allBooks_pubYear.Width = 144;
             // 
             // allBooks_isbn
             // 
@@ -151,9 +154,9 @@ namespace Desktop_Application.Forms.Borrowings
             allBooks_isbn.MinimumWidth = 6;
             allBooks_isbn.Name = "allBooks_isbn";
             allBooks_isbn.ReadOnly = true;
-            allBooks_isbn.Width = 57;
+            allBooks_isbn.Width = 70;
             // 
-            // borrowingBooks_grd
+            // selectedBooks_grd
             // 
             selectedBooks_grd.AllowUserToAddRows = false;
             selectedBooks_grd.AllowUserToDeleteRows = false;
@@ -164,8 +167,9 @@ namespace Desktop_Application.Forms.Borrowings
             selectedBooks_grd.BackgroundColor = Color.White;
             selectedBooks_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             selectedBooks_grd.Columns.AddRange(new DataGridViewColumn[] { selectedBooks_title, selectedBooks_author, selectedBooks_pubYear, selectedBooks_isbn });
-            selectedBooks_grd.Location = new Point(535, 62);
-            selectedBooks_grd.Name = "borrowingBooks_grd";
+            selectedBooks_grd.Location = new Point(611, 83);
+            selectedBooks_grd.Margin = new Padding(3, 4, 3, 4);
+            selectedBooks_grd.Name = "selectedBooks_grd";
             selectedBooks_grd.ReadOnly = true;
             selectedBooks_grd.RowHeadersVisible = false;
             selectedBooks_grd.RowHeadersWidth = 51;
@@ -174,49 +178,40 @@ namespace Desktop_Application.Forms.Borrowings
             selectedBooks_grd.ShowCellToolTips = false;
             selectedBooks_grd.ShowEditingIcon = false;
             selectedBooks_grd.ShowRowErrors = false;
-            selectedBooks_grd.Size = new Size(453, 472);
+            selectedBooks_grd.Size = new Size(518, 629);
             selectedBooks_grd.TabIndex = 64;
             // 
-            // save
+            // selectedBooks_title
             // 
-            save.BackColor = Color.FromArgb(80, 77, 180);
-            save.BackgroundColor = Color.FromArgb(80, 77, 180);
-            save.BorderColor = Color.Transparent;
-            save.BorderRadius = 5;
-            save.BorderSize = 0;
-            save.FlatAppearance.BorderSize = 0;
-            save.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
-            save.FlatStyle = FlatStyle.Flat;
-            save.Font = new Font("Yu Gothic UI Semibold", 14F);
-            save.ForeColor = Color.White;
-            save.Location = new Point(822, 552);
-            save.Name = "save";
-            save.Size = new Size(80, 36);
-            save.TabIndex = 65;
-            save.TabStop = false;
-            save.Text = "OK";
-            save.TextColor = Color.White;
-            save.UseVisualStyleBackColor = false;
-            save.Click += Ok;
+            selectedBooks_title.HeaderText = "Title";
+            selectedBooks_title.MinimumWidth = 6;
+            selectedBooks_title.Name = "selectedBooks_title";
+            selectedBooks_title.ReadOnly = true;
+            selectedBooks_title.Width = 67;
             // 
-            // cancel
+            // selectedBooks_author
             // 
-            cancel.BackColor = Color.WhiteSmoke;
-            cancel.BackgroundColor = Color.WhiteSmoke;
-            cancel.BorderColor = Color.FromArgb(80, 77, 180);
-            cancel.BorderRadius = 5;
-            cancel.BorderSize = 2;
-            cancel.FlatAppearance.BorderSize = 0;
-            cancel.FlatStyle = FlatStyle.Flat;
-            cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
-            cancel.ForeColor = Color.Black;
-            cancel.Location = new Point(908, 552);
-            cancel.Name = "cancel";
-            cancel.Size = new Size(80, 36);
-            cancel.TabIndex = 66;
-            cancel.Text = "Cancel";
-            cancel.TextColor = Color.Black;
-            cancel.UseVisualStyleBackColor = false;
+            selectedBooks_author.HeaderText = "Author";
+            selectedBooks_author.MinimumWidth = 6;
+            selectedBooks_author.Name = "selectedBooks_author";
+            selectedBooks_author.ReadOnly = true;
+            selectedBooks_author.Width = 83;
+            // 
+            // selectedBooks_pubYear
+            // 
+            selectedBooks_pubYear.HeaderText = "Publication Year";
+            selectedBooks_pubYear.MinimumWidth = 6;
+            selectedBooks_pubYear.Name = "selectedBooks_pubYear";
+            selectedBooks_pubYear.ReadOnly = true;
+            selectedBooks_pubYear.Width = 144;
+            // 
+            // selectedBooks_isbn
+            // 
+            selectedBooks_isbn.HeaderText = "ISBN";
+            selectedBooks_isbn.MinimumWidth = 6;
+            selectedBooks_isbn.Name = "selectedBooks_isbn";
+            selectedBooks_isbn.ReadOnly = true;
+            selectedBooks_isbn.Width = 70;
             // 
             // rightArrow_btn
             // 
@@ -230,9 +225,10 @@ namespace Desktop_Application.Forms.Borrowings
             rightArrow_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             rightArrow_btn.ForeColor = Color.Black;
             rightArrow_btn.Image = (Image)resources.GetObject("rightArrow_btn.Image");
-            rightArrow_btn.Location = new Point(480, 255);
+            rightArrow_btn.Location = new Point(549, 340);
+            rightArrow_btn.Margin = new Padding(3, 4, 3, 4);
             rightArrow_btn.Name = "rightArrow_btn";
-            rightArrow_btn.Size = new Size(40, 40);
+            rightArrow_btn.Size = new Size(46, 53);
             rightArrow_btn.TabIndex = 68;
             rightArrow_btn.TextColor = Color.Black;
             rightArrow_btn.UseVisualStyleBackColor = false;
@@ -250,60 +246,73 @@ namespace Desktop_Application.Forms.Borrowings
             leftArrow_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             leftArrow_btn.ForeColor = Color.Black;
             leftArrow_btn.Image = (Image)resources.GetObject("leftArrow_btn.Image");
-            leftArrow_btn.Location = new Point(480, 301);
+            leftArrow_btn.Location = new Point(549, 401);
+            leftArrow_btn.Margin = new Padding(3, 4, 3, 4);
             leftArrow_btn.Name = "leftArrow_btn";
-            leftArrow_btn.Size = new Size(40, 40);
+            leftArrow_btn.Size = new Size(46, 53);
             leftArrow_btn.TabIndex = 69;
             leftArrow_btn.TextColor = Color.Black;
             leftArrow_btn.UseVisualStyleBackColor = false;
             leftArrow_btn.Click += MoveLeft;
             // 
-            // selectedBooks_title
+            // save
             // 
-            selectedBooks_title.HeaderText = "Title";
-            selectedBooks_title.MinimumWidth = 6;
-            selectedBooks_title.Name = "selectedBooks_title";
-            selectedBooks_title.ReadOnly = true;
-            selectedBooks_title.Width = 54;
+            save.BackColor = Color.FromArgb(80, 77, 180);
+            save.BackgroundColor = Color.FromArgb(80, 77, 180);
+            save.BorderColor = Color.Transparent;
+            save.BorderRadius = 5;
+            save.BorderSize = 0;
+            save.FlatAppearance.BorderSize = 0;
+            save.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            save.FlatStyle = FlatStyle.Flat;
+            save.Font = new Font("Yu Gothic UI Semibold", 14F);
+            save.ForeColor = Color.White;
+            save.Location = new Point(929, 739);
+            save.Margin = new Padding(3, 4, 3, 4);
+            save.Name = "save";
+            save.Size = new Size(97, 48);
+            save.TabIndex = 83;
+            save.TabStop = false;
+            save.Text = "Ok";
+            save.TextColor = Color.White;
+            save.UseVisualStyleBackColor = false;
+            save.Click += Ok;
             // 
-            // selectedBooks_author
+            // cancel
             // 
-            selectedBooks_author.HeaderText = "Author";
-            selectedBooks_author.MinimumWidth = 6;
-            selectedBooks_author.Name = "selectedBooks_author";
-            selectedBooks_author.ReadOnly = true;
-            selectedBooks_author.Width = 69;
-            // 
-            // selectedBooks_pubYear
-            // 
-            selectedBooks_pubYear.HeaderText = "Publication Year";
-            selectedBooks_pubYear.MinimumWidth = 6;
-            selectedBooks_pubYear.Name = "selectedBooks_pubYear";
-            selectedBooks_pubYear.ReadOnly = true;
-            selectedBooks_pubYear.Width = 107;
-            // 
-            // selectedBooks_isbn
-            // 
-            selectedBooks_isbn.HeaderText = "ISBN";
-            selectedBooks_isbn.MinimumWidth = 6;
-            selectedBooks_isbn.Name = "selectedBooks_isbn";
-            selectedBooks_isbn.ReadOnly = true;
-            selectedBooks_isbn.Width = 57;
+            cancel.BackColor = Color.WhiteSmoke;
+            cancel.BackgroundColor = Color.WhiteSmoke;
+            cancel.BorderColor = Color.FromArgb(80, 77, 180);
+            cancel.BorderRadius = 5;
+            cancel.BorderSize = 2;
+            cancel.FlatAppearance.BorderSize = 0;
+            cancel.FlatStyle = FlatStyle.Flat;
+            cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
+            cancel.ForeColor = Color.Black;
+            cancel.Location = new Point(1032, 739);
+            cancel.Margin = new Padding(3, 4, 3, 4);
+            cancel.Name = "cancel";
+            cancel.Size = new Size(97, 48);
+            cancel.TabIndex = 84;
+            cancel.Text = "Cancel";
+            cancel.TextColor = Color.Black;
+            cancel.UseVisualStyleBackColor = false;
             // 
             // ChooseBooks
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1000, 600);
-            Controls.Add(leftArrow_btn);
-            Controls.Add(rightArrow_btn);
+            ClientSize = new Size(1143, 800);
             Controls.Add(save);
             Controls.Add(cancel);
+            Controls.Add(leftArrow_btn);
+            Controls.Add(rightArrow_btn);
             Controls.Add(selectedBooks_grd);
             Controls.Add(allBooks_grd);
             Controls.Add(header);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "ChooseBooks";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ChooseBooks";
@@ -322,8 +331,6 @@ namespace Desktop_Application.Forms.Borrowings
         private Components.RoundedButton close_btn;
         private DataGridView allBooks_grd;
         private DataGridView selectedBooks_grd;
-        private Components.RoundedButton save;
-        private Components.RoundedButton cancel;
         private Components.RoundedButton rightArrow_btn;
         private Components.RoundedButton leftArrow_btn;
         private DataGridViewTextBoxColumn allBooks_title;
@@ -334,5 +341,7 @@ namespace Desktop_Application.Forms.Borrowings
         private DataGridViewTextBoxColumn selectedBooks_author;
         private DataGridViewTextBoxColumn selectedBooks_pubYear;
         private DataGridViewTextBoxColumn selectedBooks_isbn;
+        private Components.RoundedButton save;
+        private Components.RoundedButton cancel;
     }
 }

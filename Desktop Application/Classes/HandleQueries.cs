@@ -12,7 +12,7 @@ internal class HandleQueries
 
 
 
-    // Insert functions
+    // INSERT functions
     // Insert book with the given arguments
     internal static void InsertBook(string isbn, string publisher, string title, string pubYear, string authorsString, string categoriesString)
     {
@@ -34,6 +34,7 @@ internal class HandleQueries
             connection.RunSqlCommand(query);
         }
     }
+    // Insert borrowing with the given arguments
     internal static void InsertBorrowing(string username, string isbn, DateTime borrowDate, DateTime dueDate)
     {
         string borrowDateString = $"{borrowDate.Year}-{borrowDate.Month}-{borrowDate.Day}";
@@ -43,11 +44,27 @@ internal class HandleQueries
             $"\"{borrowDateString}\", \"{dueDateString}\")";
         connection.RunSqlCommand(query);
     }
+    // Insert category with the given arguments
+    internal static void InsertCategory(string category)
+    {
+        Connection connection = new();
+        string query = $"INSERT INTO Categories(Category) VALUES(\"{category}\")";
+        connection.RunSqlCommand(query);
+    }
+    // Insert author with the given arguments
+    // Insert publisher with the given arguments
+    // Insert user with the given arguments
+    internal static void InsertUser(string firstName, string lastName, string email, string username, string hashedPassword, string address)
+    {
+        Connection connection = new();
+        string query = $"INSERT INTO Users(FirstName, LastName, Email, Username, Password, Address, RoleID) VALUES(\"{firstName}\", \"{lastName}\", \"{email}\", \"{username}\", \"{hashedPassword}\", \"{address}\", 3)";
+        connection.RunSqlCommand(query);
+    }
 
 
 
 
-    // Update functions
+    // UPDATE functions
     // Update book with the given arguments
     internal static void UpdateBook(DataGridView books_grd, string isbn, string publisher, string title, string pubYear, string authorsString, string categoriesString)
     {
@@ -55,7 +72,6 @@ internal class HandleQueries
 
         InsertBook(isbn, publisher, title, pubYear, authorsString, categoriesString);
     }
-
     // Update borrowing
     internal static void UpdateBorrowing(string username, string isbn, DateTime borrowDate, DateTime dueDate)
     {
@@ -67,7 +83,6 @@ internal class HandleQueries
             $"WHERE ISBN = {isbn}";
         connection.RunSqlCommand(query);
     }
-
     // Update borrowing - mark as returned
     internal static void UpdateBorrowing(DataGridView borrowings_grd, string returnDate)
     {
@@ -75,6 +90,28 @@ internal class HandleQueries
         foreach (DataGridViewRow row in borrowings_grd.SelectedRows)
         {
             string query = $"UPDATE Borrowings SET ReturnDate = \"{returnDate}\" WHERE ISBN = {row.Cells[2].Value}";
+            connection.RunSqlCommand(query);
+        }
+    }
+    // Update category with the given arguments
+    internal static void UpdateCategory(DataGridView categories_grd, string category)
+    {
+        Connection connection = new();
+        foreach (DataGridViewRow row in categories_grd.SelectedRows)
+        {
+            string query = $"UPDATE Categories SET Category = \"{category}\" WHERE Category = \"{row.Cells[0].Value}\"";
+            connection.RunSqlCommand(query);
+        }
+    }
+    // Update author with the given arguments
+    // Update publisher with the given arguments
+    // Update user with the given arguments
+    internal static void UpdatetUser(DataGridView users_grd, string firstName, string lastName, string email, string username, string address)
+    {
+        Connection connection = new();
+        foreach (DataGridViewRow row in users_grd.SelectedRows)
+        {
+            string query = $"UPDATE Users SET FirstName = \"{firstName}\", LastName = \"{lastName}\", Email = \"{email}\", Username = \"{username}\", Address = \"{address}\" WHERE Username = \"{row.Cells[4].Value}\"";
             connection.RunSqlCommand(query);
         }
     }
@@ -88,7 +125,7 @@ internal class HandleQueries
         foreach (DataGridViewRow row in grd.SelectedRows)
         {
             string item = row.Cells[grdcol].Value.ToString() ?? string.Empty;
-            string query = $"DELETE FROM {table} WHERE {dbcol} = {item}";
+            string query = $"DELETE FROM {table} WHERE {dbcol} = \"{item}\"";
             connection.RunSqlCommand(query);
         }
     }

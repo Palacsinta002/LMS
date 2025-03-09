@@ -42,8 +42,8 @@ namespace Desktop_Application.Forms.Borrowings
             label5 = new Label();
             borrowDate_datePicker = new DateTimePicker();
             label3 = new Label();
-            save = new Desktop_Application.Components.RoundedButton();
             label2 = new Label();
+            save = new Desktop_Application.Components.RoundedButton();
             cancel = new Desktop_Application.Components.RoundedButton();
             header.SuspendLayout();
             SuspendLayout();
@@ -180,6 +180,16 @@ namespace Desktop_Application.Forms.Borrowings
             label3.TabIndex = 81;
             label3.Text = "Borrow Date";
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label2.Location = new Point(14, 148);
+            label2.Name = "label2";
+            label2.Size = new Size(80, 32);
+            label2.TabIndex = 79;
+            label2.Text = "Books";
+            // 
             // save
             // 
             save.BackColor = Color.FromArgb(80, 77, 180);
@@ -192,26 +202,16 @@ namespace Desktop_Application.Forms.Borrowings
             save.FlatStyle = FlatStyle.Flat;
             save.Font = new Font("Yu Gothic UI Semibold", 14F);
             save.ForeColor = Color.White;
-            save.Location = new Point(126, 308);
+            save.Location = new Point(121, 311);
             save.Margin = new Padding(3, 4, 3, 4);
             save.Name = "save";
-            save.Size = new Size(91, 48);
-            save.TabIndex = 77;
+            save.Size = new Size(97, 48);
+            save.TabIndex = 86;
             save.TabStop = false;
             save.Text = "Save";
             save.TextColor = Color.White;
             save.UseVisualStyleBackColor = false;
             save.Click += Save;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label2.Location = new Point(14, 148);
-            label2.Name = "label2";
-            label2.Size = new Size(80, 32);
-            label2.TabIndex = 79;
-            label2.Text = "Books";
             // 
             // cancel
             // 
@@ -224,11 +224,11 @@ namespace Desktop_Application.Forms.Borrowings
             cancel.FlatStyle = FlatStyle.Flat;
             cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
             cancel.ForeColor = Color.Black;
-            cancel.Location = new Point(224, 308);
+            cancel.Location = new Point(224, 311);
             cancel.Margin = new Padding(3, 4, 3, 4);
             cancel.Name = "cancel";
-            cancel.Size = new Size(91, 48);
-            cancel.TabIndex = 78;
+            cancel.Size = new Size(97, 48);
+            cancel.TabIndex = 87;
             cancel.Text = "Cancel";
             cancel.TextColor = Color.Black;
             cancel.UseVisualStyleBackColor = false;
@@ -239,6 +239,8 @@ namespace Desktop_Application.Forms.Borrowings
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(440, 372);
+            Controls.Add(save);
+            Controls.Add(cancel);
             Controls.Add(header);
             Controls.Add(chooseBooks);
             Controls.Add(textBox_books);
@@ -248,9 +250,7 @@ namespace Desktop_Application.Forms.Borrowings
             Controls.Add(label5);
             Controls.Add(borrowDate_datePicker);
             Controls.Add(label3);
-            Controls.Add(save);
             Controls.Add(label2);
-            Controls.Add(cancel);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 4, 3, 4);
             Name = "EditBorrowing";
@@ -276,8 +276,8 @@ namespace Desktop_Application.Forms.Borrowings
         private Label label5;
         private DateTimePicker borrowDate_datePicker;
         private Label label3;
-        private Components.RoundedButton save;
         private Label label2;
+        private Components.RoundedButton save;
         private Components.RoundedButton cancel;
     }
 }
