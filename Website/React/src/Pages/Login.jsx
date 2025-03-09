@@ -18,42 +18,6 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-<<<<<<< HEAD
-  const token = useSelector((state) => state.token.value);
-  const dispatch = useDispatch();
-
-  async function HandleSubmit(event) {
-    event.preventDefault();
-    setLoading(true);
-    try {
-      const response = await axios.post(
-        "/api/login",
-        { username: username, password: password },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      const data = response.data;
-      if(data.token){
-        dispatch(setter(data.token));
-        sessionStorage.setItem("token", data.token);
-        navigate("/dashboard");
-      }
-      console.log(response);
-    } catch (error) {
-      console.error(error);
-  
-      if (error.response) {
-        console.error(error.response.data.error);
-        setError(error.response.data.error || "Login failed");
-      } else {
-        setError("Network error");
-      }
-    } finally {
-      setLoading(false);
-=======
   const dispatch = useDispatch();
   
   const { loading, error, isAuthenticated } = useSelector((state) => state.auth);
@@ -66,7 +30,6 @@ export default function Login() {
     // Check if login was successful
     if (loginUser.fulfilled.match(result)) {
       navigate("/dashboard");
->>>>>>> 0d84cecf17424e82cf860f3a653a686fa207ac1f
     }
   }
 
