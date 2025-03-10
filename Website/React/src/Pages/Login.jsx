@@ -1,29 +1,52 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { loginUser } from "../Hooks/TokenSlice"; // Import the thunk
-import "./Login.css";
+import React, { useState } from 'react'
+import axios from "axios"
+import { Link, useNavigate } from 'react-router-dom'
+import "./Login.css"
+import { setAuthToken } from '../Hooks/setAuthToken';
 
 export default function Login() {
+  axios.defaults.withCredentials = true;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  
-  const { loading, error, isAuthenticated } = useSelector((state) => state.auth);
 
   async function HandleSubmit(event) {
     event.preventDefault();
-    
-    const result = await dispatch(loginUser({ username, password }));
+    setLoading(true);
+    try {
+      const response = await axios.post(
+        "/api/login",
+        { username: username, password: password },
+        {
+          headers: {
+            "method": "POST",
+            "Content-Type": "application/json",
+          }
+        });
+      console.log(response);
 
-    // Check if login was successful
-    if (loginUser.fulfilled.match(result)) {
-      navigate("/dashboard");
+      console.log(response.data);
+
+      if (response.token) {
+        sessionStorage.setItem("token", token);
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      console.error(error);
+
+      if (error.response) {
+        console.error(response.data.error);
+        setError(response.data.error || "Login failed");
+      } else {
+        setError("Network error");
+      }
+    } finally {
+      setLoading(false);
     }
   }
-
   return (
     <div className="login">
       <Link to="/" className="back-to-home">Back to Home</Link>
@@ -34,30 +57,27 @@ export default function Login() {
         <form onSubmit={HandleSubmit}>
           <label>Username</label>
           <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-
           <label>Password</label>
           <div className="password-input">
-            <input 
-              type={showPassword ? "text" : "password"} 
-              value={password} 
-              onChange={(e) => setPassword(e.target.value)} 
+            <input
+              type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
-            <button 
-              type="button" 
+            <button
+              type="button"
               onClick={() => setShowPassword(!showPassword)}
               className="toggle-password"
             >
               {showPassword ? "Hide" : "Show"}
             </button>
           </div>
-
           {error && <p className="error-message">{error}</p>}
-
-          <span><Link to="/forgot-password" className="link1">Forgot your password?</Link></span>
-          <input type="submit" value={loading ? "Signing in..." : "Sign in"} disabled={loading} />
+          <span><Link className="link1">Forgot your password?</Link></span>
+          <input type="submit" value="Sign in" disabled={loading} />
           <span><Link to="/register" className="link2">Create new account?</Link></span>
         </form>
       </div>
     </div>
-  );
+  )
 }
