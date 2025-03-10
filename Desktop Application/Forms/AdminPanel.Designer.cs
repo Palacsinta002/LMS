@@ -135,6 +135,7 @@ namespace Desktop_Application
             publishers_remove_btn = new RoundedButton();
             publishers_lbl1 = new Label();
             publishers_src = new TextBox();
+            authors_author = new DataGridViewTextBoxColumn();
             menu_pnl.SuspendLayout();
             header_pnl.SuspendLayout();
             dashboard_pnl.SuspendLayout();
@@ -1529,6 +1530,7 @@ namespace Desktop_Application
             authors_grd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             authors_grd.BackgroundColor = Color.White;
             authors_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            authors_grd.Columns.AddRange(new DataGridViewColumn[] { authors_author });
             authors_grd.Location = new Point(59, 144);
             authors_grd.Margin = new Padding(3, 4, 3, 4);
             authors_grd.Name = "authors_grd";
@@ -1826,6 +1828,14 @@ namespace Desktop_Application
             publishers_src.TabStop = false;
             publishers_src.TextChanged += SearchPublishers;
             // 
+            // authors_author
+            // 
+            authors_author.HeaderText = "Author";
+            authors_author.MinimumWidth = 6;
+            authors_author.Name = "authors_author";
+            authors_author.ReadOnly = true;
+            authors_author.Width = 83;
+            // 
             // AdminPanel
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -1834,13 +1844,13 @@ namespace Desktop_Application
             ClientSize = new Size(1125, 748);
             Controls.Add(header_pnl);
             Controls.Add(menu_pnl);
+            Controls.Add(authors_pnl);
+            Controls.Add(categories_pnl);
+            Controls.Add(borrowings_pnl);
             Controls.Add(users_pnl);
             Controls.Add(books_pnl);
             Controls.Add(dashboard_pnl);
             Controls.Add(publishers_pnl);
-            Controls.Add(authors_pnl);
-            Controls.Add(categories_pnl);
-            Controls.Add(borrowings_pnl);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
             MinimumSize = new Size(1140, 779);
@@ -1990,5 +2000,6 @@ namespace Desktop_Application
         private DataGridViewTextBoxColumn users_email;
         private DataGridViewTextBoxColumn users_address;
         private DataGridViewTextBoxColumn users_role;
+        private DataGridViewTextBoxColumn authors_author;
     }
 }

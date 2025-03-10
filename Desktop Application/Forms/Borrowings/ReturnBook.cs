@@ -44,7 +44,7 @@ public partial class ReturnBook : Form
         {
             if (row.Cells["borrowings_returnDate"].Value.ToString() != string.Empty)
             {
-                MessageBox.Show("There is at least one book selected which is already returned!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("There is at least one book selected which is already returned!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
         }
