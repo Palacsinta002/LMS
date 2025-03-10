@@ -32,14 +32,29 @@ public partial class AddCategory : Form
     {
         if (textBox_category.Text == string.Empty)
         {
-            MessageBox.Show("Category is required!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Category is required!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
         else if (!Regex.IsMatch(textBox_category.Text, @"^[^""\\]+$"))
         {
-            MessageBox.Show("Category is not in the correct format! Please check your special characters!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Category is not in the correct format! Please check your special characters!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
+        }
+        else if (CheckCategory(textBox_category.Text))
+        {
+            MessageBox.Show("Category already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
         return true;
+    }
+
+    private static bool CheckCategory(string username)
+    {
+        var result = HandleQueries.Select("SelectCategory");
+        foreach (string[] item in result)
+        {
+            if (item[0] == username) return true;
+        }
+        return false;
     }
 }

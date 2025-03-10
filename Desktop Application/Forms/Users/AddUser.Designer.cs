@@ -65,7 +65,7 @@ namespace Desktop_Application
             save.Margin = new Padding(3, 4, 3, 4);
             save.Name = "save";
             save.Size = new Size(97, 48);
-            save.TabIndex = 5;
+            save.TabIndex = 6;
             save.TabStop = false;
             save.Text = "Save";
             save.TextColor = Color.White;
@@ -87,7 +87,7 @@ namespace Desktop_Application
             cancel.Margin = new Padding(3, 4, 3, 4);
             cancel.Name = "cancel";
             cancel.Size = new Size(97, 48);
-            cancel.TabIndex = 6;
+            cancel.TabIndex = 7;
             cancel.Text = "Cancel";
             cancel.TextColor = Color.Black;
             cancel.UseVisualStyleBackColor = false;
@@ -186,7 +186,7 @@ namespace Desktop_Application
             textBox_email.Margin = new Padding(3, 4, 3, 4);
             textBox_email.Name = "textBox_email";
             textBox_email.Size = new Size(436, 39);
-            textBox_email.TabIndex = 3;
+            textBox_email.TabIndex = 4;
             // 
             // label1
             // 
@@ -206,7 +206,7 @@ namespace Desktop_Application
             textBox_address.Margin = new Padding(3, 4, 3, 4);
             textBox_address.Name = "textBox_address";
             textBox_address.Size = new Size(436, 39);
-            textBox_address.TabIndex = 4;
+            textBox_address.TabIndex = 5;
             // 
             // label3
             // 
@@ -226,7 +226,7 @@ namespace Desktop_Application
             textBox_username.Margin = new Padding(3, 4, 3, 4);
             textBox_username.Name = "textBox_username";
             textBox_username.Size = new Size(436, 39);
-            textBox_username.TabIndex = 100;
+            textBox_username.TabIndex = 3;
             // 
             // label4
             // 

@@ -257,19 +257,22 @@ public partial class AdminPanel : Form
         {
             HidePanels();
             authors_pnl.Visible = true;
+            RefreshAuthors(sender, e);
         }
     }
 
     // Select authors from the database and fills the grid
     private void RefreshAuthors(object sender, EventArgs e)
     {
-
+        var result = HandleQueries.Select("SelectAuthor");
+        HandleGrids.Fill(authors_grd, result);
     }
 
     // Live search - Searches authors in the grid
     private void SearchAuthors(object sender, EventArgs e)
     {
-
+        string[] cols = ["authors_author"];
+        HandleGrids.SearchGrid(authors_grd, authors_src.Text, cols);
     }
 
     // Adds an author to the database

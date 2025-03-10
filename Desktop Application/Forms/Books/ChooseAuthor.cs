@@ -22,7 +22,7 @@ namespace Desktop_Application.Forms.Books
             CloseThisWindow.Handle(this, close_btn);
             CloseThisWindow.Handle(this, cancel);
 
-            var result = HandleQueries.Select("SelectAuthor");
+            var result = HandleQueries.Select("SelectAuthorWithBook");
             HandleGrids.Fill(chooseAuthor_grd, result);
         }
 

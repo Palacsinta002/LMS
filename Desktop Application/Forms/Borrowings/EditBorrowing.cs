@@ -47,7 +47,7 @@ public partial class EditBorrowing : Form
     {
         if (textBox_books.Text == string.Empty)
         {
-            MessageBox.Show("Books are required!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Books are required!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
 
@@ -59,7 +59,7 @@ public partial class EditBorrowing : Form
 
         if (_borrowDate > _dueDate)
         {
-            MessageBox.Show("Due date cannot be earlier than borrow date!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Due date cannot be earlier than borrow date!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
         return true;
