@@ -52,7 +52,14 @@ internal class HandleQueries
         connection.RunSqlCommand(query);
     }
     // Insert author with the given arguments
+    internal static void InsertAuthor(string author)
+    {
+        Connection connection = new();
+        string query = $"INSERT INTO Authors(Author) VALUES(\"{author}\")";
+        connection.RunSqlCommand(query);
+    }
     // Insert publisher with the given arguments
+
     // Insert user with the given arguments
     internal static void InsertUser(string firstName, string lastName, string email, string username, string hashedPassword, string address)
     {
@@ -104,7 +111,9 @@ internal class HandleQueries
         }
     }
     // Update author with the given arguments
+
     // Update publisher with the given arguments
+
     // Update user with the given arguments
     internal static void UpdatetUser(DataGridView users_grd, string firstName, string lastName, string email, string username, string address)
     {

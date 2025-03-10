@@ -278,7 +278,9 @@ public partial class AdminPanel : Form
     // Adds an author to the database
     private void AddAuthor(object sender, EventArgs e)
     {
-
+        AddAuthor addAuthor = new();
+        addAuthor.ShowDialog();
+        RefreshAuthors(sender, e);
     }
 
     // Edit the selected author from the grid and then updates it in the database
