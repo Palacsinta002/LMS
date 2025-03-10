@@ -1,24 +1,3 @@
-<<<<<<< HEAD
-import { createSlice } from "@reduxjs/toolkit";
-
-export const tokenSlice = createSlice({
-    name: 'token',
-    initialState: {
-        value: ''
-    },
-    reducers: {
-        setter: (state, action) => {
-            state.value = action.payload;
-        }
-    }
-});
-
-// Export the action
-export const { setter } = tokenSlice.actions;
-
-// Export the reducer
-export default tokenSlice.reducer;
-=======
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -34,12 +13,14 @@ export const loginUser = createAsyncThunk(
       });
 
       const { token, user } = response.data;
-
-      sessionStorage.setItem("token", token);
+      if(response.data.token == token){
+        console.log(response.data.message);
+        sessionStorage.setItem("token", token);
+      }
 
       return { token, user };
     } catch (error) {
-      return rejectWithValue(error.response.data);
+      return rejectWithValue(response.data.message);
     }
   }
 );
@@ -50,6 +31,7 @@ export const logoutUser = createAsyncThunk("auth/logout", async () => {
 });
 
 const initialState = {
+  usr: "",
   user: null,
   token: token || null,
   isAuthenticated: !!token,
@@ -86,4 +68,3 @@ const authSlice = createSlice({
 
 export const loginAction = authSlice.actions;
 export default authSlice.reducer;
->>>>>>> 0d84cecf17424e82cf860f3a653a686fa207ac1f
