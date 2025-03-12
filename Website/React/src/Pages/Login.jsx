@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import axios from "axios"
 import { Link, useNavigate } from 'react-router-dom'
 import "./Login.css"
-import { setAuthToken } from '../Hooks/setAuthToken';
-import { jwtDecode } from 'jwt-decode';
+import { setAuthToken } from '../Auth/setAuthToken';
 
 export default function Login() {
   axios.defaults.withCredentials = true;
@@ -28,11 +27,10 @@ export default function Login() {
           }
         });
 
-        const token = JSON.stringify(response.data.token);
-
-      if (token) {
-        setAuthToken(token);
-        sessionStorage.setItem("token", token);
+      if (response.data) {
+        setAuthToken(response.data.token);
+        console.log(response.data);
+        sessionStorage.setItem("token", response.data.token);
         navigate("/dashboard");
       }
     } catch (error) {

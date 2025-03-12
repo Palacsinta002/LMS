@@ -14,7 +14,9 @@ export default function AuthProvider({ children }) {
                 if (decoded.exp * 1000 > Date.now()) {
                     setUser(decoded);
                 } else {
+                    alert("Session expired. Please log in again.")
                     sessionStorage.removeItem("token");
+                    window.locaion.relead();
                     setUser(null);
                 }
             } catch (error) {
@@ -25,13 +27,13 @@ export default function AuthProvider({ children }) {
         }
     }, []);
 
-    function login(token) {
+    const login = (token) => {
         sessionStorage.setItem("token", token);
         const decoded = jwt_decode(token);
         setUser(decoded);
     }
 
-    function logout() {
+    const logout = () => {
         sessionStorage.removeItem("token");
         setUser(null);
     }

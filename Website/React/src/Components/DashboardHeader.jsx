@@ -1,26 +1,39 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { jwtDecode } from "jwt-decode";
+import React, { useContext, useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import "../Pages/Dashboard.css";
-import { Link } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
+import AuthContext from '../Auth/AuthProvider';
 
 export default function DashboardHeader() {
-    const token = sessionStorage.getItem("token");
-    const decoded = jwtDecode(token);
-    const name = decoded["sub"];
-    return (
-        <>
-            <div className="dashboardHeader">
-                <Link to="/home"><h1 className="headerLink">LMS</h1></Link>
-                <h1 className="headerH1">Hi, {name}</h1>
-            </div>
+  const logout = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
 
-            <nav className="navigation">
-                <Link className="link" to="/dashboard/borrowings">Borrowings</Link>
-                <Link className="link" to="/dashboard/reservations">Reservations</Link>
-                <Link className="link" to="/dashboard/charts">Charts</Link>
-                <Link className="link" to="/dashboard/profile">Profile</Link>
-            </nav>
-            <hr className="hr" />
-        </>
-    )
+  useEffect(() => {
+    const token = sessionStorage.getItem('token');
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      setUser(decodedToken["sub"]);
+    } else {
+      navigate('/login');
+    }
+  }, [navigate]);
+
+  return (
+    <>
+      <div className="dashboardHeader">
+        <Link to="/"><h1 className="headerLink">LMS</h1></Link>
+        {<h1 className="headerH1">Hi, {user}</h1>}
+        <button className="dashboardHeaderButton" onClick={logout}>Logout</button>
+      </div>
+
+      <nav className="navigation">
+        <Link className="link" to="/dashboard/borrowings">Borrowings</Link>
+        <Link className="link" to="/dashboard/reservations">Reservations</Link>
+        <Link className="link" to="/dashboard/charts">Charts</Link>
+        <Link className="link" to="/dashboard/profile">Profile</Link>
+      </nav>
+      <hr className="hr" />
+    </>
+  );
 }

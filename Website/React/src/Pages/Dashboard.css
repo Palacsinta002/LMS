@@ -19,14 +19,32 @@
 }
 
 .headerLink{
+    z-index: 10;
     font-size: 4vh;
     color: white;
     float: left;
-    position: absolute;
+    position: relative;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
     text-shadow: 2px 3px 1px black;
+}
+
+
+.dashboardHeaderButton{
+    z-index: 10;
+    position: relative;
+    top: 50%;
+    border: black;
+    background-color: #48459E;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    float: right;
 }
 
 .navigation{

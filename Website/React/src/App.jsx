@@ -13,8 +13,8 @@ import Charts from './Pages/Charts';
 import Profile from './Pages/Profile';
 import NotFound from './Pages/NotFound';
 import { Provider } from 'react-redux'
-import Store from './Hooks/Store'
-import AuthProvider from './Hooks/AuthProvider';
+import Store from './Auth/Store'
+import AuthProvider from './Auth/AuthProvider';
 
 function App() {
   return (
