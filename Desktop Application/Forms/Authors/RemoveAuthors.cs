@@ -22,7 +22,7 @@ public partial class RemoveAuthors : Form
 
     private void Yes(object sender, EventArgs e)
     {
-        HandleQueries.Delete(_authors_grd, "Authors", "authoros_author", "Author");
+        HandleQueries.Delete(_authors_grd, "Authors", "authors_author", "Author");
         MessageBox.Show("Authors removed succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         this.Close();
     }
