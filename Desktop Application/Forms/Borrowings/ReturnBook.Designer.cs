@@ -56,7 +56,7 @@ namespace Desktop_Application.Forms.Borrowings
             // 
             title.AutoSize = true;
             title.Font = new Font("Yu Gothic UI Semibold", 16F);
-            title.Location = new Point(120, 16);
+            title.Location = new Point(118, 16);
             title.Name = "title";
             title.Size = new Size(169, 37);
             title.TabIndex = 2;
@@ -136,9 +136,9 @@ namespace Desktop_Application.Forms.Borrowings
             label_title.Name = "label_title";
             label_title.Size = new Size(387, 73);
             label_title.TabIndex = 32;
-            label_title.Text = "Are you sure you want to mark this book as returned?";
+            label_title.Text = "Are you sure you want to mark the selected book(s) as returned?";
             // 
-            // RemoveBorrowing
+            // ReturnBook
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -150,7 +150,7 @@ namespace Desktop_Application.Forms.Borrowings
             Controls.Add(label_title);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 4, 3, 4);
-            Name = "RemoveBorrowing";
+            Name = "ReturnBook";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "RemoveBorrowing";
             Load += OnLoad;

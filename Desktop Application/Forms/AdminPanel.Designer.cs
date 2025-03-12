@@ -75,12 +75,6 @@ namespace Desktop_Application
             books_lbl1 = new Label();
             books_src = new TextBox();
             books_grd = new DataGridView();
-            title = new DataGridViewTextBoxColumn();
-            author = new DataGridViewTextBoxColumn();
-            publicationYear = new DataGridViewTextBoxColumn();
-            category = new DataGridViewTextBoxColumn();
-            publisher = new DataGridViewTextBoxColumn();
-            isbn = new DataGridViewTextBoxColumn();
             borrowings_pnl = new Panel();
             checkBox_currentBorrowings = new CheckBox();
             borrowings_grd = new DataGridView();
@@ -121,6 +115,7 @@ namespace Desktop_Application
             users_src = new TextBox();
             authors_pnl = new Panel();
             authors_grd = new DataGridView();
+            authors_author = new DataGridViewTextBoxColumn();
             authors_refresh_btn = new RoundedButton();
             authors_add_btn = new RoundedButton();
             authors_edit_btn = new RoundedButton();
@@ -129,13 +124,19 @@ namespace Desktop_Application
             authors_src = new TextBox();
             publishers_pnl = new Panel();
             publishers_grd = new DataGridView();
+            publishers_publisher = new DataGridViewTextBoxColumn();
             publishers_refresh_btn = new RoundedButton();
             publishers_add_btn = new RoundedButton();
             publishers_edit_btn = new RoundedButton();
             publishers_remove_btn = new RoundedButton();
             publishers_lbl1 = new Label();
             publishers_src = new TextBox();
-            authors_author = new DataGridViewTextBoxColumn();
+            books_title = new DataGridViewTextBoxColumn();
+            books_author = new DataGridViewTextBoxColumn();
+            books_publicationYear = new DataGridViewTextBoxColumn();
+            books_category = new DataGridViewTextBoxColumn();
+            books_publisher = new DataGridViewTextBoxColumn();
+            books_isbn = new DataGridViewTextBoxColumn();
             menu_pnl.SuspendLayout();
             header_pnl.SuspendLayout();
             dashboard_pnl.SuspendLayout();
@@ -833,7 +834,7 @@ namespace Desktop_Application
             books_grd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             books_grd.BackgroundColor = Color.White;
             books_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            books_grd.Columns.AddRange(new DataGridViewColumn[] { title, author, publicationYear, category, publisher, isbn });
+            books_grd.Columns.AddRange(new DataGridViewColumn[] { books_title, books_author, books_publicationYear, books_category, books_publisher, books_isbn });
             books_grd.Location = new Point(59, 144);
             books_grd.Margin = new Padding(3, 4, 3, 4);
             books_grd.Name = "books_grd";
@@ -847,54 +848,6 @@ namespace Desktop_Application
             books_grd.ShowRowErrors = false;
             books_grd.Size = new Size(690, 479);
             books_grd.TabIndex = 0;
-            // 
-            // title
-            // 
-            title.HeaderText = "Title";
-            title.MinimumWidth = 6;
-            title.Name = "title";
-            title.ReadOnly = true;
-            title.Width = 67;
-            // 
-            // author
-            // 
-            author.HeaderText = "Author";
-            author.MinimumWidth = 6;
-            author.Name = "author";
-            author.ReadOnly = true;
-            author.Width = 83;
-            // 
-            // publicationYear
-            // 
-            publicationYear.HeaderText = "Publication Year";
-            publicationYear.MinimumWidth = 6;
-            publicationYear.Name = "publicationYear";
-            publicationYear.ReadOnly = true;
-            publicationYear.Width = 144;
-            // 
-            // category
-            // 
-            category.HeaderText = "Categroy";
-            category.MinimumWidth = 6;
-            category.Name = "category";
-            category.ReadOnly = true;
-            category.Width = 98;
-            // 
-            // publisher
-            // 
-            publisher.HeaderText = "Publisher";
-            publisher.MinimumWidth = 6;
-            publisher.Name = "publisher";
-            publisher.ReadOnly = true;
-            publisher.Width = 98;
-            // 
-            // isbn
-            // 
-            isbn.HeaderText = "ISBN";
-            isbn.MinimumWidth = 6;
-            isbn.Name = "isbn";
-            isbn.ReadOnly = true;
-            isbn.Width = 70;
             // 
             // borrowings_pnl
             // 
@@ -1545,6 +1498,14 @@ namespace Desktop_Application
             authors_grd.Size = new Size(690, 479);
             authors_grd.TabIndex = 33;
             // 
+            // authors_author
+            // 
+            authors_author.HeaderText = "Author";
+            authors_author.MinimumWidth = 6;
+            authors_author.Name = "authors_author";
+            authors_author.ReadOnly = true;
+            authors_author.Width = 83;
+            // 
             // authors_refresh_btn
             // 
             authors_refresh_btn.BackColor = Color.FromArgb(80, 77, 180);
@@ -1694,6 +1655,7 @@ namespace Desktop_Application
             publishers_grd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             publishers_grd.BackgroundColor = Color.White;
             publishers_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            publishers_grd.Columns.AddRange(new DataGridViewColumn[] { publishers_publisher });
             publishers_grd.Location = new Point(59, 144);
             publishers_grd.Margin = new Padding(3, 4, 3, 4);
             publishers_grd.Name = "publishers_grd";
@@ -1707,6 +1669,14 @@ namespace Desktop_Application
             publishers_grd.ShowRowErrors = false;
             publishers_grd.Size = new Size(690, 479);
             publishers_grd.TabIndex = 33;
+            // 
+            // publishers_publisher
+            // 
+            publishers_publisher.HeaderText = "Publisher";
+            publishers_publisher.MinimumWidth = 6;
+            publishers_publisher.Name = "publishers_publisher";
+            publishers_publisher.ReadOnly = true;
+            publishers_publisher.Width = 98;
             // 
             // publishers_refresh_btn
             // 
@@ -1828,13 +1798,53 @@ namespace Desktop_Application
             publishers_src.TabStop = false;
             publishers_src.TextChanged += SearchPublishers;
             // 
-            // authors_author
+            // books_title
             // 
-            authors_author.HeaderText = "Author";
-            authors_author.MinimumWidth = 6;
-            authors_author.Name = "authors_author";
-            authors_author.ReadOnly = true;
-            authors_author.Width = 83;
+            books_title.HeaderText = "Title";
+            books_title.MinimumWidth = 6;
+            books_title.Name = "books_title";
+            books_title.ReadOnly = true;
+            books_title.Width = 67;
+            // 
+            // books_author
+            // 
+            books_author.HeaderText = "Author";
+            books_author.MinimumWidth = 6;
+            books_author.Name = "books_author";
+            books_author.ReadOnly = true;
+            books_author.Width = 83;
+            // 
+            // books_publicationYear
+            // 
+            books_publicationYear.HeaderText = "Publication Year";
+            books_publicationYear.MinimumWidth = 6;
+            books_publicationYear.Name = "books_publicationYear";
+            books_publicationYear.ReadOnly = true;
+            books_publicationYear.Width = 144;
+            // 
+            // books_category
+            // 
+            books_category.HeaderText = "Categroy";
+            books_category.MinimumWidth = 6;
+            books_category.Name = "books_category";
+            books_category.ReadOnly = true;
+            books_category.Width = 98;
+            // 
+            // books_publisher
+            // 
+            books_publisher.HeaderText = "Publisher";
+            books_publisher.MinimumWidth = 6;
+            books_publisher.Name = "books_publisher";
+            books_publisher.ReadOnly = true;
+            books_publisher.Width = 98;
+            // 
+            // books_isbn
+            // 
+            books_isbn.HeaderText = "ISBN";
+            books_isbn.MinimumWidth = 6;
+            books_isbn.Name = "books_isbn";
+            books_isbn.ReadOnly = true;
+            books_isbn.Width = 70;
             // 
             // AdminPanel
             // 
@@ -1844,13 +1854,13 @@ namespace Desktop_Application
             ClientSize = new Size(1125, 748);
             Controls.Add(header_pnl);
             Controls.Add(menu_pnl);
+            Controls.Add(books_pnl);
+            Controls.Add(dashboard_pnl);
+            Controls.Add(publishers_pnl);
             Controls.Add(authors_pnl);
             Controls.Add(categories_pnl);
             Controls.Add(borrowings_pnl);
             Controls.Add(users_pnl);
-            Controls.Add(books_pnl);
-            Controls.Add(dashboard_pnl);
-            Controls.Add(publishers_pnl);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
             MinimumSize = new Size(1140, 779);
@@ -1962,12 +1972,6 @@ namespace Desktop_Application
         private RoundedButton dashboard_borrowings;
         private Label label3;
         private Panel panel6;
-        private DataGridViewTextBoxColumn title;
-        private DataGridViewTextBoxColumn author;
-        private DataGridViewTextBoxColumn publicationYear;
-        private DataGridViewTextBoxColumn category;
-        private DataGridViewTextBoxColumn publisher;
-        private DataGridViewTextBoxColumn isbn;
         private DataGridView books_grd;
         private DataGridView borrowings_grd;
         private DataGridViewTextBoxColumn dashboard_count;
@@ -2001,5 +2005,12 @@ namespace Desktop_Application
         private DataGridViewTextBoxColumn users_address;
         private DataGridViewTextBoxColumn users_role;
         private DataGridViewTextBoxColumn authors_author;
+        private DataGridViewTextBoxColumn publishers_publisher;
+        private DataGridViewTextBoxColumn books_title;
+        private DataGridViewTextBoxColumn books_author;
+        private DataGridViewTextBoxColumn books_publicationYear;
+        private DataGridViewTextBoxColumn books_category;
+        private DataGridViewTextBoxColumn books_publisher;
+        private DataGridViewTextBoxColumn books_isbn;
     }
 }

@@ -3,6 +3,7 @@ using Desktop_Application.Forms.Books;
 using Desktop_Application.Forms.Borrowings;
 using Desktop_Application.Forms.Categories;
 using Desktop_Application.Forms.Authors;
+using Desktop_Application.Forms.Publishers;
 using Desktop_Application.Forms.Users;
 
 namespace Desktop_Application;
@@ -86,7 +87,7 @@ public partial class AdminPanel : Form
     // Live search - Searches title, publication year or isbn in the grid
     private void SearchBooks(object sender, EventArgs e)
     {
-        string[] cols = ["title", "publicationYear", "isbn"];
+        string[] cols = ["books_title", "books_publicationYear", "books_isbn"];
         HandleGrids.SearchGrid(books_grd, books_src.Text, cols);
     }
 
@@ -316,25 +317,30 @@ public partial class AdminPanel : Form
         {
             HidePanels();
             publishers_pnl.Visible = true;
+            RefreshPublishers(sender, e);
         }
     }
 
     // Select publishers from the database and fills the grid
     private void RefreshPublishers(object sender, EventArgs e)
     {
-
+        var result = HandleQueries.Select("SelectPublisher");
+        HandleGrids.Fill(publishers_grd, result);
     }
 
     // Live search - Searches publishers in the grid
     private void SearchPublishers(object sender, EventArgs e)
     {
-
+        string[] cols = ["publishers_publisher"];
+        HandleGrids.SearchGrid(publishers_grd, publishers_src.Text, cols);
     }
 
     // Adds a publisher to the database
     private void AddPublisher(object sender, EventArgs e)
     {
-
+        AddPublisher addPublisher = new();
+        addPublisher.ShowDialog();
+        RefreshPublishers(sender, e);
     }
 
     // Edit the selected publisher from the grid and then updates it in the database
