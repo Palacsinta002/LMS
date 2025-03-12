@@ -26,11 +26,11 @@ export default function Login() {
             "Content-Type": "application/json",
           }
         });
-      console.log(response);
 
-      console.log(response.data);
+        const token = JSON.stringify(response.data.token);
 
-      if (response.token) {
+      if (token) {
+        setAuthToken(token);
         sessionStorage.setItem("token", token);
         navigate("/dashboard");
       }
