@@ -27,11 +27,13 @@ export default function Login() {
           }
         });
 
-      if (response.data) {
+      if (response.data.token) {
         setAuthToken(response.data.token);
-        console.log(response.data);
         sessionStorage.setItem("token", response.data.token);
         navigate("/dashboard");
+      }
+      else{
+        navigate("/login")
       }
     } catch (error) {
       console.error(error);

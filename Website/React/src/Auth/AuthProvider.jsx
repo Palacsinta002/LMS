@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { jwtDecode } from "jwt-decode";
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
     const [user, setUser] = useState(null);
@@ -35,6 +35,7 @@ export default function AuthProvider({ children }) {
 
     const logout = () => {
         sessionStorage.removeItem("token");
+        window.location.reload()
         setUser(null);
     }
 
