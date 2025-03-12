@@ -38,7 +38,7 @@ public partial class ReturnBook : Form
         }
     }
 
-    private static bool CheckReturnDate()
+    private bool CheckReturnDate()
     {
         foreach(DataGridViewRow row in _borrowings_grd.SelectedRows)
         {
