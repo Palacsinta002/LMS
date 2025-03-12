@@ -111,6 +111,15 @@ internal class HandleQueries
         }
     }
     // Update author with the given arguments
+    internal static void UpdateAuthor(DataGridView authors_grd, string author)
+    {
+        Connection connection = new();
+        foreach (DataGridViewRow row in authors_grd.SelectedRows)
+        {
+            string query = $"UPDATE Authors SET Author = \"{author}\" WHERE Author = \"{row.Cells[0].Value}\"";
+            connection.RunSqlCommand(query);
+        }
+    }
 
     // Update publisher with the given arguments
 

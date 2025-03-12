@@ -1638,7 +1638,7 @@ namespace Desktop_Application
             authors_remove_btn.Text = "Remove";
             authors_remove_btn.TextColor = Color.White;
             authors_remove_btn.UseVisualStyleBackColor = false;
-            authors_remove_btn.Click += RemoveAuthor;
+            authors_remove_btn.Click += RemoveAuthors;
             // 
             // authors_lbl1
             // 

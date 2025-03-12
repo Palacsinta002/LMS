@@ -1,97 +1,95 @@
-﻿using System.Text.RegularExpressions;
-using Desktop_Application.Classes;
-using Desktop_Application.Forms.Books;
+﻿using Desktop_Application.Classes;
+using System.Text.RegularExpressions;
 
-namespace Desktop_Application
+namespace Desktop_Application.Forms.Books;
+
+public partial class AddBook : Form
 {
-    public partial class AddBook : Form
+    public AddBook()
     {
-        public AddBook()
+        InitializeComponent();
+    }
+
+    private void OnLoad(object sender, EventArgs e)
+    {
+        DragWindow.Handle(this, header, title);
+        BorderPaint.Handle(this);
+        CloseThisWindow.Handle(this, close_btn);
+        CloseThisWindow.Handle(this, cancel);
+
+        var result = HandleQueries.Select("SelectPublisher");
+        HandleGrids.Fill(dropDown_publisher, result);
+    }
+
+    private void Save(object sender, EventArgs e)
+    {
+        if (ValidateInput())
         {
-            InitializeComponent();
+            HandleQueries.InsertBook(textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, textBox_author.Text, textBox_category.Text);
+            MessageBox.Show("Book uploaded succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
+        }
+    }
+
+    // Returns true if everything is correct
+    private bool ValidateInput()
+    {
+        if (textBox_title.Text == string.Empty)
+        {
+            MessageBox.Show("Title is required!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
+        }
+        else if (!Regex.IsMatch(textBox_title.Text, @"^[^""\\]+$"))
+        {
+            MessageBox.Show("Title is not in the correct format! Please check your special characters!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
         }
 
-        private void OnLoad(object sender, EventArgs e)
+        if (!Regex.IsMatch(textBox_pubYear.Text, "^[0-9]{4}$"))
         {
-            DragWindow.Handle(this, header, title);
-            BorderPaint.Handle(this);
-            CloseThisWindow.Handle(this, close_btn);
-            CloseThisWindow.Handle(this, cancel);
-
-            var result = HandleQueries.Select("SelectPublisher");
-            HandleGrids.Fill(dropDown_publisher, result);
+            MessageBox.Show("Publication year must be a 4 digit number!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
         }
 
-        private void Save(object sender, EventArgs e)
+        if (textBox_author.Text == string.Empty)
         {
-            if (ValidateInput())
-            {
-                HandleQueries.InsertBook(textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, textBox_author.Text, textBox_category.Text);
-                MessageBox.Show("Book uploaded succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
-            }
+            MessageBox.Show("You must choose at least one author!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
         }
 
-        // Returns true if everything is correct
-        private bool ValidateInput()
+        if (textBox_category.Text == string.Empty)
         {
-            if (textBox_title.Text == string.Empty)
-            {
-                MessageBox.Show("Title is required!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            else if (!Regex.IsMatch(textBox_title.Text, @"^[^""\\]+$"))
-            {
-                MessageBox.Show("Title is not in the correct format! Please check your special characters!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            if (!Regex.IsMatch(textBox_pubYear.Text, "^[0-9]{4}$"))
-            {
-                MessageBox.Show("Publication year must be a 4 digit number!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            if (textBox_author.Text == string.Empty)
-            {
-                MessageBox.Show("You must choose at least one author!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            if (textBox_category.Text == string.Empty)
-            {
-                MessageBox.Show("You must choose at least one vategory!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            if (dropDown_publisher.Text == string.Empty)
-            {
-                MessageBox.Show("You must choose a publisher from the dropdown menu!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            if (!Regex.IsMatch(textBox_isbn.Text, "^[0-9]{13}$"))
-            {
-                MessageBox.Show("ISBN number must be a 13 digit number!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            return true;
+            MessageBox.Show("You must choose at least one vategory!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
         }
 
-        private void OpenChooseAuthor(object sender, EventArgs e)
+        if (dropDown_publisher.Text == string.Empty)
         {
-            ChooseAuthor chooseAuthor = new();
-            chooseAuthor.ShowDialog();
-
-            textBox_author.Text = string.Join(", ", ChooseAuthor.SelectedAuthors);
+            MessageBox.Show("You must choose a publisher from the dropdown menu!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
         }
 
-        private void OpenChooseCategory(object sender, EventArgs e)
+        if (!Regex.IsMatch(textBox_isbn.Text, "^[0-9]{13}$"))
         {
-            ChooseCategory chooseCategory = new();
-            chooseCategory.ShowDialog();
-
-            textBox_category.Text = string.Join(", ", ChooseCategory.SelectedCategories);
+            MessageBox.Show("ISBN number must be a 13 digit number!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
         }
+        return true;
+    }
+
+    private void OpenChooseAuthor(object sender, EventArgs e)
+    {
+        ChooseAuthor chooseAuthor = new();
+        chooseAuthor.ShowDialog();
+
+        textBox_author.Text = string.Join(", ", ChooseAuthor.SelectedAuthors);
+    }
+
+    private void OpenChooseCategory(object sender, EventArgs e)
+    {
+        ChooseCategory chooseCategory = new();
+        chooseCategory.ShowDialog();
+
+        textBox_category.Text = string.Join(", ", ChooseCategory.SelectedCategories);
     }
 }

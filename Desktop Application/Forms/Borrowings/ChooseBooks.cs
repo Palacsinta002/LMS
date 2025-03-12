@@ -1,6 +1,6 @@
-﻿namespace Desktop_Application.Forms.Borrowings; 
+﻿using Desktop_Application.Classes;
 
-using Desktop_Application.Classes;
+namespace Desktop_Application.Forms.Borrowings; 
 
 public partial class ChooseBooks : Form
 {

@@ -1,4 +1,4 @@
-﻿namespace Desktop_Application.Forms.Books
+﻿namespace Desktop_Application.Forms.Users
 {
     partial class RemoveUser
     {

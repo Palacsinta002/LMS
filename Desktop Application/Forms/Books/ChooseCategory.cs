@@ -1,39 +1,38 @@
 ﻿using Desktop_Application.Classes;
 
-namespace Desktop_Application.Forms.Books
+namespace Desktop_Application.Forms.Books;
+
+public partial class ChooseCategory : Form
 {
-    public partial class ChooseCategory : Form
+    private static List<string> selectedCategories = [];
+    public static List<string> SelectedCategories
     {
-        private static List<string> selectedCategories = [];
-        public static List<string> SelectedCategories
-        {
-            get { return selectedCategories; }
-        }
+        get { return selectedCategories; }
+    }
 
-        public ChooseCategory()
-        {
-            InitializeComponent();
-        }
+    public ChooseCategory()
+    {
+        InitializeComponent();
+    }
 
-        private void OnLoad(object sender, EventArgs e)
-        {
-            DragWindow.Handle(this, header, title);
-            BorderPaint.Handle(this);
-            CloseThisWindow.Handle(this, close_btn);
-            CloseThisWindow.Handle(this, cancel);
+    private void OnLoad(object sender, EventArgs e)
+    {
+        DragWindow.Handle(this, header, title);
+        BorderPaint.Handle(this);
+        CloseThisWindow.Handle(this, close_btn);
+        CloseThisWindow.Handle(this, cancel);
 
-            var result = HandleQueries.Select("SelectCategory");
-            HandleGrids.Fill(chooseCategory_grd, result);
-        }
+        var result = HandleQueries.Select("SelectCategory");
+        HandleGrids.Fill(chooseCategory_grd, result);
+    }
 
-        private void Ok(object sender, EventArgs e)
+    private void Ok(object sender, EventArgs e)
+    {
+        selectedCategories = [];
+        foreach (DataGridViewRow row in chooseCategory_grd.SelectedRows)
         {
-            selectedCategories = [];
-            foreach (DataGridViewRow row in chooseCategory_grd.SelectedRows)
-            {
-                selectedCategories.Add(row.Cells["Category"].Value.ToString() ?? string.Empty);
-            }
-            this.Close();
+            selectedCategories.Add(row.Cells["Category"].Value.ToString() ?? string.Empty);
         }
+        this.Close();
     }
 }

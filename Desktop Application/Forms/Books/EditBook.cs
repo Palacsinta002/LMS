@@ -1,8 +1,8 @@
 ﻿using System.Text.RegularExpressions;
 using Desktop_Application.Classes;
-using Desktop_Application.Forms.Books;
 
-namespace Desktop_Application;
+namespace Desktop_Application.Forms.Books;
+
 public partial class EditBook : Form
 {
     private readonly DataGridView _books_grd;

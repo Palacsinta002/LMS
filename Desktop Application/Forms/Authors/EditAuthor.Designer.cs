@@ -2,7 +2,7 @@
 
 namespace Desktop_Application.Forms.Authors
 {
-    partial class AddAuthor
+    partial class EditAuthor
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace Desktop_Application.Forms.Authors
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddAuthor));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditAuthor));
             header = new Panel();
             title = new Label();
             close_btn = new Desktop_Application.Components.RoundedButton();
@@ -56,11 +56,11 @@ namespace Desktop_Application.Forms.Authors
             // 
             title.AutoSize = true;
             title.Font = new Font("Yu Gothic UI Semibold", 16F);
-            title.Location = new Point(136, 15);
+            title.Location = new Point(138, 15);
             title.Name = "title";
-            title.Size = new Size(160, 37);
+            title.Size = new Size(157, 37);
             title.TabIndex = 2;
-            title.Text = "Add Author";
+            title.Text = "Edit Author";
             // 
             // close_btn
             // 
@@ -149,7 +149,7 @@ namespace Desktop_Application.Forms.Authors
             label1.TabIndex = 86;
             label1.Text = "Author";
             // 
-            // AddAuthor
+            // EditAuthor
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -162,7 +162,7 @@ namespace Desktop_Application.Forms.Authors
             Controls.Add(cancel);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 4, 3, 4);
-            Name = "AddAuthor";
+            Name = "EditAuthor";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AddCategory";
             Load += OnLoad;

@@ -1,39 +1,38 @@
 ﻿using Desktop_Application.Classes;
 
-namespace Desktop_Application.Forms.Books
+namespace Desktop_Application.Forms.Books;
+
+public partial class ChooseAuthor : Form
 {
-    public partial class ChooseAuthor : Form
+    private static List<string> selectedAuthors = [];
+    public static List<string> SelectedAuthors
     {
-        private static List<string> selectedAuthors = [];
-        public static List<string> SelectedAuthors
-        {
-            get { return selectedAuthors; }
-        }
+        get { return selectedAuthors; }
+    }
 
-        public ChooseAuthor()
-        {
-            InitializeComponent();
-        }
+    public ChooseAuthor()
+    {
+        InitializeComponent();
+    }
 
-        private void OnLoad(object sender, EventArgs e)
-        {
-            DragWindow.Handle(this, header, title);
-            BorderPaint.Handle(this);
-            CloseThisWindow.Handle(this, close_btn);
-            CloseThisWindow.Handle(this, cancel);
+    private void OnLoad(object sender, EventArgs e)
+    {
+        DragWindow.Handle(this, header, title);
+        BorderPaint.Handle(this);
+        CloseThisWindow.Handle(this, close_btn);
+        CloseThisWindow.Handle(this, cancel);
 
-            var result = HandleQueries.Select("SelectAuthorWithBook");
-            HandleGrids.Fill(chooseAuthor_grd, result);
-        }
+        var result = HandleQueries.Select("SelectAuthorWithBook");
+        HandleGrids.Fill(chooseAuthor_grd, result);
+    }
 
-        private void Ok(object sender, EventArgs e)
+    private void Ok(object sender, EventArgs e)
+    {
+        selectedAuthors = [];
+        foreach (DataGridViewRow row in chooseAuthor_grd.SelectedRows)
         {
-            selectedAuthors = [];
-            foreach (DataGridViewRow row in chooseAuthor_grd.SelectedRows)
-            {
-                selectedAuthors.Add(row.Cells["Author"].Value.ToString() ?? string.Empty);
-            }
-            this.Close();
+            selectedAuthors.Add(row.Cells["Author"].Value.ToString() ?? string.Empty);
         }
+        this.Close();
     }
 }

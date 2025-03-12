@@ -26,6 +26,9 @@
     <Compile Update="Forms\Authors\AddAuthor.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Authors\EditAuthor.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Categories\EditCategory.cs">
       <SubType>Form</SubType>
     </Compile>

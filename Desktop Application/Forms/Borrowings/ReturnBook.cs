@@ -4,7 +4,7 @@ namespace Desktop_Application.Forms.Borrowings;
 
 public partial class ReturnBook : Form
 {
-    private static DataGridView _borrowings_grd;
+    private readonly DataGridView _borrowings_grd;
 
     public ReturnBook(DataGridView borrowings_grd)
     {

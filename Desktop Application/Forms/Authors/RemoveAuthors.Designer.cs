@@ -1,6 +1,6 @@
-﻿namespace Desktop_Application.Forms.Categories
+﻿namespace Desktop_Application.Forms.Authors
 {
-    partial class RemoveCategories
+    partial class RemoveAuthors
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RemoveCategories));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RemoveAuthors));
             header = new Panel();
             title = new Label();
             close_btn = new Components.RoundedButton();

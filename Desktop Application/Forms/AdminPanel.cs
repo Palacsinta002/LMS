@@ -1,9 +1,10 @@
-﻿namespace Desktop_Application;
-
-using Desktop_Application.Classes;
+﻿using Desktop_Application.Classes;
+using Desktop_Application.Forms.Authors;
 using Desktop_Application.Forms.Books;
 using Desktop_Application.Forms.Borrowings;
 using Desktop_Application.Forms.Categories;
+
+namespace Desktop_Application;
 
 public partial class AdminPanel : Form
 {
@@ -101,7 +102,7 @@ public partial class AdminPanel : Form
     {
         if (books_grd.SelectedRows.Count != 1)
         {
-            MessageBox.Show("You must select ONE book to edit!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("You must select ONE book to edit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
         EditBook editBook = new(books_grd);
@@ -168,12 +169,12 @@ public partial class AdminPanel : Form
     {
         if (borrowings_grd.SelectedRows.Count != 1)
         {
-            MessageBox.Show("You must select ONE borrowing to edit!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("You must select ONE borrowing to edit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
         else if (borrowings_grd.SelectedRows[0].Cells["borrowings_returnDate"].Value.ToString() != string.Empty)
         {
-            MessageBox.Show("You can't edit returned borrowings!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("You can't edit returned borrowings!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
         EditBorrowing editBorrowing = new(borrowings_grd);
@@ -230,7 +231,7 @@ public partial class AdminPanel : Form
     {
         if (categories_grd.SelectedRows.Count != 1)
         {
-            MessageBox.Show("You must select ONE category to edit!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("You must select ONE category to edit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
         EditCategory editCategory = new(categories_grd);
@@ -286,13 +287,22 @@ public partial class AdminPanel : Form
     // Edit the selected author from the grid and then updates it in the database
     private void EditAuthor(object sender, EventArgs e)
     {
-
+        if (authors_grd.SelectedRows.Count != 1)
+        {
+            MessageBox.Show("You must select ONE author to edit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+        EditAuthor editAuthor = new(authors_grd);
+        editAuthor.ShowDialog();
+        RefreshAuthors(sender, e);
     }
 
     // Removes authors from the database - Marks the book as returned
-    private void RemoveAuthor(object sender, EventArgs e)
+    private void RemoveAuthors(object sender, EventArgs e)
     {
-
+        RemoveAuthors removeAuthors = new(authors_grd);
+        removeAuthors.ShowDialog();
+        RefreshAuthors(sender, e);
     }
     #endregion
 
@@ -379,7 +389,7 @@ public partial class AdminPanel : Form
     {
         if (users_grd.SelectedRows.Count != 1)
         {
-            MessageBox.Show("You must select ONE user to edit!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("You must select ONE user to edit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
         EditUser editUser = new(users_grd);

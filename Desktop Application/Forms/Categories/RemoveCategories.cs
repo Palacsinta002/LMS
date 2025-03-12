@@ -1,6 +1,6 @@
 ﻿using Desktop_Application.Classes;
 
-namespace Desktop_Application.Forms.Books;
+namespace Desktop_Application.Forms.Categories;
 
 public partial class RemoveCategories : Form
 {
