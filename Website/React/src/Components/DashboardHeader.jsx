@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
+import { jwtDecode } from "jwt-decode";
 import "../Pages/Dashboard.css";
 import { Link } from 'react-router-dom';
 
 export default function DashboardHeader() {
-    /*const [name, setName] = useState();
-    useEffect(() =>{
-        axios.get()
-    }, [])*/
-    const name = "Johndoe"
+    const token = sessionStorage.getItem("token");
+    const decoded = jwtDecode(token);
+    const name = decoded["sub"];
     return (
         <>
             <div className="dashboardHeader">

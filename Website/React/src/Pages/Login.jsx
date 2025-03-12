@@ -3,6 +3,7 @@ import axios from "axios"
 import { Link, useNavigate } from 'react-router-dom'
 import "./Login.css"
 import { setAuthToken } from '../Hooks/setAuthToken';
+import { jwtDecode } from 'jwt-decode';
 
 export default function Login() {
   axios.defaults.withCredentials = true;

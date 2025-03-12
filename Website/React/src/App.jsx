@@ -14,10 +14,11 @@ import Profile from './Pages/Profile';
 import NotFound from './Pages/NotFound';
 import { Provider } from 'react-redux'
 import Store from './Hooks/Store'
+import AuthProvider from './Hooks/AuthProvider';
 
 function App() {
   return (
-    <Provider store={Store} >
+    <AuthProvider>
       <BrowserRouter>
         <Header />
         <Routes>
@@ -34,7 +35,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
-    </Provider>
+    </AuthProvider>
   );
 }
 
