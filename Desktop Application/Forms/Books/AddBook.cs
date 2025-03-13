@@ -79,10 +79,11 @@ public partial class AddBook : Form
 
     private void OpenChooseAuthor(object sender, EventArgs e)
     {
-        ChooseAuthor chooseAuthor = new();
+        List<string> selectedAuthors = textBox_author.Text.Split(", ").ToList();
+        ChooseAuthors chooseAuthor = new(selectedAuthors);
         chooseAuthor.ShowDialog();
 
-        textBox_author.Text = string.Join(", ", ChooseAuthor.SelectedAuthors);
+        textBox_author.Text = string.Join(", ", ChooseAuthors.SelectedAuthors);
     }
 
     private void OpenChooseCategory(object sender, EventArgs e)

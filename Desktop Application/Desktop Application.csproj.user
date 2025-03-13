@@ -7,9 +7,6 @@
     <Compile Update="Forms\AdminPanel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Books\ChooseAuthor.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Forms\Books\ChooseCategory.cs">
       <SubType>Form</SubType>
     </Compile>
