@@ -59,7 +59,7 @@ export default function Login() {
           <label>Username</label>
           <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
           <label>Password</label>
-          <div className="password-input">
+          <div className="login-password-input">
             <input
               type={showPassword ? "text" : "password"}
               value={password}
@@ -68,7 +68,7 @@ export default function Login() {
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="toggle-password"
+              className="login-toggle-password"
             >
               {showPassword ? "Hide" : "Show"}
             </button>

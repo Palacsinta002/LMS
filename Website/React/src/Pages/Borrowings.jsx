@@ -10,16 +10,30 @@ export default function Borrowings() {
 
   useEffect(() => {
     axios.get("api/borrowings")
-    .then(data => setBorrowings(data));
+      .then(response => {
+        console.log(response.data)
+        setBorrowings(response.data)
+      })
+      .catch(err => console.error(err))
   }, [])
 
   return (
     <div className={hidden}>
       <table>
-        
-      {borrowings.map((items) => (
-        
-      ))}
+        <thead>
+          <tr>
+            <th>ISBN</th>
+            <th>Borrowings Date</th>
+            <th>Due Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {borrowings.map((items) => (
+            <tr>
+              <td>{items.isbn}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   )

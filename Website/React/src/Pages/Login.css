@@ -65,20 +65,27 @@ input[type=password] {
   padding: 2% 0;
   width: 100%;
   height: auto;
+  position: relative;
 }
 
-.password-input {
+.login-password-input {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
-.toggle-password {
+.login-toggle-password {
+  height: auto;
+  position: absolute;
   margin-left: 10px;
   background: none;
   border: none;
   cursor: pointer;
   font-size: 1em;
   color: #48459E;
+  bottom: 50%;
+  transform: translateY(50%);
+  left: 80%;
 }
 
 .error-message {
@@ -117,6 +124,7 @@ input[type=password] {
   font-weight: 300;
   margin: 5px;
   float: right;
+  color: #48459E;
 }
 
 .link2 {
