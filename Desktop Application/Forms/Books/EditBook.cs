@@ -94,10 +94,10 @@ public partial class EditBook : Form
     private void OpenChooseAuthor(object sender, EventArgs e)
     {
         List<string> selectedAuthors = textBox_author.Text.Split(", ").ToList();
-        ChooseAuthors chooseAuthor = new(selectedAuthors);
+        ChooseAuthor chooseAuthor = new(selectedAuthors);
         chooseAuthor.ShowDialog();
 
-        textBox_author.Text = string.Join(", ", ChooseAuthors.SelectedAuthors);
+        textBox_author.Text = string.Join(", ", ChooseAuthor.SelectedAuthors);
     }
 
     private void OpenChooseCategory(object sender, EventArgs e)

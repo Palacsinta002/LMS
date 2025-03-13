@@ -2,7 +2,7 @@
 
 namespace Desktop_Application.Forms.Books
 {
-    partial class ChooseAuthor
+    partial class ChooseCategories
     {
         /// <summary>
         /// Required designer variable.
@@ -30,25 +30,25 @@ namespace Desktop_Application.Forms.Books
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChooseAuthor));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChooseCategories));
             header = new Panel();
             title = new Label();
             close_btn = new Desktop_Application.Components.RoundedButton();
-            allAuthors_grd = new DataGridView();
+            allCategories_grd = new DataGridView();
             allAuthors_author = new DataGridViewTextBoxColumn();
             allAuthors_books = new DataGridViewTextBoxColumn();
-            selectedAuthors_grd = new DataGridView();
+            selectedCategories_grd = new DataGridView();
+            selectedAuthors_Author = new DataGridViewTextBoxColumn();
+            selectedAuthors_books = new DataGridViewTextBoxColumn();
             rightArrow_btn = new Desktop_Application.Components.RoundedButton();
             leftArrow_btn = new Desktop_Application.Components.RoundedButton();
             save = new Desktop_Application.Components.RoundedButton();
             cancel = new Desktop_Application.Components.RoundedButton();
-            allAuthors_src = new System.Windows.Forms.TextBox();
-            selectedAuthors_src = new System.Windows.Forms.TextBox();
-            selectedAuthors_Author = new DataGridViewTextBoxColumn();
-            selectedAuthors_books = new DataGridViewTextBoxColumn();
+            allCategories_src = new System.Windows.Forms.TextBox();
+            selectedCategories_src = new System.Windows.Forms.TextBox();
             header.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)allAuthors_grd).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)selectedAuthors_grd).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)allCategories_grd).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)selectedCategories_grd).BeginInit();
             SuspendLayout();
             // 
             // header
@@ -66,11 +66,11 @@ namespace Desktop_Application.Forms.Books
             // 
             title.AutoSize = true;
             title.Font = new Font("Yu Gothic UI Semibold", 16F);
-            title.Location = new Point(471, 13);
+            title.Location = new Point(457, 13);
             title.Name = "title";
-            title.Size = new Size(213, 37);
+            title.Size = new Size(245, 37);
             title.TabIndex = 2;
-            title.Text = "Choose Authors";
+            title.Text = "Choose Categories";
             // 
             // close_btn
             // 
@@ -97,30 +97,30 @@ namespace Desktop_Application.Forms.Books
             close_btn.TextColor = Color.White;
             close_btn.UseVisualStyleBackColor = false;
             // 
-            // allAuthors_grd
+            // allCategories_grd
             // 
-            allAuthors_grd.AllowUserToAddRows = false;
-            allAuthors_grd.AllowUserToDeleteRows = false;
-            allAuthors_grd.AllowUserToResizeColumns = false;
-            allAuthors_grd.AllowUserToResizeRows = false;
-            allAuthors_grd.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            allAuthors_grd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            allAuthors_grd.BackgroundColor = Color.White;
-            allAuthors_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            allAuthors_grd.Columns.AddRange(new DataGridViewColumn[] { allAuthors_author, allAuthors_books });
-            allAuthors_grd.Location = new Point(14, 129);
-            allAuthors_grd.Margin = new Padding(3, 4, 3, 4);
-            allAuthors_grd.Name = "allAuthors_grd";
-            allAuthors_grd.ReadOnly = true;
-            allAuthors_grd.RowHeadersVisible = false;
-            allAuthors_grd.RowHeadersWidth = 51;
-            allAuthors_grd.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            allAuthors_grd.ShowCellErrors = false;
-            allAuthors_grd.ShowCellToolTips = false;
-            allAuthors_grd.ShowEditingIcon = false;
-            allAuthors_grd.ShowRowErrors = false;
-            allAuthors_grd.Size = new Size(518, 583);
-            allAuthors_grd.TabIndex = 63;
+            allCategories_grd.AllowUserToAddRows = false;
+            allCategories_grd.AllowUserToDeleteRows = false;
+            allCategories_grd.AllowUserToResizeColumns = false;
+            allCategories_grd.AllowUserToResizeRows = false;
+            allCategories_grd.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            allCategories_grd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            allCategories_grd.BackgroundColor = Color.White;
+            allCategories_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            allCategories_grd.Columns.AddRange(new DataGridViewColumn[] { allAuthors_author, allAuthors_books });
+            allCategories_grd.Location = new Point(14, 129);
+            allCategories_grd.Margin = new Padding(3, 4, 3, 4);
+            allCategories_grd.Name = "allCategories_grd";
+            allCategories_grd.ReadOnly = true;
+            allCategories_grd.RowHeadersVisible = false;
+            allCategories_grd.RowHeadersWidth = 51;
+            allCategories_grd.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            allCategories_grd.ShowCellErrors = false;
+            allCategories_grd.ShowCellToolTips = false;
+            allCategories_grd.ShowEditingIcon = false;
+            allCategories_grd.ShowRowErrors = false;
+            allCategories_grd.Size = new Size(518, 583);
+            allCategories_grd.TabIndex = 63;
             // 
             // allAuthors_author
             // 
@@ -138,30 +138,46 @@ namespace Desktop_Application.Forms.Books
             allAuthors_books.ReadOnly = true;
             allAuthors_books.Width = 88;
             // 
-            // selectedAuthors_grd
+            // selectedCategories_grd
             // 
-            selectedAuthors_grd.AllowUserToAddRows = false;
-            selectedAuthors_grd.AllowUserToDeleteRows = false;
-            selectedAuthors_grd.AllowUserToResizeColumns = false;
-            selectedAuthors_grd.AllowUserToResizeRows = false;
-            selectedAuthors_grd.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            selectedAuthors_grd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            selectedAuthors_grd.BackgroundColor = Color.White;
-            selectedAuthors_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            selectedAuthors_grd.Columns.AddRange(new DataGridViewColumn[] { selectedAuthors_Author, selectedAuthors_books });
-            selectedAuthors_grd.Location = new Point(611, 129);
-            selectedAuthors_grd.Margin = new Padding(3, 4, 3, 4);
-            selectedAuthors_grd.Name = "selectedAuthors_grd";
-            selectedAuthors_grd.ReadOnly = true;
-            selectedAuthors_grd.RowHeadersVisible = false;
-            selectedAuthors_grd.RowHeadersWidth = 51;
-            selectedAuthors_grd.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            selectedAuthors_grd.ShowCellErrors = false;
-            selectedAuthors_grd.ShowCellToolTips = false;
-            selectedAuthors_grd.ShowEditingIcon = false;
-            selectedAuthors_grd.ShowRowErrors = false;
-            selectedAuthors_grd.Size = new Size(518, 583);
-            selectedAuthors_grd.TabIndex = 64;
+            selectedCategories_grd.AllowUserToAddRows = false;
+            selectedCategories_grd.AllowUserToDeleteRows = false;
+            selectedCategories_grd.AllowUserToResizeColumns = false;
+            selectedCategories_grd.AllowUserToResizeRows = false;
+            selectedCategories_grd.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            selectedCategories_grd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            selectedCategories_grd.BackgroundColor = Color.White;
+            selectedCategories_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            selectedCategories_grd.Columns.AddRange(new DataGridViewColumn[] { selectedAuthors_Author, selectedAuthors_books });
+            selectedCategories_grd.Location = new Point(611, 129);
+            selectedCategories_grd.Margin = new Padding(3, 4, 3, 4);
+            selectedCategories_grd.Name = "selectedCategories_grd";
+            selectedCategories_grd.ReadOnly = true;
+            selectedCategories_grd.RowHeadersVisible = false;
+            selectedCategories_grd.RowHeadersWidth = 51;
+            selectedCategories_grd.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            selectedCategories_grd.ShowCellErrors = false;
+            selectedCategories_grd.ShowCellToolTips = false;
+            selectedCategories_grd.ShowEditingIcon = false;
+            selectedCategories_grd.ShowRowErrors = false;
+            selectedCategories_grd.Size = new Size(518, 583);
+            selectedCategories_grd.TabIndex = 64;
+            // 
+            // selectedAuthors_Author
+            // 
+            selectedAuthors_Author.HeaderText = "Author";
+            selectedAuthors_Author.MinimumWidth = 6;
+            selectedAuthors_Author.Name = "selectedAuthors_Author";
+            selectedAuthors_Author.ReadOnly = true;
+            selectedAuthors_Author.Width = 83;
+            // 
+            // selectedAuthors_books
+            // 
+            selectedAuthors_books.HeaderText = "Book(s)";
+            selectedAuthors_books.MinimumWidth = 6;
+            selectedAuthors_books.Name = "selectedAuthors_books";
+            selectedAuthors_books.ReadOnly = true;
+            selectedAuthors_books.Width = 88;
             // 
             // rightArrow_btn
             // 
@@ -248,77 +264,61 @@ namespace Desktop_Application.Forms.Books
             cancel.TextColor = Color.Black;
             cancel.UseVisualStyleBackColor = false;
             // 
-            // allAuthors_src
+            // allCategories_src
             // 
-            allAuthors_src.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            allAuthors_src.BackColor = Color.White;
-            allAuthors_src.Font = new Font("Yu Gothic UI Semibold", 14F);
-            allAuthors_src.Location = new Point(295, 82);
-            allAuthors_src.Margin = new Padding(3, 4, 3, 4);
-            allAuthors_src.MaxLength = 19;
-            allAuthors_src.Name = "allAuthors_src";
-            allAuthors_src.PlaceholderText = "Search...";
-            allAuthors_src.Size = new Size(237, 39);
-            allAuthors_src.TabIndex = 85;
-            allAuthors_src.TabStop = false;
-            allAuthors_src.TextChanged += SearchAllAuthors;
+            allCategories_src.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            allCategories_src.BackColor = Color.White;
+            allCategories_src.Font = new Font("Yu Gothic UI Semibold", 14F);
+            allCategories_src.Location = new Point(295, 82);
+            allCategories_src.Margin = new Padding(3, 4, 3, 4);
+            allCategories_src.MaxLength = 19;
+            allCategories_src.Name = "allCategories_src";
+            allCategories_src.PlaceholderText = "Search...";
+            allCategories_src.Size = new Size(237, 39);
+            allCategories_src.TabIndex = 85;
+            allCategories_src.TabStop = false;
+            allCategories_src.TextChanged += SearchAllAuthors;
             // 
-            // selectedAuthors_src
+            // selectedCategories_src
             // 
-            selectedAuthors_src.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            selectedAuthors_src.BackColor = Color.White;
-            selectedAuthors_src.Font = new Font("Yu Gothic UI Semibold", 14F);
-            selectedAuthors_src.Location = new Point(892, 82);
-            selectedAuthors_src.Margin = new Padding(3, 4, 3, 4);
-            selectedAuthors_src.MaxLength = 19;
-            selectedAuthors_src.Name = "selectedAuthors_src";
-            selectedAuthors_src.PlaceholderText = "Search...";
-            selectedAuthors_src.Size = new Size(237, 39);
-            selectedAuthors_src.TabIndex = 86;
-            selectedAuthors_src.TabStop = false;
-            selectedAuthors_src.TextChanged += SearchSelectedAuthors;
+            selectedCategories_src.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            selectedCategories_src.BackColor = Color.White;
+            selectedCategories_src.Font = new Font("Yu Gothic UI Semibold", 14F);
+            selectedCategories_src.Location = new Point(892, 82);
+            selectedCategories_src.Margin = new Padding(3, 4, 3, 4);
+            selectedCategories_src.MaxLength = 19;
+            selectedCategories_src.Name = "selectedCategories_src";
+            selectedCategories_src.PlaceholderText = "Search...";
+            selectedCategories_src.Size = new Size(237, 39);
+            selectedCategories_src.TabIndex = 86;
+            selectedCategories_src.TabStop = false;
+            selectedCategories_src.TextChanged += SearchSelectedAuthors;
             // 
-            // selectedAuthors_Author
-            // 
-            selectedAuthors_Author.HeaderText = "Author";
-            selectedAuthors_Author.MinimumWidth = 6;
-            selectedAuthors_Author.Name = "selectedAuthors_Author";
-            selectedAuthors_Author.ReadOnly = true;
-            selectedAuthors_Author.Width = 83;
-            // 
-            // selectedAuthors_books
-            // 
-            selectedAuthors_books.HeaderText = "Book(s)";
-            selectedAuthors_books.MinimumWidth = 6;
-            selectedAuthors_books.Name = "selectedAuthors_books";
-            selectedAuthors_books.ReadOnly = true;
-            selectedAuthors_books.Width = 88;
-            // 
-            // ChooseAuthors
+            // ChooseCategories
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1143, 800);
-            Controls.Add(selectedAuthors_src);
-            Controls.Add(allAuthors_src);
+            Controls.Add(selectedCategories_src);
+            Controls.Add(allCategories_src);
             Controls.Add(save);
             Controls.Add(cancel);
             Controls.Add(leftArrow_btn);
             Controls.Add(rightArrow_btn);
-            Controls.Add(selectedAuthors_grd);
-            Controls.Add(allAuthors_grd);
+            Controls.Add(selectedCategories_grd);
+            Controls.Add(allCategories_grd);
             Controls.Add(header);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 4, 3, 4);
-            Name = "ChooseAuthors";
+            Name = "ChooseCategories";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ChooseBooks";
             Load += OnLoad;
             header.ResumeLayout(false);
             header.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)allAuthors_grd).EndInit();
-            ((System.ComponentModel.ISupportInitialize)selectedAuthors_grd).EndInit();
+            ((System.ComponentModel.ISupportInitialize)allCategories_grd).EndInit();
+            ((System.ComponentModel.ISupportInitialize)selectedCategories_grd).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -328,14 +328,14 @@ namespace Desktop_Application.Forms.Books
         private Panel header;
         private Label title;
         private Components.RoundedButton close_btn;
-        private DataGridView allAuthors_grd;
-        private DataGridView selectedAuthors_grd;
+        private DataGridView allCategories_grd;
+        private DataGridView selectedCategories_grd;
         private Components.RoundedButton rightArrow_btn;
         private Components.RoundedButton leftArrow_btn;
         private Components.RoundedButton save;
         private Components.RoundedButton cancel;
-        private System.Windows.Forms.TextBox allAuthors_src;
-        private System.Windows.Forms.TextBox selectedAuthors_src;
+        private System.Windows.Forms.TextBox allCategories_src;
+        private System.Windows.Forms.TextBox selectedCategories_src;
         private DataGridViewTextBoxColumn allAuthors_author;
         private DataGridViewTextBoxColumn allAuthors_books;
         private DataGridViewTextBoxColumn selectedAuthors_Author;

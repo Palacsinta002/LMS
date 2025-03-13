@@ -187,7 +187,7 @@ public partial class AdminPanel : Form
     // Removes borrowing from the database - Marks the book as returned
     private void RemoveBorrowings(object sender, EventArgs e)
     {
-        ReturnBook removeBorrowing = new(borrowings_grd);
+        ReturnBooks removeBorrowing = new(borrowings_grd);
         removeBorrowing.ShowDialog();
         RefreshBorrowings(sender, e);
     }

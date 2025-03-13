@@ -2,7 +2,7 @@
 
 namespace Desktop_Application.Forms.Books;
 
-public partial class ChooseAuthors : Form
+public partial class ChooseAuthor : Form
 {
     private static List<string> _selectedAuthors = [];
     public static List<string> SelectedAuthors
@@ -10,7 +10,7 @@ public partial class ChooseAuthors : Form
         get { return _selectedAuthors; }
     }
 
-    public ChooseAuthors(List<string> selectedAuthors)
+    public ChooseAuthor(List<string> selectedAuthors)
     {
         _selectedAuthors = selectedAuthors;
         InitializeComponent();
