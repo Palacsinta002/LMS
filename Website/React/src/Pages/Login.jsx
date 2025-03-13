@@ -29,6 +29,7 @@ export default function Login() {
 
       if (response.data.token) {
         setAuthToken(response.data.token);
+        console.log(response.data.token)
         sessionStorage.setItem("token", response.data.token);
         navigate("/dashboard");
       }

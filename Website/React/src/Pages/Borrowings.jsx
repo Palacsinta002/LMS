@@ -9,9 +9,8 @@ export default function Borrowings() {
   const hidden = location.pathname === '/dashboard/borrowings' ? '' : 'hidden';
 
   useEffect(() => {
-    axios.get("api/borrowings")
+    axios.post("/api/borrowings")
       .then(response => {
-        console.log(response.data)
         setBorrowings(response.data)
       })
       .catch(err => console.error(err))
@@ -23,14 +22,19 @@ export default function Borrowings() {
         <thead>
           <tr>
             <th>ISBN</th>
+            <th>Title</th>
             <th>Borrowings Date</th>
             <th>Due Date</th>
           </tr>
         </thead>
         <tbody>
-          {borrowings.map((items) => (
-            <tr>
-              <td>{items.isbn}</td>
+          {borrowings.map((items, index) => (
+            <tr key={index}>
+              <td>{items.ISBN}</td>
+              <td>{items.Title}</td>
+              <td>{items.borrowDate}</td>
+              <td>{items.dueDate}</td>
+              <td></td>
             </tr>
           ))}
         </tbody>
