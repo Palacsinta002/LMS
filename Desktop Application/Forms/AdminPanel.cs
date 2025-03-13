@@ -346,13 +346,22 @@ public partial class AdminPanel : Form
     // Edit the selected publisher from the grid and then updates it in the database
     private void EditPublisher(object sender, EventArgs e)
     {
-
+        if (publishers_grd.SelectedRows.Count != 1)
+        {
+            MessageBox.Show("You must select ONE publisher to edit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+        EditPublisher editPublisher = new(publishers_grd);
+        editPublisher.ShowDialog();
+        RefreshPublishers(sender, e);
     }
 
     // Removes publishers from the database - Marks the book as returned
     private void RemovePublishers(object sender, EventArgs e)
     {
-
+        RemovePublishers removePublishers = new(publishers_grd);
+        removePublishers.ShowDialog();
+        RefreshPublishers(sender, e);
     }
     #endregion
 
