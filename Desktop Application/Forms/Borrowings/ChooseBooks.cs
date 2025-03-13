@@ -1,6 +1,6 @@
 ﻿using Desktop_Application.Classes;
 
-namespace Desktop_Application.Forms.Borrowings; 
+namespace Desktop_Application.Forms.Borrowings;
 
 public partial class ChooseBooks : Form
 {
@@ -70,5 +70,17 @@ public partial class ChooseBooks : Form
             selectedBooks_grd.Rows.Remove(row);
             allBooks_grd.Rows.Add(row);
         }
+    }
+
+    private void SearchAllBooks(object sender, EventArgs e)
+    {
+        string[] cols = ["allBooks_title", "allBooks_author", "allBooks_pubYear", "allBooks_isbn"];
+        HandleGrids.SearchGrid(allBooks_grd, allBooks_src.Text, cols);
+    }
+
+    private void SearchSelectedBooks(object sender, EventArgs e)
+    {
+        string[] cols = ["selectedBooks_title", "selectedBooks_author", "selectedBooks_pubYear", "selectedBooks_isbn"];
+        HandleGrids.SearchGrid(selectedBooks_grd, selectedBooks_src.Text, cols);
     }
 }
