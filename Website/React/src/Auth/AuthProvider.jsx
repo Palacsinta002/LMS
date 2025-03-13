@@ -16,7 +16,7 @@ export default function AuthProvider({ children }) {
                 } else {
                     alert("Session expired. Please log in again.")
                     sessionStorage.removeItem("token");
-                    window.locaion.relead();
+                    window.location.reload;
                     setUser(null);
                 }
             } catch (error) {
@@ -35,7 +35,7 @@ export default function AuthProvider({ children }) {
 
     const logout = () => {
         sessionStorage.removeItem("token");
-        window.location.reload()
+        window.location.reload;
         setUser(null);
     }
 
