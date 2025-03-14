@@ -1,6 +1,5 @@
 ﻿using System.Text.RegularExpressions;
 using Desktop_Application.Classes;
-using Desktop_Application.Forms.Borrowings;
 
 namespace Desktop_Application.Forms.Books;
 
@@ -102,9 +101,10 @@ public partial class EditBook : Form
 
     private void OpenChooseCategory(object sender, EventArgs e)
     {
-        ChooseCategory chooseCategory = new();
+        List<string> selectedCategories = textBox_category.Text.Split(", ").ToList();
+        ChooseCategories chooseCategory = new(selectedCategories);
         chooseCategory.ShowDialog();
 
-        textBox_category.Text = string.Join(", ", ChooseCategory.SelectedCategories);
+        textBox_category.Text = string.Join(", ", ChooseCategories.SelectedCategories);
     }
 }
