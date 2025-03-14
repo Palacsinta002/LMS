@@ -1,2 +1,3 @@
 ﻿SELECT Category
-FROM Categories;
+FROM Categories
+ORDER BY Category;
