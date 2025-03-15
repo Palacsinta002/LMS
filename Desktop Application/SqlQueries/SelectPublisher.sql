@@ -1,2 +1,3 @@
 ﻿SELECT Publisher
-FROM Publishers;
+FROM Publishers
+ORDER BY Publisher;

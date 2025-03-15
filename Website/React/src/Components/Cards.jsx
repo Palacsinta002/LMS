@@ -4,7 +4,7 @@ export default function Cards({ index, img, title, publisher, author, publicatio
   return (
     <div key={index}>
         <div>
-            <img src={img} />
+            <img src={`http://localhost:8000/img/${img}`} />
         </div>
         <div>
             <h1>{title}</h1>

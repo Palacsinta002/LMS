@@ -6,4 +6,5 @@ SELECT
     Users.Address,
     Roles.Role
 FROM Users
-JOIN Roles ON Roles.id = Users.RoleID;
+JOIN Roles ON Roles.id = Users.RoleID
+ORDER BY Users.FirstName, Users.LastName;

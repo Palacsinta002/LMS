@@ -49,7 +49,7 @@ public partial class ChooseCategories : Form
         _selectedCategories = [];
         foreach (DataGridViewRow row in selectedCategories_grd.Rows)
         {
-            _selectedCategories.Add(row.Cells["selectedAuthors_author"].Value.ToString() ?? string.Empty);
+            _selectedCategories.Add(row.Cells["selectedCategories_category"].Value.ToString() ?? string.Empty);
         }
         this.Close();
     }
@@ -72,15 +72,15 @@ public partial class ChooseCategories : Form
         }
     }
 
-    private void SearchAllAuthors(object sender, EventArgs e)
+    private void SearchAllCategories(object sender, EventArgs e)
     {
-        string[] cols = ["allAuthors_author", "allAuthors_books"];
+        string[] cols = ["allCategories_category"];
         HandleGrids.SearchGrid(allCategories_grd, allCategories_src.Text, cols);
     }
 
-    private void SearchSelectedAuthors(object sender, EventArgs e)
+    private void SearchSelectedCategories(object sender, EventArgs e)
     {
-        string[] cols = ["selectedAuthors_author", "selectedAuthors_books"];
+        string[] cols = ["selectedCategories_category"];
         HandleGrids.SearchGrid(selectedCategories_grd, selectedCategories_src.Text, cols);
     }
 }

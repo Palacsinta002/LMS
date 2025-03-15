@@ -11,4 +11,5 @@ JOIN Books_Authors ON Books.ISBN = Books_Authors.ISBN
 JOIN Authors ON Books_Authors.AuthorID = Authors.id
 JOIN Books_Categories ON Books.ISBN = Books_Categories.ISBN
 JOIN Categories ON Books_Categories.CategoryID = Categories.id
-GROUP BY Books.Title, Books.PublicationYear, Publishers.Publisher, Books.ISBN;
+GROUP BY Books.Title, Books.PublicationYear, Publishers.Publisher, Books.ISBN
+ORDER BY Books.Title;
