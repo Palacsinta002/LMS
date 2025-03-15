@@ -3,6 +3,11 @@
 require_once __DIR__ . "/InputMethods.php";
 $requesturi = explode("/", trim($_SERVER["REQUEST_URI"],"/"));
 if ($requesturi[0] == "api"){
+    if ($requesturi[1] == "books"){
+        require_once __DIR__ ."/openapi.php";
+        openapi($requesturi);
+        die();
+    }
     require_once __DIR__ . "/userapi.php";
 }
 if ($requesturi[0] == "img"){
