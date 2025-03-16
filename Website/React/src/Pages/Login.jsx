@@ -13,12 +13,14 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  const payload = {username, password};
+
   async function HandleSubmit(event) {
     event.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post("api/login",
-        { username: username, password: password },
+      const response = await axios.post("/api/login",
+        { payload },
         {
           headers: {
             "method": "POST",
@@ -36,11 +38,11 @@ export default function Login() {
         navigate("/login")
       }
     } catch (error) {
-      console.error(error);
-
-      if (error.response) {
-        console.error(response.data.error);
-        setError(response.data.error || "Login failed");
+      console.error("Login Error:", error);
+  
+      if (error.response && error.response.data && error.response.data.error) {
+        console.log(error.response.data.error);
+        setError(error.response.data.error || "Login failed");
       } else {
         setError("Network error");
       }
