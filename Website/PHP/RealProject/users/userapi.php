@@ -29,12 +29,6 @@ elseif($uri[count($uri)-1] == "login"){
 elseif($uri[count($uri)-1] == "logout"){
     require_once "logout.php";
 }
-elseif(seacrhURLElement($uri,"books") >= 0){
-    $booksPlace = seacrhURLElement($uri,"books");
-    $uriData = array_slice($uri,$booksPlace, count($uri)-$booksPlace);
-    require_once "getbooks.php";
-    getbooks($uriData);
-}
 elseif($uri[count($uri)-1] == "verify"){
     require_once "verify.php";
     verify();

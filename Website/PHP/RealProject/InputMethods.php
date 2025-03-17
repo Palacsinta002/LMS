@@ -1,8 +1,8 @@
 <?php
 ####################  This file is a helper file for the rest of the .php files.   ####################
 
-require 'vendor/autoload.php';
-
+####################  Loads the necessary files.   ####################
+require_once __DIR__ . '/vendor/autoload.php';
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
@@ -74,5 +74,16 @@ function decodeToken($token,$secretKey){
     } catch (Exception $e) {
         echo json_encode(["Invalid Token: " => $e->getMessage()]);
     }
+}
+
+####################  Make from the __DIR__ constant an url string  ####################
+function DirectiontoUrl($direction) {
+    $var = ' \ ';
+    $url = "http://localhost";
+    $direction = explode(trim($var), $direction);
+    for ($i=array_search("LMS", $direction); $i < count($direction); $i++) { 
+        $url .= "/" . $direction[$i];
+    }
+    return $url;
 }
 ?>

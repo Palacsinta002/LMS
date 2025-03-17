@@ -19,9 +19,18 @@ class ComposerStaticInit20fad51902f91e7fd3039e016a6556b5
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
         ),
+        'R' => 
+        array (
+            'Router\\' => 7,
+        ),
         'P' => 
         array (
             'PhpOption\\' => 10,
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
+        'H' => 
+        array (
+            'Helper\\' => 7,
         ),
         'G' => 
         array (
@@ -31,9 +40,23 @@ class ComposerStaticInit20fad51902f91e7fd3039e016a6556b5
         array (
             'Firebase\\JWT\\' => 13,
         ),
+        'E' => 
+        array (
+            'Emailer\\' => 8,
+        ),
         'D' => 
         array (
             'Dotenv\\' => 7,
+            'Database\\' => 9,
+        ),
+        'C' => 
+        array (
+            'Config\\' => 7,
+        ),
+        'A' => 
+        array (
+            'App\\' => 4,
+            'ApiResponse\\' => 12,
         ),
     );
 
@@ -50,9 +73,21 @@ class ComposerStaticInit20fad51902f91e7fd3039e016a6556b5
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
+        'Router\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Router',
+        ),
         'PhpOption\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
+        'Helper\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Helper',
         ),
         'GrahamCampbell\\ResultType\\' => 
         array (
@@ -62,9 +97,29 @@ class ComposerStaticInit20fad51902f91e7fd3039e016a6556b5
         array (
             0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
         ),
+        'Emailer\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Emailer',
+        ),
         'Dotenv\\' => 
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
+        ),
+        'Database\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Database',
+        ),
+        'Config\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Config',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/App',
+        ),
+        'ApiResponse\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/ApiResponse',
         ),
     );
 

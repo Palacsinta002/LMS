@@ -1,0 +1,98 @@
+<?php
+
+namespace App\Models;
+
+use ApiResponse\Response;
+
+class Model{
+    public static function checkRequiredData($inputList,$requiredData,$optional = []){
+        $arrayRequired = [];
+        
+        for ($i=0; $i < count($requiredData); $i++) { 
+            if (is_array($requiredData[$i])) {
+                $tmp = $requiredData[$i][0];
+            }
+            $tmp = $requiredData[$i];
+            
+            if (!isset($inputList[$tmp])) {
+                return false;
+            }
+
+            if (is_array($requiredData[$i])){
+                $arrayRequired[$requiredData[$i][1]] =  $inputList[$tmp];
+            }
+            else{
+                $arrayRequired[$tmp] =  $inputList[$tmp];
+            }
+            
+        }
+        for ($i= 0; $i < count($optional); $i++){
+            if (is_array($optional[$i])) {
+                $tmp = $optional[$i][0];
+            }
+            else{
+                $tmp = $optional[$i];
+            }
+            if (isset($inputList[$tmp])) {
+                if (is_array($optional[$i])) {
+                    $arrayRequired[$optional[$i][1]] = $inputList[$optional[$i][0]];
+                }
+                else{
+                    $arrayRequired[$tmp] =  $inputList[$tmp];
+                }
+                
+            }
+        }
+        
+        return $arrayRequired;
+    }
+    public static function makeTypesArray(&$inputList,$fields,$types,$operators = []){
+        $typesRes = [];
+        if (count($operators) == 0){
+            for ($i= 0; $i < count($fields); $i++){
+                if (isset($inputList[$fields[$i]])) {
+                    $typesRes[] = $types[$i];
+                }
+            }
+            return $typesRes;
+        }
+        else{
+            for ($i= 0; $i < count($fields); $i++){
+                if (isset($inputList[$fields[$i]])) {
+                    $typesRes[$types[$i]] = $operators[$i];
+                    if ($operators[$i] == "LIKE") {
+                        $inputList[$fields[$i]] = "%". $inputList[$fields[$i]] ."%";
+                    }
+                }
+            }
+            return $typesRes;
+        }
+    }
+    public static function callingValidateFunctions($inputList, $fields, $model, $function){
+        for ($i=0; $i < count($fields); $i++) { 
+            if (isset($inputList[$fields[$i]])) {
+                $model::$function($inputList[$fields[$i]]);
+            }
+            
+        }
+    }
+    public static function validateISBN( $ISBN ){
+        $ISBN = str_replace("-", "", $ISBN);
+        if (!preg_match("/^([0-9]{13}|[0-9]{10})$/", $ISBN)) {
+            Response::httpError(400,24);
+        }
+        return true;
+    }
+
+    public static function validateID( $ID ){
+        $pattern = "/^[0-9]+$/";
+
+        if (!preg_match($pattern, $ID)) {
+            Response::httpError(400,27);
+        }
+        return true;
+    }
+}
+
+
+?>
