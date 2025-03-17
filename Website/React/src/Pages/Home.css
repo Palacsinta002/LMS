@@ -191,11 +191,11 @@ table td {
   animation: bounce2 5s ease infinite;
 }
 
-@keyframes bounce2 {
+/*@keyframes bounce2 {
   0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
   40% { transform: translateY(-30px); }
   60% { transform: translateY(-15px); }
-}
+}*/
 
 .BrowseBooks a {
   color: white;
@@ -203,9 +203,23 @@ table td {
 }
 
 .cards-list{
+  position: relative;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 30vw;
+  max-width: 40vw;
+  min-width: 60vw;
+  background-color: #48459E;
+  border-radius: 1vh;
+  margin: 5vh auto;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.6);
+  z-index: 1;
+  padding: 1vh;
 }
 
 .home-card{
@@ -213,18 +227,17 @@ table td {
   min-width: 250px;
   max-width: 25%;
   min-height: 50vh;
-  max-height: 20vh;
   background-color: white;
   border-radius: 2vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   box-shadow: 2px 3px 10px 1px rgba(0, 0, 0, 0.6);
-  padding: 25px;
+  margin: 2vh 2vh;
 }
 
 .home-card-image img{
-  width: 80%;
+  width: 100%;
   height: auto;
   border-radius: 8px;
 }

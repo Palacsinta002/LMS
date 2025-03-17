@@ -18,7 +18,7 @@ export default function HeroBrowseBooks() {
     }, [])
     return (
         <div className="BrowseBooks">
-            <a href="">
+            <a href="BrowseBooks-link">
                 <p>Browse books</p>
                 <i className="fa fa-caret-down"></i>
             </a>
