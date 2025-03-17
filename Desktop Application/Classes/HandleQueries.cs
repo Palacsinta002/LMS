@@ -52,7 +52,19 @@ internal class HandleQueries
         connection.RunSqlCommand(query);
     }
     // Insert author with the given arguments
+    internal static void InsertAuthor(string author)
+    {
+        Connection connection = new();
+        string query = $"INSERT INTO Authors(Author) VALUES(\"{author}\")";
+        connection.RunSqlCommand(query);
+    }
     // Insert publisher with the given arguments
+    internal static void InsertPublisher(string publisher)
+    {
+        Connection connection = new();
+        string query = $"INSERT INTO Publishers(Publisher) VALUES(\"{publisher}\")";
+        connection.RunSqlCommand(query);
+    }
     // Insert user with the given arguments
     internal static void InsertUser(string firstName, string lastName, string email, string username, string hashedPassword, string address)
     {
@@ -104,7 +116,25 @@ internal class HandleQueries
         }
     }
     // Update author with the given arguments
+    internal static void UpdateAuthor(DataGridView authors_grd, string author)
+    {
+        Connection connection = new();
+        foreach (DataGridViewRow row in authors_grd.SelectedRows)
+        {
+            string query = $"UPDATE Authors SET Author = \"{author}\" WHERE Author = \"{row.Cells[0].Value}\"";
+            connection.RunSqlCommand(query);
+        }
+    }
     // Update publisher with the given arguments
+    internal static void UpdatePublisher(DataGridView publisher_grd, string publisher)
+    {
+        Connection connection = new();
+        foreach (DataGridViewRow row in publisher_grd.SelectedRows)
+        {
+            string query = $"UPDATE Publishers SET Publisher = \"{publisher}\" WHERE Publisher = \"{row.Cells[0].Value}\"";
+            connection.RunSqlCommand(query);
+        }
+    }
     // Update user with the given arguments
     internal static void UpdatetUser(DataGridView users_grd, string firstName, string lastName, string email, string username, string address)
     {

@@ -1,6 +1,6 @@
 ﻿using Desktop_Application.Components;
 
-namespace Desktop_Application
+namespace Desktop_Application.Forms.Users
 {
     partial class EditUser
     {

@@ -48,12 +48,12 @@ public partial class AddCategory : Form
         return true;
     }
 
-    private static bool CheckCategory(string username)
+    private static bool CheckCategory(string category)
     {
         var result = HandleQueries.Select("SelectCategory");
         foreach (string[] item in result)
         {
-            if (item[0] == username) return true;
+            if (item[0] == category) return true;
         }
         return false;
     }

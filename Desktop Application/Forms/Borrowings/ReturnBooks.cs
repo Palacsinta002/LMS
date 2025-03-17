@@ -2,11 +2,11 @@
 
 namespace Desktop_Application.Forms.Borrowings;
 
-public partial class ReturnBook : Form
+public partial class ReturnBooks : Form
 {
-    private static DataGridView _borrowings_grd;
+    private readonly DataGridView _borrowings_grd;
 
-    public ReturnBook(DataGridView borrowings_grd)
+    public ReturnBooks(DataGridView borrowings_grd)
     {
         _borrowings_grd = borrowings_grd;
         InitializeComponent();
@@ -38,7 +38,7 @@ public partial class ReturnBook : Form
         }
     }
 
-    private static bool CheckReturnDate()
+    private bool CheckReturnDate()
     {
         foreach(DataGridViewRow row in _borrowings_grd.SelectedRows)
         {

@@ -7,16 +7,10 @@
     <Compile Update="Forms\AdminPanel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Books\ChooseAuthor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\Books\ChooseCategory.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Forms\Books\EditBook.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Books\RemoveBook.cs">
+    <Compile Update="Forms\Books\RemoveBooks.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Borrowings\EditBorrowing.cs">
@@ -28,7 +22,7 @@
     <Compile Update="Forms\Borrowings\ChooseBooks.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Borrowings\ReturnBook.cs">
+    <Compile Update="Forms\Borrowings\ReturnBooks.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Categories\AddCategory.cs">

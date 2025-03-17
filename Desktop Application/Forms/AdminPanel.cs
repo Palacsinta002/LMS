@@ -1,9 +1,12 @@
-﻿namespace Desktop_Application;
-
-using Desktop_Application.Classes;
+﻿using Desktop_Application.Classes;
 using Desktop_Application.Forms.Books;
 using Desktop_Application.Forms.Borrowings;
 using Desktop_Application.Forms.Categories;
+using Desktop_Application.Forms.Authors;
+using Desktop_Application.Forms.Publishers;
+using Desktop_Application.Forms.Users;
+
+namespace Desktop_Application;
 
 public partial class AdminPanel : Form
 {
@@ -84,7 +87,7 @@ public partial class AdminPanel : Form
     // Live search - Searches title, publication year or isbn in the grid
     private void SearchBooks(object sender, EventArgs e)
     {
-        string[] cols = ["title", "publicationYear", "isbn"];
+        string[] cols = ["books_title", "books_publicationYear", "books_isbn"];
         HandleGrids.SearchGrid(books_grd, books_src.Text, cols);
     }
 
@@ -101,7 +104,7 @@ public partial class AdminPanel : Form
     {
         if (books_grd.SelectedRows.Count != 1)
         {
-            MessageBox.Show("You must select ONE book to edit!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("You must select ONE book to edit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
         EditBook editBook = new(books_grd);
@@ -168,12 +171,12 @@ public partial class AdminPanel : Form
     {
         if (borrowings_grd.SelectedRows.Count != 1)
         {
-            MessageBox.Show("You must select ONE borrowing to edit!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("You must select ONE borrowing to edit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
         else if (borrowings_grd.SelectedRows[0].Cells["borrowings_returnDate"].Value.ToString() != string.Empty)
         {
-            MessageBox.Show("You can't edit returned borrowings!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("You can't edit returned borrowings!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
         EditBorrowing editBorrowing = new(borrowings_grd);
@@ -184,7 +187,7 @@ public partial class AdminPanel : Form
     // Removes borrowing from the database - Marks the book as returned
     private void RemoveBorrowings(object sender, EventArgs e)
     {
-        ReturnBook removeBorrowing = new(borrowings_grd);
+        ReturnBooks removeBorrowing = new(borrowings_grd);
         removeBorrowing.ShowDialog();
         RefreshBorrowings(sender, e);
     }
@@ -230,7 +233,7 @@ public partial class AdminPanel : Form
     {
         if (categories_grd.SelectedRows.Count != 1)
         {
-            MessageBox.Show("You must select ONE category to edit!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("You must select ONE category to edit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
         EditCategory editCategory = new(categories_grd);
@@ -278,19 +281,30 @@ public partial class AdminPanel : Form
     // Adds an author to the database
     private void AddAuthor(object sender, EventArgs e)
     {
-
+        AddAuthor addAuthor = new();
+        addAuthor.ShowDialog();
+        RefreshAuthors(sender, e);
     }
 
     // Edit the selected author from the grid and then updates it in the database
     private void EditAuthor(object sender, EventArgs e)
     {
-
+        if (authors_grd.SelectedRows.Count != 1)
+        {
+            MessageBox.Show("You must select ONE author to edit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+        EditAuthor editAuthor = new(authors_grd);
+        editAuthor.ShowDialog();
+        RefreshAuthors(sender, e);
     }
 
     // Removes authors from the database - Marks the book as returned
-    private void RemoveAuthor(object sender, EventArgs e)
+    private void RemoveAuthors(object sender, EventArgs e)
     {
-
+        RemoveAuthors removeAuthors = new(authors_grd);
+        removeAuthors.ShowDialog();
+        RefreshAuthors(sender, e);
     }
     #endregion
 
@@ -303,37 +317,51 @@ public partial class AdminPanel : Form
         {
             HidePanels();
             publishers_pnl.Visible = true;
+            RefreshPublishers(sender, e);
         }
     }
 
     // Select publishers from the database and fills the grid
     private void RefreshPublishers(object sender, EventArgs e)
     {
-
+        var result = HandleQueries.Select("SelectPublisher");
+        HandleGrids.Fill(publishers_grd, result);
     }
 
     // Live search - Searches publishers in the grid
     private void SearchPublishers(object sender, EventArgs e)
     {
-
+        string[] cols = ["publishers_publisher"];
+        HandleGrids.SearchGrid(publishers_grd, publishers_src.Text, cols);
     }
 
     // Adds a publisher to the database
     private void AddPublisher(object sender, EventArgs e)
     {
-
+        AddPublisher addPublisher = new();
+        addPublisher.ShowDialog();
+        RefreshPublishers(sender, e);
     }
 
     // Edit the selected publisher from the grid and then updates it in the database
     private void EditPublisher(object sender, EventArgs e)
     {
-
+        if (publishers_grd.SelectedRows.Count != 1)
+        {
+            MessageBox.Show("You must select ONE publisher to edit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+        EditPublisher editPublisher = new(publishers_grd);
+        editPublisher.ShowDialog();
+        RefreshPublishers(sender, e);
     }
 
     // Removes publishers from the database - Marks the book as returned
     private void RemovePublishers(object sender, EventArgs e)
     {
-
+        RemovePublishers removePublishers = new(publishers_grd);
+        removePublishers.ShowDialog();
+        RefreshPublishers(sender, e);
     }
     #endregion
 
@@ -377,7 +405,7 @@ public partial class AdminPanel : Form
     {
         if (users_grd.SelectedRows.Count != 1)
         {
-            MessageBox.Show("You must select ONE user to edit!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("You must select ONE user to edit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
         EditUser editUser = new(users_grd);

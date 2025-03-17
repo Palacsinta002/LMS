@@ -26,10 +26,31 @@
     <Compile Update="Forms\Authors\AddAuthor.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Authors\EditAuthor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Authors\RemoveAuthors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Books\ChooseCategories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Books\ChooseAuthor.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Categories\EditCategory.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Categories\RemoveCategories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Publishers\AddPublisher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Publishers\EditPublisher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Publishers\RemovePublishers.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Users\EditUser.cs">

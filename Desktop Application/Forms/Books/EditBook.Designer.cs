@@ -1,7 +1,7 @@
 ﻿using Desktop_Application.Components;
 using Desktop_Application.Forms.Books;
 
-namespace Desktop_Application
+namespace Desktop_Application.Forms.Books
 {
     partial class EditBook
     {

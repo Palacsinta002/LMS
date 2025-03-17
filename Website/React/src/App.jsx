@@ -13,16 +13,20 @@ import Charts from './Pages/Charts';
 import Profile from './Pages/Profile';
 import NotFound from './Pages/NotFound';
 import { Provider } from 'react-redux'
-import Store from './Hooks/Store'
+import Store from './Auth/Store'
+import AuthProvider from './Auth/AuthProvider';
+import ForgotPassword from './Pages/ForgotPassword';
 
 function App() {
   return (
-    <Provider store={Store} >
+    <AuthProvider>
       <BrowserRouter>
         <Header />
         <Routes>
           <Route path="/" exact element={<Home />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login />} >
+            <Route path="forgot-password" element={<ForgotPassword />} />
+          </Route>
           <Route path="/register" element={<Register />} />
           <Route path="/verify" element={<Verify />} />
           <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}>
@@ -34,7 +38,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
-    </Provider>
+    </AuthProvider>
   );
 }
 

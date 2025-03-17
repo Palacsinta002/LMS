@@ -1,9 +1,6 @@
-﻿using Desktop_Application.Properties;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-
-namespace Desktop_Application.Forms.Borrowings
+﻿namespace Desktop_Application.Forms.Publishers
 {
-    partial class ReturnBook
+    partial class RemovePublishers
     {
         /// <summary>
         /// Required designer variable.
@@ -31,13 +28,13 @@ namespace Desktop_Application.Forms.Borrowings
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReturnBook));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RemovePublishers));
             header = new Panel();
             title = new Label();
             close_btn = new Desktop_Application.Components.RoundedButton();
+            label_title = new Label();
             yes = new Desktop_Application.Components.RoundedButton();
             no = new Desktop_Application.Components.RoundedButton();
-            label_title = new Label();
             header.SuspendLayout();
             SuspendLayout();
             // 
@@ -50,17 +47,17 @@ namespace Desktop_Application.Forms.Borrowings
             header.Margin = new Padding(3, 4, 3, 4);
             header.Name = "header";
             header.Size = new Size(413, 73);
-            header.TabIndex = 31;
+            header.TabIndex = 27;
             // 
             // title
             // 
             title.AutoSize = true;
             title.Font = new Font("Yu Gothic UI Semibold", 16F);
-            title.Location = new Point(120, 16);
+            title.Location = new Point(78, 16);
             title.Name = "title";
-            title.Size = new Size(169, 37);
+            title.Size = new Size(237, 37);
             title.TabIndex = 2;
-            title.Text = "Return Book";
+            title.Text = "Remove Publisher";
             // 
             // close_btn
             // 
@@ -86,6 +83,15 @@ namespace Desktop_Application.Forms.Borrowings
             close_btn.TextColor = Color.White;
             close_btn.UseVisualStyleBackColor = false;
             // 
+            // label_title
+            // 
+            label_title.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label_title.Location = new Point(14, 97);
+            label_title.Name = "label_title";
+            label_title.Size = new Size(387, 73);
+            label_title.TabIndex = 28;
+            label_title.Text = "Are you sure you want to remove the selected publisher(s)?";
+            // 
             // yes
             // 
             yes.BackColor = Color.WhiteSmoke;
@@ -102,7 +108,7 @@ namespace Desktop_Application.Forms.Borrowings
             yes.Margin = new Padding(3, 4, 3, 4);
             yes.Name = "yes";
             yes.Size = new Size(91, 48);
-            yes.TabIndex = 34;
+            yes.TabIndex = 30;
             yes.TabStop = false;
             yes.Text = "Yes";
             yes.TextColor = Color.Black;
@@ -124,35 +130,27 @@ namespace Desktop_Application.Forms.Borrowings
             no.Margin = new Padding(3, 4, 3, 4);
             no.Name = "no";
             no.Size = new Size(91, 48);
-            no.TabIndex = 33;
+            no.TabIndex = 29;
             no.Text = "No";
             no.TextColor = Color.White;
             no.UseVisualStyleBackColor = false;
             // 
-            // label_title
-            // 
-            label_title.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label_title.Location = new Point(14, 97);
-            label_title.Name = "label_title";
-            label_title.Size = new Size(387, 73);
-            label_title.TabIndex = 32;
-            label_title.Text = "Are you sure you want to mark this book as returned?";
-            // 
-            // RemoveBorrowing
+            // RemovePublishers
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(415, 261);
-            Controls.Add(header);
             Controls.Add(yes);
             Controls.Add(no);
             Controls.Add(label_title);
+            Controls.Add(header);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
-            Name = "RemoveBorrowing";
+            Name = "RemovePublishers";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "RemoveBorrowing";
+            Text = "RemoveBookConfirmation";
             Load += OnLoad;
             header.ResumeLayout(false);
             header.PerformLayout();
@@ -164,8 +162,8 @@ namespace Desktop_Application.Forms.Borrowings
         private Panel header;
         private Label title;
         private Components.RoundedButton close_btn;
+        private Label label_title;
         private Components.RoundedButton yes;
         private Components.RoundedButton no;
-        private Label label_title;
     }
 }

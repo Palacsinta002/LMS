@@ -1,6 +1,6 @@
 ﻿using Desktop_Application.Classes;
 
-namespace Desktop_Application.Forms.Books;
+namespace Desktop_Application.Forms.Categories;
 
 public partial class RemoveCategories : Form
 {
@@ -23,7 +23,7 @@ public partial class RemoveCategories : Form
     private void Yes(object sender, EventArgs e)
     {
         HandleQueries.Delete(_categories_grd, "Categories", "categories_category", "Category");
-        MessageBox.Show("Categories removed succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        MessageBox.Show("Category/categories removed succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         this.Close();
     }
 }

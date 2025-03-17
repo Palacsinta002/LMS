@@ -1,6 +1,6 @@
 ﻿using Desktop_Application.Classes;
 
-namespace Desktop_Application.Forms.Books;
+namespace Desktop_Application.Forms.Users;
 
 public partial class RemoveUser : Form
 {

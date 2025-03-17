@@ -6,7 +6,6 @@ import Charts from './Charts';
 import Profile from './Profile';
 
 export default function Dashboard() {
-
   return (
     <div>
       <DashboardHeader />

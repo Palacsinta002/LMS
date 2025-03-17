@@ -1,8 +1,8 @@
 ﻿using System.Text.RegularExpressions;
 using Desktop_Application.Classes;
-using Desktop_Application.Forms.Books;
 
-namespace Desktop_Application;
+namespace Desktop_Application.Forms.Books;
+
 public partial class EditBook : Form
 {
     private readonly DataGridView _books_grd;
@@ -25,12 +25,12 @@ public partial class EditBook : Form
 
         var selectedRow = _books_grd.SelectedRows[0].Cells;
 
-        textBox_title.Text = selectedRow["title"].Value.ToString();
-        textBox_pubYear.Text = selectedRow["publicationYear"].Value.ToString();
-        textBox_author.Text = selectedRow["author"].Value.ToString();
-        textBox_category.Text = selectedRow["category"].Value.ToString();
-        dropDown_publisher.Text = selectedRow["publisher"].Value.ToString();
-        textBox_isbn.Text = selectedRow["isbn"].Value.ToString();
+        textBox_title.Text = selectedRow["books_title"].Value.ToString();
+        textBox_pubYear.Text = selectedRow["books_publicationYear"].Value.ToString();
+        textBox_author.Text = selectedRow["books_author"].Value.ToString();
+        textBox_category.Text = selectedRow["books_category"].Value.ToString();
+        dropDown_publisher.Text = selectedRow["books_publisher"].Value.ToString();
+        textBox_isbn.Text = selectedRow["books_isbn"].Value.ToString();
     }
 
     private void Save(object sender, EventArgs e)
@@ -92,7 +92,8 @@ public partial class EditBook : Form
 
     private void OpenChooseAuthor(object sender, EventArgs e)
     {
-        ChooseAuthor chooseAuthor = new();
+        List<string> selectedAuthors = textBox_author.Text.Split(", ").ToList();
+        ChooseAuthor chooseAuthor = new(selectedAuthors);
         chooseAuthor.ShowDialog();
 
         textBox_author.Text = string.Join(", ", ChooseAuthor.SelectedAuthors);
@@ -100,9 +101,10 @@ public partial class EditBook : Form
 
     private void OpenChooseCategory(object sender, EventArgs e)
     {
-        ChooseCategory chooseCategory = new();
+        List<string> selectedCategories = textBox_category.Text.Split(", ").ToList();
+        ChooseCategories chooseCategory = new(selectedCategories);
         chooseCategory.ShowDialog();
 
-        textBox_category.Text = string.Join(", ", ChooseCategory.SelectedCategories);
+        textBox_category.Text = string.Join(", ", ChooseCategories.SelectedCategories);
     }
 }

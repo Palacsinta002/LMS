@@ -1,2 +1,3 @@
 SELECT Author
-FROM Authors;
+FROM Authors
+ORDER BY Author;

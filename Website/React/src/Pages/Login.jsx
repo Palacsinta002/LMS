@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from "axios"
 import { Link, useNavigate } from 'react-router-dom'
 import "./Login.css"
-import { setAuthToken } from '../Hooks/setAuthToken';
+import { setAuthToken } from '../Auth/setAuthToken';
 
 export default function Login() {
   axios.defaults.withCredentials = true;
@@ -13,12 +13,12 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+
   async function HandleSubmit(event) {
     event.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post(
-        "/api/login",
+      const response = await axios.post("api/login",
         { username: username, password: password },
         {
           headers: {
@@ -26,20 +26,23 @@ export default function Login() {
             "Content-Type": "application/json",
           }
         });
-      console.log(response);
 
-      console.log(response.data);
-
-      if (response.token) {
-        sessionStorage.setItem("token", token);
+        console.log(response.data)
+      if (response.data.token) {
+        setAuthToken(response.data.token);
+        console.log(response.data.token)
+        sessionStorage.setItem("token", response.data.token);
         navigate("/dashboard");
       }
+      else{
+        navigate("/login")
+      }
     } catch (error) {
-      console.error(error);
-
-      if (error.response) {
-        console.error(response.data.error);
-        setError(response.data.error || "Login failed");
+      console.error("Login Error:", error);
+  
+      if (error.response && error.response.data && error.response.data.error) {
+        console.log(error.response.data.error);
+        setError(error.response.data.error || "Login failed");
       } else {
         setError("Network error");
       }
@@ -58,7 +61,7 @@ export default function Login() {
           <label>Username</label>
           <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
           <label>Password</label>
-          <div className="password-input">
+          <div className="login-password-input">
             <input
               type={showPassword ? "text" : "password"}
               value={password}
@@ -67,13 +70,13 @@ export default function Login() {
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="toggle-password"
+              className="login-toggle-password"
             >
               {showPassword ? "Hide" : "Show"}
             </button>
           </div>
           {error && <p className="error-message">{error}</p>}
-          <span><Link className="link1">Forgot your password?</Link></span>
+          <span><Link to="forget-password" className="link1">Forgot your password?</Link></span>
           <input type="submit" value="Sign in" disabled={loading} />
           <span><Link to="/register" className="link2">Create new account?</Link></span>
         </form>
