@@ -2,9 +2,9 @@
 namespace Database\Queries;
 use Helper\Helper;
 class UserTable extends Table{
-    public static function selectByUsername ( $username ){
+    public static function selectByUsername ( $username ,$fetch = true ) {
         $username = Helper::validateTheInput($username);
-        return self::select(["users"],["id","username","password","verified"])->where(["username"],["="],[$username],["s"])->execute(true);
+        return self::select(["users"],["id","username","password","EmailVerified"])->where(["username"],["="],[$username],["s"])->execute(true, $fetch);
     }
     public static function rowExists ( $field,$operator,$value,$type ){
         $validatedField = Helper::validateTheInputArray($field);
@@ -22,13 +22,13 @@ class UserTable extends Table{
 
     public static function updateToVerified ( $code ){
         $validatedCode = Helper::validateTheInput($code);
-        self::update("users",["verified"],["1"],["i"])->where(["verificationCode","verified"],["=","="],[$code,"0"],["s","i"])->execute(false);
+        self::update("users",["Emailverified"],["1"],["i"])->where(["EmailVerificationCode","Emailverified"],["=","="],[$code,"0"],["s","i"])->execute(false);
         return true;
     }
     public static function insertToUser($value){
         $validatedCode = Helper::validateTheInput($value);
-        self::insert("users",["email","username","password","firstname","lastname","VerificationCode","Address","RoleID"],
-        [$validatedCode["email"],$validatedCode["username"],$validatedCode["password"],$validatedCode["firstname"],$validatedCode["lastname"],$validatedCode["verificationCode"],$validatedCode["address"],"3"],
+        self::insert("users",["email","username","password","firstname","lastname","EmailVerificationCode","Address","RoleID"],
+        [$validatedCode["email"],$validatedCode["username"],$validatedCode["password"],$validatedCode["firstname"],$validatedCode["lastname"],$validatedCode["EmailVerificationCode"],$validatedCode["address"],"3"],
         ["s","s","s","s","s","s","s","i"])->execute(false) ;
         return true;
     }

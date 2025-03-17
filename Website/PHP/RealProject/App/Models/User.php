@@ -45,14 +45,14 @@ class User extends Model{
         return true;
     }
     public static function loginAuth($username,$password){
-        if (($selectResult = UserTable::selectByUsername($username) )->num_rows == 0){
+        if (($selectResult = UserTable::selectByUsername($username,false) )->num_rows == 0){
             Response::httpError(400,7);
         }
         $data = $selectResult->fetch_assoc();
         if (!password_verify($password,$data["password"])){
             Response::httpError(400,7);
         }
-        if ($data["verified"] == 0){
+        if ($data["EmailVerified"] == 0){
             Response::httpError(400,7);
         }
         return $data["id"];
@@ -67,7 +67,7 @@ class User extends Model{
         return $code;
     }
     public static function checkAuthCode($code){
-        $result = UserTable::rowExists(["verificationCode","verified"],["=","="],[$code,"0"],["s","i"]);
+        $result = UserTable::rowExists(["EmailVerificationCode","Emailverified"],["=","="],[$code,"0"],["s","i"]);
         if (!$result){
             Response::httpError(400,11);
         }

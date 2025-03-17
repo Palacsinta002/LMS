@@ -230,22 +230,22 @@ INSERT INTO Publishers (Publisher) VALUES
 ('Bloomsbury Publishing');
 
 -- Insert values into Users table
-INSERT INTO Users (FirstName, LastName, Email, Username, Password, Address, Verified, EmailVerificationCode, RoleID) VALUES
-('John', 'Doe', 'john.doe@example.com', 'johndoe', '$2y$10$s6wDg2g6WyuxoOrDg4wv4O2hfGcgGaLMhaMWSlNLu048HpF5snqIq', '123 Main St, Springfield', 1, '123123', 3),
-('Jane', 'Smith', 'jane.smith@example.com', 'janesmith', '$2y$10$0rK/0Ny/pPudrVWaCKCDfuViT9DiyBvXQjbkIODHGdjkRGgvDt/NO', '456 Oak St, Springfield', 1, '456789', 3),
-('Admin', 'User', 'admin@example.com', 'admin', '$2y$10$M6a/92XfuWaAymQ3uTScju2in8rSdkRbdGPIeP.HFC2h.mODuqT4O', '1 Admin Plaza, Springfield', 1, '123456', 1),
-('Librarian', 'One', 'librarian1@example.com', 'librarian1', '$2y$10$85fqudNMJZc2lm.CBnznQ.2C9Z265MIIx6kJaMmlwNX8Q3u6wtG4G', '789 Library Rd, Springfield', 0, '783123', 2),
-('Alice', 'Johnson', 'alice.j@example.com', 'alicej', '$2y$10$GTQ29D1QP3PWG2ldSc.rnOdLnzN7NP1P4VvtIpuzU0NHtX4PLqIu.', '567 Pine St, Springfield', 1, '287456', 3),
-('Bob', 'Brown', 'bob.brown@example.com', 'bobbrown', '$2y$10$0zrLGHesWh.0VJ9l57Kc8.6p7DI5LWTAU7kg27P5KK1M1aaOvdwhu', '678 Maple Ave, Springfield', 1, '561789', 3),
-('Clara', 'Olsen', 'clara.olsen@example.com', 'clarao', '$2y$10$iJFpcy.LqYyqt00QQTpNAu4W7Tl5C44Hq9L3h7GTXmcsmHQP03OBO', '234 Cedar St, Springfield', 1, '789111', 3),
-('David', 'White', 'david.white@example.com', 'davidwhite', '$2y$10$4fXmOd1EXoX5ZKnWfS1L2eDRrS8WKqqGEFCkwlEhxzfycoT26u/ga', '890 Birch Rd, Springfield', 1, '987222', 3),
-('Eve', 'Green', 'eve.green@example.com', 'evegreen', '$2y$10$mRlPDwVGnY5Nm.Zwhv/v.eBJqnmGaqfLEMLienuMGJ2FoMAev6iw6', '102 Walnut St, Springfield', 1, '111333', 3),
-('Frank', 'Moore', 'frank.moore@example.com', 'frankmoore', '$2y$10$ssUsidw4bUT1.9rcHzkUH.l.Hxeq5PzLXhE4W.V2kPwrcqAGp.3B6', '901 Chestnut Blvd, Springfield', 1, '222444', 3),
-('Grace', 'Lee', 'grace.lee@example.com', 'gracelee', '$2y$10$UqvjfjlxgpVC4yzcfMvhNutNJpSP5gnjKaizOV36Ad4hr/XLxhf2q', '345 Redwood Ln, Springfield', 1, '333555', 3),
-('Hannah', 'Scott', 'hannah.scott@example.com', 'hannahscott', '$2y$10$y/MlLUAOqRhK3h/STvJHl.xavuT57tQk6gze37FlYQ4RYmjPO0ox6', '678 Fir St, Springfield', 1, '444666', 3),
-('Ian', 'Walker', 'ian.walker@example.com', 'ianwalker', '$2y$10$CQDXhfODyjHT34GHjaqSCeu3FKF.hFotCrzLAXsgRxF1JvK77nW6W', '345 Aspen Dr, Springfield', 1, '555777', 3),
-('Jack', 'Young', 'jack.young@example.com', 'jackyoung', '$2y$10$i7JYPvFT/sa6od7vlhp3oOJm2oV9XcGPjRxUR8RR11LhqmEfvQegu', '456 Willow Way, Springfield', 1, '666888', 3),
-('Laura', 'Harris', 'laura.harris@example.com', 'lauraharris', '$2y$10$7ohuabBRz5sXx2/0sFP4nOKcJl3XunwqNigHdTtQCsRosjmDFx0VW', '567 Cypress Ct, Springfield', 1, '777999', 3);
+INSERT INTO Users (FirstName, LastName, Email, Username, Password, Address, Verified, EmailVerified, EmailVerificationCode, RoleID) VALUES
+('John', 'Doe', 'john.doe@example.com', 'johndoe', '$2y$10$s6wDg2g6WyuxoOrDg4wv4O2hfGcgGaLMhaMWSlNLu048HpF5snqIq', '123 Main St, Springfield', 1, 1, '123123', 3),
+('Jane', 'Smith', 'jane.smith@example.com', 'janesmith', '$2y$10$0rK/0Ny/pPudrVWaCKCDfuViT9DiyBvXQjbkIODHGdjkRGgvDt/NO', '456 Oak St, Springfield', 1, 1, '456789', 3),
+('Admin', 'User', 'admin@example.com', 'admin', '$2y$10$M6a/92XfuWaAymQ3uTScju2in8rSdkRbdGPIeP.HFC2h.mODuqT4O', '1 Admin Plaza, Springfield', 1, 1, '123456', 1),
+('Librarian', 'One', 'librarian1@example.com', 'librarian1', '$2y$10$85fqudNMJZc2lm.CBnznQ.2C9Z265MIIx6kJaMmlwNX8Q3u6wtG4G', '789 Library Rd, Springfield', 1, 1,'783123', 2),
+('Alice', 'Johnson', 'alice.j@example.com', 'alicej', '$2y$10$GTQ29D1QP3PWG2ldSc.rnOdLnzN7NP1P4VvtIpuzU0NHtX4PLqIu.', '567 Pine St, Springfield', 1, 1, '287456', 3),
+('Bob', 'Brown', 'bob.brown@example.com', 'bobbrown', '$2y$10$0zrLGHesWh.0VJ9l57Kc8.6p7DI5LWTAU7kg27P5KK1M1aaOvdwhu', '678 Maple Ave, Springfield', 1, 1, '561789', 3),
+('Clara', 'Olsen', 'clara.olsen@example.com', 'clarao', '$2y$10$iJFpcy.LqYyqt00QQTpNAu4W7Tl5C44Hq9L3h7GTXmcsmHQP03OBO', '234 Cedar St, Springfield', 1, 1, '789111', 3),
+('David', 'White', 'david.white@example.com', 'davidwhite', '$2y$10$4fXmOd1EXoX5ZKnWfS1L2eDRrS8WKqqGEFCkwlEhxzfycoT26u/ga', '890 Birch Rd, Springfield', 1, 1, '987222', 3),
+('Eve', 'Green', 'eve.green@example.com', 'evegreen', '$2y$10$mRlPDwVGnY5Nm.Zwhv/v.eBJqnmGaqfLEMLienuMGJ2FoMAev6iw6', '102 Walnut St, Springfield', 1, 1, '111333', 3),
+('Frank', 'Moore', 'frank.moore@example.com', 'frankmoore', '$2y$10$ssUsidw4bUT1.9rcHzkUH.l.Hxeq5PzLXhE4W.V2kPwrcqAGp.3B6', '901 Chestnut Blvd, Springfield', 1, 1, '222444', 3),
+('Grace', 'Lee', 'grace.lee@example.com', 'gracelee', '$2y$10$UqvjfjlxgpVC4yzcfMvhNutNJpSP5gnjKaizOV36Ad4hr/XLxhf2q', '345 Redwood Ln, Springfield', 1, 1, '333555', 3),
+('Hannah', 'Scott', 'hannah.scott@example.com', 'hannahscott', '$2y$10$y/MlLUAOqRhK3h/STvJHl.xavuT57tQk6gze37FlYQ4RYmjPO0ox6', '678 Fir St, Springfield', 1, 1, '444666', 3),
+('Ian', 'Walker', 'ian.walker@example.com', 'ianwalker', '$2y$10$CQDXhfODyjHT34GHjaqSCeu3FKF.hFotCrzLAXsgRxF1JvK77nW6W', '345 Aspen Dr, Springfield', 1, 1, '555777', 3),
+('Jack', 'Young', 'jack.young@example.com', 'jackyoung', '$2y$10$i7JYPvFT/sa6od7vlhp3oOJm2oV9XcGPjRxUR8RR11LhqmEfvQegu', '456 Willow Way, Springfield', 1, 1, '666888', 3),
+('Laura', 'Harris', 'laura.harris@example.com', 'lauraharris', '$2y$10$7ohuabBRz5sXx2/0sFP4nOKcJl3XunwqNigHdTtQCsRosjmDFx0VW', '567 Cypress Ct, Springfield', 1, 1, '777999', 3);
 
 
 
