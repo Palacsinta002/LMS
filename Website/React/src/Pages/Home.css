@@ -201,3 +201,30 @@ table td {
   color: white;
   text-decoration: none;
 }
+
+.cards-list{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.home-card{
+  width: 100%;
+  min-width: 250px;
+  max-width: 25%;
+  min-height: 50vh;
+  max-height: 20vh;
+  background-color: white;
+  border-radius: 2vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 2px 3px 10px 1px rgba(0, 0, 0, 0.6);
+  padding: 25px;
+}
+
+.home-card-image img{
+  width: 80%;
+  height: auto;
+  border-radius: 8px;
+}

@@ -13,14 +13,13 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const payload = {username, password};
 
   async function HandleSubmit(event) {
     event.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post("/api/login",
-        { payload },
+      const response = await axios.post("api/login",
+        { username: username, password: password },
         {
           headers: {
             "method": "POST",
@@ -28,6 +27,7 @@ export default function Login() {
           }
         });
 
+        console.log(response.data)
       if (response.data.token) {
         setAuthToken(response.data.token);
         console.log(response.data.token)
