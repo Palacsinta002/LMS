@@ -12,6 +12,7 @@ export default function HeroBrowseBooks() {
         const getData = async () => {
             try {
                 const response = await axios.get("/api/books");
+                console.log(response.data)
                 setBooks(response.data);
             } catch (error) {
                 console.error("Error fetching books:", error);
@@ -33,8 +34,8 @@ export default function HeroBrowseBooks() {
                 <p>Loading books...</p>
             ) : (
                 <div id="browsebooks" className="cards-list">
-                    {books.map((item) => (
-                        <Cards key={item.ISBN} index={item.ISBN} img={item.ISBN} title={item.Title} author={item.Authors} />
+                    {books.map((item, index) => (
+                        <Cards key={index} isbn={item.ISBN} title={item.Title} author={item.Authors} />
                     ))}
                 </div>
             )}

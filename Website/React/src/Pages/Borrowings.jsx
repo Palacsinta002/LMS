@@ -9,7 +9,7 @@ export default function Borrowings() {
   const hidden = location.pathname === '/dashboard/borrowings' ? '' : 'hidden';
 
   useEffect(() => {
-    axios.post("/api/borrowings")
+    axios.get("/api/borrowingBooks")
       .then(response => {
         setBorrowings(response.data)
       })

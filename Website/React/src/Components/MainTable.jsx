@@ -1,15 +1,40 @@
-import React from 'react'
-import "../index.css"
-
-const data = [
-  { author: "Author 1", title: "Title 1", borrows: 10 },
-  { author: "Author 2", title: "Title 2", borrows: 20 },
-  { author: "Author 3", title: "Title 3", borrows: 30 },
-  { author: "Author 4", title: "Title 4", borrows: 40 },
-  { author: "Author 5", title: "Title 5", borrows: 50 },
-];
+import React, { useEffect, useState } from 'react';
+import axios from 'axios'; // Import axios
+import "../index.css";
 
 export default function MainTable() {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null); // State for error handling
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await axios.post("/api/topBorrowings");
+        console.log(response.data);
+        setData(response.data);
+      } catch (error) {
+        console.error("Error fetching books:", error);
+        setError("Failed to fetch data");
+      } finally {
+        setLoading(false);
+      }
+    };
+    getData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  if (data.length === 0) {
+    return <div>No data available</div>;
+  }
+
   return (
     <div>
       <table>
@@ -32,5 +57,5 @@ export default function MainTable() {
         </tbody>
       </table>
     </div>
-  )
+  );
 }

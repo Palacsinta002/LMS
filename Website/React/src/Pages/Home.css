@@ -217,13 +217,11 @@ table td {
   width: 60vw;
   max-width: 60vw;
   min-width: 40vw;
-  background-color: #48459E;
   border-radius: 1vh;
   margin: 5vh auto;
   text-align: center;
   font-weight: bold;
   color: black;
-  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.6);
   z-index: 1;
   padding: 1vh;
 }

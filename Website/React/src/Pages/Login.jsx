@@ -28,10 +28,10 @@ export default function Login() {
         });
 
         console.log(response.data)
-      if (response.data.token) {
-        setAuthToken(response.data.token);
-        console.log(response.data.token)
-        sessionStorage.setItem("token", response.data.token);
+      if (response.data.Token) {
+        setAuthToken(response.data.Token);
+        console.log(response.data.Token)
+        sessionStorage.setItem("token", response.data.Token);
         navigate("/dashboard");
       }
       else{
