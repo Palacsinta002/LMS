@@ -21,6 +21,12 @@ public partial class LendBook : Form
 
         var result = HandleQueries.Select("SelectUsername");
         HandleGrids.Fill(dropDown_user, result);
+
+        int[] bDate = borrowDate_datePicker.Text.Split('/').Select(int.Parse).ToArray();
+        _borrowDate = new(bDate[2], bDate[1], bDate[0]);
+
+        int[] dDate = dueDate_datePicker.Text.Split('/').Select(int.Parse).ToArray();
+        _dueDate = new(dDate[2], dDate[1], dDate[0]);
     }
 
     private void Save(object sender, EventArgs e)
@@ -47,12 +53,6 @@ public partial class LendBook : Form
             MessageBox.Show("Books are required!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
-
-        int[] bDate = borrowDate_datePicker.Text.Split('/').Select(int.Parse).ToArray();
-        _borrowDate = new(bDate[2], bDate[1], bDate[0]);
-
-        int[] dDate = dueDate_datePicker.Text.Split('/').Select(int.Parse).ToArray();
-        _dueDate = new(dDate[2], dDate[1], dDate[0]);
 
         if (_borrowDate > _dueDate)
         {

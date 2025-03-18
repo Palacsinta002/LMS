@@ -1,10 +1,12 @@
 ﻿using Desktop_Application.Classes;
+using Microsoft.VisualBasic;
 using System.Text.RegularExpressions;
 
 namespace Desktop_Application.Forms.Users;
 
 public partial class AddUser : Form
 {
+    private DateTime _dateOfBirth;
     public AddUser()
     {
         InitializeComponent();
@@ -16,19 +18,19 @@ public partial class AddUser : Form
         BorderPaint.Handle(this);
         CloseThisWindow.Handle(this, close_btn);
         CloseThisWindow.Handle(this, cancel);
+
+        int[] bDate = dateOfBirth_datePicker.Text.Split('/').Select(int.Parse).ToArray();
+        _dateOfBirth = new(bDate[2], bDate[1], bDate[0]);
     }
 
     private void Save(object sender, EventArgs e)
     {
         if (ValidateInput())
         {
-            string randomPassword = GeneratePassword(12);
-
-            Mailer.SendMail(textBox_email.Text, textBox_username.Text, randomPassword);
-
+            string randomPassword = GeneratePassword(10);
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(randomPassword);
 
-            HandleQueries.InsertUser(textBox_firstName.Text, textBox_lastName.Text, textBox_email.Text, textBox_username.Text, hashedPassword, textBox_address.Text);
+            HandleQueries.InsertUser(textBox_firstName.Text, textBox_lastName.Text, _dateOfBirth, textBox_username.Text, hashedPassword, textBox_address.Text);
             MessageBox.Show("User added succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
@@ -75,14 +77,14 @@ public partial class AddUser : Form
             return false;
         }
 
-        if (textBox_email.Text == string.Empty)
+        if (_dateOfBirth > DateTime.Today)
         {
-            MessageBox.Show("Email is required!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("Date of birth cannot be later than today!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
-        else if (!Regex.IsMatch(textBox_email.Text, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"))
+        else if (_dateOfBirth < DateTime.Now.AddYears(-130))
         {
-            MessageBox.Show("Email is not in the correct format! Please check your special characters!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("Cannot enter date older than 130 years old!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
 
@@ -111,7 +113,7 @@ public partial class AddUser : Form
 
     private static string GeneratePassword(int length)
     {
-        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         Random random = new();
         string randomPassword = "";
         while (0 < length--)
