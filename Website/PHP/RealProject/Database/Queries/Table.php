@@ -1,0 +1,123 @@
+<?php
+
+namespace Database\Queries;
+use Database\Connection;
+class Table {
+    protected static $query;
+    protected static $values = [];
+    protected static $types = [];
+
+    protected function where( $field, $operator,$value, $type) {
+        $sql = " Where ";
+        for ($i=0; $i < count($field); $i++) { 
+            if ($value[$i] == "NULL" || $value[$i] == "NOT NULL"){
+                $sql .= $field[$i] . " IS ". $value[$i] ." AND ";
+                
+            }
+            elseif($operator[$i] == "LIKE"){
+                $sql .= $field[$i] . " LIKE " . "'".$value[$i]."' AND ";
+            }
+            else{
+                $sql .= $field[$i] . " " . $operator[$i] . " ? AND ";
+            }
+        }
+        $sql = substr($sql,0,-4);
+        self::$values = array_merge(self::$values,$value);
+        self::$types = array_merge(self::$types,$type);
+        self::$query .=$sql;
+        return $this;
+    }
+
+    protected function limit($value) {
+        self::$query .= " LIMIT $value ";
+        return $this;
+    }
+
+    protected function groupBy( $field ) {
+        self::$query .= " Group by  ". implode(", ", $field);
+        return $this;
+    }
+    protected function innerJoin($table, $fields, $operators, $valueFields){
+        $sql = " INNER JOIN $table ON ";
+        for ($i= 0; $i < count($fields); $i++){
+            $sql .= " " . $fields[$i] . " " . $operators[$i] . " " . $valueFields[$i] . "  AND ";
+            
+        }
+        $sql = substr($sql,0,-4);
+        self::$query .=$sql;
+        return $this;
+    }
+    protected static function insert($table,$field, $value, $type) {
+        $valueString = implode(", ", $field);
+        $placeholder = implode(", ", array_fill(0, count($value), "?"));
+        $sql = "INSERT INTO $table ($valueString) VALUES ($placeholder)";
+        self::$values = $value;
+        self::$types = $type;
+        self::$query = $sql;
+        return new self();
+    }
+    protected static function update($table, $field, $value, $type,) {
+        $sql = "UPDATE $table 
+        SET " . implode(" = ? , ", $field) . " = ? " . " ";
+        self::$query = $sql;
+        self::$values = $value;
+        self::$types = $type;
+        return new self();
+    }
+
+    protected static function execute( $getresult, $fetch = true ){
+        $conn = Connection::connect();
+        self::fixingValues();
+        $query = $conn->prepare(self::$query);
+        if (substr_count(self::$query,"?") == 0 ){
+            $query->execute();
+            if ($getresult == false) {
+                self::reset();
+                return;
+            }
+            $result = $query->get_result();
+            if ($fetch == false) {
+                self::reset();
+                return $result;
+            }
+            self::reset();
+            return $result->fetch_all(MYSQLI_ASSOC);
+  
+        }
+        $types = implode("", self::$types);
+        
+        
+        $query->bind_param($types, ...self::$values);
+        $query->execute();
+        $result = $query->get_result();
+        if ($getresult == false) {
+            self::reset();
+            return;
+        }
+        if ($fetch == false) {
+            self::reset();
+            return $result;
+        }
+        self::reset();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    protected static function select($table, $field){
+        self::$query = "SELECT " . implode(", ",$field) . " FROM " . implode(", ",$table) . " ";
+        return new self();
+    }
+    private static function reset(){
+        self::$query = "";
+        self::$values = [];
+        self::$types = [];
+    }
+    private static function fixingValues(){
+        for ($i=0; $i < count(self::$values); $i++) { 
+            if (self::$values[$i] == "NULL"){
+                array_splice(self::$values,$i,1);
+                array_splice(self::$types,$i,1);
+            }
+        }
+    }
+}
+
+?>

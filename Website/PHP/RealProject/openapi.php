@@ -8,6 +8,7 @@ function openapi( $uri ) {
     if ($_SERVER["REQUEST_METHOD"] != "GET"){
         errorOutput("17");
     }
+    require_once __DIR__ . "/users/getbooks.php";
     
     if(($booksPlace = array_search("books",$uri)) != false){
         $uriData = array_slice($uri,$booksPlace, count($uri)-$booksPlace);

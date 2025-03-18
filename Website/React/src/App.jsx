@@ -15,7 +15,7 @@ import NotFound from './Pages/NotFound';
 import { Provider } from 'react-redux'
 import Store from './Auth/Store'
 import AuthProvider from './Auth/AuthProvider';
-import ForgetPassword from './Pages/ForgetPassword';
+import ForgotPassword from './Pages/ForgotPassword';
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route path="/login" element={<Login />} >
-            <Route path="forget-password" element={<ForgetPassword />} />
+            <Route path="forgot-password" element={<ForgotPassword />} />
           </Route>
           <Route path="/register" element={<Register />} />
           <Route path="/verify" element={<Verify />} />

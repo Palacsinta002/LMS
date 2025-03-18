@@ -1,16 +1,15 @@
 import React from 'react'
 
-export default function Cards({ index, img, title, publisher, author, publicationYear }) {
+export default function Cards({ index, isbn, title, author }) {
   return (
-    <div key={index}>
-        <div>
-            <img src={`http://localhost:8000/img/${img}`} />
+    <div key={index} className="home-card">
+        <div className="home-card-image">
+            <img src={`http://localhost:8000/img/${isbn}`} />
         </div>
-        <div>
+        <div className="home-card-content">
             <h1>{title}</h1>
             <h2>{author}</h2>
-            <h3>{publisher}</h3>
-            <h3>{publicationYear}</h3>
+            <input type="button" value="Reserve" />
         </div>
     </div>
   )

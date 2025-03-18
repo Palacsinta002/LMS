@@ -6,30 +6,35 @@ function getbooks($uriData){
     require_once __DIR__ . "/../InputMethods.php";
     require_once __DIR__ . "/../config/connect.php";
     $conn = connect();
-    $options = ["ISBN" =>" and books.ISBN =",
+    $options = ["isbn" =>" and books.ISBN =",
                 "publisher" =>" and publishers.publisher =",
                 "title" =>" and books.title =", 
                 "author" =>" and authors.author =", 
                 "category" =>" and categories.category =",
-                "publicationYear" =>" and books.publicationYear ="
+                "publicationyear" =>" and books.publicationYear ="
             ];
     # ignore the last element if the uriData is odd
     $lengthOfUriDoubles = (count($uriData)-1) %2 == 0 ? count($uriData)-1 : count($uriData)-2;
     # loop through the uriData and add the data to the options array
     for ($i=0; $i < $lengthOfUriDoubles / 2; $i++) { 
         $j = ($i+1)*2;
+        $uriData[$j-1] = strtolower($uriData[$j-1]);
         foreach ($options as $key => $value) {
             if ($uriData[$j-1] == $key){
-                if ($key == "ISBN" || $key == "publicationYear"){
-                    $options[$key] .= $uriData[$j] . " ";
+                if ($key == "isbn" || $key == "publicationyear"){
+                    $options[$key] .= urldecode($uriData[$j]) . " ";
+                }
+                elseif ($key == "author" || $key == "category"){
+                    $options[$key] = trim($options[$key], "=");
+                    $options[$key] .= "LIKE '%" . urldecode($uriData[$j]) . "%' ";
                 }
                 else{
-                    $options[$key] .= "'" . $uriData[$j] . "' ";
+                    $options[$key] .= "'" . urldecode($uriData[$j]) . "' ";
                 }
             }
         }
     }
-        $sql = "SELECT books.ISBN, publishers.Publisher, books.Title, GROUP_CONCAT(DISTINCT Authors.Author SEPARATOR ',') as 'Authors', GROUP_CONCAT(DISTINCT categories.category SEPARATOR ',') as 'Categories', books.publicationYear,books.ImgUrl
+        $sql = "SELECT books.ISBN, publishers.Publisher, books.Title, GROUP_CONCAT(DISTINCT Authors.Author SEPARATOR ',') as 'Authors', GROUP_CONCAT(DISTINCT categories.category SEPARATOR ',') as 'Category', books.publicationYear,books.ImgUrl
                 from books, publishers, books_authors, authors, books_categories, categories
                 where books.ISBN = books_authors.ISBN and books_authors.AuthorID = authors.id and books.ISBN = books_categories.ISBN and books_categories.CategoryID = categories.id and books.publisherid = publishers.id" ;
     # add the options to the sql query
