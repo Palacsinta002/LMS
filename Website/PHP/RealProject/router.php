@@ -23,7 +23,7 @@ Router::post("/api/deleteUser", UserController::class,"deleteUser");
 Router::post("/api/borrowings", BorrowingsController::class,"getFromDBByParams");
 Router::post("/api/topBorrowings", BorrowingsController::class,"topBorrowedBooks");
 
-Router::post("/api/borrowingBooks", Ideiglenes::class,"borrowingBooks");
+Router::get("/api/borrowingBooks", Ideiglenes::class,"borrowingBooks");
 
 Router::post("/api/uploadImg", ImageController::class,"uploadImg");
 Router::get("/img", ImageController::class,"getImg",true,true);
