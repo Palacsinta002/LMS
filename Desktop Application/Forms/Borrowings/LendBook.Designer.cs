@@ -120,7 +120,7 @@ namespace Desktop_Application.Forms.Borrowings
             borrowDate_datePicker.CalendarFont = new Font("Yu Gothic UI Semibold", 14F);
             borrowDate_datePicker.Font = new Font("Yu Gothic UI Semibold", 14F);
             borrowDate_datePicker.Format = DateTimePickerFormat.Short;
-            borrowDate_datePicker.Location = new Point(157, 195);
+            borrowDate_datePicker.Location = new Point(171, 195);
             borrowDate_datePicker.Margin = new Padding(3, 4, 3, 4);
             borrowDate_datePicker.Name = "borrowDate_datePicker";
             borrowDate_datePicker.Size = new Size(154, 39);
@@ -131,7 +131,7 @@ namespace Desktop_Application.Forms.Borrowings
             dueDate_datePicker.CalendarFont = new Font("Yu Gothic UI Semibold", 14F);
             dueDate_datePicker.Font = new Font("Yu Gothic UI Semibold", 14F);
             dueDate_datePicker.Format = DateTimePickerFormat.Short;
-            dueDate_datePicker.Location = new Point(157, 245);
+            dueDate_datePicker.Location = new Point(171, 245);
             dueDate_datePicker.Margin = new Padding(3, 4, 3, 4);
             dueDate_datePicker.Name = "dueDate_datePicker";
             dueDate_datePicker.Size = new Size(154, 39);

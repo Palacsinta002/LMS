@@ -143,7 +143,7 @@ namespace Desktop_Application.Forms.Borrowings
             dueDate_datePicker.CalendarFont = new Font("Yu Gothic UI Semibold", 14F);
             dueDate_datePicker.Font = new Font("Yu Gothic UI Semibold", 14F);
             dueDate_datePicker.Format = DateTimePickerFormat.Short;
-            dueDate_datePicker.Location = new Point(157, 245);
+            dueDate_datePicker.Location = new Point(171, 245);
             dueDate_datePicker.Margin = new Padding(3, 4, 3, 4);
             dueDate_datePicker.Name = "dueDate_datePicker";
             dueDate_datePicker.Size = new Size(154, 39);
@@ -164,7 +164,7 @@ namespace Desktop_Application.Forms.Borrowings
             borrowDate_datePicker.CalendarFont = new Font("Yu Gothic UI Semibold", 14F);
             borrowDate_datePicker.Font = new Font("Yu Gothic UI Semibold", 14F);
             borrowDate_datePicker.Format = DateTimePickerFormat.Short;
-            borrowDate_datePicker.Location = new Point(157, 195);
+            borrowDate_datePicker.Location = new Point(171, 195);
             borrowDate_datePicker.Margin = new Padding(3, 4, 3, 4);
             borrowDate_datePicker.Name = "borrowDate_datePicker";
             borrowDate_datePicker.Size = new Size(154, 39);
@@ -202,7 +202,7 @@ namespace Desktop_Application.Forms.Borrowings
             save.FlatStyle = FlatStyle.Flat;
             save.Font = new Font("Yu Gothic UI Semibold", 14F);
             save.ForeColor = Color.White;
-            save.Location = new Point(121, 311);
+            save.Location = new Point(120, 316);
             save.Margin = new Padding(3, 4, 3, 4);
             save.Name = "save";
             save.Size = new Size(97, 48);
@@ -224,7 +224,7 @@ namespace Desktop_Application.Forms.Borrowings
             cancel.FlatStyle = FlatStyle.Flat;
             cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
             cancel.ForeColor = Color.Black;
-            cancel.Location = new Point(224, 311);
+            cancel.Location = new Point(223, 316);
             cancel.Margin = new Padding(3, 4, 3, 4);
             cancel.Name = "cancel";
             cancel.Size = new Size(97, 48);
@@ -238,7 +238,7 @@ namespace Desktop_Application.Forms.Borrowings
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(440, 372);
+            ClientSize = new Size(440, 377);
             Controls.Add(save);
             Controls.Add(cancel);
             Controls.Add(header);
