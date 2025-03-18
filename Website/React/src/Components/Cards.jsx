@@ -7,8 +7,8 @@ export default function Cards({ index, isbn, title, author }) {
             <img src={`http://localhost:8000/img/${isbn}`} />
         </div>
         <div className="home-card-content">
-            <h1>{title}</h1>
-            <h2>{author}</h2>
+            <h2>{title}</h2>
+            <h3>{author}</h3>
             <input type="button" value="Reserve" />
         </div>
     </div>
