@@ -1,5 +1,6 @@
 body {
   background-color: #504DB4;
+  overflow-x: hidden;
 }
 
 .title {
@@ -131,9 +132,9 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  width: 30vw;
+  width: 40vw;
   max-width: 40vw;
-  min-width: 40vw;
+  min-width: 30vw;
   background-color: #48459E;
   border-radius: 1vh;
   margin: 5vh auto;
@@ -168,9 +169,9 @@ table {
   border: 1px #504DB4 solid;
   border-radius: 10px;
   color: white;
-  width: 30vw;
-  max-width: 30vw;
-  min-width: 40vw;
+  width: 40vw;
+  max-width: 40vw;
+  min-width: 30vw;
   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.6);
   font-weight: bold;
   margin: 5vh auto;
@@ -188,35 +189,40 @@ table td {
   text-align: center;
   position: relative;
   bottom: -100%;
+}
+
+.BrowseBooks-link{
+  bottom: 10px;
   animation: bounce2 5s ease infinite;
 }
 
-/*@keyframes bounce2 {
+@keyframes bounce2 {
   0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-  40% { transform: translateY(-30px); }
-  60% { transform: translateY(-15px); }
-}*/
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
 
 .BrowseBooks a {
   color: white;
   text-decoration: none;
 }
 
-.cards-list{
+.cards-list {
   position: relative;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  width: 30vw;
-  max-width: 40vw;
-  min-width: 60vw;
+  width: 60vw;
+  max-width: 60vw;
+  min-width: 40vw;
   background-color: #48459E;
   border-radius: 1vh;
   margin: 5vh auto;
   text-align: center;
   font-weight: bold;
-  color: white;
+  color: black;
   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.6);
   z-index: 1;
   padding: 1vh;
