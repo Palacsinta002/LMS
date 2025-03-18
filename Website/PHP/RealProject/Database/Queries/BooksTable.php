@@ -22,5 +22,8 @@ class BooksTable extends Table{
         ->where($fields,$operators,$values,$types)
         ->groupBy(["Books.Title", "Books.PublicationYear", "Publishers.Publisher", "Books.ISBN"])->execute(true);
     }
+    public static function countAllBooks(){
+        return self::select(["books"],["count(ISBN) AS books"])->execute(true);
+    }
 }
 ?>

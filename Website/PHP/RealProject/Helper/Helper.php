@@ -12,7 +12,7 @@ class Helper{
         return $input;
     }
     public static function validateTheInputArray($array){
-
+        
         foreach ($array as $key => $value) {
             $array[$key] = self::validateTheInput($value);
         }
@@ -22,9 +22,10 @@ class Helper{
     public static function getPostBody(){
         
         $rawbody = file_get_contents("php://input");
-
         $decoded = json_decode($rawbody, true);
-        
+        if ($decoded === null && json_last_error() !== JSON_ERROR_NONE) {
+            Response::httpError(400,29);
+        }
         return $decoded;
     }
     function directiontoUrl($direction) {

@@ -26,7 +26,7 @@ class UserTable extends Table{
         return true;
     }
     public static function insertToUser($value){
-        $validatedCode = Helper::validateTheInput($value);
+        $validatedCode = Helper::validateTheInputArray($value);
         self::insert("users",["email","username","password","firstname","lastname","EmailVerificationCode","Address","RoleID"],
         [$validatedCode["email"],$validatedCode["username"],$validatedCode["password"],$validatedCode["firstname"],$validatedCode["lastname"],$validatedCode["EmailVerificationCode"],$validatedCode["address"],"3"],
         ["s","s","s","s","s","s","s","i"])->execute(false) ;
@@ -39,6 +39,15 @@ class UserTable extends Table{
         return self::select(["users"],["users.email","users.username","users.firstname","users.lastname","users.lastname","users.address","Roles.Role"])
         ->innerJoin("Roles",["users.RoleID"],["="],["Roles.ID"])
         ->where(["users.ID"],["="],[$ID],["i"])->execute(true);
+    }
+    public static function updateUserData($ID,$modifyFields,$modifyValues,$types){
+        if(empty($modifyFields) || (is_array($modifyFields) && count($modifyFields) == 0)){
+            return false;
+        }
+        self::update("users",$modifyFields,$modifyValues,$types)->where(["id"],["="],[$ID],["i"])->execute(false);
+    }
+    public static function deleteUserRow($ID){
+        self::delete("users")->where(["id"],["="],[$ID],["i"])->execute(false);
     }
 
     

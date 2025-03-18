@@ -105,6 +105,10 @@ class Table {
         self::$query = "SELECT " . implode(", ",$field) . " FROM " . implode(", ",$table) . " ";
         return new self();
     }
+    protected static function delete($table){
+        self::$query = "DELETE FROM $table";
+        return new self();
+    }
     private static function reset(){
         self::$query = "";
         self::$values = [];

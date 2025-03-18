@@ -16,6 +16,8 @@ Router::post("/api/register", UserController::class,"register");
 Router::post("/api/verifyAccount", UserController::class,"verifyAccount");
 Router::post("/api/allUsers", UserController::class,"allUsers");
 Router::post("/api/user", UserController::class,"userData");
+Router::post("/api/updateUser", UserController::class,"updateUser");
+Router::post("/api/deleteUser", UserController::class,"deleteUser");
 
 
 Router::post("/api/borrowings", BorrowingsController::class,"getFromDBByParams");
@@ -28,6 +30,7 @@ Router::get("/img", ImageController::class,"getImg",true,true);
 
 
 Router::get("/api/books", BooksController::class,"getFromDBByParams",true);
+Router::get("/api/allBooks", BooksController::class,"countAllBooks");
 /* 
 
 if ($requesturi[0] == "api"){

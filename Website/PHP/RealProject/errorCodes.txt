@@ -27,3 +27,5 @@
 26 : !Invalid Title;
 27 : !Invalid ID;
 28 : !File format;
+29 : !Bad json format;
+30 : !Invalid address;

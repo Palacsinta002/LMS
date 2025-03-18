@@ -18,5 +18,9 @@ class BooksController implements IController{
         $typesAndOperators = Books::makeTypesArray($body,["books.ISBN","publishers.publisher","Authors.author","categories.category","books.title","books.publicationYear"],["i","s","s","s","s","i"],["=","=","LIKE","LIKE","=","="]);
         Response::httpSuccess(200,BooksTable::selectByParams(array_keys($body),array_values($typesAndOperators),array_values($body),array_keys($typesAndOperators)));
     }
+
+    public static function countAllBooks(){
+        Response::httpSuccess(200, BooksTable::countAllBooks());
+    }
 }
 ?>

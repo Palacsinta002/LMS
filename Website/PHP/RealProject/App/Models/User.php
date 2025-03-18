@@ -7,7 +7,10 @@ use Database\Queries\UserTable;
 
 class User extends Model{
 
-    public static function checkPassword($password,$password2){
+    public static function checkPassword($password,$password2 = null){
+        if ($password2 == null){
+            $password2 = $password;
+        }
         if ($password != $password2){
             Response::httpError("400",15);
         }
@@ -49,9 +52,7 @@ class User extends Model{
             Response::httpError(400,7);
         }
         $data = $selectResult->fetch_assoc();
-        if (!password_verify($password,$data["password"])){
-            Response::httpError(400,7);
-        }
+        self::userPasswordIsMatch($password,$data["password"]);
         if ($data["EmailVerified"] == 0){
             Response::httpError(400,7);
         }
@@ -78,6 +79,28 @@ class User extends Model{
         Response::httpSuccess(200,"User verified");
     }
     
+    public static function userPasswordIsMatch($loginPassword,$DBPassword){
+        if (!password_verify($loginPassword,$DBPassword)){
+            Response::httpError(400,7);
+        }
+        return true;
+      } 
 
+    public static function validateAddress($address){
+        if (!preg_match('/^\d+\s[A-Za-z\s]+,\s[A-Za-z\s]+$/', $address)) {
+            Response::httpError(400,30);
+        }
+    
+
+        if (strlen($address) < 5 || strlen($address) > 100) {
+            Response::httpError(400,30);
+        }
+    
+
+        if (!preg_match('/^[0-9A-Za-z\s,.-]+$/', $address)) {
+            Response::httpError(400,30);
+        }
+        return true;
+    }
 }
 ?>
