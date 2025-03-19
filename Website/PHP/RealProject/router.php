@@ -7,30 +7,31 @@ use App\Controllers\BorrowingsController;
 use App\Controllers\BooksController;
 use App\Controllers\Ideiglenes;
 use App\Controllers\ImageController;
-
+use App\Controllers\BorrowingsAndBooksController;
 $requesturi = explode("/", trim($_SERVER["REQUEST_URI"],"/"));
 
 
 Router::post("/api/login", UserController::class, "login");
 Router::post("/api/register", UserController::class,"register");
-Router::post("/api/verifyAccount", UserController::class,"verifyAccount");
-Router::post("/api/allUsers", UserController::class,"allUsers");
-Router::post("/api/user", UserController::class,"userData");
-Router::post("/api/updateUser", UserController::class,"updateUser");
-Router::post("/api/deleteUser", UserController::class,"deleteUser");
+Router::post("/api/verify-account", UserController::class,"verifyAccount");
+Router::post("/api/all-users", UserController::class,"allUsers");
+Router::post("/api/user", UserController::class,"userData", true);
+Router::post("/api/update-user", UserController::class,"updateUser",true);
+Router::post("/api/delete-user", UserController::class,"deleteUser",true);
 
 
 Router::post("/api/borrowings", BorrowingsController::class,"getFromDBByParams");
-Router::post("/api/topBorrowings", BorrowingsController::class,"topBorrowedBooks");
+Router::post("/api/top-borrowings", BorrowingsController::class,"topBorrowedBooks");
 
-Router::get("/api/borrowingBooks", Ideiglenes::class,"borrowingBooks");
+Router::get("/api/borrowing-books", Ideiglenes::class,"borrowingBooks");
+Router::get("/api/my-borrowed-books", BorrowingsAndBooksController::class,"getMyBorrowedBooks",true);
 
-Router::post("/api/uploadImg", ImageController::class,"uploadImg");
-Router::get("/img", ImageController::class,"getImg",true,true);
+Router::post("/api/upload-img", ImageController::class,"uploadImg");
+Router::get("/img", ImageController::class,"getImg",false,true,true);
 
 
-Router::get("/api/books", BooksController::class,"getFromDBByParams",true);
-Router::get("/api/allBooks", BooksController::class,"countAllBooks");
+Router::get("/api/books", BooksController::class,"getFromDBByParams",false,true);
+Router::get("/api/all-Books", BooksController::class,"countAllBooks",);
 /* 
 
 if ($requesturi[0] == "api"){

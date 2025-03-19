@@ -8,8 +8,7 @@ use ApiResponse\Response;
 use Emailer\SendEmail;
 
 class UserController{
-    public static function login(){
-        $body = Helper::getPostBody();
+    public static function login($body){
         $body = Helper::validateTheInputArray($body);
         if (!($body = User::checkRequiredData($body,["username","password"]))){
             Response::httpError(400,21);
@@ -24,9 +23,8 @@ class UserController{
         echo Token::verifyToken($body["token"]);
     }
 
-    public static function register(){
+    public static function register($body){
         
-        $body = Helper::getPostBody();
         $body = Helper::validateTheInputArray($body);
         if (!($body = User::checkRequiredData($body,["email","username","password","passwordAgain","firstname","lastname","address"]))){
             Response::httpError(400,21);
@@ -42,12 +40,11 @@ class UserController{
         UserTable::insertToUser($body);
 
         SendEmail::sendEmail($body["email"],"New user","Verification Email","your verification code is: " . $verificationCode);
-        Response::httpSuccess(200,"User created");
+        Response::httpSuccess(200,["Success" =>"User created"]);
     }
 
-    public static function verifyAccount(){
-        
-        $body = Helper::getPostBody();
+    public static function verifyAccount($body){
+
         $body = Helper::validateTheInputArray($body);
         if (!($body = User::checkRequiredData($body,["verificationCode"]))){
             Response::httpError(400,21);
@@ -61,25 +58,22 @@ class UserController{
         Response::httpSuccess(200,UserTable::numberOfUsers());
     }
 
-    public static function userData(){
-        $body = Helper::getPostBody();
+    public static function userData($body,$userID= null){
         $body = Helper::validateTheInputArray($body);
-        if (!($body = User::checkRequiredData($body,["ID"]))){
-            Response::httpError(400,21);
-        }
-        User::validateID($body["ID"]);
+        User::validateID($userID);
 
-        Response::httpSuccess(200,UserTable::selectUserData($body["ID"]));
+        Response::httpSuccess(200,UserTable::selectUserData($userID));
     }
 
-    public static function updateUser(){
-        $body = Helper::getPostBody();
+    public static function updateUser($body,$userID = null){
+
         $body = Helper::validateTheInputArray($body);
-        if (!($body = User::checkRequiredData($body,["ID"],["username","passwordOld","password","firstname","lastname","address"]))){
+        $body = User::removeNullValues($body);
+        if (!($body = User::checkRequiredData($body,[],["username","passwordOld","password","firstname","lastname","address"]))){
             Response::httpError(400,21);
         }
-        User::validateID($body["ID"]);
-        if (!isset((($userCurentData = UserTable::selectUserData($body["ID"]))[0]))){
+        User::validateID($userID);
+        if (!isset((($userCurentData = UserTable::selectUserData($userID))[0]))){
             Response::httpError(400,27);
         };
         $userCurentData= $userCurentData[0];
@@ -97,25 +91,20 @@ class UserController{
             $body["password"] = password_hash($body["password"], PASSWORD_BCRYPT);
             unset($body["passwordOld"]);
         }
-        $ID = $body["ID"];
-        unset($body["ID"]);
+
         $types = User::makeTypesArray($body,["username","password","firstname","lastname","address"],["s","s","s","s","s"]);
-        UserTable::updateUserData($ID,array_keys($body),array_values($body),$types);
-        Response::httpSuccess(200,"User updated");
+        UserTable::updateUserData($userID,array_keys($body),array_values($body),$types);
+        Response::httpSuccess(200,["Success" =>"User updated"]);
         
     }
-    public static function deleteUser($ID){
-        $body = Helper::getPostBody();
-        $body = Helper::validateTheInputArray($body);
-        if (!($body = User::checkRequiredData($body,["ID"]))){
-            Response::httpError(400,21);
-        }
-        if (!isset((($userCurentData = UserTable::selectUserData($body["ID"]))[0]))){
+    public static function deleteUser($body,$userID){
+
+        if (!isset((($userCurentData = UserTable::selectUserData($userID))[0]))){
             Response::httpError(400,27);
         };
-        User::validateID($body["ID"]);
-        UserTable::deleteUserRow($ID);
-        Response::httpSuccess(200,"User deleted");
+        User::validateID($userID);
+        UserTable::deleteUserRow($userID);
+        Response::httpSuccess(200,["Success" => "User deleted"]);
     }
 }
 

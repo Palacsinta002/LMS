@@ -25,5 +25,13 @@ class BooksTable extends Table{
     public static function countAllBooks(){
         return self::select(["books"],["count(ISBN) AS books"])->execute(true);
     }
+    public static function selectTopBooks($ISBNList){
+        return self::select(["books"],["books.ISBN","books.Title","GROUP_CONCAT(DISTINCT Authors.Author SEPARATOR ',') as 'Authors'"])
+        ->innerJoin("Books_authors",["Books.ISBN"],["="],["Books_Authors.ISBN"])
+        ->innerJoin("Authors",["Books_Authors.AuthorID"],["="],["Authors.ID"])
+        ->where(["books.ISBN"],["IN"],[$ISBNList],["i"])
+        ->groupBy(["Books.Title", "Books.ISBN"])
+        ->execute(true);
+    }
 }
 ?>

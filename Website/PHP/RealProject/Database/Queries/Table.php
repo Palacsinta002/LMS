@@ -10,7 +10,10 @@ class Table {
     protected function where( $field, $operator,$value, $type) {
         $sql = " Where ";
         for ($i=0; $i < count($field); $i++) { 
-            if ($value[$i] == "NULL" || $value[$i] == "NOT NULL"){
+            if ($operator[$i] == "IN"){
+                $sql .= $field[$i] . " IN " . $value[$i] ." AND ";
+            }
+            elseif ($value[$i] == "NULL" || $value[$i] == "NOT NULL"){
                 $sql .= $field[$i] . " IS ". $value[$i] ." AND ";
                 
             }
@@ -44,6 +47,17 @@ class Table {
             
         }
         $sql = substr($sql,0,-4);
+        self::$query .=$sql;
+        return $this;
+    }
+    protected function orderBy($fields, $ASC = true){
+        $sql = " ORDER BY  ". implode(", ", $fields);
+        if ($ASC){
+            $sql .= " ASC ";
+        }
+        else{
+            $sql .= " DESC ";
+        }
         self::$query .=$sql;
         return $this;
     }

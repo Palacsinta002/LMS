@@ -29,3 +29,4 @@
 28 : !File format;
 29 : !Bad json format;
 30 : !Invalid address;
+31 : !Invalid token;

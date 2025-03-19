@@ -3,6 +3,8 @@
 namespace App\Authorize;
 use Firebase\JWT\JWT;
 use Config\Env;
+use ApiResponse\Response;
+use Firebase\JWT\Key;
 class Token{
 
     public static function makeToken($userid,$username){
@@ -18,12 +20,17 @@ class Token{
     }
     public static function verifyToken($token){
         try {
+            
+            if (strpos($token, 'Bearer ') == 0) {
+                $token = substr($token, 7);
+            }
             Env::load();
-            $token = JWT::decode($token,$_ENV["JWT_KEY"]);
-            return json_encode(["token" => $token]);
+            $token = JWT::decode($token,new Key($_ENV["JWT_KEY"],"HS256"));
+            return $token->userID;
+            
         }
         catch(\Exception $e){
-            return $e->getMessage();
+            Response::httpError(400,31);
         }
     }
 }
