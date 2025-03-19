@@ -39,7 +39,7 @@ export default function Profile() {
       return;
     }
     try {
-      const response = await axios.post("/api/updateUser",
+      const response = await axios.post("/api/update-user",
         { firstname: firstname, lastname: lastname, username: username, address: address, currentPassword: currentPassword, newPassword: newPassword, newPasswordAgain: newPasswordAgain },
         {
           headers: {

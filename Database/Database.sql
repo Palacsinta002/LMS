@@ -231,7 +231,7 @@ INSERT INTO Publishers (Publisher) VALUES
 ('Bloomsbury Publishing');
 
 -- Insert values into Users table
-INSERT INTO Users (FirstName, LastName, Email, Username, Password, Address, Verified, EmailVerified, EmailVerificationCode, RoleID, Birthday) VALUES
+INSERT INTO Users (FirstName, LastName, Email, Username, Password, Address, Verified, EmailVerified, EmailVerificationCode, RoleID, DateOfBirth) VALUES
 ('John', 'Doe', 'john.doe@example.com', 'johndoe', '$2y$10$s6wDg2g6WyuxoOrDg4wv4O2hfGcgGaLMhaMWSlNLu048HpF5snqIq', '123 Main St, Springfield', 1, 1, '123123', 3, '1985-06-15'),
 ('Jane', 'Smith', 'jane.smith@example.com', 'janesmith', '$2y$10$0rK/0Ny/pPudrVWaCKCDfuViT9DiyBvXQjbkIODHGdjkRGgvDt/NO', '456 Oak St, Springfield', 1, 1, '456789', 3, '1990-03-22'),
 ('Admin', 'User', 'admin@example.com', 'admin', '$2y$10$M6a/92XfuWaAymQ3uTScju2in8rSdkRbdGPIeP.HFC2h.mODuqT4O', '1 Admin Plaza, Springfield', 1, 1, '123456', 1, '1975-11-08'),

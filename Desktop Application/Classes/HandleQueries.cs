@@ -66,10 +66,10 @@ internal class HandleQueries
         connection.RunSqlCommand(query);
     }
     // Insert user with the given arguments
-    internal static void InsertUser(string firstName, string lastName, DateTime dateOfBirth, string username, string hashedPassword, string address)
+    internal static void InsertUser(string firstName, string lastName, DateTime dateOfBirth, string username, string hashedPassword, string address, int verified)
     {
         Connection connection = new();
-        string query = $"INSERT INTO Users(FirstName, LastName, dateOfBirth, Username, Password, Address, RoleID) VALUES(\"{firstName}\", \"{lastName}\", \"{dateOfBirth}\", \"{username}\", \"{hashedPassword}\", \"{address}\", 3)";
+        string query = $"INSERT INTO Users(FirstName, LastName, dateOfBirth, Username, Password, Address, Verified, RoleID) VALUES(\"{firstName}\", \"{lastName}\", \"{dateOfBirth}\", \"{username}\", \"{hashedPassword}\", \"{address}\", {verified}, 3)";
         connection.RunSqlCommand(query);
     }
 
@@ -136,12 +136,12 @@ internal class HandleQueries
         }
     }
     // Update user with the given arguments
-    internal static void UpdatetUser(DataGridView users_grd, string firstName, string lastName, string email, string username, string address)
+    internal static void UpdatetUser(DataGridView users_grd, string firstName, string lastName, DateTime dateOfBirth, string username, string address)
     {
         Connection connection = new();
         foreach (DataGridViewRow row in users_grd.SelectedRows)
         {
-            string query = $"UPDATE Users SET FirstName = \"{firstName}\", LastName = \"{lastName}\", Email = \"{email}\", Username = \"{username}\", Address = \"{address}\" WHERE Username = \"{row.Cells[4].Value}\"";
+            string query = $"UPDATE Users SET FirstName = \"{firstName}\", LastName = \"{lastName}\", DateOfBirth = \"{dateOfBirth}\", Username = \"{username}\", Address = \"{address}\" WHERE Username = \"{row.Cells[5].Value}\"";
             connection.RunSqlCommand(query);
         }
     }
