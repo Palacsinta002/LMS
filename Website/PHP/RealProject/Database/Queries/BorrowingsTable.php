@@ -13,7 +13,6 @@ class BorrowingsTable extends Table{
     public static function topBorrowedBooks($limit){
         return self::select(["borrowings"],["ISBN","count(ISBN) AS Borrowed"])->groupBy(["ISBN"])->limit($limit)->execute(true);
     }
-
 }
 
 ?>

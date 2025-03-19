@@ -22,5 +22,6 @@ class BooksController implements IController{
     public static function countAllBooks(){
         Response::httpSuccess(200, BooksTable::countAllBooks());
     }
+
 }
 ?>

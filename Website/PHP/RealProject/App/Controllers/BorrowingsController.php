@@ -4,6 +4,8 @@ use App\Models\Borrowing;
 use Database\Queries\BorrowingsTable;
 use Helper\Helper;
 use ApiResponse\Response;
+use App\Models\Books;
+use Database\Queries\BooksTable;
 class BorrowingsController implements IController{
     public static function getFromDBByParams($body){
         $body = Helper::validateTheInputArray($body);
@@ -19,15 +21,22 @@ class BorrowingsController implements IController{
 
     }
 
-    public static function topBorrowedBooks(){
-        $body = Helper::getPostBody();
+    public static function topBorrowedBooks($body){
         $body = Helper::validateTheInputArray($body);
         if (($body = Borrowing::checkRequiredData($body,["limit"])) == false){
             Response::httpError(200,21);
         };
         Borrowing::callingValidateFunctions($body,["limit"],Borrowing::class,"checkLimit");
-        Response::httpSuccess(200, BorrowingsTable::topBorrowedBooks($body["limit"]));
+        $topBorrowedISBNs = BorrowingsTable::topBorrowedBooks($body["limit"]);
+        $ISNBSToArray = "(";
+        for ($i=0; $i < count($topBorrowedISBNs); $i++) { 
+            $ISNBSToArray .= $topBorrowedISBNs[$i]["ISBN"] . ", ";
+        }
+        $ISNBSToArray =substr($ISNBSToArray,0,-2);
+        $ISNBSToArray .= ")";
     }
+
+    
 }
 
 ?>

@@ -16,18 +16,54 @@ export default function Profile() {
   const [lastname, setLastname] = useState("");
   const [username, setUsername] = useState("");
   const [address, setAddress] = useState("");
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [newPasswordAgain, setNewPasswordAgain] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    axios.post("/api/user", {ID: ID}, {headers: {"Content-type": "application/json"} })
+    axios.post("/api/user", { ID: ID }, { headers: { "Content-type": "application/json" } })
       .then(response => {
         setData(response.data)
       })
   }, [])
 
+  async function handleSubmit() {
+    setLoading(true);
+    setError("");
+
+    if (newPassword != newPasswordAgain) {
+      setLoading(false);
+      setError("The new password doesn't match!");
+      return;
+    }
+    try {
+      const response = await axios.post("/api/updateUser",
+        { firstname: firstname, lastname: lastname, username: username, address: address, currentPassword: currentPassword, newPassword: newPassword, newPasswordAgain: newPasswordAgain },
+        {
+          headers: {
+            "Content-type": "application/json"
+          }
+        })
+
+      if (response.data.Success) {
+
+      }
+    }
+    catch (error) {
+      console.error("Registration error:", error);
+      setError("Registration error!");
+    } finally {
+      setLoading(false);
+    }
+
+  }
+
   return (
     <div className={hidden}>
       {data.map((item, index) => (
-        <div key={index} className="profile-box">
+        <form onSubmit={handleSubmit} key={index} className="profile-box">
           <label>First name:</label>
           <input className='profile-firstname' defaultValue={item.firstname} onChange={(e) => setFirstname(e.target.value)} type="text" />
           <label>Last name:</label>
@@ -36,10 +72,15 @@ export default function Profile() {
           <input className='profile-username' defaultValue={item.username} onChange={(e) => setUsername(e.target.value)} type="text" />
           <label>Address:</label>
           <input className='profile-username' defaultValue={item.address} onChange={(e) => setAddress(e.target.value)} type="text" />
-          <label>Password:</label>
-          <input className='proflie-password' type="password" />
-          <input className='profile-submit' type="submit" value="Save" />
-        </div>
+          <label>Current Password:</label>
+          <input className='proflie-password' type="password" onChange={(e) => setCurrentPassword(e.target.value)} />
+          <label>New Password:</label>
+          <input className='proflie-password' type="password" onChange={(e) => setNewPassword(e.target.value)} />
+          <label>New Password Again:</label>
+          <input className='proflie-password' type="password" onChange={(e) => setNewPasswordAgain(e.target.value)} />
+          <input type="submit" className="profile-submit" value={loading ? "Saving changes..." : "Save"} disabled={loading} />
+          {loading && <div className="spinner"></div>}
+        </form>
       ))}
     </div>
   )

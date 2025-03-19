@@ -92,6 +92,14 @@ class Model{
         }
         return true;
     }
+    public static function removeNullValues( $inputArray ){
+        foreach ($inputArray as $key => $value) {
+            if ($inputArray[$key] == ""){
+                unset($inputArray[$key]);
+            }
+        }
+        return $inputArray;
+    }
 }
 
 

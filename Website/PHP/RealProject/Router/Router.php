@@ -3,13 +3,22 @@
 namespace Router;
 use ApiResponse\Response;
 use Helper\Helper;
+use App\Authorize\Token;
 class Router{
 
-    public static function post($endpoint, $controller, $function){
+    public static function post($endpoint, $controller, $function, $auth = false){
         $uri = $_SERVER["REQUEST_URI"];
         
         if ($uri == $endpoint){
             if ($_SERVER["REQUEST_METHOD" ] == "POST"){
+                $userID = "";
+                if ($auth == true){
+                    $token = getallheaders()['Authorization'] ?? '';
+                    $userID = Token::verifyToken($token);
+                    $body = Helper::getPostBody();
+                    $controller::$function($body,$userID);
+                    die();
+                }
                 $body = Helper::getPostBody();
                 $controller::$function($body);
                 die("");
@@ -21,13 +30,14 @@ class Router{
 
     
 
-    public static function get($endpoint, $controller, $function, $getFromURL = false, $img = false){
+    public static function get($endpoint, $controller, $function,$auth = false, $getFromURL = false, $img = false){
         $uri = $_SERVER["REQUEST_URI"];
             if (strlen($uri) >= strlen($endpoint) && substr($uri,0, strlen($endpoint)) == $endpoint && $getFromURL){
                 
                 if ($_SERVER["REQUEST_METHOD" ] != "GET"){
                     Response::httpError(404,17);
                 }
+                
                 if ($img == true){
                     $body = explode("/",trim(substr($uri, strlen($endpoint)),"/"));
 
@@ -42,7 +52,12 @@ class Router{
                 
                     $data = Helper::validateTheInputArray(self::getBodyByUrl($body));
                 }
-                
+                if ($auth == true){
+                    $token = getallheaders()['Authorization'] ?? '';
+                    $userID = Token::verifyToken($token);
+                    $controller::$function($data,$userID);
+                    die();
+                }
                 $controller::$function($data);
                 die("");
             }
@@ -52,6 +67,12 @@ class Router{
                     Response::httpError(404,17);
                 }
                 $data = Helper::validateTheInputArray($_GET);
+                if ($auth == true){
+                    $token = getallheaders()['Authorization'] ?? '';
+                    $userID = Token::verifyToken($token);
+                    $controller::$function($data,$userID);
+                    die();
+                }
                 $controller::$function($data);
                 die("");
             }
