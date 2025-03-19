@@ -45,7 +45,7 @@ CREATE TABLE Users (
     Username Varchar(25) not null UNIQUE,
     Password varchar(100) not null,
     Address varchar(255) not null,
-    dateOfBirth DATE NOT NULL,
+    DateOfBirth DATE NOT NULL,
     Verified TINYINT(1) DEFAULT 0,
     EmailVerified TINYINT(1) DEFAULT 0,
     EmailVerificationCode VARCHAR(6) DEFAULT 0,

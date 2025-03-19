@@ -75,6 +75,12 @@ namespace Desktop_Application
             books_lbl1 = new Label();
             books_src = new TextBox();
             books_grd = new DataGridView();
+            books_title = new DataGridViewTextBoxColumn();
+            books_author = new DataGridViewTextBoxColumn();
+            books_publicationYear = new DataGridViewTextBoxColumn();
+            books_category = new DataGridViewTextBoxColumn();
+            books_publisher = new DataGridViewTextBoxColumn();
+            books_isbn = new DataGridViewTextBoxColumn();
             borrowings_pnl = new Panel();
             checkBox_currentBorrowings = new CheckBox();
             borrowings_grd = new DataGridView();
@@ -101,12 +107,6 @@ namespace Desktop_Application
             categories_src = new TextBox();
             users_pnl = new Panel();
             users_grd = new DataGridView();
-            users_firstName = new DataGridViewTextBoxColumn();
-            users_lastName = new DataGridViewTextBoxColumn();
-            users_username = new DataGridViewTextBoxColumn();
-            users_email = new DataGridViewTextBoxColumn();
-            users_address = new DataGridViewTextBoxColumn();
-            users_role = new DataGridViewTextBoxColumn();
             roundedButton2 = new RoundedButton();
             roundedButton1 = new RoundedButton();
             users_button_edit = new RoundedButton();
@@ -131,12 +131,14 @@ namespace Desktop_Application
             publishers_remove_btn = new RoundedButton();
             publishers_lbl1 = new Label();
             publishers_src = new TextBox();
-            books_title = new DataGridViewTextBoxColumn();
-            books_author = new DataGridViewTextBoxColumn();
-            books_publicationYear = new DataGridViewTextBoxColumn();
-            books_category = new DataGridViewTextBoxColumn();
-            books_publisher = new DataGridViewTextBoxColumn();
-            books_isbn = new DataGridViewTextBoxColumn();
+            users_firstName = new DataGridViewTextBoxColumn();
+            users_lastName = new DataGridViewTextBoxColumn();
+            users_dateOfBirth = new DataGridViewTextBoxColumn();
+            users_address = new DataGridViewTextBoxColumn();
+            users_verified = new DataGridViewTextBoxColumn();
+            users_username = new DataGridViewTextBoxColumn();
+            users_email = new DataGridViewTextBoxColumn();
+            users_role = new DataGridViewTextBoxColumn();
             menu_pnl.SuspendLayout();
             header_pnl.SuspendLayout();
             dashboard_pnl.SuspendLayout();
@@ -849,6 +851,54 @@ namespace Desktop_Application
             books_grd.Size = new Size(690, 479);
             books_grd.TabIndex = 0;
             // 
+            // books_title
+            // 
+            books_title.HeaderText = "Title";
+            books_title.MinimumWidth = 6;
+            books_title.Name = "books_title";
+            books_title.ReadOnly = true;
+            books_title.Width = 67;
+            // 
+            // books_author
+            // 
+            books_author.HeaderText = "Author";
+            books_author.MinimumWidth = 6;
+            books_author.Name = "books_author";
+            books_author.ReadOnly = true;
+            books_author.Width = 83;
+            // 
+            // books_publicationYear
+            // 
+            books_publicationYear.HeaderText = "Publication Year";
+            books_publicationYear.MinimumWidth = 6;
+            books_publicationYear.Name = "books_publicationYear";
+            books_publicationYear.ReadOnly = true;
+            books_publicationYear.Width = 144;
+            // 
+            // books_category
+            // 
+            books_category.HeaderText = "Categroy";
+            books_category.MinimumWidth = 6;
+            books_category.Name = "books_category";
+            books_category.ReadOnly = true;
+            books_category.Width = 98;
+            // 
+            // books_publisher
+            // 
+            books_publisher.HeaderText = "Publisher";
+            books_publisher.MinimumWidth = 6;
+            books_publisher.Name = "books_publisher";
+            books_publisher.ReadOnly = true;
+            books_publisher.Width = 98;
+            // 
+            // books_isbn
+            // 
+            books_isbn.HeaderText = "ISBN";
+            books_isbn.MinimumWidth = 6;
+            books_isbn.Name = "books_isbn";
+            books_isbn.ReadOnly = true;
+            books_isbn.Width = 70;
+            // 
             // borrowings_pnl
             // 
             borrowings_pnl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -1272,7 +1322,7 @@ namespace Desktop_Application
             users_grd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             users_grd.BackgroundColor = Color.White;
             users_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            users_grd.Columns.AddRange(new DataGridViewColumn[] { users_firstName, users_lastName, users_username, users_email, users_address, users_role });
+            users_grd.Columns.AddRange(new DataGridViewColumn[] { users_firstName, users_lastName, users_dateOfBirth, users_address, users_verified, users_username, users_email, users_role });
             users_grd.Location = new Point(59, 144);
             users_grd.Margin = new Padding(3, 4, 3, 4);
             users_grd.Name = "users_grd";
@@ -1286,54 +1336,6 @@ namespace Desktop_Application
             users_grd.ShowRowErrors = false;
             users_grd.Size = new Size(690, 479);
             users_grd.TabIndex = 32;
-            // 
-            // users_firstName
-            // 
-            users_firstName.HeaderText = "First Name";
-            users_firstName.MinimumWidth = 6;
-            users_firstName.Name = "users_firstName";
-            users_firstName.ReadOnly = true;
-            users_firstName.Width = 109;
-            // 
-            // users_lastName
-            // 
-            users_lastName.HeaderText = "Last Name";
-            users_lastName.MinimumWidth = 6;
-            users_lastName.Name = "users_lastName";
-            users_lastName.ReadOnly = true;
-            users_lastName.Width = 108;
-            // 
-            // users_username
-            // 
-            users_username.HeaderText = "Username";
-            users_username.MinimumWidth = 6;
-            users_username.Name = "users_username";
-            users_username.ReadOnly = true;
-            users_username.Width = 104;
-            // 
-            // users_email
-            // 
-            users_email.HeaderText = "Email";
-            users_email.MinimumWidth = 6;
-            users_email.Name = "users_email";
-            users_email.ReadOnly = true;
-            users_email.Width = 75;
-            // 
-            // users_address
-            // 
-            users_address.HeaderText = "Address";
-            users_address.MinimumWidth = 6;
-            users_address.Name = "users_address";
-            users_address.ReadOnly = true;
-            users_address.Width = 91;
-            // 
-            // users_role
-            // 
-            users_role.HeaderText = "Role";
-            users_role.MinimumWidth = 6;
-            users_role.Name = "users_role";
-            users_role.ReadOnly = true;
-            users_role.Width = 68;
             // 
             // roundedButton2
             // 
@@ -1798,53 +1800,69 @@ namespace Desktop_Application
             publishers_src.TabStop = false;
             publishers_src.TextChanged += SearchPublishers;
             // 
-            // books_title
+            // users_firstName
             // 
-            books_title.HeaderText = "Title";
-            books_title.MinimumWidth = 6;
-            books_title.Name = "books_title";
-            books_title.ReadOnly = true;
-            books_title.Width = 67;
+            users_firstName.HeaderText = "First Name";
+            users_firstName.MinimumWidth = 6;
+            users_firstName.Name = "users_firstName";
+            users_firstName.ReadOnly = true;
+            users_firstName.Width = 109;
             // 
-            // books_author
+            // users_lastName
             // 
-            books_author.HeaderText = "Author";
-            books_author.MinimumWidth = 6;
-            books_author.Name = "books_author";
-            books_author.ReadOnly = true;
-            books_author.Width = 83;
+            users_lastName.HeaderText = "Last Name";
+            users_lastName.MinimumWidth = 6;
+            users_lastName.Name = "users_lastName";
+            users_lastName.ReadOnly = true;
+            users_lastName.Width = 108;
             // 
-            // books_publicationYear
+            // users_dateOfBirth
             // 
-            books_publicationYear.HeaderText = "Publication Year";
-            books_publicationYear.MinimumWidth = 6;
-            books_publicationYear.Name = "books_publicationYear";
-            books_publicationYear.ReadOnly = true;
-            books_publicationYear.Width = 144;
+            users_dateOfBirth.HeaderText = "Date of Birth";
+            users_dateOfBirth.MinimumWidth = 6;
+            users_dateOfBirth.Name = "users_dateOfBirth";
+            users_dateOfBirth.ReadOnly = true;
+            users_dateOfBirth.Width = 123;
             // 
-            // books_category
+            // users_address
             // 
-            books_category.HeaderText = "Categroy";
-            books_category.MinimumWidth = 6;
-            books_category.Name = "books_category";
-            books_category.ReadOnly = true;
-            books_category.Width = 98;
+            users_address.HeaderText = "Address";
+            users_address.MinimumWidth = 6;
+            users_address.Name = "users_address";
+            users_address.ReadOnly = true;
+            users_address.Width = 91;
             // 
-            // books_publisher
+            // users_verified
             // 
-            books_publisher.HeaderText = "Publisher";
-            books_publisher.MinimumWidth = 6;
-            books_publisher.Name = "books_publisher";
-            books_publisher.ReadOnly = true;
-            books_publisher.Width = 98;
+            users_verified.HeaderText = "Verified";
+            users_verified.MinimumWidth = 6;
+            users_verified.Name = "users_verified";
+            users_verified.ReadOnly = true;
+            users_verified.Width = 89;
             // 
-            // books_isbn
+            // users_username
             // 
-            books_isbn.HeaderText = "ISBN";
-            books_isbn.MinimumWidth = 6;
-            books_isbn.Name = "books_isbn";
-            books_isbn.ReadOnly = true;
-            books_isbn.Width = 70;
+            users_username.HeaderText = "Username";
+            users_username.MinimumWidth = 6;
+            users_username.Name = "users_username";
+            users_username.ReadOnly = true;
+            users_username.Width = 104;
+            // 
+            // users_email
+            // 
+            users_email.HeaderText = "Email";
+            users_email.MinimumWidth = 6;
+            users_email.Name = "users_email";
+            users_email.ReadOnly = true;
+            users_email.Width = 75;
+            // 
+            // users_role
+            // 
+            users_role.HeaderText = "Role";
+            users_role.MinimumWidth = 6;
+            users_role.Name = "users_role";
+            users_role.ReadOnly = true;
+            users_role.Width = 68;
             // 
             // AdminPanel
             // 
@@ -1854,13 +1872,13 @@ namespace Desktop_Application
             ClientSize = new Size(1125, 748);
             Controls.Add(header_pnl);
             Controls.Add(menu_pnl);
+            Controls.Add(users_pnl);
             Controls.Add(books_pnl);
             Controls.Add(dashboard_pnl);
             Controls.Add(publishers_pnl);
             Controls.Add(authors_pnl);
             Controls.Add(categories_pnl);
             Controls.Add(borrowings_pnl);
-            Controls.Add(users_pnl);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
             MinimumSize = new Size(1140, 779);
@@ -1998,12 +2016,6 @@ namespace Desktop_Application
         private DataGridView users_grd;
         private DataGridView authors_grd;
         private DataGridView publishers_grd;
-        private DataGridViewTextBoxColumn users_firstName;
-        private DataGridViewTextBoxColumn users_lastName;
-        private DataGridViewTextBoxColumn users_username;
-        private DataGridViewTextBoxColumn users_email;
-        private DataGridViewTextBoxColumn users_address;
-        private DataGridViewTextBoxColumn users_role;
         private DataGridViewTextBoxColumn authors_author;
         private DataGridViewTextBoxColumn publishers_publisher;
         private DataGridViewTextBoxColumn books_title;
@@ -2012,5 +2024,13 @@ namespace Desktop_Application
         private DataGridViewTextBoxColumn books_category;
         private DataGridViewTextBoxColumn books_publisher;
         private DataGridViewTextBoxColumn books_isbn;
+        private DataGridViewTextBoxColumn users_firstName;
+        private DataGridViewTextBoxColumn users_lastName;
+        private DataGridViewTextBoxColumn users_dateOfBirth;
+        private DataGridViewTextBoxColumn users_address;
+        private DataGridViewTextBoxColumn users_verified;
+        private DataGridViewTextBoxColumn users_username;
+        private DataGridViewTextBoxColumn users_email;
+        private DataGridViewTextBoxColumn users_role;
     }
 }
