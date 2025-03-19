@@ -20,8 +20,6 @@ class Token{
     }
     public static function verifyToken($token){
         try {
-            echo json_encode(["token" =>$token]);
-            die();
             if (strpos($token, 'Bearer ') == 0) {
                 $token = substr($token, 7);
             }
@@ -31,8 +29,7 @@ class Token{
             
         }
         catch(\Exception $e){
-            echo "". $e->getMessage();
-            die ();
+            Response::httpError(200, 31);
         
         }
     }

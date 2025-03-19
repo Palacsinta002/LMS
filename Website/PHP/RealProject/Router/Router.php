@@ -13,9 +13,7 @@ class Router{
             if ($_SERVER["REQUEST_METHOD" ] == "POST"){
                 $userID = "";
                 if ($auth == true){
-                    print_r(getallheaders());
-                    die();
-                    $token = getallheaders()['Authorization'] ?? '';
+                    $token = isset(getallheaders()['Authorization']) ? getallheaders()['Authorization'] : (isset(getallheaders()['authorization']) ? getallheaders()['authorization'] : "");
                     $userID = Token::verifyToken($token);
                     $body = Helper::getPostBody();
                     $controller::$function($body,$userID);
@@ -55,7 +53,7 @@ class Router{
                     $data = Helper::validateTheInputArray(self::getBodyByUrl($body));
                 }
                 if ($auth == true){
-                    $token = getallheaders()['Authorization'] ?? '';
+                    $token = isset(getallheaders()['Authorization']) ? getallheaders()['Authorization'] : (isset(getallheaders()['authorization']) ? getallheaders()['authorization'] : "");
                     $userID = Token::verifyToken($token);
                     $controller::$function($data,$userID);
                     die();
@@ -70,7 +68,7 @@ class Router{
                 }
                 $data = Helper::validateTheInputArray($_GET);
                 if ($auth == true){
-                    $token = getallheaders()['Authorization'] ?? '';
+                    $token = isset(getallheaders()['Authorization']) ? getallheaders()['Authorization'] : (isset(getallheaders()['authorization']) ? getallheaders()['authorization'] : "");
                     $userID = Token::verifyToken($token);
                     $controller::$function($data,$userID);
                     die();
