@@ -66,11 +66,10 @@ internal class HandleQueries
         connection.RunSqlCommand(query);
     }
     // Insert user with the given arguments
-    internal static void InsertUser(string firstName, string lastName, string email, string username, string hashedPassword, string address)
+    internal static void InsertUser(string firstName, string lastName, DateTime dateOfBirth, string username, string hashedPassword, string address)
     {
-        // NEEDS UPDATING
         Connection connection = new();
-        string query = $"INSERT INTO Users(FirstName, LastName, Email, Username, Password, Address, RoleID) VALUES(\"{firstName}\", \"{lastName}\", \"{email}\", \"{username}\", \"{hashedPassword}\", \"{address}\", 3)";
+        string query = $"INSERT INTO Users(FirstName, LastName, dateOfBirth, Username, Password, Address, RoleID) VALUES(\"{firstName}\", \"{lastName}\", \"{dateOfBirth}\", \"{username}\", \"{hashedPassword}\", \"{address}\", 3)";
         connection.RunSqlCommand(query);
     }
 
