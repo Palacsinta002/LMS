@@ -6,6 +6,7 @@ namespace Desktop_Application.Forms.Users;
 public partial class EditUser : Form
 {
     private readonly DataGridView _users_grd;
+    private DateTime _dateOfBirth;
 
     public EditUser(DataGridView users_grd)
     {
@@ -25,15 +26,18 @@ public partial class EditUser : Form
         textBox_firstName.Text = selectedRow["users_firstName"].Value.ToString();
         textBox_lastName.Text = selectedRow["users_lastName"].Value.ToString();
         textBox_username.Text = selectedRow["users_username"].Value.ToString();
-        textBox_email.Text = selectedRow["users_email"].Value.ToString();
+        dateOfBirth_datePicker.Text = selectedRow["users_dateOfBirth"].Value.ToString();
         textBox_address.Text = selectedRow["users_address"].Value.ToString();
+
+        int[] bDate = dateOfBirth_datePicker.Text.Split('/').Select(int.Parse).ToArray();
+        _dateOfBirth = new(bDate[2], bDate[1], bDate[0]);
     }
 
     private void Save(object sender, EventArgs e)
     {
         if (ValidateInput())
         {
-            HandleQueries.UpdatetUser(_users_grd, textBox_firstName.Text, textBox_lastName.Text, textBox_email.Text, textBox_username.Text, textBox_address.Text);
+            HandleQueries.UpdatetUser(_users_grd, textBox_firstName.Text, textBox_lastName.Text, _dateOfBirth, textBox_username.Text, textBox_address.Text);
             MessageBox.Show("User updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
@@ -80,14 +84,14 @@ public partial class EditUser : Form
             return false;
         }
 
-        if (textBox_email.Text == string.Empty)
+        if (_dateOfBirth > DateTime.Today)
         {
-            MessageBox.Show("Email is required!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("Date of birth cannot be later than today!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
-        else if (!Regex.IsMatch(textBox_email.Text, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"))
+        else if (_dateOfBirth < DateTime.Now.AddYears(-130))
         {
-            MessageBox.Show("Email is not in the correct format! Please check your special characters!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("Cannot enter date older than 130 years old!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
 

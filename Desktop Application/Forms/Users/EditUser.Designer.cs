@@ -40,12 +40,12 @@ namespace Desktop_Application.Forms.Users
             label2 = new Label();
             textBox_lastName = new TextBox();
             textBox_firstName = new TextBox();
-            textBox_email = new TextBox();
-            label1 = new Label();
             textBox_address = new TextBox();
             label3 = new Label();
             textBox_username = new TextBox();
             label4 = new Label();
+            dateOfBirth_datePicker = new DateTimePicker();
+            label1 = new Label();
             header.SuspendLayout();
             SuspendLayout();
             // 
@@ -178,26 +178,6 @@ namespace Desktop_Application.Forms.Users
             textBox_firstName.Size = new Size(436, 39);
             textBox_firstName.TabIndex = 1;
             // 
-            // textBox_email
-            // 
-            textBox_email.BackColor = Color.WhiteSmoke;
-            textBox_email.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_email.Location = new Point(144, 242);
-            textBox_email.Margin = new Padding(3, 4, 3, 4);
-            textBox_email.Name = "textBox_email";
-            textBox_email.Size = new Size(436, 39);
-            textBox_email.TabIndex = 4;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label1.Location = new Point(12, 245);
-            label1.Name = "label1";
-            label1.Size = new Size(72, 32);
-            label1.TabIndex = 97;
-            label1.Text = "Email";
-            // 
             // textBox_address
             // 
             textBox_address.BackColor = Color.WhiteSmoke;
@@ -238,18 +218,39 @@ namespace Desktop_Application.Forms.Users
             label4.TabIndex = 101;
             label4.Text = "Username";
             // 
+            // dateOfBirth_datePicker
+            // 
+            dateOfBirth_datePicker.CalendarFont = new Font("Yu Gothic UI Semibold", 14F);
+            dateOfBirth_datePicker.Font = new Font("Yu Gothic UI Semibold", 14F);
+            dateOfBirth_datePicker.Format = DateTimePickerFormat.Short;
+            dateOfBirth_datePicker.Location = new Point(173, 242);
+            dateOfBirth_datePicker.Margin = new Padding(3, 4, 3, 4);
+            dateOfBirth_datePicker.Name = "dateOfBirth_datePicker";
+            dateOfBirth_datePicker.Size = new Size(154, 39);
+            dateOfBirth_datePicker.TabIndex = 102;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label1.Location = new Point(12, 245);
+            label1.Name = "label1";
+            label1.Size = new Size(155, 32);
+            label1.TabIndex = 103;
+            label1.Text = "Date of Birth";
+            // 
             // EditUser
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(594, 416);
+            Controls.Add(dateOfBirth_datePicker);
+            Controls.Add(label1);
             Controls.Add(textBox_username);
             Controls.Add(label4);
             Controls.Add(textBox_address);
             Controls.Add(label3);
-            Controls.Add(textBox_email);
-            Controls.Add(label1);
             Controls.Add(textBox_firstName);
             Controls.Add(textBox_lastName);
             Controls.Add(save);
@@ -281,11 +282,11 @@ namespace Desktop_Application.Forms.Users
         private Label label2;
         private TextBox textBox_lastName;
         private TextBox textBox_firstName;
-        private TextBox textBox_email;
-        private Label label1;
         private TextBox textBox_address;
         private Label label3;
         private TextBox textBox_username;
         private Label label4;
+        private DateTimePicker dateOfBirth_datePicker;
+        private Label label1;
     }
 }

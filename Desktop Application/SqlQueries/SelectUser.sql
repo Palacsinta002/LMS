@@ -1,9 +1,9 @@
 SELECT 
 	Users.FirstName,
     Users.LastName,
-    Users.dateOfBirth,
+    DATE_FORMAT(Users.DateOfBirth, "%d/%m/%Y"),
     Users.Address,
-    Users.Verified
+    IF(Users.Verified, "Yes", "No"),
     Users.Username,
     Users.Email,
     Roles.Role

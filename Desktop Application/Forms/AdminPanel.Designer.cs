@@ -107,6 +107,14 @@ namespace Desktop_Application
             categories_src = new TextBox();
             users_pnl = new Panel();
             users_grd = new DataGridView();
+            users_firstName = new DataGridViewTextBoxColumn();
+            users_lastName = new DataGridViewTextBoxColumn();
+            users_dateOfBirth = new DataGridViewTextBoxColumn();
+            users_address = new DataGridViewTextBoxColumn();
+            users_verified = new DataGridViewTextBoxColumn();
+            users_username = new DataGridViewTextBoxColumn();
+            users_email = new DataGridViewTextBoxColumn();
+            users_role = new DataGridViewTextBoxColumn();
             roundedButton2 = new RoundedButton();
             roundedButton1 = new RoundedButton();
             users_button_edit = new RoundedButton();
@@ -131,14 +139,6 @@ namespace Desktop_Application
             publishers_remove_btn = new RoundedButton();
             publishers_lbl1 = new Label();
             publishers_src = new TextBox();
-            users_firstName = new DataGridViewTextBoxColumn();
-            users_lastName = new DataGridViewTextBoxColumn();
-            users_dateOfBirth = new DataGridViewTextBoxColumn();
-            users_address = new DataGridViewTextBoxColumn();
-            users_verified = new DataGridViewTextBoxColumn();
-            users_username = new DataGridViewTextBoxColumn();
-            users_email = new DataGridViewTextBoxColumn();
-            users_role = new DataGridViewTextBoxColumn();
             menu_pnl.SuspendLayout();
             header_pnl.SuspendLayout();
             dashboard_pnl.SuspendLayout();
@@ -1337,6 +1337,70 @@ namespace Desktop_Application
             users_grd.Size = new Size(690, 479);
             users_grd.TabIndex = 32;
             // 
+            // users_firstName
+            // 
+            users_firstName.HeaderText = "First Name";
+            users_firstName.MinimumWidth = 6;
+            users_firstName.Name = "users_firstName";
+            users_firstName.ReadOnly = true;
+            users_firstName.Width = 109;
+            // 
+            // users_lastName
+            // 
+            users_lastName.HeaderText = "Last Name";
+            users_lastName.MinimumWidth = 6;
+            users_lastName.Name = "users_lastName";
+            users_lastName.ReadOnly = true;
+            users_lastName.Width = 108;
+            // 
+            // users_dateOfBirth
+            // 
+            users_dateOfBirth.HeaderText = "Date of Birth";
+            users_dateOfBirth.MinimumWidth = 6;
+            users_dateOfBirth.Name = "users_dateOfBirth";
+            users_dateOfBirth.ReadOnly = true;
+            users_dateOfBirth.Width = 123;
+            // 
+            // users_address
+            // 
+            users_address.HeaderText = "Address";
+            users_address.MinimumWidth = 6;
+            users_address.Name = "users_address";
+            users_address.ReadOnly = true;
+            users_address.Width = 91;
+            // 
+            // users_verified
+            // 
+            users_verified.HeaderText = "Verified";
+            users_verified.MinimumWidth = 6;
+            users_verified.Name = "users_verified";
+            users_verified.ReadOnly = true;
+            users_verified.Width = 89;
+            // 
+            // users_username
+            // 
+            users_username.HeaderText = "Username";
+            users_username.MinimumWidth = 6;
+            users_username.Name = "users_username";
+            users_username.ReadOnly = true;
+            users_username.Width = 104;
+            // 
+            // users_email
+            // 
+            users_email.HeaderText = "Email";
+            users_email.MinimumWidth = 6;
+            users_email.Name = "users_email";
+            users_email.ReadOnly = true;
+            users_email.Width = 75;
+            // 
+            // users_role
+            // 
+            users_role.HeaderText = "Role";
+            users_role.MinimumWidth = 6;
+            users_role.Name = "users_role";
+            users_role.ReadOnly = true;
+            users_role.Width = 68;
+            // 
             // roundedButton2
             // 
             roundedButton2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -1799,70 +1863,6 @@ namespace Desktop_Application
             publishers_src.TabIndex = 17;
             publishers_src.TabStop = false;
             publishers_src.TextChanged += SearchPublishers;
-            // 
-            // users_firstName
-            // 
-            users_firstName.HeaderText = "First Name";
-            users_firstName.MinimumWidth = 6;
-            users_firstName.Name = "users_firstName";
-            users_firstName.ReadOnly = true;
-            users_firstName.Width = 109;
-            // 
-            // users_lastName
-            // 
-            users_lastName.HeaderText = "Last Name";
-            users_lastName.MinimumWidth = 6;
-            users_lastName.Name = "users_lastName";
-            users_lastName.ReadOnly = true;
-            users_lastName.Width = 108;
-            // 
-            // users_dateOfBirth
-            // 
-            users_dateOfBirth.HeaderText = "Date of Birth";
-            users_dateOfBirth.MinimumWidth = 6;
-            users_dateOfBirth.Name = "users_dateOfBirth";
-            users_dateOfBirth.ReadOnly = true;
-            users_dateOfBirth.Width = 123;
-            // 
-            // users_address
-            // 
-            users_address.HeaderText = "Address";
-            users_address.MinimumWidth = 6;
-            users_address.Name = "users_address";
-            users_address.ReadOnly = true;
-            users_address.Width = 91;
-            // 
-            // users_verified
-            // 
-            users_verified.HeaderText = "Verified";
-            users_verified.MinimumWidth = 6;
-            users_verified.Name = "users_verified";
-            users_verified.ReadOnly = true;
-            users_verified.Width = 89;
-            // 
-            // users_username
-            // 
-            users_username.HeaderText = "Username";
-            users_username.MinimumWidth = 6;
-            users_username.Name = "users_username";
-            users_username.ReadOnly = true;
-            users_username.Width = 104;
-            // 
-            // users_email
-            // 
-            users_email.HeaderText = "Email";
-            users_email.MinimumWidth = 6;
-            users_email.Name = "users_email";
-            users_email.ReadOnly = true;
-            users_email.Width = 75;
-            // 
-            // users_role
-            // 
-            users_role.HeaderText = "Role";
-            users_role.MinimumWidth = 6;
-            users_role.Name = "users_role";
-            users_role.ReadOnly = true;
-            users_role.Width = 68;
             // 
             // AdminPanel
             // 
