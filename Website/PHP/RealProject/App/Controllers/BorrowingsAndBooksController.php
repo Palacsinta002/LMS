@@ -17,6 +17,7 @@ class BorrowingsAndBooksController{
             Response::httpError(200,21);
         };
         Borrowing::callingValidateFunctions($body,["limit"],Borrowing::class,"checkLimit");
+        Response::httpSuccess(200,BorrowingAndBooksTable::selectTopBorrowedBook($body["limit"]));
         
     }
 }

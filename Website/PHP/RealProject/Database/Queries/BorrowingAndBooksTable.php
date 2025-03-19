@@ -17,12 +17,13 @@ class BorrowingAndBooksTable extends Table{
         ->execute(true);
     }
     public static function selectTopBorrowedBook($limit){
-        return self::select(["borrowings"],["books.Title","GROUP_CONCAT(DISTINCT Authors.Author SEPARATOR ',') as 'Authors'","Count(Borrowings.ISBN)"])
+        return self::select(["borrowings"],["books.Title","GROUP_CONCAT(DISTINCT Authors.Author SEPARATOR ',') as 'Authors'","Count(Borrowings.ID)","books.publicationYear"])
         ->innerJoin("books",["books.ISBN"],["="],["borrowings.ISBN"])
         ->innerJoin("Books_authors",["Books.ISBN"],["="],["Books_Authors.ISBN"])
         ->innerJoin("Authors",["Books_Authors.AuthorID"],["="],["Authors.ID"])
-        ->groupBy(["books.Title",])
-        ->orderBy("Count(Borrowings.ISBN)",false)->execute(true);
+        ->groupBy(["books.Title","books.publicationYear"])
+        ->orderBy(["Count(Borrowings.ID)"],false)
+        ->limit($limit)->execute(true);
     }
 }
 

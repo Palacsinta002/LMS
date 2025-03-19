@@ -21,7 +21,7 @@ Router::post("/api/delete-user", UserController::class,"deleteUser",true);
 
 
 Router::post("/api/borrowings", BorrowingsController::class,"getFromDBByParams");
-Router::post("/api/top-borrowings", BorrowingsController::class,"topBorrowedBooks");
+Router::post("/api/top-borrowings", BorrowingsAndBooksController::class,"topBorrowedBooks");
 
 Router::get("/api/borrowing-books", Ideiglenes::class,"borrowingBooks");
 Router::get("/api/my-borrowed-books", BorrowingsAndBooksController::class,"getMyBorrowedBooks",true);
