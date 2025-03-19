@@ -13,6 +13,8 @@ class Router{
             if ($_SERVER["REQUEST_METHOD" ] == "POST"){
                 $userID = "";
                 if ($auth == true){
+                    print_r(getallheaders());
+                    die();
                     $token = getallheaders()['Authorization'] ?? '';
                     $userID = Token::verifyToken($token);
                     $body = Helper::getPostBody();
