@@ -2,11 +2,11 @@
 
 namespace Desktop_Application.Forms.Borrowings;
 
-public partial class ReturnBooks : Form
+public partial class RemoveBorrowings : Form
 {
     private readonly DataGridView _borrowings_grd;
 
-    public ReturnBooks(DataGridView borrowings_grd)
+    public RemoveBorrowings(DataGridView borrowings_grd)
     {
         _borrowings_grd = borrowings_grd;
         InitializeComponent();

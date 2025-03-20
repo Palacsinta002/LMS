@@ -2,12 +2,11 @@
 
 namespace Desktop_Application.Forms.Borrowings;
 
-public partial class LendBook : Form
+public partial class AddBorrowing : Form
 {
-    private DateTime _borrowDate;
     private DateTime _dueDate;
 
-    public LendBook()
+    public AddBorrowing()
     {
         InitializeComponent();
     }
@@ -21,19 +20,13 @@ public partial class LendBook : Form
 
         var result = HandleQueries.Select("SelectUsername");
         HandleGrids.Fill(dropDown_user, result);
-
-        int[] bDate = borrowDate_datePicker.Text.Split('/').Select(int.Parse).ToArray();
-        _borrowDate = new(bDate[2], bDate[1], bDate[0]);
-
-        int[] dDate = dueDate_datePicker.Text.Split('/').Select(int.Parse).ToArray();
-        _dueDate = new(dDate[2], dDate[1], dDate[0]);
     }
 
     private void Save(object sender, EventArgs e)
     {
         if (ValidateInput())
         {
-            HandleQueries.InsertBorrowing(dropDown_user.Text, textBox_books.Text, _borrowDate, _dueDate);
+            HandleQueries.InsertBorrowing(dropDown_user.Text, textBox_books.Text, DateTime.Today, _dueDate);
             MessageBox.Show("Book lent succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
@@ -54,9 +47,12 @@ public partial class LendBook : Form
             return false;
         }
 
-        if (_borrowDate > _dueDate)
+        int[] dDate = dueDate_datePicker.Text.Split('/').Select(int.Parse).ToArray();
+        _dueDate = new(dDate[2], dDate[1], dDate[0]);
+
+        if (_dueDate <= DateTime.Today)
         {
-            MessageBox.Show("Due date cannot be earlier than borrow date!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("Due time must be at least 1 day!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
         return true;

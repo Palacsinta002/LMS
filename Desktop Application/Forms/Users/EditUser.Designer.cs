@@ -46,11 +46,13 @@ namespace Desktop_Application.Forms.Users
             label4 = new Label();
             dateOfBirth_datePicker = new DateTimePicker();
             label1 = new Label();
+            checkBox_verify = new CheckBox();
             header.SuspendLayout();
             SuspendLayout();
             // 
             // save
             // 
+            save.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             save.BackColor = Color.FromArgb(80, 77, 180);
             save.BackgroundColor = Color.FromArgb(80, 77, 180);
             save.BorderColor = Color.Transparent;
@@ -61,7 +63,7 @@ namespace Desktop_Application.Forms.Users
             save.FlatStyle = FlatStyle.Flat;
             save.Font = new Font("Yu Gothic UI Semibold", 14F);
             save.ForeColor = Color.White;
-            save.Location = new Point(196, 355);
+            save.Location = new Point(197, 376);
             save.Margin = new Padding(3, 4, 3, 4);
             save.Name = "save";
             save.Size = new Size(97, 48);
@@ -74,6 +76,7 @@ namespace Desktop_Application.Forms.Users
             // 
             // cancel
             // 
+            cancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             cancel.BackColor = Color.WhiteSmoke;
             cancel.BackgroundColor = Color.WhiteSmoke;
             cancel.BorderColor = Color.FromArgb(80, 77, 180);
@@ -83,7 +86,7 @@ namespace Desktop_Application.Forms.Users
             cancel.FlatStyle = FlatStyle.Flat;
             cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
             cancel.ForeColor = Color.Black;
-            cancel.Location = new Point(299, 355);
+            cancel.Location = new Point(300, 376);
             cancel.Margin = new Padding(3, 4, 3, 4);
             cancel.Name = "cancel";
             cancel.Size = new Size(97, 48);
@@ -239,12 +242,24 @@ namespace Desktop_Application.Forms.Users
             label1.TabIndex = 103;
             label1.Text = "Date of Birth";
             // 
+            // checkBox_verify
+            // 
+            checkBox_verify.AutoSize = true;
+            checkBox_verify.Font = new Font("Yu Gothic UI Semibold", 10F);
+            checkBox_verify.Location = new Point(17, 335);
+            checkBox_verify.Name = "checkBox_verify";
+            checkBox_verify.Size = new Size(224, 27);
+            checkBox_verify.TabIndex = 104;
+            checkBox_verify.Text = "Mark this user as verified";
+            checkBox_verify.UseVisualStyleBackColor = true;
+            // 
             // EditUser
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(594, 416);
+            ClientSize = new Size(594, 437);
+            Controls.Add(checkBox_verify);
             Controls.Add(dateOfBirth_datePicker);
             Controls.Add(label1);
             Controls.Add(textBox_username);
@@ -288,5 +303,6 @@ namespace Desktop_Application.Forms.Users
         private Label label4;
         private DateTimePicker dateOfBirth_datePicker;
         private Label label1;
+        private CheckBox checkBox_verify;
     }
 }

@@ -161,7 +161,7 @@ public partial class AdminPanel : Form
     // Adds a borrowing to the database - Lends a book
     private void AddBorrowing(object sender, EventArgs e)
     {
-        LendBook addBorrowing = new();
+        AddBorrowing addBorrowing = new();
         addBorrowing.ShowDialog();
         RefreshBorrowings(sender, e);
     }
@@ -187,7 +187,7 @@ public partial class AdminPanel : Form
     // Removes borrowing from the database - Marks the book as returned
     private void RemoveBorrowings(object sender, EventArgs e)
     {
-        ReturnBooks removeBorrowing = new(borrowings_grd);
+        RemoveBorrowings removeBorrowing = new(borrowings_grd);
         removeBorrowing.ShowDialog();
         RefreshBorrowings(sender, e);
     }

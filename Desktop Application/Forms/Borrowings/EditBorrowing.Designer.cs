@@ -40,8 +40,6 @@ namespace Desktop_Application.Forms.Borrowings
             label_publisher = new Label();
             dueDate_datePicker = new DateTimePicker();
             label5 = new Label();
-            borrowDate_datePicker = new DateTimePicker();
-            label3 = new Label();
             label2 = new Label();
             save = new Desktop_Application.Components.RoundedButton();
             cancel = new Desktop_Application.Components.RoundedButton();
@@ -143,7 +141,7 @@ namespace Desktop_Application.Forms.Borrowings
             dueDate_datePicker.CalendarFont = new Font("Yu Gothic UI Semibold", 14F);
             dueDate_datePicker.Font = new Font("Yu Gothic UI Semibold", 14F);
             dueDate_datePicker.Format = DateTimePickerFormat.Short;
-            dueDate_datePicker.Location = new Point(171, 245);
+            dueDate_datePicker.Location = new Point(170, 191);
             dueDate_datePicker.Margin = new Padding(3, 4, 3, 4);
             dueDate_datePicker.Name = "dueDate_datePicker";
             dueDate_datePicker.Size = new Size(154, 39);
@@ -153,32 +151,11 @@ namespace Desktop_Application.Forms.Borrowings
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label5.Location = new Point(14, 249);
+            label5.Location = new Point(13, 195);
             label5.Name = "label5";
             label5.Size = new Size(117, 32);
             label5.TabIndex = 82;
             label5.Text = "Due Date";
-            // 
-            // borrowDate_datePicker
-            // 
-            borrowDate_datePicker.CalendarFont = new Font("Yu Gothic UI Semibold", 14F);
-            borrowDate_datePicker.Font = new Font("Yu Gothic UI Semibold", 14F);
-            borrowDate_datePicker.Format = DateTimePickerFormat.Short;
-            borrowDate_datePicker.Location = new Point(171, 195);
-            borrowDate_datePicker.Margin = new Padding(3, 4, 3, 4);
-            borrowDate_datePicker.Name = "borrowDate_datePicker";
-            borrowDate_datePicker.Size = new Size(154, 39);
-            borrowDate_datePicker.TabIndex = 75;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label3.Location = new Point(14, 199);
-            label3.Name = "label3";
-            label3.Size = new Size(152, 32);
-            label3.TabIndex = 81;
-            label3.Text = "Borrow Date";
             // 
             // label2
             // 
@@ -202,7 +179,7 @@ namespace Desktop_Application.Forms.Borrowings
             save.FlatStyle = FlatStyle.Flat;
             save.Font = new Font("Yu Gothic UI Semibold", 14F);
             save.ForeColor = Color.White;
-            save.Location = new Point(120, 316);
+            save.Location = new Point(119, 253);
             save.Margin = new Padding(3, 4, 3, 4);
             save.Name = "save";
             save.Size = new Size(97, 48);
@@ -224,7 +201,7 @@ namespace Desktop_Application.Forms.Borrowings
             cancel.FlatStyle = FlatStyle.Flat;
             cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
             cancel.ForeColor = Color.Black;
-            cancel.Location = new Point(223, 316);
+            cancel.Location = new Point(222, 253);
             cancel.Margin = new Padding(3, 4, 3, 4);
             cancel.Name = "cancel";
             cancel.Size = new Size(97, 48);
@@ -238,7 +215,7 @@ namespace Desktop_Application.Forms.Borrowings
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(440, 377);
+            ClientSize = new Size(440, 318);
             Controls.Add(save);
             Controls.Add(cancel);
             Controls.Add(header);
@@ -248,8 +225,6 @@ namespace Desktop_Application.Forms.Borrowings
             Controls.Add(label_publisher);
             Controls.Add(dueDate_datePicker);
             Controls.Add(label5);
-            Controls.Add(borrowDate_datePicker);
-            Controls.Add(label3);
             Controls.Add(label2);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 4, 3, 4);
@@ -274,8 +249,6 @@ namespace Desktop_Application.Forms.Borrowings
         private Label label_publisher;
         private DateTimePicker dueDate_datePicker;
         private Label label5;
-        private DateTimePicker borrowDate_datePicker;
-        private Label label3;
         private Label label2;
         private Components.RoundedButton save;
         private Components.RoundedButton cancel;

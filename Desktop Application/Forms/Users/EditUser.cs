@@ -1,4 +1,5 @@
 ﻿using Desktop_Application.Classes;
+using Microsoft.VisualBasic;
 using System.Text.RegularExpressions;
 
 namespace Desktop_Application.Forms.Users;
@@ -6,6 +7,7 @@ namespace Desktop_Application.Forms.Users;
 public partial class EditUser : Form
 {
     private readonly DataGridView _users_grd;
+    private string _oldUsername;
     private DateTime _dateOfBirth;
 
     public EditUser(DataGridView users_grd)
@@ -28,16 +30,18 @@ public partial class EditUser : Form
         textBox_username.Text = selectedRow["users_username"].Value.ToString();
         dateOfBirth_datePicker.Text = selectedRow["users_dateOfBirth"].Value.ToString();
         textBox_address.Text = selectedRow["users_address"].Value.ToString();
+        checkBox_verify.Checked = selectedRow["users_verified"].Value.ToString() == "Yes" ? true : false;
 
-        int[] bDate = dateOfBirth_datePicker.Text.Split('/').Select(int.Parse).ToArray();
-        _dateOfBirth = new(bDate[2], bDate[1], bDate[0]);
+        _oldUsername = textBox_username.Text;
     }
 
     private void Save(object sender, EventArgs e)
     {
         if (ValidateInput())
         {
-            HandleQueries.UpdatetUser(_users_grd, textBox_firstName.Text, textBox_lastName.Text, _dateOfBirth, textBox_username.Text, textBox_address.Text);
+            string dateOfBirth = $"{_dateOfBirth.Year}-{_dateOfBirth.Month}-{_dateOfBirth.Day}";
+            bool verified = checkBox_verify.Checked;
+            HandleQueries.UpdatetUser(_users_grd, textBox_firstName.Text, textBox_lastName.Text, dateOfBirth, textBox_username.Text, textBox_address.Text, verified);
             MessageBox.Show("User updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
@@ -84,6 +88,9 @@ public partial class EditUser : Form
             return false;
         }
 
+        int[] bDate = dateOfBirth_datePicker.Text.Split('/').Select(int.Parse).ToArray();
+        _dateOfBirth = new(bDate[2], bDate[1], bDate[0]);
+
         if (_dateOfBirth > DateTime.Today)
         {
             MessageBox.Show("Date of birth cannot be later than today!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -108,8 +115,9 @@ public partial class EditUser : Form
         return true;
     }
 
-    private static bool CheckUsername(string username)
+    private bool CheckUsername(string username)
     {
+        if (username == _oldUsername) return false;
         List<string[]> result = HandleQueries.Select("SelectUsername");
         foreach (string[] item in result)
         {

@@ -3,7 +3,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Desktop_Application.Forms.Borrowings
 {
-    partial class ReturnBooks
+    partial class RemoveBorrowings
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@ namespace Desktop_Application.Forms.Borrowings
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReturnBooks));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RemoveBorrowings));
             header = new Panel();
             title = new Label();
             close_btn = new Desktop_Application.Components.RoundedButton();

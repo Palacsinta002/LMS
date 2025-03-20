@@ -85,13 +85,11 @@ internal class HandleQueries
         InsertBook(isbn, publisher, title, pubYear, authorsString, categoriesString);
     }
     // Update borrowing
-    internal static void UpdateBorrowing(string username, string isbn, DateTime borrowDate, DateTime dueDate)
+    internal static void UpdateBorrowing(string username, string isbn, string dueDate)
     {
-        string borrowDateString = $"{borrowDate.Year}-{borrowDate.Month}-{borrowDate.Day}";
-        string dueDateString = $"{dueDate.Year}-{dueDate.Month}-{dueDate.Day}";
         Connection connection = new();
         string query = $"UPDATE Borrowings SET UserID = (SELECT id FROM Users WHERE Username = \"{username}\"), ISBN = {isbn}, " +
-            $"BorrowDate = \"{borrowDateString}\", DueDate = \"{dueDateString}\" " +
+            $"DueDate = \"{dueDate}\" " +
             $"WHERE ISBN = {isbn}";
         connection.RunSqlCommand(query);
     }
@@ -136,12 +134,12 @@ internal class HandleQueries
         }
     }
     // Update user with the given arguments
-    internal static void UpdatetUser(DataGridView users_grd, string firstName, string lastName, DateTime dateOfBirth, string username, string address)
+    internal static void UpdatetUser(DataGridView users_grd, string firstName, string lastName, string dateOfBirth, string username, string address, bool verified)
     {
         Connection connection = new();
         foreach (DataGridViewRow row in users_grd.SelectedRows)
         {
-            string query = $"UPDATE Users SET FirstName = \"{firstName}\", LastName = \"{lastName}\", DateOfBirth = \"{dateOfBirth}\", Username = \"{username}\", Address = \"{address}\" WHERE Username = \"{row.Cells[5].Value}\"";
+            string query = $"UPDATE Users SET FirstName = \"{firstName}\", LastName = \"{lastName}\", DateOfBirth = \"{dateOfBirth}\", Username = \"{username}\", Address = \"{address}\", Verified = {verified} WHERE Username = \"{row.Cells[5].Value}\"";
             connection.RunSqlCommand(query);
         }
     }

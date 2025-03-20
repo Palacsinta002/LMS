@@ -6,7 +6,6 @@ public partial class EditBorrowing : Form
 {
     private readonly DataGridView _borrowings_grd;
 
-    private DateTime _borrowDate;
     private DateTime _dueDate;
 
     public EditBorrowing(DataGridView borrowings_grd)
@@ -29,7 +28,6 @@ public partial class EditBorrowing : Form
 
         dropDown_user.Text = selectedRow["borrowings_username"].Value.ToString();
         textBox_books.Text = selectedRow["borrowings_isbn"].Value.ToString();
-        borrowDate_datePicker.Text = selectedRow["borrowings_borrowDate"].Value.ToString();
         dueDate_datePicker.Text = selectedRow["borrowings_dueDate"].Value.ToString();
     }
 
@@ -37,7 +35,9 @@ public partial class EditBorrowing : Form
     {
         if (ValidateInput())
         {
-            HandleQueries.UpdateBorrowing(dropDown_user.Text, textBox_books.Text, _borrowDate, _dueDate);
+            string dueDate = $"{_dueDate.Year}-{_dueDate.Month}-{_dueDate.Day}";
+
+            HandleQueries.UpdateBorrowing(dropDown_user.Text, textBox_books.Text, dueDate);
             MessageBox.Show("Borrowing updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
@@ -51,15 +51,12 @@ public partial class EditBorrowing : Form
             return false;
         }
 
-        int[] bDate = borrowDate_datePicker.Text.Split('/').Select(int.Parse).ToArray();
-        _borrowDate = new(bDate[2], bDate[1], bDate[0]);
-
         int[] dDate = dueDate_datePicker.Text.Split('/').Select(int.Parse).ToArray();
         _dueDate = new(dDate[2], dDate[1], dDate[0]);
 
-        if (_borrowDate > _dueDate)
+        if (_dueDate <= DateTime.Today)
         {
-            MessageBox.Show("Due date cannot be earlier than borrow date!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("Due time must be at least 1 day!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
         return true;
