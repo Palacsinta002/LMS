@@ -11,7 +11,9 @@ export default function Register() {
   const [lastname, setLastname] = useState("");
   const [password, setPassword] = useState("");
   const [passwordAgain, setPasswordAgain] = useState("");
+  const [address, setAddress] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [showPasswordAgain, setShowPasswordAgain] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -36,7 +38,8 @@ export default function Register() {
           email: email,
           firstname: firstname,
           lastname: lastname,
-          passwordAgain: passwordAgain
+          passwordAgain: passwordAgain,
+          address: address
         },
         {
           headers: { "Content-Type": "application/json" },
@@ -68,15 +71,44 @@ export default function Register() {
         <h1>Register Account</h1>
         <form onSubmit={HandleSubmit}>
           <div className="register-card-holder">
-            <FormCard className="register-card" label="Email" type="email" onChange={(e) => setEmail(e.target.value)} />
-            <FormCard className="register-card" label="Username" type="text" onChange={(e) => setUsername(e.target.value)} />
-            <FormCard className="register-card" label="First name" type="text" onChange={(e) => setFirstname(e.target.value)} />
-            <FormCard className="register-card" label="Last name" type="text" onChange={(e) => setLastname(e.target.value)} />
-            <FormCard className="register-card" label="Password" type={showPassword ? "text" : "password"} onChange={(e) => setPassword(e.target.value)} />
-            <FormCard className="register-card" label="Password again" type={showPassword ? "text" : "password"} onChange={(e) => setPasswordAgain(e.target.value)} />
-            <button type="button" onClick={() => setShowPassword(!showPassword)} className="toggle-password">
-              {showPassword ? "Hide" : "Show"} Password
-            </button>
+            <div className="register-card">
+              <label htmlFor="email">Email</label>
+              <input type="email" onChange={(e) => setEmail(e.target.value)} />
+            </div>
+            <div className="register-card">
+              <label htmlFor="username">Username</label>
+              <input type="text" onChange={(e) => setUsername(e.target.value)} />
+            </div>
+            <div className="register-card">
+              <label htmlFor="firstname">First name</label>
+              <input type="text" onChange={(e) => setFirstname(e.target.value)} />
+            </div>
+            <div className="register-card">
+              <label htmlFor="lastname">Last name</label>
+              <input type="text" onChange={(e) => setLastname(e.target.value)} />
+            </div>
+            <div className="register-card">
+              <label htmlFor="password">Password</label>
+              <div className="register-password-input">
+                <input type={showPassword ? "text" : "password"} onChange={(e) => setPassword(e.target.value)} />
+                <button type="button" onClick={() => setShowPassword(!showPassword)} className="register-toggle-password">
+                  {showPassword ? "Hide" : "Show"}
+                </button>
+              </div>
+            </div>
+            <div className="register-card">
+              <label htmlFor="passwordAgain">Password Again</label>
+              <div className="register-password-input">
+                <input type={showPasswordAgain ? "text" : "password"} onChange={(e) => setPasswordAgain(e.target.value)} />
+                <button type="button" onClick={() => setShowPasswordAgain(!showPasswordAgain)} className="register-toggle-password">
+                  {showPasswordAgain ? "Hide" : "Show"}
+                </button>
+              </div>
+            </div>
+            <div className="register-card">
+              <label htmlFor="address">Address</label>
+              <input type="text" onChange={(e) => setAddress(e.target.value)} />
+            </div>
           </div>
           {error && <p className="error-message">{error}</p>}
           <center>
