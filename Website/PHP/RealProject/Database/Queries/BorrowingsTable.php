@@ -10,8 +10,8 @@ class BorrowingsTable extends Table{
         }
         return self::select(["borrowings"],["*"])->where([...$fields],[...$operators],[...$values],[...$types])->execute(true);
     }
-    public static function topBorrowedBooks($limit){
-        return self::select(["borrowings"],["ISBN","count(ISBN) AS Borrowed"])->groupBy(["ISBN"])->limit($limit)->execute(true);
+    public static function allBorrowings(){
+        return self::select(["borrowings_storage"],["count(ISBN) AS AllBorrowings"])->execute(true);
     }
 }
 

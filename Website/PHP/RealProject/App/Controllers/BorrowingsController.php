@@ -20,21 +20,10 @@ class BorrowingsController implements IController{
         Response::httpSuccess(200, $result);
 
     }
-
-    public static function topBorrowedBooks($body){
-        $body = Helper::validateTheInputArray($body);
-        if (($body = Borrowing::checkRequiredData($body,["limit"])) == false){
-            Response::httpError(200,21);
-        };
-        Borrowing::callingValidateFunctions($body,["limit"],Borrowing::class,"checkLimit");
-        $topBorrowedISBNs = BorrowingsTable::topBorrowedBooks($body["limit"]);
-        $ISNBSToArray = "(";
-        for ($i=0; $i < count($topBorrowedISBNs); $i++) { 
-            $ISNBSToArray .= $topBorrowedISBNs[$i]["ISBN"] . ", ";
-        }
-        $ISNBSToArray =substr($ISNBSToArray,0,-2);
-        $ISNBSToArray .= ")";
+    public static function allBorrowings($body){
+        Response::httpSuccess(200, BorrowingsTable::allBorrowings());
     }
+
 
     
 }

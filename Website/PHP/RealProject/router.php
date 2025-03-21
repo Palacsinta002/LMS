@@ -14,7 +14,7 @@ $requesturi = explode("/", trim($_SERVER["REQUEST_URI"],"/"));
 Router::post("/api/login", UserController::class, "login");
 Router::post("/api/register", UserController::class,"register");
 Router::post("/api/verify-account", UserController::class,"verifyAccount");
-Router::get("/api/all-users", UserController::class,"allUsers",true);
+
 Router::get("/api/user", UserController::class,"userData", true);
 Router::put("/api/update-user", UserController::class,"updateUser");
 Router::delete("/api/delete-user", UserController::class,"deleteUser");
@@ -34,7 +34,9 @@ Router::get("/img", ImageController::class,"getImg",false,true,true);
 
 
 Router::get("/api/books", BooksController::class,"getFromDBByParams",false,true);
-Router::get("/api/all-Books", BooksController::class,"countAllBooks",);
+Router::get("/api/all-books", BooksController::class,"countAllBooks");
+Router::get("/api/all-users", UserController::class,"allUsers");
+Router::get("/api/all-borrowings", BorrowingsController::class,"allBorrowings");
 
 
 Router::get("/api/test", BorrowingsAndBooksController::class,"availableBooks",false);
