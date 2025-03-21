@@ -51,7 +51,7 @@ export default function HeroBrowseBooks() {
             ) : (
                 <div id="browsebooks" className="cards-list">
                     {books.map((item, index) => (
-                        <Cards key={index} isbn={item.ISBN} title={item.Title} author={item.Authors} onChange={(e) => setSelectedBook(e.event.target)} onSubmit={handleReserve} />
+                        <Cards key={index} isbn={item.ISBN} category={item.Category} title={item.Title} author={item.Authors} onChange={(e) => setSelectedBook(e.event.target)} onSubmit={handleReserve} />
                     ))}
                 </div>
             )}

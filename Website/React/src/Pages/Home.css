@@ -189,6 +189,7 @@ table td {
   text-align: center;
   position: relative;
   bottom: -100%;
+  font-weight: 800;
 }
 
 .BrowseBooks-link{
@@ -219,16 +220,14 @@ table td {
   min-width: 40vw;
   border-radius: 1vh;
   margin: 5vh auto;
-  text-align: center;
   font-weight: bold;
   color: black;
   z-index: 1;
-  padding: 1vh;
 }
+
 .home-card {
   width: 100%;
   max-width: 300px;
-  background-color: white;
   border-radius: 16px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin: 16px;
@@ -246,16 +245,50 @@ table td {
   padding: 16px;
   background-color: #48459E;
   color: white;
-  text-align: center;
+}
+
+.content-text{
+  padding-bottom: 10px;
+  text-align: left;
+  font-weight: 800;
+}
+
+.home-card-content-button{
+  padding: 10px;
+  background-color: #504DB4;
+  border-radius: 5px;
+  color: white;
+  display: inline-block;
+  border: none;
+  font-weight: 800;
 }
 
 .home-card-image {
   width: 100%;
   height: auto;
+  background-color: white;
+  padding: 2vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-card-category {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 0.9rem;
+  background-color: #48459E;
+  color: white;
+  border-radius: 8px;
+  padding: 4px 8px;
+  cursor: default;
+  font-weight: 800;
 }
 
 .home-card-image img {
-  width: 100%;
+  width: 90%;
   height: auto;
-  display: block;
+  border-radius: 12px;
 }
