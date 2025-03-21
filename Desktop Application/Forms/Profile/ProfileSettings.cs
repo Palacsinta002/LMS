@@ -42,7 +42,10 @@ public partial class ProfileSettings : Form
     {
         if (ValidateInput())
         {
-            //HandleQueries.UpdatetUser(textBox_firstName.Text, textBox_lastName.Text, textBox_username.Text, _dateOfBirth, textBox_email.Text, textBox_address.Text);
+            SaveConfirmation saveConfirmation = new();
+            saveConfirmation.ShowDialog();
+            if (saveConfirmation.DialogResult != DialogResult.OK) return;
+            HandleQueries.UpdatetUser(textBox_firstName.Text, textBox_lastName.Text, textBox_username.Text, _dateOfBirth, textBox_email.Text, textBox_address.Text);
             MessageBox.Show("Profile updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
@@ -118,7 +121,7 @@ public partial class ProfileSettings : Form
 
     private bool CheckUsername(string username)
     {
-        if (username == _username) return false;
+        if (username == _username) return false; // This skips the check if the username didnt changed
         List<string[]> result = HandleQueries.SelectFromFile("SelectUsername");
         foreach (string[] item in result)
         {

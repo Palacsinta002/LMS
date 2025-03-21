@@ -48,7 +48,7 @@ namespace Desktop_Application.Forms.Profile
             label1 = new Label();
             textBox_email = new TextBox();
             label5 = new Label();
-            roundedButton1 = new RoundedButton();
+            button_changePassword = new RoundedButton();
             header.SuspendLayout();
             SuspendLayout();
             // 
@@ -264,26 +264,26 @@ namespace Desktop_Application.Forms.Profile
             label5.TabIndex = 105;
             label5.Text = "Email";
             // 
-            // roundedButton1
+            // button_changePassword
             // 
-            roundedButton1.BackColor = Color.WhiteSmoke;
-            roundedButton1.BackgroundColor = Color.WhiteSmoke;
-            roundedButton1.BorderColor = Color.FromArgb(80, 77, 180);
-            roundedButton1.BorderRadius = 5;
-            roundedButton1.BorderSize = 2;
-            roundedButton1.FlatAppearance.BorderSize = 0;
-            roundedButton1.FlatStyle = FlatStyle.Flat;
-            roundedButton1.Font = new Font("Yu Gothic UI Semibold", 14F);
-            roundedButton1.ForeColor = Color.Black;
-            roundedButton1.Location = new Point(144, 383);
-            roundedButton1.Margin = new Padding(3, 4, 3, 4);
-            roundedButton1.Name = "roundedButton1";
-            roundedButton1.Size = new Size(267, 48);
-            roundedButton1.TabIndex = 7;
-            roundedButton1.Text = "Change Password...";
-            roundedButton1.TextColor = Color.Black;
-            roundedButton1.UseVisualStyleBackColor = false;
-            roundedButton1.Click += this.ChangePassword;
+            button_changePassword.BackColor = Color.WhiteSmoke;
+            button_changePassword.BackgroundColor = Color.WhiteSmoke;
+            button_changePassword.BorderColor = Color.FromArgb(80, 77, 180);
+            button_changePassword.BorderRadius = 5;
+            button_changePassword.BorderSize = 2;
+            button_changePassword.FlatAppearance.BorderSize = 0;
+            button_changePassword.FlatStyle = FlatStyle.Flat;
+            button_changePassword.Font = new Font("Yu Gothic UI Semibold", 14F);
+            button_changePassword.ForeColor = Color.Black;
+            button_changePassword.Location = new Point(144, 383);
+            button_changePassword.Margin = new Padding(3, 4, 3, 4);
+            button_changePassword.Name = "button_changePassword";
+            button_changePassword.Size = new Size(267, 48);
+            button_changePassword.TabIndex = 7;
+            button_changePassword.Text = "Change Password...";
+            button_changePassword.TextColor = Color.Black;
+            button_changePassword.UseVisualStyleBackColor = false;
+            button_changePassword.Click += ChangePassword;
             // 
             // ProfileSettings
             // 
@@ -291,7 +291,7 @@ namespace Desktop_Application.Forms.Profile
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(594, 516);
-            Controls.Add(roundedButton1);
+            Controls.Add(button_changePassword);
             Controls.Add(textBox_email);
             Controls.Add(label5);
             Controls.Add(dateOfBirth_datePicker);
@@ -339,6 +339,6 @@ namespace Desktop_Application.Forms.Profile
         private Label label1;
         private TextBox textBox_email;
         private Label label5;
-        private RoundedButton roundedButton1;
+        private RoundedButton button_changePassword;
     }
 }
