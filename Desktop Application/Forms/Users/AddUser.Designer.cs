@@ -51,6 +51,7 @@ namespace Desktop_Application.Forms.Users
             // 
             // save
             // 
+            save.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             save.BackColor = Color.FromArgb(80, 77, 180);
             save.BackgroundColor = Color.FromArgb(80, 77, 180);
             save.BorderColor = Color.Transparent;
@@ -61,7 +62,7 @@ namespace Desktop_Application.Forms.Users
             save.FlatStyle = FlatStyle.Flat;
             save.Font = new Font("Yu Gothic UI Semibold", 14F);
             save.ForeColor = Color.White;
-            save.Location = new Point(196, 355);
+            save.Location = new Point(196, 393);
             save.Margin = new Padding(3, 4, 3, 4);
             save.Name = "save";
             save.Size = new Size(97, 48);
@@ -74,6 +75,7 @@ namespace Desktop_Application.Forms.Users
             // 
             // cancel
             // 
+            cancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             cancel.BackColor = Color.WhiteSmoke;
             cancel.BackgroundColor = Color.WhiteSmoke;
             cancel.BorderColor = Color.FromArgb(80, 77, 180);
@@ -83,7 +85,7 @@ namespace Desktop_Application.Forms.Users
             cancel.FlatStyle = FlatStyle.Flat;
             cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
             cancel.ForeColor = Color.Black;
-            cancel.Location = new Point(299, 355);
+            cancel.Location = new Point(299, 393);
             cancel.Margin = new Padding(3, 4, 3, 4);
             cancel.Name = "cancel";
             cancel.Size = new Size(97, 48);
@@ -245,7 +247,7 @@ namespace Desktop_Application.Forms.Users
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(594, 416);
+            ClientSize = new Size(594, 454);
             Controls.Add(dateOfBirth_datePicker);
             Controls.Add(textBox_username);
             Controls.Add(label4);

@@ -11,8 +11,6 @@ public partial class Login : Form
     public Login()
     {
         InitializeComponent();
-        _username = "";
-        _password = "";
     }
 
     private void OnLoad(object sender, EventArgs e)
@@ -20,10 +18,17 @@ public partial class Login : Form
         DragWindow.Handle(this, header, title);
         BorderPaint.Handle(this);
         CloseThisWindow.Handle(this, close_btn);
-        //AdminPanel adminPanel = new(username_textBox.Text, true);
-        //this.Hide();
-        //adminPanel.ShowDialog();
-        //this.Close();
+
+        _username = "";
+        _password = "";
+
+        // TEMPORARY
+        _username = "johndoe";
+        AdminPanel adminPanel = new(_username, true);
+        this.Hide();
+        adminPanel.ShowDialog();
+        this.Close();
+        // TEMPORARY
     }
 
     //On Login if the username and password are in the correct format it starts checking the credentials

@@ -48,7 +48,7 @@ public partial class ProfileSettings : Form
             saveConfirmation.ShowDialog();
             if (saveConfirmation.DialogResult != DialogResult.OK) return;
 
-            HandleQueries.UpdatetOwnUser(Username, textBox_firstName.Text, textBox_lastName.Text, textBox_username.Text, _dateOfBirth, textBox_email.Text, textBox_address.Text, _newPassword);
+            HandleQueries.UpdateOwnUser(Username, textBox_firstName.Text, textBox_lastName.Text, textBox_username.Text, _dateOfBirth, textBox_email.Text, textBox_address.Text, _newPassword);
             MessageBox.Show("Profile updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Username = textBox_username.Text;
             this.Close();
@@ -107,6 +107,22 @@ public partial class ProfileSettings : Form
         else if (_dateOfBirth < DateTime.Now.AddYears(-130))
         {
             MessageBox.Show("Cannot enter date older than 130 years old!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
+        }
+
+        if (textBox_email.Text == string.Empty)
+        {
+            MessageBox.Show("Email is required!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
+        }
+        else if (!Regex.IsMatch(textBox_email.Text, @"^[^""\\]+$"))
+        {
+            MessageBox.Show("Email is not in the correct format! Please check your special characters!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
+        }
+        else if (!Regex.IsMatch(textBox_email.Text, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"))
+        {
+            MessageBox.Show("Email is not in the correct format!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
 

@@ -156,7 +156,7 @@ internal class HandleQueries
         }
     }
     // Update logged in user
-    internal static void UpdatetOwnUser(string currentUsername, string firstName, string lastName, string username, DateTime dateOfBirth, string email, string address, string password)
+    internal static void UpdateOwnUser(string currentUsername, string firstName, string lastName, string username, DateTime dateOfBirth, string email, string address, string password)
     {
         string dateOfBirthString = $"{dateOfBirth.Year}-{dateOfBirth.Month}-{dateOfBirth.Day}";
 
