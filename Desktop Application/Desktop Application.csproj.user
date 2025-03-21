@@ -16,13 +16,13 @@
     <Compile Update="Forms\Borrowings\EditBorrowing.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Borrowings\LendBook.cs">
+    <Compile Update="Forms\Borrowings\AddBorrowing.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Borrowings\ChooseBooks.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Borrowings\ReturnBooks.cs">
+    <Compile Update="Forms\Borrowings\RemoveBorrowings.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Categories\AddCategory.cs">

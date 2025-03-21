@@ -238,6 +238,7 @@ namespace Desktop_Application.Forms.Users
             dateOfBirth_datePicker.Name = "dateOfBirth_datePicker";
             dateOfBirth_datePicker.Size = new Size(154, 39);
             dateOfBirth_datePicker.TabIndex = 4;
+            dateOfBirth_datePicker.Value = new DateTime(2025, 3, 20, 0, 0, 0, 0);
             // 
             // AddUser
             // 

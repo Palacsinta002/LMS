@@ -76,7 +76,7 @@ export default function Login() {
             </button>
           </div>
           {error && <p className="error-message">{error}</p>}
-          <span><Link to="forget-password" className="link1">Forgot your password?</Link></span>
+          <span><Link to="/forgot-password" className="link1">Forgot your password?</Link></span>
           <input type="submit" value="Sign in" disabled={loading} />
           <span><Link to="/register" className="link2">Create new account?</Link></span>
         </form>

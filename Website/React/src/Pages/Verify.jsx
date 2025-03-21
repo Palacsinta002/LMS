@@ -17,9 +17,9 @@ export default function Verify() {
 
     try {
       const response = await axios.post(
-        "/api/verify",
+        "/api/verify-account",
         {
-          verifyCode: code
+          verificationCode: code
         },
         {
           headers: { "Content-Type": "application/json" },

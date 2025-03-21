@@ -23,11 +23,17 @@ export default function Profile() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    axios.post("/api/user", { ID: ID }, { headers: { "Content-type": "application/json" } })
+    axios.post("/api/user", JSON.stringify({ ID: ID }),
+      {
+        headers: {
+          "Content-type": "application/json",
+          "Authorization": `Bearer ${token}`
+        }
+      })
       .then(response => {
         setData(response.data)
       })
-  }, [])
+  }, [ID, token])
 
   async function handleSubmit() {
     setLoading(true);
@@ -40,15 +46,16 @@ export default function Profile() {
     }
     try {
       const response = await axios.post("/api/update-user",
-        { firstname: firstname, lastname: lastname, username: username, address: address, currentPassword: currentPassword, newPassword: newPassword, newPasswordAgain: newPasswordAgain },
+        { firstname: firstname, lastname: lastname, username: username, address: address, passwordOld: currentPassword, password: newPassword },
         {
           headers: {
-            "Content-type": "application/json"
+            "Content-type": "application/json",
+            "Authorization": `Bearer ${token}`
           }
         })
 
       if (response.data.Success) {
-
+        console.log(response.data)
       }
     }
     catch (error) {

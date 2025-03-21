@@ -1,4 +1,6 @@
-﻿namespace Desktop_Application.Classes;
+﻿using Microsoft.VisualBasic;
+
+namespace Desktop_Application.Classes;
 internal class HandleQueries
 {
     // Takes a grid and fills it with the Select result of the given filename
@@ -66,10 +68,10 @@ internal class HandleQueries
         connection.RunSqlCommand(query);
     }
     // Insert user with the given arguments
-    internal static void InsertUser(string firstName, string lastName, DateTime dateOfBirth, string username, string hashedPassword, string address, int verified)
+    internal static void InsertUser(string firstName, string lastName, DateTime dateOfBirth, string username, string hashedPassword, string address)
     {
         Connection connection = new();
-        string query = $"INSERT INTO Users(FirstName, LastName, dateOfBirth, Username, Password, Address, Verified, RoleID) VALUES(\"{firstName}\", \"{lastName}\", \"{dateOfBirth}\", \"{username}\", \"{hashedPassword}\", \"{address}\", {verified}, 3)";
+        string query = $"INSERT INTO Users(FirstName, LastName, dateOfBirth, Username, Password, Address, Verified, RoleID) VALUES(\"{firstName}\", \"{lastName}\", \"{dateOfBirth}\", \"{username}\", \"{hashedPassword}\", \"{address}\", 1, 3)";
         connection.RunSqlCommand(query);
     }
 
@@ -85,13 +87,13 @@ internal class HandleQueries
         InsertBook(isbn, publisher, title, pubYear, authorsString, categoriesString);
     }
     // Update borrowing
-    internal static void UpdateBorrowing(string username, string isbn, DateTime borrowDate, DateTime dueDate)
+    internal static void UpdateBorrowing(string username, string isbn, DateTime dueDate)
     {
-        string borrowDateString = $"{borrowDate.Year}-{borrowDate.Month}-{borrowDate.Day}";
         string dueDateString = $"{dueDate.Year}-{dueDate.Month}-{dueDate.Day}";
+
         Connection connection = new();
         string query = $"UPDATE Borrowings SET UserID = (SELECT id FROM Users WHERE Username = \"{username}\"), ISBN = {isbn}, " +
-            $"BorrowDate = \"{borrowDateString}\", DueDate = \"{dueDateString}\" " +
+            $"DueDate = \"{dueDateString}\" " +
             $"WHERE ISBN = {isbn}";
         connection.RunSqlCommand(query);
     }
@@ -136,12 +138,14 @@ internal class HandleQueries
         }
     }
     // Update user with the given arguments
-    internal static void UpdatetUser(DataGridView users_grd, string firstName, string lastName, DateTime dateOfBirth, string username, string address)
+    internal static void UpdatetUser(DataGridView users_grd, string firstName, string lastName, DateTime dateOfBirth, string username, string address, bool verified)
     {
+        string dateOfBirthString = $"{dateOfBirth.Year}-{dateOfBirth.Month}-{dateOfBirth.Day}";
+
         Connection connection = new();
         foreach (DataGridViewRow row in users_grd.SelectedRows)
         {
-            string query = $"UPDATE Users SET FirstName = \"{firstName}\", LastName = \"{lastName}\", DateOfBirth = \"{dateOfBirth}\", Username = \"{username}\", Address = \"{address}\" WHERE Username = \"{row.Cells[5].Value}\"";
+            string query = $"UPDATE Users SET FirstName = \"{firstName}\", LastName = \"{lastName}\", DateOfBirth = \"{dateOfBirthString}\", Username = \"{username}\", Address = \"{address}\", Verified = {verified} WHERE Username = \"{row.Cells[5].Value}\"";
             connection.RunSqlCommand(query);
         }
     }

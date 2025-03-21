@@ -49,8 +49,8 @@ export default function MainTable() {
         <tbody>
           {data.map((book, index) => (
             <tr key={index}>
-              <td>{book.author}</td>
-              <td>{book.title}</td>
+              <td>{book.Authors}</td>
+              <td>{book.Title}</td>
               <td>{book.borrows}</td>
             </tr>
           ))}

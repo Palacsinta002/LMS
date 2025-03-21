@@ -1,5 +1,5 @@
 ﻿SELECT
-	COUNT(Borrowings_storage.id),
+	COUNT(DISTINCT Borrowings_storage.id),
     Books.Title,
     GROUP_CONCAT(DISTINCT Authors.Author SEPARATOR ', '),
     Books.PublicationYear,
@@ -11,5 +11,5 @@ JOIN Books_Categories ON Books.ISBN = Books_Categories.ISBN
 JOIN Categories ON Books_Categories.CategoryID = Categories.id
 JOIN Borrowings_storage ON Books.ISBN = Borrowings_storage.ISBN
 GROUP BY Books.Title, Books.PublicationYear
-ORDER BY COUNT(Borrowings_storage.id) DESC
+ORDER BY COUNT(DISTINCT Borrowings_storage.id) DESC
 LIMIT 10;

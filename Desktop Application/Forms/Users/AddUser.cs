@@ -18,9 +18,6 @@ public partial class AddUser : Form
         BorderPaint.Handle(this);
         CloseThisWindow.Handle(this, close_btn);
         CloseThisWindow.Handle(this, cancel);
-
-        int[] bDate = dateOfBirth_datePicker.Text.Split('/').Select(int.Parse).ToArray();
-        _dateOfBirth = new(bDate[2], bDate[1], bDate[0]);
     }
 
     private void Save(object sender, EventArgs e)
@@ -76,6 +73,9 @@ public partial class AddUser : Form
             MessageBox.Show("Username already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
+
+        int[] bDate = dateOfBirth_datePicker.Text.Split('/').Select(int.Parse).ToArray();
+        _dateOfBirth = new(bDate[2], bDate[1], bDate[0]);
 
         if (_dateOfBirth > DateTime.Today)
         {

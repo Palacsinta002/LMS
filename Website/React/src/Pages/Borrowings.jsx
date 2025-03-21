@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
 
 export default function Borrowings() {
   const [borrowings, setBorrowings] = useState([]);
   const location = useLocation();
+  const token = sessionStorage.getItem("token");
+  const decoded = jwtDecode(token);
 
   const hidden = location.pathname === '/dashboard/borrowings' ? '' : 'hidden';
-
+console.log(decoded)
   useEffect(() => {
-    axios.get("/api/borrowing-books")
+    axios.get("/api/my-borrowed-books",)
       .then(response => {
         setBorrowings(response.data)
       })
