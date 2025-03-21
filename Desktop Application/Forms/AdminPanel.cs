@@ -404,7 +404,7 @@ public partial class AdminPanel : Form
     // Adds a user to the database
     private void AddUser(object sender, EventArgs e)
     {
-        AddUser addUser = new();
+        AddUser addUser = new(_isAdmin);
         addUser.ShowDialog();
         RefreshUsers(sender, e);
     }

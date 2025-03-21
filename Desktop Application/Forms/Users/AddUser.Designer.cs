@@ -46,6 +46,8 @@ namespace Desktop_Application.Forms.Users
             textBox_username = new TextBox();
             label4 = new Label();
             dateOfBirth_datePicker = new DateTimePicker();
+            comboBox_role = new ComboBox();
+            label_role = new Label();
             header.SuspendLayout();
             SuspendLayout();
             // 
@@ -242,12 +244,37 @@ namespace Desktop_Application.Forms.Users
             dateOfBirth_datePicker.TabIndex = 4;
             dateOfBirth_datePicker.Value = new DateTime(2025, 3, 20, 0, 0, 0, 0);
             // 
+            // comboBox_role
+            // 
+            comboBox_role.BackColor = Color.WhiteSmoke;
+            comboBox_role.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox_role.Font = new Font("Yu Gothic UI Semibold", 14F);
+            comboBox_role.FormattingEnabled = true;
+            comboBox_role.Location = new Point(144, 336);
+            comboBox_role.Margin = new Padding(3, 4, 3, 4);
+            comboBox_role.MaxDropDownItems = 10;
+            comboBox_role.Name = "comboBox_role";
+            comboBox_role.Size = new Size(213, 39);
+            comboBox_role.TabIndex = 107;
+            // 
+            // label_role
+            // 
+            label_role.AutoSize = true;
+            label_role.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label_role.Location = new Point(11, 340);
+            label_role.Name = "label_role";
+            label_role.Size = new Size(62, 32);
+            label_role.TabIndex = 108;
+            label_role.Text = "Role";
+            // 
             // AddUser
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(594, 454);
+            Controls.Add(comboBox_role);
+            Controls.Add(label_role);
             Controls.Add(dateOfBirth_datePicker);
             Controls.Add(textBox_username);
             Controls.Add(label4);
@@ -291,5 +318,7 @@ namespace Desktop_Application.Forms.Users
         private TextBox textBox_username;
         private Label label4;
         private DateTimePicker dateOfBirth_datePicker;
+        private ComboBox comboBox_role;
+        private Label label_role;
     }
 }

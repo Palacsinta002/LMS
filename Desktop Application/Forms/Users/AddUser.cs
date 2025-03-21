@@ -6,8 +6,11 @@ namespace Desktop_Application.Forms.Users;
 public partial class AddUser : Form
 {
     private DateTime _dateOfBirth;
-    public AddUser()
+    private readonly bool _isAdmin;
+
+    public AddUser(bool isAdmin)
     {
+        _isAdmin = isAdmin;
         InitializeComponent();
     }
 
@@ -17,6 +20,12 @@ public partial class AddUser : Form
         BorderPaint.Handle(this);
         CloseThisWindow.Handle(this, close_btn);
         CloseThisWindow.Handle(this, cancel);
+
+        // Roles - This is only visible for admins
+        var result = HandleQueries.SelectFromFile("SelectRole");
+        HandleGrids.Fill(comboBox_role, result);
+        label_role.Visible = _isAdmin;
+        comboBox_role.Visible = _isAdmin;
     }
 
     private void Save(object sender, EventArgs e)
