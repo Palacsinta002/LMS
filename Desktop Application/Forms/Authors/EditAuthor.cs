@@ -57,7 +57,7 @@ public partial class EditAuthor : Form
 
     private static bool CheckAuthor(string author)
     {
-        var result = HandleQueries.Select("SelectAuthor");
+        var result = HandleQueries.SelectFromFile("SelectAuthor");
         foreach (string[] item in result)
         {
             if (item[0] == author) return true;

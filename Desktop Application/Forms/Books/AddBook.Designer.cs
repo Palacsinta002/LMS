@@ -102,7 +102,7 @@ namespace Desktop_Application.Forms.Books
             // 
             textBox_pubYear.BackColor = Color.WhiteSmoke;
             textBox_pubYear.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_pubYear.Location = new Point(192, 144);
+            textBox_pubYear.Location = new Point(209, 145);
             textBox_pubYear.Margin = new Padding(3, 4, 3, 4);
             textBox_pubYear.MaxLength = 4;
             textBox_pubYear.Name = "textBox_pubYear";

@@ -23,7 +23,7 @@ public partial class ChooseBooks : Form
         CloseThisWindow.Handle(this, close_btn);
         CloseThisWindow.Handle(this, cancel);
 
-        var result = HandleQueries.Select("SelectBookForBorrowings");
+        var result = HandleQueries.SelectFromFile("SelectBookForBorrowings");
         if (_selectedISBNs.Count > 0)
         {
             foreach (var item in result)

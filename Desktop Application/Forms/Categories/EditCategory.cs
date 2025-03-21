@@ -57,7 +57,7 @@ public partial class EditCategory : Form
 
     private static bool CheckCategory(string category)
     {
-        var result = HandleQueries.Select("SelectCategory");
+        var result = HandleQueries.SelectFromFile("SelectCategory");
         foreach (string[] item in result)
         {
             if (item[0] == category) return true;

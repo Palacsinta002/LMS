@@ -1,17 +1,17 @@
 ﻿using Desktop_Application.Classes;
 using System.Text.RegularExpressions;
 
-namespace Desktop_Application.Forms.Users;
+namespace Desktop_Application.Forms.Profile;
 
-public partial class EditUser : Form
+public partial class ProfileSettings : Form
 {
-    private readonly DataGridView _users_grd;
-    private string _oldUsername;
+    private string _username;
     private DateTime _dateOfBirth;
+    private string _hashedPassword;
 
-    public EditUser(DataGridView users_grd)
+    public ProfileSettings(string username)
     {
-        _users_grd = users_grd;
+        _username = username;
         InitializeComponent();
     }
 
@@ -22,25 +22,28 @@ public partial class EditUser : Form
         CloseThisWindow.Handle(this, close_btn);
         CloseThisWindow.Handle(this, cancel);
 
-        var selectedRow = _users_grd.SelectedRows[0].Cells;
+        string[] userData = HandleQueries.SelectFromString(
+            $"SELECT FirstName, LastName, Username, " +
+            $"DATE_FORMAT(Users.DateOfBirth, \"%d/%m/%Y\"), Email, Address, Password " +
+            $"FROM Users WHERE Username = \"{_username}\"")[0];
 
-        textBox_firstName.Text = selectedRow["users_firstName"].Value.ToString();
-        textBox_lastName.Text = selectedRow["users_lastName"].Value.ToString();
-        textBox_username.Text = selectedRow["users_username"].Value.ToString();
-        dateOfBirth_datePicker.Text = selectedRow["users_dateOfBirth"].Value.ToString();
-        textBox_address.Text = selectedRow["users_address"].Value.ToString();
-        checkBox_verify.Checked = selectedRow["users_verified"].Value.ToString() == "Yes" ? true : false;
+        _username = userData[2];
+        _hashedPassword = userData[6];
 
-        _oldUsername = textBox_username.Text;
+        textBox_firstName.Text = userData[0];
+        textBox_lastName.Text = userData[1];
+        textBox_username.Text = userData[2];
+        dateOfBirth_datePicker.Text = userData[3];
+        textBox_email.Text = userData[4];
+        textBox_address.Text = userData[5];
     }
 
     private void Save(object sender, EventArgs e)
     {
         if (ValidateInput())
         {
-            bool verified = checkBox_verify.Checked;
-            HandleQueries.UpdatetUser(_users_grd, textBox_firstName.Text, textBox_lastName.Text, _dateOfBirth, textBox_username.Text, textBox_address.Text, verified);
-            MessageBox.Show("User updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //HandleQueries.UpdatetUser(textBox_firstName.Text, textBox_lastName.Text, textBox_username.Text, _dateOfBirth, textBox_email.Text, textBox_address.Text);
+            MessageBox.Show("Profile updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
     }
@@ -115,12 +118,18 @@ public partial class EditUser : Form
 
     private bool CheckUsername(string username)
     {
-        if (username == _oldUsername) return false;
+        if (username == _username) return false;
         List<string[]> result = HandleQueries.SelectFromFile("SelectUsername");
         foreach (string[] item in result)
         {
             if (item[0] == username) return true;
         }
         return false;
+    }
+
+    private void ChangePassword(object sender, EventArgs e)
+    {
+        ChangePassword changePassword = new(_hashedPassword);
+        changePassword.ShowDialog();
     }
 }

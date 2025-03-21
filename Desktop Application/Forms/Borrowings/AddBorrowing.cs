@@ -18,7 +18,7 @@ public partial class AddBorrowing : Form
         CloseThisWindow.Handle(this, close_btn);
         CloseThisWindow.Handle(this, cancel);
 
-        var result = HandleQueries.Select("SelectUsername");
+        var result = HandleQueries.SelectFromFile("SelectUsername");
         HandleGrids.Fill(dropDown_user, result);
         dueDate_datePicker.Value = DateTime.Today.AddDays(1);
     }

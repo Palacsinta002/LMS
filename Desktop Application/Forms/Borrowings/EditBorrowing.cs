@@ -21,7 +21,7 @@ public partial class EditBorrowing : Form
         CloseThisWindow.Handle(this, close_btn);
         CloseThisWindow.Handle(this, cancel);
 
-        var result = HandleQueries.Select("SelectUsername");
+        var result = HandleQueries.SelectFromFile("SelectUsername");
         HandleGrids.Fill(dropDown_user, result);
 
         var selectedRow = _borrowings_grd.SelectedRows[0].Cells;

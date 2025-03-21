@@ -1,5 +1,4 @@
 ﻿using Desktop_Application.Classes;
-using Microsoft.VisualBasic;
 using System.Text.RegularExpressions;
 
 namespace Desktop_Application.Forms.Users;
@@ -103,7 +102,7 @@ public partial class AddUser : Form
 
     private static bool CheckUsername(string username)
     {
-        var result = HandleQueries.Select("SelectUsername");
+        var result = HandleQueries.SelectFromFile("SelectUsername");
         foreach (string[] item in result)
         {
             if (item[0] == username) return true;

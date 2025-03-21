@@ -17,7 +17,7 @@ public partial class AddBook : Form
         CloseThisWindow.Handle(this, close_btn);
         CloseThisWindow.Handle(this, cancel);
 
-        var result = HandleQueries.Select("SelectPublisher");
+        var result = HandleQueries.SelectFromFile("SelectPublisher");
         HandleGrids.Fill(dropDown_publisher, result);
     }
 

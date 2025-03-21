@@ -5,18 +5,21 @@ using Desktop_Application.Forms.Categories;
 using Desktop_Application.Forms.Authors;
 using Desktop_Application.Forms.Publishers;
 using Desktop_Application.Forms.Users;
+using Desktop_Application.Forms.Profile;
 
 namespace Desktop_Application;
 
 public partial class AdminPanel : Form
 {
-    private readonly string _name;
+    private readonly string _username;
     private readonly bool _isAdmin;
 
     public AdminPanel(string name, bool isAdmin)
     {
-        _name = name;
+        _username = name;
         _isAdmin = isAdmin;
+        _username = "johndoe";
+        _isAdmin = true;
         InitializeComponent();
     }
 
@@ -25,9 +28,15 @@ public partial class AdminPanel : Form
         users_button_edit.Visible = _isAdmin;
         users_button_remove.Visible = _isAdmin;
 
-        hello_lbl.Text = $"Hello {_name}!";
+        hello_lbl.Text = $"Hello {_username}!";
 
         ShowDashboard(sender, e);
+    }
+
+    private void OpenProfileSettings(object sender, EventArgs e)
+    {
+        ProfileSettings profileSettings = new(_username);
+        profileSettings.ShowDialog();
     }
 
     #region Dashboard
@@ -43,16 +52,16 @@ public partial class AdminPanel : Form
             try
             {
                 List<string[]> result;
-                result = HandleQueries.Select("SelectBookCount");
+                result = HandleQueries.SelectFromFile("SelectBookCount");
                 dashboard_books.Text = result[0][0];
 
-                result = HandleQueries.Select("SelectUserCount");
+                result = HandleQueries.SelectFromFile("SelectUserCount");
                 dashboard_users.Text = result[0][0];
 
-                result = HandleQueries.Select("SelectBorrowingCount");
+                result = HandleQueries.SelectFromFile("SelectBorrowingCount");
                 dashboard_borrowings.Text = result[0][0];
 
-                result = HandleQueries.Select("SelectTopBorrowedBook");
+                result = HandleQueries.SelectFromFile("SelectTopBorrowedBook");
                 HandleGrids.Fill(dashboard_grd, result);
             }
             catch (Exception ex)
@@ -80,7 +89,7 @@ public partial class AdminPanel : Form
     // Select books from the database and fills the grid
     private void RefreshBooks(object sender, EventArgs e)
     {
-        var result = HandleQueries.Select("SelectBook");
+        var result = HandleQueries.SelectFromFile("SelectBook");
         HandleGrids.Fill(books_grd, result);
     }
 
@@ -141,12 +150,12 @@ public partial class AdminPanel : Form
         if (checkBox_currentBorrowings.Checked)
         {
             borrowings_grd.Columns["borrowings_returnDate"].Visible = false;
-            result = HandleQueries.Select("SelectCurrentBorrowing");
+            result = HandleQueries.SelectFromFile("SelectCurrentBorrowing");
         }
         else
         {
             borrowings_grd.Columns["borrowings_returnDate"].Visible = true;
-            result = HandleQueries.Select("SelectAllBorrowing");
+            result = HandleQueries.SelectFromFile("SelectAllBorrowing");
         }
         HandleGrids.Fill(borrowings_grd, result);
     }
@@ -209,7 +218,7 @@ public partial class AdminPanel : Form
     // Select categories from the database and fills the grid
     private void RefreshCategories(object sender, EventArgs e)
     {
-        var result = HandleQueries.Select("SelectCategory");
+        var result = HandleQueries.SelectFromFile("SelectCategory");
         HandleGrids.Fill(categories_grd, result);
     }
 
@@ -267,7 +276,7 @@ public partial class AdminPanel : Form
     // Select authors from the database and fills the grid
     private void RefreshAuthors(object sender, EventArgs e)
     {
-        var result = HandleQueries.Select("SelectAuthor");
+        var result = HandleQueries.SelectFromFile("SelectAuthor");
         HandleGrids.Fill(authors_grd, result);
     }
 
@@ -324,7 +333,7 @@ public partial class AdminPanel : Form
     // Select publishers from the database and fills the grid
     private void RefreshPublishers(object sender, EventArgs e)
     {
-        var result = HandleQueries.Select("SelectPublisher");
+        var result = HandleQueries.SelectFromFile("SelectPublisher");
         HandleGrids.Fill(publishers_grd, result);
     }
 
@@ -381,7 +390,7 @@ public partial class AdminPanel : Form
     // Select users from the database and fills the grid
     private void RefreshUsers(object sender, EventArgs e)
     {
-        var result = HandleQueries.Select("SelectUser");
+        var result = HandleQueries.SelectFromFile("SelectUser");
         HandleGrids.Fill(users_grd, result);
     }
 

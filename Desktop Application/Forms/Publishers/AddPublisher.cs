@@ -50,7 +50,7 @@ public partial class AddPublisher : Form
 
     private static bool CheckPublisher(string publisher)
     {
-        var result = HandleQueries.Select("SelectPublisher");
+        var result = HandleQueries.SelectFromFile("SelectPublisher");
         foreach (string[] item in result)
         {
             if (item[0] == publisher) return true;

@@ -20,7 +20,7 @@ public partial class EditBook : Form
         CloseThisWindow.Handle(this, close_btn);
         CloseThisWindow.Handle(this, cancel);
 
-        var result = HandleQueries.Select("SelectPublisher");
+        var result = HandleQueries.SelectFromFile("SelectPublisher");
         HandleGrids.Fill(dropDown_publisher, result);
 
         var selectedRow = _books_grd.SelectedRows[0].Cells;

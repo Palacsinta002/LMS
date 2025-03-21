@@ -44,6 +44,12 @@
     <Compile Update="Forms\Categories\RemoveCategories.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Profile\ChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Profile\ProfileSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Publishers\AddPublisher.cs">
       <SubType>Form</SubType>
     </Compile>

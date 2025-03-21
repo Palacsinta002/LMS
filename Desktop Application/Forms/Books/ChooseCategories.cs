@@ -23,7 +23,7 @@ public partial class ChooseCategories : Form
         CloseThisWindow.Handle(this, close_btn);
         CloseThisWindow.Handle(this, cancel);
 
-        var result = HandleQueries.Select("SelectCategory");
+        var result = HandleQueries.SelectFromFile("SelectCategory");
         if (_selectedCategories.Count > 0)
         {
             foreach (var item in result)

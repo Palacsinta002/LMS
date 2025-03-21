@@ -1,10 +1,8 @@
-﻿using Microsoft.VisualBasic;
-
-namespace Desktop_Application.Classes;
+﻿namespace Desktop_Application.Classes;
 internal class HandleQueries
 {
     // Takes a grid and fills it with the Select result of the given filename
-    internal static List<string[]> Select(string fileName)
+    internal static List<string[]> SelectFromFile(string fileName)
     {
         Connection connection = new();
         string filePath = @"SqlQueries\" + fileName + ".sql";
@@ -12,6 +10,12 @@ internal class HandleQueries
         return connection.Select(query);
     }
 
+    // Select the
+    internal static List<string[]> SelectFromString(string query)
+    {
+        Connection connection = new();
+        return connection.Select(query);
+    }
 
 
     // INSERT functions

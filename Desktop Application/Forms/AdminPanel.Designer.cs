@@ -431,6 +431,7 @@ namespace Desktop_Application
             // hello_lbl
             // 
             hello_lbl.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            hello_lbl.Cursor = Cursors.Hand;
             hello_lbl.Font = new Font("Yu Gothic UI Semibold", 16F);
             hello_lbl.ForeColor = Color.White;
             hello_lbl.Location = new Point(386, 12);
@@ -439,10 +440,12 @@ namespace Desktop_Application
             hello_lbl.TabIndex = 1;
             hello_lbl.Text = "Hello, Admin 🐱‍🚀";
             hello_lbl.TextAlign = ContentAlignment.TopRight;
+            hello_lbl.Click += OpenProfileSettings;
             // 
             // title_lbl
             // 
             title_lbl.AutoSize = true;
+            title_lbl.Cursor = Cursors.Hand;
             title_lbl.Font = new Font("Yu Gothic UI Semibold", 16F);
             title_lbl.ForeColor = Color.White;
             title_lbl.Location = new Point(13, 12);
@@ -450,6 +453,7 @@ namespace Desktop_Application
             title_lbl.Size = new Size(367, 37);
             title_lbl.TabIndex = 0;
             title_lbl.Text = "Library Management System";
+            title_lbl.Click += ShowDashboard;
             // 
             // dashboard_pnl
             // 

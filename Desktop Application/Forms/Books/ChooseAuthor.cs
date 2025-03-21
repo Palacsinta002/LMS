@@ -23,7 +23,7 @@ public partial class ChooseAuthor : Form
         CloseThisWindow.Handle(this, close_btn);
         CloseThisWindow.Handle(this, cancel);
 
-        var result = HandleQueries.Select("SelectAuthorWithBook");
+        var result = HandleQueries.SelectFromFile("SelectAuthorWithBook");
         if (_selectedAuthors.Count > 0)
         {
             foreach (var item in result)
