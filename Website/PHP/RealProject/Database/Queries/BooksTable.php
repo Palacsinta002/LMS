@@ -33,5 +33,8 @@ class BooksTable extends Table{
         ->groupBy(["Books.Title", "Books.ISBN"])
         ->execute(true);
     }
+    public static function selectByISBN($ISBN, $fetch = false){
+        return self::select(["books"],["ISBN"])->where(["ISBN"],["="],[$ISBN],["i"])->execute(true, $fetch);
+    }
 }
 ?>
