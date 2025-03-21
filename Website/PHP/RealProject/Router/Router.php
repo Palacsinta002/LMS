@@ -77,19 +77,20 @@ class Router{
             die();
             
         }
-    }
+    }    
     public static function delete($endpoint, $controller, $function, $getFromURL = false){
-        if ($endpoint == $_SERVER["REQUEST_URI"]){
-            $uri = $_SERVER["REQUEST_URI"];
+        $uri = $_SERVER["REQUEST_URI"];
+        if (strlen($uri) >= strlen($endpoint) && substr($uri,0, strlen($endpoint)) == $endpoint){
+
             if ($_SERVER["REQUEST_METHOD"] != "DELETE"){
                 Response::httpError(404,17);
             }
             if (($userID = self::getHeadAuth())){
                 if ($getFromURL){
                     $data = self::getBodyFromUrl($uri,$endpoint,true);
-                    echo $data;
-                    die();
+                    
                     $controller::$function($data,$userID);
+                    die();
                 }
                 $controller::$function($userID);
                 die();

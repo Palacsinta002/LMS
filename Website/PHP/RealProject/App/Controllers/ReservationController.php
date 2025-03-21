@@ -35,12 +35,13 @@ class ReservationController{
     }
 
     public static function delete($ISBN,$userID){
-        $body = Helper::validateTheInput($ISBN);
-        if (ReservationTable::selectByISBN($ISBN,true)["userID"] != $userID){
+        Helper::validateTheInput($ISBN);
+        $howsBook = ReservationTable::selectByISBN($ISBN,true);
+        if (count($howsBook) == 0 || $howsBook[0]["UserID"] != $userID){
             Response::httpError(400,32);
         }
-        model::validateISBN($body["ISBN"]);
-        ReservationTable::deleteReservation($body["ISBN"]);
+        model::validateISBN($ISBN);
+        ReservationTable::deleteReservation($ISBN);
         Response::httpSuccess(200,["Success"=>"Reservation deleted"]);
     }
 

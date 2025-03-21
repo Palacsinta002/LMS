@@ -40,7 +40,7 @@ Router::get("/api/all-users", UserController::class,"allUsers");
 Router::get("/api/all-borrowings", BorrowingsController::class,"allBorrowings");
 
 Router::post("/api/reserve",ReservationController::class,"reserve",true);
-Router::delete("/api/delete-reservation", ReservationController::class,"delete");
+Router::delete("/api/delete-reservation", ReservationController::class, "delete", true);
 
 Router::get("/api/test", BorrowingsAndBooksController::class,"availableBooks",false);
 /* 
