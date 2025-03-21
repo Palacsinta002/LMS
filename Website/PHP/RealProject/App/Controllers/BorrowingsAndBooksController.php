@@ -11,13 +11,13 @@ class BorrowingsAndBooksController{
         Response::httpSuccess(200, BorrowingAndBooksTable::selectMyBooks($userID));
     }
 
-    public static function topBorrowedBooks($body){
-        $body = Helper::validateTheInputArray($body);
-        if (($body = Borrowing::checkRequiredData($body,["limit"])) == false){
-            Response::httpError(200,21);
-        };
-        Borrowing::callingValidateFunctions($body,["limit"],Borrowing::class,"checkLimit");
-        Response::httpSuccess(200,BorrowingAndBooksTable::selectTopBorrowedBook($body["limit"]));
+    public static function topBorrowedBooks($limit){
+        Borrowing::validateID($limit);
+        Response::httpSuccess(200,BorrowingAndBooksTable::selectTopBorrowedBook($limit));
+        
+    }
+    public static function availableBooks($body){
+        Response::httpSuccess(200,BorrowingAndBooksTable::selectAvailableBooks());
         
     }
 }

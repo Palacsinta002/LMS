@@ -50,6 +50,16 @@ class Table {
         self::$query .=$sql;
         return $this;
     }
+    protected function leftJoin($table, $fields, $operators, $valueFields){
+        $sql = " LEFT JOIN $table ON ";
+        for ($i= 0; $i < count($fields); $i++){
+            $sql .= " " . $fields[$i] . " " . $operators[$i] . " " . $valueFields[$i] . "  AND ";
+            
+        }
+        $sql = substr($sql,0,-4);
+        self::$query .=$sql;
+        return $this;
+    }
     protected function orderBy($fields, $ASC = true){
         $sql = " ORDER BY  ". implode(", ", $fields);
         if ($ASC){
@@ -82,6 +92,8 @@ class Table {
     protected static function execute( $getresult, $fetch = true ){
         $conn = Connection::connect();
         self::fixingValues();
+        echo self::$query;
+        die();
         $query = $conn->prepare(self::$query);
         if (substr_count(self::$query,"?") == 0 ){
             $query->execute();
@@ -130,11 +142,26 @@ class Table {
     }
     private static function fixingValues(){
         for ($i=0; $i < count(self::$values); $i++) { 
-            if (self::$values[$i] == "NULL"){
+            if (self::$values[$i] == "NULL" || self::$values[$i] == "NOT NULL"){
                 array_splice(self::$values,$i,1);
                 array_splice(self::$types,$i,1);
             }
         }
+    }
+    protected static function toString($alias = null){
+        self::fixingValues();
+        for ($i=0; $i < count(self::$values); $i++) { 
+            $replacement = self::$values[$i];
+            if (self::$types[$i] == "s"){
+                $replacement = "'" . $replacement ."'";
+            }
+            self::$query = preg_replace('/\?/', $replacement, self::$query, 1);
+        }
+        
+        $stringSql = "(" . self::$query . ")";
+        $stringSql = isset($alias) ? $stringSql . " AS $alias ": $stringSql;
+        self::reset();
+        return $stringSql;
     }
 }
 

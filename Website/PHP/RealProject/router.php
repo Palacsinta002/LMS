@@ -14,17 +14,20 @@ $requesturi = explode("/", trim($_SERVER["REQUEST_URI"],"/"));
 Router::post("/api/login", UserController::class, "login");
 Router::post("/api/register", UserController::class,"register");
 Router::post("/api/verify-account", UserController::class,"verifyAccount");
-Router::post("/api/all-users", UserController::class,"allUsers");
-Router::post("/api/user", UserController::class,"userData", true);
-Router::post("/api/update-user", UserController::class,"updateUser",true);
-Router::post("/api/delete-user", UserController::class,"deleteUser",true);
+Router::get("/api/all-users", UserController::class,"allUsers",true);
+Router::get("/api/user", UserController::class,"userData", true);
+Router::put("/api/update-user", UserController::class,"updateUser");
+Router::delete("/api/delete-user", UserController::class,"deleteUser");
 
 
 Router::post("/api/borrowings", BorrowingsController::class,"getFromDBByParams");
-Router::post("/api/top-borrowings", BorrowingsAndBooksController::class,"topBorrowedBooks");
+
+#this shall be a get
+Router::get("/api/top-borrowings", BorrowingsAndBooksController::class,"topBorrowedBooks",false,true,true);
 
 Router::get("/api/borrowing-books", Ideiglenes::class,"borrowingBooks");
 Router::get("/api/my-borrowed-books", BorrowingsAndBooksController::class,"getMyBorrowedBooks",true);
+Router::get("/api/available-books", BorrowingsAndBooksController::class,"availableBooks",false);
 
 Router::post("/api/upload-img", ImageController::class,"uploadImg");
 Router::get("/img", ImageController::class,"getImg",false,true,true);
@@ -32,6 +35,9 @@ Router::get("/img", ImageController::class,"getImg",false,true,true);
 
 Router::get("/api/books", BooksController::class,"getFromDBByParams",false,true);
 Router::get("/api/all-Books", BooksController::class,"countAllBooks",);
+
+
+Router::get("/api/test", BorrowingsAndBooksController::class,"availableBooks",false);
 /* 
 
 if ($requesturi[0] == "api"){

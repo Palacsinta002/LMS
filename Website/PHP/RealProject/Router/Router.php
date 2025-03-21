@@ -10,11 +10,11 @@ class Router{
         $uri = $_SERVER["REQUEST_URI"];
         
         if ($uri == $endpoint){
-            if ($_SERVER["REQUEST_METHOD" ] == "POST"){
-                $userID = "";
+            if ($_SERVER["REQUEST_METHOD" ] != "POST"){
+                Response::httpError(404,17);
+            }
                 if ($auth == true){
-                    $token = isset(getallheaders()['Authorization']) ? getallheaders()['Authorization'] : (isset(getallheaders()['authorization']) ? getallheaders()['authorization'] : "");
-                    $userID = Token::verifyToken($token);
+                    $userID = self::getHeadAuth();
                     $body = Helper::getPostBody();
                     $controller::$function($body,$userID);
                     die();
@@ -22,7 +22,6 @@ class Router{
                 $body = Helper::getPostBody();
                 $controller::$function($body);
                 die("");
-            }
             
         }
         
@@ -53,8 +52,7 @@ class Router{
                     $data = Helper::validateTheInputArray(self::getBodyByUrl($body));
                 }
                 if ($auth == true){
-                    $token = isset(getallheaders()['Authorization']) ? getallheaders()['Authorization'] : (isset(getallheaders()['authorization']) ? getallheaders()['authorization'] : "");
-                    $userID = Token::verifyToken($token);
+                    $userID = self::getHeadAuth();
                     $controller::$function($data,$userID);
                     die();
                 }
@@ -68,8 +66,7 @@ class Router{
                 }
                 $data = Helper::validateTheInputArray($_GET);
                 if ($auth == true){
-                    $token = isset(getallheaders()['Authorization']) ? getallheaders()['Authorization'] : (isset(getallheaders()['authorization']) ? getallheaders()['authorization'] : "");
-                    $userID = Token::verifyToken($token);
+                    $userID = self::getHeadAuth();
                     $controller::$function($data,$userID);
                     die();
                 }
@@ -78,6 +75,32 @@ class Router{
             }
         
         
+    }
+    public static function put($endpoint, $controller, $function){
+        $uri = $_SERVER["REQUEST_URI"];
+        
+        if ($uri == $endpoint){
+            if ($_SERVER["REQUEST_METHOD" ] != "PUT"){
+                Response::httpError(404,17);
+            }
+            $userID = self::getHeadAuth();
+            $body = Helper::getPostBody();
+            $controller::$function($body,$userID);
+            die();
+            
+        }
+    }
+    public static function delete($endpoint, $controller, $function){
+        if ($endpoint == $_SERVER["REQUEST_URI"]){
+            if ($_SERVER["REQUEST_METHOD"] != "DELETE"){
+                Response::httpError(404,17);
+            }
+            if (($userID = self::getHeadAuth())){
+                $controller::$function($userID);
+                die();
+            }
+
+        }
     }
     private static function getBodyByUrl( $uri ){
         $lengthOfUriDoubles = (count($uri)) %2 == 0 ? count($uri) : count($uri)-1;
@@ -88,6 +111,12 @@ class Router{
             $data[$uri[$i]] =  $uriData[$j+ 1];
         }
         return $data;
+    }
+
+    private static function getHeadAuth(){
+        $headers = getallheaders();
+        $token = $headers['Authorization'] ?? $headers['authorization'] ?? "";
+        return Token::verifyToken($token);
     }
 }
 ?>
