@@ -76,7 +76,7 @@ class User extends Model{
     }
     public static function updateToVerified($code){
         UserTable::updateToVerified($code);
-        Response::httpSuccess(200,"User verified");
+        Response::httpSuccess(200,["Success" =>"User verified"] );
     }
     
     public static function userPasswordIsMatch($loginPassword,$DBPassword){
