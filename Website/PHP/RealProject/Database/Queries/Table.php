@@ -92,8 +92,6 @@ class Table {
     protected static function execute( $getresult, $fetch = true ){
         $conn = Connection::connect();
         self::fixingValues();
-        echo self::$query;
-        die();
         $query = $conn->prepare(self::$query);
         if (substr_count(self::$query,"?") == 0 ){
             $query->execute();
