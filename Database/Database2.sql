@@ -104,6 +104,17 @@ CREATE TABLE Borrowings_storage (
     ReturnDate DATE
 );
 
+-- Create Reservation table
+CREATE TABLE Reservation(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ISBN BIGINT(13) NOT NULL,
+    UserID INT NOT NULL,
+    Reservation_start_time DATE DEFAULT (CURRENT_DATE),
+    Reservation_end_time DATE DEFAULT (CURRENT_DATE + INTERVAL 5 DAY),
+    FOREIGN KEY (ISBN) REFERENCES Books(ISBN) ON DELETE CASCADE,
+    FOREIGN KEY (UserID) REFERENCES Users(ID) ON DELETE CASCADE
+);
+
 DELIMITER $$
 
 CREATE TRIGGER after_borrowing_insert

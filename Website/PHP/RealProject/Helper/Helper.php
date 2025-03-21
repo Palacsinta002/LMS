@@ -5,7 +5,9 @@ use ApiResponse\Response;
 class Helper{
     public static function validateTheInput($input)
     {
-
+        if (!isset($input)){
+            Response::httpError(400,21);
+        }
         $input = htmlspecialchars($input);
         $input = stripcslashes($input);
         $input = trim($input);

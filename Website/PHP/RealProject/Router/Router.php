@@ -29,7 +29,7 @@ class Router{
 
     
 
-    public static function get($endpoint, $controller, $function,$auth = false, $getFromURL = false, $img = false){
+    public static function get($endpoint, $controller, $function,$auth = false, $getFromURL = false, $oneElement = false){
         $uri = $_SERVER["REQUEST_URI"];
             if (strlen($uri) >= strlen($endpoint) && substr($uri,0, strlen($endpoint)) == $endpoint && $getFromURL){
                 
@@ -37,20 +37,8 @@ class Router{
                     Response::httpError(404,17);
                 }
                 
-                if ($img == true){
-                    $body = explode("/",trim(substr($uri, strlen($endpoint)),"/"));
+                $data = self::getBodyFromUrl($uri,$endpoint, $oneElement);
 
-                    if (count($body) != 1){
-                        Response::httpError(404,21);
-                    }
-                    
-                    $data = Helper::validateTheInput($body[0]);
-                }
-                else{
-                    $body = explode("/",trim(substr($uri, strlen($endpoint)),"/"));
-                
-                    $data = Helper::validateTheInputArray(self::getBodyByUrl($body));
-                }
                 if ($auth == true){
                     $userID = self::getHeadAuth();
                     $controller::$function($data,$userID);
@@ -90,12 +78,17 @@ class Router{
             
         }
     }
-    public static function delete($endpoint, $controller, $function){
+    public static function delete($endpoint, $controller, $function, $getFromURL = false){
         if ($endpoint == $_SERVER["REQUEST_URI"]){
+            $uri = $_SERVER["REQUEST_URI"];
             if ($_SERVER["REQUEST_METHOD"] != "DELETE"){
                 Response::httpError(404,17);
             }
             if (($userID = self::getHeadAuth())){
+                if ($getFromURL){
+                    $data = self::getBodyFromUrl($uri,$endpoint,true);
+                    $controller::$function($data,$userID);
+                }
                 $controller::$function($userID);
                 die();
             }
@@ -117,6 +110,23 @@ class Router{
         $headers = getallheaders();
         $token = $headers['Authorization'] ?? $headers['authorization'] ?? "";
         return Token::verifyToken($token);
+    }
+    private static function getBodyFromUrl( $uri,$endpoint,$oneElement = false ){
+        if ($oneElement == true){
+            $body = explode("/",trim(substr($uri, strlen($endpoint)),"/"));
+
+            if (count($body) != 1){
+                Response::httpError(404,21);
+            }
+            
+            $data = Helper::validateTheInput($body[0]);
+        }
+        else{
+            $body = explode("/",trim(substr($uri, strlen($endpoint)),"/"));
+        
+            $data = Helper::validateTheInputArray(self::getBodyByUrl($body));
+        }
+        return $data;
     }
 }
 ?>

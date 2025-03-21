@@ -8,6 +8,8 @@ use App\Controllers\BooksController;
 use App\Controllers\Ideiglenes;
 use App\Controllers\ImageController;
 use App\Controllers\BorrowingsAndBooksController;
+use App\Controllers\ReservationController;
+
 $requesturi = explode("/", trim($_SERVER["REQUEST_URI"],"/"));
 
 
@@ -25,7 +27,6 @@ Router::post("/api/borrowings", BorrowingsController::class,"getFromDBByParams")
 #this shall be a get
 Router::get("/api/top-borrowings", BorrowingsAndBooksController::class,"topBorrowedBooks",false,true,true);
 
-Router::get("/api/borrowing-books", Ideiglenes::class,"borrowingBooks");
 Router::get("/api/my-borrowed-books", BorrowingsAndBooksController::class,"getMyBorrowedBooks",true);
 Router::get("/api/available-books", BorrowingsAndBooksController::class,"availableBooks",false);
 
@@ -38,6 +39,8 @@ Router::get("/api/all-books", BooksController::class,"countAllBooks");
 Router::get("/api/all-users", UserController::class,"allUsers");
 Router::get("/api/all-borrowings", BorrowingsController::class,"allBorrowings");
 
+Router::post("/api/reserve",ReservationController::class,"reserve",true);
+Router::delete("/api/deleteReservation", ReservationController::class,"");
 
 Router::get("/api/test", BorrowingsAndBooksController::class,"availableBooks",false);
 /* 
