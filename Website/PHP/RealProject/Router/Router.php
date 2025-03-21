@@ -87,6 +87,8 @@ class Router{
             if (($userID = self::getHeadAuth())){
                 if ($getFromURL){
                     $data = self::getBodyFromUrl($uri,$endpoint,true);
+                    echo $data;
+                    die();
                     $controller::$function($data,$userID);
                 }
                 $controller::$function($userID);

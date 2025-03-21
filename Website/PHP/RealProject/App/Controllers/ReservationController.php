@@ -6,6 +6,7 @@ use Database\Queries\ReservationTable;
 use App\Models\Model;
 use Helper\Helper;
 use ApiResponse\Response;
+use Database\Queries\BooksTable;
 use Database\Queries\BorrowingsTable;
 
 
@@ -22,11 +23,13 @@ class ReservationController{
         if (ReservationTable::bookInReservation($body["ISBN"])->num_rows != 0){
             Response::httpError(400,32);
         }
-        print_r(ReservationTable::countUserReservations($userID));
-        if (ReservationTable::countUserReservations($userID)["userReservations"] >= 3){
+        if (BooksTable::selectByISBN($body["ISBN"])->num_rows == 0){
             Response::httpError(400,32);
         }
-        model::validateISBN($body["ISBN"]);
+        if (ReservationTable::countUserReservations($userID)[0]["userReservations"] >= 3){
+            Response::httpError(400,32);
+        }
+
         ReservationTable::reserve($body["ISBN"],$userID);
         Response::httpSuccess(200,["Success"=>"Reservation made"]);
     }
