@@ -51,7 +51,7 @@ export default function MainTable() {
             <tr key={index}>
               <td>{book.Authors}</td>
               <td>{book.Title}</td>
-              <td>{book.borrows}</td>
+              <td>{book.BorrowCount}</td>
             </tr>
           ))}
         </tbody>
