@@ -20,6 +20,7 @@ public partial class AddBorrowing : Form
 
         var result = HandleQueries.Select("SelectUsername");
         HandleGrids.Fill(dropDown_user, result);
+        dueDate_datePicker.Value = DateTime.Today.AddDays(1);
     }
 
     private void Save(object sender, EventArgs e)
