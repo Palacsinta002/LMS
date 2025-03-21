@@ -16,6 +16,7 @@ import { Provider } from 'react-redux'
 import Store from './Auth/Store'
 import AuthProvider from './Auth/AuthProvider';
 import ForgotPassword from './Pages/ForgotPassword';
+import ChangePassword from './Pages/ChangePassword';
 
 function App() {
   return (
@@ -24,9 +25,9 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" exact element={<Home />} />
-          <Route path="/login" element={<Login />} >
-            <Route path="forgot-password" element={<ForgotPassword />} />
-          </Route>
+          <Route path="/login" element={<Login />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/change-password" element={<ChangePassword />} />
           <Route path="/register" element={<Register />} />
           <Route path="/verify" element={<Verify />} />
           <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}>
