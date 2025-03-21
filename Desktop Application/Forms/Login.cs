@@ -20,10 +20,10 @@ public partial class Login : Form
         DragWindow.Handle(this, header, title);
         BorderPaint.Handle(this);
         CloseThisWindow.Handle(this, close_btn);
-        AdminPanel adminPanel = new(username_textBox.Text, true);
-        this.Hide();
-        adminPanel.ShowDialog();
-        this.Close();
+        //AdminPanel adminPanel = new(username_textBox.Text, true);
+        //this.Hide();
+        //adminPanel.ShowDialog();
+        //this.Close();
     }
 
     //On Login if the username and password are in the correct format it starts checking the credentials

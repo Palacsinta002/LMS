@@ -39,7 +39,7 @@ public partial class EditUser : Form
         if (ValidateInput())
         {
             bool verified = checkBox_verify.Checked;
-            HandleQueries.UpdatetUser(_users_grd, textBox_firstName.Text, textBox_lastName.Text, _dateOfBirth, textBox_username.Text, textBox_address.Text, verified);
+            HandleQueries.UpdateUser(_users_grd, textBox_firstName.Text, textBox_lastName.Text, _dateOfBirth, textBox_username.Text, textBox_address.Text, verified);
             MessageBox.Show("User updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }

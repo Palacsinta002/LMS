@@ -5,13 +5,14 @@ namespace Desktop_Application.Forms.Profile;
 
 public partial class ProfileSettings : Form
 {
-    private string _username;
+    internal string Username { get; private set; }
     private DateTime _dateOfBirth;
-    private string _hashedPassword;
+    private string _password;
+    private string _newPassword;
 
     public ProfileSettings(string username)
     {
-        _username = username;
+        Username = username;
         InitializeComponent();
     }
 
@@ -25,10 +26,11 @@ public partial class ProfileSettings : Form
         string[] userData = HandleQueries.SelectFromString(
             $"SELECT FirstName, LastName, Username, " +
             $"DATE_FORMAT(Users.DateOfBirth, \"%d/%m/%Y\"), Email, Address, Password " +
-            $"FROM Users WHERE Username = \"{_username}\"")[0];
+            $"FROM Users WHERE Username = \"{Username}\"")[0];
 
-        _username = userData[2];
-        _hashedPassword = userData[6];
+        Username = userData[2];
+        _password = userData[6];
+        _newPassword = userData[6];
 
         textBox_firstName.Text = userData[0];
         textBox_lastName.Text = userData[1];
@@ -45,8 +47,10 @@ public partial class ProfileSettings : Form
             SaveConfirmation saveConfirmation = new();
             saveConfirmation.ShowDialog();
             if (saveConfirmation.DialogResult != DialogResult.OK) return;
-            HandleQueries.UpdatetUser(textBox_firstName.Text, textBox_lastName.Text, textBox_username.Text, _dateOfBirth, textBox_email.Text, textBox_address.Text);
+
+            HandleQueries.UpdatetOwnUser(Username, textBox_firstName.Text, textBox_lastName.Text, textBox_username.Text, _dateOfBirth, textBox_email.Text, textBox_address.Text, _newPassword);
             MessageBox.Show("Profile updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Username = textBox_username.Text;
             this.Close();
         }
     }
@@ -121,7 +125,7 @@ public partial class ProfileSettings : Form
 
     private bool CheckUsername(string username)
     {
-        if (username == _username) return false; // This skips the check if the username didnt changed
+        if (username == Username) return false; // This skips the check if the username didnt changed
         List<string[]> result = HandleQueries.SelectFromFile("SelectUsername");
         foreach (string[] item in result)
         {
@@ -132,7 +136,8 @@ public partial class ProfileSettings : Form
 
     private void ChangePassword(object sender, EventArgs e)
     {
-        ChangePassword changePassword = new(_hashedPassword);
+        ChangePassword changePassword = new(_password);
         changePassword.ShowDialog();
+        _newPassword = changePassword.Password;
     }
 }

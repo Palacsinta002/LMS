@@ -11,15 +11,13 @@ namespace Desktop_Application;
 
 public partial class AdminPanel : Form
 {
-    private readonly string _username;
+    private string _username;
     private readonly bool _isAdmin;
 
-    public AdminPanel(string name, bool isAdmin)
+    public AdminPanel(string username, bool isAdmin)
     {
-        _username = name;
+        _username = username;
         _isAdmin = isAdmin;
-        _username = "johndoe";
-        _isAdmin = true;
         InitializeComponent();
     }
 
@@ -37,6 +35,8 @@ public partial class AdminPanel : Form
     {
         ProfileSettings profileSettings = new(_username);
         profileSettings.ShowDialog();
+        _username = profileSettings.Username;
+        hello_lbl.Text = $"Hello {_username}!";
     }
 
     #region Dashboard

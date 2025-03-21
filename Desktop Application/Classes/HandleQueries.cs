@@ -1,4 +1,6 @@
-﻿namespace Desktop_Application.Classes;
+﻿using Org.BouncyCastle.Crypto;
+
+namespace Desktop_Application.Classes;
 internal class HandleQueries
 {
     // Takes a grid and fills it with the Select result of the given filename
@@ -142,7 +144,7 @@ internal class HandleQueries
         }
     }
     // Update user with the given arguments
-    internal static void UpdatetUser(DataGridView users_grd, string firstName, string lastName, DateTime dateOfBirth, string username, string address, bool verified)
+    internal static void UpdateUser(DataGridView users_grd, string firstName, string lastName, DateTime dateOfBirth, string username, string address, bool verified)
     {
         string dateOfBirthString = $"{dateOfBirth.Year}-{dateOfBirth.Month}-{dateOfBirth.Day}";
 
@@ -152,6 +154,15 @@ internal class HandleQueries
             string query = $"UPDATE Users SET FirstName = \"{firstName}\", LastName = \"{lastName}\", DateOfBirth = \"{dateOfBirthString}\", Username = \"{username}\", Address = \"{address}\", Verified = {verified} WHERE Username = \"{row.Cells[5].Value}\"";
             connection.RunSqlCommand(query);
         }
+    }
+    // Update logged in user
+    internal static void UpdatetOwnUser(string currentUsername, string firstName, string lastName, string username, DateTime dateOfBirth, string email, string address, string password)
+    {
+        string dateOfBirthString = $"{dateOfBirth.Year}-{dateOfBirth.Month}-{dateOfBirth.Day}";
+
+        Connection connection = new();
+        string query = $"UPDATE Users SET FirstName = \"{firstName}\", LastName = \"{lastName}\", Username = \"{username}\", DateOfBirth = \"{dateOfBirthString}\", Email = \"{email}\", Address = \"{address}\", Password = \"{password}\" WHERE Username = \"{currentUsername}\"";
+        connection.RunSqlCommand(query);
     }
 
 

@@ -50,6 +50,9 @@
     <Compile Update="Forms\Profile\ProfileSettings.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Profile\SaveConfirmation.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Publishers\AddPublisher.cs">
       <SubType>Form</SubType>
     </Compile>
