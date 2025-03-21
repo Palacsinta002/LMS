@@ -17,22 +17,28 @@ class BorrowingAndBooksTable extends Table{
         ->execute(true);
     }
     public static function selectTopBorrowedBook($limit){
-            return self::select(
-                ["books"],
-                [
-                    "books.Title",
-                    "GROUP_CONCAT(DISTINCT Authors.Author SEPARATOR ',') as Authors",
-                    "books.publicationYear",
-                    "COUNT(borrowings.id) as BorrowCount"
-                ]
-            )
-            ->innerJoin("borrowings", ["books.ISBN"], ["="], ["borrowings.ISBN"])
-            ->innerJoin("Books_authors", ["books.ISBN"], ["="], ["Books_authors.ISBN"])
-            ->innerJoin("Authors", ["Books_authors.AuthorID"], ["="], ["Authors.ID"])
-            ->groupBy(["books.Title", "books.publicationYear", "GROUP_CONCAT(DISTINCT Authors.Author SEPARATOR ',')"]) 
-            ->orderBy(["BorrowCount"], false) 
-            ->limit($limit)
-            ->execute(true);
+        return self::select(
+            ["books"],
+            [
+                "books.Title",
+                "GROUP_CONCAT(DISTINCT Authors.Author SEPARATOR ',') as 'Authors'",
+                "borrow_count.Count as 'BorrowCount'", 
+                "books.publicationYear"
+            ]
+        )
+        ->innerJoin("borrowings", ["books.ISBN"], ["="], ["borrowings.ISBN"])
+        ->innerJoin("Books_authors", ["Books.ISBN"], ["="], ["Books_Authors.ISBN"])
+        ->innerJoin("Authors", ["Books_Authors.AuthorID"], ["="], ["Authors.ID"])
+        ->innerJoin(
+            "(SELECT ISBN, COUNT(ID) as Count FROM Borrowings GROUP BY ISBN) as borrow_count",
+            ["books.ISBN"],
+            ["="],
+            ["borrow_count.ISBN"]
+        )
+        ->groupBy(["books.Title", "books.publicationYear"])
+        ->orderBy(["borrow_count.Count"], false) 
+        ->limit($limit)
+        ->execute(true);
     }
     public static function selectAvailableBooks(){
         $subQuery = self::select(["borrowings"], ["ISBN"])
