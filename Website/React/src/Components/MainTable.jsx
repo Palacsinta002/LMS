@@ -10,7 +10,7 @@ export default function MainTable() {
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await axios.post("/api/top-borrowings", {limit: 5});
+        const response = await axios.get(`/api/top-borrowings/5`);
         console.log(response.data);
         setData(response.data);
       } catch (error) {
