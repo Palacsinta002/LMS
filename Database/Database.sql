@@ -104,6 +104,17 @@ CREATE TABLE Borrowings_storage (
     ReturnDate DATE
 );
 
+-- Create Reservation table
+CREATE TABLE Reservation(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ISBN BIGINT(13) NOT NULL,
+    UserID INT NOT NULL,
+    Reservation_start_time DATE DEFAULT (CURRENT_DATE),
+    Reservation_end_time DATE DEFAULT (CURRENT_DATE + INTERVAL 5 DAY),
+    FOREIGN KEY (ISBN) REFERENCES Books(ISBN) ON DELETE CASCADE,
+    FOREIGN KEY (UserID) REFERENCES Users(ID) ON DELETE CASCADE
+);
+
 DELIMITER $$
 
 CREATE TRIGGER after_borrowing_insert
@@ -192,7 +203,18 @@ INSERT INTO Authors (Author) VALUES
 ('Agatha Christie'),
 ('William Shakespeare'),
 ('Charles Dickens'),
-('Franz Kafka');
+('Franz Kafka'),
+
+('F. Scott Fitzgerald'),
+('Emily Brontë'),
+('J.D. Salinger'),
+('Harper Lee'),
+('Aldous Huxley'),
+('Herman Melville'),
+('Homer'),
+('Mary Shelley'),
+('Victor Hugo'),
+('Dante Alighieri');
 
 -- Insert values into Categories table
 INSERT INTO Categories (Category) VALUES
@@ -210,7 +232,16 @@ INSERT INTO Categories (Category) VALUES
 ('Young Adult'),
 ('Adventure'),
 ('Horror'),
-('Poetry');
+('Poetry'),
+
+('Dystopian'),
+('Gothic Fiction'),
+('Philosophical Fiction'),
+('Coming-of-Age'),
+('Southern Gothic'),
+('Epic Poetry'),
+('Classic Literature'),
+('Adventure Fiction');
 
 -- Insert values into Publishers table
 INSERT INTO Publishers (Publisher) VALUES
@@ -266,7 +297,19 @@ INSERT INTO Books (ISBN, PublisherID, Title, PublicationYear) VALUES
 (9780062693661, 12, 'Murder on the Orient Express', 1934),
 (9780743477123, 13, 'Hamlet', 1603),
 (9780486415864, 14, 'Great Expectations', 1861),
-(9780805209990, 15, 'The Trial', 1925);
+(9780805209990, 15, 'The Trial', 1925),
+(9780141187761, 1, 'Animal Farm', 1945),
+(9780743273565, 2, 'The Great Gatsby', 1925),
+(9780141439518, 3, 'Wuthering Heights', 1847),
+(9780140449266, 4, 'The Brothers Karamazov', 1880),
+(9780141187396, 5, 'The Catcher in the Rye', 1951),
+(9780061120084, 6, 'To Kill a Mockingbird', 1960),
+(9780547928227, 7, 'The Hobbit', 1937), 
+(9780060850524, 8, 'Brave New World', 1932),
+(9780143105428, 9, 'Moby Dick', 1851),
+(9780141439563, 12, 'Frankenstein', 1818),
+(9780140449143, 13, 'Les Misérables', 1862),
+(9780140449334, 15, 'The Divine Comedy', 1320);
 
 -- Insert values into Books_Authors table
 INSERT INTO Books_Authors (ISBN, AuthorID) VALUES
@@ -288,7 +331,20 @@ INSERT INTO Books_Authors (ISBN, AuthorID) VALUES
 (9780743477123, 13),
 (9780743477123, 10),
 (9780486415864, 14),
-(9780805209990, 15);
+(9780805209990, 15),
+
+(9780141187761, 1),  -- Animal Farm by George Orwell
+(9780743273565, 16), -- The Great Gatsby by F. Scott Fitzgerald
+(9780141439518, 17), -- Wuthering Heights by Emily Brontë
+(9780140449266, 5),  -- The Brothers Karamazov by Fyodor Dostoevsky
+(9780141187396, 18), -- The Catcher in the Rye by J.D. Salinger
+(9780061120084, 19), -- To Kill a Mockingbird by Harper Lee
+(9780547928227, 11), -- The Hobbit by J.R.R. Tolkien
+(9780060850524, 20), -- Brave New World by Aldous Huxley
+(9780143105428, 21), -- Moby Dick by Herman Melville
+(9780141439563, 23), -- Frankenstein by Mary Shelley
+(9780140449143, 24), -- Les Misérables by Victor Hugo
+(9780140449334, 25); -- The Divine Comedy by Dante Alighieri
 
 -- Insert values into Books_Categories table
 INSERT INTO Books_Categories (ISBN, CategoryID) VALUES
@@ -310,7 +366,21 @@ INSERT INTO Books_Categories (ISBN, CategoryID) VALUES
 (9780062693661, 6),
 (9780743477123, 1),
 (9780486415864, 1),
-(9780805209990, 1);
+(9780805209990, 1),
+
+(9780141187761, 16), -- Animal Farm: Dystopian
+(9780141187761, 11), -- Animal Farm: Classics
+(9780743273565, 17), -- The Great Gatsby: Classic
+(9780141439518, 18), -- Wuthering Heights: Gothic Fiction
+(9780140449266, 19), -- The Brothers Karamazov: Philosophical Fiction
+(9780141187396, 20), -- The Catcher in the Rye: Coming-of-Age
+(9780061120084, 21), -- To Kill a Mockingbird: Southern Gothic
+(9780547928227, 4),  -- The Hobbit: Fantasy
+(9780060850524, 16), -- Brave New World: Dystopian
+(9780143105428, 22), -- Moby Dick: Adventure Fiction
+(9780141439563, 14), -- Frankenstein: Horror
+(9780140449143, 5), -- Les Misérables: Historical Fiction
+(9780140449334, 22); -- The Divine Comedy: Classic Literature
 
 -- Insert values into Borrowings table
 INSERT INTO Borrowings (UserID, ISBN, BorrowDate, DueDate, ReturnDate) VALUES
@@ -328,4 +398,27 @@ INSERT INTO Borrowings (UserID, ISBN, BorrowDate, DueDate, ReturnDate) VALUES
 (12, 9780062693661, '2024-10-03', '2024-10-17', NULL),
 (13, 9780743477123, '2024-10-04', '2024-10-18', NULL),
 (14, 9780486415864, '2024-10-05', '2024-10-19', NULL),
-(15, 9780805209990, '2024-10-06', '2024-10-20', NULL);
+(15, 9780805209990, '2024-10-06', '2024-10-20', NULL),
+
+(1, 9780141187761, '2024-10-07', '2024-10-21', '2024-10-20'), -- Animal Farm borrowed and returned
+(1, 9780141187761, '2024-10-22', '2024-11-05', NULL), -- Animal Farm borrowed again
+(1, 9780743273565, '2024-10-08', '2024-10-22', NULL), -- The Great Gatsby borrowed
+
+-- Borrowings for User 2
+(2, 9780141439518, '2024-10-09', '2024-10-23', '2024-10-22'), -- Wuthering Heights borrowed and returned
+(2, 9780141439518, '2024-10-24', '2024-11-07', NULL), -- Wuthering Heights borrowed again
+(2, 9780140449266, '2024-10-10', '2024-10-24', NULL), -- The Brothers Karamazov borrowed
+
+-- Borrowings for User 3
+(3, 9780141187396, '2024-10-11', '2024-10-25', '2024-10-24'), -- The Catcher in the Rye borrowed and returned
+(3, 9780141187396, '2024-10-26', '2024-11-09', NULL), -- The Catcher in the Rye borrowed again
+(3, 9780061120084, '2024-10-12', '2024-10-26', NULL), -- To Kill a Mockingbird borrowed
+
+-- Borrowings for User 4
+(4, 9780547928227, '2024-10-13', '2024-10-27', '2024-10-26'), -- The Hobbit borrowed and returned
+(4, 9780547928227, '2024-10-28', '2024-11-11', NULL), -- The Hobbit borrowed again
+(4, 9780060850524, '2024-10-14', '2024-10-28', NULL), -- Brave New World borrowed
+
+-- Borrowings for User 5
+(5, 9780143105428, '2024-10-15', '2024-10-29', '2024-10-28'), -- Moby Dick borrowed and returned
+(5, 9780143105428, '2024-10-30', '2024-11-13', NULL) -- Moby Dick borrowed again
