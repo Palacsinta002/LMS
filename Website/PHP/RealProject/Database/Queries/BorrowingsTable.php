@@ -11,7 +11,7 @@ class BorrowingsTable extends Table{
         return self::select(["borrowings"],["*"])->where([...$fields],[...$operators],[...$values],[...$types])->execute(true);
     }
     public static function allBorrowings(){
-        return self::select(["borrowings_storage"],["count(ISBN) AS AllBorrowings"])->execute(true);
+        return self::select(["borrowings_storage"],["count(ISBN) AS borrowings"])->execute(true);
     }
 }
 
