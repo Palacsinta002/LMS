@@ -1,3 +1,3 @@
 #!/bin/bash
-git pull --rebase
+git pull
 read -n 1 -p $'Press enter to continue...\n'
