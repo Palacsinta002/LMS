@@ -1,4 +1,6 @@
-﻿namespace Desktop_Application.Classes;
+﻿using Microsoft.VisualBasic;
+
+namespace Desktop_Application.Classes;
 internal class HandleQueries
 {
     // Takes a grid and fills it with the Select result of the given filename
@@ -85,11 +87,13 @@ internal class HandleQueries
         InsertBook(isbn, publisher, title, pubYear, authorsString, categoriesString);
     }
     // Update borrowing
-    internal static void UpdateBorrowing(string username, string isbn, string dueDate)
+    internal static void UpdateBorrowing(string username, string isbn, DateTime dueDate)
     {
+        string dueDateString = $"{dueDate.Year}-{dueDate.Month}-{dueDate.Day}";
+
         Connection connection = new();
         string query = $"UPDATE Borrowings SET UserID = (SELECT id FROM Users WHERE Username = \"{username}\"), ISBN = {isbn}, " +
-            $"DueDate = \"{dueDate}\" " +
+            $"DueDate = \"{dueDateString}\" " +
             $"WHERE ISBN = {isbn}";
         connection.RunSqlCommand(query);
     }
@@ -134,12 +138,14 @@ internal class HandleQueries
         }
     }
     // Update user with the given arguments
-    internal static void UpdatetUser(DataGridView users_grd, string firstName, string lastName, string dateOfBirth, string username, string address, bool verified)
+    internal static void UpdatetUser(DataGridView users_grd, string firstName, string lastName, DateTime dateOfBirth, string username, string address, bool verified)
     {
+        string dateOfBirthString = $"{dateOfBirth.Year}-{dateOfBirth.Month}-{dateOfBirth.Day}";
+
         Connection connection = new();
         foreach (DataGridViewRow row in users_grd.SelectedRows)
         {
-            string query = $"UPDATE Users SET FirstName = \"{firstName}\", LastName = \"{lastName}\", DateOfBirth = \"{dateOfBirth}\", Username = \"{username}\", Address = \"{address}\", Verified = {verified} WHERE Username = \"{row.Cells[5].Value}\"";
+            string query = $"UPDATE Users SET FirstName = \"{firstName}\", LastName = \"{lastName}\", DateOfBirth = \"{dateOfBirthString}\", Username = \"{username}\", Address = \"{address}\", Verified = {verified} WHERE Username = \"{row.Cells[5].Value}\"";
             connection.RunSqlCommand(query);
         }
     }

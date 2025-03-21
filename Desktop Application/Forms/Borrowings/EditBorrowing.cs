@@ -35,9 +35,7 @@ public partial class EditBorrowing : Form
     {
         if (ValidateInput())
         {
-            string dueDate = $"{_dueDate.Year}-{_dueDate.Month}-{_dueDate.Day}";
-
-            HandleQueries.UpdateBorrowing(dropDown_user.Text, textBox_books.Text, dueDate);
+            HandleQueries.UpdateBorrowing(dropDown_user.Text, textBox_books.Text, _dueDate);
             MessageBox.Show("Borrowing updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }

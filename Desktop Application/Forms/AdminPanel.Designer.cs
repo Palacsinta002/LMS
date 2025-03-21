@@ -139,7 +139,6 @@ namespace Desktop_Application
             publishers_remove_btn = new RoundedButton();
             publishers_lbl1 = new Label();
             publishers_src = new TextBox();
-            button3 = new Button();
             menu_pnl.SuspendLayout();
             header_pnl.SuspendLayout();
             dashboard_pnl.SuspendLayout();
@@ -166,7 +165,6 @@ namespace Desktop_Application
             // 
             menu_pnl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             menu_pnl.BackColor = Color.FromArgb(80, 77, 180);
-            menu_pnl.Controls.Add(button3);
             menu_pnl.Controls.Add(panel2);
             menu_pnl.Controls.Add(button2);
             menu_pnl.Controls.Add(panel1);
@@ -1866,24 +1864,6 @@ namespace Desktop_Application
             publishers_src.TabStop = false;
             publishers_src.TextChanged += SearchPublishers;
             // 
-            // button3
-            // 
-            button3.AutoSize = true;
-            button3.BackColor = Color.FromArgb(80, 77, 180);
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Yu Gothic UI Semibold", 14F);
-            button3.ForeColor = Color.White;
-            button3.Location = new Point(215, 629);
-            button3.Margin = new Padding(3, 4, 3, 4);
-            button3.Name = "button3";
-            button3.Size = new Size(83, 56);
-            button3.TabIndex = 32;
-            button3.TabStop = false;
-            button3.Text = "Users";
-            button3.UseVisualStyleBackColor = false;
-            // 
             // AdminPanel
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -2052,6 +2032,5 @@ namespace Desktop_Application
         private DataGridViewTextBoxColumn users_username;
         private DataGridViewTextBoxColumn users_email;
         private DataGridViewTextBoxColumn users_role;
-        private Button button3;
     }
 }
