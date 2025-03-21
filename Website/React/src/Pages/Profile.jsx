@@ -23,7 +23,7 @@ export default function Profile() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    axios.post("/api/user", JSON.stringify({ ID: ID }),
+    axios.get("/api/user",
       {
         headers: {
           "Content-type": "application/json",
@@ -33,7 +33,7 @@ export default function Profile() {
       .then(response => {
         setData(response.data)
       })
-  }, [ID, token])
+  }, [token])
 
   async function handleSubmit() {
     setLoading(true);
@@ -45,7 +45,7 @@ export default function Profile() {
       return;
     }
     try {
-      const response = await axios.post("/api/update-user",
+      const response = await axios.put("/api/update-user",
         { firstname: firstname, lastname: lastname, username: username, address: address, passwordOld: currentPassword, password: newPassword },
         {
           headers: {

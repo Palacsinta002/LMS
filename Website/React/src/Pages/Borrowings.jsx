@@ -12,8 +12,9 @@ export default function Borrowings() {
   const hidden = location.pathname === '/dashboard/borrowings' ? '' : 'hidden';
 console.log(decoded)
   useEffect(() => {
-    axios.get("/api/my-borrowed-books",)
+    axios.get("/api/my-borrowed-books", {headers: {"Authorization": `Bearer ${token}`}})
       .then(response => {
+        console.log(response.data)
         setBorrowings(response.data)
       })
       .catch(err => console.error(err))
@@ -26,6 +27,7 @@ console.log(decoded)
           <tr className='dashboard-tr'>
             <th className='dashboard-th'>ISBN</th>
             <th className='dashboard-th'>Title</th>
+            <th className='dashboard-th'>Author</th>
             <th className='dashboard-th'>Borrowings Date</th>
             <th className='dashboard-th'>Due Date</th>
           </tr>
@@ -35,8 +37,9 @@ console.log(decoded)
             <tr className='dashboard-tr' key={index}>
               <td className='dashboard-td'>{items.ISBN}</td>
               <td className='dashboard-td'>{items.Title}</td>
-              <td className='dashboard-td'>{items.borrowDate}</td>
-              <td className='dashboard-td'>{items.dueDate}</td>
+              <td className='dashboard-td'>{items.Authors}</td>
+              <td className='dashboard-td'>{items.BorrowDate}</td>
+              <td className='dashboard-td'>{items.DueDate}</td>
               <td className='dashboard-td'></td>
             </tr>
           ))}

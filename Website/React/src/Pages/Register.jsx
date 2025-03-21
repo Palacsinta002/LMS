@@ -73,24 +73,24 @@ export default function Register() {
           <div className="register-card-holder">
             <div className="register-card">
               <label htmlFor="email">Email</label>
-              <input type="email" onChange={(e) => setEmail(e.target.value)} />
+              <input type="email" onChange={(e) => setEmail(e.target.value)} required />
             </div>
             <div className="register-card">
               <label htmlFor="username">Username</label>
-              <input type="text" onChange={(e) => setUsername(e.target.value)} />
+              <input type="text" onChange={(e) => setUsername(e.target.value)} required />
             </div>
             <div className="register-card">
               <label htmlFor="firstname">First name</label>
-              <input type="text" onChange={(e) => setFirstname(e.target.value)} />
+              <input type="text" onChange={(e) => setFirstname(e.target.value)} required />
             </div>
             <div className="register-card">
               <label htmlFor="lastname">Last name</label>
-              <input type="text" onChange={(e) => setLastname(e.target.value)} />
+              <input type="text" onChange={(e) => setLastname(e.target.value)} required />
             </div>
             <div className="register-card">
               <label htmlFor="password">Password</label>
               <div className="register-password-input">
-                <input type={showPassword ? "text" : "password"} onChange={(e) => setPassword(e.target.value)} />
+                <input type={showPassword ? "text" : "password"} onChange={(e) => setPassword(e.target.value)} required />
                 <button type="button" onClick={() => setShowPassword(!showPassword)} className="register-toggle-password">
                   {showPassword ? "Hide" : "Show"}
                 </button>
@@ -99,7 +99,7 @@ export default function Register() {
             <div className="register-card">
               <label htmlFor="passwordAgain">Password Again</label>
               <div className="register-password-input">
-                <input type={showPasswordAgain ? "text" : "password"} onChange={(e) => setPasswordAgain(e.target.value)} />
+                <input type={showPasswordAgain ? "text" : "password"} onChange={(e) => setPasswordAgain(e.target.value)} required/>
                 <button type="button" onClick={() => setShowPasswordAgain(!showPasswordAgain)} className="register-toggle-password">
                   {showPasswordAgain ? "Hide" : "Show"}
                 </button>
@@ -107,7 +107,7 @@ export default function Register() {
             </div>
             <div className="register-card">
               <label htmlFor="address">Address</label>
-              <input type="text" onChange={(e) => setAddress(e.target.value)} />
+              <input type="text" onChange={(e) => setAddress(e.target.value)} required />
             </div>
           </div>
           {error && <p className="error-message">{error}</p>}
