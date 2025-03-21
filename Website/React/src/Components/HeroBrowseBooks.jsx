@@ -14,7 +14,7 @@ export default function HeroBrowseBooks() {
     useEffect(() => {
         const getData = async () => {
             try {
-                const response = await axios.get("/api/available-books");
+                const response = await axios.get("/api/books");
                 console.log(response.data)
                 setBooks(response.data);
             } catch (error) {
