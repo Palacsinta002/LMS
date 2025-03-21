@@ -42,6 +42,7 @@ namespace Desktop_Application.Forms.Profile
             textBox_currentPassword = new TextBox();
             textBox_newPasswordAgain = new TextBox();
             label4 = new Label();
+            label1 = new Label();
             header.SuspendLayout();
             SuspendLayout();
             // 
@@ -202,12 +203,23 @@ namespace Desktop_Application.Forms.Profile
             label4.TabIndex = 101;
             label4.Text = "Password Again";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label1.Location = new Point(415, 151);
+            label1.Name = "label1";
+            label1.Size = new Size(165, 32);
+            label1.TabIndex = 102;
+            label1.Text = "Requirements";
+            // 
             // ChangePassword
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(594, 324);
+            Controls.Add(label1);
             Controls.Add(textBox_newPasswordAgain);
             Controls.Add(label4);
             Controls.Add(textBox_currentPassword);
@@ -243,5 +255,6 @@ namespace Desktop_Application.Forms.Profile
         private TextBox textBox_currentPassword;
         private TextBox textBox_newPasswordAgain;
         private Label label4;
+        private Label label1;
     }
 }

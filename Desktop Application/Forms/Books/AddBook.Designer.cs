@@ -46,10 +46,14 @@ namespace Desktop_Application.Forms.Books
             dropDown_publisher = new ComboBox();
             textBox_author = new TextBox();
             textBox_category = new TextBox();
-            chooseAuthor = new Button();
-            chooseCategory = new Button();
+            button_chooseAuthor = new Button();
+            button_chooseCategory = new Button();
             save = new RoundedButton();
             cancel = new RoundedButton();
+            button_chooseImage = new Button();
+            textBox_image = new TextBox();
+            label1 = new Label();
+            label2 = new Label();
             header.SuspendLayout();
             SuspendLayout();
             // 
@@ -113,7 +117,7 @@ namespace Desktop_Application.Forms.Books
             // 
             textBox_isbn.BackColor = Color.WhiteSmoke;
             textBox_isbn.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_isbn.Location = new Point(125, 348);
+            textBox_isbn.Location = new Point(126, 391);
             textBox_isbn.Margin = new Padding(3, 4, 3, 4);
             textBox_isbn.MaxLength = 13;
             textBox_isbn.Name = "textBox_isbn";
@@ -134,7 +138,7 @@ namespace Desktop_Application.Forms.Books
             // 
             label_isbn.AutoSize = true;
             label_isbn.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label_isbn.Location = new Point(14, 352);
+            label_isbn.Location = new Point(15, 395);
             label_isbn.Name = "label_isbn";
             label_isbn.Size = new Size(67, 32);
             label_isbn.TabIndex = 36;
@@ -164,7 +168,7 @@ namespace Desktop_Application.Forms.Books
             // 
             label_publisher.AutoSize = true;
             label_publisher.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label_publisher.Location = new Point(14, 300);
+            label_publisher.Location = new Point(15, 343);
             label_publisher.Name = "label_publisher";
             label_publisher.Size = new Size(114, 32);
             label_publisher.TabIndex = 31;
@@ -197,7 +201,7 @@ namespace Desktop_Application.Forms.Books
             dropDown_publisher.DropDownStyle = ComboBoxStyle.DropDownList;
             dropDown_publisher.Font = new Font("Yu Gothic UI Semibold", 14F);
             dropDown_publisher.FormattingEnabled = true;
-            dropDown_publisher.Location = new Point(125, 296);
+            dropDown_publisher.Location = new Point(126, 339);
             dropDown_publisher.Margin = new Padding(3, 4, 3, 4);
             dropDown_publisher.MaxDropDownItems = 10;
             dropDown_publisher.Name = "dropDown_publisher";
@@ -226,30 +230,31 @@ namespace Desktop_Application.Forms.Books
             textBox_category.Size = new Size(383, 39);
             textBox_category.TabIndex = 46;
             // 
-            // chooseAuthor
+            // button_chooseAuthor
             // 
-            chooseAuthor.Location = new Point(515, 195);
-            chooseAuthor.Margin = new Padding(3, 4, 3, 4);
-            chooseAuthor.Name = "chooseAuthor";
-            chooseAuthor.Size = new Size(42, 43);
-            chooseAuthor.TabIndex = 3;
-            chooseAuthor.Text = "...";
-            chooseAuthor.UseVisualStyleBackColor = true;
-            chooseAuthor.Click += OpenChooseAuthor;
+            button_chooseAuthor.Location = new Point(515, 195);
+            button_chooseAuthor.Margin = new Padding(3, 4, 3, 4);
+            button_chooseAuthor.Name = "button_chooseAuthor";
+            button_chooseAuthor.Size = new Size(42, 43);
+            button_chooseAuthor.TabIndex = 3;
+            button_chooseAuthor.Text = "...";
+            button_chooseAuthor.UseVisualStyleBackColor = true;
+            button_chooseAuthor.Click += OpenChooseAuthor;
             // 
-            // chooseCategory
+            // button_chooseCategory
             // 
-            chooseCategory.Location = new Point(515, 245);
-            chooseCategory.Margin = new Padding(3, 4, 3, 4);
-            chooseCategory.Name = "chooseCategory";
-            chooseCategory.Size = new Size(42, 43);
-            chooseCategory.TabIndex = 4;
-            chooseCategory.Text = "...";
-            chooseCategory.UseVisualStyleBackColor = true;
-            chooseCategory.Click += OpenChooseCategory;
+            button_chooseCategory.Location = new Point(515, 245);
+            button_chooseCategory.Margin = new Padding(3, 4, 3, 4);
+            button_chooseCategory.Name = "button_chooseCategory";
+            button_chooseCategory.Size = new Size(42, 43);
+            button_chooseCategory.TabIndex = 4;
+            button_chooseCategory.Text = "...";
+            button_chooseCategory.UseVisualStyleBackColor = true;
+            button_chooseCategory.Click += OpenChooseCategory;
             // 
             // save
             // 
+            save.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             save.BackColor = Color.FromArgb(80, 77, 180);
             save.BackgroundColor = Color.FromArgb(80, 77, 180);
             save.BorderColor = Color.Transparent;
@@ -260,7 +265,7 @@ namespace Desktop_Application.Forms.Books
             save.FlatStyle = FlatStyle.Flat;
             save.Font = new Font("Yu Gothic UI Semibold", 14F);
             save.ForeColor = Color.White;
-            save.Location = new Point(184, 426);
+            save.Location = new Point(184, 458);
             save.Margin = new Padding(3, 4, 3, 4);
             save.Name = "save";
             save.Size = new Size(97, 48);
@@ -273,6 +278,7 @@ namespace Desktop_Application.Forms.Books
             // 
             // cancel
             // 
+            cancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             cancel.BackColor = Color.WhiteSmoke;
             cancel.BackgroundColor = Color.WhiteSmoke;
             cancel.BorderColor = Color.FromArgb(80, 77, 180);
@@ -282,7 +288,7 @@ namespace Desktop_Application.Forms.Books
             cancel.FlatStyle = FlatStyle.Flat;
             cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
             cancel.ForeColor = Color.Black;
-            cancel.Location = new Point(287, 426);
+            cancel.Location = new Point(287, 458);
             cancel.Margin = new Padding(3, 4, 3, 4);
             cancel.Name = "cancel";
             cancel.Size = new Size(97, 48);
@@ -291,16 +297,61 @@ namespace Desktop_Application.Forms.Books
             cancel.TextColor = Color.Black;
             cancel.UseVisualStyleBackColor = false;
             // 
+            // button_chooseImage
+            // 
+            button_chooseImage.Location = new Point(515, 292);
+            button_chooseImage.Margin = new Padding(3, 4, 3, 4);
+            button_chooseImage.Name = "button_chooseImage";
+            button_chooseImage.Size = new Size(42, 43);
+            button_chooseImage.TabIndex = 81;
+            button_chooseImage.Text = "...";
+            button_chooseImage.UseVisualStyleBackColor = true;
+            // 
+            // textBox_image
+            // 
+            textBox_image.BackColor = Color.WhiteSmoke;
+            textBox_image.Enabled = false;
+            textBox_image.Font = new Font("Yu Gothic UI Semibold", 14F);
+            textBox_image.Location = new Point(125, 292);
+            textBox_image.Margin = new Padding(3, 4, 3, 4);
+            textBox_image.Name = "textBox_image";
+            textBox_image.Size = new Size(383, 39);
+            textBox_image.TabIndex = 83;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label1.Location = new Point(14, 296);
+            label1.Name = "label1";
+            label1.Size = new Size(82, 32);
+            label1.TabIndex = 82;
+            label1.Text = "Image";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label2.Location = new Point(324, 296);
+            label2.Name = "label2";
+            label2.Size = new Size(168, 32);
+            label2.TabIndex = 84;
+            label2.Text = "Add book pics";
+            // 
             // AddBook
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(571, 487);
+            ClientSize = new Size(571, 519);
+            Controls.Add(label2);
+            Controls.Add(button_chooseImage);
+            Controls.Add(textBox_image);
+            Controls.Add(label1);
             Controls.Add(save);
             Controls.Add(cancel);
-            Controls.Add(chooseCategory);
-            Controls.Add(chooseAuthor);
+            Controls.Add(button_chooseCategory);
+            Controls.Add(button_chooseAuthor);
             Controls.Add(textBox_category);
             Controls.Add(textBox_author);
             Controls.Add(dropDown_publisher);
@@ -343,9 +394,13 @@ namespace Desktop_Application.Forms.Books
         private ComboBox dropDown_publisher;
         private TextBox textBox_author;
         private TextBox textBox_category;
-        private Button chooseAuthor;
-        private Button chooseCategory;
+        private Button button_chooseAuthor;
+        private Button button_chooseCategory;
         private RoundedButton save;
         private RoundedButton cancel;
+        private Button button_chooseImage;
+        private TextBox textBox_image;
+        private Label label1;
+        private Label label2;
     }
 }

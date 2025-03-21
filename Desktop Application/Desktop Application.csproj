@@ -118,6 +118,9 @@
     <None Update="SqlQueries\SelectAllBorrowing.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="SqlQueries\SelectRole.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="SqlQueries\SelectTopBorrowedBook.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

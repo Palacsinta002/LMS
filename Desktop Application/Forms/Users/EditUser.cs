@@ -22,6 +22,7 @@ public partial class EditUser : Form
         CloseThisWindow.Handle(this, close_btn);
         CloseThisWindow.Handle(this, cancel);
 
+        // Load data from grid
         var selectedRow = _users_grd.SelectedRows[0].Cells;
 
         textBox_firstName.Text = selectedRow["users_firstName"].Value.ToString();
@@ -29,9 +30,15 @@ public partial class EditUser : Form
         textBox_username.Text = selectedRow["users_username"].Value.ToString();
         dateOfBirth_datePicker.Text = selectedRow["users_dateOfBirth"].Value.ToString();
         textBox_address.Text = selectedRow["users_address"].Value.ToString();
-        checkBox_verify.Checked = selectedRow["users_verified"].Value.ToString() == "Yes" ? true : false;
+        checkBox_verify.Checked = selectedRow["users_verified"].Value.ToString() == "Yes";
 
+        // Set old username - If the user don't change the username, we don't check it
         _oldUsername = textBox_username.Text;
+
+        // Roles - This is only visible for admins
+        var result = HandleQueries.SelectFromFile("SelectRole");
+        HandleGrids.Fill(comboBox_role, result);
+        comboBox_role.Text = selectedRow["users_role"].Value.ToString();
     }
 
     private void Save(object sender, EventArgs e)
