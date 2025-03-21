@@ -11,7 +11,6 @@ export default function MainTable() {
     const getData = async () => {
       try {
         const response = await axios.get(`/api/top-borrowings/5`);
-        console.log(response.data);
         setData(response.data);
       } catch (error) {
         console.error("Error fetching books:", error);

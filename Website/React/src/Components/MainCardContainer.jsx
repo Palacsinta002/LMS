@@ -14,7 +14,6 @@ export default function MainCardContainer() {
     const getData = async () => {
       try {
         const response = await axios.get(`/api/all-books`);
-        console.log(response.data);
         setBooks(response.data);
       } catch (error) {
         console.error("Error fetching books:", error);
@@ -29,7 +28,6 @@ export default function MainCardContainer() {
     const getData = async () => {
       try {
         const response = await axios.get(`/api/all-users`);
-        console.log(response.data);
         setMembers(response.data);
       } catch (error) {
         console.error("Error fetching books:", error);
@@ -44,7 +42,6 @@ export default function MainCardContainer() {
     const getData = async () => {
       try {
         const response = await axios.get(`/api/all-borrowings`);
-        console.log(response.data);
         setBorrows(response.data);
       } catch (error) {
         console.error("Error fetching books:", error);

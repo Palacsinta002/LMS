@@ -5,8 +5,8 @@ import { useState, useEffect } from 'react';
 import { Link } from "react-scroll";
 
 export default function HeroBrowseBooks() {
-    const [books, setBooks] = useState([]);
-    const [selectedBook, setSelectedBook] = useState();
+    const [books, setBooks] = useState("");
+    const [selectedBook, setSelectedBook] = useState("");
     const [loading, setLoading] = useState(true);
 
     const token = sessionStorage.getItem("token")
@@ -14,8 +14,7 @@ export default function HeroBrowseBooks() {
     useEffect(() => {
         const getData = async () => {
             try {
-                const response = await axios.get("/api/books");
-                console.log(response.data)
+                const response = await axios.get("/api/available-books");
                 setBooks(response.data);
             } catch (error) {
                 console.error("Error fetching books:", error);
@@ -26,12 +25,14 @@ export default function HeroBrowseBooks() {
         getData();
     }, []);
 
+
     async function handleReserve() {
         const response = await axios.post("/api/reservation",
-            { book: selectedBook },
             {
-                headers:
-                {
+                isbn: selectedBook
+            },
+            {
+                headers: {
                     "Content-type": "application/json",
                     "Authorization": `Bearer ${token}`
                 }
@@ -51,7 +52,7 @@ export default function HeroBrowseBooks() {
             ) : (
                 <div id="browsebooks" className="cards-list">
                     {books.map((item, index) => (
-                        <Cards key={index} isbn={item.ISBN} category={item.Category} title={item.Title} author={item.Authors} onChange={(e) => setSelectedBook(e.event.target)} onSubmit={handleReserve} />
+                        <Cards key={index} isbn={item.ISBN} category={item.Category} title={item.Title} author={item.Authors} onClick={(e) => setSelectedBook(e.item.ISBN)} onSubmit={handleReserve} />
                     ))}
                 </div>
             )}
