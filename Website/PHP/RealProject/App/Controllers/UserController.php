@@ -33,6 +33,7 @@ class UserController{
         User::checkEmail($body["email"]);
         User::checkFirstLastName($body["firstname"]);
         User::checkFirstLastName($body["lastname"]);
+        User::validateAddress($body["address"]);
         $body["password"] = User::checkPassword($body["password"],$body["passwordAgain"]);
         User::checkUsername($body["username"]);
         $verificationCode = User::createAuthCode();
