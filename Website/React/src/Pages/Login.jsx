@@ -77,7 +77,7 @@ export default function Login() {
           </div>
           {error && <p className="error-message">{error}</p>}
           <span><Link to="/forgot-password" className="link1">Forgot your password?</Link></span>
-          <input type="submit" value="Sign in" disabled={loading} />
+          <input type="submit" value={loading ? "Logging in..." : "Login"} disabled={loading} />
           <span><Link to="/register" className="link2">Create new account?</Link></span>
         </form>
       </div>

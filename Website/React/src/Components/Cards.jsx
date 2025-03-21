@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Cards({ index, isbn, title, author }) {
+export default function Cards({ index, isbn, title, author, setSelectedBook, handleReserve }) {
   return (
     <div key={index} className="home-card">
         <div className="home-card-image">
@@ -9,7 +9,7 @@ export default function Cards({ index, isbn, title, author }) {
         <div className="home-card-content">
             <h2>{title}</h2>
             <h3>{author}</h3>
-            <input type="button" value="Reserve" />
+            <input type="button" value="Reserve" onChange={setSelectedBook} onSubmit={handleReserve} />
         </div>
     </div>
   )

@@ -10,12 +10,6 @@ export default function MainCardContainer() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const cardData = [
-    { icon: "fa-bookmark", title: "Books", count: books },
-    { icon: "fa-user", title: "Members", count: members },
-    { icon: "fa-search", title: "Borrows", count: borrows },
-  ];
-
   useEffect(() => {
     const getData = async () => {
       try {
@@ -34,7 +28,7 @@ export default function MainCardContainer() {
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await axios.get(`/api/all-user`);
+        const response = await axios.get(`/api/all-users`);
         console.log(response.data);
         setMembers(response.data);
       } catch (error) {
@@ -66,21 +60,21 @@ export default function MainCardContainer() {
     <div className="card-container">
       {books.map((item, index) => (
         <div key={index} className="cards">
-          <i className="fa-bookmark"></i>
+          <i className="fas fa-bookmark"></i>
           <h2>Books</h2>
           <p>{item.books}</p>
         </div>
       ))}
       {members.map((item, index) => (
         <div key={index} className="cards">
-          <i className="fa-user"></i>
+          <i className="fas fa-user"></i>
           <h2>Members</h2>
           <p>{item.users}</p>
         </div>
       ))}
       {borrows.map((item, index) => (
         <div key={index} className="cards">
-          <i className="fa-search"></i>
+          <i className="fas fa-search"></i>
           <h2>Borrowings</h2>
           <p>{item.borrowings}</p>
         </div>

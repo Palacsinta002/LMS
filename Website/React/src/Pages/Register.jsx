@@ -113,7 +113,7 @@ export default function Register() {
           {error && <p className="error-message">{error}</p>}
           <center>
             <div className="actions">
-              <input type="submit" value={loading ? "Signing up..." : "Sign up"} disabled={loading} />
+              <input type="submit" value={loading ? "Registering..." : "Register"} disabled={loading} />
               {loading && <div className="spinner"></div>}
               <span><Link to="/login" className="link2">I already have an account!</Link></span>
             </div>

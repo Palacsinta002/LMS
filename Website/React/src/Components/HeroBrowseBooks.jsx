@@ -6,7 +6,10 @@ import { Link } from "react-scroll";
 
 export default function HeroBrowseBooks() {
     const [books, setBooks] = useState([]);
+    const [selectedBook, setSelectedBook] = useState();
     const [loading, setLoading] = useState(true);
+
+    const token = sessionStorage.getItem("token")
 
     useEffect(() => {
         const getData = async () => {
@@ -22,6 +25,19 @@ export default function HeroBrowseBooks() {
         };
         getData();
     }, []);
+
+    async function handleReserve() {
+        const response = await axios.post("/api/reservation",
+            { book: selectedBook },
+            {
+                headers:
+                {
+                    "Content-type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+    }
+
     return (
         <div>
             <div className="BrowseBooks">
@@ -35,7 +51,7 @@ export default function HeroBrowseBooks() {
             ) : (
                 <div id="browsebooks" className="cards-list">
                     {books.map((item, index) => (
-                        <Cards key={index} isbn={item.ISBN} title={item.Title} author={item.Authors} />
+                        <Cards key={index} isbn={item.ISBN} title={item.Title} author={item.Authors} onChange={(e) => setSelectedBook(e.event.target)} onSubmit={handleReserve} />
                     ))}
                 </div>
             )}
