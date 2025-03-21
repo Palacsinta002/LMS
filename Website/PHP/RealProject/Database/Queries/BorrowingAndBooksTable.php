@@ -41,9 +41,13 @@ class BorrowingAndBooksTable extends Table{
         ->execute(true);
     }
     public static function selectAvailableBooks(){
-        $subQuery = self::select(["borrowings"], ["ISBN"])
-        ->where(["returnDate"], ["IS"], ["NULL"], ["i"])
-        ->toString("borrowed_books");
+        $subQueryBorrowed = self::select(["borrowings"], ["ISBN"])
+            ->where(["returnDate"], ["IS"], ["NULL"], ["i"])
+            ->toString("borrowed_books");
+
+        $subQueryReserved = self::select(["reservation"], ["ISBN"]) 
+            ->toString("reserved_books");
+
         return self::select(["books"],["books.ISBN","publishers.Publisher","books.Title","GROUP_CONCAT(DISTINCT Authors.Author SEPARATOR ',') as 'Authors'","GROUP_CONCAT(DISTINCT categories.category SEPARATOR ',') as 'Category'","books.publicationYear"])
         ->innerJoin("borrowings",["books.ISBN"],["="],["borrowings.ISBN"])
         ->innerJoin("Publishers",["Publishers.ID"],["="],["books.PublisherID"])
@@ -51,8 +55,9 @@ class BorrowingAndBooksTable extends Table{
         ->innerJoin("Authors",["Books_Authors.AuthorID"],["="],["Authors.ID"])
         ->innerJoin("Books_Categories",["Books.ISBN"],["="],["Books_Categories.ISBN"])
         ->innerJoin("Categories",["Books_Categories.CategoryID"],["="],["Categories.ID"])
-        ->leftJoin($subQuery,["books.ISBN"],["="],["borrowed_books.ISBN"])
-        ->where(["borrowed_books.ISBN"], ["IS"], ["NULL"], ["i"])
+        ->leftJoin($subQueryBorrowed, ["books.ISBN"], ["="], ["borrowed_books.ISBN"])
+        ->leftJoin($subQueryReserved, ["books.ISBN"], ["="], ["reserved_books.ISBN"])
+        ->where(["borrowed_books.ISBN","reserved_books.ISBN"], ["IS","IS"], ["NULL","NULL"], ["i","i"])
         ->groupBy(["publishers.Publisher","books.Title","books.publicationYear"])
         ->execute(true);
     }
