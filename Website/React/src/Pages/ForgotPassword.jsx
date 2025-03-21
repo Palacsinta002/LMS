@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import FormCard from '../Components/FormCard';
-import "./Verify.css";
+import "./register.css";
 import { useNavigate } from 'react-router-dom';
 
 export default function ForgotPassword() {
-  const [code, setCode] = useState("");
+  const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ export default function ForgotPassword() {
       const response = await axios.post(
         "/api/forgot-password",
         {
-          verifyCode: code
+          email: email
         },
         {
           headers: { "Content-Type": "application/json" },
@@ -28,35 +28,35 @@ export default function ForgotPassword() {
 
       console.log(response.data);
       if (response.data.Success) {
-        navigate("/login");
+        navigate("/change-password");
       } else {
         setError(response.data.message || "Verification failed!");
       }
     } catch (error) {
-      console.error("Verification error:", error);
-      setError("Verification error!");
+      console.error("Email error:", error);
+      setError("Email error!");
     } finally {
       setLoading(false);
     }
   }
 
   return (
-    <div className="fp">
-      <div className="fp-header">
-        <h1 className="fp-top">Welcome to</h1>
-        <h2 className="fp-bottom">Library Management System</h2>
+    <div className="verify">
+      <div className="verify-header">
+        <h1 className="verify-top">Welcome back to</h1>
+        <h2 className="verify-bottom">Library Management System</h2>
       </div>
-      <div className="fp-container">
+      <div className="verify-container">
         <i className="fa fa-check-circle"></i>
         <h1>Forgot your Password?</h1>
         <form onSubmit={HandleSubmit}>
-          <div className="fp-card-holder">
-            <FormCard className="fp-card" label="Verification code" type="number" onChange={(e) => setCode(e.target.value)} />
+          <div className="verify-card-holder">
+            <FormCard className="verify-card" label="Email" type="email" onChange={(e) => setEmail(e.target.value)} />
           </div>
           {error && <p className="error-message">{error}</p>}
           <center>
             <div className="actions">
-              <input type="submit" value="Verify" disabled={loading} />
+              <input type="submit" value="Send Email" disabled={loading} />
             </div>
           </center>
         </form>
