@@ -1,65 +1,79 @@
 table Publishers{
   id int [primary key, increment]
-  publisher varchar(100) [not null]
+  Publisher varchar(255) [not null]
 }
 Table Authors{
   id int [primary key, increment]
-  author varchar(255) [not null]
+  Author varchar(255) [not null]
 }
 Table Categories{
   id int [primary key, increment]
-  category varchar(100) [not null]
+  Category varchar(100) [not null]
 }
 Table Roles{
   id int [primary key, increment]
-  role varchar(20) [not null]
+  Role varchar(20) [not null]
 }
 Table Users{
   id int [primary key, increment]
-  firstName varchar(100) [not null]
-  lastName varchar(100) [not null]
-  email varchar(100) [not null]
-  username varchar(100) [not null]
-  password varchar(128) [not null]
-  roleID int [not null]
+  FirstName varchar(100) [not null]
+  LastName varchar(100) [not null]
+  Email varchar(100) [not null]
+  Username varchar(100) [not null]
+  Password varchar(128) [not null]
+  Address varchar(255) [not null]
+  DateOfBirth Date [not null]
+  Verified tinyint(1) [default: 0]
+  EmailVerified tinyint(1) [default: 0]
+  EmailVerificationCode varchar(6) [default: 0]
+  RoleID int [not null]
 }
 Table Books {
   ISBN bigint(13) [primary key]
-  pusblisherID int [not null]
-  title varchar(255) [not null]
-  publicationYear int(4) [not null]
+  PublisherID int [not null]
+  Title varchar(255) [not null]
+  PublicationYear int(4) [not null]
 }
 Table Borrowings{
   id int [primary key, increment]
   ISBN bigint [not null]
-  userID int [not null]
-  borrowDate date [not null]
-  returnDate date
-  dueDate date [not null]
+  UserID int [not null]
+  BorrowDate date [not null]
+  DueDate date [not null]
+  ReturnDate date
 }
-Table Borrowings_backup{
+Table Borrowings_storage{
   id int
+  UserID int
+  Username varchar(25)
+  Title varchar(255)
   ISBN bigint
-  userID int
-  borrowDate date
-  returnDate date
-  dueDate date
+  BorrowDate date
+  DueDate date
+  ReturnDate date
 }
 Table Books_Authors{
-  Books_ISBN bigint(13) [primary key, not null]
-  Authors_id int(13) [primary key, not null]
+  ISBN bigint(13) [primary key, not null]
+  AuthorID int(13) [primary key, not null]
 }
 Table Books_Categories{
-  Books_ISBN bigint(13) [primary key, not null]
-  Categories_id int(13) [primary key, not null]
+  ISBN bigint(13) [primary key, not null]
+  CategoryID int(13) [primary key, not null]
+}
+Table Reservations{
+  id int [primary key, increment]
+  ISBN bigint [not null, unique, ref: - Books.ISBN]
+  UserID int [not null]
+  Reservation_start_time DATE [default: `CURRENT_DATE`]
+  Reservation_end_time DATE [default: `CURRENT_DATE + INTERVAL 5 DAY`]
 }
 
-
 Ref: "Books"."ISBN" < "Borrowings"."ISBN"
-  Ref: "Borrowings"."userID" > "Users"."id"
-    Ref: "Users"."roleID" > "Roles"."id"
-  Ref: "Books"."pusblisherID" > "Publishers"."id"
-  Ref: "Books"."ISBN" < "Books_Authors"."Books_ISBN"
-    Ref: "Books_Authors"."Authors_id" > "Authors"."id"
-  Ref: "Books"."ISBN" < "Books_Categories"."Books_ISBN"
-    Ref: "Books_Categories"."Categories_id" > "Categories"."id"
+  Ref: "Borrowings"."UserID" > "Users"."id"
+    Ref: "Users"."RoleID" > "Roles"."id"
+  Ref: "Books"."PublisherID" > "Publishers"."id"
+  Ref: "Books"."ISBN" < "Books_Authors"."ISBN"
+    Ref: "Books_Authors"."AuthorID" > "Authors"."id"
+  Ref: "Books"."ISBN" < "Books_Categories"."ISBN"
+    Ref: "Books_Categories"."CategoryID" > "Categories"."id"
+  Ref: "Reservations"."UserID" > "Users"."id"

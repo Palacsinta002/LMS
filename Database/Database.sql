@@ -104,13 +104,13 @@ CREATE TABLE Borrowings_storage (
     ReturnDate DATE
 );
 
--- Create Reservation table
-CREATE TABLE Reservation(
+-- Create Reservations table
+CREATE TABLE Reservations(
     id INT AUTO_INCREMENT PRIMARY KEY,
-    ISBN BIGINT(13) NOT NULL,
+    ISBN BIGINT(13) NOT NULL unique,
     UserID INT NOT NULL,
-    Reservation_start_time DATE DEFAULT (CURRENT_DATE),
-    Reservation_end_time DATE DEFAULT (CURRENT_DATE + INTERVAL 5 DAY),
+    ReservationStartDate DATE DEFAULT (CURRENT_DATE),
+    ReservationEndDate DATE DEFAULT (CURRENT_DATE + INTERVAL 5 DAY),
     FOREIGN KEY (ISBN) REFERENCES Books(ISBN) ON DELETE CASCADE,
     FOREIGN KEY (UserID) REFERENCES Users(ID) ON DELETE CASCADE
 );

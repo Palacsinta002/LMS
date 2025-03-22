@@ -45,7 +45,7 @@ class BorrowingAndBooksTable extends Table{
             ->where(["returnDate"], ["IS"], ["NULL"], ["i"])
             ->toString("borrowed_books");
 
-        $subQueryReserved = self::select(["reservation"], ["ISBN"]) 
+        $subQueryReserved = self::select(["reservations"], ["ISBN"]) 
             ->toString("reserved_books");
 
         return self::select(["books"],["books.ISBN","publishers.Publisher","books.Title","GROUP_CONCAT(DISTINCT Authors.Author SEPARATOR ',') as 'Authors'","GROUP_CONCAT(DISTINCT categories.category SEPARATOR ',') as 'Category'","books.publicationYear"])
