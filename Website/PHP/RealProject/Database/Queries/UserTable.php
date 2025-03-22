@@ -49,7 +49,12 @@ class UserTable extends Table{
     public static function deleteUserRow($ID){
         self::delete("users")->where(["id"],["="],[$ID],["i"])->execute(false);
     }
-
+    public static function selectByEmail($email, $fetch = true){
+        return self::select(["users"],["id","username"])->where(["email"],["="],[$email],["s"])->execute(true,$fetch);
+    }
+    public static function changePassword($password,$userID){
+        return self::update("users",["password"],[$password],["s"])->where(["ID"],["="],[$userID],["i"])->execute(false,false);
+    }
     
 }
 

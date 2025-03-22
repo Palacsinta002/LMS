@@ -7,13 +7,13 @@ use ApiResponse\Response;
 use Firebase\JWT\Key;
 class Token{
 
-    public static function makeToken($userid,$username){
+    public static function makeToken($userid,$username, $expireTime = 3600){
         Env::load();
         $payload = [
             "sub"=> $username,
             "iss" => "http://localhost/5173",
             "iat" => time(),
-            "exp" => time() + 3600,
+            "exp" => time() + $expireTime,
             "userID"=> $userid,
         ];
         return JWT::encode($payload, $_ENV["JWT_KEY"], "HS256");

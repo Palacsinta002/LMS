@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ . "/InputMethods.php";
 require __DIR__ . '/vendor/autoload.php';
 use Router\Router;
 use App\Controllers\UserController;
@@ -16,10 +15,12 @@ $requesturi = explode("/", trim($_SERVER["REQUEST_URI"],"/"));
 Router::post("/api/login", UserController::class, "login");
 Router::post("/api/register", UserController::class,"register");
 Router::post("/api/verify-account", UserController::class,"verifyAccount");
-
+Router::post("/api/forgot-password", UserController::class,"forgotPassword");
 Router::get("/api/user", UserController::class,"userData", true);
 Router::put("/api/update-user", UserController::class,"updateUser");
+Router::put("/api/change-password", UserController::class,"changePassword");
 Router::delete("/api/delete-user", UserController::class,"deleteUser");
+
 
 
 Router::post("/api/borrowings", BorrowingsController::class,"getFromDBByParams");

@@ -107,6 +107,49 @@ class UserController{
         UserTable::deleteUserRow($userID);
         Response::httpSuccess(200,["Success" => "User deleted"]);
     }
+
+    public static function forgotPassword($body){
+        $body = Helper::validateTheInputArray($body);
+        if (!($body = User::checkRequiredData($body,["email"],))){
+            Response::httpError(400,21);
+        }
+        User::validateEmail($body["email"]);
+        if (($user = UserTable::selectByEmail($body["email"],false))->num_rows == 0){
+            Response::httpError(400,0);
+        };
+        $data = $user->fetch_assoc();
+        $token = Token::makeToken($data["id"],$data["username"],900);
+        $bodyOfHtml = "<html>
+        <body style='font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px;'>
+            <div style='max-width: 600px; background: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); margin: auto;'>
+                <div style='text-align: center; font-size: 22px; color: #333; font-weight: bold;'>Password Reset Request</div>
+                <div style='margin-top: 20px; font-size: 16px; color: #555;'>
+                    <p>Hello, ".$data["username"]."</p>
+                    <p>A password reset request was made for your account. If you initiated this request, please click the button below to reset your password:</p>
+                    <a href='http://localhost:5173/change-password/$token' style='display: block; width: 200px; text-align: center; background: #007bff; color: white; padding: 12px; border-radius: 5px; text-decoration: none; font-weight: bold; margin: 20px auto;'>Reset Password</a>
+                    <p>If you did not request this, please ignore this email. Your account remains secure.</p>
+                    <p>For security reasons, this link will expire in 15 minutes.</p>
+                </div>
+                <div style='font-size: 12px; text-align: center; color: #999; margin-top: 20px;'>
+                    <p>If you have any concerns, please contact our support team.</p>
+                    <p>Thank you, <br> LMS</p>
+                </div>
+            </div>
+        </body>
+        </html>";
+        SendEmail::sendEmail($body["email"],$data["username"],"Forget password",$bodyOfHtml);
+        Response::httpSuccess(200,["Success"=> "Email sent"]);
+
+    }
+    public static function changePassword($body,$userID){
+        $body = Helper::validateTheInputArray($body);
+        if (!($body = User::checkRequiredData($body,["password","passwordAgain"]))){
+            Response::httpError(400,21);
+        }
+        $newPasswordHash = User::checkPassword($body["password"],$body["passwordAgain"]);
+        UserTable::changePassword($newPasswordHash,$userID);
+        Response::httpSuccess(200,["Success"=> "Password updated"]);
+    }
 }
 
 

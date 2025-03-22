@@ -21,7 +21,7 @@ class User extends Model{
     }
 
     public static function checkUsername($username){
-        if (!preg_match('/^[a-zA-Z][a-zA-Z0-9._]{2,19}$/', $username)){
+        if (!preg_match('/^[a-zA-Z][a-zA-Z0-9._]{2,25}$/', $username)){
             Response::httpError(400,3);
         }
         if (UserTable::rowExists(["username"],["="],[$username],["s"])){
@@ -32,9 +32,8 @@ class User extends Model{
 
     public static function checkEmail($email){
         $email = Helper::validateTheInput($email);
-        if (!preg_match("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $email)) {
-            Response::httpError(400,0);
-        }
+        
+        self::validateEmail($email);
         if (UserTable::rowExists(["email"],["="],[$email],["s"])) {
             Response::httpError(400,1);
         }
@@ -101,6 +100,11 @@ class User extends Model{
             Response::httpError(400,30);
         }
         return true;
+    }
+    public static function validateEmail($email){
+        if (!preg_match("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $email)) {
+            Response::httpError(400,0);
+        }
     }
 }
 ?>
