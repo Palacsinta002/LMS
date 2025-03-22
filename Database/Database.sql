@@ -168,17 +168,19 @@ END $$
 DELIMITER ;
 
 
-/*
--- delete user if it is not verified itself
+
+-- delete reservation if its expired
 SET GLOBAL event_scheduler = ON;
 
-DROP EVENT IF EXISTS delete_unverified_users; 
+DROP EVENT IF EXISTS delete_expired_reservation; 
 
-CREATE EVENT delete_unverified_users
-ON SCHEDULE EVERY 1 HOUR
+CREATE EVENT delete_expired_reservation
+ON SCHEDULE EVERY 1 DAY
+STARTS TIMESTAMP(CURRENT_DATE + INTERVAL 1 DAY) + INTERVAL 3 HOUR 
 DO
-DELETE FROM Users WHERE Verified = 0 AND created_at < NOW() - INTERVAL 24 HOUR;
-*/
+DELETE FROM Reservations 
+WHERE ReservationEndDate < now();
+
 
 
 -- Insert values into Roles table
