@@ -165,7 +165,6 @@ namespace Desktop_Application.Forms.Profile
             textBox_newPassword.PasswordChar = '*';
             textBox_newPassword.Size = new Size(153, 32);
             textBox_newPassword.TabIndex = 2;
-            textBox_newPassword.KeyPress += OnKeyPress;
             // 
             // textBox_currentPassword
             // 
@@ -177,7 +176,6 @@ namespace Desktop_Application.Forms.Profile
             textBox_currentPassword.PasswordChar = '*';
             textBox_currentPassword.Size = new Size(153, 32);
             textBox_currentPassword.TabIndex = 1;
-            textBox_currentPassword.KeyPress += OnKeyPress;
             // 
             // textBox_newPasswordAgain
             // 
@@ -189,7 +187,6 @@ namespace Desktop_Application.Forms.Profile
             textBox_newPasswordAgain.PasswordChar = '*';
             textBox_newPasswordAgain.Size = new Size(153, 32);
             textBox_newPasswordAgain.TabIndex = 3;
-            textBox_newPasswordAgain.KeyPress += OnKeyPress;
             // 
             // label4
             // 
@@ -239,7 +236,6 @@ namespace Desktop_Application.Forms.Profile
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AddBook";
             Load += OnLoad;
-            KeyPress += OnKeyPress;
             header.ResumeLayout(false);
             header.PerformLayout();
             ResumeLayout(false);

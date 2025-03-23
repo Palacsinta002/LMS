@@ -18,6 +18,8 @@ public partial class Login : Form
         DragWindow.Handle(this, header, title);
         BorderPaint.Handle(this);
         CloseThisWindow.Handle(this, close_btn);
+        HandleKeys.Handle(this, Keys.Enter, LoginCheck);
+        this.KeyPreview = true;
 
         _username = "";
         _password = "";
@@ -128,10 +130,5 @@ public partial class Login : Form
             password_textBox.PasswordChar = '*';
             showPassword_btn.Image = Image.FromFile(@"Resources\showIcon.png");
         }
-    }
-
-    private void OnKeyPress(object sender, KeyPressEventArgs e)
-    {
-        if (e.KeyChar == 13) LoginCheck(sender, e);
     }
 }

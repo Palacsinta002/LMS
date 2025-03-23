@@ -12,7 +12,7 @@ class HandleKeys
         _key = key;
         _function = function;
 
-        _form.KeyUp += RunFunction;
+        _form.KeyDown += RunFunction;
     }
 
     public static void Handle(Form form, Keys key, Action<object, EventArgs> function)

@@ -66,7 +66,6 @@ namespace Desktop_Application
             username_textBox.Size = new Size(235, 32);
             username_textBox.TabIndex = 0;
             username_textBox.TextChanged += UsernameTextChanged;
-            username_textBox.KeyPress += OnKeyPress;
             // 
             // password_textBox
             // 
@@ -78,7 +77,6 @@ namespace Desktop_Application
             password_textBox.Size = new Size(235, 32);
             password_textBox.TabIndex = 1;
             password_textBox.TextChanged += PasswordTextChanged;
-            password_textBox.KeyPress += OnKeyPress;
             // 
             // username_label
             // 
@@ -108,7 +106,7 @@ namespace Desktop_Application
             header.Controls.Add(close_btn);
             header.Location = new Point(1, 1);
             header.Name = "header";
-            header.Size = new Size(283, 43);
+            header.Size = new Size(282, 43);
             header.TabIndex = 7;
             // 
             // close_btn
@@ -127,7 +125,7 @@ namespace Desktop_Application
             close_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             close_btn.ForeColor = Color.White;
             close_btn.Image = (Image)resources.GetObject("close_btn.Image");
-            close_btn.Location = new Point(238, 7);
+            close_btn.Location = new Point(237, 7);
             close_btn.Name = "close_btn";
             close_btn.Size = new Size(36, 35);
             close_btn.TabIndex = 24;

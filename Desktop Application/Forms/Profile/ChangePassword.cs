@@ -21,6 +21,7 @@ public partial class ChangePassword : Form
         CloseThisWindow.Handle(this, cancel);
         HandleKeys.Handle(this, Keys.Enter, Save);
         HandleKeys.Handle(this, Keys.Escape, (s, e) => this.Close());
+        this.KeyPreview = true;
     }
 
     private void Save(object sender, EventArgs e)
@@ -74,10 +75,5 @@ public partial class ChangePassword : Form
     {
         PasswordRequirements passwordRequirements = new();
         passwordRequirements.ShowDialog();
-    }
-
-    private void OnKeyPress(object sender, KeyPressEventArgs e)
-    {
-        if (e.KeyChar == 13) Save(sender, e);
     }
 }
