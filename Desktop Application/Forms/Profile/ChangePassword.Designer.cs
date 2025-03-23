@@ -42,13 +42,13 @@ namespace Desktop_Application.Forms.Profile
             textBox_currentPassword = new TextBox();
             textBox_newPasswordAgain = new TextBox();
             label4 = new Label();
-            label1 = new Label();
+            button_pwdRequirements = new Button();
             header.SuspendLayout();
             SuspendLayout();
             // 
             // save
             // 
-            save.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            save.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             save.BackColor = Color.FromArgb(80, 77, 180);
             save.BackgroundColor = Color.FromArgb(80, 77, 180);
             save.BorderColor = Color.Transparent;
@@ -59,10 +59,9 @@ namespace Desktop_Application.Forms.Profile
             save.FlatStyle = FlatStyle.Flat;
             save.Font = new Font("Yu Gothic UI Semibold", 14F);
             save.ForeColor = Color.White;
-            save.Location = new Point(197, 263);
-            save.Margin = new Padding(3, 4, 3, 4);
+            save.Location = new Point(172, 197);
             save.Name = "save";
-            save.Size = new Size(97, 48);
+            save.Size = new Size(85, 36);
             save.TabIndex = 8;
             save.TabStop = false;
             save.Text = "Save";
@@ -72,7 +71,7 @@ namespace Desktop_Application.Forms.Profile
             // 
             // cancel
             // 
-            cancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            cancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             cancel.BackColor = Color.WhiteSmoke;
             cancel.BackgroundColor = Color.WhiteSmoke;
             cancel.BorderColor = Color.FromArgb(80, 77, 180);
@@ -82,10 +81,9 @@ namespace Desktop_Application.Forms.Profile
             cancel.FlatStyle = FlatStyle.Flat;
             cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
             cancel.ForeColor = Color.Black;
-            cancel.Location = new Point(300, 263);
-            cancel.Margin = new Padding(3, 4, 3, 4);
+            cancel.Location = new Point(262, 197);
             cancel.Name = "cancel";
-            cancel.Size = new Size(97, 48);
+            cancel.Size = new Size(85, 36);
             cancel.TabIndex = 9;
             cancel.Text = "Cancel";
             cancel.TextColor = Color.Black;
@@ -95,30 +93,30 @@ namespace Desktop_Application.Forms.Profile
             // 
             label_publisher.AutoSize = true;
             label_publisher.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label_publisher.Location = new Point(12, 101);
+            label_publisher.Location = new Point(10, 76);
             label_publisher.Name = "label_publisher";
-            label_publisher.Size = new Size(206, 32);
+            label_publisher.Size = new Size(162, 25);
             label_publisher.TabIndex = 90;
             label_publisher.Text = "Current Password";
             // 
             // header
             // 
+            header.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             header.BackColor = Color.White;
             header.Controls.Add(title);
             header.Controls.Add(close_btn);
             header.Location = new Point(1, 1);
-            header.Margin = new Padding(3, 4, 3, 4);
             header.Name = "header";
-            header.Size = new Size(592, 73);
+            header.Size = new Size(363, 55);
             header.TabIndex = 87;
             // 
             // title
             // 
             title.AutoSize = true;
             title.Font = new Font("Yu Gothic UI Semibold", 16F);
-            title.Location = new Point(177, 15);
+            title.Location = new Point(78, 11);
             title.Name = "title";
-            title.Size = new Size(232, 37);
+            title.Size = new Size(188, 30);
             title.TabIndex = 2;
             title.Text = "Change Password";
             // 
@@ -138,10 +136,9 @@ namespace Desktop_Application.Forms.Profile
             close_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             close_btn.ForeColor = Color.White;
             close_btn.Image = (Image)resources.GetObject("close_btn.Image");
-            close_btn.Location = new Point(538, 13);
-            close_btn.Margin = new Padding(3, 4, 3, 4);
+            close_btn.Location = new Point(316, 10);
             close_btn.Name = "close_btn";
-            close_btn.Size = new Size(41, 47);
+            close_btn.Size = new Size(36, 35);
             close_btn.TabIndex = 25;
             close_btn.TabStop = false;
             close_btn.TextColor = Color.White;
@@ -151,9 +148,9 @@ namespace Desktop_Application.Forms.Profile
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label2.Location = new Point(12, 151);
+            label2.Location = new Point(10, 113);
             label2.Name = "label2";
-            label2.Size = new Size(172, 32);
+            label2.Size = new Size(136, 25);
             label2.TabIndex = 86;
             label2.Text = "New Password";
             // 
@@ -161,65 +158,68 @@ namespace Desktop_Application.Forms.Profile
             // 
             textBox_newPassword.BackColor = Color.WhiteSmoke;
             textBox_newPassword.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_newPassword.Location = new Point(222, 148);
-            textBox_newPassword.Margin = new Padding(3, 4, 3, 4);
+            textBox_newPassword.Location = new Point(194, 111);
             textBox_newPassword.MaxLength = 16;
             textBox_newPassword.Name = "textBox_newPassword";
             textBox_newPassword.PasswordChar = '*';
-            textBox_newPassword.Size = new Size(358, 39);
+            textBox_newPassword.Size = new Size(153, 32);
             textBox_newPassword.TabIndex = 2;
             // 
             // textBox_currentPassword
             // 
             textBox_currentPassword.BackColor = Color.WhiteSmoke;
             textBox_currentPassword.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_currentPassword.Location = new Point(222, 101);
-            textBox_currentPassword.Margin = new Padding(3, 4, 3, 4);
+            textBox_currentPassword.Location = new Point(194, 76);
             textBox_currentPassword.MaxLength = 16;
             textBox_currentPassword.Name = "textBox_currentPassword";
             textBox_currentPassword.PasswordChar = '*';
-            textBox_currentPassword.Size = new Size(358, 39);
+            textBox_currentPassword.Size = new Size(153, 32);
             textBox_currentPassword.TabIndex = 1;
             // 
             // textBox_newPasswordAgain
             // 
             textBox_newPasswordAgain.BackColor = Color.WhiteSmoke;
             textBox_newPasswordAgain.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_newPasswordAgain.Location = new Point(222, 195);
-            textBox_newPasswordAgain.Margin = new Padding(3, 4, 3, 4);
+            textBox_newPasswordAgain.Location = new Point(194, 146);
             textBox_newPasswordAgain.MaxLength = 16;
             textBox_newPasswordAgain.Name = "textBox_newPasswordAgain";
             textBox_newPasswordAgain.PasswordChar = '*';
-            textBox_newPasswordAgain.Size = new Size(358, 39);
+            textBox_newPasswordAgain.Size = new Size(153, 32);
             textBox_newPasswordAgain.TabIndex = 3;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label4.Location = new Point(12, 198);
+            label4.Location = new Point(10, 148);
             label4.Name = "label4";
-            label4.Size = new Size(186, 32);
+            label4.Size = new Size(147, 25);
             label4.TabIndex = 101;
             label4.Text = "Password Again";
             // 
-            // label1
+            // button_pwdRequirements
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label1.Location = new Point(415, 151);
-            label1.Name = "label1";
-            label1.Size = new Size(165, 32);
-            label1.TabIndex = 102;
-            label1.Text = "Requirements";
+            button_pwdRequirements.BackColor = Color.WhiteSmoke;
+            button_pwdRequirements.Cursor = Cursors.Hand;
+            button_pwdRequirements.FlatAppearance.BorderSize = 0;
+            button_pwdRequirements.FlatAppearance.MouseDownBackColor = Color.WhiteSmoke;
+            button_pwdRequirements.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
+            button_pwdRequirements.FlatStyle = FlatStyle.Flat;
+            button_pwdRequirements.Image = (Image)resources.GetObject("button_pwdRequirements.Image");
+            button_pwdRequirements.Location = new Point(314, 112);
+            button_pwdRequirements.Name = "button_pwdRequirements";
+            button_pwdRequirements.Size = new Size(32, 28);
+            button_pwdRequirements.TabIndex = 103;
+            button_pwdRequirements.UseVisualStyleBackColor = false;
+            button_pwdRequirements.Click += ShowPasswordRequirements;
             // 
             // ChangePassword
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(594, 324);
-            Controls.Add(label1);
+            ClientSize = new Size(365, 243);
+            Controls.Add(button_pwdRequirements);
             Controls.Add(textBox_newPasswordAgain);
             Controls.Add(label4);
             Controls.Add(textBox_currentPassword);
@@ -231,7 +231,6 @@ namespace Desktop_Application.Forms.Profile
             Controls.Add(label2);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(3, 4, 3, 4);
             Name = "ChangePassword";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AddBook";
@@ -255,6 +254,6 @@ namespace Desktop_Application.Forms.Profile
         private TextBox textBox_currentPassword;
         private TextBox textBox_newPasswordAgain;
         private Label label4;
-        private Label label1;
+        private Button button_pwdRequirements;
     }
 }

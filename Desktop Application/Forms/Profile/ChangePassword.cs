@@ -77,4 +77,10 @@ public partial class ChangePassword : Form
         }
         return true;
     }
+
+    private void ShowPasswordRequirements(object sender, EventArgs e)
+    {
+        PasswordRequirements passwordRequirements = new();
+        passwordRequirements.ShowDialog();
+    }
 }
