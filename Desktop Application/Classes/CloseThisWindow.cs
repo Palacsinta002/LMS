@@ -1,26 +1,25 @@
 ﻿using Desktop_Application.Components;
 
-namespace Desktop_Application.Classes
+namespace Desktop_Application.Classes;
+
+internal class CloseThisWindow
 {
-    internal class CloseThisWindow
+    private readonly Form _form;
+
+    public CloseThisWindow(Form form, RoundedButton roundedButton)
     {
-        private readonly Form _form;
+        _form = form;
 
-        public CloseThisWindow(Form form, RoundedButton roundedButton)
-        {
-            _form = form;
+        roundedButton.Click += WindowClose;
+    }
 
-            roundedButton.Click += WindowClose;
-        }
+    public static void Handle(Form form, RoundedButton roundedButton)
+    {
+        _ = new CloseThisWindow(form, roundedButton);
+    }
 
-        public static void Handle(Form form, RoundedButton roundedButton)
-        {
-            _ = new CloseThisWindow(form, roundedButton);
-        }
-
-        public void WindowClose(object sender, EventArgs e)
-        {
-            _form.Close();
-        }
+    public void WindowClose(object sender, EventArgs e)
+    {
+        _form.Close();
     }
 }

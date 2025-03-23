@@ -19,6 +19,8 @@ public partial class ChangePassword : Form
         BorderPaint.Handle(this);
         CloseThisWindow.Handle(this, close_btn);
         CloseThisWindow.Handle(this, cancel);
+        HandleKeys.Handle(this, Keys.Enter, Save);
+        HandleKeys.Handle(this, Keys.Escape, (s, e) => this.Close());
     }
 
     private void Save(object sender, EventArgs e)
@@ -33,17 +35,7 @@ public partial class ChangePassword : Form
     // returns true if everything is correct
     private bool ValidateInput()
     {
-        if (textBox_currentPassword.Text == string.Empty)
-        {
-            MessageBox.Show("Current password field is required!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            return false;
-        }
-        else if (!Regex.IsMatch(textBox_currentPassword.Text, @"^[^""\\]+$"))
-        {
-            MessageBox.Show("Current password field is not in the correct format! Please check your special characters!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            return false;
-        }
-        else if (!BCrypt.Net.BCrypt.Verify(textBox_currentPassword.Text, Password))
+        if (!BCrypt.Net.BCrypt.Verify(textBox_currentPassword.Text, Password))
         {
             MessageBox.Show("Current password field doesn't match with your actual password!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
@@ -82,5 +74,10 @@ public partial class ChangePassword : Form
     {
         PasswordRequirements passwordRequirements = new();
         passwordRequirements.ShowDialog();
+    }
+
+    private void OnKeyPress(object sender, KeyPressEventArgs e)
+    {
+        if (e.KeyChar == 13) Save(sender, e);
     }
 }

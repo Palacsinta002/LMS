@@ -22,6 +22,9 @@ public partial class ProfileSettings : Form
         BorderPaint.Handle(this);
         CloseThisWindow.Handle(this, close_btn);
         CloseThisWindow.Handle(this, cancel);
+        HandleKeys.Handle(this, Keys.Enter, Save);
+        HandleKeys.Handle(this, Keys.Escape, (s, e) => this.Close());
+        this.KeyPreview = true;
 
         string[] userData = HandleQueries.SelectFromString(
             $"SELECT FirstName, LastName, Username, " +

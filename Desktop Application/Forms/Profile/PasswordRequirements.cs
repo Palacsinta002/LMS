@@ -15,5 +15,7 @@ public partial class PasswordRequirements : Form
         BorderPaint.Handle(this);
         CloseThisWindow.Handle(this, close_btn);
         CloseThisWindow.Handle(this, button_ok);
+        HandleKeys.Handle(this, Keys.Enter, (s, e) => this.Close());
+        HandleKeys.Handle(this, Keys.Escape, (s, e) => this.Close());
     }
 }
