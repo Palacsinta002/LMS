@@ -206,7 +206,6 @@ INSERT INTO Authors (Author) VALUES
 ('William Shakespeare'),
 ('Charles Dickens'),
 ('Franz Kafka'),
-
 ('F. Scott Fitzgerald'),
 ('Emily Brontë'),
 ('J.D. Salinger'),
@@ -235,7 +234,6 @@ INSERT INTO Categories (Category) VALUES
 ('Adventure'),
 ('Horror'),
 ('Poetry'),
-
 ('Dystopian'),
 ('Gothic Fiction'),
 ('Philosophical Fiction'),
@@ -334,19 +332,18 @@ INSERT INTO Books_Authors (ISBN, AuthorID) VALUES
 (9780743477123, 10),
 (9780486415864, 14),
 (9780805209990, 15),
-
-(9780141187761, 1),  -- Animal Farm by George Orwell
-(9780743273565, 16), -- The Great Gatsby by F. Scott Fitzgerald
-(9780141439518, 17), -- Wuthering Heights by Emily Brontë
-(9780140449266, 5),  -- The Brothers Karamazov by Fyodor Dostoevsky
-(9780141187396, 18), -- The Catcher in the Rye by J.D. Salinger
-(9780061120084, 19), -- To Kill a Mockingbird by Harper Lee
-(9780547928227, 11), -- The Hobbit by J.R.R. Tolkien
-(9780060850524, 20), -- Brave New World by Aldous Huxley
-(9780143105428, 21), -- Moby Dick by Herman Melville
-(9780141439563, 23), -- Frankenstein by Mary Shelley
-(9780140449143, 24), -- Les Misérables by Victor Hugo
-(9780140449334, 25); -- The Divine Comedy by Dante Alighieri
+(9780141187761, 1),
+(9780743273565, 16),
+(9780141439518, 17),
+(9780140449266, 5),
+(9780141187396, 18),
+(9780061120084, 19),
+(9780547928227, 11),
+(9780060850524, 20),
+(9780143105428, 21),
+(9780141439563, 23),
+(9780140449143, 24),
+(9780140449334, 25);
 
 -- Insert values into Books_Categories table
 INSERT INTO Books_Categories (ISBN, CategoryID) VALUES
@@ -369,20 +366,19 @@ INSERT INTO Books_Categories (ISBN, CategoryID) VALUES
 (9780743477123, 1),
 (9780486415864, 1),
 (9780805209990, 1),
-
-(9780141187761, 16), -- Animal Farm: Dystopian
-(9780141187761, 11), -- Animal Farm: Classics
-(9780743273565, 17), -- The Great Gatsby: Classic
-(9780141439518, 18), -- Wuthering Heights: Gothic Fiction
-(9780140449266, 19), -- The Brothers Karamazov: Philosophical Fiction
-(9780141187396, 20), -- The Catcher in the Rye: Coming-of-Age
-(9780061120084, 21), -- To Kill a Mockingbird: Southern Gothic
-(9780547928227, 4),  -- The Hobbit: Fantasy
-(9780060850524, 16), -- Brave New World: Dystopian
-(9780143105428, 22), -- Moby Dick: Adventure Fiction
-(9780141439563, 14), -- Frankenstein: Horror
-(9780140449143, 5), -- Les Misérables: Historical Fiction
-(9780140449334, 22); -- The Divine Comedy: Classic Literature
+(9780141187761, 16),
+(9780141187761, 11),
+(9780743273565, 17),
+(9780141439518, 18),
+(9780140449266, 19),
+(9780141187396, 20),
+(9780061120084, 21),
+(9780547928227, 4),
+(9780060850524, 16),
+(9780143105428, 22),
+(9780141439563, 14),
+(9780140449143, 5),
+(9780140449334, 22);
 
 -- Insert values into Borrowings table
 INSERT INTO Borrowings (UserID, ISBN, BorrowDate, DueDate, ReturnDate) VALUES
@@ -401,26 +397,17 @@ INSERT INTO Borrowings (UserID, ISBN, BorrowDate, DueDate, ReturnDate) VALUES
 (13, 9780743477123, '2024-10-04', '2024-10-18', NULL),
 (14, 9780486415864, '2024-10-05', '2024-10-19', NULL),
 (15, 9780805209990, '2024-10-06', '2024-10-20', NULL),
-
-(1, 9780141187761, '2024-10-07', '2024-10-21', '2024-10-20'), -- Animal Farm borrowed and returned
-(1, 9780141187761, '2024-10-22', '2024-11-05', NULL), -- Animal Farm borrowed again
-(1, 9780743273565, '2024-10-08', '2024-10-22', NULL), -- The Great Gatsby borrowed
-
--- Borrowings for User 2
-(2, 9780141439518, '2024-10-09', '2024-10-23', '2024-10-22'), -- Wuthering Heights borrowed and returned
-(2, 9780141439518, '2024-10-24', '2024-11-07', NULL), -- Wuthering Heights borrowed again
-(2, 9780140449266, '2024-10-10', '2024-10-24', NULL), -- The Brothers Karamazov borrowed
-
--- Borrowings for User 3
-(3, 9780141187396, '2024-10-11', '2024-10-25', '2024-10-24'), -- The Catcher in the Rye borrowed and returned
-(3, 9780141187396, '2024-10-26', '2024-11-09', NULL), -- The Catcher in the Rye borrowed again
-(3, 9780061120084, '2024-10-12', '2024-10-26', NULL), -- To Kill a Mockingbird borrowed
-
--- Borrowings for User 4
-(4, 9780547928227, '2024-10-13', '2024-10-27', '2024-10-26'), -- The Hobbit borrowed and returned
-(4, 9780547928227, '2024-10-28', '2024-11-11', NULL), -- The Hobbit borrowed again
-(4, 9780060850524, '2024-10-14', '2024-10-28', NULL), -- Brave New World borrowed
-
--- Borrowings for User 5
-(5, 9780143105428, '2024-10-15', '2024-10-29', '2024-10-28'), -- Moby Dick borrowed and returned
-(5, 9780143105428, '2024-10-30', '2024-11-13', NULL) -- Moby Dick borrowed again
+(1, 9780141187761, '2024-10-07', '2024-10-21', '2024-10-20'),
+(1, 9780141187761, '2024-10-22', '2024-11-05', NULL),
+(1, 9780743273565, '2024-10-08', '2024-10-22', NULL),
+(2, 9780141439518, '2024-10-09', '2024-10-23', '2024-10-22'),
+(2, 9780141439518, '2024-10-24', '2024-11-07', NULL),
+(2, 9780140449266, '2024-10-10', '2024-10-24', NULL),
+(3, 9780141187396, '2024-10-11', '2024-10-25', '2024-10-24'),
+(3, 9780141187396, '2024-10-26', '2024-11-09', NULL),again
+(3, 9780061120084, '2024-10-12', '2024-10-26', NULL),
+(4, 9780547928227, '2024-10-13', '2024-10-27', '2024-10-26'),
+(4, 9780547928227, '2024-10-28', '2024-11-11', NULL),
+(4, 9780060850524, '2024-10-14', '2024-10-28', NULL),
+(5, 9780143105428, '2024-10-15', '2024-10-29', '2024-10-28'),
+(5, 9780143105428, '2024-10-30', '2024-11-13', NULL)
