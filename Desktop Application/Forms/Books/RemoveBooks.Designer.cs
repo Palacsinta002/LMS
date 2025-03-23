@@ -31,10 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RemoveBooks));
             header = new Panel();
             title = new Label();
-            close_btn = new Components.RoundedButton();
+            close_btn = new Desktop_Application.Components.RoundedButton();
             label_title = new Label();
-            yes = new Components.RoundedButton();
-            no = new Components.RoundedButton();
+            yes = new Desktop_Application.Components.RoundedButton();
+            no = new Desktop_Application.Components.RoundedButton();
             header.SuspendLayout();
             SuspendLayout();
             // 
@@ -127,11 +127,12 @@
             no.Name = "no";
             no.Size = new Size(80, 36);
             no.TabIndex = 29;
+            no.TabStop = false;
             no.Text = "No";
             no.TextColor = Color.White;
             no.UseVisualStyleBackColor = false;
             // 
-            // RemoveBookConfirmation
+            // RemoveBooks
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -143,7 +144,7 @@
             Controls.Add(header);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "RemoveBookConfirmation";
+            Name = "RemoveBooks";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "RemoveBookConfirmation";
             Load += OnLoad;

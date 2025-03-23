@@ -47,18 +47,17 @@ namespace Desktop_Application.Forms.Publishers
             header.Controls.Add(title);
             header.Controls.Add(close_btn);
             header.Location = new Point(1, 1);
-            header.Margin = new Padding(3, 4, 3, 4);
             header.Name = "header";
-            header.Size = new Size(438, 73);
+            header.Size = new Size(383, 55);
             header.TabIndex = 80;
             // 
             // title
             // 
             title.AutoSize = true;
             title.Font = new Font("Yu Gothic UI Semibold", 16F);
-            title.Location = new Point(125, 15);
+            title.Location = new Point(109, 11);
             title.Name = "title";
-            title.Size = new Size(185, 37);
+            title.Size = new Size(150, 30);
             title.TabIndex = 2;
             title.Text = "Edit Publisher";
             // 
@@ -77,10 +76,9 @@ namespace Desktop_Application.Forms.Publishers
             close_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             close_btn.ForeColor = Color.White;
             close_btn.Image = (Image)resources.GetObject("close_btn.Image");
-            close_btn.Location = new Point(384, 13);
-            close_btn.Margin = new Padding(3, 4, 3, 4);
+            close_btn.Location = new Point(336, 10);
             close_btn.Name = "close_btn";
-            close_btn.Size = new Size(41, 47);
+            close_btn.Size = new Size(36, 35);
             close_btn.TabIndex = 25;
             close_btn.TabStop = false;
             close_btn.TextColor = Color.White;
@@ -98,10 +96,9 @@ namespace Desktop_Application.Forms.Publishers
             save.FlatStyle = FlatStyle.Flat;
             save.Font = new Font("Yu Gothic UI Semibold", 14F);
             save.ForeColor = Color.White;
-            save.Location = new Point(119, 165);
-            save.Margin = new Padding(3, 4, 3, 4);
+            save.Location = new Point(104, 124);
             save.Name = "save";
-            save.Size = new Size(97, 48);
+            save.Size = new Size(85, 36);
             save.TabIndex = 77;
             save.TabStop = false;
             save.Text = "Save";
@@ -120,11 +117,11 @@ namespace Desktop_Application.Forms.Publishers
             cancel.FlatStyle = FlatStyle.Flat;
             cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
             cancel.ForeColor = Color.Black;
-            cancel.Location = new Point(222, 165);
-            cancel.Margin = new Padding(3, 4, 3, 4);
+            cancel.Location = new Point(194, 124);
             cancel.Name = "cancel";
-            cancel.Size = new Size(97, 48);
+            cancel.Size = new Size(85, 36);
             cancel.TabIndex = 78;
+            cancel.TabStop = false;
             cancel.Text = "Cancel";
             cancel.TextColor = Color.Black;
             cancel.UseVisualStyleBackColor = false;
@@ -133,35 +130,33 @@ namespace Desktop_Application.Forms.Publishers
             // 
             textBox_publisher.BackColor = Color.WhiteSmoke;
             textBox_publisher.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_publisher.Location = new Point(126, 92);
-            textBox_publisher.Margin = new Padding(3, 4, 3, 4);
+            textBox_publisher.Location = new Point(110, 69);
             textBox_publisher.Name = "textBox_publisher";
-            textBox_publisher.Size = new Size(294, 39);
-            textBox_publisher.TabIndex = 87;
+            textBox_publisher.Size = new Size(258, 32);
+            textBox_publisher.TabIndex = 1;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label1.Location = new Point(14, 96);
+            label1.Location = new Point(12, 72);
             label1.Name = "label1";
-            label1.Size = new Size(114, 32);
+            label1.Size = new Size(91, 25);
             label1.TabIndex = 86;
             label1.Text = "Publisher";
             // 
             // EditPublisher
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(440, 225);
+            ClientSize = new Size(385, 169);
             Controls.Add(textBox_publisher);
             Controls.Add(label1);
             Controls.Add(header);
             Controls.Add(save);
             Controls.Add(cancel);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 4, 3, 4);
             Name = "EditPublisher";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AddCategory";

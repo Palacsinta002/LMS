@@ -33,17 +33,17 @@ namespace Desktop_Application.Forms.Books
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChooseCategories));
             header = new Panel();
             title = new Label();
-            close_btn = new Components.RoundedButton();
+            close_btn = new Desktop_Application.Components.RoundedButton();
             allCategories_grd = new DataGridView();
+            allCategories_category = new DataGridViewTextBoxColumn();
             selectedCategories_grd = new DataGridView();
-            rightArrow_btn = new Components.RoundedButton();
-            leftArrow_btn = new Components.RoundedButton();
-            save = new Components.RoundedButton();
-            cancel = new Components.RoundedButton();
+            selectedCategories_category = new DataGridViewTextBoxColumn();
+            rightArrow_btn = new Desktop_Application.Components.RoundedButton();
+            leftArrow_btn = new Desktop_Application.Components.RoundedButton();
+            save = new Desktop_Application.Components.RoundedButton();
+            cancel = new Desktop_Application.Components.RoundedButton();
             allCategories_src = new System.Windows.Forms.TextBox();
             selectedCategories_src = new System.Windows.Forms.TextBox();
-            allCategories_category = new DataGridViewTextBoxColumn();
-            selectedCategories_category = new DataGridViewTextBoxColumn();
             header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)allCategories_grd).BeginInit();
             ((System.ComponentModel.ISupportInitialize)selectedCategories_grd).BeginInit();
@@ -115,7 +115,14 @@ namespace Desktop_Application.Forms.Books
             allCategories_grd.ShowEditingIcon = false;
             allCategories_grd.ShowRowErrors = false;
             allCategories_grd.Size = new Size(453, 437);
-            allCategories_grd.TabIndex = 63;
+            allCategories_grd.TabIndex = 1;
+            // 
+            // allCategories_category
+            // 
+            allCategories_category.HeaderText = "Category";
+            allCategories_category.Name = "allCategories_category";
+            allCategories_category.ReadOnly = true;
+            allCategories_category.Width = 80;
             // 
             // selectedCategories_grd
             // 
@@ -139,7 +146,14 @@ namespace Desktop_Application.Forms.Books
             selectedCategories_grd.ShowEditingIcon = false;
             selectedCategories_grd.ShowRowErrors = false;
             selectedCategories_grd.Size = new Size(453, 437);
-            selectedCategories_grd.TabIndex = 64;
+            selectedCategories_grd.TabIndex = 2;
+            // 
+            // selectedCategories_category
+            // 
+            selectedCategories_category.HeaderText = "Category";
+            selectedCategories_category.Name = "selectedCategories_category";
+            selectedCategories_category.ReadOnly = true;
+            selectedCategories_category.Width = 80;
             // 
             // rightArrow_btn
             // 
@@ -156,7 +170,7 @@ namespace Desktop_Application.Forms.Books
             rightArrow_btn.Location = new Point(478, 251);
             rightArrow_btn.Name = "rightArrow_btn";
             rightArrow_btn.Size = new Size(44, 38);
-            rightArrow_btn.TabIndex = 68;
+            rightArrow_btn.TabIndex = 3;
             rightArrow_btn.TextColor = Color.Black;
             rightArrow_btn.UseVisualStyleBackColor = false;
             rightArrow_btn.Click += MoveRight;
@@ -176,7 +190,7 @@ namespace Desktop_Application.Forms.Books
             leftArrow_btn.Location = new Point(478, 297);
             leftArrow_btn.Name = "leftArrow_btn";
             leftArrow_btn.Size = new Size(44, 38);
-            leftArrow_btn.TabIndex = 69;
+            leftArrow_btn.TabIndex = 4;
             leftArrow_btn.TextColor = Color.Black;
             leftArrow_btn.UseVisualStyleBackColor = false;
             leftArrow_btn.Click += MoveLeft;
@@ -218,6 +232,7 @@ namespace Desktop_Application.Forms.Books
             cancel.Name = "cancel";
             cancel.Size = new Size(85, 36);
             cancel.TabIndex = 84;
+            cancel.TabStop = false;
             cancel.Text = "Cancel";
             cancel.TextColor = Color.Black;
             cancel.UseVisualStyleBackColor = false;
@@ -232,8 +247,7 @@ namespace Desktop_Application.Forms.Books
             allCategories_src.Name = "allCategories_src";
             allCategories_src.PlaceholderText = "Search...";
             allCategories_src.Size = new Size(208, 32);
-            allCategories_src.TabIndex = 85;
-            allCategories_src.TabStop = false;
+            allCategories_src.TabIndex = 5;
             allCategories_src.TextChanged += SearchAllCategories;
             // 
             // selectedCategories_src
@@ -246,23 +260,8 @@ namespace Desktop_Application.Forms.Books
             selectedCategories_src.Name = "selectedCategories_src";
             selectedCategories_src.PlaceholderText = "Search...";
             selectedCategories_src.Size = new Size(208, 32);
-            selectedCategories_src.TabIndex = 86;
-            selectedCategories_src.TabStop = false;
+            selectedCategories_src.TabIndex = 6;
             selectedCategories_src.TextChanged += SearchSelectedCategories;
-            // 
-            // allCategories_category
-            // 
-            allCategories_category.HeaderText = "Category";
-            allCategories_category.Name = "allCategories_category";
-            allCategories_category.ReadOnly = true;
-            allCategories_category.Width = 80;
-            // 
-            // selectedCategories_category
-            // 
-            selectedCategories_category.HeaderText = "Category";
-            selectedCategories_category.Name = "selectedCategories_category";
-            selectedCategories_category.ReadOnly = true;
-            selectedCategories_category.Width = 80;
             // 
             // ChooseCategories
             // 

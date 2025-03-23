@@ -91,6 +91,7 @@ namespace Desktop_Application.Forms.Users
             cancel.Name = "cancel";
             cancel.Size = new Size(85, 36);
             cancel.TabIndex = 7;
+            cancel.TabStop = false;
             cancel.Text = "Cancel";
             cancel.TextColor = Color.Black;
             cancel.UseVisualStyleBackColor = false;
@@ -223,7 +224,7 @@ namespace Desktop_Application.Forms.Users
             dateOfBirth_datePicker.Location = new Point(151, 182);
             dateOfBirth_datePicker.Name = "dateOfBirth_datePicker";
             dateOfBirth_datePicker.Size = new Size(135, 32);
-            dateOfBirth_datePicker.TabIndex = 102;
+            dateOfBirth_datePicker.TabIndex = 4;
             // 
             // label1
             // 
@@ -243,7 +244,7 @@ namespace Desktop_Application.Forms.Users
             checkBox_verify.Margin = new Padding(3, 2, 3, 2);
             checkBox_verify.Name = "checkBox_verify";
             checkBox_verify.Size = new Size(185, 23);
-            checkBox_verify.TabIndex = 104;
+            checkBox_verify.TabIndex = 6;
             checkBox_verify.Text = "Mark this user as verified";
             checkBox_verify.UseVisualStyleBackColor = true;
             // 
@@ -257,7 +258,7 @@ namespace Desktop_Application.Forms.Users
             comboBox_role.MaxDropDownItems = 10;
             comboBox_role.Name = "comboBox_role";
             comboBox_role.Size = new Size(187, 33);
-            comboBox_role.TabIndex = 105;
+            comboBox_role.TabIndex = 7;
             // 
             // label_role
             // 

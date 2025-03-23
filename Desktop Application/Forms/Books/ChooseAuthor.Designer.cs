@@ -38,14 +38,14 @@ namespace Desktop_Application.Forms.Books
             allAuthors_author = new DataGridViewTextBoxColumn();
             allAuthors_books = new DataGridViewTextBoxColumn();
             selectedAuthors_grd = new DataGridView();
+            selectedAuthors_Author = new DataGridViewTextBoxColumn();
+            selectedAuthors_books = new DataGridViewTextBoxColumn();
             rightArrow_btn = new Desktop_Application.Components.RoundedButton();
             leftArrow_btn = new Desktop_Application.Components.RoundedButton();
             save = new Desktop_Application.Components.RoundedButton();
             cancel = new Desktop_Application.Components.RoundedButton();
             allAuthors_src = new System.Windows.Forms.TextBox();
             selectedAuthors_src = new System.Windows.Forms.TextBox();
-            selectedAuthors_Author = new DataGridViewTextBoxColumn();
-            selectedAuthors_books = new DataGridViewTextBoxColumn();
             header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)allAuthors_grd).BeginInit();
             ((System.ComponentModel.ISupportInitialize)selectedAuthors_grd).BeginInit();
@@ -57,18 +57,17 @@ namespace Desktop_Application.Forms.Books
             header.Controls.Add(title);
             header.Controls.Add(close_btn);
             header.Location = new Point(1, 1);
-            header.Margin = new Padding(3, 4, 3, 4);
             header.Name = "header";
-            header.Size = new Size(1141, 73);
+            header.Size = new Size(998, 55);
             header.TabIndex = 62;
             // 
             // title
             // 
             title.AutoSize = true;
             title.Font = new Font("Yu Gothic UI Semibold", 16F);
-            title.Location = new Point(471, 13);
+            title.Location = new Point(412, 10);
             title.Name = "title";
-            title.Size = new Size(213, 37);
+            title.Size = new Size(172, 30);
             title.TabIndex = 2;
             title.Text = "Choose Authors";
             // 
@@ -88,10 +87,9 @@ namespace Desktop_Application.Forms.Books
             close_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             close_btn.ForeColor = Color.White;
             close_btn.Image = (Image)resources.GetObject("close_btn.Image");
-            close_btn.Location = new Point(1088, 12);
-            close_btn.Margin = new Padding(3, 4, 3, 4);
+            close_btn.Location = new Point(952, 9);
             close_btn.Name = "close_btn";
-            close_btn.Size = new Size(41, 47);
+            close_btn.Size = new Size(36, 35);
             close_btn.TabIndex = 25;
             close_btn.TabStop = false;
             close_btn.TextColor = Color.White;
@@ -108,8 +106,7 @@ namespace Desktop_Application.Forms.Books
             allAuthors_grd.BackgroundColor = Color.White;
             allAuthors_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             allAuthors_grd.Columns.AddRange(new DataGridViewColumn[] { allAuthors_author, allAuthors_books });
-            allAuthors_grd.Location = new Point(14, 129);
-            allAuthors_grd.Margin = new Padding(3, 4, 3, 4);
+            allAuthors_grd.Location = new Point(12, 97);
             allAuthors_grd.Name = "allAuthors_grd";
             allAuthors_grd.ReadOnly = true;
             allAuthors_grd.RowHeadersVisible = false;
@@ -119,8 +116,8 @@ namespace Desktop_Application.Forms.Books
             allAuthors_grd.ShowCellToolTips = false;
             allAuthors_grd.ShowEditingIcon = false;
             allAuthors_grd.ShowRowErrors = false;
-            allAuthors_grd.Size = new Size(518, 583);
-            allAuthors_grd.TabIndex = 63;
+            allAuthors_grd.Size = new Size(453, 437);
+            allAuthors_grd.TabIndex = 1;
             // 
             // allAuthors_author
             // 
@@ -128,7 +125,7 @@ namespace Desktop_Application.Forms.Books
             allAuthors_author.MinimumWidth = 6;
             allAuthors_author.Name = "allAuthors_author";
             allAuthors_author.ReadOnly = true;
-            allAuthors_author.Width = 83;
+            allAuthors_author.Width = 69;
             // 
             // allAuthors_books
             // 
@@ -136,7 +133,7 @@ namespace Desktop_Application.Forms.Books
             allAuthors_books.MinimumWidth = 6;
             allAuthors_books.Name = "allAuthors_books";
             allAuthors_books.ReadOnly = true;
-            allAuthors_books.Width = 88;
+            allAuthors_books.Width = 72;
             // 
             // selectedAuthors_grd
             // 
@@ -149,8 +146,7 @@ namespace Desktop_Application.Forms.Books
             selectedAuthors_grd.BackgroundColor = Color.White;
             selectedAuthors_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             selectedAuthors_grd.Columns.AddRange(new DataGridViewColumn[] { selectedAuthors_Author, selectedAuthors_books });
-            selectedAuthors_grd.Location = new Point(611, 129);
-            selectedAuthors_grd.Margin = new Padding(3, 4, 3, 4);
+            selectedAuthors_grd.Location = new Point(535, 97);
             selectedAuthors_grd.Name = "selectedAuthors_grd";
             selectedAuthors_grd.ReadOnly = true;
             selectedAuthors_grd.RowHeadersVisible = false;
@@ -160,8 +156,24 @@ namespace Desktop_Application.Forms.Books
             selectedAuthors_grd.ShowCellToolTips = false;
             selectedAuthors_grd.ShowEditingIcon = false;
             selectedAuthors_grd.ShowRowErrors = false;
-            selectedAuthors_grd.Size = new Size(518, 583);
-            selectedAuthors_grd.TabIndex = 64;
+            selectedAuthors_grd.Size = new Size(453, 437);
+            selectedAuthors_grd.TabIndex = 2;
+            // 
+            // selectedAuthors_Author
+            // 
+            selectedAuthors_Author.HeaderText = "Author";
+            selectedAuthors_Author.MinimumWidth = 6;
+            selectedAuthors_Author.Name = "selectedAuthors_Author";
+            selectedAuthors_Author.ReadOnly = true;
+            selectedAuthors_Author.Width = 69;
+            // 
+            // selectedAuthors_books
+            // 
+            selectedAuthors_books.HeaderText = "Book(s)";
+            selectedAuthors_books.MinimumWidth = 6;
+            selectedAuthors_books.Name = "selectedAuthors_books";
+            selectedAuthors_books.ReadOnly = true;
+            selectedAuthors_books.Width = 72;
             // 
             // rightArrow_btn
             // 
@@ -175,11 +187,10 @@ namespace Desktop_Application.Forms.Books
             rightArrow_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             rightArrow_btn.ForeColor = Color.Black;
             rightArrow_btn.Image = (Image)resources.GetObject("rightArrow_btn.Image");
-            rightArrow_btn.Location = new Point(546, 335);
-            rightArrow_btn.Margin = new Padding(3, 4, 3, 4);
+            rightArrow_btn.Location = new Point(478, 251);
             rightArrow_btn.Name = "rightArrow_btn";
-            rightArrow_btn.Size = new Size(50, 50);
-            rightArrow_btn.TabIndex = 68;
+            rightArrow_btn.Size = new Size(44, 38);
+            rightArrow_btn.TabIndex = 3;
             rightArrow_btn.TextColor = Color.Black;
             rightArrow_btn.UseVisualStyleBackColor = false;
             rightArrow_btn.Click += MoveRight;
@@ -196,11 +207,10 @@ namespace Desktop_Application.Forms.Books
             leftArrow_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             leftArrow_btn.ForeColor = Color.Black;
             leftArrow_btn.Image = (Image)resources.GetObject("leftArrow_btn.Image");
-            leftArrow_btn.Location = new Point(546, 396);
-            leftArrow_btn.Margin = new Padding(3, 4, 3, 4);
+            leftArrow_btn.Location = new Point(478, 297);
             leftArrow_btn.Name = "leftArrow_btn";
-            leftArrow_btn.Size = new Size(50, 50);
-            leftArrow_btn.TabIndex = 69;
+            leftArrow_btn.Size = new Size(44, 38);
+            leftArrow_btn.TabIndex = 4;
             leftArrow_btn.TextColor = Color.Black;
             leftArrow_btn.UseVisualStyleBackColor = false;
             leftArrow_btn.Click += MoveLeft;
@@ -217,10 +227,9 @@ namespace Desktop_Application.Forms.Books
             save.FlatStyle = FlatStyle.Flat;
             save.Font = new Font("Yu Gothic UI Semibold", 14F);
             save.ForeColor = Color.White;
-            save.Location = new Point(929, 739);
-            save.Margin = new Padding(3, 4, 3, 4);
+            save.Location = new Point(813, 554);
             save.Name = "save";
-            save.Size = new Size(97, 48);
+            save.Size = new Size(85, 36);
             save.TabIndex = 83;
             save.TabStop = false;
             save.Text = "Ok";
@@ -239,11 +248,11 @@ namespace Desktop_Application.Forms.Books
             cancel.FlatStyle = FlatStyle.Flat;
             cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
             cancel.ForeColor = Color.Black;
-            cancel.Location = new Point(1032, 739);
-            cancel.Margin = new Padding(3, 4, 3, 4);
+            cancel.Location = new Point(903, 554);
             cancel.Name = "cancel";
-            cancel.Size = new Size(97, 48);
+            cancel.Size = new Size(85, 36);
             cancel.TabIndex = 84;
+            cancel.TabStop = false;
             cancel.Text = "Cancel";
             cancel.TextColor = Color.Black;
             cancel.UseVisualStyleBackColor = false;
@@ -253,14 +262,12 @@ namespace Desktop_Application.Forms.Books
             allAuthors_src.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             allAuthors_src.BackColor = Color.White;
             allAuthors_src.Font = new Font("Yu Gothic UI Semibold", 14F);
-            allAuthors_src.Location = new Point(295, 82);
-            allAuthors_src.Margin = new Padding(3, 4, 3, 4);
+            allAuthors_src.Location = new Point(258, 62);
             allAuthors_src.MaxLength = 19;
             allAuthors_src.Name = "allAuthors_src";
             allAuthors_src.PlaceholderText = "Search...";
-            allAuthors_src.Size = new Size(237, 39);
-            allAuthors_src.TabIndex = 85;
-            allAuthors_src.TabStop = false;
+            allAuthors_src.Size = new Size(208, 32);
+            allAuthors_src.TabIndex = 5;
             allAuthors_src.TextChanged += SearchAllAuthors;
             // 
             // selectedAuthors_src
@@ -268,38 +275,20 @@ namespace Desktop_Application.Forms.Books
             selectedAuthors_src.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             selectedAuthors_src.BackColor = Color.White;
             selectedAuthors_src.Font = new Font("Yu Gothic UI Semibold", 14F);
-            selectedAuthors_src.Location = new Point(892, 82);
-            selectedAuthors_src.Margin = new Padding(3, 4, 3, 4);
+            selectedAuthors_src.Location = new Point(780, 62);
             selectedAuthors_src.MaxLength = 19;
             selectedAuthors_src.Name = "selectedAuthors_src";
             selectedAuthors_src.PlaceholderText = "Search...";
-            selectedAuthors_src.Size = new Size(237, 39);
-            selectedAuthors_src.TabIndex = 86;
-            selectedAuthors_src.TabStop = false;
+            selectedAuthors_src.Size = new Size(208, 32);
+            selectedAuthors_src.TabIndex = 6;
             selectedAuthors_src.TextChanged += SearchSelectedAuthors;
             // 
-            // selectedAuthors_Author
+            // ChooseAuthor
             // 
-            selectedAuthors_Author.HeaderText = "Author";
-            selectedAuthors_Author.MinimumWidth = 6;
-            selectedAuthors_Author.Name = "selectedAuthors_Author";
-            selectedAuthors_Author.ReadOnly = true;
-            selectedAuthors_Author.Width = 83;
-            // 
-            // selectedAuthors_books
-            // 
-            selectedAuthors_books.HeaderText = "Book(s)";
-            selectedAuthors_books.MinimumWidth = 6;
-            selectedAuthors_books.Name = "selectedAuthors_books";
-            selectedAuthors_books.ReadOnly = true;
-            selectedAuthors_books.Width = 88;
-            // 
-            // ChooseAuthors
-            // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1143, 800);
+            ClientSize = new Size(1000, 600);
             Controls.Add(selectedAuthors_src);
             Controls.Add(allAuthors_src);
             Controls.Add(save);
@@ -310,8 +299,7 @@ namespace Desktop_Application.Forms.Books
             Controls.Add(allAuthors_grd);
             Controls.Add(header);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 4, 3, 4);
-            Name = "ChooseAuthors";
+            Name = "ChooseAuthor";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ChooseBooks";
             Load += OnLoad;
