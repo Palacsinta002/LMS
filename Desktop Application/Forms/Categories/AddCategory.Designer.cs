@@ -157,6 +157,7 @@ namespace Desktop_Application.Forms.Categories
             Controls.Add(save);
             Controls.Add(cancel);
             FormBorderStyle = FormBorderStyle.None;
+            KeyPreview = true;
             Name = "AddCategory";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AddCategory";

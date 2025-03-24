@@ -294,6 +294,7 @@ namespace Desktop_Application.Forms.Users
             Controls.Add(label2);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            KeyPreview = true;
             Name = "EditUser";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AddBook";

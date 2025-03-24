@@ -90,7 +90,7 @@
             label_title.Name = "label_title";
             label_title.Size = new Size(339, 103);
             label_title.TabIndex = 28;
-            label_title.Text = "Are you sure you want to remove the selected authors? All related books will be also removed!";
+            label_title.Text = "Are you sure you want to remove the selected authors? All related books, borrowings and reservations will be also removed!";
             // 
             // yes
             // 
@@ -105,7 +105,7 @@
             yes.FlatStyle = FlatStyle.Flat;
             yes.Font = new Font("Yu Gothic UI Semibold", 14F);
             yes.ForeColor = Color.Black;
-            yes.Location = new Point(179, 161);
+            yes.Location = new Point(179, 183);
             yes.Name = "yes";
             yes.Size = new Size(80, 36);
             yes.TabIndex = 30;
@@ -127,7 +127,7 @@
             no.FlatStyle = FlatStyle.Flat;
             no.Font = new Font("Yu Gothic UI Semibold", 14F);
             no.ForeColor = Color.White;
-            no.Location = new Point(265, 161);
+            no.Location = new Point(265, 183);
             no.Name = "no";
             no.Size = new Size(80, 36);
             no.TabIndex = 29;
@@ -141,7 +141,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(363, 209);
+            ClientSize = new Size(363, 231);
             Controls.Add(yes);
             Controls.Add(no);
             Controls.Add(label_title);

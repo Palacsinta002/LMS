@@ -18,9 +18,11 @@ public partial class RemovePublishers : Form
         BorderPaint.Handle(this);
         CloseThisWindow.Handle(this, close_btn);
         CloseThisWindow.Handle(this, no);
+        HandleKeys.Handle(this, Keys.Enter, Remove);
+        HandleKeys.Handle(this, Keys.Escape, (s, e) => this.Close());
     }
 
-    private void Yes(object sender, EventArgs e)
+    private void Remove(object sender, EventArgs e)
     {
         HandleQueries.Delete(_publishers_grd, "Publishers", "publishers_publisher", "Publisher");
         MessageBox.Show("Publisher(s) removed succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
