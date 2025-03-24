@@ -117,7 +117,7 @@ namespace Desktop_Application
             users_username = new DataGridViewTextBoxColumn();
             users_email = new DataGridViewTextBoxColumn();
             users_role = new DataGridViewTextBoxColumn();
-            roundedButton2 = new RoundedButton();
+            users_button_add = new RoundedButton();
             roundedButton1 = new RoundedButton();
             users_button_edit = new RoundedButton();
             users_button_remove = new RoundedButton();
@@ -654,8 +654,8 @@ namespace Desktop_Application
             grid_dashboard.ShowEditingIcon = false;
             grid_dashboard.ShowRowErrors = false;
             grid_dashboard.Size = new Size(604, 290);
-            grid_dashboard.TabIndex = 18;
-            grid_dashboard.TabStop = false;
+            grid_dashboard.StandardTab = true;
+            grid_dashboard.TabIndex = 1;
             // 
             // dashboard_count
             // 
@@ -741,8 +741,7 @@ namespace Desktop_Application
             roundedButton5.Location = new Point(343, 26);
             roundedButton5.Name = "roundedButton5";
             roundedButton5.Size = new Size(100, 36);
-            roundedButton5.TabIndex = 29;
-            roundedButton5.TabStop = false;
+            roundedButton5.TabIndex = 15;
             roundedButton5.Text = "Add";
             roundedButton5.TextColor = Color.White;
             roundedButton5.UseVisualStyleBackColor = false;
@@ -764,8 +763,7 @@ namespace Desktop_Application
             roundedButton6.Location = new Point(131, 26);
             roundedButton6.Name = "roundedButton6";
             roundedButton6.Size = new Size(100, 36);
-            roundedButton6.TabIndex = 28;
-            roundedButton6.TabStop = false;
+            roundedButton6.TabIndex = 13;
             roundedButton6.Text = "Edit";
             roundedButton6.TextColor = Color.White;
             roundedButton6.UseVisualStyleBackColor = false;
@@ -787,8 +785,7 @@ namespace Desktop_Application
             books_refresh_btn.Location = new Point(52, 26);
             books_refresh_btn.Name = "books_refresh_btn";
             books_refresh_btn.Size = new Size(42, 36);
-            books_refresh_btn.TabIndex = 15;
-            books_refresh_btn.TabStop = false;
+            books_refresh_btn.TabIndex = 12;
             books_refresh_btn.TextColor = Color.White;
             books_refresh_btn.UseVisualStyleBackColor = false;
             books_refresh_btn.Click += RefreshBooks;
@@ -809,8 +806,7 @@ namespace Desktop_Application
             roundedButton7.Location = new Point(237, 26);
             roundedButton7.Name = "roundedButton7";
             roundedButton7.Size = new Size(100, 36);
-            roundedButton7.TabIndex = 27;
-            roundedButton7.TabStop = false;
+            roundedButton7.TabIndex = 14;
             roundedButton7.Text = "Remove";
             roundedButton7.TextColor = Color.White;
             roundedButton7.UseVisualStyleBackColor = false;
@@ -836,8 +832,7 @@ namespace Desktop_Application
             books_src.Name = "books_src";
             books_src.PlaceholderText = "Search...";
             books_src.Size = new Size(208, 32);
-            books_src.TabIndex = 1;
-            books_src.TabStop = false;
+            books_src.TabIndex = 16;
             books_src.TextChanged += SearchBooks;
             // 
             // books_grd
@@ -862,7 +857,8 @@ namespace Desktop_Application
             books_grd.ShowEditingIcon = false;
             books_grd.ShowRowErrors = false;
             books_grd.Size = new Size(604, 359);
-            books_grd.TabIndex = 0;
+            books_grd.StandardTab = true;
+            books_grd.TabIndex = 11;
             // 
             // books_title
             // 
@@ -938,7 +934,7 @@ namespace Desktop_Application
             checkBox_currentBorrowings.Name = "checkBox_currentBorrowings";
             checkBox_currentBorrowings.RightToLeft = RightToLeft.Yes;
             checkBox_currentBorrowings.Size = new Size(186, 19);
-            checkBox_currentBorrowings.TabIndex = 31;
+            checkBox_currentBorrowings.TabIndex = 17;
             checkBox_currentBorrowings.Text = "Only show current borrowings";
             checkBox_currentBorrowings.UseVisualStyleBackColor = true;
             checkBox_currentBorrowings.CheckedChanged += RefreshBorrowings;
@@ -965,7 +961,8 @@ namespace Desktop_Application
             borrowings_grd.ShowEditingIcon = false;
             borrowings_grd.ShowRowErrors = false;
             borrowings_grd.Size = new Size(604, 359);
-            borrowings_grd.TabIndex = 30;
+            borrowings_grd.StandardTab = true;
+            borrowings_grd.TabIndex = 11;
             // 
             // borrowings_username
             // 
@@ -1031,8 +1028,7 @@ namespace Desktop_Application
             borrowings_refresh_btn.Location = new Point(52, 26);
             borrowings_refresh_btn.Name = "borrowings_refresh_btn";
             borrowings_refresh_btn.Size = new Size(42, 36);
-            borrowings_refresh_btn.TabIndex = 29;
-            borrowings_refresh_btn.TabStop = false;
+            borrowings_refresh_btn.TabIndex = 12;
             borrowings_refresh_btn.TextColor = Color.White;
             borrowings_refresh_btn.UseVisualStyleBackColor = false;
             borrowings_refresh_btn.Click += RefreshBorrowings;
@@ -1053,8 +1049,7 @@ namespace Desktop_Application
             borrowings_borrow_btn.Location = new Point(342, 26);
             borrowings_borrow_btn.Name = "borrowings_borrow_btn";
             borrowings_borrow_btn.Size = new Size(100, 36);
-            borrowings_borrow_btn.TabIndex = 28;
-            borrowings_borrow_btn.TabStop = false;
+            borrowings_borrow_btn.TabIndex = 15;
             borrowings_borrow_btn.Text = "Lend";
             borrowings_borrow_btn.TextColor = Color.White;
             borrowings_borrow_btn.UseVisualStyleBackColor = false;
@@ -1076,8 +1071,7 @@ namespace Desktop_Application
             borrowings_edit_btn.Location = new Point(130, 26);
             borrowings_edit_btn.Name = "borrowings_edit_btn";
             borrowings_edit_btn.Size = new Size(100, 36);
-            borrowings_edit_btn.TabIndex = 27;
-            borrowings_edit_btn.TabStop = false;
+            borrowings_edit_btn.TabIndex = 13;
             borrowings_edit_btn.Text = "Edit";
             borrowings_edit_btn.TextColor = Color.White;
             borrowings_edit_btn.UseVisualStyleBackColor = false;
@@ -1099,8 +1093,7 @@ namespace Desktop_Application
             borrowings_return_btn.Location = new Point(236, 26);
             borrowings_return_btn.Name = "borrowings_return_btn";
             borrowings_return_btn.Size = new Size(100, 36);
-            borrowings_return_btn.TabIndex = 26;
-            borrowings_return_btn.TabStop = false;
+            borrowings_return_btn.TabIndex = 14;
             borrowings_return_btn.Text = "Return";
             borrowings_return_btn.TextColor = Color.White;
             borrowings_return_btn.UseVisualStyleBackColor = false;
@@ -1126,8 +1119,7 @@ namespace Desktop_Application
             borrowings_src.Name = "borrowings_src";
             borrowings_src.PlaceholderText = "Search...";
             borrowings_src.Size = new Size(208, 32);
-            borrowings_src.TabIndex = 24;
-            borrowings_src.TabStop = false;
+            borrowings_src.TabIndex = 16;
             borrowings_src.TextChanged += SearchBorrowings;
             // 
             // categories_pnl
@@ -1169,7 +1161,8 @@ namespace Desktop_Application
             categories_grd.ShowEditingIcon = false;
             categories_grd.ShowRowErrors = false;
             categories_grd.Size = new Size(604, 359);
-            categories_grd.TabIndex = 31;
+            categories_grd.StandardTab = true;
+            categories_grd.TabIndex = 11;
             // 
             // categories_category
             // 
@@ -1195,8 +1188,7 @@ namespace Desktop_Application
             categories_refresh_btn.Location = new Point(52, 26);
             categories_refresh_btn.Name = "categories_refresh_btn";
             categories_refresh_btn.Size = new Size(42, 36);
-            categories_refresh_btn.TabIndex = 22;
-            categories_refresh_btn.TabStop = false;
+            categories_refresh_btn.TabIndex = 12;
             categories_refresh_btn.TextColor = Color.White;
             categories_refresh_btn.UseVisualStyleBackColor = false;
             categories_refresh_btn.Click += RefreshCategories;
@@ -1217,8 +1209,7 @@ namespace Desktop_Application
             categories_add_btn.Location = new Point(342, 26);
             categories_add_btn.Name = "categories_add_btn";
             categories_add_btn.Size = new Size(100, 36);
-            categories_add_btn.TabIndex = 21;
-            categories_add_btn.TabStop = false;
+            categories_add_btn.TabIndex = 15;
             categories_add_btn.Text = "Add";
             categories_add_btn.TextColor = Color.White;
             categories_add_btn.UseVisualStyleBackColor = false;
@@ -1240,8 +1231,7 @@ namespace Desktop_Application
             categories_edit_btn.Location = new Point(130, 26);
             categories_edit_btn.Name = "categories_edit_btn";
             categories_edit_btn.Size = new Size(100, 36);
-            categories_edit_btn.TabIndex = 20;
-            categories_edit_btn.TabStop = false;
+            categories_edit_btn.TabIndex = 13;
             categories_edit_btn.Text = "Edit";
             categories_edit_btn.TextColor = Color.White;
             categories_edit_btn.UseVisualStyleBackColor = false;
@@ -1263,8 +1253,7 @@ namespace Desktop_Application
             categories_remove_btn.Location = new Point(236, 26);
             categories_remove_btn.Name = "categories_remove_btn";
             categories_remove_btn.Size = new Size(100, 36);
-            categories_remove_btn.TabIndex = 19;
-            categories_remove_btn.TabStop = false;
+            categories_remove_btn.TabIndex = 14;
             categories_remove_btn.Text = "Remove";
             categories_remove_btn.TextColor = Color.White;
             categories_remove_btn.UseVisualStyleBackColor = false;
@@ -1290,15 +1279,14 @@ namespace Desktop_Application
             categories_src.Name = "categories_src";
             categories_src.PlaceholderText = "Search...";
             categories_src.Size = new Size(208, 32);
-            categories_src.TabIndex = 17;
-            categories_src.TabStop = false;
+            categories_src.TabIndex = 16;
             categories_src.TextChanged += SearchCategories;
             // 
             // users_pnl
             // 
             users_pnl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             users_pnl.Controls.Add(users_grd);
-            users_pnl.Controls.Add(roundedButton2);
+            users_pnl.Controls.Add(users_button_add);
             users_pnl.Controls.Add(roundedButton1);
             users_pnl.Controls.Add(users_button_edit);
             users_pnl.Controls.Add(users_button_remove);
@@ -1332,7 +1320,8 @@ namespace Desktop_Application
             users_grd.ShowEditingIcon = false;
             users_grd.ShowRowErrors = false;
             users_grd.Size = new Size(604, 359);
-            users_grd.TabIndex = 32;
+            users_grd.StandardTab = true;
+            users_grd.TabIndex = 11;
             // 
             // users_firstName
             // 
@@ -1398,28 +1387,27 @@ namespace Desktop_Application
             users_role.ReadOnly = true;
             users_role.Width = 55;
             // 
-            // roundedButton2
+            // users_button_add
             // 
-            roundedButton2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            roundedButton2.BackColor = Color.FromArgb(80, 77, 180);
-            roundedButton2.BackgroundColor = Color.FromArgb(80, 77, 180);
-            roundedButton2.BorderColor = Color.Transparent;
-            roundedButton2.BorderRadius = 5;
-            roundedButton2.BorderSize = 0;
-            roundedButton2.FlatAppearance.BorderSize = 0;
-            roundedButton2.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
-            roundedButton2.FlatStyle = FlatStyle.Flat;
-            roundedButton2.Font = new Font("Yu Gothic UI Semibold", 14F);
-            roundedButton2.ForeColor = Color.White;
-            roundedButton2.Location = new Point(343, 26);
-            roundedButton2.Name = "roundedButton2";
-            roundedButton2.Size = new Size(100, 36);
-            roundedButton2.TabIndex = 29;
-            roundedButton2.TabStop = false;
-            roundedButton2.Text = "Add";
-            roundedButton2.TextColor = Color.White;
-            roundedButton2.UseVisualStyleBackColor = false;
-            roundedButton2.Click += AddUser;
+            users_button_add.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            users_button_add.BackColor = Color.FromArgb(80, 77, 180);
+            users_button_add.BackgroundColor = Color.FromArgb(80, 77, 180);
+            users_button_add.BorderColor = Color.Transparent;
+            users_button_add.BorderRadius = 5;
+            users_button_add.BorderSize = 0;
+            users_button_add.FlatAppearance.BorderSize = 0;
+            users_button_add.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            users_button_add.FlatStyle = FlatStyle.Flat;
+            users_button_add.Font = new Font("Yu Gothic UI Semibold", 14F);
+            users_button_add.ForeColor = Color.White;
+            users_button_add.Location = new Point(343, 26);
+            users_button_add.Name = "users_button_add";
+            users_button_add.Size = new Size(100, 36);
+            users_button_add.TabIndex = 15;
+            users_button_add.Text = "Add";
+            users_button_add.TextColor = Color.White;
+            users_button_add.UseVisualStyleBackColor = false;
+            users_button_add.Click += AddUser;
             // 
             // roundedButton1
             // 
@@ -1437,8 +1425,7 @@ namespace Desktop_Application
             roundedButton1.Location = new Point(52, 26);
             roundedButton1.Name = "roundedButton1";
             roundedButton1.Size = new Size(42, 36);
-            roundedButton1.TabIndex = 16;
-            roundedButton1.TabStop = false;
+            roundedButton1.TabIndex = 12;
             roundedButton1.TextColor = Color.White;
             roundedButton1.UseVisualStyleBackColor = false;
             roundedButton1.Click += RefreshUsers;
@@ -1459,8 +1446,7 @@ namespace Desktop_Application
             users_button_edit.Location = new Point(131, 26);
             users_button_edit.Name = "users_button_edit";
             users_button_edit.Size = new Size(100, 36);
-            users_button_edit.TabIndex = 28;
-            users_button_edit.TabStop = false;
+            users_button_edit.TabIndex = 13;
             users_button_edit.Text = "Edit";
             users_button_edit.TextColor = Color.White;
             users_button_edit.UseVisualStyleBackColor = false;
@@ -1482,8 +1468,7 @@ namespace Desktop_Application
             users_button_remove.Location = new Point(237, 26);
             users_button_remove.Name = "users_button_remove";
             users_button_remove.Size = new Size(100, 36);
-            users_button_remove.TabIndex = 27;
-            users_button_remove.TabStop = false;
+            users_button_remove.TabIndex = 14;
             users_button_remove.Text = "Remove";
             users_button_remove.TextColor = Color.White;
             users_button_remove.UseVisualStyleBackColor = false;
@@ -1509,8 +1494,7 @@ namespace Desktop_Application
             users_src.Name = "users_src";
             users_src.PlaceholderText = "Search...";
             users_src.Size = new Size(208, 32);
-            users_src.TabIndex = 1;
-            users_src.TabStop = false;
+            users_src.TabIndex = 16;
             users_src.TextChanged += SearchUsers;
             // 
             // authors_pnl
@@ -1552,7 +1536,8 @@ namespace Desktop_Application
             authors_grd.ShowEditingIcon = false;
             authors_grd.ShowRowErrors = false;
             authors_grd.Size = new Size(604, 359);
-            authors_grd.TabIndex = 33;
+            authors_grd.StandardTab = true;
+            authors_grd.TabIndex = 11;
             // 
             // authors_author
             // 
@@ -1578,8 +1563,7 @@ namespace Desktop_Application
             authors_refresh_btn.Location = new Point(52, 26);
             authors_refresh_btn.Name = "authors_refresh_btn";
             authors_refresh_btn.Size = new Size(42, 36);
-            authors_refresh_btn.TabIndex = 22;
-            authors_refresh_btn.TabStop = false;
+            authors_refresh_btn.TabIndex = 12;
             authors_refresh_btn.TextColor = Color.White;
             authors_refresh_btn.UseVisualStyleBackColor = false;
             authors_refresh_btn.Click += RefreshAuthors;
@@ -1600,8 +1584,7 @@ namespace Desktop_Application
             authors_add_btn.Location = new Point(342, 26);
             authors_add_btn.Name = "authors_add_btn";
             authors_add_btn.Size = new Size(100, 36);
-            authors_add_btn.TabIndex = 21;
-            authors_add_btn.TabStop = false;
+            authors_add_btn.TabIndex = 15;
             authors_add_btn.Text = "Add";
             authors_add_btn.TextColor = Color.White;
             authors_add_btn.UseVisualStyleBackColor = false;
@@ -1623,8 +1606,7 @@ namespace Desktop_Application
             authors_edit_btn.Location = new Point(130, 26);
             authors_edit_btn.Name = "authors_edit_btn";
             authors_edit_btn.Size = new Size(100, 36);
-            authors_edit_btn.TabIndex = 20;
-            authors_edit_btn.TabStop = false;
+            authors_edit_btn.TabIndex = 13;
             authors_edit_btn.Text = "Edit";
             authors_edit_btn.TextColor = Color.White;
             authors_edit_btn.UseVisualStyleBackColor = false;
@@ -1646,8 +1628,7 @@ namespace Desktop_Application
             authors_remove_btn.Location = new Point(236, 26);
             authors_remove_btn.Name = "authors_remove_btn";
             authors_remove_btn.Size = new Size(100, 36);
-            authors_remove_btn.TabIndex = 19;
-            authors_remove_btn.TabStop = false;
+            authors_remove_btn.TabIndex = 14;
             authors_remove_btn.Text = "Remove";
             authors_remove_btn.TextColor = Color.White;
             authors_remove_btn.UseVisualStyleBackColor = false;
@@ -1673,7 +1654,7 @@ namespace Desktop_Application
             authors_src.Name = "authors_src";
             authors_src.PlaceholderText = "Search...";
             authors_src.Size = new Size(208, 32);
-            authors_src.TabIndex = 17;
+            authors_src.TabIndex = 16;
             authors_src.TabStop = false;
             authors_src.TextChanged += SearchAuthors;
             // 
@@ -1717,7 +1698,8 @@ namespace Desktop_Application
             publishers_grd.ShowEditingIcon = false;
             publishers_grd.ShowRowErrors = false;
             publishers_grd.Size = new Size(604, 359);
-            publishers_grd.TabIndex = 33;
+            publishers_grd.StandardTab = true;
+            publishers_grd.TabIndex = 11;
             // 
             // publishers_publisher
             // 
@@ -1743,8 +1725,7 @@ namespace Desktop_Application
             publishers_refresh_btn.Location = new Point(52, 26);
             publishers_refresh_btn.Name = "publishers_refresh_btn";
             publishers_refresh_btn.Size = new Size(42, 36);
-            publishers_refresh_btn.TabIndex = 22;
-            publishers_refresh_btn.TabStop = false;
+            publishers_refresh_btn.TabIndex = 12;
             publishers_refresh_btn.TextColor = Color.White;
             publishers_refresh_btn.UseVisualStyleBackColor = false;
             publishers_refresh_btn.Click += RefreshPublishers;
@@ -1765,8 +1746,7 @@ namespace Desktop_Application
             publishers_add_btn.Location = new Point(342, 26);
             publishers_add_btn.Name = "publishers_add_btn";
             publishers_add_btn.Size = new Size(100, 36);
-            publishers_add_btn.TabIndex = 21;
-            publishers_add_btn.TabStop = false;
+            publishers_add_btn.TabIndex = 15;
             publishers_add_btn.Text = "Add";
             publishers_add_btn.TextColor = Color.White;
             publishers_add_btn.UseVisualStyleBackColor = false;
@@ -1788,8 +1768,7 @@ namespace Desktop_Application
             publishers_edit_btn.Location = new Point(130, 26);
             publishers_edit_btn.Name = "publishers_edit_btn";
             publishers_edit_btn.Size = new Size(100, 36);
-            publishers_edit_btn.TabIndex = 20;
-            publishers_edit_btn.TabStop = false;
+            publishers_edit_btn.TabIndex = 13;
             publishers_edit_btn.Text = "Edit";
             publishers_edit_btn.TextColor = Color.White;
             publishers_edit_btn.UseVisualStyleBackColor = false;
@@ -1811,8 +1790,7 @@ namespace Desktop_Application
             publishers_remove_btn.Location = new Point(236, 26);
             publishers_remove_btn.Name = "publishers_remove_btn";
             publishers_remove_btn.Size = new Size(100, 36);
-            publishers_remove_btn.TabIndex = 19;
-            publishers_remove_btn.TabStop = false;
+            publishers_remove_btn.TabIndex = 14;
             publishers_remove_btn.Text = "Remove";
             publishers_remove_btn.TextColor = Color.White;
             publishers_remove_btn.UseVisualStyleBackColor = false;
@@ -1838,8 +1816,7 @@ namespace Desktop_Application
             publishers_src.Name = "publishers_src";
             publishers_src.PlaceholderText = "Search...";
             publishers_src.Size = new Size(208, 32);
-            publishers_src.TabIndex = 17;
-            publishers_src.TabStop = false;
+            publishers_src.TabIndex = 16;
             publishers_src.TextChanged += SearchPublishers;
             // 
             // reservations_pnl
@@ -1881,7 +1858,8 @@ namespace Desktop_Application
             reservations_grd.ShowEditingIcon = false;
             reservations_grd.ShowRowErrors = false;
             reservations_grd.Size = new Size(605, 359);
-            reservations_grd.TabIndex = 30;
+            reservations_grd.StandardTab = true;
+            reservations_grd.TabIndex = 11;
             // 
             // reservations_username
             // 
@@ -1939,8 +1917,7 @@ namespace Desktop_Application
             reservations_refresh_btn.Location = new Point(52, 26);
             reservations_refresh_btn.Name = "reservations_refresh_btn";
             reservations_refresh_btn.Size = new Size(42, 36);
-            reservations_refresh_btn.TabIndex = 29;
-            reservations_refresh_btn.TabStop = false;
+            reservations_refresh_btn.TabIndex = 12;
             reservations_refresh_btn.TextColor = Color.White;
             reservations_refresh_btn.UseVisualStyleBackColor = false;
             reservations_refresh_btn.Click += RefreshReservations;
@@ -1961,8 +1938,7 @@ namespace Desktop_Application
             reservation_add_btn.Location = new Point(342, 26);
             reservation_add_btn.Name = "reservation_add_btn";
             reservation_add_btn.Size = new Size(100, 36);
-            reservation_add_btn.TabIndex = 28;
-            reservation_add_btn.TabStop = false;
+            reservation_add_btn.TabIndex = 15;
             reservation_add_btn.Text = "Add";
             reservation_add_btn.TextColor = Color.White;
             reservation_add_btn.UseVisualStyleBackColor = false;
@@ -1984,8 +1960,7 @@ namespace Desktop_Application
             reservations_edit_btn.Location = new Point(130, 26);
             reservations_edit_btn.Name = "reservations_edit_btn";
             reservations_edit_btn.Size = new Size(100, 36);
-            reservations_edit_btn.TabIndex = 27;
-            reservations_edit_btn.TabStop = false;
+            reservations_edit_btn.TabIndex = 13;
             reservations_edit_btn.Text = "Edit";
             reservations_edit_btn.TextColor = Color.White;
             reservations_edit_btn.UseVisualStyleBackColor = false;
@@ -2007,8 +1982,7 @@ namespace Desktop_Application
             reservations_remove_btn.Location = new Point(236, 26);
             reservations_remove_btn.Name = "reservations_remove_btn";
             reservations_remove_btn.Size = new Size(100, 36);
-            reservations_remove_btn.TabIndex = 26;
-            reservations_remove_btn.TabStop = false;
+            reservations_remove_btn.TabIndex = 14;
             reservations_remove_btn.Text = "Remove";
             reservations_remove_btn.TextColor = Color.White;
             reservations_remove_btn.UseVisualStyleBackColor = false;
@@ -2034,8 +2008,7 @@ namespace Desktop_Application
             reservations_src.Name = "reservations_src";
             reservations_src.PlaceholderText = "Search...";
             reservations_src.Size = new Size(208, 32);
-            reservations_src.TabIndex = 24;
-            reservations_src.TabStop = false;
+            reservations_src.TabIndex = 16;
             reservations_src.TextChanged += SearchReservations;
             // 
             // AdminPanel
@@ -2182,7 +2155,7 @@ namespace Desktop_Application
         private DataGridViewTextBoxColumn borrowings_returnDate;
         private DataGridView categories_grd;
         private DataGridViewTextBoxColumn categories_category;
-        private RoundedButton roundedButton2;
+        private RoundedButton users_button_add;
         private RoundedButton users_button_edit;
         private RoundedButton users_button_remove;
         private RoundedButton roundedButton5;

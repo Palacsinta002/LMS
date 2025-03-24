@@ -213,12 +213,14 @@ public partial class AdminPanel : Form
         HidePanels();
         reservations_pnl.Visible = true;
         reservations_pnl.Enabled = true;
+        RefreshReservations(sender, e);
     }
 
     // Select reservations from the database and fills the grid
     private void RefreshReservations(object sender, EventArgs e)
     {
-
+        var result = HandleQueries.SelectFromFile("SelectReservation");
+        HandleGrids.Fill(reservations_grd, result);
     }
 
     // Live search - Searches ??????? in the grid
