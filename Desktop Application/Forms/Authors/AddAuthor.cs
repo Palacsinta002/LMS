@@ -18,7 +18,6 @@ public partial class AddAuthor : Form
         CloseThisWindow.Handle(this, cancel);
         HandleKeys.Handle(this, Keys.Enter, Save);
         HandleKeys.Handle(this, Keys.Escape, (s, e) => this.Close());
-        this.KeyPreview = true;
     }
 
     private void Save(object sender, EventArgs e)

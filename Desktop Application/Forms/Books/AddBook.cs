@@ -18,7 +18,6 @@ public partial class AddBook : Form
         CloseThisWindow.Handle(this, cancel);
         HandleKeys.Handle(this, Keys.Enter, Save);
         HandleKeys.Handle(this, Keys.Escape, (s, e) => this.Close());
-        this.KeyPreview = true;
 
         var result = HandleQueries.SelectFromFile("SelectPublisher");
         HandleGrids.Fill(dropDown_publisher, result);

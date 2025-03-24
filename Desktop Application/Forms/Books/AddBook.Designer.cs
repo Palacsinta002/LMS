@@ -371,6 +371,7 @@ namespace Desktop_Application.Forms.Books
             Controls.Add(label_title);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            KeyPreview = true;
             Margin = new Padding(3, 4, 3, 4);
             Name = "AddBook";
             StartPosition = FormStartPosition.CenterScreen;
