@@ -19,6 +19,9 @@ public partial class EditAuthor : Form
         BorderPaint.Handle(this);
         CloseThisWindow.Handle(this, close_btn);
         CloseThisWindow.Handle(this, cancel);
+        HandleKeys.Handle(this, Keys.Enter, Save);
+        HandleKeys.Handle(this, Keys.Escape, (s, e) => this.Close());
+        this.KeyPreview = true;
 
         var selectedRow = _author_grd.SelectedRows[0].Cells;
 
