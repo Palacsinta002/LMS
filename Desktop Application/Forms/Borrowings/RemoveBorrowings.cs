@@ -35,7 +35,7 @@ public partial class RemoveBorrowings : Form
             // Remove it from the Borrowings table so it only remains in Borrowings_storage
             HandleQueries.Delete(_borrowings_grd, "Borrowings", "borrowings_isbn", "ISBN");
 
-            MessageBox.Show("Borrowing marked as returned succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Book marked as returned succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
     }

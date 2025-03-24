@@ -142,14 +142,12 @@ namespace Desktop_Application
             publishers_lbl1 = new Label();
             publishers_src = new TextBox();
             reservations_pnl = new Panel();
-            checkBox_currentReservations = new CheckBox();
             reservations_grd = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
+            reservations_username = new DataGridViewTextBoxColumn();
+            reservations_title = new DataGridViewTextBoxColumn();
+            reservations_isbn = new DataGridViewTextBoxColumn();
+            reservations_startDate = new DataGridViewTextBoxColumn();
+            reservations_endDate = new DataGridViewTextBoxColumn();
             reservations_refresh_btn = new RoundedButton();
             reservation_add_btn = new RoundedButton();
             reservations_edit_btn = new RoundedButton();
@@ -1848,7 +1846,6 @@ namespace Desktop_Application
             // 
             reservations_pnl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             reservations_pnl.BackColor = Color.White;
-            reservations_pnl.Controls.Add(checkBox_currentReservations);
             reservations_pnl.Controls.Add(reservations_grd);
             reservations_pnl.Controls.Add(reservations_refresh_btn);
             reservations_pnl.Controls.Add(reservation_add_btn);
@@ -1862,18 +1859,6 @@ namespace Desktop_Application
             reservations_pnl.TabIndex = 27;
             reservations_pnl.Visible = false;
             // 
-            // checkBox_currentReservations
-            // 
-            checkBox_currentReservations.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            checkBox_currentReservations.AutoSize = true;
-            checkBox_currentReservations.Location = new Point(467, 80);
-            checkBox_currentReservations.Name = "checkBox_currentReservations";
-            checkBox_currentReservations.RightToLeft = RightToLeft.Yes;
-            checkBox_currentReservations.Size = new Size(189, 19);
-            checkBox_currentReservations.TabIndex = 31;
-            checkBox_currentReservations.Text = "Only show current reservations";
-            checkBox_currentReservations.UseVisualStyleBackColor = true;
-            // 
             // reservations_grd
             // 
             reservations_grd.AllowUserToAddRows = false;
@@ -1884,7 +1869,7 @@ namespace Desktop_Application
             reservations_grd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             reservations_grd.BackgroundColor = Color.White;
             reservations_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            reservations_grd.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6 });
+            reservations_grd.Columns.AddRange(new DataGridViewColumn[] { reservations_username, reservations_title, reservations_isbn, reservations_startDate, reservations_endDate });
             reservations_grd.Location = new Point(52, 108);
             reservations_grd.Name = "reservations_grd";
             reservations_grd.ReadOnly = true;
@@ -1898,53 +1883,45 @@ namespace Desktop_Application
             reservations_grd.Size = new Size(605, 359);
             reservations_grd.TabIndex = 30;
             // 
-            // dataGridViewTextBoxColumn1
+            // reservations_username
             // 
-            dataGridViewTextBoxColumn1.HeaderText = "Username";
-            dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.ReadOnly = true;
-            dataGridViewTextBoxColumn1.Width = 85;
+            reservations_username.HeaderText = "Username";
+            reservations_username.MinimumWidth = 6;
+            reservations_username.Name = "reservations_username";
+            reservations_username.ReadOnly = true;
+            reservations_username.Width = 85;
             // 
-            // dataGridViewTextBoxColumn2
+            // reservations_title
             // 
-            dataGridViewTextBoxColumn2.HeaderText = "Title";
-            dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.ReadOnly = true;
-            dataGridViewTextBoxColumn2.Width = 54;
+            reservations_title.HeaderText = "Title";
+            reservations_title.MinimumWidth = 6;
+            reservations_title.Name = "reservations_title";
+            reservations_title.ReadOnly = true;
+            reservations_title.Width = 54;
             // 
-            // dataGridViewTextBoxColumn3
+            // reservations_isbn
             // 
-            dataGridViewTextBoxColumn3.HeaderText = "ISBN";
-            dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.ReadOnly = true;
-            dataGridViewTextBoxColumn3.Width = 57;
+            reservations_isbn.HeaderText = "ISBN";
+            reservations_isbn.MinimumWidth = 6;
+            reservations_isbn.Name = "reservations_isbn";
+            reservations_isbn.ReadOnly = true;
+            reservations_isbn.Width = 57;
             // 
-            // dataGridViewTextBoxColumn4
+            // reservations_startDate
             // 
-            dataGridViewTextBoxColumn4.HeaderText = "Borrow Date";
-            dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            dataGridViewTextBoxColumn4.ReadOnly = true;
-            dataGridViewTextBoxColumn4.Width = 97;
+            reservations_startDate.HeaderText = "Start Date";
+            reservations_startDate.MinimumWidth = 6;
+            reservations_startDate.Name = "reservations_startDate";
+            reservations_startDate.ReadOnly = true;
+            reservations_startDate.Width = 83;
             // 
-            // dataGridViewTextBoxColumn5
+            // reservations_endDate
             // 
-            dataGridViewTextBoxColumn5.HeaderText = "Due Date";
-            dataGridViewTextBoxColumn5.MinimumWidth = 6;
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.ReadOnly = true;
-            dataGridViewTextBoxColumn5.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            dataGridViewTextBoxColumn6.HeaderText = "Return Date";
-            dataGridViewTextBoxColumn6.MinimumWidth = 6;
-            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            dataGridViewTextBoxColumn6.ReadOnly = true;
-            dataGridViewTextBoxColumn6.Width = 94;
+            reservations_endDate.HeaderText = "End Date";
+            reservations_endDate.MinimumWidth = 6;
+            reservations_endDate.Name = "reservations_endDate";
+            reservations_endDate.ReadOnly = true;
+            reservations_endDate.Width = 79;
             // 
             // reservations_refresh_btn
             // 
@@ -1966,6 +1943,7 @@ namespace Desktop_Application
             reservations_refresh_btn.TabStop = false;
             reservations_refresh_btn.TextColor = Color.White;
             reservations_refresh_btn.UseVisualStyleBackColor = false;
+            reservations_refresh_btn.Click += RefreshReservations;
             // 
             // reservation_add_btn
             // 
@@ -1988,6 +1966,7 @@ namespace Desktop_Application
             reservation_add_btn.Text = "Add";
             reservation_add_btn.TextColor = Color.White;
             reservation_add_btn.UseVisualStyleBackColor = false;
+            reservation_add_btn.Click += AddReservation;
             // 
             // reservations_edit_btn
             // 
@@ -2010,6 +1989,7 @@ namespace Desktop_Application
             reservations_edit_btn.Text = "Edit";
             reservations_edit_btn.TextColor = Color.White;
             reservations_edit_btn.UseVisualStyleBackColor = false;
+            reservations_edit_btn.Click += EditReservation;
             // 
             // reservations_remove_btn
             // 
@@ -2032,6 +2012,7 @@ namespace Desktop_Application
             reservations_remove_btn.Text = "Remove";
             reservations_remove_btn.TextColor = Color.White;
             reservations_remove_btn.UseVisualStyleBackColor = false;
+            reservations_remove_btn.Click += RemoveReservations;
             // 
             // label5
             // 
@@ -2055,6 +2036,7 @@ namespace Desktop_Application
             reservations_src.Size = new Size(208, 32);
             reservations_src.TabIndex = 24;
             reservations_src.TabStop = false;
+            reservations_src.TextChanged += SearchReservations;
             // 
             // AdminPanel
             // 
@@ -2230,19 +2212,17 @@ namespace Desktop_Application
         private Panel panel7;
         private Button reservations_btn;
         private Panel reservations_pnl;
-        private CheckBox checkBox_currentReservations;
         private DataGridView reservations_grd;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private RoundedButton reservations_refresh_btn;
         private RoundedButton reservation_add_btn;
         private RoundedButton reservations_edit_btn;
         private RoundedButton reservations_remove_btn;
         private Label label5;
         private TextBox reservations_src;
+        private DataGridViewTextBoxColumn reservations_username;
+        private DataGridViewTextBoxColumn reservations_title;
+        private DataGridViewTextBoxColumn reservations_isbn;
+        private DataGridViewTextBoxColumn reservations_startDate;
+        private DataGridViewTextBoxColumn reservations_endDate;
     }
 }

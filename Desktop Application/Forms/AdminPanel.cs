@@ -214,6 +214,36 @@ public partial class AdminPanel : Form
         reservations_pnl.Visible = true;
         reservations_pnl.Enabled = true;
     }
+
+    // Select reservations from the database and fills the grid
+    private void RefreshReservations(object sender, EventArgs e)
+    {
+
+    }
+
+    // Live search - Searches ??????? in the grid
+    private void SearchReservations(object sender, EventArgs e)
+    {
+
+    }
+
+    // Adds a reservation to the database - Lends a book
+    private void AddReservation(object sender, EventArgs e)
+    {
+
+    }
+
+    // Edit the selected reservation from the grid and then updates it in the database
+    private void EditReservation(object sender, EventArgs e)
+    {
+
+    }
+
+    // Removes reservation from the database - Marks the book as returned
+    private void RemoveReservations(object sender, EventArgs e)
+    {
+
+    }
     #endregion
 
     #region Categories
