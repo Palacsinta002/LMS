@@ -1,11 +1,11 @@
 ﻿using Desktop_Application.Classes;
+using Desktop_Application.Forms.Authors;
 using Desktop_Application.Forms.Books;
 using Desktop_Application.Forms.Borrowings;
 using Desktop_Application.Forms.Categories;
-using Desktop_Application.Forms.Authors;
+using Desktop_Application.Forms.Profile;
 using Desktop_Application.Forms.Publishers;
 using Desktop_Application.Forms.Users;
-using Desktop_Application.Forms.Profile;
 
 namespace Desktop_Application;
 
@@ -26,7 +26,7 @@ public partial class AdminPanel : Form
         users_button_edit.Visible = _isAdmin;
         users_button_remove.Visible = _isAdmin;
 
-        hello_lbl.Text = $"Hello {_username}!";
+        label_greeting.Text = $"Hello {_username}!";
 
         ShowDashboard(sender, e);
     }
@@ -36,7 +36,7 @@ public partial class AdminPanel : Form
         ProfileSettings profileSettings = new(_username);
         profileSettings.ShowDialog();
         _username = profileSettings.Username;
-        hello_lbl.Text = $"Hello {_username}!";
+        label_greeting.Text = $"Hello {_username}!";
     }
 
     #region Dashboard
@@ -47,6 +47,7 @@ public partial class AdminPanel : Form
         {
             HidePanels();
             dashboard_pnl.Visible = true;
+            dashboard_pnl.Enabled = true;
 
             // Show statistics about our books
             try
@@ -62,7 +63,7 @@ public partial class AdminPanel : Form
                 dashboard_borrowings.Text = result[0][0];
 
                 result = HandleQueries.SelectFromFile("SelectTopBorrowedBook");
-                HandleGrids.Fill(dashboard_grd, result);
+                HandleGrids.Fill(grid_dashboard, result);
             }
             catch (Exception ex)
             {
@@ -82,6 +83,7 @@ public partial class AdminPanel : Form
         {
             HidePanels();
             books_pnl.Visible = true;
+            books_pnl.Enabled = true;
             RefreshBooks(sender, e);
         }
     }
@@ -139,6 +141,7 @@ public partial class AdminPanel : Form
         {
             HidePanels();
             borrowings_pnl.Visible = true;
+            borrowings_pnl.Enabled = true;
             RefreshBorrowings(sender, e);
         }
     }
@@ -202,6 +205,49 @@ public partial class AdminPanel : Form
     }
     #endregion
 
+    #region Reservations
+    // RESERVATIONS
+    // Shows Reservations page and hides other pages
+    private void ShowReservations(object sender, EventArgs e)
+    {
+        HidePanels();
+        reservations_pnl.Visible = true;
+        reservations_pnl.Enabled = true;
+        RefreshReservations(sender, e);
+    }
+
+    // Select reservations from the database and fills the grid
+    private void RefreshReservations(object sender, EventArgs e)
+    {
+        var result = HandleQueries.SelectFromFile("SelectReservation");
+        HandleGrids.Fill(reservations_grd, result);
+    }
+
+    // Live search - Searches ??????? in the grid
+    private void SearchReservations(object sender, EventArgs e)
+    {
+
+    }
+
+    // Adds a reservation to the database - Lends a book
+    private void AddReservation(object sender, EventArgs e)
+    {
+
+    }
+
+    // Edit the selected reservation from the grid and then updates it in the database
+    private void EditReservation(object sender, EventArgs e)
+    {
+
+    }
+
+    // Removes reservation from the database - Marks the book as returned
+    private void RemoveReservations(object sender, EventArgs e)
+    {
+
+    }
+    #endregion
+
     #region Categories
     // CATEGORIES
     // Shows Categories page and hides other pages
@@ -211,6 +257,7 @@ public partial class AdminPanel : Form
         {
             HidePanels();
             categories_pnl.Visible = true;
+            categories_pnl.Enabled = true;
             RefreshCategories(sender, e);
         }
     }
@@ -269,6 +316,7 @@ public partial class AdminPanel : Form
         {
             HidePanels();
             authors_pnl.Visible = true;
+            authors_pnl.Enabled = true;
             RefreshAuthors(sender, e);
         }
     }
@@ -326,6 +374,7 @@ public partial class AdminPanel : Form
         {
             HidePanels();
             publishers_pnl.Visible = true;
+            publishers_pnl.Enabled = true;
             RefreshPublishers(sender, e);
         }
     }
@@ -383,6 +432,7 @@ public partial class AdminPanel : Form
         {
             HidePanels();
             users_pnl.Visible = true;
+            users_pnl.Enabled = true;
             RefreshUsers(sender, e);
         }
     }
@@ -435,12 +485,21 @@ public partial class AdminPanel : Form
     private void HidePanels()
     {
         dashboard_pnl.Visible = false;
+        dashboard_pnl.Enabled = false;
         books_pnl.Visible = false;
+        books_pnl.Enabled = false;
         borrowings_pnl.Visible = false;
+        borrowings_pnl.Enabled = false;
+        reservations_pnl.Visible = false;
+        reservations_pnl.Enabled = false;
         categories_pnl.Visible = false;
+        categories_pnl.Enabled = false;
         users_pnl.Visible = false;
+        users_pnl.Enabled = false;
         authors_pnl.Visible = false;
+        authors_pnl.Enabled = false;
         publishers_pnl.Visible = false;
+        publishers_pnl.Enabled = false;
     }
 
     // Logs out and drops back to the login screen

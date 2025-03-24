@@ -96,7 +96,7 @@ namespace Desktop_Application.Forms.Books
             // 
             title.AutoSize = true;
             title.Font = new Font("Yu Gothic UI Semibold", 16F);
-            title.Location = new Point(225, 16);
+            title.Location = new Point(217, 16);
             title.Name = "title";
             title.Size = new Size(136, 37);
             title.TabIndex = 2;
@@ -122,7 +122,7 @@ namespace Desktop_Application.Forms.Books
             textBox_isbn.MaxLength = 13;
             textBox_isbn.Name = "textBox_isbn";
             textBox_isbn.Size = new Size(173, 39);
-            textBox_isbn.TabIndex = 6;
+            textBox_isbn.TabIndex = 7;
             // 
             // label_pubYear
             // 
@@ -206,7 +206,7 @@ namespace Desktop_Application.Forms.Books
             dropDown_publisher.MaxDropDownItems = 10;
             dropDown_publisher.Name = "dropDown_publisher";
             dropDown_publisher.Size = new Size(433, 39);
-            dropDown_publisher.TabIndex = 5;
+            dropDown_publisher.TabIndex = 6;
             // 
             // textBox_author
             // 
@@ -218,6 +218,7 @@ namespace Desktop_Application.Forms.Books
             textBox_author.Name = "textBox_author";
             textBox_author.Size = new Size(383, 39);
             textBox_author.TabIndex = 45;
+            textBox_author.TabStop = false;
             // 
             // textBox_category
             // 
@@ -229,6 +230,7 @@ namespace Desktop_Application.Forms.Books
             textBox_category.Name = "textBox_category";
             textBox_category.Size = new Size(383, 39);
             textBox_category.TabIndex = 46;
+            textBox_category.TabStop = false;
             // 
             // button_chooseAuthor
             // 
@@ -265,7 +267,7 @@ namespace Desktop_Application.Forms.Books
             save.FlatStyle = FlatStyle.Flat;
             save.Font = new Font("Yu Gothic UI Semibold", 14F);
             save.ForeColor = Color.White;
-            save.Location = new Point(184, 458);
+            save.Location = new Point(184, 450);
             save.Margin = new Padding(3, 4, 3, 4);
             save.Name = "save";
             save.Size = new Size(97, 48);
@@ -288,11 +290,12 @@ namespace Desktop_Application.Forms.Books
             cancel.FlatStyle = FlatStyle.Flat;
             cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
             cancel.ForeColor = Color.Black;
-            cancel.Location = new Point(287, 458);
+            cancel.Location = new Point(287, 450);
             cancel.Margin = new Padding(3, 4, 3, 4);
             cancel.Name = "cancel";
             cancel.Size = new Size(97, 48);
             cancel.TabIndex = 80;
+            cancel.TabStop = false;
             cancel.Text = "Cancel";
             cancel.TextColor = Color.Black;
             cancel.UseVisualStyleBackColor = false;
@@ -303,7 +306,7 @@ namespace Desktop_Application.Forms.Books
             button_chooseImage.Margin = new Padding(3, 4, 3, 4);
             button_chooseImage.Name = "button_chooseImage";
             button_chooseImage.Size = new Size(42, 43);
-            button_chooseImage.TabIndex = 81;
+            button_chooseImage.TabIndex = 5;
             button_chooseImage.Text = "...";
             button_chooseImage.UseVisualStyleBackColor = true;
             // 
@@ -317,6 +320,7 @@ namespace Desktop_Application.Forms.Books
             textBox_image.Name = "textBox_image";
             textBox_image.Size = new Size(383, 39);
             textBox_image.TabIndex = 83;
+            textBox_image.TabStop = false;
             // 
             // label1
             // 
@@ -332,7 +336,7 @@ namespace Desktop_Application.Forms.Books
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label2.Location = new Point(324, 296);
+            label2.Location = new Point(325, 296);
             label2.Name = "label2";
             label2.Size = new Size(168, 32);
             label2.TabIndex = 84;
@@ -343,7 +347,7 @@ namespace Desktop_Application.Forms.Books
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(571, 519);
+            ClientSize = new Size(570, 510);
             Controls.Add(label2);
             Controls.Add(button_chooseImage);
             Controls.Add(textBox_image);
@@ -367,6 +371,7 @@ namespace Desktop_Application.Forms.Books
             Controls.Add(label_title);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            KeyPreview = true;
             Margin = new Padding(3, 4, 3, 4);
             Name = "AddBook";
             StartPosition = FormStartPosition.CenterScreen;

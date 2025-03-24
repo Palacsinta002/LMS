@@ -18,9 +18,11 @@ public partial class RemoveBorrowings : Form
         BorderPaint.Handle(this);
         CloseThisWindow.Handle(this, close_btn);
         CloseThisWindow.Handle(this, no);
+        HandleKeys.Handle(this, Keys.Enter, Remove);
+        HandleKeys.Handle(this, Keys.Escape, (s, e) => this.Close());
     }
 
-    private void Yes(object sender, EventArgs e)
+    private void Remove(object sender, EventArgs e)
     {
         if (CheckReturnDate())
         {
@@ -33,7 +35,7 @@ public partial class RemoveBorrowings : Form
             // Remove it from the Borrowings table so it only remains in Borrowings_storage
             HandleQueries.Delete(_borrowings_grd, "Borrowings", "borrowings_isbn", "ISBN");
 
-            MessageBox.Show("Borrowing marked as returned succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Book marked as returned succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
     }

@@ -19,6 +19,8 @@ public partial class EditBook : Form
         BorderPaint.Handle(this);
         CloseThisWindow.Handle(this, close_btn);
         CloseThisWindow.Handle(this, cancel);
+        HandleKeys.Handle(this, Keys.Enter, Save);
+        HandleKeys.Handle(this, Keys.Escape, (s, e) => this.Close());
 
         var result = HandleQueries.SelectFromFile("SelectPublisher");
         HandleGrids.Fill(dropDown_publisher, result);

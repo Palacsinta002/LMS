@@ -1,6 +1,6 @@
-﻿namespace Desktop_Application.Forms.Categories
+﻿namespace Desktop_Application.Forms.Profile
 {
-    partial class RemoveCategories
+    partial class PasswordRequirements
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RemoveCategories));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PasswordRequirements));
             header = new Panel();
             title = new Label();
             close_btn = new Desktop_Application.Components.RoundedButton();
             label_title = new Label();
-            yes = new Desktop_Application.Components.RoundedButton();
-            no = new Desktop_Application.Components.RoundedButton();
+            button_ok = new Desktop_Application.Components.RoundedButton();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
             header.SuspendLayout();
             SuspendLayout();
             // 
@@ -46,18 +49,19 @@
             header.Controls.Add(close_btn);
             header.Location = new Point(1, 1);
             header.Name = "header";
-            header.Size = new Size(361, 55);
+            header.Size = new Size(258, 55);
             header.TabIndex = 27;
             // 
             // title
             // 
+            title.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             title.AutoSize = true;
             title.Font = new Font("Yu Gothic UI Semibold", 16F);
-            title.Location = new Point(74, 12);
+            title.Location = new Point(42, 12);
             title.Name = "title";
-            title.Size = new Size(190, 30);
+            title.Size = new Size(152, 30);
             title.TabIndex = 2;
-            title.Text = "Remove Category";
+            title.Text = "Requirements";
             // 
             // close_btn
             // 
@@ -75,7 +79,7 @@
             close_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             close_btn.ForeColor = Color.White;
             close_btn.Image = (Image)resources.GetObject("close_btn.Image");
-            close_btn.Location = new Point(315, 10);
+            close_btn.Location = new Point(212, 10);
             close_btn.Name = "close_btn";
             close_btn.Size = new Size(36, 35);
             close_btn.TabIndex = 25;
@@ -86,69 +90,86 @@
             // label_title
             // 
             label_title.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label_title.Location = new Point(12, 73);
+            label_title.Location = new Point(22, 98);
             label_title.Name = "label_title";
-            label_title.Size = new Size(339, 102);
+            label_title.Size = new Size(172, 30);
             label_title.TabIndex = 28;
-            label_title.Text = "Are you sure you want to remove the selected categories? All related books, borrowings and reservations will be also removed!";
+            label_title.Text = "󠁯• Upper case letter";
             // 
-            // yes
+            // button_ok
             // 
-            yes.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            yes.BackColor = Color.WhiteSmoke;
-            yes.BackgroundColor = Color.WhiteSmoke;
-            yes.BorderColor = Color.FromArgb(80, 77, 180);
-            yes.BorderRadius = 5;
-            yes.BorderSize = 2;
-            yes.FlatAppearance.BorderSize = 0;
-            yes.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
-            yes.FlatStyle = FlatStyle.Flat;
-            yes.Font = new Font("Yu Gothic UI Semibold", 14F);
-            yes.ForeColor = Color.Black;
-            yes.Location = new Point(179, 178);
-            yes.Name = "yes";
-            yes.Size = new Size(80, 36);
-            yes.TabIndex = 30;
-            yes.TabStop = false;
-            yes.Text = "Yes";
-            yes.TextColor = Color.Black;
-            yes.UseVisualStyleBackColor = false;
-            yes.Click += Remove;
+            button_ok.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            button_ok.BackColor = Color.WhiteSmoke;
+            button_ok.BackgroundColor = Color.WhiteSmoke;
+            button_ok.BorderColor = Color.FromArgb(80, 77, 180);
+            button_ok.BorderRadius = 5;
+            button_ok.BorderSize = 2;
+            button_ok.FlatAppearance.BorderSize = 0;
+            button_ok.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            button_ok.FlatStyle = FlatStyle.Flat;
+            button_ok.Font = new Font("Yu Gothic UI Semibold", 14F);
+            button_ok.ForeColor = Color.Black;
+            button_ok.Location = new Point(168, 190);
+            button_ok.Name = "button_ok";
+            button_ok.Size = new Size(80, 36);
+            button_ok.TabIndex = 30;
+            button_ok.TabStop = false;
+            button_ok.Text = "OK";
+            button_ok.TextColor = Color.Black;
+            button_ok.UseVisualStyleBackColor = false;
             // 
-            // no
+            // label1
             // 
-            no.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            no.BackColor = Color.FromArgb(80, 77, 180);
-            no.BackgroundColor = Color.FromArgb(80, 77, 180);
-            no.BorderColor = Color.Transparent;
-            no.BorderRadius = 5;
-            no.BorderSize = 0;
-            no.FlatAppearance.BorderSize = 0;
-            no.FlatStyle = FlatStyle.Flat;
-            no.Font = new Font("Yu Gothic UI Semibold", 14F);
-            no.ForeColor = Color.White;
-            no.Location = new Point(265, 178);
-            no.Name = "no";
-            no.Size = new Size(80, 36);
-            no.TabIndex = 29;
-            no.TabStop = false;
-            no.Text = "No";
-            no.TextColor = Color.White;
-            no.UseVisualStyleBackColor = false;
+            label1.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label1.Location = new Point(22, 128);
+            label1.Name = "label1";
+            label1.Size = new Size(172, 30);
+            label1.TabIndex = 31;
+            label1.Text = "󠁯• Lower case letter";
             // 
-            // RemoveCategories
+            // label2
+            // 
+            label2.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label2.Location = new Point(22, 158);
+            label2.Name = "label2";
+            label2.Size = new Size(172, 30);
+            label2.TabIndex = 32;
+            label2.Text = "󠁯• 󠁏󠁏Special character";
+            // 
+            // label3
+            // 
+            label3.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label3.Location = new Point(12, 68);
+            label3.Name = "label3";
+            label3.Size = new Size(182, 30);
+            label3.TabIndex = 33;
+            label3.Text = "󠁏󠁏At least one...";
+            // 
+            // label4
+            // 
+            label4.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label4.Location = new Point(22, 188);
+            label4.Name = "label4";
+            label4.Size = new Size(172, 30);
+            label4.TabIndex = 34;
+            label4.Text = "󠁯• 󠁏󠁏Number";
+            // 
+            // PasswordRequirements
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(363, 226);
-            Controls.Add(yes);
-            Controls.Add(no);
+            ClientSize = new Size(260, 238);
+            Controls.Add(button_ok);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(label_title);
             Controls.Add(header);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "RemoveCategories";
+            Name = "PasswordRequirements";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "RemoveBookConfirmation";
             Load += OnLoad;
@@ -163,7 +184,10 @@
         private Label title;
         private Components.RoundedButton close_btn;
         private Label label_title;
-        private Components.RoundedButton yes;
-        private Components.RoundedButton no;
+        private Components.RoundedButton button_ok;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
     }
 }

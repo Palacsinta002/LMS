@@ -125,6 +125,7 @@ namespace Desktop_Application.Forms.Authors
             cancel.Name = "cancel";
             cancel.Size = new Size(97, 48);
             cancel.TabIndex = 78;
+            cancel.TabStop = false;
             cancel.Text = "Cancel";
             cancel.TextColor = Color.Black;
             cancel.UseVisualStyleBackColor = false;
@@ -137,7 +138,7 @@ namespace Desktop_Application.Forms.Authors
             textBox_author.Margin = new Padding(3, 4, 3, 4);
             textBox_author.Name = "textBox_author";
             textBox_author.Size = new Size(294, 39);
-            textBox_author.TabIndex = 87;
+            textBox_author.TabIndex = 1;
             // 
             // label1
             // 
@@ -161,6 +162,7 @@ namespace Desktop_Application.Forms.Authors
             Controls.Add(save);
             Controls.Add(cancel);
             FormBorderStyle = FormBorderStyle.None;
+            KeyPreview = true;
             Margin = new Padding(3, 4, 3, 4);
             Name = "AddAuthor";
             StartPosition = FormStartPosition.CenterScreen;

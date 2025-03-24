@@ -31,19 +31,21 @@ namespace Desktop_Application.Forms.Books
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChooseCategories));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             header = new Panel();
             title = new Label();
-            close_btn = new Components.RoundedButton();
-            allCategories_grd = new DataGridView();
-            selectedCategories_grd = new DataGridView();
-            rightArrow_btn = new Components.RoundedButton();
-            leftArrow_btn = new Components.RoundedButton();
-            save = new Components.RoundedButton();
-            cancel = new Components.RoundedButton();
+            close_btn = new Desktop_Application.Components.RoundedButton();
+            rightArrow_btn = new Desktop_Application.Components.RoundedButton();
+            leftArrow_btn = new Desktop_Application.Components.RoundedButton();
+            save = new Desktop_Application.Components.RoundedButton();
+            cancel = new Desktop_Application.Components.RoundedButton();
             allCategories_src = new System.Windows.Forms.TextBox();
             selectedCategories_src = new System.Windows.Forms.TextBox();
             allCategories_category = new DataGridViewTextBoxColumn();
+            allCategories_grd = new DataGridView();
             selectedCategories_category = new DataGridViewTextBoxColumn();
+            selectedCategories_grd = new DataGridView();
             header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)allCategories_grd).BeginInit();
             ((System.ComponentModel.ISupportInitialize)selectedCategories_grd).BeginInit();
@@ -93,54 +95,6 @@ namespace Desktop_Application.Forms.Books
             close_btn.TextColor = Color.White;
             close_btn.UseVisualStyleBackColor = false;
             // 
-            // allCategories_grd
-            // 
-            allCategories_grd.AllowUserToAddRows = false;
-            allCategories_grd.AllowUserToDeleteRows = false;
-            allCategories_grd.AllowUserToResizeColumns = false;
-            allCategories_grd.AllowUserToResizeRows = false;
-            allCategories_grd.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            allCategories_grd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            allCategories_grd.BackgroundColor = Color.White;
-            allCategories_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            allCategories_grd.Columns.AddRange(new DataGridViewColumn[] { allCategories_category });
-            allCategories_grd.Location = new Point(12, 97);
-            allCategories_grd.Name = "allCategories_grd";
-            allCategories_grd.ReadOnly = true;
-            allCategories_grd.RowHeadersVisible = false;
-            allCategories_grd.RowHeadersWidth = 51;
-            allCategories_grd.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            allCategories_grd.ShowCellErrors = false;
-            allCategories_grd.ShowCellToolTips = false;
-            allCategories_grd.ShowEditingIcon = false;
-            allCategories_grd.ShowRowErrors = false;
-            allCategories_grd.Size = new Size(453, 437);
-            allCategories_grd.TabIndex = 63;
-            // 
-            // selectedCategories_grd
-            // 
-            selectedCategories_grd.AllowUserToAddRows = false;
-            selectedCategories_grd.AllowUserToDeleteRows = false;
-            selectedCategories_grd.AllowUserToResizeColumns = false;
-            selectedCategories_grd.AllowUserToResizeRows = false;
-            selectedCategories_grd.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            selectedCategories_grd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            selectedCategories_grd.BackgroundColor = Color.White;
-            selectedCategories_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            selectedCategories_grd.Columns.AddRange(new DataGridViewColumn[] { selectedCategories_category });
-            selectedCategories_grd.Location = new Point(535, 97);
-            selectedCategories_grd.Name = "selectedCategories_grd";
-            selectedCategories_grd.ReadOnly = true;
-            selectedCategories_grd.RowHeadersVisible = false;
-            selectedCategories_grd.RowHeadersWidth = 51;
-            selectedCategories_grd.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            selectedCategories_grd.ShowCellErrors = false;
-            selectedCategories_grd.ShowCellToolTips = false;
-            selectedCategories_grd.ShowEditingIcon = false;
-            selectedCategories_grd.ShowRowErrors = false;
-            selectedCategories_grd.Size = new Size(453, 437);
-            selectedCategories_grd.TabIndex = 64;
-            // 
             // rightArrow_btn
             // 
             rightArrow_btn.BackColor = Color.WhiteSmoke;
@@ -156,7 +110,8 @@ namespace Desktop_Application.Forms.Books
             rightArrow_btn.Location = new Point(478, 251);
             rightArrow_btn.Name = "rightArrow_btn";
             rightArrow_btn.Size = new Size(44, 38);
-            rightArrow_btn.TabIndex = 68;
+            rightArrow_btn.TabIndex = 3;
+            rightArrow_btn.TabStop = false;
             rightArrow_btn.TextColor = Color.Black;
             rightArrow_btn.UseVisualStyleBackColor = false;
             rightArrow_btn.Click += MoveRight;
@@ -176,7 +131,8 @@ namespace Desktop_Application.Forms.Books
             leftArrow_btn.Location = new Point(478, 297);
             leftArrow_btn.Name = "leftArrow_btn";
             leftArrow_btn.Size = new Size(44, 38);
-            leftArrow_btn.TabIndex = 69;
+            leftArrow_btn.TabIndex = 4;
+            leftArrow_btn.TabStop = false;
             leftArrow_btn.TextColor = Color.Black;
             leftArrow_btn.UseVisualStyleBackColor = false;
             leftArrow_btn.Click += MoveLeft;
@@ -201,7 +157,7 @@ namespace Desktop_Application.Forms.Books
             save.Text = "Ok";
             save.TextColor = Color.White;
             save.UseVisualStyleBackColor = false;
-            save.Click += Ok;
+            save.Click += Save;
             // 
             // cancel
             // 
@@ -218,6 +174,7 @@ namespace Desktop_Application.Forms.Books
             cancel.Name = "cancel";
             cancel.Size = new Size(85, 36);
             cancel.TabIndex = 84;
+            cancel.TabStop = false;
             cancel.Text = "Cancel";
             cancel.TextColor = Color.Black;
             cancel.UseVisualStyleBackColor = false;
@@ -232,7 +189,7 @@ namespace Desktop_Application.Forms.Books
             allCategories_src.Name = "allCategories_src";
             allCategories_src.PlaceholderText = "Search...";
             allCategories_src.Size = new Size(208, 32);
-            allCategories_src.TabIndex = 85;
+            allCategories_src.TabIndex = 5;
             allCategories_src.TabStop = false;
             allCategories_src.TextChanged += SearchAllCategories;
             // 
@@ -246,7 +203,7 @@ namespace Desktop_Application.Forms.Books
             selectedCategories_src.Name = "selectedCategories_src";
             selectedCategories_src.PlaceholderText = "Search...";
             selectedCategories_src.Size = new Size(208, 32);
-            selectedCategories_src.TabIndex = 86;
+            selectedCategories_src.TabIndex = 6;
             selectedCategories_src.TabStop = false;
             selectedCategories_src.TextChanged += SearchSelectedCategories;
             // 
@@ -257,12 +214,82 @@ namespace Desktop_Application.Forms.Books
             allCategories_category.ReadOnly = true;
             allCategories_category.Width = 80;
             // 
+            // allCategories_grd
+            // 
+            allCategories_grd.AllowUserToAddRows = false;
+            allCategories_grd.AllowUserToDeleteRows = false;
+            allCategories_grd.AllowUserToResizeColumns = false;
+            allCategories_grd.AllowUserToResizeRows = false;
+            allCategories_grd.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            allCategories_grd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            allCategories_grd.BackgroundColor = Color.White;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            allCategories_grd.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            allCategories_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            allCategories_grd.Columns.AddRange(new DataGridViewColumn[] { allCategories_category });
+            allCategories_grd.EnableHeadersVisualStyles = false;
+            allCategories_grd.Location = new Point(13, 100);
+            allCategories_grd.Name = "allCategories_grd";
+            allCategories_grd.ReadOnly = true;
+            allCategories_grd.RowHeadersVisible = false;
+            allCategories_grd.RowHeadersWidth = 51;
+            allCategories_grd.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            allCategories_grd.ShowCellErrors = false;
+            allCategories_grd.ShowCellToolTips = false;
+            allCategories_grd.ShowEditingIcon = false;
+            allCategories_grd.ShowRowErrors = false;
+            allCategories_grd.Size = new Size(453, 437);
+            allCategories_grd.StandardTab = true;
+            allCategories_grd.TabIndex = 1;
+            allCategories_grd.Enter += EnterGrid;
+            // 
             // selectedCategories_category
             // 
             selectedCategories_category.HeaderText = "Category";
             selectedCategories_category.Name = "selectedCategories_category";
             selectedCategories_category.ReadOnly = true;
             selectedCategories_category.Width = 80;
+            // 
+            // selectedCategories_grd
+            // 
+            selectedCategories_grd.AllowUserToAddRows = false;
+            selectedCategories_grd.AllowUserToDeleteRows = false;
+            selectedCategories_grd.AllowUserToResizeColumns = false;
+            selectedCategories_grd.AllowUserToResizeRows = false;
+            selectedCategories_grd.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            selectedCategories_grd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            selectedCategories_grd.BackgroundColor = Color.White;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.White;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            selectedCategories_grd.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            selectedCategories_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            selectedCategories_grd.Columns.AddRange(new DataGridViewColumn[] { selectedCategories_category });
+            selectedCategories_grd.EnableHeadersVisualStyles = false;
+            selectedCategories_grd.Location = new Point(535, 100);
+            selectedCategories_grd.Name = "selectedCategories_grd";
+            selectedCategories_grd.ReadOnly = true;
+            selectedCategories_grd.RowHeadersVisible = false;
+            selectedCategories_grd.RowHeadersWidth = 51;
+            selectedCategories_grd.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            selectedCategories_grd.ShowCellErrors = false;
+            selectedCategories_grd.ShowCellToolTips = false;
+            selectedCategories_grd.ShowEditingIcon = false;
+            selectedCategories_grd.ShowRowErrors = false;
+            selectedCategories_grd.Size = new Size(453, 437);
+            selectedCategories_grd.StandardTab = true;
+            selectedCategories_grd.TabIndex = 2;
+            selectedCategories_grd.Enter += EnterGrid;
             // 
             // ChooseCategories
             // 
@@ -280,6 +307,7 @@ namespace Desktop_Application.Forms.Books
             Controls.Add(allCategories_grd);
             Controls.Add(header);
             FormBorderStyle = FormBorderStyle.None;
+            KeyPreview = true;
             Name = "ChooseCategories";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ChooseBooks";
@@ -297,8 +325,6 @@ namespace Desktop_Application.Forms.Books
         private Panel header;
         private Label title;
         private Components.RoundedButton close_btn;
-        private DataGridView allCategories_grd;
-        private DataGridView selectedCategories_grd;
         private Components.RoundedButton rightArrow_btn;
         private Components.RoundedButton leftArrow_btn;
         private Components.RoundedButton save;
@@ -306,6 +332,8 @@ namespace Desktop_Application.Forms.Books
         private System.Windows.Forms.TextBox allCategories_src;
         private System.Windows.Forms.TextBox selectedCategories_src;
         private DataGridViewTextBoxColumn allCategories_category;
+        private DataGridView allCategories_grd;
         private DataGridViewTextBoxColumn selectedCategories_category;
+        private DataGridView selectedCategories_grd;
     }
 }

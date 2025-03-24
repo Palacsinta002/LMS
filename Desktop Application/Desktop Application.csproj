@@ -50,6 +50,9 @@
     <Compile Update="Forms\Profile\ProfileSettings.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Profile\PasswordRequirements.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Profile\SaveConfirmation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +119,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="SqlQueries\SelectAllBorrowing.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SqlQueries\SelectReservation.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="SqlQueries\SelectRole.sql">

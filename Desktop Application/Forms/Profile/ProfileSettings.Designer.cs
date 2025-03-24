@@ -65,10 +65,9 @@ namespace Desktop_Application.Forms.Profile
             save.FlatStyle = FlatStyle.Flat;
             save.Font = new Font("Yu Gothic UI Semibold", 14F);
             save.ForeColor = Color.White;
-            save.Location = new Point(197, 455);
-            save.Margin = new Padding(3, 4, 3, 4);
+            save.Location = new Point(172, 341);
             save.Name = "save";
-            save.Size = new Size(97, 48);
+            save.Size = new Size(85, 36);
             save.TabIndex = 8;
             save.TabStop = false;
             save.Text = "Save";
@@ -88,11 +87,11 @@ namespace Desktop_Application.Forms.Profile
             cancel.FlatStyle = FlatStyle.Flat;
             cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
             cancel.ForeColor = Color.Black;
-            cancel.Location = new Point(300, 455);
-            cancel.Margin = new Padding(3, 4, 3, 4);
+            cancel.Location = new Point(262, 341);
             cancel.Name = "cancel";
-            cancel.Size = new Size(97, 48);
+            cancel.Size = new Size(85, 36);
             cancel.TabIndex = 9;
+            cancel.TabStop = false;
             cancel.Text = "Cancel";
             cancel.TextColor = Color.Black;
             cancel.UseVisualStyleBackColor = false;
@@ -101,9 +100,9 @@ namespace Desktop_Application.Forms.Profile
             // 
             label_publisher.AutoSize = true;
             label_publisher.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label_publisher.Location = new Point(12, 101);
+            label_publisher.Location = new Point(10, 76);
             label_publisher.Name = "label_publisher";
-            label_publisher.Size = new Size(128, 32);
+            label_publisher.Size = new Size(102, 25);
             label_publisher.TabIndex = 90;
             label_publisher.Text = "First name";
             // 
@@ -113,18 +112,17 @@ namespace Desktop_Application.Forms.Profile
             header.Controls.Add(title);
             header.Controls.Add(close_btn);
             header.Location = new Point(1, 1);
-            header.Margin = new Padding(3, 4, 3, 4);
             header.Name = "header";
-            header.Size = new Size(592, 73);
+            header.Size = new Size(518, 55);
             header.TabIndex = 87;
             // 
             // title
             // 
             title.AutoSize = true;
             title.Font = new Font("Yu Gothic UI Semibold", 16F);
-            title.Location = new Point(186, 15);
+            title.Location = new Point(163, 11);
             title.Name = "title";
-            title.Size = new Size(203, 37);
+            title.Size = new Size(167, 30);
             title.TabIndex = 2;
             title.Text = "Profile Settings";
             // 
@@ -144,10 +142,9 @@ namespace Desktop_Application.Forms.Profile
             close_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             close_btn.ForeColor = Color.White;
             close_btn.Image = (Image)resources.GetObject("close_btn.Image");
-            close_btn.Location = new Point(538, 13);
-            close_btn.Margin = new Padding(3, 4, 3, 4);
+            close_btn.Location = new Point(471, 10);
             close_btn.Name = "close_btn";
-            close_btn.Size = new Size(41, 47);
+            close_btn.Size = new Size(36, 35);
             close_btn.TabIndex = 25;
             close_btn.TabStop = false;
             close_btn.TextColor = Color.White;
@@ -157,9 +154,9 @@ namespace Desktop_Application.Forms.Profile
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label2.Location = new Point(12, 151);
+            label2.Location = new Point(10, 113);
             label2.Name = "label2";
-            label2.Size = new Size(126, 32);
+            label2.Size = new Size(99, 25);
             label2.TabIndex = 86;
             label2.Text = "Last name";
             // 
@@ -167,39 +164,36 @@ namespace Desktop_Application.Forms.Profile
             // 
             textBox_lastName.BackColor = Color.WhiteSmoke;
             textBox_lastName.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_lastName.Location = new Point(144, 148);
-            textBox_lastName.Margin = new Padding(3, 4, 3, 4);
+            textBox_lastName.Location = new Point(126, 111);
             textBox_lastName.Name = "textBox_lastName";
-            textBox_lastName.Size = new Size(436, 39);
+            textBox_lastName.Size = new Size(382, 32);
             textBox_lastName.TabIndex = 2;
             // 
             // textBox_firstName
             // 
             textBox_firstName.BackColor = Color.WhiteSmoke;
             textBox_firstName.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_firstName.Location = new Point(144, 101);
-            textBox_firstName.Margin = new Padding(3, 4, 3, 4);
+            textBox_firstName.Location = new Point(126, 76);
             textBox_firstName.Name = "textBox_firstName";
-            textBox_firstName.Size = new Size(436, 39);
+            textBox_firstName.Size = new Size(382, 32);
             textBox_firstName.TabIndex = 1;
             // 
             // textBox_address
             // 
             textBox_address.BackColor = Color.WhiteSmoke;
             textBox_address.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_address.Location = new Point(144, 336);
-            textBox_address.Margin = new Padding(3, 4, 3, 4);
+            textBox_address.Location = new Point(126, 252);
             textBox_address.Name = "textBox_address";
-            textBox_address.Size = new Size(436, 39);
+            textBox_address.Size = new Size(382, 32);
             textBox_address.TabIndex = 6;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label3.Location = new Point(12, 339);
+            label3.Location = new Point(10, 254);
             label3.Name = "label3";
-            label3.Size = new Size(100, 32);
+            label3.Size = new Size(80, 25);
             label3.TabIndex = 99;
             label3.Text = "Address";
             // 
@@ -207,19 +201,18 @@ namespace Desktop_Application.Forms.Profile
             // 
             textBox_username.BackColor = Color.WhiteSmoke;
             textBox_username.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_username.Location = new Point(144, 195);
-            textBox_username.Margin = new Padding(3, 4, 3, 4);
+            textBox_username.Location = new Point(126, 146);
             textBox_username.Name = "textBox_username";
-            textBox_username.Size = new Size(436, 39);
+            textBox_username.Size = new Size(382, 32);
             textBox_username.TabIndex = 3;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label4.Location = new Point(12, 198);
+            label4.Location = new Point(10, 148);
             label4.Name = "label4";
-            label4.Size = new Size(124, 32);
+            label4.Size = new Size(98, 25);
             label4.TabIndex = 101;
             label4.Text = "Username";
             // 
@@ -228,19 +221,18 @@ namespace Desktop_Application.Forms.Profile
             dateOfBirth_datePicker.CalendarFont = new Font("Yu Gothic UI Semibold", 14F);
             dateOfBirth_datePicker.Font = new Font("Yu Gothic UI Semibold", 14F);
             dateOfBirth_datePicker.Format = DateTimePickerFormat.Short;
-            dateOfBirth_datePicker.Location = new Point(173, 242);
-            dateOfBirth_datePicker.Margin = new Padding(3, 4, 3, 4);
+            dateOfBirth_datePicker.Location = new Point(151, 182);
             dateOfBirth_datePicker.Name = "dateOfBirth_datePicker";
-            dateOfBirth_datePicker.Size = new Size(154, 39);
+            dateOfBirth_datePicker.Size = new Size(135, 32);
             dateOfBirth_datePicker.TabIndex = 4;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label1.Location = new Point(12, 245);
+            label1.Location = new Point(10, 184);
             label1.Name = "label1";
-            label1.Size = new Size(155, 32);
+            label1.Size = new Size(122, 25);
             label1.TabIndex = 103;
             label1.Text = "Date of Birth";
             // 
@@ -248,19 +240,18 @@ namespace Desktop_Application.Forms.Profile
             // 
             textBox_email.BackColor = Color.WhiteSmoke;
             textBox_email.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_email.Location = new Point(144, 289);
-            textBox_email.Margin = new Padding(3, 4, 3, 4);
+            textBox_email.Location = new Point(126, 217);
             textBox_email.Name = "textBox_email";
-            textBox_email.Size = new Size(436, 39);
+            textBox_email.Size = new Size(382, 32);
             textBox_email.TabIndex = 5;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label5.Location = new Point(12, 292);
+            label5.Location = new Point(10, 219);
             label5.Name = "label5";
-            label5.Size = new Size(72, 32);
+            label5.Size = new Size(59, 25);
             label5.TabIndex = 105;
             label5.Text = "Email";
             // 
@@ -275,10 +266,9 @@ namespace Desktop_Application.Forms.Profile
             button_changePassword.FlatStyle = FlatStyle.Flat;
             button_changePassword.Font = new Font("Yu Gothic UI Semibold", 14F);
             button_changePassword.ForeColor = Color.Black;
-            button_changePassword.Location = new Point(144, 383);
-            button_changePassword.Margin = new Padding(3, 4, 3, 4);
+            button_changePassword.Location = new Point(126, 287);
             button_changePassword.Name = "button_changePassword";
-            button_changePassword.Size = new Size(267, 48);
+            button_changePassword.Size = new Size(234, 36);
             button_changePassword.TabIndex = 7;
             button_changePassword.Text = "Change Password...";
             button_changePassword.TextColor = Color.Black;
@@ -287,10 +277,10 @@ namespace Desktop_Application.Forms.Profile
             // 
             // ProfileSettings
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(594, 516);
+            ClientSize = new Size(520, 387);
             Controls.Add(button_changePassword);
             Controls.Add(textBox_email);
             Controls.Add(label5);
@@ -309,7 +299,6 @@ namespace Desktop_Application.Forms.Profile
             Controls.Add(label2);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(3, 4, 3, 4);
             Name = "ProfileSettings";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AddBook";
