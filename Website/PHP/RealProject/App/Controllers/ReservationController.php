@@ -45,6 +45,12 @@ class ReservationController{
         Response::httpSuccess(200,["Success"=>"Reservation deleted"]);
     }
 
+    public static function myReservations($body,$userID){
+        $userID = Helper::validateTheInput($userID);
+        Model::validateID( $userID );
+        Response::httpSuccess(200,ReservationTable::selectMyReservations($userID));
+    }
+
 }
 
 ?>

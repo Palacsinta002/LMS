@@ -25,7 +25,7 @@ Router::delete("/api/delete-user", UserController::class,"deleteUser");
 
 Router::post("/api/borrowings", BorrowingsController::class,"getFromDBByParams");
 
-#this shall be a get
+
 Router::get("/api/top-borrowings", BorrowingsAndBooksController::class,"topBorrowedBooks",false,true,true);
 
 Router::get("/api/my-borrowed-books", BorrowingsAndBooksController::class,"getMyBorrowedBooks",true);
@@ -40,6 +40,7 @@ Router::get("/api/all-books", BooksController::class,"countAllBooks");
 Router::get("/api/all-users", UserController::class,"allUsers");
 Router::get("/api/all-borrowings", BorrowingsController::class,"allBorrowings");
 
+Router::get("/api/my-reservations", ReservationController::class,"myReservations",true);
 Router::post("/api/reserve",ReservationController::class,"reserve",true);
 Router::delete("/api/delete-reservation", ReservationController::class, "delete", true);
 
