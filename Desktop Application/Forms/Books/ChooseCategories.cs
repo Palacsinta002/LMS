@@ -24,7 +24,7 @@ public partial class ChooseCategories : Form
         CloseThisWindow.Handle(this, cancel);
         HandleKeys.Handle(this, Keys.Enter, Save);
         HandleKeys.Handle(this, Keys.Escape, (s, e) => this.Close());
-        HandleKeys.Handle(this, Keys.Space, MoveBooks);
+        HandleKeys.Handle(this, Keys.Space, MoveCategories);
 
         var result = HandleQueries.SelectFromFile("SelectCategory");
         if (_selectedCategories.Count > 0)
@@ -75,7 +75,7 @@ public partial class ChooseCategories : Form
         }
     }
 
-    private void MoveBooks(object sender, EventArgs e)
+    private void MoveCategories(object sender, EventArgs e)
     {
         int tabIndex = ActiveControl.TabIndex;
         if (tabIndex == 1)

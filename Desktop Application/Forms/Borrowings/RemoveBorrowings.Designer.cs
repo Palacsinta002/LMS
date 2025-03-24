@@ -104,7 +104,7 @@ namespace Desktop_Application.Forms.Borrowings
             yes.Text = "Yes";
             yes.TextColor = Color.Black;
             yes.UseVisualStyleBackColor = false;
-            yes.Click += Yes;
+            yes.Click += Remove;
             // 
             // no
             // 
@@ -133,7 +133,7 @@ namespace Desktop_Application.Forms.Borrowings
             label_title.Name = "label_title";
             label_title.Size = new Size(339, 55);
             label_title.TabIndex = 32;
-            label_title.Text = "Are you sure you want to mark the selected book(s) as returned?";
+            label_title.Text = "Are you sure you want to mark the selected books as returned?\r\n";
             // 
             // RemoveBorrowings
             // 

@@ -222,6 +222,7 @@ namespace Desktop_Application.Forms.Borrowings
             Controls.Add(header);
             Controls.Add(label2);
             FormBorderStyle = FormBorderStyle.None;
+            KeyPreview = true;
             Name = "AddBorrowing";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AddBorrowing";

@@ -220,6 +220,7 @@ namespace Desktop_Application.Forms.Borrowings
             Controls.Add(label5);
             Controls.Add(label2);
             FormBorderStyle = FormBorderStyle.None;
+            KeyPreview = true;
             Name = "EditBorrowing";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "EditBorrowing";

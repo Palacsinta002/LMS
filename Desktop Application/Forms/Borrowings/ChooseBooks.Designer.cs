@@ -31,6 +31,7 @@ namespace Desktop_Application.Forms.Borrowings
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChooseBooks));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             header = new Panel();
             title = new Label();
             close_btn = new Desktop_Application.Components.RoundedButton();
@@ -108,8 +109,17 @@ namespace Desktop_Application.Forms.Borrowings
             allBooks_grd.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             allBooks_grd.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             allBooks_grd.BackgroundColor = Color.White;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            allBooks_grd.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             allBooks_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             allBooks_grd.Columns.AddRange(new DataGridViewColumn[] { allBooks_title, allBooks_author, allBooks_pubYear, allBooks_isbn });
+            allBooks_grd.EnableHeadersVisualStyles = false;
             allBooks_grd.Location = new Point(12, 97);
             allBooks_grd.Name = "allBooks_grd";
             allBooks_grd.ReadOnly = true;
@@ -121,7 +131,9 @@ namespace Desktop_Application.Forms.Borrowings
             allBooks_grd.ShowEditingIcon = false;
             allBooks_grd.ShowRowErrors = false;
             allBooks_grd.Size = new Size(453, 437);
+            allBooks_grd.StandardTab = true;
             allBooks_grd.TabIndex = 1;
+            allBooks_grd.Enter += EnterGrid;
             // 
             // allBooks_title
             // 
@@ -166,6 +178,7 @@ namespace Desktop_Application.Forms.Borrowings
             selectedBooks_grd.BackgroundColor = Color.White;
             selectedBooks_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             selectedBooks_grd.Columns.AddRange(new DataGridViewColumn[] { selectedBooks_title, selectedBooks_author, selectedBooks_pubYear, selectedBooks_isbn });
+            selectedBooks_grd.EnableHeadersVisualStyles = false;
             selectedBooks_grd.Location = new Point(535, 97);
             selectedBooks_grd.Name = "selectedBooks_grd";
             selectedBooks_grd.ReadOnly = true;
@@ -177,7 +190,9 @@ namespace Desktop_Application.Forms.Borrowings
             selectedBooks_grd.ShowEditingIcon = false;
             selectedBooks_grd.ShowRowErrors = false;
             selectedBooks_grd.Size = new Size(453, 437);
+            selectedBooks_grd.StandardTab = true;
             selectedBooks_grd.TabIndex = 2;
+            selectedBooks_grd.Enter += EnterGrid;
             // 
             // selectedBooks_title
             // 
@@ -227,6 +242,7 @@ namespace Desktop_Application.Forms.Borrowings
             rightArrow_btn.Name = "rightArrow_btn";
             rightArrow_btn.Size = new Size(44, 38);
             rightArrow_btn.TabIndex = 3;
+            rightArrow_btn.TabStop = false;
             rightArrow_btn.TextColor = Color.Black;
             rightArrow_btn.UseVisualStyleBackColor = false;
             rightArrow_btn.Click += MoveRight;
@@ -247,6 +263,7 @@ namespace Desktop_Application.Forms.Borrowings
             leftArrow_btn.Name = "leftArrow_btn";
             leftArrow_btn.Size = new Size(44, 38);
             leftArrow_btn.TabIndex = 4;
+            leftArrow_btn.TabStop = false;
             leftArrow_btn.TextColor = Color.Black;
             leftArrow_btn.UseVisualStyleBackColor = false;
             leftArrow_btn.Click += MoveLeft;
@@ -271,7 +288,7 @@ namespace Desktop_Application.Forms.Borrowings
             save.Text = "Ok";
             save.TextColor = Color.White;
             save.UseVisualStyleBackColor = false;
-            save.Click += Ok;
+            save.Click += Save;
             // 
             // cancel
             // 
@@ -304,6 +321,7 @@ namespace Desktop_Application.Forms.Borrowings
             allBooks_src.PlaceholderText = "Search...";
             allBooks_src.Size = new Size(208, 32);
             allBooks_src.TabIndex = 5;
+            allBooks_src.TabStop = false;
             allBooks_src.TextChanged += SearchAllBooks;
             // 
             // selectedBooks_src
@@ -317,6 +335,7 @@ namespace Desktop_Application.Forms.Borrowings
             selectedBooks_src.PlaceholderText = "Search...";
             selectedBooks_src.Size = new Size(208, 32);
             selectedBooks_src.TabIndex = 6;
+            selectedBooks_src.TabStop = false;
             selectedBooks_src.TextChanged += SearchSelectedBooks;
             // 
             // ChooseBooks
@@ -335,6 +354,7 @@ namespace Desktop_Application.Forms.Borrowings
             Controls.Add(allBooks_grd);
             Controls.Add(header);
             FormBorderStyle = FormBorderStyle.None;
+            KeyPreview = true;
             Name = "ChooseBooks";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ChooseBooks";

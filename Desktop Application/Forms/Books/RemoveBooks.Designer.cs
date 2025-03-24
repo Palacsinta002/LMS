@@ -44,18 +44,17 @@
             header.Controls.Add(title);
             header.Controls.Add(close_btn);
             header.Location = new Point(1, 1);
-            header.Margin = new Padding(3, 4, 3, 4);
             header.Name = "header";
-            header.Size = new Size(413, 73);
+            header.Size = new Size(361, 55);
             header.TabIndex = 27;
             // 
             // title
             // 
             title.AutoSize = true;
             title.Font = new Font("Yu Gothic UI Semibold", 16F);
-            title.Location = new Point(122, 16);
+            title.Location = new Point(107, 12);
             title.Name = "title";
-            title.Size = new Size(185, 37);
+            title.Size = new Size(151, 30);
             title.TabIndex = 2;
             title.Text = "Remove Book";
             // 
@@ -74,10 +73,9 @@
             close_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             close_btn.ForeColor = Color.White;
             close_btn.Image = (Image)resources.GetObject("close_btn.Image");
-            close_btn.Location = new Point(360, 13);
-            close_btn.Margin = new Padding(3, 4, 3, 4);
+            close_btn.Location = new Point(315, 10);
             close_btn.Name = "close_btn";
-            close_btn.Size = new Size(41, 47);
+            close_btn.Size = new Size(36, 35);
             close_btn.TabIndex = 25;
             close_btn.TabStop = false;
             close_btn.TextColor = Color.White;
@@ -86,11 +84,11 @@
             // label_title
             // 
             label_title.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label_title.Location = new Point(14, 97);
+            label_title.Location = new Point(12, 73);
             label_title.Name = "label_title";
-            label_title.Size = new Size(387, 135);
+            label_title.Size = new Size(339, 101);
             label_title.TabIndex = 28;
-            label_title.Text = "Are you sure you want to remove the selected books? All borrowings and reservations will be removed too!";
+            label_title.Text = "Are you sure you want to remove the selected books? All related borrowings and reservations will be also removed!";
             // 
             // yes
             // 
@@ -105,10 +103,9 @@
             yes.FlatStyle = FlatStyle.Flat;
             yes.Font = new Font("Yu Gothic UI Semibold", 14F);
             yes.ForeColor = Color.Black;
-            yes.Location = new Point(205, 236);
-            yes.Margin = new Padding(3, 4, 3, 4);
+            yes.Location = new Point(179, 177);
             yes.Name = "yes";
-            yes.Size = new Size(91, 48);
+            yes.Size = new Size(80, 36);
             yes.TabIndex = 30;
             yes.TabStop = false;
             yes.Text = "Yes";
@@ -128,10 +125,9 @@
             no.FlatStyle = FlatStyle.Flat;
             no.Font = new Font("Yu Gothic UI Semibold", 14F);
             no.ForeColor = Color.White;
-            no.Location = new Point(303, 236);
-            no.Margin = new Padding(3, 4, 3, 4);
+            no.Location = new Point(265, 177);
             no.Name = "no";
-            no.Size = new Size(91, 48);
+            no.Size = new Size(80, 36);
             no.TabIndex = 29;
             no.TabStop = false;
             no.Text = "No";
@@ -140,17 +136,16 @@
             // 
             // RemoveBooks
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(415, 300);
+            ClientSize = new Size(363, 225);
             Controls.Add(yes);
             Controls.Add(no);
             Controls.Add(label_title);
             Controls.Add(header);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(3, 4, 3, 4);
             Name = "RemoveBooks";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "RemoveBookConfirmation";
