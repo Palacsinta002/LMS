@@ -22,6 +22,9 @@ public partial class ChooseCategories : Form
         BorderPaint.Handle(this);
         CloseThisWindow.Handle(this, close_btn);
         CloseThisWindow.Handle(this, cancel);
+        HandleKeys.Handle(this, Keys.Enter, Save);
+        HandleKeys.Handle(this, Keys.Escape, (s, e) => this.Close());
+        HandleKeys.Handle(this, Keys.Space, MoveBooks);
 
         var result = HandleQueries.SelectFromFile("SelectCategory");
         if (_selectedCategories.Count > 0)
@@ -44,7 +47,7 @@ public partial class ChooseCategories : Form
         }
     }
 
-    private void Ok(object sender, EventArgs e)
+    private void Save(object sender, EventArgs e)
     {
         _selectedCategories = [];
         foreach (DataGridViewRow row in selectedCategories_grd.Rows)
@@ -69,6 +72,40 @@ public partial class ChooseCategories : Form
         {
             selectedCategories_grd.Rows.Remove(row);
             allCategories_grd.Rows.Add(row);
+        }
+    }
+
+    private void MoveBooks(object sender, EventArgs e)
+    {
+        int tabIndex = ActiveControl.TabIndex;
+        if (tabIndex == 1)
+        {
+            MoveRight(sender, e);
+        }
+        else if (tabIndex == 2)
+        {
+            MoveLeft(sender, e);
+        }
+    }
+
+    private void EnterGrid(object sender, EventArgs e)
+    {
+        int tabIndex = ActiveControl.TabIndex;
+        if (tabIndex == 1)
+        {
+            ChangeColor(selectedCategories_grd, Color.White);
+            ChangeColor(allCategories_grd, Color.LightGray);
+        }
+        else if (tabIndex == 2)
+        {
+            ChangeColor(allCategories_grd, Color.White);
+            ChangeColor(selectedCategories_grd, Color.LightGray);
+        }
+
+        static void ChangeColor(DataGridView grd, Color color)
+        {
+            grd.ColumnHeadersDefaultCellStyle.BackColor = color;
+            grd.ColumnHeadersDefaultCellStyle.SelectionBackColor = color;
         }
     }
 

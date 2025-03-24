@@ -25,7 +25,7 @@ public partial class ChooseAuthor : Form
         CloseThisWindow.Handle(this, cancel);
         HandleKeys.Handle(this, Keys.Enter, Save);
         HandleKeys.Handle(this, Keys.Escape, (s, e) => this.Close());
-        HandleKeys.Handle(this, Keys.Space, Move);
+        HandleKeys.Handle(this, Keys.Space, MoveBooks);
 
         var result = HandleQueries.SelectFromFile("SelectAuthorWithBook");
         if (_selectedAuthors.Count > 0)
@@ -76,10 +76,9 @@ public partial class ChooseAuthor : Form
         }
     }
 
-    private void Move(object sender, EventArgs e)
+    private void MoveBooks(object sender, EventArgs e)
     {
-        Control activeControl = this.ActiveControl;
-        int tabIndex = activeControl.TabIndex;
+        int tabIndex = ActiveControl.TabIndex;
         if (tabIndex == 1)
         {
             MoveRight(sender, e);
@@ -92,22 +91,19 @@ public partial class ChooseAuthor : Form
 
     private void EnterGrid(object sender, EventArgs e)
     {
-        Control activeControl = this.ActiveControl;
-        int tabIndex = activeControl.TabIndex;
+        int tabIndex = ActiveControl.TabIndex;
         if (tabIndex == 1)
         {
             ChangeColor(selectedAuthors_grd, Color.White);
-            allAuthors_grd.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray;
-            allAuthors_grd.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.LightGray;
+            ChangeColor(allAuthors_grd, Color.LightGray);
         }
         else if (tabIndex == 2)
         {
-            selectedAuthors_grd.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray;
-            selectedAuthors_grd.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.LightGray;
-            allAuthors_grd.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
-            allAuthors_grd.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+            ChangeColor(allAuthors_grd, Color.White);
+            ChangeColor(selectedAuthors_grd, Color.LightGray);
         }
-        void ChangeColor(DataGridView grd, Color color)
+
+        static void ChangeColor(DataGridView grd, Color color)
         {
             grd.ColumnHeadersDefaultCellStyle.BackColor = color;
             grd.ColumnHeadersDefaultCellStyle.SelectionBackColor = color;
