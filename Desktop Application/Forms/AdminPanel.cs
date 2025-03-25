@@ -2,6 +2,7 @@
 using Desktop_Application.Forms.Authors;
 using Desktop_Application.Forms.Books;
 using Desktop_Application.Forms.Borrowings;
+using Desktop_Application.Forms.Reservations;
 using Desktop_Application.Forms.Categories;
 using Desktop_Application.Forms.Profile;
 using Desktop_Application.Forms.Publishers;
@@ -233,7 +234,9 @@ public partial class AdminPanel : Form
     // Adds a reservation to the database - Lends a book
     private void AddReservation(object sender, EventArgs e)
     {
-
+        AddReservations addReservation = new();
+        addReservation.ShowDialog();
+        RefreshReservations(sender, e);
     }
 
     // Edit the selected reservation from the grid and then updates it in the database

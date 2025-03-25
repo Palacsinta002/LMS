@@ -65,6 +65,9 @@
     <Compile Update="Forms\Publishers\RemovePublishers.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Reservations\AddReservations.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Users\EditUser.cs">
       <SubType>Form</SubType>
     </Compile>
