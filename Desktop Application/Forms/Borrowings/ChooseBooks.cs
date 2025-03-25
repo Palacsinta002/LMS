@@ -1,5 +1,4 @@
 ﻿using Desktop_Application.Classes;
-using Desktop_Application.Forms.Books;
 
 namespace Desktop_Application.Forms.Borrowings;
 

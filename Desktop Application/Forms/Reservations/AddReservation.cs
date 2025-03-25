@@ -3,9 +3,9 @@ using Desktop_Application.Forms.Borrowings;
 
 namespace Desktop_Application.Forms.Reservations;
 
-public partial class AddReservations : Form
+public partial class AddReservation : Form
 {
-    public AddReservations()
+    public AddReservation()
     {
         InitializeComponent();
     }
@@ -52,6 +52,7 @@ public partial class AddReservations : Form
 
     private void OpenChooseBooks(object sender, EventArgs e)
     {
+        // Using ChooseBooks from Borrowings because it's the same
         List<string> selectedISBNs = textBox_books.Text.Split(", ").ToList();
         ChooseBooks chooseBooks = new(selectedISBNs);
         chooseBooks.ShowDialog();

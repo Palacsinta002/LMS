@@ -234,7 +234,7 @@ public partial class AdminPanel : Form
     // Adds a reservation to the database - Lends a book
     private void AddReservation(object sender, EventArgs e)
     {
-        AddReservations addReservation = new();
+        AddReservation addReservation = new();
         addReservation.ShowDialog();
         RefreshReservations(sender, e);
     }
@@ -242,7 +242,14 @@ public partial class AdminPanel : Form
     // Edit the selected reservation from the grid and then updates it in the database
     private void EditReservation(object sender, EventArgs e)
     {
-
+        if (reservations_grd.SelectedRows.Count != 1)
+        {
+            MessageBox.Show("You must select ONE reservation to edit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+        EditReservation editReservation = new(reservations_grd);
+        editReservation.ShowDialog();
+        RefreshReservations(sender, e);
     }
 
     // Removes reservation from the database - Marks the book as returned

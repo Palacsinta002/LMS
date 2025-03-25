@@ -1,4 +1,5 @@
-﻿using Org.BouncyCastle.Crypto;
+﻿using Microsoft.VisualBasic;
+using Org.BouncyCastle.Crypto;
 
 namespace Desktop_Application.Classes;
 internal class HandleQueries
@@ -43,21 +44,33 @@ internal class HandleQueries
         }
     }
     // Insert borrowing with the given arguments
-    internal static void InsertBorrowing(string username, string isbn, DateTime borrowDate, DateTime dueDate)
+    internal static void InsertBorrowing(string username, string isbns, DateTime borrowDate, DateTime dueDate)
     {
+        Connection connection = new();
+
         string borrowDateString = $"{borrowDate.Year}-{borrowDate.Month}-{borrowDate.Day}";
         string dueDateString = $"{dueDate.Year}-{dueDate.Month}-{dueDate.Day}";
-        Connection connection = new();
-        string query = $"INSERT INTO Borrowings(UserID, ISBN, BorrowDate, DueDate) VALUES((SELECT id FROM Users WHERE Username = \"{username}\"), {isbn}," +
-            $"\"{borrowDateString}\", \"{dueDateString}\")";
-        connection.RunSqlCommand(query);
+        string[] isbnArr = isbns.Split(", ");
+
+        foreach(string isbn in isbnArr)
+        {
+            string query = $"INSERT INTO Borrowings(UserID, ISBN, BorrowDate, DueDate) VALUES((SELECT id FROM Users WHERE Username = \"{username}\"), {isbn}," +
+                $"\"{borrowDateString}\", \"{dueDateString}\")";
+            connection.RunSqlCommand(query);
+        }
     }
     // Insert reservation with the given arguments
-    internal static void InsertReservation(string username, string isbn)
+    internal static void InsertReservation(string username, string isbns)
     {
         Connection connection = new();
-        string query = $"INSERT INTO Reservations(UserID, ISBN) VALUES(\"{userId}\", {isbn})";
-        connection.RunSqlCommand(query);
+
+        string[] isbnArr = isbns.Split(", ");
+
+        foreach(string isbn in isbnArr)
+        {
+            string query = $"INSERT INTO Reservations(UserID, ISBN) VALUES((SELECT id FROM Users WHERE Username = \"{username}\"), {isbn})";
+            connection.RunSqlCommand(query);
+        }
     }
     // Insert category with the given arguments
     internal static void InsertCategory(string category)
@@ -119,6 +132,17 @@ internal class HandleQueries
             string query = $"UPDATE Borrowings SET ReturnDate = \"{returnDate}\" WHERE ISBN = {row.Cells[2].Value}";
             connection.RunSqlCommand(query);
         }
+    }
+    // Update reservation with the given arguments
+    internal static void UpdateReservation(string username, string isbn, DateTime reservationEndDate)
+    {
+        string reservationEndDateString = $"{reservationEndDate.Year}-{reservationEndDate.Month}-{reservationEndDate.Day}";
+
+        Connection connection = new();
+        string query = $"UPDATE Reservations SET UserID = (SELECT id FROM Users WHERE Username = \"{username}\"), " +
+            $"ISBN = {isbn}, ReservationEndDate = \"{reservationEndDateString}\" " +
+            $"WHERE ISBN = {isbn}";
+        connection.RunSqlCommand(query);
     }
     // Update category with the given arguments
     internal static void UpdateCategory(DataGridView categories_grd, string category)
