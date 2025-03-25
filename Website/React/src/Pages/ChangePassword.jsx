@@ -1,15 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import FormCard from '../Components/FormCard';
 import "./register.css";
 import { useNavigate } from 'react-router-dom';
 
-export default function ForgotPassword() {
+export default function ChangePassword() {
     const [password, setPassword] = useState("");
     const [passwordAgain, setPasswordAgain] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+    const [token, setToken] = useState("");
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const url = window.location.href;
+        console.log(url)
+        const emailToken = url.split("/").pop();
+        setToken(emailToken);
+        console.log(emailToken)
+    }, [])
 
     async function HandleSubmit(event) {
         event.preventDefault();

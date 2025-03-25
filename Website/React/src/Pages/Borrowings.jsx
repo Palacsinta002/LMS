@@ -10,9 +10,9 @@ export default function Borrowings() {
   const decoded = jwtDecode(token);
 
   const hidden = location.pathname === '/dashboard/borrowings' ? '' : 'hidden';
-console.log(decoded)
+  console.log(decoded)
   useEffect(() => {
-    axios.get("/api/my-borrowed-books", {headers: {"Authorization": `Bearer ${token}`}})
+    axios.get("/api/my-borrowed-books", { headers: { "Authorization": `Bearer ${token}` } })
       .then(response => {
         console.log(response.data)
         setBorrowings(response.data)
