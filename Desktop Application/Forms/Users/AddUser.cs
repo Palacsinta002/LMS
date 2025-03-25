@@ -20,6 +20,8 @@ public partial class AddUser : Form
         BorderPaint.Handle(this);
         CloseThisWindow.Handle(this, close_btn);
         CloseThisWindow.Handle(this, cancel);
+        HandleKeys.Handle(this, Keys.Enter, Save);
+        HandleKeys.Handle(this, Keys.Escape, (s, e) => this.Close());
 
         // Roles - This is only visible for admins
         var result = HandleQueries.SelectFromFile("SelectRole");

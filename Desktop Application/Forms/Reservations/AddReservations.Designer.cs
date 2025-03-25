@@ -1,8 +1,10 @@
-﻿using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+﻿using Desktop_Application.Forms.Books;
+using Desktop_Application.Properties;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace Desktop_Application.Forms.Authors
+namespace Desktop_Application.Forms.Reservations
 {
-    partial class EditAuthor
+    partial class AddReservations
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +32,17 @@ namespace Desktop_Application.Forms.Authors
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditAuthor));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddReservations));
             header = new Panel();
             title = new Label();
             close_btn = new Desktop_Application.Components.RoundedButton();
+            label2 = new Label();
+            dropDown_user = new System.Windows.Forms.ComboBox();
+            label_publisher = new Label();
+            chooseBooks = new System.Windows.Forms.Button();
+            textBox_books = new System.Windows.Forms.TextBox();
             save = new Desktop_Application.Components.RoundedButton();
             cancel = new Desktop_Application.Components.RoundedButton();
-            textBox_author = new System.Windows.Forms.TextBox();
-            label1 = new Label();
             header.SuspendLayout();
             SuspendLayout();
             // 
@@ -50,17 +55,17 @@ namespace Desktop_Application.Forms.Authors
             header.Margin = new Padding(3, 4, 3, 4);
             header.Name = "header";
             header.Size = new Size(438, 73);
-            header.TabIndex = 80;
+            header.TabIndex = 61;
             // 
             // title
             // 
             title.AutoSize = true;
             title.Font = new Font("Yu Gothic UI Semibold", 16F);
-            title.Location = new Point(138, 15);
+            title.Location = new Point(95, 15);
             title.Name = "title";
-            title.Size = new Size(157, 37);
+            title.Size = new Size(230, 37);
             title.TabIndex = 2;
-            title.Text = "Edit Author";
+            title.Text = "Add Reservations";
             // 
             // close_btn
             // 
@@ -86,8 +91,64 @@ namespace Desktop_Application.Forms.Authors
             close_btn.TextColor = Color.White;
             close_btn.UseVisualStyleBackColor = false;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label2.Location = new Point(14, 148);
+            label2.Name = "label2";
+            label2.Size = new Size(80, 32);
+            label2.TabIndex = 59;
+            label2.Text = "Books";
+            // 
+            // dropDown_user
+            // 
+            dropDown_user.BackColor = Color.WhiteSmoke;
+            dropDown_user.DropDownStyle = ComboBoxStyle.DropDownList;
+            dropDown_user.Font = new Font("Yu Gothic UI Semibold", 14F);
+            dropDown_user.FormattingEnabled = true;
+            dropDown_user.Location = new Point(93, 92);
+            dropDown_user.Margin = new Padding(3, 4, 3, 4);
+            dropDown_user.MaxDropDownItems = 10;
+            dropDown_user.Name = "dropDown_user";
+            dropDown_user.Size = new Size(327, 39);
+            dropDown_user.TabIndex = 1;
+            // 
+            // label_publisher
+            // 
+            label_publisher.AutoSize = true;
+            label_publisher.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label_publisher.Location = new Point(14, 96);
+            label_publisher.Name = "label_publisher";
+            label_publisher.Size = new Size(63, 32);
+            label_publisher.TabIndex = 71;
+            label_publisher.Text = "User";
+            // 
+            // chooseBooks
+            // 
+            chooseBooks.Location = new Point(378, 144);
+            chooseBooks.Margin = new Padding(3, 4, 3, 4);
+            chooseBooks.Name = "chooseBooks";
+            chooseBooks.Size = new Size(42, 43);
+            chooseBooks.TabIndex = 2;
+            chooseBooks.Text = "...";
+            chooseBooks.UseVisualStyleBackColor = true;
+            chooseBooks.Click += OpenChooseBooks;
+            // 
+            // textBox_books
+            // 
+            textBox_books.BackColor = Color.WhiteSmoke;
+            textBox_books.Enabled = false;
+            textBox_books.Font = new Font("Yu Gothic UI Semibold", 14F);
+            textBox_books.Location = new Point(93, 144);
+            textBox_books.Margin = new Padding(3, 4, 3, 4);
+            textBox_books.Name = "textBox_books";
+            textBox_books.Size = new Size(278, 39);
+            textBox_books.TabIndex = 73;
+            // 
             // save
             // 
+            save.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             save.BackColor = Color.FromArgb(80, 77, 180);
             save.BackgroundColor = Color.FromArgb(80, 77, 180);
             save.BorderColor = Color.Transparent;
@@ -98,11 +159,11 @@ namespace Desktop_Application.Forms.Authors
             save.FlatStyle = FlatStyle.Flat;
             save.Font = new Font("Yu Gothic UI Semibold", 14F);
             save.ForeColor = Color.White;
-            save.Location = new Point(119, 165);
+            save.Location = new Point(120, 204);
             save.Margin = new Padding(3, 4, 3, 4);
             save.Name = "save";
             save.Size = new Size(97, 48);
-            save.TabIndex = 77;
+            save.TabIndex = 81;
             save.TabStop = false;
             save.Text = "Save";
             save.TextColor = Color.White;
@@ -111,6 +172,7 @@ namespace Desktop_Application.Forms.Authors
             // 
             // cancel
             // 
+            cancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             cancel.BackColor = Color.WhiteSmoke;
             cancel.BackgroundColor = Color.WhiteSmoke;
             cancel.BorderColor = Color.FromArgb(80, 77, 180);
@@ -120,53 +182,36 @@ namespace Desktop_Application.Forms.Authors
             cancel.FlatStyle = FlatStyle.Flat;
             cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
             cancel.ForeColor = Color.Black;
-            cancel.Location = new Point(222, 165);
+            cancel.Location = new Point(223, 204);
             cancel.Margin = new Padding(3, 4, 3, 4);
             cancel.Name = "cancel";
             cancel.Size = new Size(97, 48);
-            cancel.TabIndex = 78;
+            cancel.TabIndex = 82;
             cancel.TabStop = false;
             cancel.Text = "Cancel";
             cancel.TextColor = Color.Black;
             cancel.UseVisualStyleBackColor = false;
             // 
-            // textBox_author
-            // 
-            textBox_author.BackColor = Color.WhiteSmoke;
-            textBox_author.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_author.Location = new Point(126, 92);
-            textBox_author.Margin = new Padding(3, 4, 3, 4);
-            textBox_author.Name = "textBox_author";
-            textBox_author.Size = new Size(294, 39);
-            textBox_author.TabIndex = 1;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label1.Location = new Point(14, 96);
-            label1.Name = "label1";
-            label1.Size = new Size(90, 32);
-            label1.TabIndex = 86;
-            label1.Text = "Author";
-            // 
-            // EditAuthor
+            // AddReservations
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(440, 225);
-            Controls.Add(textBox_author);
-            Controls.Add(label1);
-            Controls.Add(header);
+            ClientSize = new Size(440, 266);
             Controls.Add(save);
             Controls.Add(cancel);
+            Controls.Add(chooseBooks);
+            Controls.Add(textBox_books);
+            Controls.Add(dropDown_user);
+            Controls.Add(label_publisher);
+            Controls.Add(header);
+            Controls.Add(label2);
             FormBorderStyle = FormBorderStyle.None;
             KeyPreview = true;
             Margin = new Padding(3, 4, 3, 4);
-            Name = "EditAuthor";
+            Name = "AddReservations";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "AddCategory";
+            Text = "AddBorrowing";
             Load += OnLoad;
             header.ResumeLayout(false);
             header.PerformLayout();
@@ -175,12 +220,16 @@ namespace Desktop_Application.Forms.Authors
         }
 
         #endregion
+
+        private System.Windows.Forms.ComboBox dropDown_user;
         private Panel header;
         private Label title;
         private Components.RoundedButton close_btn;
+        private Label label2;
+        private Label label_publisher;
+        private System.Windows.Forms.Button chooseBooks;
+        private System.Windows.Forms.TextBox textBox_books;
         private Components.RoundedButton save;
         private Components.RoundedButton cancel;
-        private System.Windows.Forms.TextBox textBox_author;
-        private Label label1;
     }
 }

@@ -1,12 +1,11 @@
 ﻿using Desktop_Application.Classes;
+using Desktop_Application.Forms.Borrowings;
 
-namespace Desktop_Application.Forms.Borrowings;
+namespace Desktop_Application.Forms.Reservations;
 
-public partial class AddBorrowing : Form
+public partial class AddReservations : Form
 {
-    private DateTime _dueDate;
-
-    public AddBorrowing()
+    public AddReservations()
     {
         InitializeComponent();
     }
@@ -22,15 +21,14 @@ public partial class AddBorrowing : Form
 
         var result = HandleQueries.SelectFromFile("SelectUsername");
         HandleGrids.Fill(dropDown_user, result);
-        dueDate_datePicker.Value = DateTime.Today.AddDays(1);
     }
 
     private void Save(object sender, EventArgs e)
     {
         if (ValidateInput())
         {
-            HandleQueries.InsertBorrowing(dropDown_user.Text, textBox_books.Text, DateTime.Today, _dueDate);
-            MessageBox.Show("Book lent succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            HandleQueries.InsertReservation(dropDown_user.Text, textBox_books.Text);
+            MessageBox.Show("Book reserved succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
     }
@@ -47,15 +45,6 @@ public partial class AddBorrowing : Form
         if (textBox_books.Text == string.Empty)
         {
             MessageBox.Show("Books are required!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            return false;
-        }
-
-        int[] dDate = dueDate_datePicker.Text.Split('/').Select(int.Parse).ToArray();
-        _dueDate = new(dDate[2], dDate[1], dDate[0]);
-
-        if (_dueDate <= DateTime.Today)
-        {
-            MessageBox.Show("Due time must be at least 1 day!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
         return true;

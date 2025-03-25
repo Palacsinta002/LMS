@@ -40,6 +40,7 @@
             // 
             // header
             // 
+            header.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             header.BackColor = Color.White;
             header.Controls.Add(title);
             header.Controls.Add(close_btn);
@@ -60,6 +61,7 @@
             // 
             // close_btn
             // 
+            close_btn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             close_btn.BackColor = Color.Transparent;
             close_btn.BackgroundColor = Color.Transparent;
             close_btn.BorderColor = Color.Transparent;
@@ -86,12 +88,13 @@
             label_title.Font = new Font("Yu Gothic UI Semibold", 14F);
             label_title.Location = new Point(12, 73);
             label_title.Name = "label_title";
-            label_title.Size = new Size(339, 55);
+            label_title.Size = new Size(339, 103);
             label_title.TabIndex = 28;
-            label_title.Text = "Are you sure you want to remove the selected author(s)?";
+            label_title.Text = "Are you sure you want to remove the selected authors? All related books, borrowings and reservations will be also removed!";
             // 
             // yes
             // 
+            yes.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             yes.BackColor = Color.WhiteSmoke;
             yes.BackgroundColor = Color.WhiteSmoke;
             yes.BorderColor = Color.FromArgb(80, 77, 180);
@@ -102,7 +105,7 @@
             yes.FlatStyle = FlatStyle.Flat;
             yes.Font = new Font("Yu Gothic UI Semibold", 14F);
             yes.ForeColor = Color.Black;
-            yes.Location = new Point(179, 148);
+            yes.Location = new Point(179, 183);
             yes.Name = "yes";
             yes.Size = new Size(80, 36);
             yes.TabIndex = 30;
@@ -110,10 +113,11 @@
             yes.Text = "Yes";
             yes.TextColor = Color.Black;
             yes.UseVisualStyleBackColor = false;
-            yes.Click += Yes;
+            yes.Click += Remove;
             // 
             // no
             // 
+            no.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             no.BackColor = Color.FromArgb(80, 77, 180);
             no.BackgroundColor = Color.FromArgb(80, 77, 180);
             no.BorderColor = Color.Transparent;
@@ -123,7 +127,7 @@
             no.FlatStyle = FlatStyle.Flat;
             no.Font = new Font("Yu Gothic UI Semibold", 14F);
             no.ForeColor = Color.White;
-            no.Location = new Point(265, 148);
+            no.Location = new Point(265, 183);
             no.Name = "no";
             no.Size = new Size(80, 36);
             no.TabIndex = 29;
@@ -137,7 +141,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(363, 196);
+            ClientSize = new Size(363, 231);
             Controls.Add(yes);
             Controls.Add(no);
             Controls.Add(label_title);

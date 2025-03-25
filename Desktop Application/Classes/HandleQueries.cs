@@ -52,6 +52,13 @@ internal class HandleQueries
             $"\"{borrowDateString}\", \"{dueDateString}\")";
         connection.RunSqlCommand(query);
     }
+    // Insert reservation with the given arguments
+    internal static void InsertReservation(string username, string isbn)
+    {
+        Connection connection = new();
+        string query = $"INSERT INTO Reservations(UserID, ISBN) VALUES(\"{userId}\", {isbn})";
+        connection.RunSqlCommand(query);
+    }
     // Insert category with the given arguments
     internal static void InsertCategory(string category)
     {

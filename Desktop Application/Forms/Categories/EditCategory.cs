@@ -19,6 +19,8 @@ public partial class EditCategory : Form
         BorderPaint.Handle(this);
         CloseThisWindow.Handle(this, close_btn);
         CloseThisWindow.Handle(this, cancel);
+        HandleKeys.Handle(this, Keys.Enter, Save);
+        HandleKeys.Handle(this, Keys.Escape, (s, e) => this.Close());
 
         var selectedRow = _category_grd.SelectedRows[0].Cells;
 

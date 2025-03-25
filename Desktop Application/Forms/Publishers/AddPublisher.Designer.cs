@@ -157,6 +157,7 @@ namespace Desktop_Application.Forms.Publishers
             Controls.Add(save);
             Controls.Add(cancel);
             FormBorderStyle = FormBorderStyle.None;
+            KeyPreview = true;
             Name = "AddPublisher";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AddCategory";
