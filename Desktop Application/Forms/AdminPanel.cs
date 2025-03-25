@@ -223,10 +223,11 @@ public partial class AdminPanel : Form
         HandleGrids.Fill(reservations_grd, result);
     }
 
-    // Live search - Searches ??????? in the grid
+    // Live search - Searches username, title, isbn in the grid
     private void SearchReservations(object sender, EventArgs e)
     {
-
+        string[] cols = ["reservations_username", "reservations_title", "reservations_isbn"];
+        HandleGrids.SearchGrid(reservations_grd, reservations_src.Text, cols);
     }
 
     // Adds a reservation to the database - Lends a book

@@ -199,18 +199,20 @@ namespace Desktop_Application
             menu_pnl.Controls.Add(books_btn);
             menu_pnl.Controls.Add(dashboard_btn);
             menu_pnl.Location = new Point(0, 0);
-            menu_pnl.MinimumSize = new Size(263, 561);
+            menu_pnl.Margin = new Padding(3, 4, 3, 4);
+            menu_pnl.MinimumSize = new Size(301, 748);
             menu_pnl.Name = "menu_pnl";
-            menu_pnl.Size = new Size(263, 561);
+            menu_pnl.Size = new Size(301, 748);
             menu_pnl.TabIndex = 9;
             // 
             // panel7
             // 
             panel7.AutoSize = true;
             panel7.BackColor = Color.White;
-            panel7.Location = new Point(33, 229);
+            panel7.Location = new Point(38, 305);
+            panel7.Margin = new Padding(3, 4, 3, 4);
             panel7.Name = "panel7";
-            panel7.Size = new Size(200, 1);
+            panel7.Size = new Size(229, 1);
             panel7.TabIndex = 33;
             // 
             // reservations_btn
@@ -222,9 +224,10 @@ namespace Desktop_Application
             reservations_btn.FlatStyle = FlatStyle.Flat;
             reservations_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             reservations_btn.ForeColor = Color.White;
-            reservations_btn.Location = new Point(0, 230);
+            reservations_btn.Location = new Point(0, 307);
+            reservations_btn.Margin = new Padding(3, 4, 3, 4);
             reservations_btn.Name = "reservations_btn";
-            reservations_btn.Size = new Size(263, 42);
+            reservations_btn.Size = new Size(301, 56);
             reservations_btn.TabIndex = 5;
             reservations_btn.Text = "Reservations";
             reservations_btn.UseVisualStyleBackColor = false;
@@ -234,9 +237,10 @@ namespace Desktop_Application
             // 
             panel2.AutoSize = true;
             panel2.BackColor = Color.White;
-            panel2.Location = new Point(33, 358);
+            panel2.Location = new Point(38, 477);
+            panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(200, 1);
+            panel2.Size = new Size(229, 1);
             panel2.TabIndex = 31;
             // 
             // button2
@@ -248,9 +252,10 @@ namespace Desktop_Application
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Yu Gothic UI Semibold", 14F);
             button2.ForeColor = Color.White;
-            button2.Location = new Point(0, 359);
+            button2.Location = new Point(0, 479);
+            button2.Margin = new Padding(3, 4, 3, 4);
             button2.Name = "button2";
-            button2.Size = new Size(263, 42);
+            button2.Size = new Size(301, 56);
             button2.TabIndex = 8;
             button2.Text = "Publishers";
             button2.UseVisualStyleBackColor = false;
@@ -260,9 +265,10 @@ namespace Desktop_Application
             // 
             panel1.AutoSize = true;
             panel1.BackColor = Color.White;
-            panel1.Location = new Point(33, 315);
+            panel1.Location = new Point(38, 420);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(200, 1);
+            panel1.Size = new Size(229, 1);
             panel1.TabIndex = 29;
             // 
             // button1
@@ -274,9 +280,10 @@ namespace Desktop_Application
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Yu Gothic UI Semibold", 14F);
             button1.ForeColor = Color.White;
-            button1.Location = new Point(0, 316);
+            button1.Location = new Point(0, 421);
+            button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
-            button1.Size = new Size(263, 42);
+            button1.Size = new Size(301, 56);
             button1.TabIndex = 7;
             button1.Text = "Authors";
             button1.UseVisualStyleBackColor = false;
@@ -286,36 +293,40 @@ namespace Desktop_Application
             // 
             divider_pnl4.AutoSize = true;
             divider_pnl4.BackColor = Color.White;
-            divider_pnl4.Location = new Point(33, 401);
+            divider_pnl4.Location = new Point(38, 535);
+            divider_pnl4.Margin = new Padding(3, 4, 3, 4);
             divider_pnl4.Name = "divider_pnl4";
-            divider_pnl4.Size = new Size(200, 1);
+            divider_pnl4.Size = new Size(229, 1);
             divider_pnl4.TabIndex = 27;
             // 
             // divider_pnl
             // 
             divider_pnl.AutoSize = true;
             divider_pnl.BackColor = Color.White;
-            divider_pnl.Location = new Point(33, 186);
+            divider_pnl.Location = new Point(38, 248);
+            divider_pnl.Margin = new Padding(3, 4, 3, 4);
             divider_pnl.Name = "divider_pnl";
-            divider_pnl.Size = new Size(200, 1);
+            divider_pnl.Size = new Size(229, 1);
             divider_pnl.TabIndex = 25;
             // 
             // divider_pnl1
             // 
             divider_pnl1.AutoSize = true;
             divider_pnl1.BackColor = Color.White;
-            divider_pnl1.Location = new Point(33, 143);
+            divider_pnl1.Location = new Point(38, 191);
+            divider_pnl1.Margin = new Padding(3, 4, 3, 4);
             divider_pnl1.Name = "divider_pnl1";
-            divider_pnl1.Size = new Size(200, 1);
+            divider_pnl1.Size = new Size(229, 1);
             divider_pnl1.TabIndex = 24;
             // 
             // divider_pnl3
             // 
             divider_pnl3.AutoSize = true;
             divider_pnl3.BackColor = Color.White;
-            divider_pnl3.Location = new Point(33, 272);
+            divider_pnl3.Location = new Point(38, 363);
+            divider_pnl3.Margin = new Padding(3, 4, 3, 4);
             divider_pnl3.Name = "divider_pnl3";
-            divider_pnl3.Size = new Size(200, 1);
+            divider_pnl3.Size = new Size(229, 1);
             divider_pnl3.TabIndex = 26;
             // 
             // logout_btn
@@ -331,9 +342,10 @@ namespace Desktop_Application
             logout_btn.FlatStyle = FlatStyle.Flat;
             logout_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             logout_btn.ForeColor = Color.Black;
-            logout_btn.Location = new Point(82, 475);
+            logout_btn.Location = new Point(94, 633);
+            logout_btn.Margin = new Padding(3, 4, 3, 4);
             logout_btn.Name = "logout_btn";
-            logout_btn.Size = new Size(96, 36);
+            logout_btn.Size = new Size(110, 48);
             logout_btn.TabIndex = 10;
             logout_btn.Text = "Logout";
             logout_btn.TextColor = Color.Black;
@@ -349,9 +361,10 @@ namespace Desktop_Application
             categories_btn.FlatStyle = FlatStyle.Flat;
             categories_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             categories_btn.ForeColor = Color.White;
-            categories_btn.Location = new Point(0, 273);
+            categories_btn.Location = new Point(0, 364);
+            categories_btn.Margin = new Padding(3, 4, 3, 4);
             categories_btn.Name = "categories_btn";
-            categories_btn.Size = new Size(263, 42);
+            categories_btn.Size = new Size(301, 56);
             categories_btn.TabIndex = 6;
             categories_btn.Text = "Categories";
             categories_btn.UseVisualStyleBackColor = false;
@@ -366,9 +379,10 @@ namespace Desktop_Application
             borrowings_btn.FlatStyle = FlatStyle.Flat;
             borrowings_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             borrowings_btn.ForeColor = Color.White;
-            borrowings_btn.Location = new Point(0, 187);
+            borrowings_btn.Location = new Point(0, 249);
+            borrowings_btn.Margin = new Padding(3, 4, 3, 4);
             borrowings_btn.Name = "borrowings_btn";
-            borrowings_btn.Size = new Size(263, 42);
+            borrowings_btn.Size = new Size(301, 56);
             borrowings_btn.TabIndex = 4;
             borrowings_btn.Text = "Borrowings";
             borrowings_btn.UseVisualStyleBackColor = false;
@@ -383,9 +397,10 @@ namespace Desktop_Application
             users_btn.FlatStyle = FlatStyle.Flat;
             users_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             users_btn.ForeColor = Color.White;
-            users_btn.Location = new Point(0, 402);
+            users_btn.Location = new Point(0, 536);
+            users_btn.Margin = new Padding(3, 4, 3, 4);
             users_btn.Name = "users_btn";
-            users_btn.Size = new Size(263, 42);
+            users_btn.Size = new Size(301, 56);
             users_btn.TabIndex = 9;
             users_btn.Text = "Users";
             users_btn.UseVisualStyleBackColor = false;
@@ -400,9 +415,10 @@ namespace Desktop_Application
             books_btn.FlatStyle = FlatStyle.Flat;
             books_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             books_btn.ForeColor = Color.White;
-            books_btn.Location = new Point(0, 144);
+            books_btn.Location = new Point(0, 192);
+            books_btn.Margin = new Padding(3, 4, 3, 4);
             books_btn.Name = "books_btn";
-            books_btn.Size = new Size(263, 42);
+            books_btn.Size = new Size(301, 56);
             books_btn.TabIndex = 3;
             books_btn.Text = "Books";
             books_btn.UseVisualStyleBackColor = false;
@@ -417,9 +433,10 @@ namespace Desktop_Application
             dashboard_btn.FlatStyle = FlatStyle.Flat;
             dashboard_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             dashboard_btn.ForeColor = Color.White;
-            dashboard_btn.Location = new Point(0, 101);
+            dashboard_btn.Location = new Point(0, 135);
+            dashboard_btn.Margin = new Padding(3, 4, 3, 4);
             dashboard_btn.Name = "dashboard_btn";
-            dashboard_btn.Size = new Size(263, 42);
+            dashboard_btn.Size = new Size(301, 56);
             dashboard_btn.TabIndex = 2;
             dashboard_btn.Text = "Dashboard";
             dashboard_btn.UseVisualStyleBackColor = false;
@@ -430,10 +447,10 @@ namespace Desktop_Application
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label1.Font = new Font("Yu Gothic UI Semibold", 12F);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(22, 6);
+            label1.Location = new Point(25, 8);
             label1.Margin = new Padding(0);
             label1.Name = "label1";
-            label1.Size = new Size(164, 21);
+            label1.Size = new Size(187, 28);
             label1.TabIndex = 11;
             label1.Text = "No. of Books";
             // 
@@ -445,8 +462,9 @@ namespace Desktop_Application
             header_pnl.Controls.Add(label_greeting);
             header_pnl.Controls.Add(label_title);
             header_pnl.Location = new Point(0, 0);
+            header_pnl.Margin = new Padding(3, 4, 3, 4);
             header_pnl.Name = "header_pnl";
-            header_pnl.Size = new Size(985, 50);
+            header_pnl.Size = new Size(1126, 67);
             header_pnl.TabIndex = 11;
             // 
             // label_greeting
@@ -455,9 +473,9 @@ namespace Desktop_Application
             label_greeting.Cursor = Cursors.Hand;
             label_greeting.Font = new Font("Yu Gothic UI Semibold", 16F);
             label_greeting.ForeColor = Color.White;
-            label_greeting.Location = new Point(338, 9);
+            label_greeting.Location = new Point(386, 12);
             label_greeting.Name = "label_greeting";
-            label_greeting.Size = new Size(644, 30);
+            label_greeting.Size = new Size(736, 40);
             label_greeting.TabIndex = 1;
             label_greeting.Text = "Hello, Admin 🐱‍🚀";
             label_greeting.TextAlign = ContentAlignment.TopRight;
@@ -469,9 +487,9 @@ namespace Desktop_Application
             label_title.Cursor = Cursors.Hand;
             label_title.Font = new Font("Yu Gothic UI Semibold", 16F);
             label_title.ForeColor = Color.White;
-            label_title.Location = new Point(11, 9);
+            label_title.Location = new Point(13, 12);
             label_title.Name = "label_title";
-            label_title.Size = new Size(296, 30);
+            label_title.Size = new Size(367, 37);
             label_title.TabIndex = 0;
             label_title.Text = "Library Management System";
             label_title.Click += ShowDashboard;
@@ -484,9 +502,10 @@ namespace Desktop_Application
             dashboard_pnl.Controls.Add(panel4);
             dashboard_pnl.Controls.Add(panel3);
             dashboard_pnl.Controls.Add(panel6);
-            dashboard_pnl.Location = new Point(266, 56);
+            dashboard_pnl.Location = new Point(304, 75);
+            dashboard_pnl.Margin = new Padding(3, 4, 3, 4);
             dashboard_pnl.Name = "dashboard_pnl";
-            dashboard_pnl.Size = new Size(709, 493);
+            dashboard_pnl.Size = new Size(810, 657);
             dashboard_pnl.TabIndex = 12;
             dashboard_pnl.Visible = false;
             // 
@@ -496,9 +515,10 @@ namespace Desktop_Application
             panel5.AutoSize = true;
             panel5.Controls.Add(dashboard_borrowings);
             panel5.Controls.Add(label3);
-            panel5.Location = new Point(458, 30);
+            panel5.Location = new Point(523, 40);
+            panel5.Margin = new Padding(3, 4, 3, 4);
             panel5.Name = "panel5";
-            panel5.Size = new Size(200, 100);
+            panel5.Size = new Size(229, 133);
             panel5.TabIndex = 23;
             // 
             // dashboard_borrowings
@@ -516,10 +536,11 @@ namespace Desktop_Application
             dashboard_borrowings.FlatStyle = FlatStyle.Flat;
             dashboard_borrowings.Font = new Font("Yu Gothic UI Semibold", 22F);
             dashboard_borrowings.ForeColor = Color.White;
-            dashboard_borrowings.Location = new Point(15, 30);
-            dashboard_borrowings.MaximumSize = new Size(250, 100);
+            dashboard_borrowings.Location = new Point(17, 40);
+            dashboard_borrowings.Margin = new Padding(3, 4, 3, 4);
+            dashboard_borrowings.MaximumSize = new Size(286, 133);
             dashboard_borrowings.Name = "dashboard_borrowings";
-            dashboard_borrowings.Size = new Size(171, 63);
+            dashboard_borrowings.Size = new Size(195, 84);
             dashboard_borrowings.TabIndex = 19;
             dashboard_borrowings.TabStop = false;
             dashboard_borrowings.Text = "0";
@@ -531,10 +552,10 @@ namespace Desktop_Application
             label3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label3.Font = new Font("Yu Gothic UI Semibold", 12F);
             label3.ForeColor = Color.Black;
-            label3.Location = new Point(22, 6);
+            label3.Location = new Point(25, 8);
             label3.Margin = new Padding(0);
             label3.Name = "label3";
-            label3.Size = new Size(164, 21);
+            label3.Size = new Size(187, 28);
             label3.TabIndex = 11;
             label3.Text = "No. of Borrowings";
             // 
@@ -544,9 +565,10 @@ namespace Desktop_Application
             panel4.AutoSize = true;
             panel4.Controls.Add(dashboard_users);
             panel4.Controls.Add(label2);
-            panel4.Location = new Point(256, 30);
+            panel4.Location = new Point(293, 40);
+            panel4.Margin = new Padding(3, 4, 3, 4);
             panel4.Name = "panel4";
-            panel4.Size = new Size(200, 100);
+            panel4.Size = new Size(229, 133);
             panel4.TabIndex = 23;
             // 
             // dashboard_users
@@ -564,10 +586,11 @@ namespace Desktop_Application
             dashboard_users.FlatStyle = FlatStyle.Flat;
             dashboard_users.Font = new Font("Yu Gothic UI Semibold", 22F);
             dashboard_users.ForeColor = Color.White;
-            dashboard_users.Location = new Point(15, 30);
-            dashboard_users.MaximumSize = new Size(250, 100);
+            dashboard_users.Location = new Point(17, 40);
+            dashboard_users.Margin = new Padding(3, 4, 3, 4);
+            dashboard_users.MaximumSize = new Size(286, 133);
             dashboard_users.Name = "dashboard_users";
-            dashboard_users.Size = new Size(171, 63);
+            dashboard_users.Size = new Size(195, 84);
             dashboard_users.TabIndex = 19;
             dashboard_users.TabStop = false;
             dashboard_users.Text = "0";
@@ -579,10 +602,10 @@ namespace Desktop_Application
             label2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label2.Font = new Font("Yu Gothic UI Semibold", 12F);
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(22, 6);
+            label2.Location = new Point(25, 8);
             label2.Margin = new Padding(0);
             label2.Name = "label2";
-            label2.Size = new Size(164, 21);
+            label2.Size = new Size(187, 28);
             label2.TabIndex = 11;
             label2.Text = "No. of Users";
             // 
@@ -592,9 +615,10 @@ namespace Desktop_Application
             panel3.AutoSize = true;
             panel3.Controls.Add(dashboard_books);
             panel3.Controls.Add(label1);
-            panel3.Location = new Point(54, 30);
+            panel3.Location = new Point(62, 40);
+            panel3.Margin = new Padding(3, 4, 3, 4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(200, 100);
+            panel3.Size = new Size(229, 133);
             panel3.TabIndex = 22;
             // 
             // dashboard_books
@@ -612,10 +636,11 @@ namespace Desktop_Application
             dashboard_books.FlatStyle = FlatStyle.Flat;
             dashboard_books.Font = new Font("Yu Gothic UI Semibold", 22F);
             dashboard_books.ForeColor = Color.White;
-            dashboard_books.Location = new Point(15, 30);
-            dashboard_books.MaximumSize = new Size(250, 100);
+            dashboard_books.Location = new Point(17, 40);
+            dashboard_books.Margin = new Padding(3, 4, 3, 4);
+            dashboard_books.MaximumSize = new Size(286, 133);
             dashboard_books.Name = "dashboard_books";
-            dashboard_books.Size = new Size(171, 63);
+            dashboard_books.Size = new Size(195, 84);
             dashboard_books.TabIndex = 19;
             dashboard_books.TabStop = false;
             dashboard_books.Text = "0";
@@ -627,9 +652,10 @@ namespace Desktop_Application
             panel6.Anchor = AnchorStyles.Top;
             panel6.Controls.Add(grid_dashboard);
             panel6.Controls.Add(label4);
-            panel6.Location = new Point(39, 144);
+            panel6.Location = new Point(45, 192);
+            panel6.Margin = new Padding(3, 4, 3, 4);
             panel6.Name = "panel6";
-            panel6.Size = new Size(635, 335);
+            panel6.Size = new Size(726, 447);
             panel6.TabIndex = 24;
             // 
             // grid_dashboard
@@ -643,7 +669,8 @@ namespace Desktop_Application
             grid_dashboard.BackgroundColor = Color.FromArgb(224, 224, 224);
             grid_dashboard.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             grid_dashboard.Columns.AddRange(new DataGridViewColumn[] { dashboard_count, dashboard_title, dashboard_author, dashboard_publicationYear, dashboard_category });
-            grid_dashboard.Location = new Point(15, 32);
+            grid_dashboard.Location = new Point(17, 43);
+            grid_dashboard.Margin = new Padding(3, 4, 3, 4);
             grid_dashboard.Name = "grid_dashboard";
             grid_dashboard.ReadOnly = true;
             grid_dashboard.RowHeadersVisible = false;
@@ -653,7 +680,7 @@ namespace Desktop_Application
             grid_dashboard.ShowCellToolTips = false;
             grid_dashboard.ShowEditingIcon = false;
             grid_dashboard.ShowRowErrors = false;
-            grid_dashboard.Size = new Size(604, 290);
+            grid_dashboard.Size = new Size(690, 387);
             grid_dashboard.StandardTab = true;
             grid_dashboard.TabIndex = 1;
             // 
@@ -663,7 +690,7 @@ namespace Desktop_Application
             dashboard_count.MinimumWidth = 6;
             dashboard_count.Name = "dashboard_count";
             dashboard_count.ReadOnly = true;
-            dashboard_count.Width = 39;
+            dashboard_count.Width = 47;
             // 
             // dashboard_title
             // 
@@ -671,7 +698,7 @@ namespace Desktop_Application
             dashboard_title.MinimumWidth = 6;
             dashboard_title.Name = "dashboard_title";
             dashboard_title.ReadOnly = true;
-            dashboard_title.Width = 54;
+            dashboard_title.Width = 67;
             // 
             // dashboard_author
             // 
@@ -679,7 +706,7 @@ namespace Desktop_Application
             dashboard_author.MinimumWidth = 6;
             dashboard_author.Name = "dashboard_author";
             dashboard_author.ReadOnly = true;
-            dashboard_author.Width = 69;
+            dashboard_author.Width = 83;
             // 
             // dashboard_publicationYear
             // 
@@ -687,7 +714,7 @@ namespace Desktop_Application
             dashboard_publicationYear.MinimumWidth = 6;
             dashboard_publicationYear.Name = "dashboard_publicationYear";
             dashboard_publicationYear.ReadOnly = true;
-            dashboard_publicationYear.Width = 107;
+            dashboard_publicationYear.Width = 144;
             // 
             // dashboard_category
             // 
@@ -695,17 +722,17 @@ namespace Desktop_Application
             dashboard_category.MinimumWidth = 6;
             dashboard_category.Name = "dashboard_category";
             dashboard_category.ReadOnly = true;
-            dashboard_category.Width = 80;
+            dashboard_category.Width = 98;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Yu Gothic UI Semibold", 12F);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(13, 8);
+            label4.Location = new Point(15, 11);
             label4.Margin = new Padding(0);
             label4.Name = "label4";
-            label4.Size = new Size(163, 21);
+            label4.Size = new Size(201, 28);
             label4.TabIndex = 17;
             label4.Text = "Top Borrowed Books";
             // 
@@ -719,9 +746,10 @@ namespace Desktop_Application
             books_pnl.Controls.Add(books_lbl1);
             books_pnl.Controls.Add(books_src);
             books_pnl.Controls.Add(books_grd);
-            books_pnl.Location = new Point(266, 56);
+            books_pnl.Location = new Point(304, 75);
+            books_pnl.Margin = new Padding(3, 4, 3, 4);
             books_pnl.Name = "books_pnl";
-            books_pnl.Size = new Size(708, 493);
+            books_pnl.Size = new Size(809, 657);
             books_pnl.TabIndex = 13;
             books_pnl.Visible = false;
             // 
@@ -738,9 +766,10 @@ namespace Desktop_Application
             roundedButton5.FlatStyle = FlatStyle.Flat;
             roundedButton5.Font = new Font("Yu Gothic UI Semibold", 14F);
             roundedButton5.ForeColor = Color.White;
-            roundedButton5.Location = new Point(343, 26);
+            roundedButton5.Location = new Point(392, 35);
+            roundedButton5.Margin = new Padding(3, 4, 3, 4);
             roundedButton5.Name = "roundedButton5";
-            roundedButton5.Size = new Size(100, 36);
+            roundedButton5.Size = new Size(114, 48);
             roundedButton5.TabIndex = 15;
             roundedButton5.Text = "Add";
             roundedButton5.TextColor = Color.White;
@@ -760,9 +789,10 @@ namespace Desktop_Application
             roundedButton6.FlatStyle = FlatStyle.Flat;
             roundedButton6.Font = new Font("Yu Gothic UI Semibold", 14F);
             roundedButton6.ForeColor = Color.White;
-            roundedButton6.Location = new Point(131, 26);
+            roundedButton6.Location = new Point(150, 35);
+            roundedButton6.Margin = new Padding(3, 4, 3, 4);
             roundedButton6.Name = "roundedButton6";
-            roundedButton6.Size = new Size(100, 36);
+            roundedButton6.Size = new Size(114, 48);
             roundedButton6.TabIndex = 13;
             roundedButton6.Text = "Edit";
             roundedButton6.TextColor = Color.White;
@@ -782,9 +812,10 @@ namespace Desktop_Application
             books_refresh_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             books_refresh_btn.ForeColor = Color.White;
             books_refresh_btn.Image = (Image)resources.GetObject("books_refresh_btn.Image");
-            books_refresh_btn.Location = new Point(52, 26);
+            books_refresh_btn.Location = new Point(59, 35);
+            books_refresh_btn.Margin = new Padding(3, 4, 3, 4);
             books_refresh_btn.Name = "books_refresh_btn";
-            books_refresh_btn.Size = new Size(42, 36);
+            books_refresh_btn.Size = new Size(48, 48);
             books_refresh_btn.TabIndex = 12;
             books_refresh_btn.TextColor = Color.White;
             books_refresh_btn.UseVisualStyleBackColor = false;
@@ -803,9 +834,10 @@ namespace Desktop_Application
             roundedButton7.FlatStyle = FlatStyle.Flat;
             roundedButton7.Font = new Font("Yu Gothic UI Semibold", 14F);
             roundedButton7.ForeColor = Color.White;
-            roundedButton7.Location = new Point(237, 26);
+            roundedButton7.Location = new Point(271, 35);
+            roundedButton7.Margin = new Padding(3, 4, 3, 4);
             roundedButton7.Name = "roundedButton7";
-            roundedButton7.Size = new Size(100, 36);
+            roundedButton7.Size = new Size(114, 48);
             roundedButton7.TabIndex = 14;
             roundedButton7.Text = "Remove";
             roundedButton7.TextColor = Color.White;
@@ -816,9 +848,9 @@ namespace Desktop_Application
             // 
             books_lbl1.AutoSize = true;
             books_lbl1.Font = new Font("Yu Gothic UI Semibold", 14F);
-            books_lbl1.Location = new Point(52, 80);
+            books_lbl1.Location = new Point(59, 107);
             books_lbl1.Name = "books_lbl1";
-            books_lbl1.Size = new Size(63, 25);
+            books_lbl1.Size = new Size(80, 32);
             books_lbl1.TabIndex = 11;
             books_lbl1.Text = "Books";
             // 
@@ -827,11 +859,12 @@ namespace Desktop_Application
             books_src.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             books_src.BackColor = Color.White;
             books_src.Font = new Font("Yu Gothic UI Semibold", 14F);
-            books_src.Location = new Point(448, 29);
+            books_src.Location = new Point(512, 39);
+            books_src.Margin = new Padding(3, 4, 3, 4);
             books_src.MaxLength = 19;
             books_src.Name = "books_src";
             books_src.PlaceholderText = "Search...";
-            books_src.Size = new Size(208, 32);
+            books_src.Size = new Size(237, 39);
             books_src.TabIndex = 16;
             books_src.TextChanged += SearchBooks;
             // 
@@ -846,7 +879,8 @@ namespace Desktop_Application
             books_grd.BackgroundColor = Color.White;
             books_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             books_grd.Columns.AddRange(new DataGridViewColumn[] { books_title, books_author, books_publicationYear, books_category, books_publisher, books_isbn });
-            books_grd.Location = new Point(52, 108);
+            books_grd.Location = new Point(59, 144);
+            books_grd.Margin = new Padding(3, 4, 3, 4);
             books_grd.Name = "books_grd";
             books_grd.ReadOnly = true;
             books_grd.RowHeadersVisible = false;
@@ -856,7 +890,7 @@ namespace Desktop_Application
             books_grd.ShowCellToolTips = false;
             books_grd.ShowEditingIcon = false;
             books_grd.ShowRowErrors = false;
-            books_grd.Size = new Size(604, 359);
+            books_grd.Size = new Size(690, 479);
             books_grd.StandardTab = true;
             books_grd.TabIndex = 11;
             // 
@@ -866,7 +900,7 @@ namespace Desktop_Application
             books_title.MinimumWidth = 6;
             books_title.Name = "books_title";
             books_title.ReadOnly = true;
-            books_title.Width = 54;
+            books_title.Width = 67;
             // 
             // books_author
             // 
@@ -874,7 +908,7 @@ namespace Desktop_Application
             books_author.MinimumWidth = 6;
             books_author.Name = "books_author";
             books_author.ReadOnly = true;
-            books_author.Width = 69;
+            books_author.Width = 83;
             // 
             // books_publicationYear
             // 
@@ -882,7 +916,7 @@ namespace Desktop_Application
             books_publicationYear.MinimumWidth = 6;
             books_publicationYear.Name = "books_publicationYear";
             books_publicationYear.ReadOnly = true;
-            books_publicationYear.Width = 107;
+            books_publicationYear.Width = 144;
             // 
             // books_category
             // 
@@ -890,7 +924,7 @@ namespace Desktop_Application
             books_category.MinimumWidth = 6;
             books_category.Name = "books_category";
             books_category.ReadOnly = true;
-            books_category.Width = 80;
+            books_category.Width = 98;
             // 
             // books_publisher
             // 
@@ -898,7 +932,7 @@ namespace Desktop_Application
             books_publisher.MinimumWidth = 6;
             books_publisher.Name = "books_publisher";
             books_publisher.ReadOnly = true;
-            books_publisher.Width = 81;
+            books_publisher.Width = 98;
             // 
             // books_isbn
             // 
@@ -906,7 +940,7 @@ namespace Desktop_Application
             books_isbn.MinimumWidth = 6;
             books_isbn.Name = "books_isbn";
             books_isbn.ReadOnly = true;
-            books_isbn.Width = 57;
+            books_isbn.Width = 70;
             // 
             // borrowings_pnl
             // 
@@ -920,9 +954,10 @@ namespace Desktop_Application
             borrowings_pnl.Controls.Add(borrowings_return_btn);
             borrowings_pnl.Controls.Add(borrowings_lbl1);
             borrowings_pnl.Controls.Add(borrowings_src);
-            borrowings_pnl.Location = new Point(266, 56);
+            borrowings_pnl.Location = new Point(304, 75);
+            borrowings_pnl.Margin = new Padding(3, 4, 3, 4);
             borrowings_pnl.Name = "borrowings_pnl";
-            borrowings_pnl.Size = new Size(708, 493);
+            borrowings_pnl.Size = new Size(809, 657);
             borrowings_pnl.TabIndex = 14;
             borrowings_pnl.Visible = false;
             // 
@@ -930,10 +965,11 @@ namespace Desktop_Application
             // 
             checkBox_currentBorrowings.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             checkBox_currentBorrowings.AutoSize = true;
-            checkBox_currentBorrowings.Location = new Point(470, 80);
+            checkBox_currentBorrowings.Location = new Point(522, 107);
+            checkBox_currentBorrowings.Margin = new Padding(3, 4, 3, 4);
             checkBox_currentBorrowings.Name = "checkBox_currentBorrowings";
             checkBox_currentBorrowings.RightToLeft = RightToLeft.Yes;
-            checkBox_currentBorrowings.Size = new Size(186, 19);
+            checkBox_currentBorrowings.Size = new Size(228, 24);
             checkBox_currentBorrowings.TabIndex = 17;
             checkBox_currentBorrowings.Text = "Only show current borrowings";
             checkBox_currentBorrowings.UseVisualStyleBackColor = true;
@@ -950,7 +986,8 @@ namespace Desktop_Application
             borrowings_grd.BackgroundColor = Color.White;
             borrowings_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             borrowings_grd.Columns.AddRange(new DataGridViewColumn[] { borrowings_username, borrowings_title, borrowings_isbn, borrowings_borrowDate, borrowings_dueDate, borrowings_returnDate });
-            borrowings_grd.Location = new Point(52, 108);
+            borrowings_grd.Location = new Point(59, 144);
+            borrowings_grd.Margin = new Padding(3, 4, 3, 4);
             borrowings_grd.Name = "borrowings_grd";
             borrowings_grd.ReadOnly = true;
             borrowings_grd.RowHeadersVisible = false;
@@ -960,7 +997,7 @@ namespace Desktop_Application
             borrowings_grd.ShowCellToolTips = false;
             borrowings_grd.ShowEditingIcon = false;
             borrowings_grd.ShowRowErrors = false;
-            borrowings_grd.Size = new Size(604, 359);
+            borrowings_grd.Size = new Size(690, 479);
             borrowings_grd.StandardTab = true;
             borrowings_grd.TabIndex = 11;
             // 
@@ -970,7 +1007,7 @@ namespace Desktop_Application
             borrowings_username.MinimumWidth = 6;
             borrowings_username.Name = "borrowings_username";
             borrowings_username.ReadOnly = true;
-            borrowings_username.Width = 85;
+            borrowings_username.Width = 104;
             // 
             // borrowings_title
             // 
@@ -978,7 +1015,7 @@ namespace Desktop_Application
             borrowings_title.MinimumWidth = 6;
             borrowings_title.Name = "borrowings_title";
             borrowings_title.ReadOnly = true;
-            borrowings_title.Width = 54;
+            borrowings_title.Width = 67;
             // 
             // borrowings_isbn
             // 
@@ -986,7 +1023,7 @@ namespace Desktop_Application
             borrowings_isbn.MinimumWidth = 6;
             borrowings_isbn.Name = "borrowings_isbn";
             borrowings_isbn.ReadOnly = true;
-            borrowings_isbn.Width = 57;
+            borrowings_isbn.Width = 70;
             // 
             // borrowings_borrowDate
             // 
@@ -994,7 +1031,7 @@ namespace Desktop_Application
             borrowings_borrowDate.MinimumWidth = 6;
             borrowings_borrowDate.Name = "borrowings_borrowDate";
             borrowings_borrowDate.ReadOnly = true;
-            borrowings_borrowDate.Width = 97;
+            borrowings_borrowDate.Width = 122;
             // 
             // borrowings_dueDate
             // 
@@ -1002,7 +1039,7 @@ namespace Desktop_Application
             borrowings_dueDate.MinimumWidth = 6;
             borrowings_dueDate.Name = "borrowings_dueDate";
             borrowings_dueDate.ReadOnly = true;
-            borrowings_dueDate.Width = 80;
+            borrowings_dueDate.Width = 101;
             // 
             // borrowings_returnDate
             // 
@@ -1010,7 +1047,7 @@ namespace Desktop_Application
             borrowings_returnDate.MinimumWidth = 6;
             borrowings_returnDate.Name = "borrowings_returnDate";
             borrowings_returnDate.ReadOnly = true;
-            borrowings_returnDate.Width = 94;
+            borrowings_returnDate.Width = 117;
             // 
             // borrowings_refresh_btn
             // 
@@ -1025,9 +1062,10 @@ namespace Desktop_Application
             borrowings_refresh_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             borrowings_refresh_btn.ForeColor = Color.White;
             borrowings_refresh_btn.Image = (Image)resources.GetObject("borrowings_refresh_btn.Image");
-            borrowings_refresh_btn.Location = new Point(52, 26);
+            borrowings_refresh_btn.Location = new Point(59, 35);
+            borrowings_refresh_btn.Margin = new Padding(3, 4, 3, 4);
             borrowings_refresh_btn.Name = "borrowings_refresh_btn";
-            borrowings_refresh_btn.Size = new Size(42, 36);
+            borrowings_refresh_btn.Size = new Size(48, 48);
             borrowings_refresh_btn.TabIndex = 12;
             borrowings_refresh_btn.TextColor = Color.White;
             borrowings_refresh_btn.UseVisualStyleBackColor = false;
@@ -1046,9 +1084,10 @@ namespace Desktop_Application
             borrowings_borrow_btn.FlatStyle = FlatStyle.Flat;
             borrowings_borrow_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             borrowings_borrow_btn.ForeColor = Color.White;
-            borrowings_borrow_btn.Location = new Point(342, 26);
+            borrowings_borrow_btn.Location = new Point(391, 35);
+            borrowings_borrow_btn.Margin = new Padding(3, 4, 3, 4);
             borrowings_borrow_btn.Name = "borrowings_borrow_btn";
-            borrowings_borrow_btn.Size = new Size(100, 36);
+            borrowings_borrow_btn.Size = new Size(114, 48);
             borrowings_borrow_btn.TabIndex = 15;
             borrowings_borrow_btn.Text = "Lend";
             borrowings_borrow_btn.TextColor = Color.White;
@@ -1068,9 +1107,10 @@ namespace Desktop_Application
             borrowings_edit_btn.FlatStyle = FlatStyle.Flat;
             borrowings_edit_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             borrowings_edit_btn.ForeColor = Color.White;
-            borrowings_edit_btn.Location = new Point(130, 26);
+            borrowings_edit_btn.Location = new Point(149, 35);
+            borrowings_edit_btn.Margin = new Padding(3, 4, 3, 4);
             borrowings_edit_btn.Name = "borrowings_edit_btn";
-            borrowings_edit_btn.Size = new Size(100, 36);
+            borrowings_edit_btn.Size = new Size(114, 48);
             borrowings_edit_btn.TabIndex = 13;
             borrowings_edit_btn.Text = "Edit";
             borrowings_edit_btn.TextColor = Color.White;
@@ -1090,9 +1130,10 @@ namespace Desktop_Application
             borrowings_return_btn.FlatStyle = FlatStyle.Flat;
             borrowings_return_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             borrowings_return_btn.ForeColor = Color.White;
-            borrowings_return_btn.Location = new Point(236, 26);
+            borrowings_return_btn.Location = new Point(270, 35);
+            borrowings_return_btn.Margin = new Padding(3, 4, 3, 4);
             borrowings_return_btn.Name = "borrowings_return_btn";
-            borrowings_return_btn.Size = new Size(100, 36);
+            borrowings_return_btn.Size = new Size(114, 48);
             borrowings_return_btn.TabIndex = 14;
             borrowings_return_btn.Text = "Return";
             borrowings_return_btn.TextColor = Color.White;
@@ -1103,9 +1144,9 @@ namespace Desktop_Application
             // 
             borrowings_lbl1.AutoSize = true;
             borrowings_lbl1.Font = new Font("Yu Gothic UI Semibold", 14F);
-            borrowings_lbl1.Location = new Point(52, 80);
+            borrowings_lbl1.Location = new Point(59, 107);
             borrowings_lbl1.Name = "borrowings_lbl1";
-            borrowings_lbl1.Size = new Size(108, 25);
+            borrowings_lbl1.Size = new Size(137, 32);
             borrowings_lbl1.TabIndex = 25;
             borrowings_lbl1.Text = "Borrowings";
             // 
@@ -1114,11 +1155,12 @@ namespace Desktop_Application
             borrowings_src.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             borrowings_src.BackColor = Color.White;
             borrowings_src.Font = new Font("Yu Gothic UI Semibold", 14F);
-            borrowings_src.Location = new Point(448, 29);
+            borrowings_src.Location = new Point(512, 39);
+            borrowings_src.Margin = new Padding(3, 4, 3, 4);
             borrowings_src.MaxLength = 19;
             borrowings_src.Name = "borrowings_src";
             borrowings_src.PlaceholderText = "Search...";
-            borrowings_src.Size = new Size(208, 32);
+            borrowings_src.Size = new Size(237, 39);
             borrowings_src.TabIndex = 16;
             borrowings_src.TextChanged += SearchBorrowings;
             // 
@@ -1133,9 +1175,10 @@ namespace Desktop_Application
             categories_pnl.Controls.Add(categories_remove_btn);
             categories_pnl.Controls.Add(categories_lbl1);
             categories_pnl.Controls.Add(categories_src);
-            categories_pnl.Location = new Point(266, 56);
+            categories_pnl.Location = new Point(304, 75);
+            categories_pnl.Margin = new Padding(3, 4, 3, 4);
             categories_pnl.Name = "categories_pnl";
-            categories_pnl.Size = new Size(708, 493);
+            categories_pnl.Size = new Size(809, 657);
             categories_pnl.TabIndex = 23;
             categories_pnl.Visible = false;
             // 
@@ -1150,7 +1193,8 @@ namespace Desktop_Application
             categories_grd.BackgroundColor = Color.White;
             categories_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             categories_grd.Columns.AddRange(new DataGridViewColumn[] { categories_category });
-            categories_grd.Location = new Point(52, 108);
+            categories_grd.Location = new Point(59, 144);
+            categories_grd.Margin = new Padding(3, 4, 3, 4);
             categories_grd.Name = "categories_grd";
             categories_grd.ReadOnly = true;
             categories_grd.RowHeadersVisible = false;
@@ -1160,7 +1204,7 @@ namespace Desktop_Application
             categories_grd.ShowCellToolTips = false;
             categories_grd.ShowEditingIcon = false;
             categories_grd.ShowRowErrors = false;
-            categories_grd.Size = new Size(604, 359);
+            categories_grd.Size = new Size(690, 479);
             categories_grd.StandardTab = true;
             categories_grd.TabIndex = 11;
             // 
@@ -1170,7 +1214,7 @@ namespace Desktop_Application
             categories_category.MinimumWidth = 6;
             categories_category.Name = "categories_category";
             categories_category.ReadOnly = true;
-            categories_category.Width = 80;
+            categories_category.Width = 98;
             // 
             // categories_refresh_btn
             // 
@@ -1185,9 +1229,10 @@ namespace Desktop_Application
             categories_refresh_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             categories_refresh_btn.ForeColor = Color.White;
             categories_refresh_btn.Image = (Image)resources.GetObject("categories_refresh_btn.Image");
-            categories_refresh_btn.Location = new Point(52, 26);
+            categories_refresh_btn.Location = new Point(59, 35);
+            categories_refresh_btn.Margin = new Padding(3, 4, 3, 4);
             categories_refresh_btn.Name = "categories_refresh_btn";
-            categories_refresh_btn.Size = new Size(42, 36);
+            categories_refresh_btn.Size = new Size(48, 48);
             categories_refresh_btn.TabIndex = 12;
             categories_refresh_btn.TextColor = Color.White;
             categories_refresh_btn.UseVisualStyleBackColor = false;
@@ -1206,9 +1251,10 @@ namespace Desktop_Application
             categories_add_btn.FlatStyle = FlatStyle.Flat;
             categories_add_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             categories_add_btn.ForeColor = Color.White;
-            categories_add_btn.Location = new Point(342, 26);
+            categories_add_btn.Location = new Point(391, 35);
+            categories_add_btn.Margin = new Padding(3, 4, 3, 4);
             categories_add_btn.Name = "categories_add_btn";
-            categories_add_btn.Size = new Size(100, 36);
+            categories_add_btn.Size = new Size(114, 48);
             categories_add_btn.TabIndex = 15;
             categories_add_btn.Text = "Add";
             categories_add_btn.TextColor = Color.White;
@@ -1228,9 +1274,10 @@ namespace Desktop_Application
             categories_edit_btn.FlatStyle = FlatStyle.Flat;
             categories_edit_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             categories_edit_btn.ForeColor = Color.White;
-            categories_edit_btn.Location = new Point(130, 26);
+            categories_edit_btn.Location = new Point(149, 35);
+            categories_edit_btn.Margin = new Padding(3, 4, 3, 4);
             categories_edit_btn.Name = "categories_edit_btn";
-            categories_edit_btn.Size = new Size(100, 36);
+            categories_edit_btn.Size = new Size(114, 48);
             categories_edit_btn.TabIndex = 13;
             categories_edit_btn.Text = "Edit";
             categories_edit_btn.TextColor = Color.White;
@@ -1250,9 +1297,10 @@ namespace Desktop_Application
             categories_remove_btn.FlatStyle = FlatStyle.Flat;
             categories_remove_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             categories_remove_btn.ForeColor = Color.White;
-            categories_remove_btn.Location = new Point(236, 26);
+            categories_remove_btn.Location = new Point(270, 35);
+            categories_remove_btn.Margin = new Padding(3, 4, 3, 4);
             categories_remove_btn.Name = "categories_remove_btn";
-            categories_remove_btn.Size = new Size(100, 36);
+            categories_remove_btn.Size = new Size(114, 48);
             categories_remove_btn.TabIndex = 14;
             categories_remove_btn.Text = "Remove";
             categories_remove_btn.TextColor = Color.White;
@@ -1263,9 +1311,9 @@ namespace Desktop_Application
             // 
             categories_lbl1.AutoSize = true;
             categories_lbl1.Font = new Font("Yu Gothic UI Semibold", 14F);
-            categories_lbl1.Location = new Point(52, 80);
+            categories_lbl1.Location = new Point(59, 107);
             categories_lbl1.Name = "categories_lbl1";
-            categories_lbl1.Size = new Size(103, 25);
+            categories_lbl1.Size = new Size(130, 32);
             categories_lbl1.TabIndex = 18;
             categories_lbl1.Text = "Categories";
             // 
@@ -1274,11 +1322,12 @@ namespace Desktop_Application
             categories_src.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             categories_src.BackColor = Color.White;
             categories_src.Font = new Font("Yu Gothic UI Semibold", 14F);
-            categories_src.Location = new Point(448, 29);
+            categories_src.Location = new Point(512, 39);
+            categories_src.Margin = new Padding(3, 4, 3, 4);
             categories_src.MaxLength = 19;
             categories_src.Name = "categories_src";
             categories_src.PlaceholderText = "Search...";
-            categories_src.Size = new Size(208, 32);
+            categories_src.Size = new Size(237, 39);
             categories_src.TabIndex = 16;
             categories_src.TextChanged += SearchCategories;
             // 
@@ -1292,9 +1341,10 @@ namespace Desktop_Application
             users_pnl.Controls.Add(users_button_remove);
             users_pnl.Controls.Add(users_lbl1);
             users_pnl.Controls.Add(users_src);
-            users_pnl.Location = new Point(266, 56);
+            users_pnl.Location = new Point(304, 75);
+            users_pnl.Margin = new Padding(3, 4, 3, 4);
             users_pnl.Name = "users_pnl";
-            users_pnl.Size = new Size(708, 493);
+            users_pnl.Size = new Size(809, 657);
             users_pnl.TabIndex = 24;
             users_pnl.Visible = false;
             // 
@@ -1309,7 +1359,8 @@ namespace Desktop_Application
             users_grd.BackgroundColor = Color.White;
             users_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             users_grd.Columns.AddRange(new DataGridViewColumn[] { users_firstName, users_lastName, users_dateOfBirth, users_address, users_verified, users_username, users_email, users_role });
-            users_grd.Location = new Point(52, 108);
+            users_grd.Location = new Point(59, 144);
+            users_grd.Margin = new Padding(3, 4, 3, 4);
             users_grd.Name = "users_grd";
             users_grd.ReadOnly = true;
             users_grd.RowHeadersVisible = false;
@@ -1319,7 +1370,7 @@ namespace Desktop_Application
             users_grd.ShowCellToolTips = false;
             users_grd.ShowEditingIcon = false;
             users_grd.ShowRowErrors = false;
-            users_grd.Size = new Size(604, 359);
+            users_grd.Size = new Size(690, 479);
             users_grd.StandardTab = true;
             users_grd.TabIndex = 11;
             // 
@@ -1329,7 +1380,7 @@ namespace Desktop_Application
             users_firstName.MinimumWidth = 6;
             users_firstName.Name = "users_firstName";
             users_firstName.ReadOnly = true;
-            users_firstName.Width = 89;
+            users_firstName.Width = 109;
             // 
             // users_lastName
             // 
@@ -1337,7 +1388,7 @@ namespace Desktop_Application
             users_lastName.MinimumWidth = 6;
             users_lastName.Name = "users_lastName";
             users_lastName.ReadOnly = true;
-            users_lastName.Width = 88;
+            users_lastName.Width = 108;
             // 
             // users_dateOfBirth
             // 
@@ -1345,7 +1396,7 @@ namespace Desktop_Application
             users_dateOfBirth.MinimumWidth = 6;
             users_dateOfBirth.Name = "users_dateOfBirth";
             users_dateOfBirth.ReadOnly = true;
-            users_dateOfBirth.Width = 98;
+            users_dateOfBirth.Width = 123;
             // 
             // users_address
             // 
@@ -1353,7 +1404,7 @@ namespace Desktop_Application
             users_address.MinimumWidth = 6;
             users_address.Name = "users_address";
             users_address.ReadOnly = true;
-            users_address.Width = 74;
+            users_address.Width = 91;
             // 
             // users_verified
             // 
@@ -1361,7 +1412,7 @@ namespace Desktop_Application
             users_verified.MinimumWidth = 6;
             users_verified.Name = "users_verified";
             users_verified.ReadOnly = true;
-            users_verified.Width = 71;
+            users_verified.Width = 89;
             // 
             // users_username
             // 
@@ -1369,7 +1420,7 @@ namespace Desktop_Application
             users_username.MinimumWidth = 6;
             users_username.Name = "users_username";
             users_username.ReadOnly = true;
-            users_username.Width = 85;
+            users_username.Width = 104;
             // 
             // users_email
             // 
@@ -1377,7 +1428,7 @@ namespace Desktop_Application
             users_email.MinimumWidth = 6;
             users_email.Name = "users_email";
             users_email.ReadOnly = true;
-            users_email.Width = 61;
+            users_email.Width = 75;
             // 
             // users_role
             // 
@@ -1385,7 +1436,7 @@ namespace Desktop_Application
             users_role.MinimumWidth = 6;
             users_role.Name = "users_role";
             users_role.ReadOnly = true;
-            users_role.Width = 55;
+            users_role.Width = 68;
             // 
             // users_button_add
             // 
@@ -1400,9 +1451,10 @@ namespace Desktop_Application
             users_button_add.FlatStyle = FlatStyle.Flat;
             users_button_add.Font = new Font("Yu Gothic UI Semibold", 14F);
             users_button_add.ForeColor = Color.White;
-            users_button_add.Location = new Point(343, 26);
+            users_button_add.Location = new Point(392, 35);
+            users_button_add.Margin = new Padding(3, 4, 3, 4);
             users_button_add.Name = "users_button_add";
-            users_button_add.Size = new Size(100, 36);
+            users_button_add.Size = new Size(114, 48);
             users_button_add.TabIndex = 15;
             users_button_add.Text = "Add";
             users_button_add.TextColor = Color.White;
@@ -1422,9 +1474,10 @@ namespace Desktop_Application
             roundedButton1.Font = new Font("Yu Gothic UI Semibold", 14F);
             roundedButton1.ForeColor = Color.White;
             roundedButton1.Image = (Image)resources.GetObject("roundedButton1.Image");
-            roundedButton1.Location = new Point(52, 26);
+            roundedButton1.Location = new Point(59, 35);
+            roundedButton1.Margin = new Padding(3, 4, 3, 4);
             roundedButton1.Name = "roundedButton1";
-            roundedButton1.Size = new Size(42, 36);
+            roundedButton1.Size = new Size(48, 48);
             roundedButton1.TabIndex = 12;
             roundedButton1.TextColor = Color.White;
             roundedButton1.UseVisualStyleBackColor = false;
@@ -1443,9 +1496,10 @@ namespace Desktop_Application
             users_button_edit.FlatStyle = FlatStyle.Flat;
             users_button_edit.Font = new Font("Yu Gothic UI Semibold", 14F);
             users_button_edit.ForeColor = Color.White;
-            users_button_edit.Location = new Point(131, 26);
+            users_button_edit.Location = new Point(150, 35);
+            users_button_edit.Margin = new Padding(3, 4, 3, 4);
             users_button_edit.Name = "users_button_edit";
-            users_button_edit.Size = new Size(100, 36);
+            users_button_edit.Size = new Size(114, 48);
             users_button_edit.TabIndex = 13;
             users_button_edit.Text = "Edit";
             users_button_edit.TextColor = Color.White;
@@ -1465,9 +1519,10 @@ namespace Desktop_Application
             users_button_remove.FlatStyle = FlatStyle.Flat;
             users_button_remove.Font = new Font("Yu Gothic UI Semibold", 14F);
             users_button_remove.ForeColor = Color.White;
-            users_button_remove.Location = new Point(237, 26);
+            users_button_remove.Location = new Point(271, 35);
+            users_button_remove.Margin = new Padding(3, 4, 3, 4);
             users_button_remove.Name = "users_button_remove";
-            users_button_remove.Size = new Size(100, 36);
+            users_button_remove.Size = new Size(114, 48);
             users_button_remove.TabIndex = 14;
             users_button_remove.Text = "Remove";
             users_button_remove.TextColor = Color.White;
@@ -1478,9 +1533,9 @@ namespace Desktop_Application
             // 
             users_lbl1.AutoSize = true;
             users_lbl1.Font = new Font("Yu Gothic UI Semibold", 14F);
-            users_lbl1.Location = new Point(52, 80);
+            users_lbl1.Location = new Point(59, 107);
             users_lbl1.Name = "users_lbl1";
-            users_lbl1.Size = new Size(58, 25);
+            users_lbl1.Size = new Size(73, 32);
             users_lbl1.TabIndex = 11;
             users_lbl1.Text = "Users";
             // 
@@ -1489,11 +1544,12 @@ namespace Desktop_Application
             users_src.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             users_src.BackColor = Color.White;
             users_src.Font = new Font("Yu Gothic UI Semibold", 14F);
-            users_src.Location = new Point(448, 29);
+            users_src.Location = new Point(512, 39);
+            users_src.Margin = new Padding(3, 4, 3, 4);
             users_src.MaxLength = 19;
             users_src.Name = "users_src";
             users_src.PlaceholderText = "Search...";
-            users_src.Size = new Size(208, 32);
+            users_src.Size = new Size(237, 39);
             users_src.TabIndex = 16;
             users_src.TextChanged += SearchUsers;
             // 
@@ -1508,9 +1564,10 @@ namespace Desktop_Application
             authors_pnl.Controls.Add(authors_remove_btn);
             authors_pnl.Controls.Add(authors_lbl1);
             authors_pnl.Controls.Add(authors_src);
-            authors_pnl.Location = new Point(266, 56);
+            authors_pnl.Location = new Point(304, 75);
+            authors_pnl.Margin = new Padding(3, 4, 3, 4);
             authors_pnl.Name = "authors_pnl";
-            authors_pnl.Size = new Size(708, 493);
+            authors_pnl.Size = new Size(809, 657);
             authors_pnl.TabIndex = 25;
             authors_pnl.Visible = false;
             // 
@@ -1525,7 +1582,8 @@ namespace Desktop_Application
             authors_grd.BackgroundColor = Color.White;
             authors_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             authors_grd.Columns.AddRange(new DataGridViewColumn[] { authors_author });
-            authors_grd.Location = new Point(52, 108);
+            authors_grd.Location = new Point(59, 144);
+            authors_grd.Margin = new Padding(3, 4, 3, 4);
             authors_grd.Name = "authors_grd";
             authors_grd.ReadOnly = true;
             authors_grd.RowHeadersVisible = false;
@@ -1535,7 +1593,7 @@ namespace Desktop_Application
             authors_grd.ShowCellToolTips = false;
             authors_grd.ShowEditingIcon = false;
             authors_grd.ShowRowErrors = false;
-            authors_grd.Size = new Size(604, 359);
+            authors_grd.Size = new Size(690, 479);
             authors_grd.StandardTab = true;
             authors_grd.TabIndex = 11;
             // 
@@ -1545,7 +1603,7 @@ namespace Desktop_Application
             authors_author.MinimumWidth = 6;
             authors_author.Name = "authors_author";
             authors_author.ReadOnly = true;
-            authors_author.Width = 69;
+            authors_author.Width = 83;
             // 
             // authors_refresh_btn
             // 
@@ -1560,9 +1618,10 @@ namespace Desktop_Application
             authors_refresh_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             authors_refresh_btn.ForeColor = Color.White;
             authors_refresh_btn.Image = (Image)resources.GetObject("authors_refresh_btn.Image");
-            authors_refresh_btn.Location = new Point(52, 26);
+            authors_refresh_btn.Location = new Point(59, 35);
+            authors_refresh_btn.Margin = new Padding(3, 4, 3, 4);
             authors_refresh_btn.Name = "authors_refresh_btn";
-            authors_refresh_btn.Size = new Size(42, 36);
+            authors_refresh_btn.Size = new Size(48, 48);
             authors_refresh_btn.TabIndex = 12;
             authors_refresh_btn.TextColor = Color.White;
             authors_refresh_btn.UseVisualStyleBackColor = false;
@@ -1581,9 +1640,10 @@ namespace Desktop_Application
             authors_add_btn.FlatStyle = FlatStyle.Flat;
             authors_add_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             authors_add_btn.ForeColor = Color.White;
-            authors_add_btn.Location = new Point(342, 26);
+            authors_add_btn.Location = new Point(391, 35);
+            authors_add_btn.Margin = new Padding(3, 4, 3, 4);
             authors_add_btn.Name = "authors_add_btn";
-            authors_add_btn.Size = new Size(100, 36);
+            authors_add_btn.Size = new Size(114, 48);
             authors_add_btn.TabIndex = 15;
             authors_add_btn.Text = "Add";
             authors_add_btn.TextColor = Color.White;
@@ -1603,9 +1663,10 @@ namespace Desktop_Application
             authors_edit_btn.FlatStyle = FlatStyle.Flat;
             authors_edit_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             authors_edit_btn.ForeColor = Color.White;
-            authors_edit_btn.Location = new Point(130, 26);
+            authors_edit_btn.Location = new Point(149, 35);
+            authors_edit_btn.Margin = new Padding(3, 4, 3, 4);
             authors_edit_btn.Name = "authors_edit_btn";
-            authors_edit_btn.Size = new Size(100, 36);
+            authors_edit_btn.Size = new Size(114, 48);
             authors_edit_btn.TabIndex = 13;
             authors_edit_btn.Text = "Edit";
             authors_edit_btn.TextColor = Color.White;
@@ -1625,9 +1686,10 @@ namespace Desktop_Application
             authors_remove_btn.FlatStyle = FlatStyle.Flat;
             authors_remove_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             authors_remove_btn.ForeColor = Color.White;
-            authors_remove_btn.Location = new Point(236, 26);
+            authors_remove_btn.Location = new Point(270, 35);
+            authors_remove_btn.Margin = new Padding(3, 4, 3, 4);
             authors_remove_btn.Name = "authors_remove_btn";
-            authors_remove_btn.Size = new Size(100, 36);
+            authors_remove_btn.Size = new Size(114, 48);
             authors_remove_btn.TabIndex = 14;
             authors_remove_btn.Text = "Remove";
             authors_remove_btn.TextColor = Color.White;
@@ -1638,9 +1700,9 @@ namespace Desktop_Application
             // 
             authors_lbl1.AutoSize = true;
             authors_lbl1.Font = new Font("Yu Gothic UI Semibold", 14F);
-            authors_lbl1.Location = new Point(52, 80);
+            authors_lbl1.Location = new Point(59, 107);
             authors_lbl1.Name = "authors_lbl1";
-            authors_lbl1.Size = new Size(80, 25);
+            authors_lbl1.Size = new Size(100, 32);
             authors_lbl1.TabIndex = 18;
             authors_lbl1.Text = "Authors";
             // 
@@ -1649,11 +1711,12 @@ namespace Desktop_Application
             authors_src.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             authors_src.BackColor = Color.White;
             authors_src.Font = new Font("Yu Gothic UI Semibold", 14F);
-            authors_src.Location = new Point(448, 29);
+            authors_src.Location = new Point(512, 39);
+            authors_src.Margin = new Padding(3, 4, 3, 4);
             authors_src.MaxLength = 19;
             authors_src.Name = "authors_src";
             authors_src.PlaceholderText = "Search...";
-            authors_src.Size = new Size(208, 32);
+            authors_src.Size = new Size(237, 39);
             authors_src.TabIndex = 16;
             authors_src.TabStop = false;
             authors_src.TextChanged += SearchAuthors;
@@ -1670,9 +1733,10 @@ namespace Desktop_Application
             publishers_pnl.Controls.Add(publishers_remove_btn);
             publishers_pnl.Controls.Add(publishers_lbl1);
             publishers_pnl.Controls.Add(publishers_src);
-            publishers_pnl.Location = new Point(266, 56);
+            publishers_pnl.Location = new Point(304, 75);
+            publishers_pnl.Margin = new Padding(3, 4, 3, 4);
             publishers_pnl.Name = "publishers_pnl";
-            publishers_pnl.Size = new Size(708, 493);
+            publishers_pnl.Size = new Size(809, 657);
             publishers_pnl.TabIndex = 26;
             publishers_pnl.Visible = false;
             // 
@@ -1687,7 +1751,8 @@ namespace Desktop_Application
             publishers_grd.BackgroundColor = Color.White;
             publishers_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             publishers_grd.Columns.AddRange(new DataGridViewColumn[] { publishers_publisher });
-            publishers_grd.Location = new Point(52, 108);
+            publishers_grd.Location = new Point(59, 144);
+            publishers_grd.Margin = new Padding(3, 4, 3, 4);
             publishers_grd.Name = "publishers_grd";
             publishers_grd.ReadOnly = true;
             publishers_grd.RowHeadersVisible = false;
@@ -1697,7 +1762,7 @@ namespace Desktop_Application
             publishers_grd.ShowCellToolTips = false;
             publishers_grd.ShowEditingIcon = false;
             publishers_grd.ShowRowErrors = false;
-            publishers_grd.Size = new Size(604, 359);
+            publishers_grd.Size = new Size(690, 479);
             publishers_grd.StandardTab = true;
             publishers_grd.TabIndex = 11;
             // 
@@ -1707,7 +1772,7 @@ namespace Desktop_Application
             publishers_publisher.MinimumWidth = 6;
             publishers_publisher.Name = "publishers_publisher";
             publishers_publisher.ReadOnly = true;
-            publishers_publisher.Width = 81;
+            publishers_publisher.Width = 98;
             // 
             // publishers_refresh_btn
             // 
@@ -1722,9 +1787,10 @@ namespace Desktop_Application
             publishers_refresh_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             publishers_refresh_btn.ForeColor = Color.White;
             publishers_refresh_btn.Image = (Image)resources.GetObject("publishers_refresh_btn.Image");
-            publishers_refresh_btn.Location = new Point(52, 26);
+            publishers_refresh_btn.Location = new Point(59, 35);
+            publishers_refresh_btn.Margin = new Padding(3, 4, 3, 4);
             publishers_refresh_btn.Name = "publishers_refresh_btn";
-            publishers_refresh_btn.Size = new Size(42, 36);
+            publishers_refresh_btn.Size = new Size(48, 48);
             publishers_refresh_btn.TabIndex = 12;
             publishers_refresh_btn.TextColor = Color.White;
             publishers_refresh_btn.UseVisualStyleBackColor = false;
@@ -1743,9 +1809,10 @@ namespace Desktop_Application
             publishers_add_btn.FlatStyle = FlatStyle.Flat;
             publishers_add_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             publishers_add_btn.ForeColor = Color.White;
-            publishers_add_btn.Location = new Point(342, 26);
+            publishers_add_btn.Location = new Point(391, 35);
+            publishers_add_btn.Margin = new Padding(3, 4, 3, 4);
             publishers_add_btn.Name = "publishers_add_btn";
-            publishers_add_btn.Size = new Size(100, 36);
+            publishers_add_btn.Size = new Size(114, 48);
             publishers_add_btn.TabIndex = 15;
             publishers_add_btn.Text = "Add";
             publishers_add_btn.TextColor = Color.White;
@@ -1765,9 +1832,10 @@ namespace Desktop_Application
             publishers_edit_btn.FlatStyle = FlatStyle.Flat;
             publishers_edit_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             publishers_edit_btn.ForeColor = Color.White;
-            publishers_edit_btn.Location = new Point(130, 26);
+            publishers_edit_btn.Location = new Point(149, 35);
+            publishers_edit_btn.Margin = new Padding(3, 4, 3, 4);
             publishers_edit_btn.Name = "publishers_edit_btn";
-            publishers_edit_btn.Size = new Size(100, 36);
+            publishers_edit_btn.Size = new Size(114, 48);
             publishers_edit_btn.TabIndex = 13;
             publishers_edit_btn.Text = "Edit";
             publishers_edit_btn.TextColor = Color.White;
@@ -1787,9 +1855,10 @@ namespace Desktop_Application
             publishers_remove_btn.FlatStyle = FlatStyle.Flat;
             publishers_remove_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             publishers_remove_btn.ForeColor = Color.White;
-            publishers_remove_btn.Location = new Point(236, 26);
+            publishers_remove_btn.Location = new Point(270, 35);
+            publishers_remove_btn.Margin = new Padding(3, 4, 3, 4);
             publishers_remove_btn.Name = "publishers_remove_btn";
-            publishers_remove_btn.Size = new Size(100, 36);
+            publishers_remove_btn.Size = new Size(114, 48);
             publishers_remove_btn.TabIndex = 14;
             publishers_remove_btn.Text = "Remove";
             publishers_remove_btn.TextColor = Color.White;
@@ -1800,9 +1869,9 @@ namespace Desktop_Application
             // 
             publishers_lbl1.AutoSize = true;
             publishers_lbl1.Font = new Font("Yu Gothic UI Semibold", 14F);
-            publishers_lbl1.Location = new Point(52, 80);
+            publishers_lbl1.Location = new Point(59, 107);
             publishers_lbl1.Name = "publishers_lbl1";
-            publishers_lbl1.Size = new Size(99, 25);
+            publishers_lbl1.Size = new Size(124, 32);
             publishers_lbl1.TabIndex = 18;
             publishers_lbl1.Text = "Publishers";
             // 
@@ -1811,11 +1880,12 @@ namespace Desktop_Application
             publishers_src.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             publishers_src.BackColor = Color.White;
             publishers_src.Font = new Font("Yu Gothic UI Semibold", 14F);
-            publishers_src.Location = new Point(448, 29);
+            publishers_src.Location = new Point(512, 39);
+            publishers_src.Margin = new Padding(3, 4, 3, 4);
             publishers_src.MaxLength = 19;
             publishers_src.Name = "publishers_src";
             publishers_src.PlaceholderText = "Search...";
-            publishers_src.Size = new Size(208, 32);
+            publishers_src.Size = new Size(237, 39);
             publishers_src.TabIndex = 16;
             publishers_src.TextChanged += SearchPublishers;
             // 
@@ -1830,9 +1900,10 @@ namespace Desktop_Application
             reservations_pnl.Controls.Add(reservations_remove_btn);
             reservations_pnl.Controls.Add(label5);
             reservations_pnl.Controls.Add(reservations_src);
-            reservations_pnl.Location = new Point(266, 56);
+            reservations_pnl.Location = new Point(304, 75);
+            reservations_pnl.Margin = new Padding(3, 4, 3, 4);
             reservations_pnl.Name = "reservations_pnl";
-            reservations_pnl.Size = new Size(710, 493);
+            reservations_pnl.Size = new Size(811, 657);
             reservations_pnl.TabIndex = 27;
             reservations_pnl.Visible = false;
             // 
@@ -1847,7 +1918,8 @@ namespace Desktop_Application
             reservations_grd.BackgroundColor = Color.White;
             reservations_grd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             reservations_grd.Columns.AddRange(new DataGridViewColumn[] { reservations_username, reservations_title, reservations_isbn, reservations_startDate, reservations_endDate });
-            reservations_grd.Location = new Point(52, 108);
+            reservations_grd.Location = new Point(59, 144);
+            reservations_grd.Margin = new Padding(3, 4, 3, 4);
             reservations_grd.Name = "reservations_grd";
             reservations_grd.ReadOnly = true;
             reservations_grd.RowHeadersVisible = false;
@@ -1857,7 +1929,7 @@ namespace Desktop_Application
             reservations_grd.ShowCellToolTips = false;
             reservations_grd.ShowEditingIcon = false;
             reservations_grd.ShowRowErrors = false;
-            reservations_grd.Size = new Size(605, 359);
+            reservations_grd.Size = new Size(691, 479);
             reservations_grd.StandardTab = true;
             reservations_grd.TabIndex = 11;
             // 
@@ -1867,7 +1939,7 @@ namespace Desktop_Application
             reservations_username.MinimumWidth = 6;
             reservations_username.Name = "reservations_username";
             reservations_username.ReadOnly = true;
-            reservations_username.Width = 85;
+            reservations_username.Width = 104;
             // 
             // reservations_title
             // 
@@ -1875,7 +1947,7 @@ namespace Desktop_Application
             reservations_title.MinimumWidth = 6;
             reservations_title.Name = "reservations_title";
             reservations_title.ReadOnly = true;
-            reservations_title.Width = 54;
+            reservations_title.Width = 67;
             // 
             // reservations_isbn
             // 
@@ -1883,7 +1955,7 @@ namespace Desktop_Application
             reservations_isbn.MinimumWidth = 6;
             reservations_isbn.Name = "reservations_isbn";
             reservations_isbn.ReadOnly = true;
-            reservations_isbn.Width = 57;
+            reservations_isbn.Width = 70;
             // 
             // reservations_startDate
             // 
@@ -1891,7 +1963,7 @@ namespace Desktop_Application
             reservations_startDate.MinimumWidth = 6;
             reservations_startDate.Name = "reservations_startDate";
             reservations_startDate.ReadOnly = true;
-            reservations_startDate.Width = 83;
+            reservations_startDate.Width = 105;
             // 
             // reservations_endDate
             // 
@@ -1899,7 +1971,7 @@ namespace Desktop_Application
             reservations_endDate.MinimumWidth = 6;
             reservations_endDate.Name = "reservations_endDate";
             reservations_endDate.ReadOnly = true;
-            reservations_endDate.Width = 79;
+            reservations_endDate.Width = 99;
             // 
             // reservations_refresh_btn
             // 
@@ -1914,9 +1986,10 @@ namespace Desktop_Application
             reservations_refresh_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             reservations_refresh_btn.ForeColor = Color.White;
             reservations_refresh_btn.Image = (Image)resources.GetObject("reservations_refresh_btn.Image");
-            reservations_refresh_btn.Location = new Point(52, 26);
+            reservations_refresh_btn.Location = new Point(59, 35);
+            reservations_refresh_btn.Margin = new Padding(3, 4, 3, 4);
             reservations_refresh_btn.Name = "reservations_refresh_btn";
-            reservations_refresh_btn.Size = new Size(42, 36);
+            reservations_refresh_btn.Size = new Size(48, 48);
             reservations_refresh_btn.TabIndex = 12;
             reservations_refresh_btn.TextColor = Color.White;
             reservations_refresh_btn.UseVisualStyleBackColor = false;
@@ -1935,9 +2008,10 @@ namespace Desktop_Application
             reservation_add_btn.FlatStyle = FlatStyle.Flat;
             reservation_add_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             reservation_add_btn.ForeColor = Color.White;
-            reservation_add_btn.Location = new Point(342, 26);
+            reservation_add_btn.Location = new Point(391, 35);
+            reservation_add_btn.Margin = new Padding(3, 4, 3, 4);
             reservation_add_btn.Name = "reservation_add_btn";
-            reservation_add_btn.Size = new Size(100, 36);
+            reservation_add_btn.Size = new Size(114, 48);
             reservation_add_btn.TabIndex = 15;
             reservation_add_btn.Text = "Add";
             reservation_add_btn.TextColor = Color.White;
@@ -1957,9 +2031,10 @@ namespace Desktop_Application
             reservations_edit_btn.FlatStyle = FlatStyle.Flat;
             reservations_edit_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             reservations_edit_btn.ForeColor = Color.White;
-            reservations_edit_btn.Location = new Point(130, 26);
+            reservations_edit_btn.Location = new Point(149, 35);
+            reservations_edit_btn.Margin = new Padding(3, 4, 3, 4);
             reservations_edit_btn.Name = "reservations_edit_btn";
-            reservations_edit_btn.Size = new Size(100, 36);
+            reservations_edit_btn.Size = new Size(114, 48);
             reservations_edit_btn.TabIndex = 13;
             reservations_edit_btn.Text = "Edit";
             reservations_edit_btn.TextColor = Color.White;
@@ -1979,11 +2054,12 @@ namespace Desktop_Application
             reservations_remove_btn.FlatStyle = FlatStyle.Flat;
             reservations_remove_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             reservations_remove_btn.ForeColor = Color.White;
-            reservations_remove_btn.Location = new Point(236, 26);
+            reservations_remove_btn.Location = new Point(270, 35);
+            reservations_remove_btn.Margin = new Padding(3, 4, 3, 4);
             reservations_remove_btn.Name = "reservations_remove_btn";
-            reservations_remove_btn.Size = new Size(100, 36);
+            reservations_remove_btn.Size = new Size(114, 48);
             reservations_remove_btn.TabIndex = 14;
-            reservations_remove_btn.Text = "Remove";
+            reservations_remove_btn.Text = "Cancel";
             reservations_remove_btn.TextColor = Color.White;
             reservations_remove_btn.UseVisualStyleBackColor = false;
             reservations_remove_btn.Click += RemoveReservations;
@@ -1992,9 +2068,9 @@ namespace Desktop_Application
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label5.Location = new Point(52, 80);
+            label5.Location = new Point(59, 107);
             label5.Name = "label5";
-            label5.Size = new Size(121, 25);
+            label5.Size = new Size(152, 32);
             label5.TabIndex = 25;
             label5.Text = "Reservations";
             // 
@@ -2003,20 +2079,21 @@ namespace Desktop_Application
             reservations_src.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             reservations_src.BackColor = Color.White;
             reservations_src.Font = new Font("Yu Gothic UI Semibold", 14F);
-            reservations_src.Location = new Point(448, 29);
+            reservations_src.Location = new Point(512, 39);
+            reservations_src.Margin = new Padding(3, 4, 3, 4);
             reservations_src.MaxLength = 19;
             reservations_src.Name = "reservations_src";
             reservations_src.PlaceholderText = "Search...";
-            reservations_src.Size = new Size(208, 32);
+            reservations_src.Size = new Size(237, 39);
             reservations_src.TabIndex = 16;
             reservations_src.TextChanged += SearchReservations;
             // 
             // AdminPanel
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(984, 561);
+            ClientSize = new Size(1125, 748);
             Controls.Add(header_pnl);
             Controls.Add(menu_pnl);
             Controls.Add(reservations_pnl);
@@ -2028,7 +2105,8 @@ namespace Desktop_Application
             Controls.Add(authors_pnl);
             Controls.Add(categories_pnl);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MinimumSize = new Size(1000, 594);
+            Margin = new Padding(3, 4, 3, 4);
+            MinimumSize = new Size(1140, 776);
             Name = "AdminPanel";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Admin Panel";
