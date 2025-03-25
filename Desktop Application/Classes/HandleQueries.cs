@@ -1,7 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using Org.BouncyCastle.Crypto;
-
-namespace Desktop_Application.Classes;
+﻿namespace Desktop_Application.Classes;
 internal class HandleQueries
 {
     // Takes a grid and fills it with the Select result of the given filename

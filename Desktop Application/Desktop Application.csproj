@@ -71,6 +71,9 @@
     <Compile Update="Forms\Reservations\EditReservation.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Reservations\RemoveReservations.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Users\EditUser.cs">
       <SubType>Form</SubType>
     </Compile>

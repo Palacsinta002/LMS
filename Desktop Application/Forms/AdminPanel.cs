@@ -255,7 +255,9 @@ public partial class AdminPanel : Form
     // Removes reservation from the database - Marks the book as returned
     private void RemoveReservations(object sender, EventArgs e)
     {
-
+        RemoveReservations removeReservations = new(reservations_grd);
+        removeReservations.ShowDialog();
+        RefreshReservations(sender, e);
     }
     #endregion
 
