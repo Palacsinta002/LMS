@@ -1,8 +1,8 @@
 ﻿using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace Desktop_Application.Forms.Reservations
+namespace Desktop_Application.Forms.Borrowings
 {
-    partial class EditReservation
+    partial class ExtendBorrowing
     {
         /// <summary>
         /// Required designer variable.
@@ -30,18 +30,14 @@ namespace Desktop_Application.Forms.Reservations
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditReservation));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExtendBorrowing));
             header = new Panel();
             title = new Label();
             close_btn = new Desktop_Application.Components.RoundedButton();
-            chooseBooks = new System.Windows.Forms.Button();
-            textBox_books = new System.Windows.Forms.TextBox();
-            dropDown_user = new System.Windows.Forms.ComboBox();
-            label_publisher = new Label();
-            label2 = new Label();
+            label5 = new Label();
             save = new Desktop_Application.Components.RoundedButton();
             cancel = new Desktop_Application.Components.RoundedButton();
-            button_extend = new Desktop_Application.Components.RoundedButton();
+            comboBox_extendBy = new System.Windows.Forms.ComboBox();
             header.SuspendLayout();
             SuspendLayout();
             // 
@@ -51,19 +47,20 @@ namespace Desktop_Application.Forms.Reservations
             header.Controls.Add(title);
             header.Controls.Add(close_btn);
             header.Location = new Point(1, 1);
+            header.Margin = new Padding(3, 4, 3, 4);
             header.Name = "header";
-            header.Size = new Size(383, 55);
+            header.Size = new Size(438, 73);
             header.TabIndex = 80;
             // 
             // title
             // 
             title.AutoSize = true;
             title.Font = new Font("Yu Gothic UI Semibold", 16F);
-            title.Location = new Point(95, 11);
+            title.Location = new Point(99, 15);
             title.Name = "title";
-            title.Size = new Size(174, 30);
+            title.Size = new Size(235, 37);
             title.TabIndex = 2;
-            title.Text = "Edit Reservation";
+            title.Text = "Extend Borrowing";
             // 
             // close_btn
             // 
@@ -80,65 +77,24 @@ namespace Desktop_Application.Forms.Reservations
             close_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             close_btn.ForeColor = Color.White;
             close_btn.Image = (Image)resources.GetObject("close_btn.Image");
-            close_btn.Location = new Point(336, 10);
+            close_btn.Location = new Point(384, 13);
+            close_btn.Margin = new Padding(3, 4, 3, 4);
             close_btn.Name = "close_btn";
-            close_btn.Size = new Size(36, 35);
+            close_btn.Size = new Size(41, 47);
             close_btn.TabIndex = 25;
             close_btn.TabStop = false;
             close_btn.TextColor = Color.White;
             close_btn.UseVisualStyleBackColor = false;
             // 
-            // chooseBooks
+            // label5
             // 
-            chooseBooks.Location = new Point(331, 108);
-            chooseBooks.Name = "chooseBooks";
-            chooseBooks.Size = new Size(37, 32);
-            chooseBooks.TabIndex = 2;
-            chooseBooks.Text = "...";
-            chooseBooks.UseVisualStyleBackColor = true;
-            chooseBooks.Click += OpenChooseBooks;
-            // 
-            // textBox_books
-            // 
-            textBox_books.BackColor = Color.WhiteSmoke;
-            textBox_books.Enabled = false;
-            textBox_books.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_books.Location = new Point(81, 108);
-            textBox_books.Name = "textBox_books";
-            textBox_books.Size = new Size(244, 32);
-            textBox_books.TabIndex = 85;
-            // 
-            // dropDown_user
-            // 
-            dropDown_user.BackColor = Color.WhiteSmoke;
-            dropDown_user.DropDownStyle = ComboBoxStyle.DropDownList;
-            dropDown_user.Font = new Font("Yu Gothic UI Semibold", 14F);
-            dropDown_user.FormattingEnabled = true;
-            dropDown_user.Location = new Point(81, 69);
-            dropDown_user.MaxDropDownItems = 10;
-            dropDown_user.Name = "dropDown_user";
-            dropDown_user.Size = new Size(287, 33);
-            dropDown_user.TabIndex = 1;
-            // 
-            // label_publisher
-            // 
-            label_publisher.AutoSize = true;
-            label_publisher.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label_publisher.Location = new Point(12, 72);
-            label_publisher.Name = "label_publisher";
-            label_publisher.Size = new Size(50, 25);
-            label_publisher.TabIndex = 83;
-            label_publisher.Text = "User";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label2.Location = new Point(12, 111);
-            label2.Name = "label2";
-            label2.Size = new Size(63, 25);
-            label2.TabIndex = 79;
-            label2.Text = "Books";
+            label5.AutoSize = true;
+            label5.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label5.Location = new Point(15, 101);
+            label5.Name = "label5";
+            label5.Size = new Size(121, 32);
+            label5.TabIndex = 82;
+            label5.Text = "Extend by";
             // 
             // save
             // 
@@ -153,9 +109,10 @@ namespace Desktop_Application.Forms.Reservations
             save.FlatStyle = FlatStyle.Flat;
             save.Font = new Font("Yu Gothic UI Semibold", 14F);
             save.ForeColor = Color.White;
-            save.Location = new Point(104, 190);
+            save.Location = new Point(119, 163);
+            save.Margin = new Padding(3, 4, 3, 4);
             save.Name = "save";
-            save.Size = new Size(85, 36);
+            save.Size = new Size(97, 48);
             save.TabIndex = 86;
             save.TabStop = false;
             save.Text = "Save";
@@ -175,53 +132,45 @@ namespace Desktop_Application.Forms.Reservations
             cancel.FlatStyle = FlatStyle.Flat;
             cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
             cancel.ForeColor = Color.Black;
-            cancel.Location = new Point(194, 190);
+            cancel.Location = new Point(222, 163);
+            cancel.Margin = new Padding(3, 4, 3, 4);
             cancel.Name = "cancel";
-            cancel.Size = new Size(85, 36);
+            cancel.Size = new Size(97, 48);
             cancel.TabIndex = 87;
             cancel.TabStop = false;
             cancel.Text = "Cancel";
             cancel.TextColor = Color.Black;
             cancel.UseVisualStyleBackColor = false;
             // 
-            // button_extend
+            // comboBox_extendBy
             // 
-            button_extend.BackColor = Color.WhiteSmoke;
-            button_extend.BackgroundColor = Color.WhiteSmoke;
-            button_extend.BorderColor = Color.FromArgb(80, 77, 180);
-            button_extend.BorderRadius = 5;
-            button_extend.BorderSize = 2;
-            button_extend.FlatAppearance.BorderSize = 0;
-            button_extend.FlatStyle = FlatStyle.Flat;
-            button_extend.Font = new Font("Yu Gothic UI Semibold", 12F);
-            button_extend.ForeColor = Color.Black;
-            button_extend.Location = new Point(81, 146);
-            button_extend.Name = "button_extend";
-            button_extend.Size = new Size(287, 36);
-            button_extend.TabIndex = 88;
-            button_extend.Text = "Extend reservation by 5 days";
-            button_extend.TextColor = Color.Black;
-            button_extend.UseVisualStyleBackColor = false;
-            button_extend.Click += ExtendReservation;
+            comboBox_extendBy.BackColor = Color.WhiteSmoke;
+            comboBox_extendBy.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox_extendBy.Font = new Font("Yu Gothic UI Semibold", 14F);
+            comboBox_extendBy.FormattingEnabled = true;
+            comboBox_extendBy.Items.AddRange(new object[] { "1 Month", "2 Months", "3 Months", "6 Months" });
+            comboBox_extendBy.Location = new Point(142, 98);
+            comboBox_extendBy.Margin = new Padding(3, 4, 3, 4);
+            comboBox_extendBy.MaxDropDownItems = 10;
+            comboBox_extendBy.Name = "comboBox_extendBy";
+            comboBox_extendBy.Size = new Size(284, 39);
+            comboBox_extendBy.TabIndex = 1;
             // 
-            // EditReservation
+            // ExtendBorrowing
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(385, 238);
-            Controls.Add(button_extend);
+            ClientSize = new Size(440, 227);
+            Controls.Add(comboBox_extendBy);
             Controls.Add(save);
             Controls.Add(cancel);
             Controls.Add(header);
-            Controls.Add(chooseBooks);
-            Controls.Add(textBox_books);
-            Controls.Add(dropDown_user);
-            Controls.Add(label_publisher);
-            Controls.Add(label2);
+            Controls.Add(label5);
             FormBorderStyle = FormBorderStyle.None;
             KeyPreview = true;
-            Name = "EditReservation";
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "ExtendBorrowing";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "EditBorrowing";
             Load += OnLoad;
@@ -236,13 +185,9 @@ namespace Desktop_Application.Forms.Reservations
         private Panel header;
         private Label title;
         private Components.RoundedButton close_btn;
-        private System.Windows.Forms.Button chooseBooks;
-        private System.Windows.Forms.TextBox textBox_books;
-        private System.Windows.Forms.ComboBox dropDown_user;
-        private Label label_publisher;
-        private Label label2;
+        private Label label5;
         private Components.RoundedButton save;
         private Components.RoundedButton cancel;
-        private Components.RoundedButton button_extend;
+        private System.Windows.Forms.ComboBox comboBox_extendBy;
     }
 }

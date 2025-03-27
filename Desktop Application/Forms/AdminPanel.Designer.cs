@@ -1112,7 +1112,7 @@ namespace Desktop_Application
             borrowings_edit_btn.Name = "borrowings_edit_btn";
             borrowings_edit_btn.Size = new Size(114, 48);
             borrowings_edit_btn.TabIndex = 13;
-            borrowings_edit_btn.Text = "Edit";
+            borrowings_edit_btn.Text = "Extend";
             borrowings_edit_btn.TextColor = Color.White;
             borrowings_edit_btn.UseVisualStyleBackColor = false;
             borrowings_edit_btn.Click += EditBorrowing;
@@ -2036,7 +2036,7 @@ namespace Desktop_Application
             reservations_edit_btn.Name = "reservations_edit_btn";
             reservations_edit_btn.Size = new Size(114, 48);
             reservations_edit_btn.TabIndex = 13;
-            reservations_edit_btn.Text = "Edit";
+            reservations_edit_btn.Text = "Extend";
             reservations_edit_btn.TextColor = Color.White;
             reservations_edit_btn.UseVisualStyleBackColor = false;
             reservations_edit_btn.Click += EditReservation;

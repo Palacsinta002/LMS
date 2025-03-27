@@ -51,7 +51,7 @@ public partial class ProfileSettings : Form
             saveConfirmation.ShowDialog();
             if (saveConfirmation.DialogResult != DialogResult.OK) return;
 
-            HandleQueries.UpdateOwnUser(Username, textBox_firstName.Text, textBox_lastName.Text, textBox_username.Text, _dateOfBirth, textBox_email.Text, textBox_address.Text, _newPassword);
+            HandleQueries.UpdateProfile(Username, textBox_firstName.Text, textBox_lastName.Text, textBox_username.Text, _dateOfBirth, textBox_email.Text, textBox_address.Text, _newPassword);
             MessageBox.Show("Profile updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Username = textBox_username.Text;
             this.Close();
