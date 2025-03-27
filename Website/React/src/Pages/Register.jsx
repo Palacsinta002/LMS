@@ -72,20 +72,20 @@ export default function Register() {
         <form onSubmit={HandleSubmit}>
           <div className="register-card-holder">
             <div className="register-card">
-              <label htmlFor="email">Email</label>
-              <input type="email" onChange={(e) => setEmail(e.target.value)} required />
-            </div>
-            <div className="register-card">
-              <label htmlFor="username">Username</label>
-              <input type="text" onChange={(e) => setUsername(e.target.value)} required />
-            </div>
-            <div className="register-card">
               <label htmlFor="firstname">First name</label>
               <input type="text" onChange={(e) => setFirstname(e.target.value)} required />
             </div>
             <div className="register-card">
               <label htmlFor="lastname">Last name</label>
               <input type="text" onChange={(e) => setLastname(e.target.value)} required />
+            </div>
+            <div className="register-card">
+              <label htmlFor="email">Email</label>
+              <input type="email" onChange={(e) => setEmail(e.target.value)} required />
+            </div>
+            <div className="register-card">
+              <label htmlFor="username">Username</label>
+              <input type="text" onChange={(e) => setUsername(e.target.value)} required />
             </div>
             <div className="register-card">
               <label htmlFor="password">Password</label>
@@ -116,6 +116,7 @@ export default function Register() {
               <input type="submit" value={loading ? "Registering..." : "Register"} disabled={loading} />
               {loading && <div className="spinner"></div>}
               <span><Link to="/login" className="link2">I already have an account!</Link></span>
+              <span><Link to="/finalize-registration" className="link2">Finalize registration!</Link></span>
             </div>
           </center>
         </form>
