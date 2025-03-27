@@ -53,7 +53,6 @@ namespace Desktop_Application.Forms.Books
             button_chooseImage = new Button();
             textBox_image = new TextBox();
             label1 = new Label();
-            label2 = new Label();
             header.SuspendLayout();
             SuspendLayout();
             // 
@@ -309,6 +308,7 @@ namespace Desktop_Application.Forms.Books
             button_chooseImage.TabIndex = 5;
             button_chooseImage.Text = "...";
             button_chooseImage.UseVisualStyleBackColor = true;
+            button_chooseImage.Click += SelectImage;
             // 
             // textBox_image
             // 
@@ -332,23 +332,12 @@ namespace Desktop_Application.Forms.Books
             label1.TabIndex = 82;
             label1.Text = "Image";
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label2.Location = new Point(325, 296);
-            label2.Name = "label2";
-            label2.Size = new Size(168, 32);
-            label2.TabIndex = 84;
-            label2.Text = "Add book pics";
-            // 
             // AddBook
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(570, 510);
-            Controls.Add(label2);
             Controls.Add(button_chooseImage);
             Controls.Add(textBox_image);
             Controls.Add(label1);
@@ -406,6 +395,5 @@ namespace Desktop_Application.Forms.Books
         private Button button_chooseImage;
         private TextBox textBox_image;
         private Label label1;
-        private Label label2;
     }
 }
