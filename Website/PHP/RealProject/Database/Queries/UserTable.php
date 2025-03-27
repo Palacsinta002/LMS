@@ -4,7 +4,7 @@ use Helper\Helper;
 class UserTable extends Table{
     public static function selectByUsername ( $username ,$fetch = true ) {
         $username = Helper::validateTheInput($username);
-        return self::select(["users"],["id","username","password","EmailVerified"])->where(["username"],["="],[$username],["s"])->execute(true, $fetch);
+        return self::select(["users"],["id","username","password","EmailVerified","email"])->where(["username"],["="],[$username],["s"])->execute(true, $fetch);
     }
     public static function rowExists ( $field,$operator,$value,$type ){
         $validatedField = Helper::validateTheInputArray($field);

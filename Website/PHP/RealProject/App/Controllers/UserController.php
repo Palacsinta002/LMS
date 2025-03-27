@@ -14,6 +14,9 @@ class UserController{
             Response::httpError(400,21);
         }
         $id = User::loginAuth($body["username"], $body["password"]);
+        if (is_array($id)){
+            Response::httpSuccess(200,["Token" => Token::makeToken($id,$body["username"]), "isRegistered" => false]);
+        }
         Response::httpSuccess(200,["Token" => Token::makeToken($id,$body["username"])]);
         
     }
@@ -39,8 +42,25 @@ class UserController{
         $verificationCode = User::createAuthCode();
         $body["EmailVerificationCode"] = $verificationCode;
         UserTable::insertToUser($body);
-
-        SendEmail::sendEmail($body["email"],"New user","Verification Email","your verification code is: " . $verificationCode);
+        $bodyOfHtml = "<html>
+            <body style='font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px;'>
+                <div style='max-width: 600px; background: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); margin: auto;'>
+                    <div style='text-align: center; font-size: 22px; color: #333; font-weight: bold;'>Email Verification</div>
+                    <div style='margin-top: 20px; font-size: 16px; color: #555;'>
+                        <p>Thank you for registering with us! Please use the verification code below to verify your email address:</p>
+                        <div style='display: block; width: fit-content; margin: 20px auto; font-size: 24px; font-weight: bold; background: #007bff; color: white; padding: 12px 20px; border-radius: 5px; letter-spacing: 2px;'>
+                            ".$verificationCode."
+                        </div>
+                        <p>If you did not request this, please ignore this email.</p>
+                    </div>
+                    <div style='font-size: 12px; text-align: center; color: #999; margin-top: 20px;'>
+                        <p>If you have any concerns, please contact our support team.</p>
+                        <p>Thank you, <br> LMS</p>
+                    </div>
+                </div>
+            </body>
+        </html>";
+        SendEmail::sendEmail($body["email"],"New user","Verification Email",$bodyOfHtml);
         Response::httpSuccess(200,["Success" =>"User created"]);
     }
 
