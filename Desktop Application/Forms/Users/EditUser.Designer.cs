@@ -47,8 +47,9 @@ namespace Desktop_Application.Forms.Users
             dateOfBirth_datePicker = new DateTimePicker();
             label1 = new Label();
             checkBox_verify = new CheckBox();
-            comboBox_role = new ComboBox();
+            button_resetPassword = new RoundedButton();
             label_role = new Label();
+            comboBox_role = new ComboBox();
             header.SuspendLayout();
             SuspendLayout();
             // 
@@ -65,7 +66,7 @@ namespace Desktop_Application.Forms.Users
             save.FlatStyle = FlatStyle.Flat;
             save.Font = new Font("Yu Gothic UI Semibold", 14F);
             save.ForeColor = Color.White;
-            save.Location = new Point(172, 299);
+            save.Location = new Point(172, 343);
             save.Name = "save";
             save.Size = new Size(85, 36);
             save.TabIndex = 6;
@@ -87,7 +88,7 @@ namespace Desktop_Application.Forms.Users
             cancel.FlatStyle = FlatStyle.Flat;
             cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
             cancel.ForeColor = Color.Black;
-            cancel.Location = new Point(262, 299);
+            cancel.Location = new Point(262, 343);
             cancel.Name = "cancel";
             cancel.Size = new Size(85, 36);
             cancel.TabIndex = 7;
@@ -240,7 +241,7 @@ namespace Desktop_Application.Forms.Users
             // 
             checkBox_verify.AutoSize = true;
             checkBox_verify.Font = new Font("Yu Gothic UI Semibold", 10F);
-            checkBox_verify.Location = new Point(13, 259);
+            checkBox_verify.Location = new Point(13, 262);
             checkBox_verify.Margin = new Padding(3, 2, 3, 2);
             checkBox_verify.Name = "checkBox_verify";
             checkBox_verify.Size = new Size(185, 23);
@@ -248,34 +249,55 @@ namespace Desktop_Application.Forms.Users
             checkBox_verify.Text = "Mark this user as verified";
             checkBox_verify.UseVisualStyleBackColor = true;
             // 
+            // button_resetPassword
+            // 
+            button_resetPassword.BackColor = Color.WhiteSmoke;
+            button_resetPassword.BackgroundColor = Color.WhiteSmoke;
+            button_resetPassword.BorderColor = Color.FromArgb(80, 77, 180);
+            button_resetPassword.BorderRadius = 5;
+            button_resetPassword.BorderSize = 2;
+            button_resetPassword.FlatAppearance.BorderSize = 0;
+            button_resetPassword.FlatStyle = FlatStyle.Flat;
+            button_resetPassword.Font = new Font("Yu Gothic UI Semibold", 14F);
+            button_resetPassword.ForeColor = Color.Black;
+            button_resetPassword.Location = new Point(10, 290);
+            button_resetPassword.Name = "button_resetPassword";
+            button_resetPassword.Size = new Size(234, 36);
+            button_resetPassword.TabIndex = 107;
+            button_resetPassword.Text = "Reset Password";
+            button_resetPassword.TextColor = Color.Black;
+            button_resetPassword.UseVisualStyleBackColor = false;
+            button_resetPassword.Click += ResetPassword;
+            // 
+            // label_role
+            // 
+            label_role.AutoSize = true;
+            label_role.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label_role.Location = new Point(260, 258);
+            label_role.Name = "label_role";
+            label_role.Size = new Size(50, 25);
+            label_role.TabIndex = 106;
+            label_role.Text = "Role";
+            // 
             // comboBox_role
             // 
             comboBox_role.BackColor = Color.WhiteSmoke;
             comboBox_role.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox_role.Font = new Font("Yu Gothic UI Semibold", 14F);
             comboBox_role.FormattingEnabled = true;
-            comboBox_role.Location = new Point(321, 252);
+            comboBox_role.Location = new Point(321, 255);
             comboBox_role.MaxDropDownItems = 10;
             comboBox_role.Name = "comboBox_role";
             comboBox_role.Size = new Size(187, 33);
             comboBox_role.TabIndex = 7;
-            // 
-            // label_role
-            // 
-            label_role.AutoSize = true;
-            label_role.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label_role.Location = new Point(260, 255);
-            label_role.Name = "label_role";
-            label_role.Size = new Size(50, 25);
-            label_role.TabIndex = 106;
-            label_role.Text = "Role";
             // 
             // EditUser
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(520, 345);
+            ClientSize = new Size(520, 389);
+            Controls.Add(button_resetPassword);
             Controls.Add(comboBox_role);
             Controls.Add(label_role);
             Controls.Add(checkBox_verify);
@@ -323,7 +345,8 @@ namespace Desktop_Application.Forms.Users
         private DateTimePicker dateOfBirth_datePicker;
         private Label label1;
         private CheckBox checkBox_verify;
-        private ComboBox comboBox_role;
+        private RoundedButton button_resetPassword;
         private Label label_role;
+        private ComboBox comboBox_role;
     }
 }

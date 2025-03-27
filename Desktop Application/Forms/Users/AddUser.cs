@@ -34,10 +34,14 @@ public partial class AddUser : Form
     {
         if (ValidateInput())
         {
-            string randomPassword = GeneratePassword(10);
+            string randomPassword = GeneratePassword.Generate("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 10);
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(randomPassword);
 
             HandleQueries.InsertUser(textBox_firstName.Text, textBox_lastName.Text, _dateOfBirth, textBox_username.Text, hashedPassword, textBox_address.Text);
+
+            ShowPassword showPassword = new(randomPassword);
+            showPassword.ShowDialog();
+
             MessageBox.Show("User added succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
@@ -119,17 +123,5 @@ public partial class AddUser : Form
             if (item[0] == username) return true;
         }
         return false;
-    }
-
-    private static string GeneratePassword(int length)
-    {
-        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        Random random = new();
-        string randomPassword = "";
-        while (0 < length--)
-        {
-            randomPassword += chars[random.Next(chars.Length)];
-        }
-        return randomPassword;
     }
 }

@@ -80,6 +80,9 @@
     <Compile Update="Forms\Users\AddUser.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Users\ShowPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Users\RemoveUser.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -29,8 +29,14 @@ public partial class RemoveBorrowings : Form
             // Mark the borrowing as returned
             DateTime currentDate = DateTime.Now;
             string returnDate = $"{currentDate.Year}-{currentDate.Month}-{currentDate.Day}";
+            List<string> isbnArr = [];
+            foreach (DataGridViewRow row in _borrowings_grd.SelectedRows)
+            {
+                isbnArr.Add(row.Cells["borrowings_isbn"].Value.ToString());
+            }
 
-            HandleQueries.UpdateBorrowing(_borrowings_grd, returnDate);
+            // Update borrowing in Borrowings_storage so it will be marked as returned
+            HandleQueries.UpdateBorrowing(isbnArr, returnDate);
 
             // Remove it from the Borrowings table so it only remains in Borrowings_storage
             HandleQueries.Delete(_borrowings_grd, "Borrowings", "borrowings_isbn", "ISBN");

@@ -35,7 +35,7 @@ public partial class EditUser : Form
         checkBox_verify.Checked = selectedRow["users_verified"].Value.ToString() == "Yes";
 
         // Set old username - If the user don't change the username, we don't check it
-        _oldUsername = textBox_username.Text;
+        _oldUsername = selectedRow["users_username"].Value.ToString();
 
         // Roles - This is only visible for admins
         var result = HandleQueries.SelectFromFile("SelectRole");
@@ -48,7 +48,7 @@ public partial class EditUser : Form
         if (ValidateInput())
         {
             bool verified = checkBox_verify.Checked;
-            HandleQueries.UpdateUser(_users_grd, textBox_firstName.Text, textBox_lastName.Text, _dateOfBirth, textBox_username.Text, textBox_address.Text, verified);
+            HandleQueries.UpdateUser(_oldUsername, textBox_firstName.Text, textBox_lastName.Text, _dateOfBirth, textBox_username.Text, textBox_address.Text, verified);
             MessageBox.Show("User updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
@@ -131,5 +131,16 @@ public partial class EditUser : Form
             if (item[0] == username) return true;
         }
         return false;
+    }
+
+    private void ResetPassword(object sender, EventArgs e)
+    {
+        string randomPassword = GeneratePassword.Generate("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 10);
+        string hashedPassword = BCrypt.Net.BCrypt.HashPassword(randomPassword);
+
+        HandleQueries.UpdateUserPassword(_oldUsername, hashedPassword);
+
+        ShowPassword showPassword = new(randomPassword);
+        showPassword.ShowDialog();
     }
 }
