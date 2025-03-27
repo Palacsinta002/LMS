@@ -184,16 +184,16 @@ public partial class AdminPanel : Form
     {
         if (borrowings_grd.SelectedRows.Count != 1)
         {
-            MessageBox.Show("You must select ONE borrowing to edit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("You must select ONE borrowing to extend!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
         else if (borrowings_grd.SelectedRows[0].Cells["borrowings_returnDate"].Value.ToString() != string.Empty)
         {
-            MessageBox.Show("You can't edit returned borrowings!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("You can't extend returned borrowings!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
-        EditBorrowing editBorrowing = new(borrowings_grd);
-        editBorrowing.ShowDialog();
+        ExtendBorrowing extendBorrowing = new(borrowings_grd);
+        extendBorrowing.ShowDialog();
         RefreshBorrowings(sender, e);
     }
 
@@ -244,11 +244,11 @@ public partial class AdminPanel : Form
     {
         if (reservations_grd.SelectedRows.Count != 1)
         {
-            MessageBox.Show("You must select ONE reservation to edit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("You must select ONE reservation to extend!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
-        EditReservation editReservation = new(reservations_grd);
-        editReservation.ShowDialog();
+        ExtendReservation extendReservation = new(reservations_grd);
+        extendReservation.ShowDialog();
         RefreshReservations(sender, e);
     }
 

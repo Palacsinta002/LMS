@@ -68,7 +68,7 @@
     <Compile Update="Forms\Reservations\AddReservation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Reservations\EditReservation.cs">
+    <Compile Update="Forms\Reservations\ExtendReservation.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Reservations\RemoveReservations.cs">

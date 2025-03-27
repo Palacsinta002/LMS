@@ -110,14 +110,12 @@ internal class HandleQueries
         InsertBook(isbn, publisher, title, pubYear, authorsString, categoriesString);
     }
     // Update borrowing
-    internal static void UpdateBorrowing(string username, string isbn, DateTime dueDate)
+    internal static void UpdateBorrowing(string isbn, DateTime dueDate)
     {
         string dueDateString = $"{dueDate.Year}-{dueDate.Month}-{dueDate.Day}";
 
         Connection connection = new();
-        string query = $"UPDATE Borrowings SET UserID = (SELECT id FROM Users WHERE Username = \"{username}\"), ISBN = {isbn}, " +
-            $"DueDate = \"{dueDateString}\" " +
-            $"WHERE ISBN = {isbn}";
+        string query = $"UPDATE Borrowings SET DueDate = \"{dueDateString}\" WHERE ISBN = {isbn}";
         connection.RunSqlCommand(query);
     }
     // Update borrowing - mark as returned
@@ -131,14 +129,12 @@ internal class HandleQueries
         }
     }
     // Update reservation with the given arguments
-    internal static void UpdateReservation(string username, string isbn, DateTime reservationEndDate)
+    internal static void UpdateReservation(string isbn, DateTime reservationEndDate)
     {
         string reservationEndDateString = $"{reservationEndDate.Year}-{reservationEndDate.Month}-{reservationEndDate.Day}";
 
         Connection connection = new();
-        string query = $"UPDATE Reservations SET UserID = (SELECT id FROM Users WHERE Username = \"{username}\"), " +
-            $"ISBN = {isbn}, ReservationEndDate = \"{reservationEndDateString}\" " +
-            $"WHERE ISBN = {isbn}";
+        string query = $"UPDATE Reservations SET ReservationEndDate = \"{reservationEndDateString}\" WHERE ISBN = {isbn}";
         connection.RunSqlCommand(query);
     }
     // Update category with the given arguments
@@ -184,7 +180,7 @@ internal class HandleQueries
         }
     }
     // Update logged in user
-    internal static void UpdateOwnUser(string currentUsername, string firstName, string lastName, string username, DateTime dateOfBirth, string email, string address, string password)
+    internal static void UpdateProfile(string currentUsername, string firstName, string lastName, string username, DateTime dateOfBirth, string email, string address, string password)
     {
         string dateOfBirthString = $"{dateOfBirth.Year}-{dateOfBirth.Month}-{dateOfBirth.Day}";
 
