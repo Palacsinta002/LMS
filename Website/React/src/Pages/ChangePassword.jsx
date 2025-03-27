@@ -11,7 +11,7 @@ export default function ChangePassword() {
     const [loading, setLoading] = useState(false);
     const [token, setToken] = useState("");
     const navigate = useNavigate();
-
+í
     useEffect(() => {
         const url = window.location.href;
         console.log(url)
