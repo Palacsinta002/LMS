@@ -6,14 +6,9 @@ import { Link } from "react-scroll";
 
 export default function HeroBrowseBooks() {
     const [books, setBooks] = useState([]);
-    const [selectedBook, setSelectedBook] = useState("");
     const [loading, setLoading] = useState(true);
 
     const token = sessionStorage.getItem("token")
-
-    function handleSelectedBook(isbn){
-        setSelectedBook(isbn)
-    }
 
     useEffect(() => {
         const getData = async () => {
@@ -30,17 +25,34 @@ export default function HeroBrowseBooks() {
     }, []);
 
 
-    async function handleReserve() {
-        const response = await axios.post("/api/reserve",
-            {
-                ISBN: selectedBook
-            },
-            {
-                headers: {
-                    "Content-type": "application/json",
-                    "Authorization": `Bearer ${token}`
-                }
-            })
+    async function handleReserve(isbn) {
+        if(!token){
+            "Error: The user have to be authenticated";
+            return;
+        }
+
+
+        try {
+            const response = await axios.post(`/api/reserve`,
+                {
+                    ISBN: isbn
+                },
+                {
+                    headers: {
+                        "Content-type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    }
+                })
+
+            if (response.data.Success) {
+                console.log("jó")
+            }
+        }
+        catch (error) {
+            if (error.response) {
+                console.log(error.response.data)
+            }
+        }
     }
 
     return (
@@ -62,8 +74,7 @@ export default function HeroBrowseBooks() {
                             category={item.Category}
                             title={item.Title}
                             author={item.Authors}
-                            onClick={() => handleSelectedBook(item.ISBN)}
-                            onSubmit={handleReserve}
+                            onClick={() => handleReserve(item.ISBN)}
                         />
                     ))}
                 </div>

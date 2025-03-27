@@ -96,4 +96,15 @@ public partial class AddBook : Form
 
         textBox_category.Text = string.Join(", ", ChooseCategories.SelectedCategories);
     }
+
+    private void SelectImage(object sender, EventArgs e)
+    {
+        string originalPath;
+        OpenFileDialog fileDialog = new();
+        if(fileDialog.ShowDialog() == DialogResult.OK)
+        {
+            originalPath = fileDialog.FileName;
+        }
+        string tempPath = Path.GetTempPath() + textBox_isbn.Text + ".jpg";
+    }
 }

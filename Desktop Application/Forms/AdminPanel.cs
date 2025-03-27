@@ -2,6 +2,7 @@
 using Desktop_Application.Forms.Authors;
 using Desktop_Application.Forms.Books;
 using Desktop_Application.Forms.Borrowings;
+using Desktop_Application.Forms.Reservations;
 using Desktop_Application.Forms.Categories;
 using Desktop_Application.Forms.Profile;
 using Desktop_Application.Forms.Publishers;
@@ -183,16 +184,16 @@ public partial class AdminPanel : Form
     {
         if (borrowings_grd.SelectedRows.Count != 1)
         {
-            MessageBox.Show("You must select ONE borrowing to edit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("You must select ONE borrowing to extend!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
         else if (borrowings_grd.SelectedRows[0].Cells["borrowings_returnDate"].Value.ToString() != string.Empty)
         {
-            MessageBox.Show("You can't edit returned borrowings!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("You can't extend returned borrowings!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
-        EditBorrowing editBorrowing = new(borrowings_grd);
-        editBorrowing.ShowDialog();
+        ExtendBorrowing extendBorrowing = new(borrowings_grd);
+        extendBorrowing.ShowDialog();
         RefreshBorrowings(sender, e);
     }
 
@@ -223,28 +224,40 @@ public partial class AdminPanel : Form
         HandleGrids.Fill(reservations_grd, result);
     }
 
-    // Live search - Searches ??????? in the grid
+    // Live search - Searches username, title, isbn in the grid
     private void SearchReservations(object sender, EventArgs e)
     {
-
+        string[] cols = ["reservations_username", "reservations_title", "reservations_isbn"];
+        HandleGrids.SearchGrid(reservations_grd, reservations_src.Text, cols);
     }
 
     // Adds a reservation to the database - Lends a book
     private void AddReservation(object sender, EventArgs e)
     {
-
+        AddReservation addReservation = new();
+        addReservation.ShowDialog();
+        RefreshReservations(sender, e);
     }
 
     // Edit the selected reservation from the grid and then updates it in the database
     private void EditReservation(object sender, EventArgs e)
     {
-
+        if (reservations_grd.SelectedRows.Count != 1)
+        {
+            MessageBox.Show("You must select ONE reservation to extend!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+        ExtendReservation extendReservation = new(reservations_grd);
+        extendReservation.ShowDialog();
+        RefreshReservations(sender, e);
     }
 
     // Removes reservation from the database - Marks the book as returned
     private void RemoveReservations(object sender, EventArgs e)
     {
-
+        RemoveReservations removeReservations = new(reservations_grd);
+        removeReservations.ShowDialog();
+        RefreshReservations(sender, e);
     }
     #endregion
 

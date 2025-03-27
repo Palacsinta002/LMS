@@ -6,10 +6,12 @@ namespace Desktop_Application.Forms.Publishers;
 public partial class EditPublisher : Form
 {
     private readonly DataGridView _publishers_grd;
+    private string _oldPublisher;
 
     public EditPublisher(DataGridView publishers_grd)
     {
         _publishers_grd = publishers_grd;
+        _oldPublisher = "";
         InitializeComponent();
     }
 
@@ -25,13 +27,14 @@ public partial class EditPublisher : Form
         var selectedRow = _publishers_grd.SelectedRows[0].Cells;
 
         textBox_publisher.Text = selectedRow["publishers_publisher"].Value.ToString();
+        _oldPublisher = selectedRow["publishers_publisher"].Value.ToString() ?? string.Empty;
     }
 
     private void Save(object sender, EventArgs e)
     {
         if (ValidateInput())
         {
-            HandleQueries.UpdatePublisher(_publishers_grd, textBox_publisher.Text);
+            HandleQueries.UpdatePublisher(_oldPublisher, textBox_publisher.Text);
             MessageBox.Show("Publisher updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }

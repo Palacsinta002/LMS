@@ -930,7 +930,7 @@ namespace Desktop_Application
             // 
             checkBox_currentBorrowings.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             checkBox_currentBorrowings.AutoSize = true;
-            checkBox_currentBorrowings.Location = new Point(470, 80);
+            checkBox_currentBorrowings.Location = new Point(471, 80);
             checkBox_currentBorrowings.Name = "checkBox_currentBorrowings";
             checkBox_currentBorrowings.RightToLeft = RightToLeft.Yes;
             checkBox_currentBorrowings.Size = new Size(186, 19);
@@ -1072,7 +1072,7 @@ namespace Desktop_Application
             borrowings_edit_btn.Name = "borrowings_edit_btn";
             borrowings_edit_btn.Size = new Size(100, 36);
             borrowings_edit_btn.TabIndex = 13;
-            borrowings_edit_btn.Text = "Edit";
+            borrowings_edit_btn.Text = "Extend";
             borrowings_edit_btn.TextColor = Color.White;
             borrowings_edit_btn.UseVisualStyleBackColor = false;
             borrowings_edit_btn.Click += EditBorrowing;
@@ -1961,7 +1961,7 @@ namespace Desktop_Application
             reservations_edit_btn.Name = "reservations_edit_btn";
             reservations_edit_btn.Size = new Size(100, 36);
             reservations_edit_btn.TabIndex = 13;
-            reservations_edit_btn.Text = "Edit";
+            reservations_edit_btn.Text = "Extend";
             reservations_edit_btn.TextColor = Color.White;
             reservations_edit_btn.UseVisualStyleBackColor = false;
             reservations_edit_btn.Click += EditReservation;
@@ -1983,7 +1983,7 @@ namespace Desktop_Application
             reservations_remove_btn.Name = "reservations_remove_btn";
             reservations_remove_btn.Size = new Size(100, 36);
             reservations_remove_btn.TabIndex = 14;
-            reservations_remove_btn.Text = "Remove";
+            reservations_remove_btn.Text = "Cancel";
             reservations_remove_btn.TextColor = Color.White;
             reservations_remove_btn.UseVisualStyleBackColor = false;
             reservations_remove_btn.Click += RemoveReservations;
@@ -2019,7 +2019,6 @@ namespace Desktop_Application
             ClientSize = new Size(984, 561);
             Controls.Add(header_pnl);
             Controls.Add(menu_pnl);
-            Controls.Add(reservations_pnl);
             Controls.Add(borrowings_pnl);
             Controls.Add(users_pnl);
             Controls.Add(books_pnl);
@@ -2027,8 +2026,9 @@ namespace Desktop_Application
             Controls.Add(publishers_pnl);
             Controls.Add(authors_pnl);
             Controls.Add(categories_pnl);
+            Controls.Add(reservations_pnl);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MinimumSize = new Size(1000, 594);
+            MinimumSize = new Size(1000, 592);
             Name = "AdminPanel";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Admin Panel";

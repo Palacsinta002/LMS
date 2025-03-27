@@ -8,6 +8,7 @@ export default function ForgotPassword() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [emailSent, setEmailSent] = useState(false)
   const navigate = useNavigate();
 
   async function HandleSubmit(event) {
@@ -28,7 +29,7 @@ export default function ForgotPassword() {
 
       console.log(response.data);
       if (response.data.Success) {
-        navigate("/change-password");
+        setEmailSent(true);
       } else {
         setError(response.data.message || "Verification failed!");
       }
@@ -48,17 +49,30 @@ export default function ForgotPassword() {
       </div>
       <div className="verify-container">
         <i className="fa fa-check-circle"></i>
-        <h1>Forgot your Password?</h1>
         <form onSubmit={HandleSubmit}>
-          <div className="verify-card-holder">
-            <FormCard className="verify-card" label="Email" type="email" onChange={(e) => setEmail(e.target.value)} />
-          </div>
-          {error && <p className="error-message">{error}</p>}
-          <center>
-            <div className="actions">
-              <input type="submit" value="Send Email" disabled={loading} />
-            </div>
-          </center>
+
+          {emailSent == false ? (
+            <>
+              <h1>Forgot your Password?</h1>
+              <div className="verify-card-holder">
+                <FormCard
+                  className="verify-card"
+                  label="Email"
+                  type="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+              {error && <p className="error-message">{error}</p>}
+              <center>
+                <div className="actions">
+                  <input type="submit" value="Send Email" disabled={loading} />
+                </div>
+              </center>
+            </>
+          ) : (
+            <h1 className="verify-email-sent">Email sent successfully!</h1>
+          )}
+
         </form>
       </div>
     </div>

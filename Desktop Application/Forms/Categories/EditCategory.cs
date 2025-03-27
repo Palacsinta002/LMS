@@ -6,10 +6,12 @@ namespace Desktop_Application.Forms.Categories;
 public partial class EditCategory : Form
 {
     private readonly DataGridView _category_grd;
+    private string _oldCategory;
 
     public EditCategory(DataGridView category_grd)
     {
         _category_grd = category_grd;
+        _oldCategory = "";
         InitializeComponent();
     }
 
@@ -25,13 +27,14 @@ public partial class EditCategory : Form
         var selectedRow = _category_grd.SelectedRows[0].Cells;
 
         textBox_category.Text = selectedRow["categories_category"].Value.ToString();
+        _oldCategory = selectedRow["categories_category"].Value.ToString() ?? string.Empty;
     }
 
     private void Save(object sender, EventArgs e)
     {
         if (ValidateInput())
         {
-            HandleQueries.UpdateCategory(_category_grd, textBox_category.Text);
+            HandleQueries.UpdateCategory(_oldCategory, textBox_category.Text);
             MessageBox.Show("Category updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }

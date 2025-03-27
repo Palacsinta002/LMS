@@ -8,5 +8,6 @@ JOIN Publishers ON Books.PublisherID = Publishers.id
 JOIN Books_Authors ON Books.ISBN = Books_Authors.ISBN
 JOIN Authors ON Books_Authors.AuthorID = Authors.id
 WHERE NOT EXISTS (SELECT Borrowings.ISBN FROM Borrowings WHERE Borrowings.ISBN = Books.ISBN AND Borrowings.ReturnDate IS NULL)
+AND NOT EXISTS (SELECT Reservations.ISBN FROM Reservations WHERE Reservations.ISBN = Books.ISBN)
 GROUP BY Books.Title, Books.PublicationYear, Books.ISBN
 ORDER BY Books.Title;

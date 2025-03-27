@@ -1,6 +1,4 @@
-﻿using Org.BouncyCastle.Crypto;
-
-namespace Desktop_Application.Classes;
+﻿namespace Desktop_Application.Classes;
 internal class HandleQueries
 {
     // Takes a grid and fills it with the Select result of the given filename
@@ -43,14 +41,33 @@ internal class HandleQueries
         }
     }
     // Insert borrowing with the given arguments
-    internal static void InsertBorrowing(string username, string isbn, DateTime borrowDate, DateTime dueDate)
+    internal static void InsertBorrowing(string username, string isbns, DateTime borrowDate, DateTime dueDate)
     {
+        Connection connection = new();
+
         string borrowDateString = $"{borrowDate.Year}-{borrowDate.Month}-{borrowDate.Day}";
         string dueDateString = $"{dueDate.Year}-{dueDate.Month}-{dueDate.Day}";
+        string[] isbnArr = isbns.Split(", ");
+
+        foreach (string isbn in isbnArr)
+        {
+            string query = $"INSERT INTO Borrowings(UserID, ISBN, BorrowDate, DueDate) VALUES((SELECT id FROM Users WHERE Username = \"{username}\"), {isbn}," +
+                $"\"{borrowDateString}\", \"{dueDateString}\")";
+            connection.RunSqlCommand(query);
+        }
+    }
+    // Insert reservation with the given arguments
+    internal static void InsertReservation(string username, string isbns)
+    {
         Connection connection = new();
-        string query = $"INSERT INTO Borrowings(UserID, ISBN, BorrowDate, DueDate) VALUES((SELECT id FROM Users WHERE Username = \"{username}\"), {isbn}," +
-            $"\"{borrowDateString}\", \"{dueDateString}\")";
-        connection.RunSqlCommand(query);
+
+        string[] isbnArr = isbns.Split(", ");
+
+        foreach (string isbn in isbnArr)
+        {
+            string query = $"INSERT INTO Reservations(UserID, ISBN) VALUES((SELECT id FROM Users WHERE Username = \"{username}\"), {isbn})";
+            connection.RunSqlCommand(query);
+        }
     }
     // Insert category with the given arguments
     internal static void InsertCategory(string category)
@@ -76,8 +93,10 @@ internal class HandleQueries
     // Insert user with the given arguments
     internal static void InsertUser(string firstName, string lastName, DateTime dateOfBirth, string username, string hashedPassword, string address)
     {
+        string dateOfBirthString = $"{dateOfBirth.Year}-{dateOfBirth.Month}-{dateOfBirth.Day}";
+
         Connection connection = new();
-        string query = $"INSERT INTO Users(FirstName, LastName, dateOfBirth, Username, Password, Address, Verified, RoleID) VALUES(\"{firstName}\", \"{lastName}\", \"{dateOfBirth}\", \"{username}\", \"{hashedPassword}\", \"{address}\", 1, 3)";
+        string query = $"INSERT INTO Users(FirstName, LastName, dateOfBirth, Username, Password, Address, Verified, RoleID) VALUES(\"{firstName}\", \"{lastName}\", \"{dateOfBirthString}\", \"{username}\", \"{hashedPassword}\", \"{address}\", 1, 3)";
         connection.RunSqlCommand(query);
     }
 
@@ -93,75 +112,77 @@ internal class HandleQueries
         InsertBook(isbn, publisher, title, pubYear, authorsString, categoriesString);
     }
     // Update borrowing
-    internal static void UpdateBorrowing(string username, string isbn, DateTime dueDate)
+    internal static void UpdateBorrowing(string isbn, DateTime dueDate)
     {
         string dueDateString = $"{dueDate.Year}-{dueDate.Month}-{dueDate.Day}";
 
         Connection connection = new();
-        string query = $"UPDATE Borrowings SET UserID = (SELECT id FROM Users WHERE Username = \"{username}\"), ISBN = {isbn}, " +
-            $"DueDate = \"{dueDateString}\" " +
-            $"WHERE ISBN = {isbn}";
+        string query = $"UPDATE Borrowings SET DueDate = \"{dueDateString}\" WHERE ISBN = {isbn}";
         connection.RunSqlCommand(query);
     }
     // Update borrowing - mark as returned
-    internal static void UpdateBorrowing(DataGridView borrowings_grd, string returnDate)
+    internal static void UpdateBorrowing(List<string> isbnArr, string returnDate)
     {
         Connection connection = new();
-        foreach (DataGridViewRow row in borrowings_grd.SelectedRows)
+        foreach (string isbn in isbnArr)
         {
-            string query = $"UPDATE Borrowings SET ReturnDate = \"{returnDate}\" WHERE ISBN = {row.Cells[2].Value}";
+            string query = $"UPDATE Borrowings SET ReturnDate = \"{returnDate}\" WHERE ISBN = {isbn}";
             connection.RunSqlCommand(query);
         }
+    }
+    // Update reservation with the given arguments
+    internal static void UpdateReservation(string isbn, DateTime reservationEndDate)
+    {
+        string reservationEndDateString = $"{reservationEndDate.Year}-{reservationEndDate.Month}-{reservationEndDate.Day}";
+
+        Connection connection = new();
+        string query = $"UPDATE Reservations SET ReservationEndDate = \"{reservationEndDateString}\" WHERE ISBN = {isbn}";
+        connection.RunSqlCommand(query);
     }
     // Update category with the given arguments
-    internal static void UpdateCategory(DataGridView categories_grd, string category)
+    internal static void UpdateCategory(string oldCategory, string category)
     {
         Connection connection = new();
-        foreach (DataGridViewRow row in categories_grd.SelectedRows)
-        {
-            string query = $"UPDATE Categories SET Category = \"{category}\" WHERE Category = \"{row.Cells[0].Value}\"";
-            connection.RunSqlCommand(query);
-        }
+        string query = $"UPDATE Categories SET Category = \"{category}\" WHERE Category = \"{oldCategory}\"";
+        connection.RunSqlCommand(query);
     }
     // Update author with the given arguments
-    internal static void UpdateAuthor(DataGridView authors_grd, string author)
+    internal static void UpdateAuthor(string oldAuthor, string author)
     {
         Connection connection = new();
-        foreach (DataGridViewRow row in authors_grd.SelectedRows)
-        {
-            string query = $"UPDATE Authors SET Author = \"{author}\" WHERE Author = \"{row.Cells[0].Value}\"";
-            connection.RunSqlCommand(query);
-        }
+        string query = $"UPDATE Authors SET Author = \"{author}\" WHERE Author = \"{oldAuthor}\"";
+        connection.RunSqlCommand(query);
     }
     // Update publisher with the given arguments
-    internal static void UpdatePublisher(DataGridView publisher_grd, string publisher)
+    internal static void UpdatePublisher(string oldPublisher, string publisher)
     {
         Connection connection = new();
-        foreach (DataGridViewRow row in publisher_grd.SelectedRows)
-        {
-            string query = $"UPDATE Publishers SET Publisher = \"{publisher}\" WHERE Publisher = \"{row.Cells[0].Value}\"";
-            connection.RunSqlCommand(query);
-        }
+        string query = $"UPDATE Publishers SET Publisher = \"{publisher}\" WHERE Publisher = \"{oldPublisher}\"";
+        connection.RunSqlCommand(query);
     }
     // Update user with the given arguments
-    internal static void UpdateUser(DataGridView users_grd, string firstName, string lastName, DateTime dateOfBirth, string username, string address, bool verified)
+    internal static void UpdateUser(string oldUsername, string firstName, string lastName, DateTime dateOfBirth, string username, string address, bool verified)
     {
         string dateOfBirthString = $"{dateOfBirth.Year}-{dateOfBirth.Month}-{dateOfBirth.Day}";
 
         Connection connection = new();
-        foreach (DataGridViewRow row in users_grd.SelectedRows)
-        {
-            string query = $"UPDATE Users SET FirstName = \"{firstName}\", LastName = \"{lastName}\", DateOfBirth = \"{dateOfBirthString}\", Username = \"{username}\", Address = \"{address}\", Verified = {verified} WHERE Username = \"{row.Cells[5].Value}\"";
-            connection.RunSqlCommand(query);
-        }
+        string query = $"UPDATE Users SET FirstName = \"{firstName}\", LastName = \"{lastName}\", DateOfBirth = \"{dateOfBirthString}\", Username = \"{username}\", Address = \"{address}\", Verified = {verified} WHERE Username = \"{oldUsername}\"";
+        connection.RunSqlCommand(query);
+    }
+    // Update user password
+    internal static void UpdateUserPassword(string username, string hashedPassword)
+    {
+        Connection connection = new();
+        string query = $"UPDATE Users SET Password = \"{hashedPassword}\" WHERE Username = \"{username}\"";
+        connection.RunSqlCommand(query);
     }
     // Update logged in user
-    internal static void UpdateOwnUser(string currentUsername, string firstName, string lastName, string username, DateTime dateOfBirth, string email, string address, string password)
+    internal static void UpdateProfile(string oldUsername, string firstName, string lastName, string username, DateTime dateOfBirth, string email, string address, string password)
     {
         string dateOfBirthString = $"{dateOfBirth.Year}-{dateOfBirth.Month}-{dateOfBirth.Day}";
 
         Connection connection = new();
-        string query = $"UPDATE Users SET FirstName = \"{firstName}\", LastName = \"{lastName}\", Username = \"{username}\", DateOfBirth = \"{dateOfBirthString}\", Email = \"{email}\", Address = \"{address}\", Password = \"{password}\" WHERE Username = \"{currentUsername}\"";
+        string query = $"UPDATE Users SET FirstName = \"{firstName}\", LastName = \"{lastName}\", Username = \"{username}\", DateOfBirth = \"{dateOfBirthString}\", Email = \"{email}\", Address = \"{address}\", Password = \"{password}\" WHERE Username = \"{oldUsername}\"";
         connection.RunSqlCommand(query);
     }
 

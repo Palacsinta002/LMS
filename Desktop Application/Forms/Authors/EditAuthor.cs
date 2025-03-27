@@ -6,10 +6,12 @@ namespace Desktop_Application.Forms.Authors;
 public partial class EditAuthor : Form
 {
     private readonly DataGridView _author_grd;
+    private string _oldAuthor;
 
     public EditAuthor(DataGridView author_grd)
     {
         _author_grd = author_grd;
+        _oldAuthor = "";
         InitializeComponent();
     }
 
@@ -25,13 +27,14 @@ public partial class EditAuthor : Form
         var selectedRow = _author_grd.SelectedRows[0].Cells;
 
         textBox_author.Text = selectedRow["authors_author"].Value.ToString();
+        _oldAuthor = selectedRow["authors_author"].Value.ToString() ?? string.Empty;
     }
 
     private void Save(object sender, EventArgs e)
     {
         if (ValidateInput())
         {
-            HandleQueries.UpdateAuthor(_author_grd, textBox_author.Text);
+            HandleQueries.UpdateAuthor(_oldAuthor, textBox_author.Text);
             MessageBox.Show("Author updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
