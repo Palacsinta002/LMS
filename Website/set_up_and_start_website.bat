@@ -57,7 +57,7 @@ start /B "" php -S 127.0.0.1:8000 router.php
 cd ..\..
 echo Installing Frontend dependencies...
 cd React
-start /B "" npm install
+start  "" /wait npm install
 
 echo Starting Frontend...
 start /B "" npm run dev
