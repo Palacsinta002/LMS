@@ -35,16 +35,16 @@ namespace Desktop_Application.Forms.Borrowings
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddBorrowing));
             header = new Panel();
             title = new Label();
-            close_btn = new Desktop_Application.Components.RoundedButton();
+            close_btn = new Components.RoundedButton();
             label2 = new Label();
-            dueDate_datePicker = new DateTimePicker();
             label5 = new Label();
             dropDown_user = new System.Windows.Forms.ComboBox();
             label_publisher = new Label();
             chooseBooks = new System.Windows.Forms.Button();
             textBox_books = new System.Windows.Forms.TextBox();
-            save = new Desktop_Application.Components.RoundedButton();
-            cancel = new Desktop_Application.Components.RoundedButton();
+            save = new Components.RoundedButton();
+            cancel = new Components.RoundedButton();
+            comboBox_extendBy = new System.Windows.Forms.ComboBox();
             header.SuspendLayout();
             SuspendLayout();
             // 
@@ -101,25 +101,15 @@ namespace Desktop_Application.Forms.Borrowings
             label2.TabIndex = 59;
             label2.Text = "Books";
             // 
-            // dueDate_datePicker
-            // 
-            dueDate_datePicker.CalendarFont = new Font("Yu Gothic UI Semibold", 14F);
-            dueDate_datePicker.Font = new Font("Yu Gothic UI Semibold", 14F);
-            dueDate_datePicker.Format = DateTimePickerFormat.Short;
-            dueDate_datePicker.Location = new Point(150, 143);
-            dueDate_datePicker.Name = "dueDate_datePicker";
-            dueDate_datePicker.Size = new Size(135, 32);
-            dueDate_datePicker.TabIndex = 3;
-            // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label5.Location = new Point(12, 146);
+            label5.Location = new Point(12, 149);
             label5.Name = "label5";
-            label5.Size = new Size(93, 25);
+            label5.Size = new Size(94, 25);
             label5.TabIndex = 68;
-            label5.Text = "Due Date";
+            label5.Text = "Due Time";
             // 
             // dropDown_user
             // 
@@ -205,19 +195,32 @@ namespace Desktop_Application.Forms.Borrowings
             cancel.TextColor = Color.Black;
             cancel.UseVisualStyleBackColor = false;
             // 
+            // comboBox_extendBy
+            // 
+            comboBox_extendBy.BackColor = Color.WhiteSmoke;
+            comboBox_extendBy.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox_extendBy.Font = new Font("Yu Gothic UI Semibold", 14F);
+            comboBox_extendBy.FormattingEnabled = true;
+            comboBox_extendBy.Items.AddRange(new object[] { "1 Month", "2 Months", "3 Months", "6 Months" });
+            comboBox_extendBy.Location = new Point(112, 146);
+            comboBox_extendBy.MaxDropDownItems = 10;
+            comboBox_extendBy.Name = "comboBox_extendBy";
+            comboBox_extendBy.Size = new Size(256, 33);
+            comboBox_extendBy.TabIndex = 83;
+            // 
             // AddBorrowing
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(385, 236);
+            Controls.Add(comboBox_extendBy);
             Controls.Add(save);
             Controls.Add(cancel);
             Controls.Add(chooseBooks);
             Controls.Add(textBox_books);
             Controls.Add(dropDown_user);
             Controls.Add(label_publisher);
-            Controls.Add(dueDate_datePicker);
             Controls.Add(label5);
             Controls.Add(header);
             Controls.Add(label2);
@@ -241,11 +244,11 @@ namespace Desktop_Application.Forms.Borrowings
         private Components.RoundedButton close_btn;
         private Label label2;
         private Label label_publisher;
-        private DateTimePicker dueDate_datePicker;
         private Label label5;
         private System.Windows.Forms.Button chooseBooks;
         private System.Windows.Forms.TextBox textBox_books;
         private Components.RoundedButton save;
         private Components.RoundedButton cancel;
+        private System.Windows.Forms.ComboBox comboBox_extendBy;
     }
 }

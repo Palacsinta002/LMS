@@ -27,11 +27,14 @@ public partial class ExtendBorrowing : Form
     private void Save(object sender, EventArgs e)
     {
         var selectedRow = _borrowings_grd.SelectedRows[0].Cells;
-        DateTime currentDate = DateTime.Parse(selectedRow["borrowings_dueDate"].Value.ToString());
+        string dueDate = selectedRow["borrowings_dueDate"].Value.ToString() ?? string.Empty;
+        string isbn = selectedRow["borrowings_isbn"].Value.ToString() ?? string.Empty;
+
+        DateTime currentDate = DateTime.Parse(dueDate);
         int extendBy = int.Parse(comboBox_extendBy.Text.Split(" ")[0]);
         DateTime extendedDate = currentDate.AddMonths(extendBy);
 
-        HandleQueries.UpdateBorrowing(selectedRow["borrowings_isbn"].Value.ToString(), extendedDate);
+        HandleQueries.UpdateBorrowing(isbn, extendedDate);
         MessageBox.Show("Borrowing extended succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         this.Close();
     }
