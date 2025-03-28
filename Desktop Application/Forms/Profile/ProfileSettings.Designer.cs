@@ -219,8 +219,9 @@ namespace Desktop_Application.Forms.Profile
             // dateOfBirth_datePicker
             // 
             dateOfBirth_datePicker.CalendarFont = new Font("Yu Gothic UI Semibold", 14F);
+            dateOfBirth_datePicker.CustomFormat = "dd/MM/yyyy";
             dateOfBirth_datePicker.Font = new Font("Yu Gothic UI Semibold", 14F);
-            dateOfBirth_datePicker.Format = DateTimePickerFormat.Short;
+            dateOfBirth_datePicker.Format = DateTimePickerFormat.Custom;
             dateOfBirth_datePicker.Location = new Point(151, 182);
             dateOfBirth_datePicker.Name = "dateOfBirth_datePicker";
             dateOfBirth_datePicker.Size = new Size(135, 32);

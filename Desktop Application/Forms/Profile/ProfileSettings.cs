@@ -1,4 +1,5 @@
 ﻿using Desktop_Application.Classes;
+using System.Globalization;
 using System.Text.RegularExpressions;
 
 namespace Desktop_Application.Forms.Profile;
@@ -38,7 +39,7 @@ public partial class ProfileSettings : Form
         textBox_firstName.Text = userData[0];
         textBox_lastName.Text = userData[1];
         textBox_username.Text = userData[2];
-        dateOfBirth_datePicker.Text = userData[3];
+        dateOfBirth_datePicker.Value = DateTime.ParseExact(userData[3], "dd/MM/yyyy", CultureInfo.InvariantCulture);
         textBox_email.Text = userData[4];
         textBox_address.Text = userData[5];
     }
