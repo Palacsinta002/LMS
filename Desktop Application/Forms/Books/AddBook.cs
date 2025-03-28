@@ -104,7 +104,10 @@ public partial class AddBook : Form
         if(fileDialog.ShowDialog() == DialogResult.OK)
         {
             originalPath = fileDialog.FileName;
+            string extension = Path.GetExtension(originalPath);
+            string newName = textBox_isbn.Text + extension;
+
+            string tempPath = Path.GetTempPath() + textBox_isbn.Text + ".jpg";
         }
-        string tempPath = Path.GetTempPath() + textBox_isbn.Text + ".jpg";
     }
 }
