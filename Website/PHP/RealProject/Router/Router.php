@@ -6,7 +6,7 @@ use Helper\Helper;
 use App\Authorize\Token;
 class Router{
 
-    public static function post($endpoint, $controller, $function, $auth = false){
+    public static function post($endpoint, $controller, $function, $auth = false,$getFiles = false){
         $uri = $_SERVER["REQUEST_URI"];
         
         if ($uri == $endpoint){
@@ -14,9 +14,17 @@ class Router{
                 Response::httpError(404,17);
             }
                 if ($auth == true){
+                    if ($getFiles == true){
+                        $controller::$function();
+                        die();
+                    }
                     $userID = self::getHeadAuth();
                     $body = Helper::getPostBody();
                     $controller::$function($body,$userID);
+                    die();
+                }
+                if ($getFiles == true){
+                    $controller::$function();
                     die();
                 }
                 $body = Helper::getPostBody();

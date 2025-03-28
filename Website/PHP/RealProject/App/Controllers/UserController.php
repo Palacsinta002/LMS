@@ -102,7 +102,7 @@ class UserController{
         User::callingValidateFunctions($body,["username"],User::class,"checkUsername");
         User::callingValidateFunctions($body,["firstname"],User::class,"checkFirstLastName");
         User::callingValidateFunctions($body,["lastname"],User::class,"checkFirstLastName");
-        User::callingValidateFunctions($body,["password","passwordOld"],User::class,"checkPassword");
+        User::callingValidateFunctions($body,["password"],User::class,"checkPassword");
         User::callingValidateFunctions($body,["address"],User::class,"validateAddress");
         if ((isset($body["passwordOld"]) && !isset($body["password"])) || (!isset($body["passwordOld"]) && isset($body["password"]))){
             Response::httpError(400,21);

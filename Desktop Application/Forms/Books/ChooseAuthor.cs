@@ -1,5 +1,4 @@
 ﻿using Desktop_Application.Classes;
-using System.Drawing.Text;
 
 namespace Desktop_Application.Forms.Books;
 
@@ -19,6 +18,7 @@ public partial class ChooseAuthor : Form
 
     private void OnLoad(object sender, EventArgs e)
     {
+        HandleFonts.Set(this);
         DragWindow.Handle(this, header, title);
         BorderPaint.Handle(this);
         CloseThisWindow.Handle(this, close_btn);
@@ -69,6 +69,7 @@ public partial class ChooseAuthor : Form
 
     private void MoveAuthors(object sender, EventArgs e)
     {
+        if (ActiveControl == null) return;
         int tabIndex = ActiveControl.TabIndex;
         if (tabIndex == 1)
         {
@@ -82,6 +83,7 @@ public partial class ChooseAuthor : Form
 
     private void EnterGrid(object sender, EventArgs e)
     {
+        if (ActiveControl == null) return;
         int tabIndex = ActiveControl.TabIndex;
         if (tabIndex == 1)
         {

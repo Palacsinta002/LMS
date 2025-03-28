@@ -24,6 +24,7 @@ public partial class AdminPanel : Form
 
     private void OnLoad(object sender, EventArgs e)
     {
+        HandleFonts.Set(this);
         users_button_edit.Visible = _isAdmin;
         users_button_remove.Visible = _isAdmin;
 

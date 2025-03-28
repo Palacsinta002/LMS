@@ -2,7 +2,8 @@
 
 cd PHP\realproject
 echo Starting Backend...
-start /B "" php -S 127.0.0.1 router.php
+start /B "" php -S 127.0.0.1:8000 router.php
+
 
 cd ..\..
 

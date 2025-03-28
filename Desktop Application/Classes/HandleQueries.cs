@@ -107,7 +107,7 @@ internal class HandleQueries
     // Update book with the given arguments
     internal static void UpdateBook(DataGridView books_grd, string isbn, string publisher, string title, string pubYear, string authorsString, string categoriesString)
     {
-        Delete(books_grd, "Books", "ISBN", "ISBN");
+        Delete(books_grd, "Books", "books_isbn", "ISBN");
 
         InsertBook(isbn, publisher, title, pubYear, authorsString, categoriesString);
     }

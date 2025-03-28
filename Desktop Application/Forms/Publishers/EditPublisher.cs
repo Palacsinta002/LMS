@@ -11,12 +11,13 @@ public partial class EditPublisher : Form
     public EditPublisher(DataGridView publishers_grd)
     {
         _publishers_grd = publishers_grd;
-        _oldPublisher = "";
+        _oldPublisher = string.Empty;
         InitializeComponent();
     }
 
     private void OnLoad(object sender, EventArgs e)
     {
+        HandleFonts.Set(this);
         DragWindow.Handle(this, header, title);
         BorderPaint.Handle(this);
         CloseThisWindow.Handle(this, close_btn);

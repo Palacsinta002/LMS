@@ -6,15 +6,18 @@ namespace Desktop_Application.Forms.Books;
 public partial class EditBook : Form
 {
     private readonly DataGridView _books_grd;
+    private string _originalImgPath;
 
     public EditBook(DataGridView books_grd)
     {
         _books_grd = books_grd;
+        _originalImgPath = string.Empty;
         InitializeComponent();
     }
 
     private void OnLoad(object sender, EventArgs e)
     {
+        HandleFonts.Set(this);
         DragWindow.Handle(this, header, title);
         BorderPaint.Handle(this);
         CloseThisWindow.Handle(this, close_btn);
@@ -39,8 +42,17 @@ public partial class EditBook : Form
     {
         if (ValidateInput())
         {
+            save.Enabled = false;
             HandleQueries.UpdateBook(_books_grd, textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, textBox_author.Text, textBox_category.Text);
             MessageBox.Show("Book updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            if (_originalImgPath != string.Empty)
+            {
+                string extension = Path.GetExtension(_originalImgPath);
+                string newName = textBox_isbn.Text + extension;
+                string tempPath = Path.Combine(Path.GetTempPath(), newName);
+                HandleFiles.Upload(_originalImgPath, tempPath);
+            }
             this.Close();
         }
     }
@@ -108,5 +120,20 @@ public partial class EditBook : Form
         chooseCategory.ShowDialog();
 
         textBox_category.Text = string.Join(", ", ChooseCategories.SelectedCategories);
+    }
+
+    private void SelectImage(object sender, EventArgs e)
+    {
+        OpenFileDialog fileDialog = new();
+        if (fileDialog.ShowDialog() == DialogResult.OK)
+        {
+            _originalImgPath = fileDialog.FileName;
+            textBox_image.Text = _originalImgPath;
+        }
+        else
+        {
+            _originalImgPath = string.Empty;
+            textBox_image.Text = string.Empty;
+        }
     }
 }

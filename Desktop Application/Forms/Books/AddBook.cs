@@ -5,13 +5,17 @@ namespace Desktop_Application.Forms.Books;
 
 public partial class AddBook : Form
 {
+    private string _originalImgPath;
+
     public AddBook()
     {
+        _originalImgPath = string.Empty;
         InitializeComponent();
     }
 
     private void OnLoad(object sender, EventArgs e)
     {
+        HandleFonts.Set(this);
         DragWindow.Handle(this, header, title);
         BorderPaint.Handle(this);
         CloseThisWindow.Handle(this, close_btn);
@@ -27,8 +31,19 @@ public partial class AddBook : Form
     {
         if (ValidateInput())
         {
+            save.Enabled = false;
+
             HandleQueries.InsertBook(textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, textBox_author.Text, textBox_category.Text);
-            MessageBox.Show("Book uploaded succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Book uploaded succesfully to the database!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            if (_originalImgPath != string.Empty)
+            {
+                string extension = Path.GetExtension(_originalImgPath);
+                string newName = textBox_isbn.Text + extension;
+                string tempPath = Path.Combine(Path.GetTempPath(), newName);
+                HandleFiles.Upload(_originalImgPath, tempPath);
+            }
+
             this.Close();
         }
     }
@@ -99,12 +114,16 @@ public partial class AddBook : Form
 
     private void SelectImage(object sender, EventArgs e)
     {
-        string originalPath;
         OpenFileDialog fileDialog = new();
         if(fileDialog.ShowDialog() == DialogResult.OK)
         {
-            originalPath = fileDialog.FileName;
+            _originalImgPath = fileDialog.FileName;
+            textBox_image.Text = _originalImgPath;
         }
-        string tempPath = Path.GetTempPath() + textBox_isbn.Text + ".jpg";
+        else
+        {
+            _originalImgPath = string.Empty;
+            textBox_image.Text = string.Empty;
+        }
     }
 }

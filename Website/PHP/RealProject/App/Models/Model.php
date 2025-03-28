@@ -69,10 +69,26 @@ class Model{
         }
     }
     public static function callingValidateFunctions($inputList, $fields, $model, $function){
-        for ($i=0; $i < count($fields); $i++) { 
-            if (isset($inputList[$fields[$i]])) {
-                $model::$function($inputList[$fields[$i]]);
+        for ($i=0; $i < count($fields); $i++) {
+            if (is_array( $fields[$i])) {
+                $array =[];
+                for ($j=0; $j < count($fields[$i]); $j++) { 
+                    if (!isset($inputList[$fields[$i][$j]])){
+                        $array = [];
+                        break;
+                    }
+                    $array[] = $inputList[$fields[$i][$j]];
+                }
+                if (count( $array) > 0) {
+                    $model::$function(...array_values($array));
+                }
             }
+            else{
+                if (isset($inputList[$fields[$i]])) {
+                    $model::$function($inputList[$fields[$i]]);
+                }
+            }
+            
             
         }
     }

@@ -31,7 +31,7 @@ Router::get("/api/top-borrowings", BorrowingsAndBooksController::class,"topBorro
 Router::get("/api/my-borrowed-books", BorrowingsAndBooksController::class,"getMyBorrowedBooks",true);
 Router::get("/api/available-books", BorrowingsAndBooksController::class,"availableBooks",false);
 
-Router::post("/api/upload-img", ImageController::class,"uploadImg");
+Router::post("/api/upload-img", ImageController::class,"uploadImg",false,true);
 Router::get("/img", ImageController::class,"getImg",false,true,true);
 
 
