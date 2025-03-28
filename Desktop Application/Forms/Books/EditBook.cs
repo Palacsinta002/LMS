@@ -42,6 +42,7 @@ public partial class EditBook : Form
     {
         if (ValidateInput())
         {
+            save.Enabled = false;
             HandleQueries.UpdateBook(_books_grd, textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, textBox_author.Text, textBox_category.Text);
             MessageBox.Show("Book updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
