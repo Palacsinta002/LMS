@@ -12,11 +12,14 @@ public partial class EditUser : Form
     public EditUser(DataGridView users_grd)
     {
         _users_grd = users_grd;
+        _oldUsername = string.Empty;
+        _dateOfBirth = DateTime.Today;
         InitializeComponent();
     }
 
     private void OnLoad(object sender, EventArgs e)
     {
+        HandleFonts.Set(this);
         DragWindow.Handle(this, header, title);
         BorderPaint.Handle(this);
         CloseThisWindow.Handle(this, close_btn);
@@ -35,7 +38,7 @@ public partial class EditUser : Form
         checkBox_verify.Checked = selectedRow["users_verified"].Value.ToString() == "Yes";
 
         // Set old username - If the user don't change the username, we don't check it
-        _oldUsername = selectedRow["users_username"].Value.ToString();
+        _oldUsername = selectedRow["users_username"].Value.ToString() ?? string.Empty;
 
         // Roles - This is only visible for admins
         var result = HandleQueries.SelectFromFile("SelectRole");

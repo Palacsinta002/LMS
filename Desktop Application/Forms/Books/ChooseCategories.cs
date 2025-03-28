@@ -18,6 +18,7 @@ public partial class ChooseCategories : Form
 
     private void OnLoad(object sender, EventArgs e)
     {
+        HandleFonts.Set(this);
         DragWindow.Handle(this, header, title);
         BorderPaint.Handle(this);
         CloseThisWindow.Handle(this, close_btn);
@@ -77,6 +78,7 @@ public partial class ChooseCategories : Form
 
     private void MoveCategories(object sender, EventArgs e)
     {
+        if (ActiveControl == null) return;
         int tabIndex = ActiveControl.TabIndex;
         if (tabIndex == 1)
         {
@@ -90,6 +92,7 @@ public partial class ChooseCategories : Form
 
     private void EnterGrid(object sender, EventArgs e)
     {
+        if (ActiveControl == null) return;
         int tabIndex = ActiveControl.TabIndex;
         if (tabIndex == 1)
         {

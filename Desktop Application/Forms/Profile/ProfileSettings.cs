@@ -14,11 +14,15 @@ public partial class ProfileSettings : Form
     public ProfileSettings(string username)
     {
         Username = username;
+        _dateOfBirth = DateTime.Today;
+        _password = string.Empty;
+        _newPassword = string.Empty;
         InitializeComponent();
     }
 
     private void OnLoad(object sender, EventArgs e)
     {
+        HandleFonts.Set(this);
         DragWindow.Handle(this, header, title);
         BorderPaint.Handle(this);
         CloseThisWindow.Handle(this, close_btn);
