@@ -14,7 +14,7 @@ class HandleFiles
         }
         catch (Exception ex)
         {
-            MessageBox.Show("Something went wrong during file upload! Error:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("Something went wrong during file upload!\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         finally
         {
