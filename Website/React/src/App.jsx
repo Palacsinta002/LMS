@@ -17,6 +17,7 @@ import Store from './Auth/Store'
 import AuthProvider from './Auth/AuthProvider';
 import ForgotPassword from './Pages/ForgotPassword';
 import ChangePassword from './Pages/ChangePassword';
+import FinalizeRegistration from './Pages/FinalizeRegistration';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/change-password/*" element={<ChangePassword />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/finalize-registration" element={<FinalizeRegistration />} />
           <Route path="/verify" element={<Verify />} />
           <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}>
             <Route path="borrowings" element={<Borrowings />} />
