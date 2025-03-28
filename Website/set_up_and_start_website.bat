@@ -1,15 +1,18 @@
 @echo off
 setlocal
-
+setlocal enabledelayedexpansion
 :: Check for XAMPP installation
 if exist "C:\nemWindows\realXampp" set XAMPP_PATH=C:\nemWindows\realXampp
 if exist "C:\xampp" set XAMPP_PATH=C:\xampp
+
+
 
 if not defined XAMPP_PATH (
     echo XAMPP not found in common locations. Please set the path manually.
     pause
     exit /b
 )
+
 
 :: Check if MySQL is already running
 echo Checking MySQL status...
