@@ -55,6 +55,10 @@ export default function Profile() {
         })
 
       if (response.data.Success) {
+        console.log(response.data.Success)
+      }
+      else if(!response.data.Success){
+        setError(response.data.message || "Update failed!");
         console.log(response.data)
       }
     }

@@ -1,111 +1,86 @@
 import React, { useState } from 'react'
+import axios from "axios"
 import { Link, useNavigate } from 'react-router-dom'
-import "./Register.css"
-import FormCard from '../Components/FormCard'
-import axios from 'axios'
+import "./Login.css"
+import { setAuthToken } from '../Auth/setAuthToken';
 
-export default function Register() {
+export default function Login() {
+  axios.defaults.withCredentials = true;
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordAgain, setPasswordAgain] = useState("");
-  const [address, setAddress] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const [showPasswordAgain, setShowPasswordAgain] = useState(false);
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
 
   async function HandleSubmit(event) {
     event.preventDefault();
     setLoading(true);
-    setError("");
-
-    if (password !== passwordAgain) {
-      setError("Passwords do not match!");
-      setLoading(false);
-      return;
-    }
-
     try {
-      const response = await axios.post(
-        "/api/register",
+      const response = await axios.post("api/login",
+        { username: username, password: password },
         {
-          username: username,
-          password: password,
-          email: email,
-          firstname: firstname,
-          lastname: lastname,
-          passwordAgain: passwordAgain,
-          address: address
-        },
-        {
-          headers: { "Content-Type": "application/json" },
-        }
-      );
-      console.log(response.data);
-      if (response.data.Success) {
-        navigate("/verify");
-      } else {
-        setError(response.data.message || "Registration failed!");
+          headers: {
+            "method": "POST",
+            "Content-Type": "application/json",
+          }
+        });
+
+        console.log(response.data)
+      if (response.data.Token) {
+        setAuthToken(response.data.Token);
+        console.log(response.data.Token)
+        sessionStorage.setItem("token", response.data.Token);
+        navigate("/dashboard");
+      }
+      else{
+        navigate("/login")
       }
     } catch (error) {
-      console.error("Registration error:", error);
-      setError("Registration error!");
+      console.error("Login Error:", error);
+  
+      if (error.response && error.response.data && error.response.data.error) {
+        console.log(error.response.data.error);
+        setError(error.response.data.error || "Login failed");
+      } else {
+        setError("Network error");
+      }
     } finally {
       setLoading(false);
     }
   }
-
   return (
-    <div className="register">
+    <div className="login">
       <Link to="/" className="back-to-home">Back to Home</Link>
-      <div className="register-header">
-        <h1 className="register-top">Welcome to</h1>
-        <h2 className="register-bottom">Library Management System</h2>
-      </div>
-      <div className="register-container">
+      <h1 className="login-header">Library Management System</h1>
+      <div className="login-card">
         <i className="fa fa-user"></i>
         <h1>Finalize Registration</h1>
         <form onSubmit={HandleSubmit}>
-          <div className="register-card-holder">
-            <div className="register-card">
-              <label htmlFor="email">Email</label>
-              <input type="email" onChange={(e) => setEmail(e.target.value)} required />
-            </div>
-            <div className="register-card">
-              <label htmlFor="username">Username</label>
-              <input type="text" onChange={(e) => setUsername(e.target.value)} required />
-            </div>
-            <div className="register-card">
-              <label htmlFor="password">Password</label>
-              <div className="register-password-input">
-                <input type={showPassword ? "text" : "password"} onChange={(e) => setPassword(e.target.value)} required />
-                <button type="button" onClick={() => setShowPassword(!showPassword)} className="register-toggle-password">
-                  {showPassword ? "Hide" : "Show"}
-                </button>
-              </div>
-            </div>
-            <div className="register-card">
-              <label htmlFor="passwordAgain">Password Again</label>
-              <div className="register-password-input">
-                <input type={showPasswordAgain ? "text" : "password"} onChange={(e) => setPasswordAgain(e.target.value)} required/>
-                <button type="button" onClick={() => setShowPasswordAgain(!showPasswordAgain)} className="register-toggle-password">
-                  {showPasswordAgain ? "Hide" : "Show"}
-                </button>
-              </div>
-            </div>
+          <label>Email</label>
+          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <label>Username</label>
+          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+          <label>Password</label>
+          <div className="login-password-input">
+            <input
+              type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="login-toggle-password"
+            >
+              {showPassword ? "Hide" : "Show"}
+            </button>
           </div>
           {error && <p className="error-message">{error}</p>}
-          <center>
-            <div className="actions">
-              <input type="submit" value={loading ? "Finalizing..." : "Finalize"} disabled={loading} />
-              {loading && <div className="spinner"></div>}
-              <span><Link to="/login" className="link2">I already have an account!</Link></span>
-            </div>
-          </center>
+          <input type="submit" value={loading ? "Finalizing..." : "Finalize"} disabled={loading} />
+          <span><Link to="/login" className="link2">I already have an account!</Link></span>
         </form>
       </div>
     </div>
