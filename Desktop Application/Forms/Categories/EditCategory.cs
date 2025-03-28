@@ -11,12 +11,13 @@ public partial class EditCategory : Form
     public EditCategory(DataGridView category_grd)
     {
         _category_grd = category_grd;
-        _oldCategory = "";
+        _oldCategory = string.Empty;
         InitializeComponent();
     }
 
     private void OnLoad(object sender, EventArgs e)
     {
+        HandleFonts.Set(this);
         DragWindow.Handle(this, header, title);
         BorderPaint.Handle(this);
         CloseThisWindow.Handle(this, close_btn);

@@ -11,12 +11,13 @@ public partial class EditAuthor : Form
     public EditAuthor(DataGridView author_grd)
     {
         _author_grd = author_grd;
-        _oldAuthor = "";
+        _oldAuthor = string.Empty;
         InitializeComponent();
     }
 
     private void OnLoad(object sender, EventArgs e)
     {
+        HandleFonts.Set(this);
         DragWindow.Handle(this, header, title);
         BorderPaint.Handle(this);
         CloseThisWindow.Handle(this, close_btn);

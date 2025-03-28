@@ -10,19 +10,19 @@ public partial class Login : Form
 
     public Login()
     {
+        _username = "";
+        _password = "";
         InitializeComponent();
     }
 
     private void OnLoad(object sender, EventArgs e)
     {
+        HandleFonts.Set(this);
         DragWindow.Handle(this, header, title);
         BorderPaint.Handle(this);
         CloseThisWindow.Handle(this, close_btn);
         HandleKeys.Handle(this, Keys.Enter, LoginCheck);
         this.KeyPreview = true;
-
-        _username = "";
-        _password = "";
 
         // TEMPORARY
         _username = "johndoe";
