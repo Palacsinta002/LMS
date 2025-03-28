@@ -53,12 +53,7 @@ class User extends Model{
         $data = $selectResult->fetch_assoc();
         self::userPasswordIsMatch($password,$data["password"]);
         if ($data["EmailVerified"] == 0){
-            if (!is_null($data["email"]))
-            {
-                Response::httpError(400,7);
-            }
-            return [$data["id"],"register"];
-            
+            Response::httpError(400,7);
         }
         return $data["id"];
         
