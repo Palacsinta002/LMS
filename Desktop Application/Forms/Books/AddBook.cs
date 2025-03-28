@@ -1,5 +1,4 @@
 ﻿using Desktop_Application.Classes;
-using System.Net;
 using System.Text.RegularExpressions;
 
 namespace Desktop_Application.Forms.Books;
@@ -35,16 +34,16 @@ public partial class AddBook : Form
             save.Enabled = false;
 
             HandleQueries.InsertBook(textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, textBox_author.Text, textBox_category.Text);
+            MessageBox.Show("Book uploaded succesfully to the database!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             if (_originalImgPath != string.Empty)
             {
                 string extension = Path.GetExtension(_originalImgPath);
                 string newName = textBox_isbn.Text + extension;
                 string tempPath = Path.Combine(Path.GetTempPath(), newName);
-                UploadImage(_originalImgPath, tempPath);
+                HandleFiles.Upload(_originalImgPath, tempPath);
             }
 
-            save.Enabled = true;
             this.Close();
         }
     }
@@ -125,25 +124,6 @@ public partial class AddBook : Form
         {
             _originalImgPath = string.Empty;
             textBox_image.Text = string.Empty;
-        }
-    }
-
-    private static void UploadImage(string originalPath, string tempPath)
-    {
-        try
-        {
-            File.Copy(originalPath, tempPath, true);
-            WebClient webClient = new();
-            webClient.UploadFile("http://localhost:8000/api/uploadimage", "POST", tempPath);
-            MessageBox.Show("Book uploaded succesfully to the database!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show("The book is uploaded to the database but something went wrong during file upload! Error:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-        finally
-        {
-            if (File.Exists(tempPath)) File.Delete(tempPath);
         }
     }
 }
