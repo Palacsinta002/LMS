@@ -1,4 +1,5 @@
-﻿using Desktop_Application.Components;
+﻿using Desktop_Application.Classes;
+using Desktop_Application.Components;
 using Desktop_Application.Forms.Books;
 
 namespace Desktop_Application.Forms.Books
@@ -123,7 +124,7 @@ namespace Desktop_Application.Forms.Books
             header.Controls.Add(close_btn);
             header.Location = new Point(2, 1);
             header.Name = "header";
-            header.Size = new Size(497, 55);
+            header.Size = new Size(496, 55);
             header.TabIndex = 46;
             // 
             // title

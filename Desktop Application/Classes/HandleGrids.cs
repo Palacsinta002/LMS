@@ -31,7 +31,8 @@
             {
                 for(int i = 0; i < cols.Length; i++)
                 {
-                    if (row.Cells[cols[i]].Value.ToString().ToLower().Contains(filterText))
+                    string cell = row.Cells[cols[i]].Value.ToString() ?? string.Empty;
+                    if (cell.Contains(filterText, StringComparison.CurrentCultureIgnoreCase))
                     {
                         row.Visible = true;
                         break;

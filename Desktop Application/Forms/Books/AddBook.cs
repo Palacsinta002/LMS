@@ -31,19 +31,27 @@ public partial class AddBook : Form
     {
         if (ValidateInput())
         {
-            save.Enabled = false;
-
-            HandleQueries.InsertBook(textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, textBox_author.Text, textBox_category.Text);
-            MessageBox.Show("Book uploaded succesfully to the database!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            bool uploadSuccessful = false;
 
             if (_originalImgPath != string.Empty)
             {
+                string[] allowedExtensions = ["jpg", "jpeg", "png"];
                 string extension = Path.GetExtension(_originalImgPath);
+                if (!allowedExtensions.Contains(extension.ToLower()))
+                {
+                    MessageBox.Show("File type is not allowed! It must be jpg, jpeg or png!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 string newName = textBox_isbn.Text + extension;
                 string tempPath = Path.Combine(Path.GetTempPath(), newName);
-                HandleFiles.Upload(_originalImgPath, tempPath);
+                File.Copy(_originalImgPath, tempPath, true);
+                uploadSuccessful = HandleFiles.Upload(tempPath);
             }
-
+            if (uploadSuccessful)
+            {
+                HandleQueries.InsertBook(textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, textBox_author.Text, textBox_category.Text);
+                MessageBox.Show("Book uploaded succesfully to the database!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             this.Close();
         }
     }
@@ -115,15 +123,40 @@ public partial class AddBook : Form
     private void SelectImage(object sender, EventArgs e)
     {
         OpenFileDialog fileDialog = new();
-        if(fileDialog.ShowDialog() == DialogResult.OK)
+        if (fileDialog.ShowDialog() == DialogResult.OK)
         {
             _originalImgPath = fileDialog.FileName;
             textBox_image.Text = _originalImgPath;
+            if (!ValidateFile())
+            {
+                _originalImgPath = string.Empty;
+                textBox_image.Text = string.Empty;
+            }
         }
         else
         {
             _originalImgPath = string.Empty;
             textBox_image.Text = string.Empty;
+        }
+
+        bool ValidateFile()
+        {
+            string extension = Path.GetExtension(_originalImgPath);
+            string[] allowedExtensions = [".jpg", ".jpeg", ".png"];
+            if (!allowedExtensions.Contains(extension.ToLower()))
+            {
+                MessageBox.Show("File format must be jpg, jpeg or png!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            FileInfo fileInfo = new(_originalImgPath);
+            double sizeInMegabytes = fileInfo.Length / Math.Pow(1024.0, 2);
+            if (sizeInMegabytes > 5)
+            {
+                MessageBox.Show($"The maximum allowed file size is 5 MB, your file is {Math.Round(sizeInMegabytes)} MB!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
         }
     }
 }
