@@ -21,12 +21,14 @@ class Helper{
         return $array;
     }
     ####################  Gets the content of the request  ####################
-    public static function getPostBody(){
+    public static function getPostBody($validateJsonFormat = true){
         
         $rawbody = file_get_contents("php://input");
         $decoded = json_decode($rawbody, true);
-        if ($decoded === null && json_last_error() !== JSON_ERROR_NONE) {
-            Response::httpError(400,29);
+        if ($validateJsonFormat){
+            if ($decoded === null && json_last_error() !== JSON_ERROR_NONE) {
+                Response::httpError(400,29);
+            }
         }
         return $decoded;
     }
