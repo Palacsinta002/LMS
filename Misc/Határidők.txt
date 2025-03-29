@@ -1,4 +1,0 @@
-2025.05.13 - Vizsgaremek benyújtási határidő
-2025.05.19 - Interaktív elméleti vizsga (45 perc)
-2025.05.26 - Projektfeladat (240 perc) (Konzolos program C#, Webszerkesztés, Frontend JS, Backend)
-2025.05.29 - Vizsgaremek megvédése (30 perc) (Eredményhirdetés?)
