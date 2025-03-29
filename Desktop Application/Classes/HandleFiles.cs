@@ -7,7 +7,7 @@ namespace Desktop_Application.Classes;
 struct ErrorResponse()
 {
     [JsonPropertyName("error")]
-    public string Error { get; set; }
+    public string? Error { get; set; }
 }
 
 class HandleFiles
@@ -36,7 +36,8 @@ class HandleFiles
             }
             else
             {
-                string errorMsg = errorResponse.Error.Remove(errorResponse.Error.Length - 1);
+                string error = errorResponse.Error ?? string.Empty;
+                string errorMsg = error.Remove(error.Length - 1);
                 MessageBox.Show($"Upload failed: {errorMsg}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }

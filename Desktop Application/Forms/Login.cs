@@ -19,9 +19,9 @@ public partial class Login : Form
     {
         // Default design and controls
         HandleFonts.Set(this);
-        DragWindow.Handle(this, header, title);
+        DragWindow.Handle(this, panel_header, label_title);
         BorderPaint.Handle(this);
-        CloseThisWindow.Handle(this, close_btn);
+        CloseWindow.Handle(this, rButton_close);
         HandleKeys.Handle(this, Keys.Enter, LoginCheck);
         this.KeyPreview = true;
     }
@@ -32,7 +32,7 @@ public partial class Login : Form
         {
             MessageBox.Show("Username and password are required!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-        else if (usernameError_lbl.Text == "" && passwordError_lbl.Text == "")
+        else if (label_usernameError.Text == "" && label_passwordError.Text == "")
         {
             // Selects the hashed password and role based on username
             string query = $"SELECT Users.Password, Roles.Role FROM Users JOIN Roles ON Roles.id = Users.RoleID WHERE Username = '{_username}'";
@@ -59,7 +59,7 @@ public partial class Login : Form
                         isAdmin = true;
                     }
 
-                    AdminPanel adminPanel = new(username_textBox.Text, isAdmin);
+                    Main adminPanel = new(textBox_username.Text, isAdmin);
                     this.Hide();
                     adminPanel.ShowDialog();
                     this.Close();
@@ -83,53 +83,53 @@ public partial class Login : Form
     // On username text change it writes out to the user what is wrong with the given text if there is any
     private void UsernameTextChanged(object sender, EventArgs e)
     {
-        _username = username_textBox.Text;
+        _username = textBox_username.Text;
 
         if (_username == string.Empty)
         {
-            usernameError_lbl.Text = "Username is required!";
+            label_usernameError.Text = "Username is required!";
         }
         else if (!Regex.IsMatch(_username, @"^[^""\\]+$"))
         {
-            usernameError_lbl.Text = "Not allowed special characters!";
+            label_usernameError.Text = "Not allowed special characters!";
         }
         else
         {
-            usernameError_lbl.Text = "";
+            label_usernameError.Text = "";
         }
     }
 
     // On password text change it writes out to the user what is wrong with the given text if there is any
     private void PasswordTextChanged(object sender, EventArgs e)
     {
-        _password = password_textBox.Text;
+        _password = textBox_password.Text;
 
         if (_password == string.Empty)
         {
-            passwordError_lbl.Text = "Password is required!";
+            label_passwordError.Text = "Password is required!";
         }
         else if (!Regex.IsMatch(_password, @"^[^""\\]+$"))
         {
-            passwordError_lbl.Text = "Not allowed special characters!";
+            label_passwordError.Text = "Not allowed special characters!";
         }
         else
         {
-            passwordError_lbl.Text = "";
+            label_passwordError.Text = "";
         }
     }
 
     // Handles the eye icon for showing the password
     private void ShowPassword(object sender, EventArgs e)
     {
-        if (password_textBox.PasswordChar == '*')
+        if (textBox_password.PasswordChar == '*')
         {
-            password_textBox.PasswordChar = '\0';
-            showPassword_btn.Image = Image.FromFile(@"Resources\hideIcon.png");
+            textBox_password.PasswordChar = '\0';
+            button_showPassword.Image = Image.FromFile(@"Resources\hideIcon.png");
         }
         else
         {
-            password_textBox.PasswordChar = '*';
-            showPassword_btn.Image = Image.FromFile(@"Resources\showIcon.png");
+            textBox_password.PasswordChar = '*';
+            button_showPassword.Image = Image.FromFile(@"Resources\showIcon.png");
         }
     }
 }

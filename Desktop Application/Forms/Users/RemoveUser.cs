@@ -17,8 +17,8 @@ public partial class RemoveUser : Form
         HandleFonts.Set(this);
         DragWindow.Handle(this, header, title);
         BorderPaint.Handle(this);
-        CloseThisWindow.Handle(this, close_btn);
-        CloseThisWindow.Handle(this, no);
+        CloseWindow.Handle(this, close_btn);
+        CloseWindow.Handle(this, no);
         HandleKeys.Handle(this, Keys.Enter, Remove);
         HandleKeys.Handle(this, Keys.Escape, (s, e) => this.Close());
     }

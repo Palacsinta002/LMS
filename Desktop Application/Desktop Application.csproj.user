@@ -4,7 +4,7 @@
     <Compile Update="Forms\Books\AddBook.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\AdminPanel.cs">
+    <Compile Update="Forms\Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Books\EditBook.cs">

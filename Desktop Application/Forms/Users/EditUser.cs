@@ -22,8 +22,8 @@ public partial class EditUser : Form
         HandleFonts.Set(this);
         DragWindow.Handle(this, header, title);
         BorderPaint.Handle(this);
-        CloseThisWindow.Handle(this, close_btn);
-        CloseThisWindow.Handle(this, cancel);
+        CloseWindow.Handle(this, close_btn);
+        CloseWindow.Handle(this, cancel);
         HandleKeys.Handle(this, Keys.Enter, Save);
         HandleKeys.Handle(this, Keys.Escape, (s, e) => this.Close());
 

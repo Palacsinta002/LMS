@@ -16,8 +16,8 @@ public partial class ShowPassword : Form
         HandleFonts.Set(this);
         DragWindow.Handle(this, header, title);
         BorderPaint.Handle(this);
-        CloseThisWindow.Handle(this, close_btn);
-        CloseThisWindow.Handle(this, button_ok);
+        CloseWindow.Handle(this, close_btn);
+        CloseWindow.Handle(this, button_ok);
         HandleKeys.Handle(this, [Keys.Enter, Keys.Escape], (s, e) => this.Close());
         label_password.Text = _password;
     }

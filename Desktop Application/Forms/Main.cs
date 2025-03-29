@@ -10,12 +10,12 @@ using Desktop_Application.Forms.Users;
 
 namespace Desktop_Application;
 
-public partial class AdminPanel : Form
+public partial class Main : Form
 {
     private string _username;
     private readonly bool _isAdmin;
 
-    public AdminPanel(string username, bool isAdmin)
+    public Main(string username, bool isAdmin)
     {
         _username = username;
         _isAdmin = isAdmin;
@@ -25,8 +25,8 @@ public partial class AdminPanel : Form
     private void OnLoad(object sender, EventArgs e)
     {
         HandleFonts.Set(this);
-        users_button_edit.Visible = _isAdmin;
-        users_button_remove.Visible = _isAdmin;
+        users_rButton_edit.Visible = _isAdmin;
+        users_rButton_remove.Visible = _isAdmin;
 
         label_greeting.Text = $"Hello {_username}!";
 
@@ -56,16 +56,16 @@ public partial class AdminPanel : Form
             {
                 List<string[]> result;
                 result = HandleQueries.SelectFromFile("SelectBookCount");
-                dashboard_books.Text = result[0][0];
+                rButton_noOfBooks.Text = result[0][0];
 
                 result = HandleQueries.SelectFromFile("SelectUserCount");
-                dashboard_users.Text = result[0][0];
+                rButton_noOfUsers.Text = result[0][0];
 
                 result = HandleQueries.SelectFromFile("SelectBorrowingCount");
-                dashboard_borrowings.Text = result[0][0];
+                rButton_noOfBorrowings.Text = result[0][0];
 
                 result = HandleQueries.SelectFromFile("SelectTopBorrowedBook");
-                HandleGrids.Fill(grid_dashboard, result);
+                HandleGrids.Fill(dashboard_grid, result);
             }
             catch (Exception ex)
             {
@@ -94,14 +94,14 @@ public partial class AdminPanel : Form
     private void RefreshBooks(object sender, EventArgs e)
     {
         var result = HandleQueries.SelectFromFile("SelectBook");
-        HandleGrids.Fill(books_grd, result);
+        HandleGrids.Fill(books_grid, result);
     }
 
     // Live search - Searches title, publication year or isbn in the grid
     private void SearchBooks(object sender, EventArgs e)
     {
         string[] cols = ["books_title", "books_publicationYear", "books_isbn"];
-        HandleGrids.SearchGrid(books_grd, books_src.Text, cols);
+        HandleGrids.SearchGrid(books_grid, books_textBox_search.Text, cols);
     }
 
     // Adds a book to the database
@@ -115,12 +115,12 @@ public partial class AdminPanel : Form
     // Edit the selected book from the grid and then updates it in the database
     private void EditBook(object sender, EventArgs e)
     {
-        if (books_grd.SelectedRows.Count != 1)
+        if (books_grid.SelectedRows.Count != 1)
         {
             MessageBox.Show("You must select ONE book to edit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
-        EditBook editBook = new(books_grd);
+        EditBook editBook = new(books_grid);
         editBook.ShowDialog();
         RefreshBooks(sender, e);
     }
@@ -128,7 +128,7 @@ public partial class AdminPanel : Form
     // Removes book from the database
     private void RemoveBooks(object sender, EventArgs e)
     {
-        RemoveBooks removeBook = new(books_grd);
+        RemoveBooks removeBook = new(books_grid);
         removeBook.ShowDialog();
         RefreshBooks(sender, e);
     }
@@ -152,24 +152,24 @@ public partial class AdminPanel : Form
     internal void RefreshBorrowings(object sender, EventArgs e)
     {
         List<string[]> result;
-        if (checkBox_currentBorrowings.Checked)
+        if (borrowings_checkBox_currentBorrowings.Checked)
         {
-            borrowings_grd.Columns["borrowings_returnDate"].Visible = false;
+            borrowings_grid.Columns["borrowings_returnDate"].Visible = false;
             result = HandleQueries.SelectFromFile("SelectCurrentBorrowing");
         }
         else
         {
-            borrowings_grd.Columns["borrowings_returnDate"].Visible = true;
+            borrowings_grid.Columns["borrowings_returnDate"].Visible = true;
             result = HandleQueries.SelectFromFile("SelectAllBorrowing");
         }
-        HandleGrids.Fill(borrowings_grd, result);
+        HandleGrids.Fill(borrowings_grid, result);
     }
 
     // Live search - Searches username, title or isbn in the grid
     private void SearchBorrowings(object sender, EventArgs e)
     {
         string[] cols = ["borrowings_username", "borrowings_title", "borrowings_isbn"];
-        HandleGrids.SearchGrid(borrowings_grd, borrowings_src.Text, cols);
+        HandleGrids.SearchGrid(borrowings_grid, borrowings_textBox_search.Text, cols);
     }
 
     // Adds a borrowing to the database - Lends a book
@@ -183,17 +183,17 @@ public partial class AdminPanel : Form
     // Edit the selected borrowing from the grid and then updates it in the database
     private void EditBorrowing(object sender, EventArgs e)
     {
-        if (borrowings_grd.SelectedRows.Count != 1)
+        if (borrowings_grid.SelectedRows.Count != 1)
         {
             MessageBox.Show("You must select ONE borrowing to extend!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
-        else if (borrowings_grd.SelectedRows[0].Cells["borrowings_returnDate"].Value.ToString() != string.Empty)
+        else if (borrowings_grid.SelectedRows[0].Cells["borrowings_returnDate"].Value.ToString() != string.Empty)
         {
             MessageBox.Show("You can't extend returned borrowings!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
-        ExtendBorrowing extendBorrowing = new(borrowings_grd);
+        ExtendBorrowing extendBorrowing = new(borrowings_grid);
         extendBorrowing.ShowDialog();
         RefreshBorrowings(sender, e);
     }
@@ -201,7 +201,7 @@ public partial class AdminPanel : Form
     // Removes borrowing from the database - Marks the book as returned
     private void RemoveBorrowings(object sender, EventArgs e)
     {
-        RemoveBorrowings removeBorrowing = new(borrowings_grd);
+        RemoveBorrowings removeBorrowing = new(borrowings_grid);
         removeBorrowing.ShowDialog();
         RefreshBorrowings(sender, e);
     }
@@ -222,14 +222,14 @@ public partial class AdminPanel : Form
     private void RefreshReservations(object sender, EventArgs e)
     {
         var result = HandleQueries.SelectFromFile("SelectReservation");
-        HandleGrids.Fill(reservations_grd, result);
+        HandleGrids.Fill(reservations_grid, result);
     }
 
     // Live search - Searches username, title, isbn in the grid
     private void SearchReservations(object sender, EventArgs e)
     {
         string[] cols = ["reservations_username", "reservations_title", "reservations_isbn"];
-        HandleGrids.SearchGrid(reservations_grd, reservations_src.Text, cols);
+        HandleGrids.SearchGrid(reservations_grid, reservations_textBox_search.Text, cols);
     }
 
     // Adds a reservation to the database - Lends a book
@@ -243,12 +243,12 @@ public partial class AdminPanel : Form
     // Edit the selected reservation from the grid and then updates it in the database
     private void EditReservation(object sender, EventArgs e)
     {
-        if (reservations_grd.SelectedRows.Count != 1)
+        if (reservations_grid.SelectedRows.Count != 1)
         {
             MessageBox.Show("You must select ONE reservation to extend!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
-        ExtendReservation extendReservation = new(reservations_grd);
+        ExtendReservation extendReservation = new(reservations_grid);
         extendReservation.ShowDialog();
         RefreshReservations(sender, e);
     }
@@ -256,7 +256,7 @@ public partial class AdminPanel : Form
     // Removes reservation from the database - Marks the book as returned
     private void RemoveReservations(object sender, EventArgs e)
     {
-        RemoveReservations removeReservations = new(reservations_grd);
+        RemoveReservations removeReservations = new(reservations_grid);
         removeReservations.ShowDialog();
         RefreshReservations(sender, e);
     }
@@ -280,14 +280,14 @@ public partial class AdminPanel : Form
     private void RefreshCategories(object sender, EventArgs e)
     {
         var result = HandleQueries.SelectFromFile("SelectCategory");
-        HandleGrids.Fill(categories_grd, result);
+        HandleGrids.Fill(categories_grid, result);
     }
 
     // Live search - Searches category in the grid
     private void SearchCategories(object sender, EventArgs e)
     {
         string[] cols = ["categories_category"];
-        HandleGrids.SearchGrid(categories_grd, categories_src.Text, cols);
+        HandleGrids.SearchGrid(categories_grid, categories_textBox_search.Text, cols);
     }
 
     // Adds a category to the database
@@ -301,12 +301,12 @@ public partial class AdminPanel : Form
     // Edit the selected category from the grid and then updates it in the database
     private void EditCategory(object sender, EventArgs e)
     {
-        if (categories_grd.SelectedRows.Count != 1)
+        if (categories_grid.SelectedRows.Count != 1)
         {
             MessageBox.Show("You must select ONE category to edit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
-        EditCategory editCategory = new(categories_grd);
+        EditCategory editCategory = new(categories_grid);
         editCategory.ShowDialog();
         RefreshCategories(sender, e);
     }
@@ -314,7 +314,7 @@ public partial class AdminPanel : Form
     // Removes category from the database - Marks the book as returned
     private void RemoveCategories(object sender, EventArgs e)
     {
-        RemoveCategories removeCategories = new(categories_grd);
+        RemoveCategories removeCategories = new(categories_grid);
         removeCategories.ShowDialog();
         RefreshCategories(sender, e);
 
@@ -339,14 +339,14 @@ public partial class AdminPanel : Form
     private void RefreshAuthors(object sender, EventArgs e)
     {
         var result = HandleQueries.SelectFromFile("SelectAuthor");
-        HandleGrids.Fill(authors_grd, result);
+        HandleGrids.Fill(authors_grid, result);
     }
 
     // Live search - Searches authors in the grid
     private void SearchAuthors(object sender, EventArgs e)
     {
         string[] cols = ["authors_author"];
-        HandleGrids.SearchGrid(authors_grd, authors_src.Text, cols);
+        HandleGrids.SearchGrid(authors_grid, authors_textBox_search.Text, cols);
     }
 
     // Adds an author to the database
@@ -360,12 +360,12 @@ public partial class AdminPanel : Form
     // Edit the selected author from the grid and then updates it in the database
     private void EditAuthor(object sender, EventArgs e)
     {
-        if (authors_grd.SelectedRows.Count != 1)
+        if (authors_grid.SelectedRows.Count != 1)
         {
             MessageBox.Show("You must select ONE author to edit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
-        EditAuthor editAuthor = new(authors_grd);
+        EditAuthor editAuthor = new(authors_grid);
         editAuthor.ShowDialog();
         RefreshAuthors(sender, e);
     }
@@ -373,7 +373,7 @@ public partial class AdminPanel : Form
     // Removes authors from the database - Marks the book as returned
     private void RemoveAuthors(object sender, EventArgs e)
     {
-        RemoveAuthors removeAuthors = new(authors_grd);
+        RemoveAuthors removeAuthors = new(authors_grid);
         removeAuthors.ShowDialog();
         RefreshAuthors(sender, e);
     }
@@ -397,14 +397,14 @@ public partial class AdminPanel : Form
     private void RefreshPublishers(object sender, EventArgs e)
     {
         var result = HandleQueries.SelectFromFile("SelectPublisher");
-        HandleGrids.Fill(publishers_grd, result);
+        HandleGrids.Fill(publishers_grid, result);
     }
 
     // Live search - Searches publishers in the grid
     private void SearchPublishers(object sender, EventArgs e)
     {
         string[] cols = ["publishers_publisher"];
-        HandleGrids.SearchGrid(publishers_grd, publishers_src.Text, cols);
+        HandleGrids.SearchGrid(publishers_grid, publishers_textBox_search.Text, cols);
     }
 
     // Adds a publisher to the database
@@ -418,12 +418,12 @@ public partial class AdminPanel : Form
     // Edit the selected publisher from the grid and then updates it in the database
     private void EditPublisher(object sender, EventArgs e)
     {
-        if (publishers_grd.SelectedRows.Count != 1)
+        if (publishers_grid.SelectedRows.Count != 1)
         {
             MessageBox.Show("You must select ONE publisher to edit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
-        EditPublisher editPublisher = new(publishers_grd);
+        EditPublisher editPublisher = new(publishers_grid);
         editPublisher.ShowDialog();
         RefreshPublishers(sender, e);
     }
@@ -431,7 +431,7 @@ public partial class AdminPanel : Form
     // Removes publishers from the database - Marks the book as returned
     private void RemovePublishers(object sender, EventArgs e)
     {
-        RemovePublishers removePublishers = new(publishers_grd);
+        RemovePublishers removePublishers = new(publishers_grid);
         removePublishers.ShowDialog();
         RefreshPublishers(sender, e);
     }
@@ -455,14 +455,14 @@ public partial class AdminPanel : Form
     private void RefreshUsers(object sender, EventArgs e)
     {
         var result = HandleQueries.SelectFromFile("SelectUser");
-        HandleGrids.Fill(users_grd, result);
+        HandleGrids.Fill(users_grid, result);
     }
 
     // Live search - Searches users in the grid
     private void SearchUsers(object sender, EventArgs e)
     {
         string[] cols = ["users_name", "users_username"];
-        HandleGrids.SearchGrid(users_grd, users_src.Text, cols);
+        HandleGrids.SearchGrid(users_grid, users_textBox_search.Text, cols);
     }
 
     // Adds a user to the database
@@ -476,12 +476,12 @@ public partial class AdminPanel : Form
     // Edit the selected user from the grid and then updates it in the database
     private void EditUser(object sender, EventArgs e)
     {
-        if (users_grd.SelectedRows.Count != 1)
+        if (users_grid.SelectedRows.Count != 1)
         {
             MessageBox.Show("You must select ONE user to edit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
-        EditUser editUser = new(users_grd);
+        EditUser editUser = new(users_grid);
         editUser.ShowDialog();
         RefreshUsers(sender, e);
     }
@@ -489,7 +489,7 @@ public partial class AdminPanel : Form
     // Removes user from the database - Marks the book as returned
     private void RemoveUsers(object sender, EventArgs e)
     {
-        RemoveUser removeUser = new(users_grd);
+        RemoveUser removeUser = new(users_grid);
         removeUser.ShowDialog();
         RefreshUsers(sender, e);
     }
