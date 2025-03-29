@@ -2,7 +2,7 @@
 
 namespace Desktop_Application
 {
-    partial class Main
+    partial class LMS
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace Desktop_Application
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LMS));
             panel_menu = new Panel();
             button_dashboard = new Button();
             button_books = new Button();

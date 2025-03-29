@@ -59,9 +59,9 @@ public partial class Login : Form
                         isAdmin = true;
                     }
 
-                    Main adminPanel = new(textBox_username.Text, isAdmin);
+                    LMS lms = new(textBox_username.Text, isAdmin);
                     this.Hide();
-                    adminPanel.ShowDialog();
+                    lms.ShowDialog();
                     this.Close();
                 }
                 else
