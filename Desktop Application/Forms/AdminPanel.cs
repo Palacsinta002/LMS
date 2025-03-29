@@ -45,11 +45,11 @@ public partial class AdminPanel : Form
     // Shows the Dashboard
     private void ShowDashboard(object sender, EventArgs e)
     {
-        if (!dashboard_pnl.Visible)
+        if (!panel_dashboard.Visible)
         {
             HidePanels();
-            dashboard_pnl.Visible = true;
-            dashboard_pnl.Enabled = true;
+            panel_dashboard.Visible = true;
+            panel_dashboard.Enabled = true;
 
             // Show statistics about our books
             try
@@ -81,11 +81,11 @@ public partial class AdminPanel : Form
     // Shows Books page and hides other pages
     private void ShowBooks(object sender, EventArgs e)
     {
-        if (!books_pnl.Visible)
+        if (!panel_books.Visible)
         {
             HidePanels();
-            books_pnl.Visible = true;
-            books_pnl.Enabled = true;
+            panel_books.Visible = true;
+            panel_books.Enabled = true;
             RefreshBooks(sender, e);
         }
     }
@@ -139,11 +139,11 @@ public partial class AdminPanel : Form
     // Shows Borrowings page and hides other pages
     private void ShowBorrowings(object sender, EventArgs e)
     {
-        if (!borrowings_pnl.Visible)
+        if (!panel_borrowings.Visible)
         {
             HidePanels();
-            borrowings_pnl.Visible = true;
-            borrowings_pnl.Enabled = true;
+            panel_borrowings.Visible = true;
+            panel_borrowings.Enabled = true;
             RefreshBorrowings(sender, e);
         }
     }
@@ -213,8 +213,8 @@ public partial class AdminPanel : Form
     private void ShowReservations(object sender, EventArgs e)
     {
         HidePanels();
-        reservations_pnl.Visible = true;
-        reservations_pnl.Enabled = true;
+        panel_reservations.Visible = true;
+        panel_reservations.Enabled = true;
         RefreshReservations(sender, e);
     }
 
@@ -267,11 +267,11 @@ public partial class AdminPanel : Form
     // Shows Categories page and hides other pages
     private void ShowCategories(object sender, EventArgs e)
     {
-        if (!categories_pnl.Visible)
+        if (!panel_categories.Visible)
         {
             HidePanels();
-            categories_pnl.Visible = true;
-            categories_pnl.Enabled = true;
+            panel_categories.Visible = true;
+            panel_categories.Enabled = true;
             RefreshCategories(sender, e);
         }
     }
@@ -326,11 +326,11 @@ public partial class AdminPanel : Form
     // Shows Authors page and hides other pages
     private void ShowAuthors(object sender, EventArgs e)
     {
-        if (!authors_pnl.Visible)
+        if (!panel_authors.Visible)
         {
             HidePanels();
-            authors_pnl.Visible = true;
-            authors_pnl.Enabled = true;
+            panel_authors.Visible = true;
+            panel_authors.Enabled = true;
             RefreshAuthors(sender, e);
         }
     }
@@ -384,11 +384,11 @@ public partial class AdminPanel : Form
     // Shows Publishers page and hides other pages
     private void ShowPublishers(object sender, EventArgs e)
     {
-        if (!publishers_pnl.Visible)
+        if (!panel_publishers.Visible)
         {
             HidePanels();
-            publishers_pnl.Visible = true;
-            publishers_pnl.Enabled = true;
+            panel_publishers.Visible = true;
+            panel_publishers.Enabled = true;
             RefreshPublishers(sender, e);
         }
     }
@@ -442,11 +442,11 @@ public partial class AdminPanel : Form
     // Shows Users page and hides other pages
     private void ShowUsers(object sender, EventArgs e)
     {
-        if (users_pnl.Visible != true)
+        if (panel_users.Visible != true)
         {
             HidePanels();
-            users_pnl.Visible = true;
-            users_pnl.Enabled = true;
+            panel_users.Visible = true;
+            panel_users.Enabled = true;
             RefreshUsers(sender, e);
         }
     }
@@ -498,22 +498,22 @@ public partial class AdminPanel : Form
     // Hides every panel so there will be room for the opened panel
     private void HidePanels()
     {
-        dashboard_pnl.Visible = false;
-        dashboard_pnl.Enabled = false;
-        books_pnl.Visible = false;
-        books_pnl.Enabled = false;
-        borrowings_pnl.Visible = false;
-        borrowings_pnl.Enabled = false;
-        reservations_pnl.Visible = false;
-        reservations_pnl.Enabled = false;
-        categories_pnl.Visible = false;
-        categories_pnl.Enabled = false;
-        users_pnl.Visible = false;
-        users_pnl.Enabled = false;
-        authors_pnl.Visible = false;
-        authors_pnl.Enabled = false;
-        publishers_pnl.Visible = false;
-        publishers_pnl.Enabled = false;
+        panel_dashboard.Visible = false;
+        panel_dashboard.Enabled = false;
+        panel_books.Visible = false;
+        panel_books.Enabled = false;
+        panel_borrowings.Visible = false;
+        panel_borrowings.Enabled = false;
+        panel_reservations.Visible = false;
+        panel_reservations.Enabled = false;
+        panel_categories.Visible = false;
+        panel_categories.Enabled = false;
+        panel_users.Visible = false;
+        panel_users.Enabled = false;
+        panel_authors.Visible = false;
+        panel_authors.Enabled = false;
+        panel_publishers.Visible = false;
+        panel_publishers.Enabled = false;
     }
 
     // Logs out and drops back to the login screen

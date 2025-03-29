@@ -31,7 +31,7 @@ namespace Desktop_Application
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminPanel));
-            menu_pnl = new Panel();
+            panel_menu = new Panel();
             panel7 = new Panel();
             reservations_btn = new Button();
             panel2 = new Panel();
@@ -49,10 +49,10 @@ namespace Desktop_Application
             books_btn = new Button();
             dashboard_btn = new Button();
             label1 = new Label();
-            header_pnl = new Panel();
+            panel_header = new Panel();
             label_greeting = new Label();
             label_title = new Label();
-            dashboard_pnl = new Panel();
+            panel_dashboard = new Panel();
             panel5 = new Panel();
             dashboard_borrowings = new RoundedButton();
             label3 = new Label();
@@ -69,7 +69,7 @@ namespace Desktop_Application
             dashboard_publicationYear = new DataGridViewTextBoxColumn();
             dashboard_category = new DataGridViewTextBoxColumn();
             label4 = new Label();
-            books_pnl = new Panel();
+            panel_books = new Panel();
             roundedButton5 = new RoundedButton();
             roundedButton6 = new RoundedButton();
             books_refresh_btn = new RoundedButton();
@@ -83,7 +83,7 @@ namespace Desktop_Application
             books_category = new DataGridViewTextBoxColumn();
             books_publisher = new DataGridViewTextBoxColumn();
             books_isbn = new DataGridViewTextBoxColumn();
-            borrowings_pnl = new Panel();
+            panel_borrowings = new Panel();
             checkBox_currentBorrowings = new CheckBox();
             borrowings_grd = new DataGridView();
             borrowings_username = new DataGridViewTextBoxColumn();
@@ -98,7 +98,7 @@ namespace Desktop_Application
             borrowings_return_btn = new RoundedButton();
             borrowings_lbl1 = new Label();
             borrowings_src = new TextBox();
-            categories_pnl = new Panel();
+            panel_categories = new Panel();
             categories_grd = new DataGridView();
             categories_category = new DataGridViewTextBoxColumn();
             categories_refresh_btn = new RoundedButton();
@@ -107,7 +107,7 @@ namespace Desktop_Application
             categories_remove_btn = new RoundedButton();
             categories_lbl1 = new Label();
             categories_src = new TextBox();
-            users_pnl = new Panel();
+            panel_users = new Panel();
             users_grd = new DataGridView();
             users_firstName = new DataGridViewTextBoxColumn();
             users_lastName = new DataGridViewTextBoxColumn();
@@ -123,7 +123,7 @@ namespace Desktop_Application
             users_button_remove = new RoundedButton();
             users_lbl1 = new Label();
             users_src = new TextBox();
-            authors_pnl = new Panel();
+            panel_authors = new Panel();
             authors_grd = new DataGridView();
             authors_author = new DataGridViewTextBoxColumn();
             authors_refresh_btn = new RoundedButton();
@@ -132,7 +132,7 @@ namespace Desktop_Application
             authors_remove_btn = new RoundedButton();
             authors_lbl1 = new Label();
             authors_src = new TextBox();
-            publishers_pnl = new Panel();
+            panel_publishers = new Panel();
             publishers_grd = new DataGridView();
             publishers_publisher = new DataGridViewTextBoxColumn();
             publishers_refresh_btn = new RoundedButton();
@@ -141,7 +141,7 @@ namespace Desktop_Application
             publishers_remove_btn = new RoundedButton();
             publishers_lbl1 = new Label();
             publishers_src = new TextBox();
-            reservations_pnl = new Panel();
+            panel_reservations = new Panel();
             reservations_grd = new DataGridView();
             reservations_username = new DataGridViewTextBoxColumn();
             reservations_title = new DataGridViewTextBoxColumn();
@@ -154,55 +154,55 @@ namespace Desktop_Application
             reservations_remove_btn = new RoundedButton();
             label5 = new Label();
             reservations_src = new TextBox();
-            menu_pnl.SuspendLayout();
-            header_pnl.SuspendLayout();
-            dashboard_pnl.SuspendLayout();
+            panel_menu.SuspendLayout();
+            panel_header.SuspendLayout();
+            panel_dashboard.SuspendLayout();
             panel5.SuspendLayout();
             panel4.SuspendLayout();
             panel3.SuspendLayout();
             panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)grid_dashboard).BeginInit();
-            books_pnl.SuspendLayout();
+            panel_books.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)books_grd).BeginInit();
-            borrowings_pnl.SuspendLayout();
+            panel_borrowings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)borrowings_grd).BeginInit();
-            categories_pnl.SuspendLayout();
+            panel_categories.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)categories_grd).BeginInit();
-            users_pnl.SuspendLayout();
+            panel_users.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)users_grd).BeginInit();
-            authors_pnl.SuspendLayout();
+            panel_authors.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)authors_grd).BeginInit();
-            publishers_pnl.SuspendLayout();
+            panel_publishers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)publishers_grd).BeginInit();
-            reservations_pnl.SuspendLayout();
+            panel_reservations.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)reservations_grd).BeginInit();
             SuspendLayout();
             // 
-            // menu_pnl
+            // panel_menu
             // 
-            menu_pnl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            menu_pnl.BackColor = Color.FromArgb(80, 77, 180);
-            menu_pnl.Controls.Add(panel7);
-            menu_pnl.Controls.Add(reservations_btn);
-            menu_pnl.Controls.Add(panel2);
-            menu_pnl.Controls.Add(button2);
-            menu_pnl.Controls.Add(panel1);
-            menu_pnl.Controls.Add(button1);
-            menu_pnl.Controls.Add(divider_pnl4);
-            menu_pnl.Controls.Add(divider_pnl);
-            menu_pnl.Controls.Add(divider_pnl1);
-            menu_pnl.Controls.Add(divider_pnl3);
-            menu_pnl.Controls.Add(logout_btn);
-            menu_pnl.Controls.Add(categories_btn);
-            menu_pnl.Controls.Add(borrowings_btn);
-            menu_pnl.Controls.Add(users_btn);
-            menu_pnl.Controls.Add(books_btn);
-            menu_pnl.Controls.Add(dashboard_btn);
-            menu_pnl.Location = new Point(0, 0);
-            menu_pnl.MinimumSize = new Size(263, 561);
-            menu_pnl.Name = "menu_pnl";
-            menu_pnl.Size = new Size(263, 561);
-            menu_pnl.TabIndex = 9;
+            panel_menu.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            panel_menu.BackColor = Color.FromArgb(80, 77, 180);
+            panel_menu.Controls.Add(panel7);
+            panel_menu.Controls.Add(reservations_btn);
+            panel_menu.Controls.Add(panel2);
+            panel_menu.Controls.Add(button2);
+            panel_menu.Controls.Add(panel1);
+            panel_menu.Controls.Add(button1);
+            panel_menu.Controls.Add(divider_pnl4);
+            panel_menu.Controls.Add(divider_pnl);
+            panel_menu.Controls.Add(divider_pnl1);
+            panel_menu.Controls.Add(divider_pnl3);
+            panel_menu.Controls.Add(logout_btn);
+            panel_menu.Controls.Add(categories_btn);
+            panel_menu.Controls.Add(borrowings_btn);
+            panel_menu.Controls.Add(users_btn);
+            panel_menu.Controls.Add(books_btn);
+            panel_menu.Controls.Add(dashboard_btn);
+            panel_menu.Location = new Point(0, 0);
+            panel_menu.MinimumSize = new Size(263, 561);
+            panel_menu.Name = "panel_menu";
+            panel_menu.Size = new Size(263, 561);
+            panel_menu.TabIndex = 9;
             // 
             // panel7
             // 
@@ -437,17 +437,17 @@ namespace Desktop_Application
             label1.TabIndex = 11;
             label1.Text = "No. of Books";
             // 
-            // header_pnl
+            // panel_header
             // 
-            header_pnl.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            header_pnl.AutoScroll = true;
-            header_pnl.BackColor = Color.FromArgb(72, 69, 158);
-            header_pnl.Controls.Add(label_greeting);
-            header_pnl.Controls.Add(label_title);
-            header_pnl.Location = new Point(0, 0);
-            header_pnl.Name = "header_pnl";
-            header_pnl.Size = new Size(985, 50);
-            header_pnl.TabIndex = 11;
+            panel_header.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel_header.AutoScroll = true;
+            panel_header.BackColor = Color.FromArgb(72, 69, 158);
+            panel_header.Controls.Add(label_greeting);
+            panel_header.Controls.Add(label_title);
+            panel_header.Location = new Point(0, 0);
+            panel_header.Name = "panel_header";
+            panel_header.Size = new Size(985, 50);
+            panel_header.TabIndex = 11;
             // 
             // label_greeting
             // 
@@ -476,19 +476,19 @@ namespace Desktop_Application
             label_title.Text = "Library Management System";
             label_title.Click += ShowDashboard;
             // 
-            // dashboard_pnl
+            // panel_dashboard
             // 
-            dashboard_pnl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dashboard_pnl.AutoScroll = true;
-            dashboard_pnl.Controls.Add(panel5);
-            dashboard_pnl.Controls.Add(panel4);
-            dashboard_pnl.Controls.Add(panel3);
-            dashboard_pnl.Controls.Add(panel6);
-            dashboard_pnl.Location = new Point(266, 56);
-            dashboard_pnl.Name = "dashboard_pnl";
-            dashboard_pnl.Size = new Size(709, 493);
-            dashboard_pnl.TabIndex = 12;
-            dashboard_pnl.Visible = false;
+            panel_dashboard.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel_dashboard.AutoScroll = true;
+            panel_dashboard.Controls.Add(panel5);
+            panel_dashboard.Controls.Add(panel4);
+            panel_dashboard.Controls.Add(panel3);
+            panel_dashboard.Controls.Add(panel6);
+            panel_dashboard.Location = new Point(266, 56);
+            panel_dashboard.Name = "panel_dashboard";
+            panel_dashboard.Size = new Size(709, 493);
+            panel_dashboard.TabIndex = 12;
+            panel_dashboard.Visible = false;
             // 
             // panel5
             // 
@@ -709,21 +709,21 @@ namespace Desktop_Application
             label4.TabIndex = 17;
             label4.Text = "Top Borrowed Books";
             // 
-            // books_pnl
+            // panel_books
             // 
-            books_pnl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            books_pnl.Controls.Add(roundedButton5);
-            books_pnl.Controls.Add(roundedButton6);
-            books_pnl.Controls.Add(books_refresh_btn);
-            books_pnl.Controls.Add(roundedButton7);
-            books_pnl.Controls.Add(books_lbl1);
-            books_pnl.Controls.Add(books_src);
-            books_pnl.Controls.Add(books_grd);
-            books_pnl.Location = new Point(266, 56);
-            books_pnl.Name = "books_pnl";
-            books_pnl.Size = new Size(708, 493);
-            books_pnl.TabIndex = 13;
-            books_pnl.Visible = false;
+            panel_books.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel_books.Controls.Add(roundedButton5);
+            panel_books.Controls.Add(roundedButton6);
+            panel_books.Controls.Add(books_refresh_btn);
+            panel_books.Controls.Add(roundedButton7);
+            panel_books.Controls.Add(books_lbl1);
+            panel_books.Controls.Add(books_src);
+            panel_books.Controls.Add(books_grd);
+            panel_books.Location = new Point(266, 56);
+            panel_books.Name = "panel_books";
+            panel_books.Size = new Size(709, 493);
+            panel_books.TabIndex = 13;
+            panel_books.Visible = false;
             // 
             // roundedButton5
             // 
@@ -738,7 +738,7 @@ namespace Desktop_Application
             roundedButton5.FlatStyle = FlatStyle.Flat;
             roundedButton5.Font = new Font("Yu Gothic UI Semibold", 14F);
             roundedButton5.ForeColor = Color.White;
-            roundedButton5.Location = new Point(343, 26);
+            roundedButton5.Location = new Point(344, 26);
             roundedButton5.Name = "roundedButton5";
             roundedButton5.Size = new Size(100, 36);
             roundedButton5.TabIndex = 15;
@@ -760,7 +760,7 @@ namespace Desktop_Application
             roundedButton6.FlatStyle = FlatStyle.Flat;
             roundedButton6.Font = new Font("Yu Gothic UI Semibold", 14F);
             roundedButton6.ForeColor = Color.White;
-            roundedButton6.Location = new Point(131, 26);
+            roundedButton6.Location = new Point(132, 26);
             roundedButton6.Name = "roundedButton6";
             roundedButton6.Size = new Size(100, 36);
             roundedButton6.TabIndex = 13;
@@ -803,7 +803,7 @@ namespace Desktop_Application
             roundedButton7.FlatStyle = FlatStyle.Flat;
             roundedButton7.Font = new Font("Yu Gothic UI Semibold", 14F);
             roundedButton7.ForeColor = Color.White;
-            roundedButton7.Location = new Point(237, 26);
+            roundedButton7.Location = new Point(238, 26);
             roundedButton7.Name = "roundedButton7";
             roundedButton7.Size = new Size(100, 36);
             roundedButton7.TabIndex = 14;
@@ -827,7 +827,7 @@ namespace Desktop_Application
             books_src.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             books_src.BackColor = Color.White;
             books_src.Font = new Font("Yu Gothic UI Semibold", 14F);
-            books_src.Location = new Point(448, 29);
+            books_src.Location = new Point(449, 29);
             books_src.MaxLength = 19;
             books_src.Name = "books_src";
             books_src.PlaceholderText = "Search...";
@@ -856,7 +856,7 @@ namespace Desktop_Application
             books_grd.ShowCellToolTips = false;
             books_grd.ShowEditingIcon = false;
             books_grd.ShowRowErrors = false;
-            books_grd.Size = new Size(604, 359);
+            books_grd.Size = new Size(605, 359);
             books_grd.StandardTab = true;
             books_grd.TabIndex = 11;
             // 
@@ -908,29 +908,29 @@ namespace Desktop_Application
             books_isbn.ReadOnly = true;
             books_isbn.Width = 57;
             // 
-            // borrowings_pnl
+            // panel_borrowings
             // 
-            borrowings_pnl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            borrowings_pnl.BackColor = Color.White;
-            borrowings_pnl.Controls.Add(checkBox_currentBorrowings);
-            borrowings_pnl.Controls.Add(borrowings_grd);
-            borrowings_pnl.Controls.Add(borrowings_refresh_btn);
-            borrowings_pnl.Controls.Add(borrowings_borrow_btn);
-            borrowings_pnl.Controls.Add(borrowings_edit_btn);
-            borrowings_pnl.Controls.Add(borrowings_return_btn);
-            borrowings_pnl.Controls.Add(borrowings_lbl1);
-            borrowings_pnl.Controls.Add(borrowings_src);
-            borrowings_pnl.Location = new Point(266, 56);
-            borrowings_pnl.Name = "borrowings_pnl";
-            borrowings_pnl.Size = new Size(708, 493);
-            borrowings_pnl.TabIndex = 14;
-            borrowings_pnl.Visible = false;
+            panel_borrowings.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel_borrowings.BackColor = Color.White;
+            panel_borrowings.Controls.Add(checkBox_currentBorrowings);
+            panel_borrowings.Controls.Add(borrowings_grd);
+            panel_borrowings.Controls.Add(borrowings_refresh_btn);
+            panel_borrowings.Controls.Add(borrowings_borrow_btn);
+            panel_borrowings.Controls.Add(borrowings_edit_btn);
+            panel_borrowings.Controls.Add(borrowings_return_btn);
+            panel_borrowings.Controls.Add(borrowings_lbl1);
+            panel_borrowings.Controls.Add(borrowings_src);
+            panel_borrowings.Location = new Point(266, 56);
+            panel_borrowings.Name = "panel_borrowings";
+            panel_borrowings.Size = new Size(709, 493);
+            panel_borrowings.TabIndex = 14;
+            panel_borrowings.Visible = false;
             // 
             // checkBox_currentBorrowings
             // 
             checkBox_currentBorrowings.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             checkBox_currentBorrowings.AutoSize = true;
-            checkBox_currentBorrowings.Location = new Point(471, 80);
+            checkBox_currentBorrowings.Location = new Point(472, 80);
             checkBox_currentBorrowings.Name = "checkBox_currentBorrowings";
             checkBox_currentBorrowings.RightToLeft = RightToLeft.Yes;
             checkBox_currentBorrowings.Size = new Size(186, 19);
@@ -960,7 +960,7 @@ namespace Desktop_Application
             borrowings_grd.ShowCellToolTips = false;
             borrowings_grd.ShowEditingIcon = false;
             borrowings_grd.ShowRowErrors = false;
-            borrowings_grd.Size = new Size(604, 359);
+            borrowings_grd.Size = new Size(605, 359);
             borrowings_grd.StandardTab = true;
             borrowings_grd.TabIndex = 11;
             // 
@@ -1046,7 +1046,7 @@ namespace Desktop_Application
             borrowings_borrow_btn.FlatStyle = FlatStyle.Flat;
             borrowings_borrow_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             borrowings_borrow_btn.ForeColor = Color.White;
-            borrowings_borrow_btn.Location = new Point(342, 26);
+            borrowings_borrow_btn.Location = new Point(343, 26);
             borrowings_borrow_btn.Name = "borrowings_borrow_btn";
             borrowings_borrow_btn.Size = new Size(100, 36);
             borrowings_borrow_btn.TabIndex = 15;
@@ -1068,7 +1068,7 @@ namespace Desktop_Application
             borrowings_edit_btn.FlatStyle = FlatStyle.Flat;
             borrowings_edit_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             borrowings_edit_btn.ForeColor = Color.White;
-            borrowings_edit_btn.Location = new Point(130, 26);
+            borrowings_edit_btn.Location = new Point(131, 26);
             borrowings_edit_btn.Name = "borrowings_edit_btn";
             borrowings_edit_btn.Size = new Size(100, 36);
             borrowings_edit_btn.TabIndex = 13;
@@ -1090,7 +1090,7 @@ namespace Desktop_Application
             borrowings_return_btn.FlatStyle = FlatStyle.Flat;
             borrowings_return_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             borrowings_return_btn.ForeColor = Color.White;
-            borrowings_return_btn.Location = new Point(236, 26);
+            borrowings_return_btn.Location = new Point(237, 26);
             borrowings_return_btn.Name = "borrowings_return_btn";
             borrowings_return_btn.Size = new Size(100, 36);
             borrowings_return_btn.TabIndex = 14;
@@ -1114,7 +1114,7 @@ namespace Desktop_Application
             borrowings_src.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             borrowings_src.BackColor = Color.White;
             borrowings_src.Font = new Font("Yu Gothic UI Semibold", 14F);
-            borrowings_src.Location = new Point(448, 29);
+            borrowings_src.Location = new Point(449, 29);
             borrowings_src.MaxLength = 19;
             borrowings_src.Name = "borrowings_src";
             borrowings_src.PlaceholderText = "Search...";
@@ -1122,22 +1122,22 @@ namespace Desktop_Application
             borrowings_src.TabIndex = 16;
             borrowings_src.TextChanged += SearchBorrowings;
             // 
-            // categories_pnl
+            // panel_categories
             // 
-            categories_pnl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            categories_pnl.BackColor = Color.White;
-            categories_pnl.Controls.Add(categories_grd);
-            categories_pnl.Controls.Add(categories_refresh_btn);
-            categories_pnl.Controls.Add(categories_add_btn);
-            categories_pnl.Controls.Add(categories_edit_btn);
-            categories_pnl.Controls.Add(categories_remove_btn);
-            categories_pnl.Controls.Add(categories_lbl1);
-            categories_pnl.Controls.Add(categories_src);
-            categories_pnl.Location = new Point(266, 56);
-            categories_pnl.Name = "categories_pnl";
-            categories_pnl.Size = new Size(708, 493);
-            categories_pnl.TabIndex = 23;
-            categories_pnl.Visible = false;
+            panel_categories.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel_categories.BackColor = Color.White;
+            panel_categories.Controls.Add(categories_grd);
+            panel_categories.Controls.Add(categories_refresh_btn);
+            panel_categories.Controls.Add(categories_add_btn);
+            panel_categories.Controls.Add(categories_edit_btn);
+            panel_categories.Controls.Add(categories_remove_btn);
+            panel_categories.Controls.Add(categories_lbl1);
+            panel_categories.Controls.Add(categories_src);
+            panel_categories.Location = new Point(266, 56);
+            panel_categories.Name = "panel_categories";
+            panel_categories.Size = new Size(709, 493);
+            panel_categories.TabIndex = 23;
+            panel_categories.Visible = false;
             // 
             // categories_grd
             // 
@@ -1160,7 +1160,7 @@ namespace Desktop_Application
             categories_grd.ShowCellToolTips = false;
             categories_grd.ShowEditingIcon = false;
             categories_grd.ShowRowErrors = false;
-            categories_grd.Size = new Size(604, 359);
+            categories_grd.Size = new Size(605, 359);
             categories_grd.StandardTab = true;
             categories_grd.TabIndex = 11;
             // 
@@ -1206,7 +1206,7 @@ namespace Desktop_Application
             categories_add_btn.FlatStyle = FlatStyle.Flat;
             categories_add_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             categories_add_btn.ForeColor = Color.White;
-            categories_add_btn.Location = new Point(342, 26);
+            categories_add_btn.Location = new Point(343, 26);
             categories_add_btn.Name = "categories_add_btn";
             categories_add_btn.Size = new Size(100, 36);
             categories_add_btn.TabIndex = 15;
@@ -1228,7 +1228,7 @@ namespace Desktop_Application
             categories_edit_btn.FlatStyle = FlatStyle.Flat;
             categories_edit_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             categories_edit_btn.ForeColor = Color.White;
-            categories_edit_btn.Location = new Point(130, 26);
+            categories_edit_btn.Location = new Point(131, 26);
             categories_edit_btn.Name = "categories_edit_btn";
             categories_edit_btn.Size = new Size(100, 36);
             categories_edit_btn.TabIndex = 13;
@@ -1250,7 +1250,7 @@ namespace Desktop_Application
             categories_remove_btn.FlatStyle = FlatStyle.Flat;
             categories_remove_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             categories_remove_btn.ForeColor = Color.White;
-            categories_remove_btn.Location = new Point(236, 26);
+            categories_remove_btn.Location = new Point(237, 26);
             categories_remove_btn.Name = "categories_remove_btn";
             categories_remove_btn.Size = new Size(100, 36);
             categories_remove_btn.TabIndex = 14;
@@ -1274,7 +1274,7 @@ namespace Desktop_Application
             categories_src.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             categories_src.BackColor = Color.White;
             categories_src.Font = new Font("Yu Gothic UI Semibold", 14F);
-            categories_src.Location = new Point(448, 29);
+            categories_src.Location = new Point(449, 29);
             categories_src.MaxLength = 19;
             categories_src.Name = "categories_src";
             categories_src.PlaceholderText = "Search...";
@@ -1282,21 +1282,21 @@ namespace Desktop_Application
             categories_src.TabIndex = 16;
             categories_src.TextChanged += SearchCategories;
             // 
-            // users_pnl
+            // panel_users
             // 
-            users_pnl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            users_pnl.Controls.Add(users_grd);
-            users_pnl.Controls.Add(users_button_add);
-            users_pnl.Controls.Add(roundedButton1);
-            users_pnl.Controls.Add(users_button_edit);
-            users_pnl.Controls.Add(users_button_remove);
-            users_pnl.Controls.Add(users_lbl1);
-            users_pnl.Controls.Add(users_src);
-            users_pnl.Location = new Point(266, 56);
-            users_pnl.Name = "users_pnl";
-            users_pnl.Size = new Size(708, 493);
-            users_pnl.TabIndex = 24;
-            users_pnl.Visible = false;
+            panel_users.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel_users.Controls.Add(users_grd);
+            panel_users.Controls.Add(users_button_add);
+            panel_users.Controls.Add(roundedButton1);
+            panel_users.Controls.Add(users_button_edit);
+            panel_users.Controls.Add(users_button_remove);
+            panel_users.Controls.Add(users_lbl1);
+            panel_users.Controls.Add(users_src);
+            panel_users.Location = new Point(266, 56);
+            panel_users.Name = "panel_users";
+            panel_users.Size = new Size(709, 493);
+            panel_users.TabIndex = 24;
+            panel_users.Visible = false;
             // 
             // users_grd
             // 
@@ -1319,7 +1319,7 @@ namespace Desktop_Application
             users_grd.ShowCellToolTips = false;
             users_grd.ShowEditingIcon = false;
             users_grd.ShowRowErrors = false;
-            users_grd.Size = new Size(604, 359);
+            users_grd.Size = new Size(605, 359);
             users_grd.StandardTab = true;
             users_grd.TabIndex = 11;
             // 
@@ -1400,7 +1400,7 @@ namespace Desktop_Application
             users_button_add.FlatStyle = FlatStyle.Flat;
             users_button_add.Font = new Font("Yu Gothic UI Semibold", 14F);
             users_button_add.ForeColor = Color.White;
-            users_button_add.Location = new Point(343, 26);
+            users_button_add.Location = new Point(344, 26);
             users_button_add.Name = "users_button_add";
             users_button_add.Size = new Size(100, 36);
             users_button_add.TabIndex = 15;
@@ -1443,7 +1443,7 @@ namespace Desktop_Application
             users_button_edit.FlatStyle = FlatStyle.Flat;
             users_button_edit.Font = new Font("Yu Gothic UI Semibold", 14F);
             users_button_edit.ForeColor = Color.White;
-            users_button_edit.Location = new Point(131, 26);
+            users_button_edit.Location = new Point(132, 26);
             users_button_edit.Name = "users_button_edit";
             users_button_edit.Size = new Size(100, 36);
             users_button_edit.TabIndex = 13;
@@ -1465,7 +1465,7 @@ namespace Desktop_Application
             users_button_remove.FlatStyle = FlatStyle.Flat;
             users_button_remove.Font = new Font("Yu Gothic UI Semibold", 14F);
             users_button_remove.ForeColor = Color.White;
-            users_button_remove.Location = new Point(237, 26);
+            users_button_remove.Location = new Point(238, 26);
             users_button_remove.Name = "users_button_remove";
             users_button_remove.Size = new Size(100, 36);
             users_button_remove.TabIndex = 14;
@@ -1489,7 +1489,7 @@ namespace Desktop_Application
             users_src.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             users_src.BackColor = Color.White;
             users_src.Font = new Font("Yu Gothic UI Semibold", 14F);
-            users_src.Location = new Point(448, 29);
+            users_src.Location = new Point(449, 29);
             users_src.MaxLength = 19;
             users_src.Name = "users_src";
             users_src.PlaceholderText = "Search...";
@@ -1497,22 +1497,22 @@ namespace Desktop_Application
             users_src.TabIndex = 16;
             users_src.TextChanged += SearchUsers;
             // 
-            // authors_pnl
+            // panel_authors
             // 
-            authors_pnl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            authors_pnl.BackColor = Color.White;
-            authors_pnl.Controls.Add(authors_grd);
-            authors_pnl.Controls.Add(authors_refresh_btn);
-            authors_pnl.Controls.Add(authors_add_btn);
-            authors_pnl.Controls.Add(authors_edit_btn);
-            authors_pnl.Controls.Add(authors_remove_btn);
-            authors_pnl.Controls.Add(authors_lbl1);
-            authors_pnl.Controls.Add(authors_src);
-            authors_pnl.Location = new Point(266, 56);
-            authors_pnl.Name = "authors_pnl";
-            authors_pnl.Size = new Size(708, 493);
-            authors_pnl.TabIndex = 25;
-            authors_pnl.Visible = false;
+            panel_authors.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel_authors.BackColor = Color.White;
+            panel_authors.Controls.Add(authors_grd);
+            panel_authors.Controls.Add(authors_refresh_btn);
+            panel_authors.Controls.Add(authors_add_btn);
+            panel_authors.Controls.Add(authors_edit_btn);
+            panel_authors.Controls.Add(authors_remove_btn);
+            panel_authors.Controls.Add(authors_lbl1);
+            panel_authors.Controls.Add(authors_src);
+            panel_authors.Location = new Point(266, 56);
+            panel_authors.Name = "panel_authors";
+            panel_authors.Size = new Size(709, 493);
+            panel_authors.TabIndex = 25;
+            panel_authors.Visible = false;
             // 
             // authors_grd
             // 
@@ -1535,7 +1535,7 @@ namespace Desktop_Application
             authors_grd.ShowCellToolTips = false;
             authors_grd.ShowEditingIcon = false;
             authors_grd.ShowRowErrors = false;
-            authors_grd.Size = new Size(604, 359);
+            authors_grd.Size = new Size(605, 359);
             authors_grd.StandardTab = true;
             authors_grd.TabIndex = 11;
             // 
@@ -1581,7 +1581,7 @@ namespace Desktop_Application
             authors_add_btn.FlatStyle = FlatStyle.Flat;
             authors_add_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             authors_add_btn.ForeColor = Color.White;
-            authors_add_btn.Location = new Point(342, 26);
+            authors_add_btn.Location = new Point(343, 26);
             authors_add_btn.Name = "authors_add_btn";
             authors_add_btn.Size = new Size(100, 36);
             authors_add_btn.TabIndex = 15;
@@ -1603,7 +1603,7 @@ namespace Desktop_Application
             authors_edit_btn.FlatStyle = FlatStyle.Flat;
             authors_edit_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             authors_edit_btn.ForeColor = Color.White;
-            authors_edit_btn.Location = new Point(130, 26);
+            authors_edit_btn.Location = new Point(131, 26);
             authors_edit_btn.Name = "authors_edit_btn";
             authors_edit_btn.Size = new Size(100, 36);
             authors_edit_btn.TabIndex = 13;
@@ -1625,7 +1625,7 @@ namespace Desktop_Application
             authors_remove_btn.FlatStyle = FlatStyle.Flat;
             authors_remove_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             authors_remove_btn.ForeColor = Color.White;
-            authors_remove_btn.Location = new Point(236, 26);
+            authors_remove_btn.Location = new Point(237, 26);
             authors_remove_btn.Name = "authors_remove_btn";
             authors_remove_btn.Size = new Size(100, 36);
             authors_remove_btn.TabIndex = 14;
@@ -1649,7 +1649,7 @@ namespace Desktop_Application
             authors_src.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             authors_src.BackColor = Color.White;
             authors_src.Font = new Font("Yu Gothic UI Semibold", 14F);
-            authors_src.Location = new Point(448, 29);
+            authors_src.Location = new Point(449, 29);
             authors_src.MaxLength = 19;
             authors_src.Name = "authors_src";
             authors_src.PlaceholderText = "Search...";
@@ -1658,23 +1658,23 @@ namespace Desktop_Application
             authors_src.TabStop = false;
             authors_src.TextChanged += SearchAuthors;
             // 
-            // publishers_pnl
+            // panel_publishers
             // 
-            publishers_pnl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            publishers_pnl.AutoSize = true;
-            publishers_pnl.BackColor = Color.White;
-            publishers_pnl.Controls.Add(publishers_grd);
-            publishers_pnl.Controls.Add(publishers_refresh_btn);
-            publishers_pnl.Controls.Add(publishers_add_btn);
-            publishers_pnl.Controls.Add(publishers_edit_btn);
-            publishers_pnl.Controls.Add(publishers_remove_btn);
-            publishers_pnl.Controls.Add(publishers_lbl1);
-            publishers_pnl.Controls.Add(publishers_src);
-            publishers_pnl.Location = new Point(266, 56);
-            publishers_pnl.Name = "publishers_pnl";
-            publishers_pnl.Size = new Size(708, 493);
-            publishers_pnl.TabIndex = 26;
-            publishers_pnl.Visible = false;
+            panel_publishers.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel_publishers.AutoSize = true;
+            panel_publishers.BackColor = Color.White;
+            panel_publishers.Controls.Add(publishers_grd);
+            panel_publishers.Controls.Add(publishers_refresh_btn);
+            panel_publishers.Controls.Add(publishers_add_btn);
+            panel_publishers.Controls.Add(publishers_edit_btn);
+            panel_publishers.Controls.Add(publishers_remove_btn);
+            panel_publishers.Controls.Add(publishers_lbl1);
+            panel_publishers.Controls.Add(publishers_src);
+            panel_publishers.Location = new Point(266, 56);
+            panel_publishers.Name = "panel_publishers";
+            panel_publishers.Size = new Size(709, 493);
+            panel_publishers.TabIndex = 26;
+            panel_publishers.Visible = false;
             // 
             // publishers_grd
             // 
@@ -1697,7 +1697,7 @@ namespace Desktop_Application
             publishers_grd.ShowCellToolTips = false;
             publishers_grd.ShowEditingIcon = false;
             publishers_grd.ShowRowErrors = false;
-            publishers_grd.Size = new Size(604, 359);
+            publishers_grd.Size = new Size(605, 359);
             publishers_grd.StandardTab = true;
             publishers_grd.TabIndex = 11;
             // 
@@ -1743,7 +1743,7 @@ namespace Desktop_Application
             publishers_add_btn.FlatStyle = FlatStyle.Flat;
             publishers_add_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             publishers_add_btn.ForeColor = Color.White;
-            publishers_add_btn.Location = new Point(342, 26);
+            publishers_add_btn.Location = new Point(343, 26);
             publishers_add_btn.Name = "publishers_add_btn";
             publishers_add_btn.Size = new Size(100, 36);
             publishers_add_btn.TabIndex = 15;
@@ -1765,7 +1765,7 @@ namespace Desktop_Application
             publishers_edit_btn.FlatStyle = FlatStyle.Flat;
             publishers_edit_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             publishers_edit_btn.ForeColor = Color.White;
-            publishers_edit_btn.Location = new Point(130, 26);
+            publishers_edit_btn.Location = new Point(131, 26);
             publishers_edit_btn.Name = "publishers_edit_btn";
             publishers_edit_btn.Size = new Size(100, 36);
             publishers_edit_btn.TabIndex = 13;
@@ -1787,7 +1787,7 @@ namespace Desktop_Application
             publishers_remove_btn.FlatStyle = FlatStyle.Flat;
             publishers_remove_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             publishers_remove_btn.ForeColor = Color.White;
-            publishers_remove_btn.Location = new Point(236, 26);
+            publishers_remove_btn.Location = new Point(237, 26);
             publishers_remove_btn.Name = "publishers_remove_btn";
             publishers_remove_btn.Size = new Size(100, 36);
             publishers_remove_btn.TabIndex = 14;
@@ -1811,7 +1811,7 @@ namespace Desktop_Application
             publishers_src.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             publishers_src.BackColor = Color.White;
             publishers_src.Font = new Font("Yu Gothic UI Semibold", 14F);
-            publishers_src.Location = new Point(448, 29);
+            publishers_src.Location = new Point(449, 29);
             publishers_src.MaxLength = 19;
             publishers_src.Name = "publishers_src";
             publishers_src.PlaceholderText = "Search...";
@@ -1819,22 +1819,22 @@ namespace Desktop_Application
             publishers_src.TabIndex = 16;
             publishers_src.TextChanged += SearchPublishers;
             // 
-            // reservations_pnl
+            // panel_reservations
             // 
-            reservations_pnl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            reservations_pnl.BackColor = Color.White;
-            reservations_pnl.Controls.Add(reservations_grd);
-            reservations_pnl.Controls.Add(reservations_refresh_btn);
-            reservations_pnl.Controls.Add(reservation_add_btn);
-            reservations_pnl.Controls.Add(reservations_edit_btn);
-            reservations_pnl.Controls.Add(reservations_remove_btn);
-            reservations_pnl.Controls.Add(label5);
-            reservations_pnl.Controls.Add(reservations_src);
-            reservations_pnl.Location = new Point(266, 56);
-            reservations_pnl.Name = "reservations_pnl";
-            reservations_pnl.Size = new Size(710, 493);
-            reservations_pnl.TabIndex = 27;
-            reservations_pnl.Visible = false;
+            panel_reservations.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel_reservations.BackColor = Color.White;
+            panel_reservations.Controls.Add(reservations_grd);
+            panel_reservations.Controls.Add(reservations_refresh_btn);
+            panel_reservations.Controls.Add(reservation_add_btn);
+            panel_reservations.Controls.Add(reservations_edit_btn);
+            panel_reservations.Controls.Add(reservations_remove_btn);
+            panel_reservations.Controls.Add(label5);
+            panel_reservations.Controls.Add(reservations_src);
+            panel_reservations.Location = new Point(266, 56);
+            panel_reservations.Name = "panel_reservations";
+            panel_reservations.Size = new Size(710, 493);
+            panel_reservations.TabIndex = 27;
+            panel_reservations.Visible = false;
             // 
             // reservations_grd
             // 
@@ -2017,28 +2017,28 @@ namespace Desktop_Application
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(984, 561);
-            Controls.Add(header_pnl);
-            Controls.Add(menu_pnl);
-            Controls.Add(books_pnl);
-            Controls.Add(dashboard_pnl);
-            Controls.Add(publishers_pnl);
-            Controls.Add(authors_pnl);
-            Controls.Add(categories_pnl);
-            Controls.Add(reservations_pnl);
-            Controls.Add(borrowings_pnl);
-            Controls.Add(users_pnl);
+            Controls.Add(panel_header);
+            Controls.Add(panel_menu);
+            Controls.Add(panel_publishers);
+            Controls.Add(panel_authors);
+            Controls.Add(panel_categories);
+            Controls.Add(panel_reservations);
+            Controls.Add(panel_borrowings);
+            Controls.Add(panel_users);
+            Controls.Add(panel_books);
+            Controls.Add(panel_dashboard);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(1000, 592);
             Name = "AdminPanel";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Admin Panel";
             Load += OnLoad;
-            menu_pnl.ResumeLayout(false);
-            menu_pnl.PerformLayout();
-            header_pnl.ResumeLayout(false);
-            header_pnl.PerformLayout();
-            dashboard_pnl.ResumeLayout(false);
-            dashboard_pnl.PerformLayout();
+            panel_menu.ResumeLayout(false);
+            panel_menu.PerformLayout();
+            panel_header.ResumeLayout(false);
+            panel_header.PerformLayout();
+            panel_dashboard.ResumeLayout(false);
+            panel_dashboard.PerformLayout();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             panel4.ResumeLayout(false);
@@ -2048,35 +2048,35 @@ namespace Desktop_Application
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)grid_dashboard).EndInit();
-            books_pnl.ResumeLayout(false);
-            books_pnl.PerformLayout();
+            panel_books.ResumeLayout(false);
+            panel_books.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)books_grd).EndInit();
-            borrowings_pnl.ResumeLayout(false);
-            borrowings_pnl.PerformLayout();
+            panel_borrowings.ResumeLayout(false);
+            panel_borrowings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)borrowings_grd).EndInit();
-            categories_pnl.ResumeLayout(false);
-            categories_pnl.PerformLayout();
+            panel_categories.ResumeLayout(false);
+            panel_categories.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)categories_grd).EndInit();
-            users_pnl.ResumeLayout(false);
-            users_pnl.PerformLayout();
+            panel_users.ResumeLayout(false);
+            panel_users.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)users_grd).EndInit();
-            authors_pnl.ResumeLayout(false);
-            authors_pnl.PerformLayout();
+            panel_authors.ResumeLayout(false);
+            panel_authors.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)authors_grd).EndInit();
-            publishers_pnl.ResumeLayout(false);
-            publishers_pnl.PerformLayout();
+            panel_publishers.ResumeLayout(false);
+            panel_publishers.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)publishers_grd).EndInit();
-            reservations_pnl.ResumeLayout(false);
-            reservations_pnl.PerformLayout();
+            panel_reservations.ResumeLayout(false);
+            panel_reservations.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)reservations_grd).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Panel menu_pnl;
+        private Panel panel_menu;
         private Button dashboard_btn;
-        private Panel header_pnl;
+        private Panel panel_header;
         private Label label_title;
         private Button categories_btn;
         private Button borrowings_btn;
@@ -2084,19 +2084,19 @@ namespace Desktop_Application
         private Button books_btn;
         private Label label_greeting;
         private Label label1;
-        private Panel dashboard_pnl;
+        private Panel panel_dashboard;
         private Label label4;
         private DataGridView grid_dashboard;
-        private Panel books_pnl;
+        private Panel panel_books;
         private Label books_lbl1;
         private RoundedButton books_refresh_btn;
         private RoundedButton dashboard_books;
         private TextBox books_src;
-        private Panel borrowings_pnl;
+        private Panel panel_borrowings;
         private RoundedButton logout_btn;
         private Panel divider_pnl1;
         private Panel divider_pnl3;
-        private Panel categories_pnl;
+        private Panel panel_categories;
         private RoundedButton categories_refresh_btn;
         private RoundedButton categories_add_btn;
         private RoundedButton categories_edit_btn;
@@ -2110,20 +2110,20 @@ namespace Desktop_Application
         private RoundedButton borrowings_return_btn;
         private Label borrowings_lbl1;
         private TextBox borrowings_src;
-        private Panel users_pnl;
+        private Panel panel_users;
         private TextBox users_src;
         private Panel panel1;
         private Button button1;
         private Panel panel2;
         private Button button2;
-        private Panel authors_pnl;
+        private Panel panel_authors;
         private RoundedButton authors_refresh_btn;
         private RoundedButton authors_add_btn;
         private RoundedButton authors_edit_btn;
         private RoundedButton authors_remove_btn;
         private Label authors_lbl1;
         private TextBox authors_src;
-        private Panel publishers_pnl;
+        private Panel panel_publishers;
         private RoundedButton publishers_refresh_btn;
         private RoundedButton publishers_add_btn;
         private RoundedButton publishers_edit_btn;
@@ -2184,7 +2184,7 @@ namespace Desktop_Application
         private Panel divider_pnl;
         private Panel panel7;
         private Button reservations_btn;
-        private Panel reservations_pnl;
+        private Panel panel_reservations;
         private DataGridView reservations_grd;
         private RoundedButton reservations_refresh_btn;
         private RoundedButton reservation_add_btn;
