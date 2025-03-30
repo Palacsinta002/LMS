@@ -24,6 +24,13 @@ public partial class Login : Form
         CloseWindow.Handle(this, rButton_close);
         HandleKeys.Handle(this, Keys.Enter, LoginCheck);
         this.KeyPreview = true;
+
+        // REMOVE BEFORE FLIGHT
+        LMS lms = new("Admin", true);
+        this.Hide();
+        lms.ShowDialog();
+        this.Close();
+        // REMOVE BEFORE FLIGHT
     }
 
     private void LoginCheck(object sender, EventArgs e)

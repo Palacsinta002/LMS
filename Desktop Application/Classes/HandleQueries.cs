@@ -112,14 +112,39 @@ internal class HandleQueries
         Connection connection = new();
         string query;
 
+        // Update book itself
         query = $"UPDATE Books SET ISBN = {isbn}, PublisherID = (SELECT id FROM Publishers WHERE Publisher = \"{publisher}\"), " +
-            $"Title = \"{title}\", PublicationYear = {pubYear}" +
+            $"Title = \"{title}\", PublicationYear = {pubYear} " +
             $"WHERE ISBN = {oldIsbn}";
         connection.RunSqlCommand(query);
 
-        query = $"DELETE FROM Books_Authors " +
-            $"WHERE ISBN = {oldIsbn} AND AuthorID != (SELECT id FROM Authors WHERE Author = \"{publisher}\"";
+        // Update Books_Authors bridging table
+        query = $"DELETE FROM Books_Authors WHERE ISBN = {oldIsbn} AND " +
+            $"AuthorID NOT IN ({string.Join(", ", authors.Select(author => $"(SELECT id FROM Authors WHERE Author = \"{author}\")"))})";
         connection.RunSqlCommand(query);
+
+        foreach(string author in authors)
+        {
+            query = $"INSERT INTO Books_Authors (ISBN, AuthorID) " +
+                $"SELECT {oldIsbn}, id FROM Authors " +
+                $"WHERE Author = \"{author}\" AND " +
+                $"id NOT IN (SELECT AuthorID FROM Books_Authors WHERE ISBN = {oldIsbn})";
+            connection.RunSqlCommand(query);
+        }
+
+        // Update Books_Categories bridging table
+        query = $"DELETE FROM Books_Categories WHERE ISBN = {oldIsbn} AND " +
+            $"CategoryID NOT IN ({string.Join(", ", categories.Select(category => $"(SELECT id FROM Categories WHERE Category = \"{category}\")"))})";
+        connection.RunSqlCommand(query);
+
+        foreach (string category in categories)
+        {
+            query = $"INSERT INTO Books_Categories (ISBN, CategoryID) " +
+                $"SELECT {oldIsbn}, id FROM Categories " +
+                $"WHERE Category = \"{category}\" AND " +
+                $"id NOT IN (SELECT CategoryID FROM Books_Categories WHERE ISBN = {oldIsbn})";
+            connection.RunSqlCommand(query);
+        }
     }
     // Update borrowing
     internal static void UpdateBorrowing(string isbn, DateTime dueDate)

@@ -55,7 +55,7 @@ public partial class EditBook : Form
                 File.Copy(_originalImgPath, tempPath, true);
                 uploadSuccessful = HandleFiles.Upload(tempPath);
             }
-            if (uploadSuccessful)
+            if (uploadSuccessful || _originalImgPath == string.Empty)
             {
                 string[] authors = [.. textBox_author.Text.Split(", ")];
                 string[] categories = [.. textBox_category.Text.Split(", ")];
@@ -116,7 +116,7 @@ public partial class EditBook : Form
 
     private void OpenChooseAuthor(object sender, EventArgs e)
     {
-        List<string> selectedAuthors = textBox_author.Text.Split(", ").ToList();
+        List<string> selectedAuthors = [.. textBox_author.Text.Split(", ")];
         ChooseAuthor chooseAuthor = new(selectedAuthors);
         chooseAuthor.ShowDialog();
 
@@ -125,7 +125,7 @@ public partial class EditBook : Form
 
     private void OpenChooseCategory(object sender, EventArgs e)
     {
-        List<string> selectedCategories = textBox_category.Text.Split(", ").ToList();
+        List<string> selectedCategories = [.. textBox_category.Text.Split(", ")];
         ChooseCategories chooseCategory = new(selectedCategories);
         chooseCategory.ShowDialog();
 
