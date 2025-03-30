@@ -26,7 +26,9 @@ internal class HandleQueries
         List<string> categories = categoriesString.Split(", ").ToList();
 
         Connection connection = new();
-        string query = $"INSERT INTO Books (ISBN, PublisherID, Title, PublicationYear) VALUES ({isbn}, (SELECT id FROM Publishers WHERE Publisher = \"{publisher}\"), \"{title}\", {pubYear})";
+        string query;
+
+        query = $"INSERT INTO Books (ISBN, PublisherID, Title, PublicationYear) VALUES ({isbn}, (SELECT id FROM Publishers WHERE Publisher = \"{publisher}\"), \"{title}\", {pubYear})";
         connection.RunSqlCommand(query);
 
         for (int i = 0; i < authors.Count; i++)
@@ -105,11 +107,19 @@ internal class HandleQueries
 
     // UPDATE functions
     // Update book with the given arguments
-    internal static void UpdateBook(DataGridView books_grd, string isbn, string publisher, string title, string pubYear, string authorsString, string categoriesString)
+    internal static void UpdateBook(string oldIsbn, string isbn, string publisher, string title, string pubYear, string[] authors, string[] categories)
     {
-        Delete(books_grd, "Books", "books_isbn", "ISBN");
+        Connection connection = new();
+        string query;
 
-        InsertBook(isbn, publisher, title, pubYear, authorsString, categoriesString);
+        query = $"UPDATE Books SET ISBN = {isbn}, PublisherID = (SELECT id FROM Publishers WHERE Publisher = \"{publisher}\"), " +
+            $"Title = \"{title}\", PublicationYear = {pubYear}" +
+            $"WHERE ISBN = {oldIsbn}";
+        connection.RunSqlCommand(query);
+
+        query = $"DELETE FROM Books_Authors " +
+            $"WHERE ISBN = {oldIsbn} AND AuthorID != (SELECT id FROM Authors WHERE Author = \"{publisher}\"";
+        connection.RunSqlCommand(query);
     }
     // Update borrowing
     internal static void UpdateBorrowing(string isbn, DateTime dueDate)

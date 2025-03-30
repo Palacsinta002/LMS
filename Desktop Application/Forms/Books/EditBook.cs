@@ -6,11 +6,13 @@ namespace Desktop_Application.Forms.Books;
 public partial class EditBook : Form
 {
     private readonly DataGridView _books_grd;
+    private string _oldIsbn;
     private string _originalImgPath;
 
     public EditBook(DataGridView books_grd)
     {
         _books_grd = books_grd;
+        _oldIsbn = string.Empty;
         _originalImgPath = string.Empty;
         InitializeComponent();
     }
@@ -36,6 +38,7 @@ public partial class EditBook : Form
         textBox_category.Text = selectedRow["books_category"].Value.ToString();
         dropDown_publisher.Text = selectedRow["books_publisher"].Value.ToString();
         textBox_isbn.Text = selectedRow["books_isbn"].Value.ToString();
+        _oldIsbn = selectedRow["books_isbn"].Value.ToString() ?? string.Empty;
     }
 
     private void Save(object sender, EventArgs e)
@@ -54,7 +57,10 @@ public partial class EditBook : Form
             }
             if (uploadSuccessful)
             {
-                HandleQueries.UpdateBook(_books_grd, textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, textBox_author.Text, textBox_category.Text);
+                string[] authors = [.. textBox_author.Text.Split(", ")];
+                string[] categories = [.. textBox_category.Text.Split(", ")];
+
+                HandleQueries.UpdateBook(_oldIsbn, textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, authors, categories);
                 MessageBox.Show("Book updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             this.Close();
