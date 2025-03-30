@@ -26,10 +26,10 @@ public partial class Login : Form
         this.KeyPreview = true;
 
         // REMOVE BEFORE FLIGHT
-        LMS lms = new("Admin", true);
-        this.Hide();
-        lms.ShowDialog();
-        this.Close();
+        //LMS lms = new("Admin", true);
+        //this.Hide();
+        //lms.ShowDialog();
+        //this.Close();
         // REMOVE BEFORE FLIGHT
     }
 

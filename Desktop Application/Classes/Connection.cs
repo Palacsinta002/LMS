@@ -31,7 +31,7 @@ internal class Connection
         }
         catch (MySqlException ex)
         {
-            MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("We could not establish a connection with the database! Error message: " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
     }
