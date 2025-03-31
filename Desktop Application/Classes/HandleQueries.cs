@@ -82,7 +82,8 @@ internal class HandleQueries
     internal static void InsertAuthor(string author)
     {
         Connection connection = new();
-        string query = $"INSERT INTO Authors(Author) VALUES(\"{author}\")";
+        string query = $"INSERT INTO Authors(Author) " +
+            $"VALUES(\"{author}\")";
         connection.RunSqlCommand(query);
     }
     // Insert publisher with the given arguments
