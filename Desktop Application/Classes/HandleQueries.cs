@@ -1,7 +1,8 @@
 ﻿namespace Desktop_Application.Classes;
+
 internal class HandleQueries
 {
-    // Takes a grid and fills it with the Select result of the given filename
+    // Returns Select result of the given filename
     internal static List<string[]> SelectFromFile(string fileName)
     {
         Connection connection = new();
@@ -10,7 +11,7 @@ internal class HandleQueries
         return connection.Select(query);
     }
 
-    // Select the
+    // Returns Select result of the given string
     internal static List<string[]> SelectFromString(string query)
     {
         Connection connection = new();
@@ -20,52 +21,45 @@ internal class HandleQueries
 
     // INSERT functions
     // Insert book with the given arguments
-    internal static void InsertBook(string isbn, string publisher, string title, string pubYear, string authorsString, string categoriesString)
+    internal static void InsertBook(string isbn, string publisher, string title, string pubYear, string[] authors, string[] categories)
     {
-        List<string> authors = authorsString.Split(", ").ToList();
-        List<string> categories = categoriesString.Split(", ").ToList();
-
         Connection connection = new();
         string query;
 
         query = $"INSERT INTO Books (ISBN, PublisherID, Title, PublicationYear) VALUES ({isbn}, (SELECT id FROM Publishers WHERE Publisher = \"{publisher}\"), \"{title}\", {pubYear})";
         connection.RunSqlCommand(query);
 
-        for (int i = 0; i < authors.Count; i++)
+        // Insert book-author into bridging table
+        foreach(string author in authors)
         {
-            query = $"INSERT INTO Books_Authors (ISBN, AuthorID) VALUES ({isbn}, (SELECT id FROM Authors WHERE Author = \"{authors[i]}\"))";
+            query = $"INSERT INTO Books_Authors (ISBN, AuthorID) VALUES ({isbn}, (SELECT id FROM Authors WHERE Author = \"{author}\"))";
             connection.RunSqlCommand(query);
         }
-        for (int i = 0; i < categories.Count; i++)
+        // Insert book-category into bridging table
+        foreach (string category in categories)
         {
-            query = $"INSERT INTO Books_Categories (ISBN, CategoryID) VALUES ({isbn}, (SELECT id FROM Categories WHERE Category = \"{categories[i]}\"))";
+            query = $"INSERT INTO Books_Categories (ISBN, CategoryID) VALUES ({isbn}, (SELECT id FROM Categories WHERE Category = \"{category}\"))";
             connection.RunSqlCommand(query);
         }
     }
     // Insert borrowing with the given arguments
-    internal static void InsertBorrowing(string username, string isbns, DateTime borrowDate, DateTime dueDate)
+    internal static void InsertBorrowing(string username, string[] isbns, string borrowDate, string dueDate)
     {
         Connection connection = new();
 
-        string borrowDateString = $"{borrowDate.Year}-{borrowDate.Month}-{borrowDate.Day}";
-        string dueDateString = $"{dueDate.Year}-{dueDate.Month}-{dueDate.Day}";
-        string[] isbnArr = isbns.Split(", ");
-
-        foreach (string isbn in isbnArr)
+        foreach (string isbn in isbns)
         {
             string query = $"INSERT INTO Borrowings(UserID, ISBN, BorrowDate, DueDate) VALUES((SELECT id FROM Users WHERE Username = \"{username}\"), {isbn}," +
-                $"\"{borrowDateString}\", \"{dueDateString}\")";
+                $"\"{borrowDate}\", \"{dueDate}\")";
             connection.RunSqlCommand(query);
         }
     }
     // Insert reservation with the given arguments
-    internal static void InsertReservation(string username, string isbns)
+    internal static void InsertReservation(string username, string[] isbns)
     {
         Connection connection = new();
 
-        string[] isbnArr = isbns.Split(", ");
-
-        foreach (string isbn in isbnArr)
+        foreach (string isbn in isbns)
         {
             string query = $"INSERT INTO Reservations(UserID, ISBN) VALUES((SELECT id FROM Users WHERE Username = \"{username}\"), {isbn})";
             connection.RunSqlCommand(query);
@@ -82,8 +76,7 @@ internal class HandleQueries
     internal static void InsertAuthor(string author)
     {
         Connection connection = new();
-        string query = $"INSERT INTO Authors(Author) " +
-            $"VALUES(\"{author}\")";
+        string query = $"INSERT INTO Authors(Author) VALUES(\"{author}\")";
         connection.RunSqlCommand(query);
     }
     // Insert publisher with the given arguments
@@ -94,12 +87,10 @@ internal class HandleQueries
         connection.RunSqlCommand(query);
     }
     // Insert user with the given arguments
-    internal static void InsertUser(string firstName, string lastName, DateTime dateOfBirth, string username, string hashedPassword, string address)
+    internal static void InsertUser(string firstName, string lastName, string dateOfBirth, string username, string hashedPassword, string address)
     {
-        string dateOfBirthString = $"{dateOfBirth.Year}-{dateOfBirth.Month}-{dateOfBirth.Day}";
-
         Connection connection = new();
-        string query = $"INSERT INTO Users(FirstName, LastName, dateOfBirth, Username, Password, Address, Verified, RoleID) VALUES(\"{firstName}\", \"{lastName}\", \"{dateOfBirthString}\", \"{username}\", \"{hashedPassword}\", \"{address}\", 1, 3)";
+        string query = $"INSERT INTO Users(FirstName, LastName, dateOfBirth, Username, Password, Address, Verified, RoleID) VALUES(\"{firstName}\", \"{lastName}\", \"{dateOfBirth}\", \"{username}\", \"{hashedPassword}\", \"{address}\", 1, 3)";
         connection.RunSqlCommand(query);
     }
 
@@ -148,18 +139,18 @@ internal class HandleQueries
         }
     }
     // Update borrowing
-    internal static void UpdateBorrowing(string isbn, DateTime dueDate)
+    internal static void UpdateBorrowing(string isbn, string dueDate)
     {
-        string dueDateString = $"{dueDate.Year}-{dueDate.Month}-{dueDate.Day}";
 
         Connection connection = new();
-        string query = $"UPDATE Borrowings SET DueDate = \"{dueDateString}\" WHERE ISBN = {isbn}";
+        string query = $"UPDATE Borrowings SET DueDate = \"{dueDate}\" WHERE ISBN = {isbn}";
         connection.RunSqlCommand(query);
     }
     // Update borrowing - mark as returned
     internal static void UpdateBorrowing(List<string> isbnArr, string returnDate)
     {
         Connection connection = new();
+
         foreach (string isbn in isbnArr)
         {
             string query = $"UPDATE Borrowings SET ReturnDate = \"{returnDate}\" WHERE ISBN = {isbn}";
@@ -167,12 +158,10 @@ internal class HandleQueries
         }
     }
     // Update reservation with the given arguments
-    internal static void UpdateReservation(string isbn, DateTime reservationEndDate)
+    internal static void UpdateReservation(string isbn, string reservationEndDate)
     {
-        string reservationEndDateString = $"{reservationEndDate.Year}-{reservationEndDate.Month}-{reservationEndDate.Day}";
-
         Connection connection = new();
-        string query = $"UPDATE Reservations SET ReservationEndDate = \"{reservationEndDateString}\" WHERE ISBN = {isbn}";
+        string query = $"UPDATE Reservations SET ReservationEndDate = \"{reservationEndDate}\" WHERE ISBN = {isbn}";
         connection.RunSqlCommand(query);
     }
     // Update category with the given arguments
@@ -197,12 +186,10 @@ internal class HandleQueries
         connection.RunSqlCommand(query);
     }
     // Update user with the given arguments
-    internal static void UpdateUser(string oldUsername, string firstName, string lastName, DateTime dateOfBirth, string username, string address, bool verified)
+    internal static void UpdateUser(string oldUsername, string firstName, string lastName, string dateOfBirth, string username, string address, bool verified)
     {
-        string dateOfBirthString = $"{dateOfBirth.Year}-{dateOfBirth.Month}-{dateOfBirth.Day}";
-
         Connection connection = new();
-        string query = $"UPDATE Users SET FirstName = \"{firstName}\", LastName = \"{lastName}\", DateOfBirth = \"{dateOfBirthString}\", Username = \"{username}\", Address = \"{address}\", Verified = {verified} WHERE Username = \"{oldUsername}\"";
+        string query = $"UPDATE Users SET FirstName = \"{firstName}\", LastName = \"{lastName}\", DateOfBirth = \"{dateOfBirth}\", Username = \"{username}\", Address = \"{address}\", Verified = {verified} WHERE Username = \"{oldUsername}\"";
         connection.RunSqlCommand(query);
     }
     // Update user password
@@ -213,12 +200,10 @@ internal class HandleQueries
         connection.RunSqlCommand(query);
     }
     // Update logged in user
-    internal static void UpdateProfile(string oldUsername, string firstName, string lastName, string username, DateTime dateOfBirth, string email, string address, string password)
+    internal static void UpdateProfile(string oldUsername, string firstName, string lastName, string username, string dateOfBirth, string email, string address, string password)
     {
-        string dateOfBirthString = $"{dateOfBirth.Year}-{dateOfBirth.Month}-{dateOfBirth.Day}";
-
         Connection connection = new();
-        string query = $"UPDATE Users SET FirstName = \"{firstName}\", LastName = \"{lastName}\", Username = \"{username}\", DateOfBirth = \"{dateOfBirthString}\", Email = \"{email}\", Address = \"{address}\", Password = \"{password}\" WHERE Username = \"{oldUsername}\"";
+        string query = $"UPDATE Users SET FirstName = \"{firstName}\", LastName = \"{lastName}\", Username = \"{username}\", DateOfBirth = \"{dateOfBirth}\", Email = \"{email}\", Address = \"{address}\", Password = \"{password}\" WHERE Username = \"{oldUsername}\"";
         connection.RunSqlCommand(query);
     }
 

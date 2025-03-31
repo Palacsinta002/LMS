@@ -1,5 +1,5 @@
-﻿using Desktop_Application.Classes;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
+using Desktop_Application.Classes;
 
 namespace Desktop_Application.Forms.Users;
 
@@ -35,10 +35,12 @@ public partial class AddUser : Form
     {
         if (ValidateInput())
         {
+            string dateOfBirthString = $"{_dateOfBirth.Year}-{_dateOfBirth.Month}-{_dateOfBirth.Day}";
+
             string randomPassword = GeneratePassword.Generate("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 10);
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(randomPassword);
 
-            HandleQueries.InsertUser(textBox_firstName.Text, textBox_lastName.Text, _dateOfBirth, textBox_username.Text, hashedPassword, textBox_address.Text);
+            HandleQueries.InsertUser(textBox_firstName.Text, textBox_lastName.Text, dateOfBirthString, textBox_username.Text, hashedPassword, textBox_address.Text);
 
             ShowPassword showPassword = new(randomPassword);
             showPassword.ShowDialog();

@@ -57,8 +57,8 @@ public partial class EditBook : Form
             }
             if (uploadSuccessful || _originalImgPath == string.Empty)
             {
-                string[] authors = [.. textBox_author.Text.Split(", ")];
-                string[] categories = [.. textBox_category.Text.Split(", ")];
+                string[] authors = textBox_author.Text.Split(", ");
+                string[] categories = textBox_category.Text.Split(", ");
 
                 HandleQueries.UpdateBook(_oldIsbn, textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, authors, categories);
                 MessageBox.Show("Book updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);

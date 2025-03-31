@@ -28,13 +28,15 @@ public partial class ExtendReservation : Form
     private void Save(object sender, EventArgs e)
     {
         var selectedRow = _reservations_grd.SelectedRows[0].Cells;
-        DateTime endDate = DateTime.Parse(selectedRow["reservations_endDate"].Value.ToString() ?? string.Empty);
+
         string isbn = selectedRow["reservations_isbn"].Value.ToString() ?? string.Empty;
 
+        DateTime endDate = (DateTime)selectedRow["reservations_endDate"].Value;
         int extendBy = int.Parse(comboBox_extendBy.Text.Split(" ")[0]);
         DateTime extendedDate = endDate.AddMonths(extendBy);
+        string endDateString = $"{extendedDate.Year}-{extendedDate.Month}-{extendedDate.Day}";
 
-        HandleQueries.UpdateReservation(isbn, extendedDate);
+        HandleQueries.UpdateReservation(isbn, endDateString);
         MessageBox.Show("Reservations extended succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         this.Close();
     }

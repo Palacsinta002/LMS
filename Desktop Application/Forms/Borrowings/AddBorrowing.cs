@@ -29,10 +29,16 @@ public partial class AddBorrowing : Form
     {
         if (ValidateInput())
         {
+            DateTime borrowDate = DateTime.Today;
+            string borrowDateString = $"{borrowDate.Year}-{borrowDate.Month}-{borrowDate.Day}";
+
             int dueTime = int.Parse(comboBox_extendBy.Text.Split(" ")[0]);
             DateTime dueDate = DateTime.Today.AddMonths(dueTime);
+            string dueDateString = $"{dueDate.Year}-{dueDate.Month}-{dueDate.Day}";
 
-            HandleQueries.InsertBorrowing(dropDown_user.Text, textBox_books.Text, DateTime.Today, dueDate);
+            string[] isbns = textBox_books.Text.Split(", ");
+
+            HandleQueries.InsertBorrowing(dropDown_user.Text, isbns, borrowDateString, dueDateString);
             MessageBox.Show("Book lent succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }

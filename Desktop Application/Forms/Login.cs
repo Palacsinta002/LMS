@@ -25,11 +25,16 @@ public partial class Login : Form
         HandleKeys.Handle(this, Keys.Enter, LoginCheck);
         this.KeyPreview = true;
 
+        // Select the version and if something is wrong the application will close
+        string query = $"SELECT version()";
+        var result = HandleQueries.SelectFromString(query);
+        if (result.Count <= 0) this.Close();
+
         // REMOVE BEFORE FLIGHT
-        //LMS lms = new("Admin", true);
-        //this.Hide();
-        //lms.ShowDialog();
-        //this.Close();
+        LMS lms = new("Admin", true);
+        this.Hide();
+        lms.ShowDialog();
+        this.Close();
         // REMOVE BEFORE FLIGHT
     }
 
@@ -43,8 +48,7 @@ public partial class Login : Form
         {
             // Selects the hashed password and role based on username
             string query = $"SELECT Users.Password, Roles.Role FROM Users JOIN Roles ON Roles.id = Users.RoleID WHERE Username = '{_username}'";
-            Connection conn = new();
-            var result = conn.Select(query);
+            var result = HandleQueries.SelectFromString(query);
 
             // If username exists
             if (result.Count == 1)

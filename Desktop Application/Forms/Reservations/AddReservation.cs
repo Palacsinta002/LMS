@@ -28,7 +28,9 @@ public partial class AddReservation : Form
     {
         if (ValidateInput())
         {
-            HandleQueries.InsertReservation(dropDown_user.Text, textBox_books.Text);
+            string[] isbns = textBox_books.Text.Split(", ");
+
+            HandleQueries.InsertReservation(dropDown_user.Text, isbns);
             MessageBox.Show("Book reserved succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
