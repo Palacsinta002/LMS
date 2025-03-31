@@ -53,7 +53,7 @@ public partial class ChangePassword : Form
             MessageBox.Show("New password field is not in the correct format! Please check your special characters!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
-        else if (!Regex.IsMatch(textBox_newPassword.Text, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W).{8,16}$"))
+        else if (!Regex.IsMatch(textBox_newPassword.Text, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*(\d|\W)).{8,16}$"))
         {
             MessageBox.Show("New password field doesn't match the requirements!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
