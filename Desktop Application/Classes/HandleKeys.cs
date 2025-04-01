@@ -27,7 +27,7 @@ class HandleKeys
 
     private void RunFunction(object sender, KeyEventArgs e)
     {
-        foreach(Keys key in _keys)
+        foreach (Keys key in _keys)
         {
             if (key == e.KeyCode) _function(sender, e);
         }

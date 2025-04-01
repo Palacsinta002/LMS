@@ -1,6 +1,6 @@
-﻿using Desktop_Application.Classes;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Text.RegularExpressions;
+using Desktop_Application.Classes;
 
 namespace Desktop_Application.Forms.Profile;
 

@@ -30,7 +30,7 @@ internal class HandleQueries
         connection.RunSqlCommand(query);
 
         // Insert book-author into bridging table
-        foreach(string author in authors)
+        foreach (string author in authors)
         {
             query = $"INSERT INTO Books_Authors (ISBN, AuthorID) VALUES ({isbn}, (SELECT id FROM Authors WHERE Author = \"{author}\"))";
             connection.RunSqlCommand(query);
@@ -115,7 +115,7 @@ internal class HandleQueries
             $"AuthorID NOT IN ({string.Join(", ", authors.Select(author => $"(SELECT id FROM Authors WHERE Author = \"{author}\")"))})";
         connection.RunSqlCommand(query);
 
-        foreach(string author in authors)
+        foreach (string author in authors)
         {
             query = $"INSERT INTO Books_Authors (ISBN, AuthorID) " +
                 $"SELECT {oldIsbn}, id FROM Authors " +

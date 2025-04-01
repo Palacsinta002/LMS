@@ -29,7 +29,7 @@
 
             foreach (DataGridViewRow row in grd.Rows)
             {
-                for(int i = 0; i < cols.Length; i++)
+                for (int i = 0; i < cols.Length; i++)
                 {
                     string cell = row.Cells[cols[i]].Value.ToString() ?? string.Empty;
                     if (cell.Contains(filterText, StringComparison.CurrentCultureIgnoreCase))

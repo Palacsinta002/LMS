@@ -2,10 +2,10 @@
 using Desktop_Application.Forms.Authors;
 using Desktop_Application.Forms.Books;
 using Desktop_Application.Forms.Borrowings;
-using Desktop_Application.Forms.Reservations;
 using Desktop_Application.Forms.Categories;
 using Desktop_Application.Forms.Profile;
 using Desktop_Application.Forms.Publishers;
+using Desktop_Application.Forms.Reservations;
 using Desktop_Application.Forms.Users;
 
 namespace Desktop_Application;
@@ -410,7 +410,7 @@ public partial class LMS : Form
     private void RemoveAuthors(object sender, EventArgs e)
     {
         List<string> selectedAuthors = [];
-        foreach(DataGridViewRow row in authors_grid.SelectedRows)
+        foreach (DataGridViewRow row in authors_grid.SelectedRows)
         {
             string author = (string)row.Cells["authors_author"].Value;
             selectedAuthors.Add(author);

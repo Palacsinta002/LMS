@@ -1,5 +1,3 @@
-using System.Globalization;
-
 namespace Desktop_Application
 {
     internal static class Program
