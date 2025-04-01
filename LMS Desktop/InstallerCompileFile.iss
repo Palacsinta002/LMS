@@ -26,9 +26,9 @@ DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
 ; Remove the following line to run in administrative install mode (install for all users).
 PrivilegesRequired=lowest
-OutputDir=C:\xampp\htdocs\myadmin\LMS\Desktop Application
+OutputDir=C:\xampp\htdocs\myadmin\LMS\LMS Desktop
 OutputBaseFilename=LMS Desktop v1.2 Installer
-SetupIconFile=C:\xampp\htdocs\myadmin\LMS\Desktop Application\Resources\book.ico
+SetupIconFile=C:\xampp\htdocs\myadmin\LMS\LMS Desktop\Resources\book.ico
 SolidCompression=yes
 WizardStyle=modern
 
@@ -39,8 +39,8 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\xampp\htdocs\myadmin\LMS\Desktop Application\Publishes\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\xampp\htdocs\myadmin\LMS\Desktop Application\Publishes\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\xampp\htdocs\myadmin\LMS\LMS Desktop\Publishes\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\xampp\htdocs\myadmin\LMS\LMS Desktop\Publishes\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
