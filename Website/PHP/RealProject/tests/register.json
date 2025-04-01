@@ -1,0 +1,82 @@
+[
+{
+    "testName" : "Register with valid data",
+    "username" : "Alma",
+    "password" : "Alma4444",
+    "passwordAgain" : "Alma4444",
+    "firstname" : "Katja",
+    "lastname" : "Klein",
+    "email" : "test.email.nincs.remelem@gmail.com",
+    "address" : "123 Main St, Springfield",
+    "expectedStatus" : 200
+},
+{
+    "testName" : "testing username with lowercase letters",
+    "username" : "hello",
+    "password" : "Alma4444",
+    "passwordAgain" : "Alma4444",
+    "firstname" : "Katja",
+    "lastname" : "Klein",
+    "email" : "test.email.nincs1.remelem@gmail.com",
+    "address" : "123 Main St, Springfield",
+    "expectedStatus" : 200
+},
+{
+    "testName" : "testing username upppercase letters",
+    "username" : "HELLO",
+    "password" : "Alma4444",
+    "passwordAgain" : "Alma4444",
+    "firstname" : "Katja",
+    "lastname" : "Klein",
+    "email" : "test.email.nincs2.remelem@gmail.com",
+    "address" : "123 Main St, Springfield",
+    "expectedStatus" : 200
+}
+,
+{
+    "testName" : "testing username length",
+    "username" : "he",
+    "password" : "Alma4444",
+    "passwordAgain" : "Alma4444",
+    "firstname" : "Katja",
+    "lastname" : "Klein",
+    "email" : "test.email.nincs3.remelem@gmail.com",
+    "address" : "123 Main St, Springfield",
+    "expectedStatus" : 400
+},
+{
+    "testName" : "testing username length",
+    "username" : "helloooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+    "password" : "Alma4444",
+    "passwordAgain" : "Alma4444",
+    "firstname" : "Katja",
+    "lastname" : "Klein",
+    "email" : "test.email.nincs4.remelem@gmail.com",
+    "address" : "123 Main St, Springfield",
+    "expectedStatus" : 400
+},
+{
+    "testName" : "testing username with hungarian chars",
+    "username" : "káposzta",
+    "password" : "Alma4444",
+    "passwordAgain" : "Alma4444",
+    "firstname" : "Katja",
+    "lastname" : "Klein",
+    "email" : "test.email.nincs5.remelem@gmail.com",
+    "address" : "123 Main St, Springfield",
+    "expectedStatus" : 200
+},
+{
+    "testName" : "testing username with special chars",
+    "username" : ".,?!@#$%^&*()_+|}{:;'/.,<>?`~",
+    "password" : "Alma4444",
+    "passwordAgain" : "Alma4444",
+    "firstname" : "Katja",
+    "lastname" : "Klein",
+    "email" : "test.email.nincs6.remelem@gmail.com",
+    "address" : "123 Main St, Springfield",
+    "expectedStatus" : 200
+}
+
+
+]

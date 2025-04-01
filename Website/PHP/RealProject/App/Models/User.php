@@ -21,7 +21,7 @@ class User extends Model{
     }
 
     public static function checkUsername($username){
-        if (!preg_match('/^[a-zA-Z][a-zA-Z0-9._]{2,25}$/', $username)){
+        if (!preg_match('/^[a-zA-Z][a-zA-Z0-9._]{2,19}$/', $username)){
             Response::httpError(400,3);
         }
         if (UserTable::rowExists(["username"],["="],[$username],["s"])){
@@ -46,14 +46,16 @@ class User extends Model{
         }
         return true;
     }
-    public static function loginAuth($username,$password){
+    public static function loginAuth($username,$password, $hasEmail = true){
         if (($selectResult = UserTable::selectByUsername($username,false) )->num_rows == 0){
             Response::httpError(400,7);
         }
         $data = $selectResult->fetch_assoc();
         self::userPasswordIsMatch($password,$data["password"]);
-        if ($data["EmailVerified"] == 0){
-            Response::httpError(400,7);
+        if ($hasEmail == true){
+            if ($data["EmailVerified"] == 0){
+                Response::httpError(400,7);
+            }
         }
         return $data["id"];
         
@@ -105,6 +107,34 @@ class User extends Model{
         if (!preg_match("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $email)) {
             Response::httpError(400,0);
         }
+    
+    }
+    public static function isUserVerified($ID,$emailVerified = null, $verified = null){
+        $user = UserTable::allByID($ID)[0];
+        if (isset($emailVerified) && !isset($verified)){
+            if ($user["EmailVerified"] == 0){
+                return false;
+            }
+            return true;
+        }
+        elseif(isset($verified) && !isset($emailVerified)){
+            if ($user["Verified"] == 0){
+                return false;
+            }
+            return true;
+        }
+        elseif(isset($verified) && isset($emailVerified)){
+            $returnArray = [];
+            if ($user["EmailVerified"] == 1){
+                $returnArray["email"] = true;
+            }
+            if ($user["Verified"] == 1){
+                $returnArray["verified"] = true;
+            }
+            return $returnArray;
+        }
+        return null;
+        
     }
 }
 ?>

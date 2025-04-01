@@ -94,38 +94,38 @@ class Table {
         self::fixingValues();
         //echo self::$query;
         //die();
-        $query = $conn->prepare(self::$query);
-        if (substr_count(self::$query,"?") == 0 ){
+        
+            $query = $conn->prepare(self::$query);
+            if (substr_count(self::$query,"?") > 0 ){
+                /*$query->execute();
+                if ($getresult == false) {
+                    self::reset();
+                    return;
+                }
+                $result = $query->get_result();
+                if ($fetch == false) {
+                    self::reset();
+                    return $result;
+                }
+                self::reset();
+                return $result->fetch_all(MYSQLI_ASSOC);
+                */
+                $types = implode("", self::$types);
+                $query->bind_param($types, ...self::$values);
+            }
             $query->execute();
+            $result = $query->get_result();
             if ($getresult == false) {
                 self::reset();
                 return;
             }
-            $result = $query->get_result();
             if ($fetch == false) {
                 self::reset();
                 return $result;
             }
             self::reset();
             return $result->fetch_all(MYSQLI_ASSOC);
-  
-        }
-        $types = implode("", self::$types);
         
-        
-        $query->bind_param($types, ...self::$values);
-        $query->execute();
-        $result = $query->get_result();
-        if ($getresult == false) {
-            self::reset();
-            return;
-        }
-        if ($fetch == false) {
-            self::reset();
-            return $result;
-        }
-        self::reset();
-        return $result->fetch_all(MYSQLI_ASSOC);
     }
     protected static function select($table, $field){
         self::$query = "SELECT " . implode(", ",$field) . " FROM " . implode(", ",$table) . " ";
