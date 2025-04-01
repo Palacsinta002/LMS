@@ -2011,7 +2011,7 @@ namespace Desktop_Application
             reservations_endDate.ReadOnly = true;
             reservations_endDate.Width = 79;
             // 
-            // LMS
+            // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -2029,9 +2029,9 @@ namespace Desktop_Application
             Controls.Add(panel_users);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(1000, 592);
-            Name = "LMS";
+            Name = "Main";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Library Management System";
+            Text = "LMS Desktop";
             Load += OnLoad;
             panel_menu.ResumeLayout(false);
             panel_menu.PerformLayout();
