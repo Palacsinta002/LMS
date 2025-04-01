@@ -1,0 +1,165 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <RootNamespace>Desktop_Application</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\book.ico" />
+    <None Remove="Resources\closeEmpty.png" />
+    <None Remove="Resources\closeWhite.png" />
+    <None Remove="Resources\Elektrosztatika.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\book.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Forms\Authors\AddAuthor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Authors\EditAuthor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Authors\RemoveAuthors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Books\ChooseCategories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Books\ChooseAuthor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Categories\EditCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Categories\RemoveCategories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Profile\ChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Profile\ProfileSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Profile\PasswordRequirements.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Profile\SaveConfirmation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Publishers\AddPublisher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Publishers\EditPublisher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Publishers\RemovePublishers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Reservations\AddReservation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Reservations\ExtendReservation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Reservations\RemoveReservations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Users\EditUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Users\AddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Users\ShowPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Users\RemoveUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="MySql.Data" Version="9.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Resources\hideIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\showIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SqlQueries\SelectAuthor.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SqlQueries\SelectCurrentBorrowing.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SqlQueries\SelectAuthorWithBook.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SqlQueries\SelectBookCount.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SqlQueries\SelectBook.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SqlQueries\SelectBookForBorrowings.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SqlQueries\SelectAllBorrowing.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SqlQueries\SelectReservation.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SqlQueries\SelectRole.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SqlQueries\SelectTopBorrowedBook.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SqlQueries\SelectBorrowingCount.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SqlQueries\SelectCategory.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SqlQueries\SelectUser.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SqlQueries\SelectUserCount.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SqlQueries\SelectPublisher.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SqlQueries\SelectUsername.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

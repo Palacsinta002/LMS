@@ -1,0 +1,2 @@
+SELECT Role
+FROM Roles;
