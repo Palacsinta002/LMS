@@ -29,13 +29,6 @@ public partial class Login : Form
         string query = $"SELECT version()";
         var result = HandleQueries.SelectFromString(query);
         if (result.Count <= 0) this.Close();
-
-        // REMOVE BEFORE FLIGHT
-        LMS lms = new("Admin", true);
-        this.Hide();
-        lms.ShowDialog();
-        this.Close();
-        // REMOVE BEFORE FLIGHT
     }
 
     private void LoginCheck(object sender, EventArgs e)
@@ -70,7 +63,7 @@ public partial class Login : Form
                         isAdmin = true;
                     }
 
-                    LMS lms = new(textBox_username.Text, isAdmin);
+                    Main lms = new(textBox_username.Text, isAdmin);
                     this.Hide();
                     lms.ShowDialog();
                     this.Close();

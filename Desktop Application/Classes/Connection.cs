@@ -31,7 +31,7 @@ internal class Connection
         }
         catch (MySqlException ex)
         {
-            MessageBox.Show("Ccouldn't establish connection with the database!\nError message: " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("Couldn't establish connection with the database!\nError message: " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
     }
@@ -46,7 +46,7 @@ internal class Connection
         }
         catch (MySqlException ex)
         {
-            MessageBox.Show("Ccouldn't close the connection properly!\nError message: " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("Couldn't close the connection properly!\nError message: " + ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
         }
     }

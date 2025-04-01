@@ -10,12 +10,12 @@ using Desktop_Application.Forms.Users;
 
 namespace Desktop_Application;
 
-public partial class LMS : Form
+public partial class Main : Form
 {
     private string _username;
     private readonly bool _isAdmin;
 
-    public LMS(string username, bool isAdmin)
+    public Main(string username, bool isAdmin)
     {
         _username = username;
         _isAdmin = isAdmin;
