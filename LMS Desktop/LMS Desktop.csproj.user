@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_LastSelectedProfileId>C:\xampp\htdocs\myadmin\LMS\LMS Desktop\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="Forms\Books\AddBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Books\EditBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Books\RemoveBooks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Borrowings\ExtendBorrowing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Borrowings\AddBorrowing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Borrowings\ChooseBooks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Borrowings\RemoveBorrowings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Categories\AddCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UserControls\RoundedButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

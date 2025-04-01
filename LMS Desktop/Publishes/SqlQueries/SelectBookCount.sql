@@ -1,0 +1,2 @@
+﻿SELECT COUNT(ISBN)
+FROM Books
