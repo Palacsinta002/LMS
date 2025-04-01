@@ -128,7 +128,13 @@ public partial class LMS : Form
     // Removes book from the database
     private void RemoveBooks(object sender, EventArgs e)
     {
-        RemoveBooks removeBook = new(books_grid);
+        List<string> selectedIsbns = [];
+        foreach (DataGridViewRow row in books_grid.SelectedRows)
+        {
+            selectedIsbns.Add(row.Cells["books_isbn"].Value.ToString() ?? string.Empty);
+        }
+
+        RemoveBooks removeBook = new(selectedIsbns);
         removeBook.ShowDialog();
         RefreshBooks(sender, e);
     }

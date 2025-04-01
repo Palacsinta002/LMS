@@ -4,11 +4,11 @@ namespace Desktop_Application.Forms.Books;
 
 public partial class RemoveBooks : Form
 {
-    private readonly DataGridView _books_grd;
+    private readonly List<string> _selectedIsbns;
 
-    public RemoveBooks(DataGridView books_grd)
+    public RemoveBooks(List<string> selected_isbns)
     {
-        _books_grd = books_grd;
+        _selectedIsbns = selected_isbns;
         InitializeComponent();
     }
 
@@ -25,7 +25,7 @@ public partial class RemoveBooks : Form
 
     private void Remove(object sender, EventArgs e)
     {
-        HandleQueries.Delete(_books_grd, "Books", "books_isbn", "ISBN");
+        HandleQueries.Delete(_selectedIsbns, "Books", "ISBN");
         MessageBox.Show("Book removed succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         this.Close();
     }
