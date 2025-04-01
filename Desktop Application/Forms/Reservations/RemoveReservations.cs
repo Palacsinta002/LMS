@@ -4,11 +4,11 @@ namespace Desktop_Application.Forms.Reservations;
 
 public partial class RemoveReservations : Form
 {
-    private readonly DataGridView _reservations_grd;
+    private readonly List<string> _selectedReservations;
 
-    public RemoveReservations(DataGridView reservations_grd)
+    public RemoveReservations(List<string> selectedReservations)
     {
-        _reservations_grd = reservations_grd;
+        _selectedReservations = selectedReservations;
         InitializeComponent();
     }
 
@@ -25,7 +25,7 @@ public partial class RemoveReservations : Form
 
     private void Remove(object sender, EventArgs e)
     {
-        HandleQueries.Delete(_reservations_grd, "Reservations", "reservations_isbn", "ISBN");
+        HandleQueries.Delete(_selectedReservations, "Reservations", "ISBN");
         MessageBox.Show("Reservation cancelled succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         this.Close();
     }

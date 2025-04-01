@@ -4,11 +4,11 @@ namespace Desktop_Application.Forms.Publishers;
 
 public partial class RemovePublishers : Form
 {
-    private readonly DataGridView _publishers_grd;
+    private readonly List<string> _selectedPublishers;
 
-    public RemovePublishers(DataGridView publishers_grd)
+    public RemovePublishers(List<string> selectedPublishers)
     {
-        _publishers_grd = publishers_grd;
+        _selectedPublishers = selectedPublishers;
         InitializeComponent();
     }
 
@@ -25,7 +25,7 @@ public partial class RemovePublishers : Form
 
     private void Remove(object sender, EventArgs e)
     {
-        HandleQueries.Delete(_publishers_grd, "Publishers", "publishers_publisher", "Publisher");
+        HandleQueries.Delete(_selectedPublishers, "Publishers", "Publisher");
         MessageBox.Show("Publisher(s) removed succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         this.Close();
     }

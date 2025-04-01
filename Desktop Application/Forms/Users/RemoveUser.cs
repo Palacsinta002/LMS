@@ -4,11 +4,11 @@ namespace Desktop_Application.Forms.Users;
 
 public partial class RemoveUser : Form
 {
-    private readonly DataGridView _users_grd;
+    private readonly List<string> _selectedUsernames;
 
-    public RemoveUser(DataGridView users_grd)
+    public RemoveUser(List<string> selectedUsernames)
     {
-        _users_grd = users_grd;
+        _selectedUsernames = selectedUsernames;
         InitializeComponent();
     }
 
@@ -25,7 +25,7 @@ public partial class RemoveUser : Form
 
     private void Remove(object sender, EventArgs e)
     {
-        HandleQueries.Delete(_users_grd, "Users", "users_username", "Username");
+        HandleQueries.Delete(_selectedUsernames, "Users", "Username");
         MessageBox.Show("User removed succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         this.Close();
     }

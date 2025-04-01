@@ -4,11 +4,11 @@ namespace Desktop_Application.Forms.Categories;
 
 public partial class RemoveCategories : Form
 {
-    private readonly DataGridView _categories_grd;
+    private readonly List<string> _selectedCategories;
 
-    public RemoveCategories(DataGridView categories_grd)
+    public RemoveCategories(List<string> selectedCategories)
     {
-        _categories_grd = categories_grd;
+        _selectedCategories = selectedCategories;
         InitializeComponent();
     }
 
@@ -25,7 +25,7 @@ public partial class RemoveCategories : Form
 
     private void Remove(object sender, EventArgs e)
     {
-        HandleQueries.Delete(_categories_grd, "Categories", "categories_category", "Category");
+        HandleQueries.Delete(_selectedCategories, "Categories", "Category");
         MessageBox.Show("Category/categories removed succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         this.Close();
     }

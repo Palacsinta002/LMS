@@ -145,7 +145,7 @@ namespace Desktop_Application
             reservations_rButton_refresh = new RoundedButton();
             reservations_rButton_add = new RoundedButton();
             reservations_rButton_extend = new RoundedButton();
-            reservations_rButton_cancel = new RoundedButton();
+            reservations_rButton_remove = new RoundedButton();
             reservations_textBox_search = new TextBox();
             reservations_label = new Label();
             reservations_grid = new DataGridView();
@@ -1826,7 +1826,7 @@ namespace Desktop_Application
             panel_reservations.Controls.Add(reservations_rButton_refresh);
             panel_reservations.Controls.Add(reservations_rButton_add);
             panel_reservations.Controls.Add(reservations_rButton_extend);
-            panel_reservations.Controls.Add(reservations_rButton_cancel);
+            panel_reservations.Controls.Add(reservations_rButton_remove);
             panel_reservations.Controls.Add(reservations_textBox_search);
             panel_reservations.Controls.Add(reservations_label);
             panel_reservations.Controls.Add(reservations_grid);
@@ -1901,27 +1901,27 @@ namespace Desktop_Application
             reservations_rButton_extend.UseVisualStyleBackColor = false;
             reservations_rButton_extend.Click += EditReservation;
             // 
-            // reservations_rButton_cancel
+            // reservations_rButton_remove
             // 
-            reservations_rButton_cancel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            reservations_rButton_cancel.BackColor = Color.FromArgb(80, 77, 180);
-            reservations_rButton_cancel.BackgroundColor = Color.FromArgb(80, 77, 180);
-            reservations_rButton_cancel.BorderColor = Color.Transparent;
-            reservations_rButton_cancel.BorderRadius = 5;
-            reservations_rButton_cancel.BorderSize = 0;
-            reservations_rButton_cancel.FlatAppearance.BorderSize = 0;
-            reservations_rButton_cancel.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
-            reservations_rButton_cancel.FlatStyle = FlatStyle.Flat;
-            reservations_rButton_cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
-            reservations_rButton_cancel.ForeColor = Color.White;
-            reservations_rButton_cancel.Location = new Point(342, 26);
-            reservations_rButton_cancel.Name = "reservations_rButton_cancel";
-            reservations_rButton_cancel.Size = new Size(100, 36);
-            reservations_rButton_cancel.TabIndex = 14;
-            reservations_rButton_cancel.Text = "Cancel";
-            reservations_rButton_cancel.TextColor = Color.White;
-            reservations_rButton_cancel.UseVisualStyleBackColor = false;
-            reservations_rButton_cancel.Click += RemoveReservations;
+            reservations_rButton_remove.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            reservations_rButton_remove.BackColor = Color.FromArgb(80, 77, 180);
+            reservations_rButton_remove.BackgroundColor = Color.FromArgb(80, 77, 180);
+            reservations_rButton_remove.BorderColor = Color.Transparent;
+            reservations_rButton_remove.BorderRadius = 5;
+            reservations_rButton_remove.BorderSize = 0;
+            reservations_rButton_remove.FlatAppearance.BorderSize = 0;
+            reservations_rButton_remove.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            reservations_rButton_remove.FlatStyle = FlatStyle.Flat;
+            reservations_rButton_remove.Font = new Font("Yu Gothic UI Semibold", 14F);
+            reservations_rButton_remove.ForeColor = Color.White;
+            reservations_rButton_remove.Location = new Point(342, 26);
+            reservations_rButton_remove.Name = "reservations_rButton_remove";
+            reservations_rButton_remove.Size = new Size(100, 36);
+            reservations_rButton_remove.TabIndex = 14;
+            reservations_rButton_remove.Text = "Remove";
+            reservations_rButton_remove.TextColor = Color.White;
+            reservations_rButton_remove.UseVisualStyleBackColor = false;
+            reservations_rButton_remove.Click += RemoveReservations;
             // 
             // reservations_textBox_search
             // 
@@ -2011,7 +2011,7 @@ namespace Desktop_Application
             reservations_endDate.ReadOnly = true;
             reservations_endDate.Width = 79;
             // 
-            // Main
+            // LMS
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -2029,7 +2029,7 @@ namespace Desktop_Application
             Controls.Add(panel_users);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(1000, 592);
-            Name = "Main";
+            Name = "LMS";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Library Management System";
             Load += OnLoad;
@@ -2189,7 +2189,7 @@ namespace Desktop_Application
         private RoundedButton reservations_rButton_refresh;
         private RoundedButton reservations_rButton_add;
         private RoundedButton reservations_rButton_extend;
-        private RoundedButton reservations_rButton_cancel;
+        private RoundedButton reservations_rButton_remove;
         private Label reservations_label;
         private TextBox reservations_textBox_search;
         private DataGridViewTextBoxColumn reservations_username;

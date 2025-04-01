@@ -131,8 +131,7 @@ public partial class LMS : Form
         List<string> selectedIsbns = [];
         foreach (DataGridViewRow row in books_grid.SelectedRows)
         {
-            string? isbn = row.Cells["books_isbn"].Value.ToString();
-            if (isbn == null) continue;
+            string isbn = (string)row.Cells["books_isbn"].Value;
             selectedIsbns.Add(isbn);
         }
 
@@ -270,6 +269,7 @@ public partial class LMS : Form
             MessageBox.Show("You must select ONE reservation to extend!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
+
         ExtendReservation extendReservation = new(reservations_grid);
         extendReservation.ShowDialog();
         RefreshReservations(sender, e);
@@ -278,7 +278,14 @@ public partial class LMS : Form
     // Removes reservation from the database - Marks the book as returned
     private void RemoveReservations(object sender, EventArgs e)
     {
-        RemoveReservations removeReservations = new(reservations_grid);
+        List<string> selectedIsbns = [];
+        foreach (DataGridViewRow row in reservations_grid.SelectedRows)
+        {
+            string isbn = (string)row.Cells["reservations_isbn"].Value;
+            selectedIsbns.Add(isbn);
+        }
+
+        RemoveReservations removeReservations = new(selectedIsbns);
         removeReservations.ShowDialog();
         RefreshReservations(sender, e);
     }
@@ -336,7 +343,14 @@ public partial class LMS : Form
     // Removes category from the database - Marks the book as returned
     private void RemoveCategories(object sender, EventArgs e)
     {
-        RemoveCategories removeCategories = new(categories_grid);
+        List<string> selectedCategories = [];
+        foreach (DataGridViewRow row in categories_grid.SelectedRows)
+        {
+            string category = (string)row.Cells["categories_category"].Value;
+            selectedCategories.Add(category);
+        }
+
+        RemoveCategories removeCategories = new(selectedCategories);
         removeCategories.ShowDialog();
         RefreshCategories(sender, e);
 
@@ -398,7 +412,8 @@ public partial class LMS : Form
         List<string> selectedAuthors = [];
         foreach(DataGridViewRow row in authors_grid.SelectedRows)
         {
-            selectedAuthors.Add(row.Cells["authors_author"].Value.ToString() ?? string.Empty);
+            string author = (string)row.Cells["authors_author"].Value;
+            selectedAuthors.Add(author);
         }
 
         RemoveAuthors removeAuthors = new(selectedAuthors);
@@ -459,7 +474,14 @@ public partial class LMS : Form
     // Removes publishers from the database - Marks the book as returned
     private void RemovePublishers(object sender, EventArgs e)
     {
-        RemovePublishers removePublishers = new(publishers_grid);
+        List<string> selectedPublishers = [];
+        foreach (DataGridViewRow row in publishers_grid.SelectedRows)
+        {
+            string publisher = (string)row.Cells["publishers_publisher"].Value;
+            selectedPublishers.Add(publisher);
+        }
+
+        RemovePublishers removePublishers = new(selectedPublishers);
         removePublishers.ShowDialog();
         RefreshPublishers(sender, e);
     }
@@ -517,7 +539,14 @@ public partial class LMS : Form
     // Removes user from the database - Marks the book as returned
     private void RemoveUsers(object sender, EventArgs e)
     {
-        RemoveUser removeUser = new(users_grid);
+        List<string> selectedUsernames = [];
+        foreach (DataGridViewRow row in users_grid.SelectedRows)
+        {
+            string username = (string)row.Cells["users_username"].Value;
+            selectedUsernames.Add(username);
+        }
+
+        RemoveUser removeUser = new(selectedUsernames);
         removeUser.ShowDialog();
         RefreshUsers(sender, e);
     }
