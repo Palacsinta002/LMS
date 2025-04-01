@@ -210,12 +210,11 @@ internal class HandleQueries
 
 
     // Deletes the selected item in the given grid from the given table based on the given column
-    internal static void Delete(DataGridView grd, string table, string grdcol, string dbcol)
+    internal static void Delete(List<string> selectedItems, string table, string dbcol)
     {
         Connection connection = new();
-        foreach (DataGridViewRow row in grd.SelectedRows)
+        foreach (string item in selectedItems)
         {
-            string item = row.Cells[grdcol].Value.ToString() ?? string.Empty;
             string query = $"DELETE FROM {table} WHERE {dbcol} = \"{item}\"";
             connection.RunSqlCommand(query);
         }

@@ -4,11 +4,11 @@ namespace Desktop_Application.Forms.Authors;
 
 public partial class RemoveAuthors : Form
 {
-    private readonly DataGridView _authors_grd;
+    private readonly List<string> _selectedAuthors;
 
-    public RemoveAuthors(DataGridView authors_grd)
+    public RemoveAuthors(List<string> selectedAuthors)
     {
-        _authors_grd = authors_grd;
+        _selectedAuthors = selectedAuthors;
         InitializeComponent();
     }
 
@@ -25,7 +25,7 @@ public partial class RemoveAuthors : Form
 
     private void Remove(object sender, EventArgs e)
     {
-        HandleQueries.Delete(_authors_grd, "Authors", "authors_author", "Author");
+        HandleQueries.Delete(_selectedAuthors, "Authors", "Author");
         MessageBox.Show("Authors removed succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         this.Close();
     }

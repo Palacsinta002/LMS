@@ -373,7 +373,13 @@ public partial class LMS : Form
     // Removes authors from the database - Marks the book as returned
     private void RemoveAuthors(object sender, EventArgs e)
     {
-        RemoveAuthors removeAuthors = new(authors_grid);
+        List<string> selectedAuthors = [];
+        foreach(DataGridViewRow row in authors_grid.SelectedRows)
+        {
+            selectedAuthors.Add(row.Cells["authors_author"].Value.ToString() ?? string.Empty);
+        }
+
+        RemoveAuthors removeAuthors = new(selectedAuthors);
         removeAuthors.ShowDialog();
         RefreshAuthors(sender, e);
     }
