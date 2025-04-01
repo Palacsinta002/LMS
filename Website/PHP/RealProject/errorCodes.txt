@@ -31,4 +31,5 @@
 30 : !Invalid address;
 31 : !Invalid token;
 32 : !Can't reserve this book;
-32 : !Can't delete this reservation;
+33 : !Can't delete this reservation;
+34 : !This account has email;

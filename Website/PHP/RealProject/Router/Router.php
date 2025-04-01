@@ -72,16 +72,21 @@ class Router{
         
         
     }
-    public static function put($endpoint, $controller, $function){
+    public static function put($endpoint, $controller, $function,$auth = true){
         $uri = $_SERVER["REQUEST_URI"];
         
         if ($uri == $endpoint){
             if ($_SERVER["REQUEST_METHOD" ] != "PUT"){
                 Response::httpError(404,17);
             }
-            $userID = self::getHeadAuth();
             $body = Helper::getPostBody();
-            $controller::$function($body,$userID);
+            if ($auth == true){
+                $userID = self::getHeadAuth();
+                $controller::$function($body,$userID);
+                die();
+            }
+            
+            $controller::$function($body);
             die();
             
         }

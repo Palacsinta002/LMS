@@ -55,6 +55,9 @@ class UserTable extends Table{
     public static function changePassword($password,$userID){
         return self::update("users",["password"],[$password],["s"])->where(["ID"],["="],[$userID],["i"])->execute(false,false);
     }
+    public static function allByID($ID){
+        return self::select(["users"],["*"])->where(["ID"],["="],[$ID],["i"])->execute(true);
+    }
     
 }
 

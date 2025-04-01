@@ -6,7 +6,7 @@ use Helper\Helper;
 use App\Authorize\Token;
 use ApiResponse\Response;
 use Emailer\SendEmail;
-
+use Emailer\EmailBodies;
 class UserController{
     public static function login($body){
         $body = Helper::validateTheInputArray($body);
@@ -14,9 +14,6 @@ class UserController{
             Response::httpError(400,21);
         }
         $id = User::loginAuth($body["username"], $body["password"]);
-        if (is_array($id)){
-            Response::httpSuccess(200,["Token" => Token::makeToken($id,$body["username"]), "isRegistered" => false]);
-        }
         Response::httpSuccess(200,["Token" => Token::makeToken($id,$body["username"])]);
         
     }
@@ -42,25 +39,8 @@ class UserController{
         $verificationCode = User::createAuthCode();
         $body["EmailVerificationCode"] = $verificationCode;
         UserTable::insertToUser($body);
-        $bodyOfHtml = "<html>
-            <body style='font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px;'>
-                <div style='max-width: 600px; background: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); margin: auto;'>
-                    <div style='text-align: center; font-size: 22px; color: #333; font-weight: bold;'>Email Verification</div>
-                    <div style='margin-top: 20px; font-size: 16px; color: #555;'>
-                        <p>Thank you for registering with us! Please use the verification code below to verify your email address:</p>
-                        <div style='display: block; width: fit-content; margin: 20px auto; font-size: 24px; font-weight: bold; background: #007bff; color: white; padding: 12px 20px; border-radius: 5px; letter-spacing: 2px;'>
-                            ".$verificationCode."
-                        </div>
-                        <p>If you did not request this, please ignore this email.</p>
-                    </div>
-                    <div style='font-size: 12px; text-align: center; color: #999; margin-top: 20px;'>
-                        <p>If you have any concerns, please contact our support team.</p>
-                        <p>Thank you, <br> LMS</p>
-                    </div>
-                </div>
-            </body>
-        </html>";
-        SendEmail::sendEmail($body["email"],"New user","Verification Email",$bodyOfHtml);
+
+        SendEmail::sendEmail($body["email"],"New user","Verification Email",EmailBodies::verifyEmail($verificationCode));
         Response::httpSuccess(200,["Success" =>"User created"]);
     }
 
@@ -139,25 +119,7 @@ class UserController{
         };
         $data = $user->fetch_assoc();
         $token = Token::makeToken($data["id"],$data["username"],900);
-        $bodyOfHtml = "<html>
-        <body style='font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px;'>
-            <div style='max-width: 600px; background: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); margin: auto;'>
-                <div style='text-align: center; font-size: 22px; color: #333; font-weight: bold;'>Password Reset Request</div>
-                <div style='margin-top: 20px; font-size: 16px; color: #555;'>
-                    <p>Hello, ".$data["username"]."</p>
-                    <p>A password reset request was made for your account. If you initiated this request, please click the button below to reset your password:</p>
-                    <a href='http://localhost:5173/change-password/$token' style='display: block; width: 200px; text-align: center; background: #007bff; color: white; padding: 12px; border-radius: 5px; text-decoration: none; font-weight: bold; margin: 20px auto;'>Reset Password</a>
-                    <p>If you did not request this, please ignore this email. Your account remains secure.</p>
-                    <p>For security reasons, this link will expire in 15 minutes.</p>
-                </div>
-                <div style='font-size: 12px; text-align: center; color: #999; margin-top: 20px;'>
-                    <p>If you have any concerns, please contact our support team.</p>
-                    <p>Thank you, <br> LMS</p>
-                </div>
-            </div>
-        </body>
-        </html>";
-        SendEmail::sendEmail($body["email"],$data["username"],"Forget password",$bodyOfHtml);
+        SendEmail::sendEmail($body["email"],$data["username"],"Forgot password",EmailBodies::forgotPassword($data["username"],$token));
         Response::httpSuccess(200,["Success"=> "Email sent"]);
 
     }
@@ -169,6 +131,25 @@ class UserController{
         $newPasswordHash = User::checkPassword($body["password"],$body["passwordAgain"]);
         UserTable::changePassword($newPasswordHash,$userID);
         Response::httpSuccess(200,["Success"=> "Password updated"]);
+    }
+    public static function finalizeRegistration($body){
+        $body = Helper::validateTheInputArray($body);
+        
+        if (!($body = User::checkRequiredData($body,["email","username","password"]))){
+            Response::httpError(400,21);
+        }
+        
+        User::checkEmail($body["email"]);
+        $id = User::loginAuth($body["username"],$body["password"],false);
+        $user = UserTable::selectUserData($id)[0];
+        if (isset($user["email"])){
+            Response::httpError(400,34);
+        }
+   
+        $verificationCode = User::createAuthCode();
+        SendEmail::sendEmail($body["email"],"New user","Verification Email",EmailBodies::verifyEmail($verificationCode));
+        UserTable::updateUserData($id,["email","EmailVerificationCode"],[$body["email"],$verificationCode],["s","i"]);
+        Response::httpSuccess(200,["Success"=> "Email sent"]);
     }
 }
 

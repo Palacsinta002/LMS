@@ -18,6 +18,7 @@ Router::post("/api/verify-account", UserController::class,"verifyAccount");
 Router::post("/api/forgot-password", UserController::class,"forgotPassword");
 Router::get("/api/user", UserController::class,"userData", true);
 Router::put("/api/update-user", UserController::class,"updateUser");
+Router::put("/api/finalize-registration", UserController::class,"finalizeRegistration",false);
 Router::put("/api/change-password", UserController::class,"changePassword");
 Router::delete("/api/delete-user", UserController::class,"deleteUser");
 
