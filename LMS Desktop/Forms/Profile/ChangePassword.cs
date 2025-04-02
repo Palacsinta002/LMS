@@ -30,6 +30,7 @@ public partial class ChangePassword : Form
         if (ValidateInput())
         {
             Password = BCrypt.Net.BCrypt.HashPassword(textBox_newPassword.Text);
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
     }

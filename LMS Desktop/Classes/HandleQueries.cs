@@ -87,10 +87,11 @@ internal class HandleQueries
         connection.RunSqlCommand(query);
     }
     // Insert user with the given arguments
-    internal static void InsertUser(string firstName, string lastName, string dateOfBirth, string username, string hashedPassword, string address)
+    internal static void InsertUser(string firstName, string lastName, string dateOfBirth, string username, string hashedPassword, string address, int roleId)
     {
         Connection connection = new();
-        string query = $"INSERT INTO Users(FirstName, LastName, dateOfBirth, Username, Password, Address, Verified, RoleID) VALUES(\"{firstName}\", \"{lastName}\", \"{dateOfBirth}\", \"{username}\", \"{hashedPassword}\", \"{address}\", 1, 3)";
+        string query = $"INSERT INTO Users(FirstName, LastName, dateOfBirth, Username, Password, Address, Verified, RoleID) " +
+            $"VALUES(\"{firstName}\", \"{lastName}\", \"{dateOfBirth}\", \"{username}\", \"{hashedPassword}\", \"{address}\", 1, {roleId})";
         connection.RunSqlCommand(query);
     }
 
@@ -186,24 +187,25 @@ internal class HandleQueries
         connection.RunSqlCommand(query);
     }
     // Update user with the given arguments
-    internal static void UpdateUser(string oldUsername, string firstName, string lastName, string dateOfBirth, string username, string address, bool verified)
+    internal static void UpdateUser(string oldUsername, string firstName, string lastName, string dateOfBirth, string username, string address, bool verified, int roleId)
     {
         Connection connection = new();
-        string query = $"UPDATE Users SET FirstName = \"{firstName}\", LastName = \"{lastName}\", DateOfBirth = \"{dateOfBirth}\", Username = \"{username}\", Address = \"{address}\", Verified = {verified} WHERE Username = \"{oldUsername}\"";
-        connection.RunSqlCommand(query);
-    }
-    // Update user password
-    internal static void UpdateUserPassword(string username, string hashedPassword)
-    {
-        Connection connection = new();
-        string query = $"UPDATE Users SET Password = \"{hashedPassword}\" WHERE Username = \"{username}\"";
+        string query = $"UPDATE Users SET FirstName = \"{firstName}\", LastName = \"{lastName}\", DateOfBirth = \"{dateOfBirth}\", "
+                     + $"Username = \"{username}\", Address = \"{address}\", Verified = {verified}, RoleID = {roleId} WHERE Username = \"{oldUsername}\"";
         connection.RunSqlCommand(query);
     }
     // Update logged in user
-    internal static void UpdateProfile(string oldUsername, string firstName, string lastName, string username, string dateOfBirth, string email, string address, string password)
+    internal static void UpdateProfile(string oldUsername, string firstName, string lastName, string username, string dateOfBirth, string email, string address)
     {
         Connection connection = new();
-        string query = $"UPDATE Users SET FirstName = \"{firstName}\", LastName = \"{lastName}\", Username = \"{username}\", DateOfBirth = \"{dateOfBirth}\", Email = \"{email}\", Address = \"{address}\", Password = \"{password}\" WHERE Username = \"{oldUsername}\"";
+        string query = $"UPDATE Users SET FirstName = \"{firstName}\", LastName = \"{lastName}\", Username = \"{username}\", DateOfBirth = \"{dateOfBirth}\", Email = \"{email}\", Address = \"{address}\" WHERE Username = \"{oldUsername}\"";
+        connection.RunSqlCommand(query);
+    }
+    // Update a user's password
+    internal static void UpdatePassword(string username, string hashedPassword)
+    {
+        Connection connection = new();
+        string query = $"UPDATE Users SET Password = \"{hashedPassword}\" WHERE Username = \"{username}\"";
         connection.RunSqlCommand(query);
     }
 

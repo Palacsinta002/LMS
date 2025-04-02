@@ -27,6 +27,8 @@ public partial class AddUser : Form
         // Roles - This is only visible for admins
         var result = HandleQueries.SelectFromFile("SelectRole");
         HandleGrids.Fill(comboBox_role, result);
+        comboBox_role.SelectedIndex = 2;
+
         label_role.Visible = _isAdmin;
         comboBox_role.Visible = _isAdmin;
     }
@@ -40,7 +42,7 @@ public partial class AddUser : Form
             string randomPassword = GeneratePassword.Generate("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnoqqrstuvwxyz0123456789", 12);
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(randomPassword);
 
-            HandleQueries.InsertUser(textBox_firstName.Text, textBox_lastName.Text, dateOfBirthString, textBox_username.Text, hashedPassword, textBox_address.Text);
+            HandleQueries.InsertUser(textBox_firstName.Text, textBox_lastName.Text, dateOfBirthString, textBox_username.Text, hashedPassword, textBox_address.Text, comboBox_role.SelectedIndex + 1);
 
             ShowPassword showPassword = new(randomPassword);
             showPassword.ShowDialog();
