@@ -51,9 +51,6 @@
     <Compile Update="Forms\Profile\ProfileSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Profile\PasswordRequirements.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Forms\Profile\SaveConfirmation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +110,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Resources\checkMark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\closeBlackLight.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\closeRed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\hideIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
