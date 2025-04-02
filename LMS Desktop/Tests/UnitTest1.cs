@@ -1,4 +1,4 @@
-namespace LMS_Desktop_Test
+namespace Tests
 {
     public class Tests
     {
