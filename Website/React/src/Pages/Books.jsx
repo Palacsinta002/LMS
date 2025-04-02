@@ -57,7 +57,6 @@ export default function Books() {
 
     return (
         <div>
-            <Header />
             {loading ? (
                 <p>Loading books...</p>
             ) : (
