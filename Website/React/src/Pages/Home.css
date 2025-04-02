@@ -100,6 +100,32 @@ body {
   float: right;
 }
 
+.books {
+  font-size: 2vh;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  background-color: #504DB4;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.6);
+  padding: 1vh;
+  border-radius: 5px;
+  float: right;
+  margin-right: 2vw;
+  transition: 0.3s ease-in-out;
+}
+
+.books:hover {
+  font-size: 2vh;
+  font-weight: bold;
+  color: #504DB4;
+  text-decoration: none;
+  background-color: white;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.6);
+  padding: 1vh;
+  border-radius: 5px;
+  float: right;
+}
+
 .logout {
   font-size: 2vh;
   font-weight: bold;
@@ -137,7 +163,8 @@ body {
   min-width: 30vw;
   background-color: #48459E;
   border-radius: 1vh;
-  margin: 5vh auto;
+  margin: auto;
+  margin-bottom: 4vh;
   text-align: center;
   font-weight: bold;
   color: white;
@@ -160,26 +187,6 @@ body {
 
 caption {
   font-weight: bold;
-}
-
-table {
-  position: relative;
-  font-size: 1vw;
-  background-color: #48459E;
-  border: 1px #504DB4 solid;
-  border-radius: 10px;
-  color: white;
-  width: 40vw;
-  max-width: 40vw;
-  min-width: 30vw;
-  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.6);
-  font-weight: bold;
-  margin: 5vh auto;
-}
-
-table td {
-  border-radius: 10px;
-  font-size: 1vw;
 }
 
 .BrowseBooks {
