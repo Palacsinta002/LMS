@@ -89,10 +89,9 @@ public partial class ChangePassword : Form
     }
 
     // On password change it will update the buttons and colors of the password requirements labels
-    private void OnTextChange(object sender, EventArgs e)
+    private void OnPasswordChange(object sender, EventArgs e)
     {
         string password = textBox_newPassword.Text;
-        Regex.IsMatch(password, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*(\d|\W)).{8,16}$");
 
         // Checking length
         if (Regex.IsMatch(password, @"^.{8,16}$"))
@@ -148,6 +147,21 @@ public partial class ChangePassword : Form
         {
             rButton_allowed.Image = Image.FromFile(@"Resources\closeRed.png");
             label_allowed.ForeColor = Color.Red;
+        }
+    }
+
+    private void OnPasswordAgainChange(object sender, EventArgs e)
+    {
+        // Checking if passwords are matching
+        if (textBox_newPassword.Text == textBox_newPasswordAgain.Text)
+        {
+            rButton_match.Image = Image.FromFile(@"Resources\checkMark.png");
+            label_match.ForeColor = Color.Green;
+        }
+        else
+        {
+            rButton_match.Image = Image.FromFile(@"Resources\closeRed.png");
+            label_match.ForeColor = Color.Red;
         }
     }
 }

@@ -54,6 +54,8 @@ namespace Desktop_Application.Forms.Profile
             label_characterCount = new Label();
             rButton_allowed = new Button();
             label_allowed = new Label();
+            rButton_match = new Button();
+            label_match = new Label();
             header.SuspendLayout();
             SuspendLayout();
             // 
@@ -70,7 +72,7 @@ namespace Desktop_Application.Forms.Profile
             save.FlatStyle = FlatStyle.Flat;
             save.Font = new Font("Yu Gothic UI Semibold", 14F);
             save.ForeColor = Color.White;
-            save.Location = new Point(172, 400);
+            save.Location = new Point(172, 425);
             save.Name = "save";
             save.Size = new Size(85, 36);
             save.TabIndex = 8;
@@ -92,7 +94,7 @@ namespace Desktop_Application.Forms.Profile
             cancel.FlatStyle = FlatStyle.Flat;
             cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
             cancel.ForeColor = Color.Black;
-            cancel.Location = new Point(262, 400);
+            cancel.Location = new Point(262, 425);
             cancel.Name = "cancel";
             cancel.Size = new Size(85, 36);
             cancel.TabIndex = 9;
@@ -176,7 +178,7 @@ namespace Desktop_Application.Forms.Profile
             textBox_newPassword.PasswordChar = '*';
             textBox_newPassword.Size = new Size(185, 32);
             textBox_newPassword.TabIndex = 2;
-            textBox_newPassword.TextChanged += OnTextChange;
+            textBox_newPassword.TextChanged += OnPasswordChange;
             // 
             // textBox_currentPassword
             // 
@@ -199,6 +201,7 @@ namespace Desktop_Application.Forms.Profile
             textBox_newPasswordAgain.PasswordChar = '*';
             textBox_newPasswordAgain.Size = new Size(185, 32);
             textBox_newPasswordAgain.TabIndex = 3;
+            textBox_newPasswordAgain.TextChanged += OnPasswordAgainChange;
             // 
             // label4
             // 
@@ -360,12 +363,39 @@ namespace Desktop_Application.Forms.Profile
             label_allowed.TabIndex = 114;
             label_allowed.Text = "No \" or \\";
             // 
+            // rButton_match
+            // 
+            rButton_match.BackColor = Color.White;
+            rButton_match.FlatAppearance.BorderSize = 0;
+            rButton_match.FlatAppearance.MouseDownBackColor = Color.White;
+            rButton_match.FlatAppearance.MouseOverBackColor = Color.White;
+            rButton_match.FlatStyle = FlatStyle.Flat;
+            rButton_match.Image = (Image)resources.GetObject("rButton_match.Image");
+            rButton_match.Location = new Point(190, 386);
+            rButton_match.Name = "rButton_match";
+            rButton_match.Size = new Size(29, 30);
+            rButton_match.TabIndex = 117;
+            rButton_match.TabStop = false;
+            rButton_match.UseVisualStyleBackColor = false;
+            // 
+            // label_match
+            // 
+            label_match.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label_match.ForeColor = Color.Green;
+            label_match.Location = new Point(215, 388);
+            label_match.Name = "label_match";
+            label_match.Size = new Size(163, 28);
+            label_match.TabIndex = 116;
+            label_match.Text = "Passwords match";
+            // 
             // ChangePassword
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(391, 446);
+            ClientSize = new Size(391, 471);
+            Controls.Add(rButton_match);
+            Controls.Add(label_match);
             Controls.Add(rButton_allowed);
             Controls.Add(label_allowed);
             Controls.Add(rButton_characterCount);
@@ -424,5 +454,7 @@ namespace Desktop_Application.Forms.Profile
         private Label label_characterCount;
         private Button rButton_allowed;
         private Label label_allowed;
+        private Button rButton_match;
+        private Label label_match;
     }
 }
