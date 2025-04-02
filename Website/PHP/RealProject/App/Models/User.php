@@ -41,7 +41,7 @@ class User extends Model{
     }
 
     public static function checkFirstLastName($name){
-        if (!preg_match("/^[A-ZÁRVÍZTŰRŐTÜKÖRFÚRÓGÉP][a-záéíóöőúüűÁÉÍÓÖŐÚÜŰ\-']*$/u",$name) || (strlen($name) < 3 || strlen($name) > 100)){
+        if (!preg_match("/^[A-ZÁRVÍZTŰRŐTÜKÖRFÚRÓGÉP][a-záéíóöőúüű\-']*$/u",$name) || (strlen($name) < 3 || strlen($name) > 100)){
             Response::httpError(400,4);
         }
         return true;
@@ -88,17 +88,12 @@ class User extends Model{
       } 
 
     public static function validateAddress($address){
-        if (!preg_match('/^\d+\s[A-Za-z\s]+,\s[A-Za-z\s]+$/', $address)) {
+        if (!preg_match('/^\d+\s[A-ZÁÉÍÓÖŐÚÜŰa-záéíóöőúüű]+(?:\s[A-ZÁÉÍÓÖŐÚÜŰa-záéíóöőúüű]+)+,\s[A-ZÁÉÍÓÖŐÚÜŰa-záéíóöőúüű]+(?:\s[A-ZÁÉÍÓÖŐÚÜŰa-záéíóöőúüű]+)*$/', $address)) {
             Response::httpError(400,30);
         }
     
 
         if (strlen($address) < 5 || strlen($address) > 100) {
-            Response::httpError(400,30);
-        }
-    
-
-        if (!preg_match('/^[0-9A-Za-z\s,.-]+$/', $address)) {
             Response::httpError(400,30);
         }
         return true;

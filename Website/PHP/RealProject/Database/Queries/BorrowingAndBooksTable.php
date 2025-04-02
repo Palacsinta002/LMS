@@ -23,13 +23,16 @@ class BorrowingAndBooksTable extends Table{
                 "books.ISBN",
                 "books.Title",
                 "GROUP_CONCAT(DISTINCT Authors.Author SEPARATOR ',') as 'Authors'",
-                "COUNT(books.ISBN) as 'BorrowCount'", 
+                "GROUP_CONCAT(DISTINCT categories.category SEPARATOR ',') as 'Category'",
+                "COUNT(DISTINCT borrowings.ID) AS BorrowCount", 
                 "books.publicationYear"
             ]
         )
         ->innerJoin("borrowings", ["books.ISBN"], ["="], ["borrowings.ISBN"])
         ->innerJoin("Books_authors", ["Books.ISBN"], ["="], ["Books_Authors.ISBN"])
         ->innerJoin("Authors", ["Books_Authors.AuthorID"], ["="], ["Authors.ID"])
+        ->innerJoin("Books_Categories",["Books.ISBN"],["="],["Books_Categories.ISBN"])
+        ->innerJoin("Categories",["Books_Categories.CategoryID"],["="],["Categories.ID"])
         ->groupBy(["books.Title", "books.publicationYear"])
         ->orderBy(["BorrowCount"], false) 
         ->limit($limit)

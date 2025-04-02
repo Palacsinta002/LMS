@@ -12,6 +12,9 @@ class Connection{
         if ($conn->connect_error) {
             Response::httpError(500, $conn->connect_error);
         }
+        if (isset(getallheaders()["Test"])){
+            $conn->autocommit(false);
+        }
         return $conn;
         
         }
