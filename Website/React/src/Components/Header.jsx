@@ -5,7 +5,7 @@ import { AuthContext } from '../Auth/AuthProvider';
 
 export default function Header() {
   const location = useLocation();
-  const hidden = location.pathname !== "/" ? "hidden" : "";
+  const hidden = location.pathname !== "/" && location.pathname !== "/books" ? "hidden" : "";
   const isAuthorized = !!sessionStorage.getItem("token");
 
   const { logout } = useContext(AuthContext);
