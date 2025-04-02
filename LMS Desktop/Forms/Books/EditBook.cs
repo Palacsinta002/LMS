@@ -62,8 +62,8 @@ public partial class EditBook : Form
 
                 HandleQueries.UpdateBook(_oldIsbn, textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, authors, categories);
                 MessageBox.Show("Book updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
-            this.Close();
         }
     }
 

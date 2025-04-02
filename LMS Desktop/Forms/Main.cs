@@ -275,7 +275,7 @@ public partial class Main : Form
         RefreshReservations(sender, e);
     }
 
-    // Removes reservation from the database - Marks the book as returned
+    // Removes reservation from the database
     private void RemoveReservations(object sender, EventArgs e)
     {
         List<string> selectedIsbns = [];
@@ -287,6 +287,20 @@ public partial class Main : Form
 
         RemoveReservations removeReservations = new(selectedIsbns);
         removeReservations.ShowDialog();
+        RefreshReservations(sender, e);
+    }
+
+    // Create a borrowing based on the selected reservations and removes the reservations
+    private void LendReservation(object sender, EventArgs e)
+    {
+        if (reservations_grid.SelectedRows.Count != 1)
+        {
+            MessageBox.Show("You must select ONE reservation to lend!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+
+        LendReservation lendReservation = new(reservations_grid);
+        lendReservation.ShowDialog();
         RefreshReservations(sender, e);
     }
     #endregion

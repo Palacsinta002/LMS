@@ -6,4 +6,4 @@
     DATE_FORMAT(DueDate, "%d/%m/%Y"),
     DATE_FORMAT(ReturnDate, "%d/%m/%Y")
 FROM Borrowings_storage
-ORDER BY BorrowDate DESC, ISBN ASC;
+ORDER BY BorrowDate DESC;

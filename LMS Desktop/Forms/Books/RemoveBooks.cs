@@ -6,9 +6,9 @@ public partial class RemoveBooks : Form
 {
     private readonly List<string> _selectedIsbns;
 
-    public RemoveBooks(List<string> selected_isbns)
+    public RemoveBooks(List<string> selectedIsbns)
     {
-        _selectedIsbns = selected_isbns;
+        _selectedIsbns = selectedIsbns;
         InitializeComponent();
     }
 

@@ -22,7 +22,7 @@ public partial class AddBorrowing : Form
         var result = HandleQueries.SelectFromFile("SelectUsername");
         HandleGrids.Fill(dropDown_user, result);
 
-        comboBox_extendBy.SelectedIndex = 0;
+        comboBox_dueDate.SelectedIndex = 0;
     }
 
     private void Save(object sender, EventArgs e)
@@ -32,7 +32,7 @@ public partial class AddBorrowing : Form
             DateTime borrowDate = DateTime.Today;
             string borrowDateString = $"{borrowDate.Year}-{borrowDate.Month}-{borrowDate.Day}";
 
-            int dueTime = int.Parse(comboBox_extendBy.Text.Split(" ")[0]);
+            int dueTime = int.Parse(comboBox_dueDate.Text.Split(" ")[0]);
             DateTime dueDate = DateTime.Today.AddMonths(dueTime);
             string dueDateString = $"{dueDate.Year}-{dueDate.Month}-{dueDate.Day}";
 
