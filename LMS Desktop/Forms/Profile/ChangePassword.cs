@@ -78,4 +78,19 @@ public partial class ChangePassword : Form
         PasswordRequirements passwordRequirements = new();
         passwordRequirements.ShowDialog();
     }
+
+    // Handles the eye icon for showing the password
+    private void ShowPassword(object sender, EventArgs e)
+    {
+        if (textBox_newPassword.PasswordChar == '*')
+        {
+            textBox_newPassword.PasswordChar = '\0';
+            button_showPassword.Image = Image.FromFile(@"Resources\hideIcon.png");
+        }
+        else
+        {
+            textBox_newPassword.PasswordChar = '*';
+            button_showPassword.Image = Image.FromFile(@"Resources\showIcon.png");
+        }
+    }
 }

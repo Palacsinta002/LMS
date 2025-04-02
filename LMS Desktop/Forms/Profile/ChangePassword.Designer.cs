@@ -43,6 +43,7 @@ namespace Desktop_Application.Forms.Profile
             textBox_newPasswordAgain = new TextBox();
             label4 = new Label();
             button_pwdRequirements = new Button();
+            button_showPassword = new Button();
             header.SuspendLayout();
             SuspendLayout();
             // 
@@ -200,19 +201,34 @@ namespace Desktop_Application.Forms.Profile
             // 
             // button_pwdRequirements
             // 
-            button_pwdRequirements.BackColor = Color.WhiteSmoke;
+            button_pwdRequirements.BackColor = Color.White;
             button_pwdRequirements.Cursor = Cursors.Hand;
             button_pwdRequirements.FlatAppearance.BorderSize = 0;
             button_pwdRequirements.FlatAppearance.MouseDownBackColor = Color.WhiteSmoke;
             button_pwdRequirements.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
             button_pwdRequirements.FlatStyle = FlatStyle.Flat;
             button_pwdRequirements.Image = (Image)resources.GetObject("button_pwdRequirements.Image");
-            button_pwdRequirements.Location = new Point(314, 112);
+            button_pwdRequirements.Location = new Point(141, 111);
             button_pwdRequirements.Name = "button_pwdRequirements";
-            button_pwdRequirements.Size = new Size(32, 28);
+            button_pwdRequirements.Size = new Size(31, 29);
             button_pwdRequirements.TabIndex = 103;
             button_pwdRequirements.UseVisualStyleBackColor = false;
             button_pwdRequirements.Click += ShowPasswordRequirements;
+            // 
+            // button_showPassword
+            // 
+            button_showPassword.BackColor = Color.WhiteSmoke;
+            button_showPassword.Cursor = Cursors.Hand;
+            button_showPassword.FlatAppearance.BorderSize = 0;
+            button_showPassword.FlatAppearance.MouseDownBackColor = Color.White;
+            button_showPassword.FlatAppearance.MouseOverBackColor = Color.White;
+            button_showPassword.FlatStyle = FlatStyle.Flat;
+            button_showPassword.Image = (Image)resources.GetObject("button_showPassword.Image");
+            button_showPassword.Location = new Point(314, 113);
+            button_showPassword.Name = "button_showPassword";
+            button_showPassword.Size = new Size(32, 28);
+            button_showPassword.TabIndex = 104;
+            button_showPassword.UseVisualStyleBackColor = false;
             // 
             // ChangePassword
             // 
@@ -220,6 +236,7 @@ namespace Desktop_Application.Forms.Profile
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(365, 243);
+            Controls.Add(button_showPassword);
             Controls.Add(button_pwdRequirements);
             Controls.Add(textBox_newPasswordAgain);
             Controls.Add(label4);
@@ -256,5 +273,6 @@ namespace Desktop_Application.Forms.Profile
         private TextBox textBox_newPasswordAgain;
         private Label label4;
         private Button button_pwdRequirements;
+        private Button button_showPassword;
     }
 }
