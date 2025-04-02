@@ -9,14 +9,12 @@ public partial class ProfileSettings : Form
     internal string Username { get; private set; }
     private DateTime _dateOfBirth;
     private string _password;
-    private string _newPassword;
 
     public ProfileSettings(string username)
     {
         Username = username;
         _dateOfBirth = DateTime.Today;
         _password = string.Empty;
-        _newPassword = string.Empty;
         InitializeComponent();
     }
 
@@ -38,7 +36,6 @@ public partial class ProfileSettings : Form
 
         Username = userData[2];
         _password = userData[6];
-        _newPassword = userData[6];
 
         textBox_firstName.Text = userData[0];
         textBox_lastName.Text = userData[1];
@@ -58,7 +55,7 @@ public partial class ProfileSettings : Form
 
             string dateOfBirthString = $"{_dateOfBirth.Year}-{_dateOfBirth.Month}-{_dateOfBirth.Day}";
 
-            HandleQueries.UpdateProfile(Username, textBox_firstName.Text, textBox_lastName.Text, textBox_username.Text, dateOfBirthString, textBox_email.Text, textBox_address.Text, _newPassword);
+            HandleQueries.UpdateProfile(Username, textBox_firstName.Text, textBox_lastName.Text, textBox_username.Text, dateOfBirthString, textBox_email.Text, textBox_address.Text);
             MessageBox.Show("Profile updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Username = textBox_username.Text;
             this.Close();
@@ -164,6 +161,10 @@ public partial class ProfileSettings : Form
     {
         ChangePassword changePassword = new(_password);
         changePassword.ShowDialog();
-        _newPassword = changePassword.Password;
+        if(changePassword.DialogResult == DialogResult.OK)
+        {
+            HandleQueries.UpdatePassword(Username, changePassword.Password);
+            MessageBox.Show("Your password has been updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

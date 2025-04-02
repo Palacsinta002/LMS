@@ -2,9 +2,9 @@ import React from 'react'
 import Cards from '../Components/Cards';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { Link } from "react-scroll";
+import Header from '../Components/Header';
 
-export default function HeroBrowseBooks() {
+export default function Books() {
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -57,12 +57,6 @@ export default function HeroBrowseBooks() {
 
     return (
         <div>
-            <div className="BrowseBooks">
-                <Link smooth={true} duration={500} to="browsebooks" className="BrowseBooks-link">
-                    <p>Browse books</p>
-                    <i className="fa fa-caret-down"></i>
-                </Link>
-            </div>
             {loading ? (
                 <p>Loading books...</p>
             ) : (

@@ -30,6 +30,7 @@ public partial class ChangePassword : Form
         if (ValidateInput())
         {
             Password = BCrypt.Net.BCrypt.HashPassword(textBox_newPassword.Text);
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
     }
@@ -72,9 +73,95 @@ public partial class ChangePassword : Form
         return true;
     }
 
-    private void ShowPasswordRequirements(object sender, EventArgs e)
+    // Handles the eye icon for showing the password
+    private void ShowPassword(object sender, EventArgs e)
     {
-        PasswordRequirements passwordRequirements = new();
-        passwordRequirements.ShowDialog();
+        if (textBox_newPassword.PasswordChar == '*')
+        {
+            textBox_newPassword.PasswordChar = '\0';
+            button_showPassword.Image = Image.FromFile(@"Resources\hideIcon.png");
+        }
+        else
+        {
+            textBox_newPassword.PasswordChar = '*';
+            button_showPassword.Image = Image.FromFile(@"Resources\showIcon.png");
+        }
+    }
+
+    // On password change it will update the buttons and colors of the password requirements labels
+    private void OnPasswordChange(object sender, EventArgs e)
+    {
+        string password = textBox_newPassword.Text;
+
+        // Checking length
+        if (Regex.IsMatch(password, @"^.{8,16}$"))
+        {
+            rButton_characterCount.Image = Image.FromFile(@"Resources\checkMark.png");
+            label_characterCount.ForeColor = Color.Green;
+        }
+        else
+        {
+            rButton_characterCount.Image = Image.FromFile(@"Resources\closeRed.png");
+            label_characterCount.ForeColor = Color.Red;
+        }
+        // Checking uppercase characters
+        if (Regex.IsMatch(password, @"[A-Z]"))
+        {
+            rButton_upper.Image = Image.FromFile(@"Resources\checkMark.png");
+            label_upper.ForeColor = Color.Green;
+        }
+        else
+        {
+            rButton_upper.Image = Image.FromFile(@"Resources\closeRed.png");
+            label_upper.ForeColor = Color.Red;
+        }
+        // Checking lowercase characters
+        if (Regex.IsMatch(password, @"[a-z]"))
+        {
+            rButton_lower.Image = Image.FromFile(@"Resources\checkMark.png");
+            label_lower.ForeColor = Color.Green;
+        }
+        else
+        {
+            rButton_lower.Image = Image.FromFile(@"Resources\closeRed.png");
+            label_lower.ForeColor = Color.Red;
+        }
+        // Checking special and numeric characters
+        if (Regex.IsMatch(password, @"\d|[^\w\""]"))
+        {
+            rButton_special.Image = Image.FromFile(@"Resources\checkMark.png");
+            label_special.ForeColor = Color.Green;
+        }
+        else
+        {
+            rButton_special.Image = Image.FromFile(@"Resources\closeRed.png");
+            label_special.ForeColor = Color.Red;
+        }
+        // Checking " and \
+        if (!Regex.IsMatch(password, @"[""\\]"))
+        {
+            rButton_allowed.Image = Image.FromFile(@"Resources\checkMark.png");
+            label_allowed.ForeColor = Color.Green;
+        }
+        else
+        {
+            rButton_allowed.Image = Image.FromFile(@"Resources\closeRed.png");
+            label_allowed.ForeColor = Color.Red;
+        }
+    }
+
+    private void OnPasswordAgainChange(object sender, EventArgs e)
+    {
+        // Checking if passwords are matching
+        if (textBox_newPassword.Text == textBox_newPasswordAgain.Text)
+        {
+            rButton_match.Image = Image.FromFile(@"Resources\checkMark.png");
+            label_match.ForeColor = Color.Green;
+        }
+        else
+        {
+            rButton_match.Image = Image.FromFile(@"Resources\closeRed.png");
+            label_match.ForeColor = Color.Red;
+        }
     }
 }

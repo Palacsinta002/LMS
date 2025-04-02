@@ -42,7 +42,20 @@ namespace Desktop_Application.Forms.Profile
             textBox_currentPassword = new TextBox();
             textBox_newPasswordAgain = new TextBox();
             label4 = new Label();
-            button_pwdRequirements = new Button();
+            button_showPassword = new Button();
+            label3 = new Label();
+            label_special = new Label();
+            label_lower = new Label();
+            label_upper = new Label();
+            rButton_upper = new Button();
+            rButton_lower = new Button();
+            rButton_special = new Button();
+            rButton_characterCount = new Button();
+            label_characterCount = new Label();
+            rButton_allowed = new Button();
+            label_allowed = new Label();
+            rButton_match = new Button();
+            label_match = new Label();
             header.SuspendLayout();
             SuspendLayout();
             // 
@@ -59,7 +72,7 @@ namespace Desktop_Application.Forms.Profile
             save.FlatStyle = FlatStyle.Flat;
             save.Font = new Font("Yu Gothic UI Semibold", 14F);
             save.ForeColor = Color.White;
-            save.Location = new Point(172, 197);
+            save.Location = new Point(172, 425);
             save.Name = "save";
             save.Size = new Size(85, 36);
             save.TabIndex = 8;
@@ -81,7 +94,7 @@ namespace Desktop_Application.Forms.Profile
             cancel.FlatStyle = FlatStyle.Flat;
             cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
             cancel.ForeColor = Color.Black;
-            cancel.Location = new Point(262, 197);
+            cancel.Location = new Point(262, 425);
             cancel.Name = "cancel";
             cancel.Size = new Size(85, 36);
             cancel.TabIndex = 9;
@@ -108,14 +121,14 @@ namespace Desktop_Application.Forms.Profile
             header.Controls.Add(close_btn);
             header.Location = new Point(1, 1);
             header.Name = "header";
-            header.Size = new Size(363, 55);
+            header.Size = new Size(389, 55);
             header.TabIndex = 87;
             // 
             // title
             // 
             title.AutoSize = true;
             title.Font = new Font("Yu Gothic UI Semibold", 16F);
-            title.Location = new Point(78, 11);
+            title.Location = new Point(91, 11);
             title.Name = "title";
             title.Size = new Size(188, 30);
             title.TabIndex = 2;
@@ -137,7 +150,7 @@ namespace Desktop_Application.Forms.Profile
             close_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             close_btn.ForeColor = Color.White;
             close_btn.Image = (Image)resources.GetObject("close_btn.Image");
-            close_btn.Location = new Point(316, 10);
+            close_btn.Location = new Point(342, 10);
             close_btn.Name = "close_btn";
             close_btn.Size = new Size(36, 35);
             close_btn.TabIndex = 25;
@@ -163,8 +176,9 @@ namespace Desktop_Application.Forms.Profile
             textBox_newPassword.MaxLength = 16;
             textBox_newPassword.Name = "textBox_newPassword";
             textBox_newPassword.PasswordChar = '*';
-            textBox_newPassword.Size = new Size(153, 32);
+            textBox_newPassword.Size = new Size(185, 32);
             textBox_newPassword.TabIndex = 2;
+            textBox_newPassword.TextChanged += OnPasswordChange;
             // 
             // textBox_currentPassword
             // 
@@ -174,53 +188,226 @@ namespace Desktop_Application.Forms.Profile
             textBox_currentPassword.MaxLength = 16;
             textBox_currentPassword.Name = "textBox_currentPassword";
             textBox_currentPassword.PasswordChar = '*';
-            textBox_currentPassword.Size = new Size(153, 32);
+            textBox_currentPassword.Size = new Size(185, 32);
             textBox_currentPassword.TabIndex = 1;
             // 
             // textBox_newPasswordAgain
             // 
             textBox_newPasswordAgain.BackColor = Color.WhiteSmoke;
             textBox_newPasswordAgain.Font = new Font("Yu Gothic UI Semibold", 14F);
-            textBox_newPasswordAgain.Location = new Point(194, 146);
+            textBox_newPasswordAgain.Location = new Point(194, 353);
             textBox_newPasswordAgain.MaxLength = 16;
             textBox_newPasswordAgain.Name = "textBox_newPasswordAgain";
             textBox_newPasswordAgain.PasswordChar = '*';
-            textBox_newPasswordAgain.Size = new Size(153, 32);
+            textBox_newPasswordAgain.Size = new Size(185, 32);
             textBox_newPasswordAgain.TabIndex = 3;
+            textBox_newPasswordAgain.TextChanged += OnPasswordAgainChange;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label4.Location = new Point(10, 148);
+            label4.Location = new Point(10, 355);
             label4.Name = "label4";
             label4.Size = new Size(147, 25);
             label4.TabIndex = 101;
             label4.Text = "Password Again";
             // 
-            // button_pwdRequirements
+            // button_showPassword
             // 
-            button_pwdRequirements.BackColor = Color.WhiteSmoke;
-            button_pwdRequirements.Cursor = Cursors.Hand;
-            button_pwdRequirements.FlatAppearance.BorderSize = 0;
-            button_pwdRequirements.FlatAppearance.MouseDownBackColor = Color.WhiteSmoke;
-            button_pwdRequirements.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
-            button_pwdRequirements.FlatStyle = FlatStyle.Flat;
-            button_pwdRequirements.Image = (Image)resources.GetObject("button_pwdRequirements.Image");
-            button_pwdRequirements.Location = new Point(314, 112);
-            button_pwdRequirements.Name = "button_pwdRequirements";
-            button_pwdRequirements.Size = new Size(32, 28);
-            button_pwdRequirements.TabIndex = 103;
-            button_pwdRequirements.UseVisualStyleBackColor = false;
-            button_pwdRequirements.Click += ShowPasswordRequirements;
+            button_showPassword.BackColor = Color.WhiteSmoke;
+            button_showPassword.Cursor = Cursors.Hand;
+            button_showPassword.FlatAppearance.BorderSize = 0;
+            button_showPassword.FlatAppearance.MouseDownBackColor = Color.WhiteSmoke;
+            button_showPassword.FlatAppearance.MouseOverBackColor = Color.WhiteSmoke;
+            button_showPassword.FlatStyle = FlatStyle.Flat;
+            button_showPassword.Image = (Image)resources.GetObject("button_showPassword.Image");
+            button_showPassword.Location = new Point(346, 113);
+            button_showPassword.Name = "button_showPassword";
+            button_showPassword.Size = new Size(32, 28);
+            button_showPassword.TabIndex = 104;
+            button_showPassword.UseVisualStyleBackColor = false;
+            button_showPassword.Click += ShowPassword;
+            // 
+            // label3
+            // 
+            label3.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label3.Location = new Point(194, 146);
+            label3.Name = "label3";
+            label3.Size = new Size(184, 30);
+            label3.TabIndex = 108;
+            label3.Text = "󠁏󠁏At least one...";
+            // 
+            // label_special
+            // 
+            label_special.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label_special.ForeColor = Color.Red;
+            label_special.Location = new Point(217, 265);
+            label_special.Name = "label_special";
+            label_special.Size = new Size(163, 54);
+            label_special.TabIndex = 107;
+            label_special.Text = "Special character\r\nor number";
+            // 
+            // label_lower
+            // 
+            label_lower.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label_lower.ForeColor = Color.Red;
+            label_lower.Location = new Point(217, 235);
+            label_lower.Name = "label_lower";
+            label_lower.Size = new Size(162, 30);
+            label_lower.TabIndex = 106;
+            label_lower.Text = "Lower case letter";
+            // 
+            // label_upper
+            // 
+            label_upper.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label_upper.ForeColor = Color.Red;
+            label_upper.Location = new Point(217, 205);
+            label_upper.Name = "label_upper";
+            label_upper.Size = new Size(162, 30);
+            label_upper.TabIndex = 105;
+            label_upper.Text = "Upper case letter";
+            // 
+            // rButton_upper
+            // 
+            rButton_upper.BackColor = Color.White;
+            rButton_upper.FlatAppearance.BorderSize = 0;
+            rButton_upper.FlatAppearance.MouseDownBackColor = Color.White;
+            rButton_upper.FlatAppearance.MouseOverBackColor = Color.White;
+            rButton_upper.FlatStyle = FlatStyle.Flat;
+            rButton_upper.Image = (Image)resources.GetObject("rButton_upper.Image");
+            rButton_upper.Location = new Point(192, 202);
+            rButton_upper.Name = "rButton_upper";
+            rButton_upper.Size = new Size(29, 30);
+            rButton_upper.TabIndex = 109;
+            rButton_upper.TabStop = false;
+            rButton_upper.UseVisualStyleBackColor = false;
+            // 
+            // rButton_lower
+            // 
+            rButton_lower.BackColor = Color.White;
+            rButton_lower.FlatAppearance.BorderSize = 0;
+            rButton_lower.FlatAppearance.MouseDownBackColor = Color.White;
+            rButton_lower.FlatAppearance.MouseOverBackColor = Color.White;
+            rButton_lower.FlatStyle = FlatStyle.Flat;
+            rButton_lower.Image = (Image)resources.GetObject("rButton_lower.Image");
+            rButton_lower.Location = new Point(192, 232);
+            rButton_lower.Name = "rButton_lower";
+            rButton_lower.Size = new Size(29, 30);
+            rButton_lower.TabIndex = 110;
+            rButton_lower.TabStop = false;
+            rButton_lower.UseVisualStyleBackColor = false;
+            // 
+            // rButton_special
+            // 
+            rButton_special.BackColor = Color.White;
+            rButton_special.FlatAppearance.BorderSize = 0;
+            rButton_special.FlatAppearance.MouseDownBackColor = Color.White;
+            rButton_special.FlatAppearance.MouseOverBackColor = Color.White;
+            rButton_special.FlatStyle = FlatStyle.Flat;
+            rButton_special.Image = (Image)resources.GetObject("rButton_special.Image");
+            rButton_special.Location = new Point(192, 263);
+            rButton_special.Name = "rButton_special";
+            rButton_special.Size = new Size(29, 30);
+            rButton_special.TabIndex = 111;
+            rButton_special.TabStop = false;
+            rButton_special.UseVisualStyleBackColor = false;
+            // 
+            // rButton_characterCount
+            // 
+            rButton_characterCount.BackColor = Color.White;
+            rButton_characterCount.FlatAppearance.BorderSize = 0;
+            rButton_characterCount.FlatAppearance.MouseDownBackColor = Color.White;
+            rButton_characterCount.FlatAppearance.MouseOverBackColor = Color.White;
+            rButton_characterCount.FlatStyle = FlatStyle.Flat;
+            rButton_characterCount.Image = (Image)resources.GetObject("rButton_characterCount.Image");
+            rButton_characterCount.Location = new Point(192, 174);
+            rButton_characterCount.Name = "rButton_characterCount";
+            rButton_characterCount.Size = new Size(29, 30);
+            rButton_characterCount.TabIndex = 113;
+            rButton_characterCount.TabStop = false;
+            rButton_characterCount.UseVisualStyleBackColor = false;
+            // 
+            // label_characterCount
+            // 
+            label_characterCount.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label_characterCount.ForeColor = Color.Red;
+            label_characterCount.Location = new Point(217, 176);
+            label_characterCount.Name = "label_characterCount";
+            label_characterCount.Size = new Size(163, 29);
+            label_characterCount.TabIndex = 112;
+            label_characterCount.Text = "8-16 characters";
+            // 
+            // rButton_allowed
+            // 
+            rButton_allowed.BackColor = Color.White;
+            rButton_allowed.FlatAppearance.BorderSize = 0;
+            rButton_allowed.FlatAppearance.MouseDownBackColor = Color.White;
+            rButton_allowed.FlatAppearance.MouseOverBackColor = Color.White;
+            rButton_allowed.FlatStyle = FlatStyle.Flat;
+            rButton_allowed.Image = (Image)resources.GetObject("rButton_allowed.Image");
+            rButton_allowed.Location = new Point(192, 317);
+            rButton_allowed.Name = "rButton_allowed";
+            rButton_allowed.Size = new Size(29, 30);
+            rButton_allowed.TabIndex = 115;
+            rButton_allowed.TabStop = false;
+            rButton_allowed.UseVisualStyleBackColor = false;
+            // 
+            // label_allowed
+            // 
+            label_allowed.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label_allowed.ForeColor = Color.Green;
+            label_allowed.Location = new Point(217, 319);
+            label_allowed.Name = "label_allowed";
+            label_allowed.Size = new Size(163, 28);
+            label_allowed.TabIndex = 114;
+            label_allowed.Text = "No \" or \\";
+            // 
+            // rButton_match
+            // 
+            rButton_match.BackColor = Color.White;
+            rButton_match.FlatAppearance.BorderSize = 0;
+            rButton_match.FlatAppearance.MouseDownBackColor = Color.White;
+            rButton_match.FlatAppearance.MouseOverBackColor = Color.White;
+            rButton_match.FlatStyle = FlatStyle.Flat;
+            rButton_match.Image = (Image)resources.GetObject("rButton_match.Image");
+            rButton_match.Location = new Point(190, 386);
+            rButton_match.Name = "rButton_match";
+            rButton_match.Size = new Size(29, 30);
+            rButton_match.TabIndex = 117;
+            rButton_match.TabStop = false;
+            rButton_match.UseVisualStyleBackColor = false;
+            // 
+            // label_match
+            // 
+            label_match.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label_match.ForeColor = Color.Green;
+            label_match.Location = new Point(215, 388);
+            label_match.Name = "label_match";
+            label_match.Size = new Size(163, 28);
+            label_match.TabIndex = 116;
+            label_match.Text = "Passwords match";
             // 
             // ChangePassword
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(365, 243);
-            Controls.Add(button_pwdRequirements);
+            ClientSize = new Size(391, 471);
+            Controls.Add(rButton_match);
+            Controls.Add(label_match);
+            Controls.Add(rButton_allowed);
+            Controls.Add(label_allowed);
+            Controls.Add(rButton_characterCount);
+            Controls.Add(label_characterCount);
+            Controls.Add(rButton_special);
+            Controls.Add(rButton_lower);
+            Controls.Add(label_upper);
+            Controls.Add(rButton_upper);
+            Controls.Add(label3);
+            Controls.Add(label_special);
+            Controls.Add(label_lower);
+            Controls.Add(button_showPassword);
             Controls.Add(textBox_newPasswordAgain);
             Controls.Add(label4);
             Controls.Add(textBox_currentPassword);
@@ -255,6 +442,19 @@ namespace Desktop_Application.Forms.Profile
         private TextBox textBox_currentPassword;
         private TextBox textBox_newPasswordAgain;
         private Label label4;
-        private Button button_pwdRequirements;
+        private Button button_showPassword;
+        private Label label3;
+        private Label label_special;
+        private Label label_lower;
+        private Label label_upper;
+        private Button rButton_upper;
+        private Button rButton_lower;
+        private Button rButton_special;
+        private Button rButton_characterCount;
+        private Label label_characterCount;
+        private Button rButton_allowed;
+        private Label label_allowed;
+        private Button rButton_match;
+        private Label label_match;
     }
 }

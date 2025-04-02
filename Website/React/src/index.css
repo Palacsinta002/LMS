@@ -10,6 +10,7 @@
   height: 80vh;
   width: 100vw;
   position: relative;
+  margin-top: 5vh;
 }
 .Hero{
   position: absolute;
@@ -25,21 +26,4 @@ header{
 }
 .hidden{
   display: none;
-}
-.background-circles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  z-index: -1;
-}
-
-.circle {
-  position: relative;
-  width: 25vh;
-  height: 25vh;
-  background-color: #48459E;
-  border-radius: 50%;
 }

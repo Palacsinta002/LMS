@@ -2,13 +2,10 @@
 
 namespace Desktop_Application.Forms.Reservations;
 
-public partial class RemoveReservations : Form
+public partial class LendReservationConfirmation : Form
 {
-    private readonly List<string> _selectedIsbns;
-
-    public RemoveReservations(List<string> selectedIsbns)
+    public LendReservationConfirmation()
     {
-        _selectedIsbns = selectedIsbns;
         InitializeComponent();
     }
 
@@ -19,14 +16,13 @@ public partial class RemoveReservations : Form
         BorderPaint.Handle(this);
         CloseWindow.Handle(this, close_btn);
         CloseWindow.Handle(this, no);
-        HandleKeys.Handle(this, Keys.Enter, Remove);
+        HandleKeys.Handle(this, Keys.Enter, Ok);
         HandleKeys.Handle(this, Keys.Escape, (s, e) => this.Close());
     }
 
-    private void Remove(object sender, EventArgs e)
+    private void Ok(object sender, EventArgs e)
     {
-        HandleQueries.Delete(_selectedIsbns, "Reservations", "ISBN");
-        MessageBox.Show("Reservation cancelled succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        this.DialogResult = DialogResult.OK;
         this.Close();
     }
 }

@@ -53,7 +53,7 @@ public partial class EditUser : Form
             string dateOfBirthString = $"{_dateOfBirth.Year}-{_dateOfBirth.Month}-{_dateOfBirth.Day}";
             bool verified = checkBox_verify.Checked;
 
-            HandleQueries.UpdateUser(_oldUsername, textBox_firstName.Text, textBox_lastName.Text, dateOfBirthString, textBox_username.Text, textBox_address.Text, verified);
+            HandleQueries.UpdateUser(_oldUsername, textBox_firstName.Text, textBox_lastName.Text, dateOfBirthString, textBox_username.Text, textBox_address.Text, verified, comboBox_role.SelectedIndex + 1);
             MessageBox.Show("User updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
@@ -140,10 +140,10 @@ public partial class EditUser : Form
 
     private void ResetPassword(object sender, EventArgs e)
     {
-        string randomPassword = GeneratePassword.Generate("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 10);
+        string randomPassword = GeneratePassword.Generate("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnoqqrstuvwxyz0123456789", 12);
         string hashedPassword = BCrypt.Net.BCrypt.HashPassword(randomPassword);
 
-        HandleQueries.UpdateUserPassword(_oldUsername, hashedPassword);
+        HandleQueries.UpdatePassword(_oldUsername, hashedPassword);
 
         ShowPassword showPassword = new(randomPassword);
         showPassword.ShowDialog();

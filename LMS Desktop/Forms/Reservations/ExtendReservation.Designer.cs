@@ -34,10 +34,9 @@ namespace Desktop_Application.Forms.Reservations
             header = new Panel();
             title = new Label();
             close_btn = new Desktop_Application.Components.RoundedButton();
-            label5 = new Label();
-            save = new Desktop_Application.Components.RoundedButton();
-            cancel = new Desktop_Application.Components.RoundedButton();
-            comboBox_extendBy = new System.Windows.Forms.ComboBox();
+            yes = new Desktop_Application.Components.RoundedButton();
+            no = new Desktop_Application.Components.RoundedButton();
+            label_title = new Label();
             header.SuspendLayout();
             SuspendLayout();
             // 
@@ -47,18 +46,17 @@ namespace Desktop_Application.Forms.Reservations
             header.Controls.Add(title);
             header.Controls.Add(close_btn);
             header.Location = new Point(1, 1);
-            header.Margin = new Padding(3, 4, 3, 4);
             header.Name = "header";
-            header.Size = new Size(438, 73);
+            header.Size = new Size(383, 55);
             header.TabIndex = 80;
             // 
             // title
             // 
             title.AutoSize = true;
             title.Font = new Font("Yu Gothic UI Semibold", 16F);
-            title.Location = new Point(88, 15);
+            title.Location = new Point(77, 11);
             title.Name = "title";
-            title.Size = new Size(252, 37);
+            title.Size = new Size(204, 30);
             title.TabIndex = 2;
             title.Text = "Extend Reservation";
             // 
@@ -77,99 +75,79 @@ namespace Desktop_Application.Forms.Reservations
             close_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             close_btn.ForeColor = Color.White;
             close_btn.Image = (Image)resources.GetObject("close_btn.Image");
-            close_btn.Location = new Point(384, 13);
-            close_btn.Margin = new Padding(3, 4, 3, 4);
+            close_btn.Location = new Point(336, 10);
             close_btn.Name = "close_btn";
-            close_btn.Size = new Size(41, 47);
+            close_btn.Size = new Size(36, 35);
             close_btn.TabIndex = 25;
             close_btn.TabStop = false;
             close_btn.TextColor = Color.White;
             close_btn.UseVisualStyleBackColor = false;
             // 
-            // label5
+            // yes
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Yu Gothic UI Semibold", 14F);
-            label5.Location = new Point(15, 101);
-            label5.Name = "label5";
-            label5.Size = new Size(121, 32);
-            label5.TabIndex = 82;
-            label5.Text = "Extend by";
+            yes.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            yes.BackColor = Color.WhiteSmoke;
+            yes.BackgroundColor = Color.WhiteSmoke;
+            yes.BorderColor = Color.FromArgb(80, 77, 180);
+            yes.BorderRadius = 5;
+            yes.BorderSize = 2;
+            yes.FlatAppearance.BorderSize = 0;
+            yes.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            yes.FlatStyle = FlatStyle.Flat;
+            yes.Font = new Font("Yu Gothic UI Semibold", 14F);
+            yes.ForeColor = Color.Black;
+            yes.Location = new Point(207, 136);
+            yes.Name = "yes";
+            yes.Size = new Size(80, 36);
+            yes.TabIndex = 83;
+            yes.TabStop = false;
+            yes.Text = "Yes";
+            yes.TextColor = Color.Black;
+            yes.UseVisualStyleBackColor = false;
+            yes.Click += Save;
             // 
-            // save
+            // no
             // 
-            save.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            save.BackColor = Color.FromArgb(80, 77, 180);
-            save.BackgroundColor = Color.FromArgb(80, 77, 180);
-            save.BorderColor = Color.Transparent;
-            save.BorderRadius = 5;
-            save.BorderSize = 0;
-            save.FlatAppearance.BorderSize = 0;
-            save.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
-            save.FlatStyle = FlatStyle.Flat;
-            save.Font = new Font("Yu Gothic UI Semibold", 14F);
-            save.ForeColor = Color.White;
-            save.Location = new Point(119, 163);
-            save.Margin = new Padding(3, 4, 3, 4);
-            save.Name = "save";
-            save.Size = new Size(97, 48);
-            save.TabIndex = 86;
-            save.TabStop = false;
-            save.Text = "Save";
-            save.TextColor = Color.White;
-            save.UseVisualStyleBackColor = false;
-            save.Click += Save;
+            no.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            no.BackColor = Color.FromArgb(80, 77, 180);
+            no.BackgroundColor = Color.FromArgb(80, 77, 180);
+            no.BorderColor = Color.Transparent;
+            no.BorderRadius = 5;
+            no.BorderSize = 0;
+            no.FlatAppearance.BorderSize = 0;
+            no.FlatStyle = FlatStyle.Flat;
+            no.Font = new Font("Yu Gothic UI Semibold", 14F);
+            no.ForeColor = Color.White;
+            no.Location = new Point(293, 136);
+            no.Name = "no";
+            no.Size = new Size(80, 36);
+            no.TabIndex = 82;
+            no.TabStop = false;
+            no.Text = "No";
+            no.TextColor = Color.White;
+            no.UseVisualStyleBackColor = false;
             // 
-            // cancel
+            // label_title
             // 
-            cancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            cancel.BackColor = Color.WhiteSmoke;
-            cancel.BackgroundColor = Color.WhiteSmoke;
-            cancel.BorderColor = Color.FromArgb(80, 77, 180);
-            cancel.BorderRadius = 5;
-            cancel.BorderSize = 2;
-            cancel.FlatAppearance.BorderSize = 0;
-            cancel.FlatStyle = FlatStyle.Flat;
-            cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
-            cancel.ForeColor = Color.Black;
-            cancel.Location = new Point(222, 163);
-            cancel.Margin = new Padding(3, 4, 3, 4);
-            cancel.Name = "cancel";
-            cancel.Size = new Size(97, 48);
-            cancel.TabIndex = 87;
-            cancel.TabStop = false;
-            cancel.Text = "Cancel";
-            cancel.TextColor = Color.Black;
-            cancel.UseVisualStyleBackColor = false;
-            // 
-            // comboBox_extendBy
-            // 
-            comboBox_extendBy.BackColor = Color.WhiteSmoke;
-            comboBox_extendBy.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox_extendBy.Font = new Font("Yu Gothic UI Semibold", 14F);
-            comboBox_extendBy.FormattingEnabled = true;
-            comboBox_extendBy.Items.AddRange(new object[] { "1 Month", "2 Months", "3 Months", "6 Months" });
-            comboBox_extendBy.Location = new Point(142, 98);
-            comboBox_extendBy.Margin = new Padding(3, 4, 3, 4);
-            comboBox_extendBy.MaxDropDownItems = 10;
-            comboBox_extendBy.Name = "comboBox_extendBy";
-            comboBox_extendBy.Size = new Size(284, 39);
-            comboBox_extendBy.TabIndex = 1;
+            label_title.Font = new Font("Yu Gothic UI Semibold", 14F);
+            label_title.Location = new Point(12, 68);
+            label_title.Name = "label_title";
+            label_title.Size = new Size(339, 58);
+            label_title.TabIndex = 81;
+            label_title.Text = "Are you sure you want to extend the selected reservations by 5 days?";
             // 
             // ExtendReservation
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(440, 227);
-            Controls.Add(comboBox_extendBy);
-            Controls.Add(save);
-            Controls.Add(cancel);
+            ClientSize = new Size(385, 184);
+            Controls.Add(yes);
+            Controls.Add(no);
+            Controls.Add(label_title);
             Controls.Add(header);
-            Controls.Add(label5);
             FormBorderStyle = FormBorderStyle.None;
             KeyPreview = true;
-            Margin = new Padding(3, 4, 3, 4);
             Name = "ExtendReservation";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "EditBorrowing";
@@ -177,7 +155,6 @@ namespace Desktop_Application.Forms.Reservations
             header.ResumeLayout(false);
             header.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -185,9 +162,8 @@ namespace Desktop_Application.Forms.Reservations
         private Panel header;
         private Label title;
         private Components.RoundedButton close_btn;
-        private Label label5;
-        private Components.RoundedButton save;
-        private Components.RoundedButton cancel;
-        private System.Windows.Forms.ComboBox comboBox_extendBy;
+        private Components.RoundedButton yes;
+        private Components.RoundedButton no;
+        private Label label_title;
     }
 }

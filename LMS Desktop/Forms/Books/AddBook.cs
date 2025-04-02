@@ -35,27 +35,21 @@ public partial class AddBook : Form
 
             if (_originalImgPath != string.Empty)
             {
-                string[] allowedExtensions = ["jpg", "jpeg", "png"];
                 string extension = Path.GetExtension(_originalImgPath);
-                if (!allowedExtensions.Contains(extension.ToLower()))
-                {
-                    MessageBox.Show("File type is not allowed! It must be jpg, jpeg or png!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
                 string newName = textBox_isbn.Text + extension;
                 string tempPath = Path.Combine(Path.GetTempPath(), newName);
                 File.Copy(_originalImgPath, tempPath, true);
                 uploadSuccessful = HandleFiles.Upload(tempPath);
             }
-            if (uploadSuccessful)
+            if (uploadSuccessful || _originalImgPath == string.Empty)
             {
                 string[] authors = textBox_author.Text.Split(", ");
                 string[] categories = textBox_category.Text.Split(", ");
 
                 HandleQueries.InsertBook(textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, authors, categories);
-                MessageBox.Show("Book uploaded succesfully to the database!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Book uploaded succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
-            this.Close();
         }
     }
 
@@ -126,15 +120,10 @@ public partial class AddBook : Form
     private void SelectImage(object sender, EventArgs e)
     {
         OpenFileDialog fileDialog = new();
-        if (fileDialog.ShowDialog() == DialogResult.OK)
+        if (fileDialog.ShowDialog() == DialogResult.OK && ValidateFile())
         {
             _originalImgPath = fileDialog.FileName;
-            textBox_image.Text = _originalImgPath;
-            if (!ValidateFile())
-            {
-                _originalImgPath = string.Empty;
-                textBox_image.Text = string.Empty;
-            }
+            textBox_image.Text = fileDialog.FileName;
         }
         else
         {
@@ -144,7 +133,8 @@ public partial class AddBook : Form
 
         bool ValidateFile()
         {
-            string extension = Path.GetExtension(_originalImgPath);
+            string originalImgPath = fileDialog.FileName;
+            string extension = Path.GetExtension(originalImgPath);
             string[] allowedExtensions = [".jpg", ".jpeg", ".png"];
             if (!allowedExtensions.Contains(extension.ToLower()))
             {
@@ -152,7 +142,7 @@ public partial class AddBook : Form
                 return false;
             }
 
-            FileInfo fileInfo = new(_originalImgPath);
+            FileInfo fileInfo = new(originalImgPath);
             double sizeInMegabytes = fileInfo.Length / Math.Pow(1024.0, 2);
             if (sizeInMegabytes > 5)
             {

@@ -18,11 +18,9 @@ public partial class ExtendReservation : Form
         DragWindow.Handle(this, header, title);
         BorderPaint.Handle(this);
         CloseWindow.Handle(this, close_btn);
-        CloseWindow.Handle(this, cancel);
+        CloseWindow.Handle(this, no);
         HandleKeys.Handle(this, Keys.Enter, Save);
         HandleKeys.Handle(this, Keys.Escape, (s, e) => this.Close());
-
-        comboBox_extendBy.SelectedIndex = 0;
     }
 
     private void Save(object sender, EventArgs e)
@@ -31,9 +29,8 @@ public partial class ExtendReservation : Form
 
         string isbn = selectedRow["reservations_isbn"].Value.ToString() ?? string.Empty;
 
-        DateTime endDate = (DateTime)selectedRow["reservations_endDate"].Value;
-        int extendBy = int.Parse(comboBox_extendBy.Text.Split(" ")[0]);
-        DateTime extendedDate = endDate.AddMonths(extendBy);
+        DateTime endDate = DateTime.Parse(selectedRow["reservations_endDate"].Value.ToString() ?? string.Empty);
+        DateTime extendedDate = endDate.AddDays(5);
         string endDateString = $"{extendedDate.Year}-{extendedDate.Month}-{extendedDate.Day}";
 
         HandleQueries.UpdateReservation(isbn, endDateString);
