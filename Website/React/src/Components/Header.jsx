@@ -16,8 +16,9 @@ export default function Header() {
       <div className="logReg">
         {!isAuthorized && <Link to="/register" className="signup">Register</Link>}
         {!isAuthorized && <Link to="/login" className="signin">Login</Link>}
-        {isAuthorized && <Link to="/dashboard" className="dashboard">Dashboard</Link>}
         {isAuthorized && <Link to="/" className="logout" onClick={logout}>Logout</Link>}
+        {isAuthorized && <Link to="/dashboard" className="dashboard">Dashboard</Link>}
+        <Link to="/books" className="books">Books</Link>
       </div>
     </header>
   );

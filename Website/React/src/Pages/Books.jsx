@@ -2,9 +2,9 @@ import React from 'react'
 import Cards from '../Components/Cards';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { Link } from "react-scroll";
+import Header from '../Components/Header';
 
-export default function HeroBrowseBooks() {
+export default function Books() {
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -57,6 +57,7 @@ export default function HeroBrowseBooks() {
 
     return (
         <div>
+            <Header />
             {loading ? (
                 <p>Loading books...</p>
             ) : (

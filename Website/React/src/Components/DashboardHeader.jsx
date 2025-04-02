@@ -30,7 +30,7 @@ export default function DashboardHeader() {
       <nav className="navigation">
         <Link className="link" to="/dashboard/borrowings">Borrowings</Link>
         <Link className="link" to="/dashboard/reservations">Reservations</Link>
-        <Link className="link" to="/dashboard/charts">Charts</Link>
+        <Link className="link" to="/dashboard/dashboard">Dashboard</Link>
         <Link className="link" to="/dashboard/profile">Profile</Link>
       </nav>
       <hr className="hr" />

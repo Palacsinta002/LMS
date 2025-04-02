@@ -9,7 +9,7 @@ import PrivateRoute from './Hooks/PrivateRoute';
 import Verify from './Pages/Verify';
 import Borrowings from './Pages/Borrowings';
 import Reservations from './Pages/Reservations';
-import Charts from './Pages/Charts';
+import Charts from './Pages/DashboardLogin';
 import Profile from './Pages/Profile';
 import NotFound from './Pages/NotFound';
 import { Provider } from 'react-redux'
@@ -18,6 +18,8 @@ import AuthProvider from './Auth/AuthProvider';
 import ForgotPassword from './Pages/ForgotPassword';
 import ChangePassword from './Pages/ChangePassword';
 import FinalizeRegistration from './Pages/FinalizeRegistration';
+import DashboardLogin from './Pages/DashboardLogin';
+import Books from './Pages/Books';
 
 function App() {
   return (
@@ -30,12 +32,13 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/change-password/*" element={<ChangePassword />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/books" element={<Books />} />
           <Route path="/finalize-registration" element={<FinalizeRegistration />} />
           <Route path="/verify" element={<Verify />} />
           <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}>
             <Route path="borrowings" element={<Borrowings />} />
             <Route path="reservations" element={<Reservations />} />
-            <Route path="charts" element={<Charts />} />
+            <Route path="dashboard" element={<DashboardLogin />} />
             <Route path="profile" element={<Profile />} />
           </Route>
           <Route path="*" element={<NotFound />} />
