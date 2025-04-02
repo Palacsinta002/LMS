@@ -31,7 +31,7 @@ public partial class ExtendBorrowing : Form
 
         string isbn = selectedRow["borrowings_isbn"].Value.ToString() ?? string.Empty;
 
-        DateTime dueDate = (DateTime)selectedRow["borrowings_dueDate"].Value;
+        DateTime dueDate = DateTime.Parse(selectedRow["borrowings_dueDate"].Value.ToString() ?? string.Empty);
         int extendBy = int.Parse(comboBox_extendBy.Text.Split(" ")[0]);
         DateTime newDueDate = dueDate.AddMonths(extendBy);
         string newDueDateString = $"{newDueDate.Year}-{newDueDate.Month}-{newDueDate.Day}";

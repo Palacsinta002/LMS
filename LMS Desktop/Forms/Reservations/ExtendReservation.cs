@@ -31,7 +31,7 @@ public partial class ExtendReservation : Form
 
         string isbn = selectedRow["reservations_isbn"].Value.ToString() ?? string.Empty;
 
-        DateTime endDate = (DateTime)selectedRow["reservations_endDate"].Value;
+        DateTime endDate = DateTime.Parse(selectedRow["reservations_endDate"].Value.ToString() ?? string.Empty);
         int extendBy = int.Parse(comboBox_extendBy.Text.Split(" ")[0]);
         DateTime extendedDate = endDate.AddMonths(extendBy);
         string endDateString = $"{extendedDate.Year}-{extendedDate.Month}-{extendedDate.Day}";
