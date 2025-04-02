@@ -135,15 +135,10 @@ public partial class EditBook : Form
     private void SelectImage(object sender, EventArgs e)
     {
         OpenFileDialog fileDialog = new();
-        if (fileDialog.ShowDialog() == DialogResult.OK)
+        if (fileDialog.ShowDialog() == DialogResult.OK && ValidateFile())
         {
             _originalImgPath = fileDialog.FileName;
-            textBox_image.Text = _originalImgPath;
-            if (!ValidateFile())
-            {
-                _originalImgPath = string.Empty;
-                textBox_image.Text = string.Empty;
-            }
+            textBox_image.Text = fileDialog.FileName;
         }
         else
         {
@@ -153,7 +148,8 @@ public partial class EditBook : Form
 
         bool ValidateFile()
         {
-            string extension = Path.GetExtension(_originalImgPath);
+            string originalImgPath = fileDialog.FileName;
+            string extension = Path.GetExtension(originalImgPath);
             string[] allowedExtensions = [".jpg", ".jpeg", ".png"];
             if (!allowedExtensions.Contains(extension.ToLower()))
             {
@@ -161,7 +157,7 @@ public partial class EditBook : Form
                 return false;
             }
 
-            FileInfo fileInfo = new(_originalImgPath);
+            FileInfo fileInfo = new(originalImgPath);
             double sizeInMegabytes = fileInfo.Length / Math.Pow(1024.0, 2);
             if (sizeInMegabytes > 5)
             {

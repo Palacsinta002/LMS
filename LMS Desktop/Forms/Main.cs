@@ -100,7 +100,7 @@ public partial class Main : Form
     // Live search - Searches title, publication year or isbn in the grid
     private void SearchBooks(object sender, EventArgs e)
     {
-        string[] cols = ["books_title", "books_publicationYear", "books_isbn"];
+        string[] cols = ["books_title", "books_author", "books_publicationYear", "books_category", "books_publisher", "books_isbn"];
         HandleGrids.SearchGrid(books_grid, books_textBox_search.Text, cols);
     }
 
@@ -525,7 +525,7 @@ public partial class Main : Form
     // Live search - Searches users in the grid
     private void SearchUsers(object sender, EventArgs e)
     {
-        string[] cols = ["users_name", "users_username"];
+        string[] cols = ["users_firstName", "users_lastName", "users_username", "users_email", "users_role"];
         HandleGrids.SearchGrid(users_grid, users_textBox_search.Text, cols);
     }
 

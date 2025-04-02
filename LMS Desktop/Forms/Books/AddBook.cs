@@ -47,7 +47,7 @@ public partial class AddBook : Form
                 string[] categories = textBox_category.Text.Split(", ");
 
                 HandleQueries.InsertBook(textBox_isbn.Text, dropDown_publisher.Text, textBox_title.Text, textBox_pubYear.Text, authors, categories);
-                MessageBox.Show("Book uploaded succesfully to the database!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Book uploaded succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
         }

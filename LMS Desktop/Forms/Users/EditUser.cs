@@ -140,7 +140,7 @@ public partial class EditUser : Form
 
     private void ResetPassword(object sender, EventArgs e)
     {
-        string randomPassword = GeneratePassword.Generate("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 10);
+        string randomPassword = GeneratePassword.Generate("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnoqqrstuvwxyz0123456789", 12);
         string hashedPassword = BCrypt.Net.BCrypt.HashPassword(randomPassword);
 
         HandleQueries.UpdateUserPassword(_oldUsername, hashedPassword);

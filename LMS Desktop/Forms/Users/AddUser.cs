@@ -37,7 +37,7 @@ public partial class AddUser : Form
         {
             string dateOfBirthString = $"{_dateOfBirth.Year}-{_dateOfBirth.Month}-{_dateOfBirth.Day}";
 
-            string randomPassword = GeneratePassword.Generate("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 10);
+            string randomPassword = GeneratePassword.Generate("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnoqqrstuvwxyz0123456789", 12);
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(randomPassword);
 
             HandleQueries.InsertUser(textBox_firstName.Text, textBox_lastName.Text, dateOfBirthString, textBox_username.Text, hashedPassword, textBox_address.Text);
