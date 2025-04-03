@@ -2,13 +2,13 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "LMS Desktop"
-#define MyAppVersion "v1.2"
+#define MyAppVersion "v1.3"
 #define MyAppExeName "LMS Desktop.exe"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{D6CA1304-88DB-4C97-9E59-483E3669410A}
+AppId={{01EA170C-F528-4D92-BCAC-21148C50201B}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -22,13 +22,12 @@ ArchitecturesAllowed=x64compatible
 ; meaning it should use the native 64-bit Program Files directory and
 ; the 64-bit view of the registry.
 ArchitecturesInstallIn64BitMode=x64compatible
-DefaultGroupName={#MyAppName}
-AllowNoIcons=yes
+DisableProgramGroupPage=yes
 ; Remove the following line to run in administrative install mode (install for all users).
 PrivilegesRequired=lowest
 OutputDir=C:\xampp\htdocs\myadmin\LMS\LMS Desktop
-OutputBaseFilename=LMS Desktop v1.2 Installer
-SetupIconFile=C:\xampp\htdocs\myadmin\LMS\LMS Desktop\Resources\book.ico
+OutputBaseFilename=LMS Desktop v1.3 Installer
+SetupIconFile=C:\xampp\htdocs\myadmin\LMS\LMS Desktop\LMS Desktop\Resources\book.ico
 SolidCompression=yes
 WizardStyle=modern
 
@@ -44,7 +43,7 @@ Source: "C:\xampp\htdocs\myadmin\LMS\LMS Desktop\Publishes\*"; DestDir: "{app}";
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
+Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]
