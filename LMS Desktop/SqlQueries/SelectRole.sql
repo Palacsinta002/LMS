@@ -1,2 +1,0 @@
-SELECT Role
-FROM Roles;
