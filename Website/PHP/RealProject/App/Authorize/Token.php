@@ -29,7 +29,7 @@ class Token{
             
         }
         catch(\Exception $e){
-            Response::httpError(200, 31);
+            Response::httpError(400, 31);
         
         }
     }

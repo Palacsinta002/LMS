@@ -4,7 +4,6 @@ use Router\Router;
 use App\Controllers\UserController;
 use App\Controllers\BorrowingsController;
 use App\Controllers\BooksController;
-use App\Controllers\Ideiglenes;
 use App\Controllers\ImageController;
 use App\Controllers\BorrowingsAndBooksController;
 use App\Controllers\ReservationController;

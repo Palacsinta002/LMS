@@ -14,7 +14,9 @@ class Helper{
         return $input;
     }
     public static function validateTheInputArray($array){
-        
+        if (!is_array($array)){
+            Response::httpError(400,21);
+        }
         foreach ($array as $key => $value) {
             $array[$key] = self::validateTheInput($value);
         }

@@ -12,10 +12,10 @@ class User extends Model{
             $password2 = $password;
         }
         if ($password != $password2){
-            Response::httpError("400",15);
+            Response::httpError(400,15);
         }
         if ((strlen($password < 8) || strlen($password) > 16) || !preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d\W]).+$/', $password)){
-            Response::httpError('400',6);
+            Response::httpError(400,6);
         }
         return password_hash(Helper::validateTheInput($password), PASSWORD_BCRYPT) ;  
     }

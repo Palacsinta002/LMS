@@ -8,6 +8,11 @@ use ApiResponse\Response;
 use Emailer\SendEmail;
 use Emailer\EmailBodies;
 class UserController{
+
+
+    # login the user by username and password
+    # return a token if the user is found in the database
+    # if the user is not found, return an error message or values are missing
     public static function login($body){
         $body = Helper::validateTheInputArray($body);
         if (!($body = User::checkRequiredData($body,["username","password"]))){
@@ -23,19 +28,29 @@ class UserController{
         echo Token::verifyToken($body["token"]);
     }
 
+
+    # register a new user
+    # If the required data is not found, return an error message
+    # If the email or username is already in use, return an error message
+    # Validates the input data and checks if the password is strong enough
+    # If the data is valid, insert the user into the database and send a verification email
     public static function register($body){
         
+        # Check if the required data is found in the body
         $body = Helper::validateTheInputArray($body);
         if (!($body = User::checkRequiredData($body,["email","username","password","passwordAgain","firstname","lastname","address"]))){
             Response::httpError(400,21);
         }
-        
+
+        # Validate the input data
         User::checkEmail($body["email"]);
         User::checkFirstLastName($body["firstname"]);
         User::checkFirstLastName($body["lastname"]);
         User::validateAddress($body["address"]);
         $body["password"] = User::checkPassword($body["password"],$body["passwordAgain"]);
         User::checkUsername($body["username"]);
+        
+        # Sending email and inserting to the database
         $verificationCode = User::createAuthCode();
         $body["EmailVerificationCode"] = $verificationCode;
         UserTable::insertToUser($body);
@@ -44,6 +59,9 @@ class UserController{
         Response::httpSuccess(200,["Success" =>"User created"]);
     }
 
+
+    # Verify the user by checking the verification code
+    # If the code is valid, update the user to verified in the database
     public static function verifyAccount($body){
 
         $body = Helper::validateTheInputArray($body);
@@ -55,10 +73,13 @@ class UserController{
         
     }
 
+
+    # Get number of all users in the database
     public static function allUsers(){
         Response::httpSuccess(200,UserTable::numberOfUsers());
     }
-
+    
+    # Get the given user data by ID
     public static function userData($body,$userID= null){
         $body = Helper::validateTheInputArray($body);
         User::validateID($userID);
@@ -66,13 +87,21 @@ class UserController{
         Response::httpSuccess(200,UserTable::selectUserData($userID));
     }
 
-    public static function updateUser($body,$userID = null){
 
+    # Update the user data by ID
+    # If the required data is not found, return an error message
+    # If the email or username is already in use, return an error message
+    # Validates the input data and checks if the password is strong enough
+    # If the data is valid, update the user in the database
+    public static function updateUser($body,$userID = null){
+        # If the required data is not found, return an error message
         $body = Helper::validateTheInputArray($body);
         $body = User::removeNullValues($body);
         if (!($body = User::checkRequiredData($body,[],["username","passwordOld","password","firstname","lastname","address"]))){
             Response::httpError(400,21);
         }
+
+        # Validate the input data
         User::validateID($userID);
         if (!isset((($userCurentData = UserTable::selectUserData($userID))[0]))){
             Response::httpError(400,27);
@@ -92,12 +121,14 @@ class UserController{
             $body["password"] = password_hash($body["password"], PASSWORD_BCRYPT);
             unset($body["passwordOld"]);
         }
-
+        # Update the user in the database
         $types = User::makeTypesArray($body,["username","password","firstname","lastname","address"],["s","s","s","s","s"]);
         UserTable::updateUserData($userID,array_keys($body),array_values($body),$types);
         Response::httpSuccess(200,["Success" =>"User updated"]);
         
     }
+
+    # Delete the user by ID
     public static function deleteUser($body,$userID){
 
         if (!isset((($userCurentData = UserTable::selectUserData($userID))[0]))){
@@ -108,6 +139,10 @@ class UserController{
         Response::httpSuccess(200,["Success" => "User deleted"]);
     }
 
+
+    # Send a password reset email to the user
+    # Validate the email and check if the user exists in the database
+    # If the user exists, send a password reset email with a token
     public static function forgotPassword($body){
         $body = Helper::validateTheInputArray($body);
         if (!($body = User::checkRequiredData($body,["email"],))){
@@ -123,6 +158,12 @@ class UserController{
         Response::httpSuccess(200,["Success"=> "Email sent"]);
 
     }
+
+
+    # Change the password of the user by ID
+    # Validate the password and check if the user exists in the database
+    # If the user exists, update the password in the database
+    # If the password is not strong enough, return an error message
     public static function changePassword($body,$userID){
         $body = Helper::validateTheInputArray($body);
         if (!($body = User::checkRequiredData($body,["password","passwordAgain"]))){
@@ -132,6 +173,11 @@ class UserController{
         UserTable::changePassword($newPasswordHash,$userID);
         Response::httpSuccess(200,["Success"=> "Password updated"]);
     }
+
+    
+    # Finalize the registration of the user by giving the email, username and password
+    # Validate the email and check if the user exists in the database
+    # If the user gave the correct email, username and password, update the email
     public static function finalizeRegistration($body){
         $body = Helper::validateTheInputArray($body);
         
