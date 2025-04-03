@@ -137,16 +137,16 @@ public partial class ChangePassword : Form
             rButton_special.Image = Image.FromFile(@"Resources\closeRed.png");
             label_special.ForeColor = Color.Red;
         }
-        // Checking " and \
-        if (!Regex.IsMatch(password, @"[""\\]"))
+        // Checking if passwords are matching
+        if (textBox_newPassword.Text == textBox_newPasswordAgain.Text)
         {
-            rButton_allowed.Image = Image.FromFile(@"Resources\checkMark.png");
-            label_allowed.ForeColor = Color.Green;
+            rButton_match.Image = Image.FromFile(@"Resources\checkMark.png");
+            label_match.ForeColor = Color.Green;
         }
         else
         {
-            rButton_allowed.Image = Image.FromFile(@"Resources\closeRed.png");
-            label_allowed.ForeColor = Color.Red;
+            rButton_match.Image = Image.FromFile(@"Resources\closeRed.png");
+            label_match.ForeColor = Color.Red;
         }
     }
 
