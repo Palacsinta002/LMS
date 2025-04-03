@@ -27,7 +27,9 @@ class HandleFiles
 
             var response = httpClient.PostAsync("http://localhost:8000/api/upload-img", form).GetAwaiter().GetResult();
             string errorMsgJson = response.Content.ReadAsStringAsync().Result;
-            ErrorResponse errorResponse = JsonSerializer.Deserialize<ErrorResponse>(errorMsgJson);
+            ErrorResponse errorResponse = errorMsgJson.Length > 0
+                ? JsonSerializer.Deserialize<ErrorResponse>(errorMsgJson)
+                : errorResponse = new();
 
             if (response.IsSuccessStatusCode)
             {
