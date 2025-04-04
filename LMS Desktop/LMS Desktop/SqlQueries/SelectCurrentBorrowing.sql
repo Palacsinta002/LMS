@@ -7,4 +7,5 @@
 FROM Borrowings
 JOIN Users ON Users.id = Borrowings.UserID
 JOIN Books ON Books.ISBN = Borrowings.ISBN
+WHERE ReturnDate IS NULL
 ORDER BY BorrowDate DESC;

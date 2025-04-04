@@ -25,7 +25,7 @@
     <Compile Update="Forms\Borrowings\ChooseBooks.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Borrowings\RemoveBorrowings.cs">
+    <Compile Update="Forms\Borrowings\ReturnBorrowings.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Categories\AddCategory.cs">

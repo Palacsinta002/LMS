@@ -161,7 +161,7 @@ public partial class Main : Form
         List<string[]> result;
         if (borrowings_checkBox_currentBorrowings.Checked)
         {
-            borrowings_grid.Columns["borrowings_returnDate"].Visible = false;
+            borrowings_grid.Columns["borrowings_returnDate"].Visible = true;
             result = HandleQueries.SelectFromFile("SelectCurrentBorrowing");
         }
         else
@@ -211,8 +211,8 @@ public partial class Main : Form
         List<string> selectedIsbns = [];
         foreach (DataGridViewRow row in borrowings_grid.SelectedRows)
         {
-            string returnDate = (string)row.Cells["borrowings_returnDate"].Value;
-            if (returnDate != string.Empty)
+            DataGridViewCell cell = row.Cells["borrowings_returnDate"];
+            if (cell == null)
             {
                 MessageBox.Show("There is at least one book selected which is already returned!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -222,7 +222,7 @@ public partial class Main : Form
             selectedIsbns.Add(isbn);
         }
 
-        RemoveBorrowings removeBorrowing = new(selectedIsbns);
+        ReturnBorrowings removeBorrowing = new(selectedIsbns);
         removeBorrowing.ShowDialog();
         RefreshBorrowings(sender, e);
     }
