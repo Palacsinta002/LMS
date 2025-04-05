@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "LMS Desktop"
-#define MyAppVersion "v1.3"
+#define MyAppVersion "v1.3.1"
 #define MyAppExeName "LMS Desktop.exe"
 
 [Setup]
@@ -26,7 +26,7 @@ DisableProgramGroupPage=yes
 ; Remove the following line to run in administrative install mode (install for all users).
 PrivilegesRequired=lowest
 OutputDir=C:\xampp\htdocs\myadmin\LMS\LMS Desktop
-OutputBaseFilename=LMS Desktop v1.3 Installer
+OutputBaseFilename=LMS Desktop v1.3.1 Installer
 SetupIconFile=C:\xampp\htdocs\myadmin\LMS\LMS Desktop\LMS Desktop\Resources\book.ico
 SolidCompression=yes
 WizardStyle=modern
