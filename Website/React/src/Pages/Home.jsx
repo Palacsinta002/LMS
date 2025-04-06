@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Main from '../Components/Main'
-import "./Home.css"
+import "../Styles/Home.css"
 
 export default function Home() {
 

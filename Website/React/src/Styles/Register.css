@@ -102,7 +102,7 @@ body {
     color: #48459E;
 }
 
-input[type=text],
+.register-card input[type=text],
 input[type=password],
 input[type=email] {
     font-size: 1rem;

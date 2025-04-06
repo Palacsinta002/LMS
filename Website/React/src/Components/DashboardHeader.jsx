@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import "../Pages/Dashboard.css";
+import "../Styles/Dashboard.css";
 import { jwtDecode } from 'jwt-decode';
 import { AuthContext } from '../Auth/AuthProvider';
 

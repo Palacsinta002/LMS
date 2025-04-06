@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import FormCard from '../Components/FormCard';
-import "./register.css";
+import "../Styles/register.css";
 import { useNavigate } from 'react-router-dom';
 
 export default function ChangePassword() {

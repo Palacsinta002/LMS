@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import FormCard from '../Components/FormCard';
-import "./Verify.css";
+import "../Styles/Verify.css";
 import { useNavigate } from 'react-router-dom';
 
 export default function Verify() {

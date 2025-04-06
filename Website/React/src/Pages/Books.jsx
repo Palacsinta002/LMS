@@ -2,7 +2,6 @@ import React from 'react'
 import Cards from '../Components/Cards';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import Header from '../Components/Header';
 
 export default function Books() {
     const [books, setBooks] = useState([]);
@@ -45,7 +44,7 @@ export default function Books() {
                 })
 
             if (response.data.Success) {
-                console.log("jó")
+                window.location.reload();
             }
         }
         catch (error) {

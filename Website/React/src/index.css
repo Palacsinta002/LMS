@@ -27,3 +27,6 @@ header{
 .hidden{
   display: none;
 }
+.hiddenSearch{
+  display: none;
+}

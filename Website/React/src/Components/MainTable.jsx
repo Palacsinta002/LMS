@@ -1,12 +1,12 @@
 import React from "react";
 import "../index.css";
-import SliderColousel from "./SliderColousel";
+import TopBorrowings from "./TopBorrowings";
 
 export default function MainTable() {
   
   return (
     <div>
-      <SliderColousel />
+      <TopBorrowings />
     </div>
   );
 }

@@ -9,11 +9,8 @@ import PrivateRoute from './Hooks/PrivateRoute';
 import Verify from './Pages/Verify';
 import Borrowings from './Pages/Borrowings';
 import Reservations from './Pages/Reservations';
-import Charts from './Pages/DashboardLogin';
 import Profile from './Pages/Profile';
 import NotFound from './Pages/NotFound';
-import { Provider } from 'react-redux'
-import Store from './Auth/Store'
 import AuthProvider from './Auth/AuthProvider';
 import ForgotPassword from './Pages/ForgotPassword';
 import ChangePassword from './Pages/ChangePassword';

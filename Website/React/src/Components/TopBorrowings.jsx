@@ -1,17 +1,10 @@
 import React from 'react';
 import TopCards from './TopCards';
 import axios from 'axios';
-import "./SliderColousel.css";
+import "../Styles/SliderColousel.css";
 import { useState, useEffect } from 'react';
 
 export default function SliderColousel() {
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-    };
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
