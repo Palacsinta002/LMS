@@ -1,15 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../Auth/AuthProvider';
 import "../Styles/Home.css";
 
-export default function Header() {
+export default function Header({ searchQuery, onSearch }) {
   const location = useLocation();
   const hidden = location.pathname !== "/" && location.pathname !== "/books" ? "hidden" : "";
   const hiddenSearch = location.pathname === "/" || location.pathname !== "/books" ? "hiddenSearch" : "searchBar";
   const isAuthorized = !!sessionStorage.getItem("token");
 
   const { logout } = useContext(AuthContext);
+
+  console.log(searchQuery)
 
   return (
     <header className={hidden}>
@@ -21,7 +23,7 @@ export default function Header() {
         {isAuthorized && <Link to="/dashboard" className="dashboard">Dashboard</Link>}
         <Link to="/books" className="books">Books</Link>
       </div>
-      <input type="text" placeholder="Search books..." className={hiddenSearch} />
+      <input type="text" value={searchQuery || ""} onChange={(e) => onSearch(e)} placeholder="Search books..." className={hiddenSearch} />
     </header>
   );
 }

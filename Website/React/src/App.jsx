@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
 import Home from './Pages/Home';
 import Header from './Components/Header';
 import Login from './Pages/Login';
@@ -19,17 +20,24 @@ import DashboardLogin from './Pages/DashboardLogin';
 import Books from './Pages/Books';
 
 function App() {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  function handleSearch(e) {
+    console.log(e.target.value);
+    setSearchQuery(e.target.value);
+  }
+
   return (
     <AuthProvider>
       <BrowserRouter>
-        <Header />
+        <Header searchQuery={searchQuery} onSearch={handleSearch} />
         <Routes>
           <Route path="/" exact element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/change-password/*" element={<ChangePassword />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/books" element={<Books />} />
+          <Route path="/books" element={<Books searchQuery={searchQuery} />} />
           <Route path="/finalize-registration" element={<FinalizeRegistration />} />
           <Route path="/verify" element={<Verify />} />
           <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}>
