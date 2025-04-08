@@ -35,15 +35,15 @@ if "%XAMPP_PATH%" == "" (
 
 :: Check if MySQL is already running
 echo Checking MySQL status...
-"%XAMPP_PATH%mysql\bin\mysqladmin" -u root ping >nul 2>&1
+"%XAMPP_PATH%\mysql\bin\mysqladmin" -u root ping >nul 2>&1
 if %errorlevel% neq 0 (
     echo MySQL is not running. Starting services...
 
     echo Starting Apache on port 8080...
-    start /B "" "%XAMPP_PATH%apache\bin\httpd.exe"  
+    start /B "" "%XAMPP_PATH%\apache\bin\httpd.exe"  
 
     echo Starting MySQL on port 3306...
-    start /B "" "%XAMPP_PATH%mysql_start.bat"
+    start /B "" "%XAMPP_PATH%\mysql_start.bat"
 
     echo Waiting for MySQL to fully start...
     timeout /t 10 /nobreak >nul
@@ -53,7 +53,7 @@ if %errorlevel% neq 0 (
 
 :: Verify MySQL is running before proceeding
 echo Checking MySQL status again...
-"%XAMPP_PATH%mysql\bin\mysqladmin" -u root ping >nul 2>&1
+"%XAMPP_PATH%\mysql\bin\mysqladmin" -u root ping >nul 2>&1
 if %errorlevel% neq 0 (
     echo MySQL failed to start. Exiting...
     pause
@@ -65,7 +65,7 @@ cd ..\Database
 echo Migrating database...
 set MYSQL_USER=root
 set DATABASE_NAME=LMS
-set MYSQL_PATH="%XAMPP_PATH%mysql\bin"
+set MYSQL_PATH="%XAMPP_PATH%\mysql\bin"
 set SQL_FILE="Database.sql"
 
 "%MYSQL_PATH%\mysql" -u%MYSQL_USER% -e "source %SQL_FILE%" 
