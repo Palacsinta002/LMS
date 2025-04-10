@@ -9,10 +9,9 @@ export default function Register() {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordAgain, setPasswordAgain] = useState("");
-  const [address, setAddress] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [showPasswordAgain, setShowPasswordAgain] = useState(false);
+  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [address, setAddress] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -21,12 +20,6 @@ export default function Register() {
     event.preventDefault();
     setLoading(true);
     setError("");
-
-    if (password !== passwordAgain) {
-      setError("Passwords do not match!");
-      setLoading(false);
-      return;
-    }
 
     try {
       const response = await axios.post(
@@ -37,8 +30,7 @@ export default function Register() {
           email: email,
           firstname: firstname,
           lastname: lastname,
-          passwordAgain: passwordAgain,
-          address: address
+          dateOfBirth: dateOfBirth
         },
         {
           headers: { "Content-Type": "application/json" },
@@ -66,48 +58,51 @@ export default function Register() {
         <h2 className="register-bottom">Library Management System</h2>
       </div>
       <div className="register-container">
-        <i className="fa fa-user"></i>
+        <i className="fa fa-user register-icon"></i>
         <h1>Register Account</h1>
         <form onSubmit={HandleSubmit}>
           <div className="register-card-holder">
+
             <div className="register-card">
               <label htmlFor="firstname">First name</label>
               <input type="text" onChange={(e) => setFirstname(e.target.value)} required />
             </div>
+
             <div className="register-card">
               <label htmlFor="lastname">Last name</label>
               <input type="text" onChange={(e) => setLastname(e.target.value)} required />
             </div>
+
             <div className="register-card">
               <label htmlFor="email">Email</label>
               <input type="email" onChange={(e) => setEmail(e.target.value)} required />
             </div>
+
             <div className="register-card">
               <label htmlFor="username">Username</label>
               <input type="text" onChange={(e) => setUsername(e.target.value)} required />
             </div>
+
             <div className="register-card">
-              <label htmlFor="password">Password</label>
+              <label htmlFor="passwordAgain">Password</label>
               <div className="register-password-input">
                 <input type={showPassword ? "text" : "password"} onChange={(e) => setPassword(e.target.value)} required />
                 <button type="button" onClick={() => setShowPassword(!showPassword)} className="register-toggle-password">
-                  {showPassword ? "Hide" : "Show"}
+                <i className={`fa ${showPassword ? "fa-eye-slash" : "fa-eye"}`}></i>
                 </button>
               </div>
             </div>
+
             <div className="register-card">
-              <label htmlFor="passwordAgain">Password Again</label>
-              <div className="register-password-input">
-                <input type={showPasswordAgain ? "text" : "password"} onChange={(e) => setPasswordAgain(e.target.value)} required/>
-                <button type="button" onClick={() => setShowPasswordAgain(!showPasswordAgain)} className="register-toggle-password">
-                  {showPasswordAgain ? "Hide" : "Show"}
-                </button>
-              </div>
+              <label htmlFor="dateOfBirth">Date of Birth</label>
+              <input type="date" onChange={(e) => setDateOfBirth(e.target.value)} required />
             </div>
+
             <div className="register-card">
-              <label htmlFor="address">Address</label>
-              <input type="text" onChange={(e) => setAddress(e.target.value)} required />
+              <label htmlFor="dateOfBirth">Address</label>
+              <input type="string" onChange={(e) => setAddress(e.target.value)} required />
             </div>
+
           </div>
           {error && <p className="error-message">{error}</p>}
           <center>

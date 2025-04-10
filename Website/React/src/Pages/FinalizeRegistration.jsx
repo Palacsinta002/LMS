@@ -19,8 +19,8 @@ export default function Login() {
     event.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post("api/login",
-        { username: username, password: password },
+      const response = await axios.post("api/finalize-registration",
+        { email: email, username: username, password: password },
         {
           headers: {
             "method": "POST",

@@ -125,7 +125,7 @@ export default function Books({ searchQuery }) {
         } catch (error) {
             if (error.response) {
                 console.log(error.response.data);
-                alert(error.response.data.message || "Failed to reserve book");
+                alert(error.response.data.message || "You can only reserve 3 books at a time!");
             }
         }
     }
