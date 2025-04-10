@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Validations;
 
 use ApiResponse\Response;
 class Image extends Model{

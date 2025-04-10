@@ -9,7 +9,6 @@ namespace Emailer;
 # The fourth is the body of the email
 # By these information the function sends an email to the given email address.
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 use ApiResponse\Response;
 

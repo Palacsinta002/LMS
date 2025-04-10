@@ -9,20 +9,31 @@ class ReservationTable extends Table{
     }
 
     public static function deleteReservation($ISBN){
-        self::delete("Reservations")->where(["ISBN"],["="],[$ISBN],["i"])->execute(false,false);
+        self::delete("Reservations")
+        ->where(["ISBN"],["="],[$ISBN],["i"])->execute(false,false);
     }
 
     public static function bookInReservation($ISBN){
-        return self::select(["Reservations"],["ISBN"])->where(["ISBN"],["="],[$ISBN],["i"])->execute(true,false);
+        return self::select(["Reservations"],["ISBN"])
+        ->where(["ISBN"],["="],[$ISBN],["i"])->execute(true,false);
     }
     public static function countUserReservations($userID){
-        return self::select(["Reservations"],["count(ISBN) as userReservations"])->where(["userID"],["="],[$userID],["i"])->execute(true);
+        return self::select(["Reservations"],["count(ISBN) as userReservations"])
+        ->where(["userID"],["="],[$userID],["i"])->execute(true);
     }
     public static function selectByISBN($ISBN,$fetch = false){
-        return self::select(["Reservations"],["*"])->where(["ISBN"],["="],[$ISBN],["i"])->execute(true,$fetch);
+        return self::select(["Reservations"],["*"])
+        ->where(["ISBN"],["="],[$ISBN],["i"])->execute(true,$fetch);
     }
     public static function selectMyReservations($userID){
-        return self::select(["Reservations"],["reservations.ISBN","reservations.ReservationStartDate","reservations.ReservationEndDate","publishers.Publisher","books.Title","GROUP_CONCAT(DISTINCT Authors.Author SEPARATOR ',') as 'Authors'","GROUP_CONCAT(DISTINCT categories.category SEPARATOR ',') as 'Category'","books.publicationYear"])
+        return self::select(["Reservations"],[
+            "reservations.ISBN",
+            "reservations.ReservationStartDate",
+            "reservations.ReservationEndDate",
+            "publishers.Publisher",
+            "books.Title","GROUP_CONCAT(DISTINCT Authors.Author SEPARATOR ',') as 'Authors'",
+            "GROUP_CONCAT(DISTINCT categories.category SEPARATOR ',') as 'Category'","books.publicationYear"
+            ])
         ->innerJoin("books",["books.ISBN"],["="],["reservations.ISBN"])
         ->innerJoin("Publishers",["Publishers.ID"],["="],["books.PublisherID"])
         ->innerJoin("Books_authors",["Books.ISBN"],["="],["Books_Authors.ISBN"])
