@@ -2,8 +2,8 @@
 1 : !email already exists;
 2 : !SMTP couldn't send email;
 3 : !invalid username;
-4 : !invalid firstname;
-5 : !invalid lastname;
+4 : !invalid name;
+5 : !invalid name;
 6 : !invalid password;
 7 : !wrong username or password;
 8 : !username is required;
@@ -33,3 +33,4 @@
 32 : !Can't reserve this book;
 33 : !Can't delete this reservation;
 34 : !This account has email;
+35 : !Invalid date;

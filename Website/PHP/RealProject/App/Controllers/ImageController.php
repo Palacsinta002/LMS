@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\Image;
+use App\Validations\Image;
 use ApiResponse\Response;
 class ImageController {
     public static function uploadImg(){

@@ -3,22 +3,25 @@ namespace Helper;
 use ApiResponse\Response;
 
 class Helper{
-    public static function validateTheInput($input)
+    public static function validateTheInput($input, $decode = null)
     {
         if (!isset($input)){
             Response::httpError(400,21);
+        }
+        if ($decode == "url"){
+            $input = urldecode($input);
         }
         $input = htmlspecialchars($input);
         $input = stripcslashes($input);
         $input = trim($input);
         return $input;
     }
-    public static function validateTheInputArray($array){
+    public static function validateTheInputArray($array, $decode = null){
         if (!is_array($array)){
             Response::httpError(400,21);
         }
         foreach ($array as $key => $value) {
-            $array[$key] = self::validateTheInput($value);
+            $array[$key] = self::validateTheInput($value, $decode);
         }
         return $array;
     }
@@ -33,15 +36,6 @@ class Helper{
             }
         }
         return $decoded;
-    }
-    function directiontoUrl($direction) {
-        $var = ' \ ';
-        $url = "http://localhost";
-        $direction = explode(trim($var), $direction);
-        for ($i=array_search("LMS", $direction); $i < count($direction); $i++) { 
-            $url .= "/" . $direction[$i];
-        }
-        return $url;
     }
 }
 ?>

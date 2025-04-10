@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Validations;
 use ApiResponse\Response;
 class Borrowing extends Model{
     public static function checkFormatDate($date){

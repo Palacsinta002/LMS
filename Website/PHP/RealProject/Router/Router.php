@@ -11,15 +11,16 @@ class Router{
         
         if ($uri == $endpoint){
             if ($_SERVER["REQUEST_METHOD" ] != "POST"){
-                Response::httpError(404,17);
+                return;
             }
+            $body = Helper::getPostBody();
+
                 if ($auth == true){
                     if ($getFiles == true){
                         $controller::$function();
                         die();
                     }
                     $userID = self::getHeadAuth();
-                    $body = Helper::getPostBody();
                     $controller::$function($body,$userID);
                     die();
                 }
@@ -27,7 +28,6 @@ class Router{
                     $controller::$function();
                     die();
                 }
-                $body = Helper::getPostBody();
                 $controller::$function($body);
                 die("");
             
@@ -37,30 +37,23 @@ class Router{
 
     
 
-    public static function get($endpoint, $controller, $function,$auth = false, $getFromURL = false, $oneElement = false){
+    public static function get( $endpoint, $controller, $function,$auth = false, $getFromURL = false ){
         $uri = $_SERVER["REQUEST_URI"];
-            if (strlen($uri) >= strlen($endpoint) && substr($uri,0, strlen($endpoint)) == $endpoint && $getFromURL){
-                
-                if ($_SERVER["REQUEST_METHOD" ] != "GET"){
-                    Response::httpError(404,17);
+            if ($getFromURL){
+                $data = self::getVariablesFromUrl($uri, $endpoint);
+                if ($data == -1){
+                    return;
                 }
-                
-                $data = self::getBodyFromUrl($uri,$endpoint, $oneElement);
-
-                if ($auth == true){
-                    $userID = self::getHeadAuth();
-                    $controller::$function($data,$userID);
-                    die();
-                }
-                $controller::$function($data);
-                die("");
+                $data = $data == false ? self::getBodyFromUrl($uri,$endpoint) : $data;
             }
-            
-            elseif (strlen($uri) >= strlen($endpoint) && substr($uri,0, strlen($endpoint))  == $endpoint){
-                if ($_SERVER["REQUEST_METHOD" ] != "GET"){
-                    Response::httpError(404,17);
-                }
+            else{
                 $data = Helper::validateTheInputArray($_GET);
+            }
+            if (strlen($uri) >= strlen($endpoint) && substr($uri,0, strlen($endpoint))  == $endpoint){
+                if ($_SERVER["REQUEST_METHOD" ] != "GET"){
+                    return;
+                }
+
                 if ($auth == true){
                     $userID = self::getHeadAuth();
                     $controller::$function($data,$userID);
@@ -77,7 +70,7 @@ class Router{
         
         if ($uri == $endpoint){
             if ($_SERVER["REQUEST_METHOD" ] != "PUT"){
-                Response::httpError(404,17);
+                return;
             }
             $body = Helper::getPostBody();
             if ($auth == true){
@@ -91,17 +84,18 @@ class Router{
             
         }
     }    
-    public static function delete($endpoint, $controller, $function, $getFromURL = false){
+    public static function delete($endpoint, $controller, $function){
         $uri = $_SERVER["REQUEST_URI"];
+        $data = self::getVariablesFromUrl($uri, $endpoint);
+        if ($data == -1){
+            return;
+        }
         if (strlen($uri) >= strlen($endpoint) && substr($uri,0, strlen($endpoint)) == $endpoint){
-
             if ($_SERVER["REQUEST_METHOD"] != "DELETE"){
-                Response::httpError(404,17);
+                return;
             }
             if (($userID = self::getHeadAuth())){
-                if ($getFromURL){
-                    $data = self::getBodyFromUrl($uri,$endpoint,true);
-                    
+                if (($data = self::getVariablesFromUrl($uri, $endpoint)) != false){
                     $controller::$function($data,$userID);
                     die();
                 }
@@ -127,22 +121,48 @@ class Router{
         $token = $headers['Authorization'] ?? $headers['authorization'] ?? "";
         return Token::verifyToken($token);
     }
-    private static function getBodyFromUrl( $uri,$endpoint,$oneElement = false ){
-        if ($oneElement == true){
-            $body = explode("/",trim(substr($uri, strlen($endpoint)),"/"));
 
-            if (count($body) != 1){
-                Response::httpError(404,21);
-            }
-            
-            $data = Helper::validateTheInput($body[0]);
-        }
-        else{
-            $body = explode("/",trim(substr($uri, strlen($endpoint)),"/"));
-        
-            $data = Helper::validateTheInputArray(self::getBodyByUrl($body));
-        }
+
+    private static function getBodyFromUrl( $uri,$endpoint){
+        $body = explode("/",trim(substr($uri, strlen($endpoint)),"/"));
+        $data = Helper::validateTheInputArray(self::getBodyByUrl($body));
         return $data;
+    }
+
+
+    private static function getVariablesFromUrl($uri, &$endpoint){
+        $endpointArray = explode("/", trim($endpoint, "/"));
+        $uriArray = explode("/", trim($uri, "/"));
+        $variables = [];
+        $returnEndpoint = "";
+        for ($i=0; $i < count($endpointArray); $i++) { 
+            if ($endpointArray[$i][0] == "{" && $endpointArray[$i][strlen($endpointArray[$i])-1] == "}"){
+                $key = substr($endpointArray[$i], 1, strlen($endpointArray[$i])-2);
+                $variables[$key] = $i;
+            }
+            else{
+                $returnEndpoint .= "/". $endpointArray[$i];
+            }
+        }
+        
+        $endpoint = $returnEndpoint;
+        if (count($variables) == 0){
+            return false;
+        }
+        foreach ($variables as $key => $value) {
+            if (isset($uriArray[$value])){
+                $variables[$key] = $uriArray[$value];
+            }
+            else{
+                return -1;
+            }
+        }
+        
+        $variables = Helper::validateTheInputArray($variables, "url");
+        if (count($variables) == 1){
+            return $variables[array_keys($variables)[0]];
+        }
+        return $variables;
     }
 }
 ?>

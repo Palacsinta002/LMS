@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Validations;
 use ApiResponse\Response;
 use Helper\Helper;
 use Database\Queries\UserTable;
@@ -88,7 +88,7 @@ class User extends Model{
       } 
 
     public static function validateAddress($address){
-        if (!preg_match('/^\d+\s[A-ZÁÉÍÓÖŐÚÜŰa-záéíóöőúüű]+(?:\s[A-ZÁÉÍÓÖŐÚÜŰa-záéíóöőúüű]+)+,\s[A-ZÁÉÍÓÖŐÚÜŰa-záéíóöőúüű]+(?:\s[A-ZÁÉÍÓÖŐÚÜŰa-záéíóöőúüű]+)*$/', $address)) {
+        if (!preg_match('/^[A-ZÁÉÍÓÖŐÚÜŰa-záéíóöőúüű0-9\s.,\-\/#°\'0-9]+$/u', $address)) {
             Response::httpError(400,30);
         }
     
@@ -104,6 +104,22 @@ class User extends Model{
         }
     
     }
+    public static function validateDateOfBirth($date) {
+        if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) {
+            Response::httpError(400,35); 
+        }
+    
+        $dob = \DateTime::createFromFormat('Y-m-d', $date);
+        if (!$dob || $dob->format('Y-m-d') !== $date) {
+            Response::httpError(400,35); 
+        }
+    
+        $today = new \DateTime();
+        $minDate = $today->modify('-14 years');
+    
+        return $dob <= $minDate;
+    }
+    //halooo ezt lehet ki kéne venni
     public static function isUserVerified($ID,$emailVerified = null, $verified = null){
         $user = UserTable::allByID($ID)[0];
         if (isset($emailVerified) && !isset($verified)){

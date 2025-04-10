@@ -1,6 +1,6 @@
 <?php
 namespace App\Controllers;
-use App\Models\User;
+use App\Validations\User;
 use Database\Queries\UserTable;
 use Helper\Helper;
 use App\Authorize\Token;
@@ -38,7 +38,7 @@ class UserController{
         
         # Check if the required data is found in the body
         $body = Helper::validateTheInputArray($body);
-        if (!($body = User::checkRequiredData($body,["email","username","password","passwordAgain","firstname","lastname","address"]))){
+        if (!($body = User::checkRequiredData($body,["email","username","password","firstname","lastname","address","dateOfBirth"]))){
             Response::httpError(400,21);
         }
 
@@ -47,9 +47,9 @@ class UserController{
         User::checkFirstLastName($body["firstname"]);
         User::checkFirstLastName($body["lastname"]);
         User::validateAddress($body["address"]);
-        $body["password"] = User::checkPassword($body["password"],$body["passwordAgain"]);
+        User::validateDateOfBirth($body["dateOfBirth"]);
+        $body["password"] = User::checkPassword($body["password"]);
         User::checkUsername($body["username"]);
-        
         # Sending email and inserting to the database
         $verificationCode = User::createAuthCode();
         $body["EmailVerificationCode"] = $verificationCode;
@@ -97,7 +97,7 @@ class UserController{
         # If the required data is not found, return an error message
         $body = Helper::validateTheInputArray($body);
         $body = User::removeNullValues($body);
-        if (!($body = User::checkRequiredData($body,[],["username","passwordOld","password","firstname","lastname","address"]))){
+        if (!($body = User::checkRequiredData($body,[],["username","passwordOld","password","firstname","lastname","address","dateOfBirth"]))){
             Response::httpError(400,21);
         }
 
@@ -113,6 +113,7 @@ class UserController{
         User::callingValidateFunctions($body,["lastname"],User::class,"checkFirstLastName");
         User::callingValidateFunctions($body,["password"],User::class,"checkPassword");
         User::callingValidateFunctions($body,["address"],User::class,"validateAddress");
+        User::callingValidateFunctions($body,["dateOfBirth"],User::class,"validateDateOfBirth");
         if ((isset($body["passwordOld"]) && !isset($body["password"])) || (!isset($body["passwordOld"]) && isset($body["password"]))){
             Response::httpError(400,21);
         }
@@ -122,14 +123,14 @@ class UserController{
             unset($body["passwordOld"]);
         }
         # Update the user in the database
-        $types = User::makeTypesArray($body,["username","password","firstname","lastname","address"],["s","s","s","s","s"]);
+        $types = User::makeTypesArray($body,["username","password","firstname","lastname","address","dateOfBirth"],["s","s","s","s","s","s"]);
         UserTable::updateUserData($userID,array_keys($body),array_values($body),$types);
         Response::httpSuccess(200,["Success" =>"User updated"]);
         
     }
 
     # Delete the user by ID
-    public static function deleteUser($body,$userID){
+    public static function deleteUser($userID){
 
         if (!isset((($userCurentData = UserTable::selectUserData($userID))[0]))){
             Response::httpError(400,27);

@@ -1,29 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace App\Validations;
 use ApiResponse\Response;
 
 class Books extends Model{
-    public static function validateMultipleValuesOfString($authorsString){
-        $namePattern = "/^[A-ZÁRVÍZTŰRŐTÜKÖRFÚRÓGÉP][a-záéíóöőúüűÁÉÍÓÖŐÚÜŰ\-']*$/u";
-        $authorsArray = explode(",",$authorsString);
-        for ($i=0; $i < count($authorsArray); $i++) { 
-            $author = trim($authorsArray[$i]);
-            if (empty($author)) {
-                Response::httpError(400, 4);
-            }
-            $authorNames = explode(" ",$author);
-            $strLength = 0;
-            for ($j=0; $j < count($authorNames); $j++) { 
-                if (!preg_match($namePattern,$authorNames[$j])){
-                    Response::httpError(400,4);
-                }
-                $strLength += strlen($authorNames[$j]);
-            }
-            
-            if ($strLength > 255){
-                Response::httpError(400,4);
-            }
+    public static function validateFullName($fullName){
+        $namePattern = "/^[A-Za-záéíóöőúüűÁÉÍÓÖŐÚÜŰ]+([\-'. ]?[A-Za-záéíóöőúüűÁÉÍÓÖŐÚÜŰ]+)*$/u";
+        if (!preg_match($namePattern, $fullName)) {
+            Response::httpError(400, 4);
         }
         return true;
     }
