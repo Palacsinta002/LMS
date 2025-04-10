@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import axios from "axios";
 import FormCard from '../Components/FormCard';
 import "../Styles/Verify.css";
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Verify() {
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const previousLocation = usePreviousLocation(location);
+  const endpoint = previousLocation.pathname === "/register" ? "/api/verify-account" : "/api/finalize-registration";
 
   async function HandleSubmit(event) {
     event.preventDefault();
@@ -17,7 +20,7 @@ export default function Verify() {
 
     try {
       const response = await axios.post(
-        "/api/verify-account",
+        `${endpoint}`,
         {
           verificationCode: code
         },

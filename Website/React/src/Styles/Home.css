@@ -253,9 +253,9 @@ caption {
   justify-content: space-evenly;
   width: 70vw;
   max-width: 60vw;
-  min-width: 40vw;
+  min-width: 60vw;
   border-radius: 1vh;
-  margin: 5vh auto;
+  margin: auto;
   font-weight: bold;
   color: black;
   z-index: 1;
@@ -385,7 +385,6 @@ caption {
 }
 
 .results-count {
-  margin-bottom: 15px;
   font-style: italic;
   color: white;
 }

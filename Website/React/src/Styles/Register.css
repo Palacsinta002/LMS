@@ -41,8 +41,9 @@ body {
     color: black;
 }
 
-.register-container i {
+.register-container .register-icon {
     font-size: 16vh;
+    transition: ease-in-out 0.3s;
 }
 
 .register-container h1 {
