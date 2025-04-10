@@ -46,7 +46,7 @@
             header.Controls.Add(close_btn);
             header.Location = new Point(1, 1);
             header.Name = "header";
-            header.Size = new Size(361, 55);
+            header.Size = new Size(368, 55);
             header.TabIndex = 27;
             // 
             // title
@@ -75,7 +75,7 @@
             close_btn.Font = new Font("Yu Gothic UI Semibold", 14F);
             close_btn.ForeColor = Color.White;
             close_btn.Image = (Image)resources.GetObject("close_btn.Image");
-            close_btn.Location = new Point(315, 10);
+            close_btn.Location = new Point(322, 10);
             close_btn.Name = "close_btn";
             close_btn.Size = new Size(36, 35);
             close_btn.TabIndex = 25;
@@ -88,7 +88,7 @@
             label_title.Font = new Font("Yu Gothic UI Semibold", 14F);
             label_title.Location = new Point(12, 73);
             label_title.Name = "label_title";
-            label_title.Size = new Size(339, 85);
+            label_title.Size = new Size(340, 85);
             label_title.TabIndex = 28;
             label_title.Text = "Are you sure you want to remove the selected users? All related borrowings and reservations will be also removed!";
             // 
@@ -105,7 +105,7 @@
             yes.FlatStyle = FlatStyle.Flat;
             yes.Font = new Font("Yu Gothic UI Semibold", 14F);
             yes.ForeColor = Color.Black;
-            yes.Location = new Point(179, 159);
+            yes.Location = new Point(186, 167);
             yes.Name = "yes";
             yes.Size = new Size(80, 36);
             yes.TabIndex = 30;
@@ -127,7 +127,7 @@
             no.FlatStyle = FlatStyle.Flat;
             no.Font = new Font("Yu Gothic UI Semibold", 14F);
             no.ForeColor = Color.White;
-            no.Location = new Point(265, 159);
+            no.Location = new Point(272, 167);
             no.Name = "no";
             no.Size = new Size(80, 36);
             no.TabIndex = 29;
@@ -141,7 +141,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(363, 207);
+            ClientSize = new Size(370, 215);
             Controls.Add(yes);
             Controls.Add(no);
             Controls.Add(label_title);
