@@ -50,6 +50,7 @@ public partial class Main : Form
             HidePanels();
             panel_dashboard.Visible = true;
             panel_dashboard.Enabled = true;
+            button_dashboard.BackColor = Color.FromArgb(63, 65, 158);
 
             // Show statistics about our books
             try
@@ -86,6 +87,7 @@ public partial class Main : Form
             HidePanels();
             panel_books.Visible = true;
             panel_books.Enabled = true;
+            button_books.BackColor = Color.FromArgb(63, 65, 158);
             RefreshBooks(sender, e);
         }
     }
@@ -151,6 +153,7 @@ public partial class Main : Form
             HidePanels();
             panel_borrowings.Visible = true;
             panel_borrowings.Enabled = true;
+            button_borrowings.BackColor = Color.FromArgb(63, 65, 158);
             RefreshBorrowings(sender, e);
         }
     }
@@ -236,6 +239,7 @@ public partial class Main : Form
         HidePanels();
         panel_reservations.Visible = true;
         panel_reservations.Enabled = true;
+        button_reservations.BackColor = Color.FromArgb(63, 65, 158);
         RefreshReservations(sender, e);
     }
 
@@ -315,6 +319,7 @@ public partial class Main : Form
             HidePanels();
             panel_categories.Visible = true;
             panel_categories.Enabled = true;
+            button_categories.BackColor = Color.FromArgb(63, 65, 158);
             RefreshCategories(sender, e);
         }
     }
@@ -381,6 +386,7 @@ public partial class Main : Form
             HidePanels();
             panel_authors.Visible = true;
             panel_authors.Enabled = true;
+            button_authors.BackColor = Color.FromArgb(63, 65, 158);
             RefreshAuthors(sender, e);
         }
     }
@@ -446,6 +452,7 @@ public partial class Main : Form
             HidePanels();
             panel_publishers.Visible = true;
             panel_publishers.Enabled = true;
+            button_publishers.BackColor = Color.FromArgb(63, 65, 158);
             RefreshPublishers(sender, e);
         }
     }
@@ -511,6 +518,7 @@ public partial class Main : Form
             HidePanels();
             panel_users.Visible = true;
             panel_users.Enabled = true;
+            button_users.BackColor = Color.FromArgb(63, 65, 158);
             RefreshUsers(sender, e);
         }
     }
@@ -571,20 +579,28 @@ public partial class Main : Form
     {
         panel_dashboard.Visible = false;
         panel_dashboard.Enabled = false;
+        button_dashboard.BackColor = Color.FromArgb(80, 77, 180);
         panel_books.Visible = false;
         panel_books.Enabled = false;
+        button_books.BackColor = Color.FromArgb(80, 77, 180);
         panel_borrowings.Visible = false;
         panel_borrowings.Enabled = false;
+        button_borrowings.BackColor = Color.FromArgb(80, 77, 180);
         panel_reservations.Visible = false;
         panel_reservations.Enabled = false;
+        button_reservations.BackColor = Color.FromArgb(80, 77, 180);
         panel_categories.Visible = false;
         panel_categories.Enabled = false;
+        button_categories.BackColor = Color.FromArgb(80, 77, 180);
         panel_users.Visible = false;
         panel_users.Enabled = false;
+        button_users.BackColor = Color.FromArgb(80, 77, 180);
         panel_authors.Visible = false;
         panel_authors.Enabled = false;
+        button_authors.BackColor = Color.FromArgb(80, 77, 180);
         panel_publishers.Visible = false;
         panel_publishers.Enabled = false;
+        button_publishers.BackColor = Color.FromArgb(80, 77, 180);
     }
 
     // Logs out and drops back to the login screen
