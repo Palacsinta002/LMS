@@ -211,6 +211,7 @@ namespace Desktop_Application
             button_dashboard.BackColor = Color.FromArgb(80, 77, 180);
             button_dashboard.FlatAppearance.BorderSize = 0;
             button_dashboard.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            button_dashboard.FlatAppearance.MouseOverBackColor = Color.FromArgb(63, 65, 158);
             button_dashboard.FlatStyle = FlatStyle.Flat;
             button_dashboard.Font = new Font("Yu Gothic UI Semibold", 14F);
             button_dashboard.ForeColor = Color.White;
@@ -228,6 +229,7 @@ namespace Desktop_Application
             button_books.BackColor = Color.FromArgb(80, 77, 180);
             button_books.FlatAppearance.BorderSize = 0;
             button_books.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            button_books.FlatAppearance.MouseOverBackColor = Color.FromArgb(63, 65, 158);
             button_books.FlatStyle = FlatStyle.Flat;
             button_books.Font = new Font("Yu Gothic UI Semibold", 14F);
             button_books.ForeColor = Color.White;
@@ -245,6 +247,7 @@ namespace Desktop_Application
             button_borrowings.BackColor = Color.FromArgb(80, 77, 180);
             button_borrowings.FlatAppearance.BorderSize = 0;
             button_borrowings.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            button_borrowings.FlatAppearance.MouseOverBackColor = Color.FromArgb(63, 65, 158);
             button_borrowings.FlatStyle = FlatStyle.Flat;
             button_borrowings.Font = new Font("Yu Gothic UI Semibold", 14F);
             button_borrowings.ForeColor = Color.White;
@@ -262,6 +265,7 @@ namespace Desktop_Application
             button_reservations.BackColor = Color.FromArgb(80, 77, 180);
             button_reservations.FlatAppearance.BorderSize = 0;
             button_reservations.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            button_reservations.FlatAppearance.MouseOverBackColor = Color.FromArgb(63, 65, 158);
             button_reservations.FlatStyle = FlatStyle.Flat;
             button_reservations.Font = new Font("Yu Gothic UI Semibold", 14F);
             button_reservations.ForeColor = Color.White;
@@ -279,6 +283,7 @@ namespace Desktop_Application
             button_categories.BackColor = Color.FromArgb(80, 77, 180);
             button_categories.FlatAppearance.BorderSize = 0;
             button_categories.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            button_categories.FlatAppearance.MouseOverBackColor = Color.FromArgb(63, 65, 158);
             button_categories.FlatStyle = FlatStyle.Flat;
             button_categories.Font = new Font("Yu Gothic UI Semibold", 14F);
             button_categories.ForeColor = Color.White;
@@ -296,6 +301,7 @@ namespace Desktop_Application
             button_authors.BackColor = Color.FromArgb(80, 77, 180);
             button_authors.FlatAppearance.BorderSize = 0;
             button_authors.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            button_authors.FlatAppearance.MouseOverBackColor = Color.FromArgb(63, 65, 158);
             button_authors.FlatStyle = FlatStyle.Flat;
             button_authors.Font = new Font("Yu Gothic UI Semibold", 14F);
             button_authors.ForeColor = Color.White;
@@ -313,6 +319,7 @@ namespace Desktop_Application
             button_publishers.BackColor = Color.FromArgb(80, 77, 180);
             button_publishers.FlatAppearance.BorderSize = 0;
             button_publishers.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            button_publishers.FlatAppearance.MouseOverBackColor = Color.FromArgb(63, 65, 158);
             button_publishers.FlatStyle = FlatStyle.Flat;
             button_publishers.Font = new Font("Yu Gothic UI Semibold", 14F);
             button_publishers.ForeColor = Color.White;
@@ -330,6 +337,7 @@ namespace Desktop_Application
             button_users.BackColor = Color.FromArgb(80, 77, 180);
             button_users.FlatAppearance.BorderSize = 0;
             button_users.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
+            button_users.FlatAppearance.MouseOverBackColor = Color.FromArgb(63, 65, 158);
             button_users.FlatStyle = FlatStyle.Flat;
             button_users.Font = new Font("Yu Gothic UI Semibold", 14F);
             button_users.ForeColor = Color.White;
