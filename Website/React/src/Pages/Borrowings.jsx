@@ -9,9 +9,8 @@ export default function Borrowings() {
 
   const hidden = location.pathname === '/dashboard/borrowings' ? '' : 'hidden';
   useEffect(() => {
-    axios.get("/api/my-borrowed-books", { headers: { "Authorization": `Bearer ${token}` } })
+    axios.get("/api/borrowings", { headers: { "Authorization": `Bearer ${token}` } })
       .then(response => {
-        console.log(response.data)
         setBorrowings(response.data)
       })
       .catch(err => console.error(err))

@@ -18,8 +18,7 @@ export default function Books({ searchQuery }) {
     useEffect(() => {
         const getData = async () => {
             try {
-                const response = await axios.get("/api/available-books");
-                console.log(response.data);
+                const response = await axios.get("/api/books");
                 setBooks(response.data);
             } catch (error) {
                 console.error("Error fetching books:", error);

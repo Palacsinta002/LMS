@@ -11,8 +11,6 @@ export default function Header({ searchQuery, onSearch }) {
 
   const { logout } = useContext(AuthContext);
 
-  console.log(searchQuery)
-
   return (
     <header className={hidden}>
       <Link to="/"><h1 className="title">LMS</h1></Link>

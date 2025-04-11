@@ -30,7 +30,8 @@ export default function Register() {
           email: email,
           firstname: firstname,
           lastname: lastname,
-          dateOfBirth: dateOfBirth
+          dateOfBirth: dateOfBirth,
+          address: address
         },
         {
           headers: { "Content-Type": "application/json" },

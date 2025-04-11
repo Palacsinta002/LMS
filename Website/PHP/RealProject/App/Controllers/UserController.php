@@ -199,6 +199,3 @@ class UserController{
         Response::httpSuccess(200,["Success"=> "Email sent"]);
     }
 }
-
-
-?>

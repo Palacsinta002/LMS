@@ -3,6 +3,7 @@ import axios from "axios";
 import FormCard from '../Components/FormCard';
 import "../Styles/Verify.css";
 import { useLocation, useNavigate } from 'react-router-dom';
+import usePreviousLocation from '../Hooks/usePreviousLocation';
 
 export default function Verify() {
   const [code, setCode] = useState("");
@@ -11,7 +12,8 @@ export default function Verify() {
   const navigate = useNavigate();
   const location = useLocation();
   const previousLocation = usePreviousLocation(location);
-  const endpoint = previousLocation.pathname === "/register" ? "/api/verify-account" : "/api/finalize-registration";
+  const endpoint = previousLocation?.pathname === "/register" ? "/api/finalize-registration" : "/api/verify-account";
+  console.log("Endpoint:", endpoint);
 
   async function HandleSubmit(event) {
     event.preventDefault();

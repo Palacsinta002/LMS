@@ -12,9 +12,8 @@ export default function Reservations() {
   const hidden = location.pathname === '/dashboard/reservations' ? '' : 'hidden'
 
   useEffect(() => {
-    axios.get("/api/my-reservations", { headers: { "Authorization": `Bearer ${token}` } })
+    axios.get("/api/reserve", { headers: { "Authorization": `Bearer ${token}` } })
       .then(response => {
-        console.log(response.data)
         setBorrowings(response.data)
       })
       .catch(err => console.error(err))

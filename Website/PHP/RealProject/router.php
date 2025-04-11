@@ -18,7 +18,6 @@ Router::put("/api/finalize-registration", UserController::class,"finalizeRegistr
 Router::put("/api/change-password", UserController::class,"changePassword");
 Router::delete("/api/user", UserController::class,"deleteUser");
 
-
 Router::get("/api/top-borrowings/{limit}", BorrowingsController::class,"topBorrowedBooks",false,true);
 
 Router::get("/api/borrowings", BorrowingsController::class,"show",true);
@@ -26,7 +25,6 @@ Router::get("/api/available-books", BooksController::class,"availableBooks",fals
 
 Router::post("/api/upload-img", ImageController::class,"uploadImg",false,true);
 Router::get("/img/{ISBN}", ImageController::class,"getImg",false,true);
-
 
 Router::get("/api/books", BooksController::class,"getFromDBByParams",false,true);
 Router::get("/api/all-books", BooksController::class,"countAllBooks");
@@ -40,7 +38,3 @@ Router::delete("/api/reserve/{ISBN}", ReservationController::class, "destroy");
 Router::get("/api/test", BorrowingsController::class,"availableBooks",false);
 
 Response::httpError(404, "Route not found");
-
-
-
-?>

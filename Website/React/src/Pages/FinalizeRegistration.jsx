@@ -19,31 +19,24 @@ export default function Login() {
     event.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post("api/finalize-registration",
+      const response = await axios.post("/api/finalize-registration",
         { email: email, username: username, password: password },
         {
           headers: {
-            "method": "POST",
             "Content-Type": "application/json",
           }
         });
 
-        console.log(response.data)
-      if (response.data.Token) {
-        setAuthToken(response.data.Token);
-        console.log(response.data.Token)
-        sessionStorage.setItem("token", response.data.Token);
-        navigate("/dashboard");
-      }
-      else{
-        navigate("/login")
+        console.log(response)
+      if (response.data.Success) {
+        navigate("/verify");
       }
     } catch (error) {
-      console.error("Login Error:", error);
+      console.error("Finalize Registration Error:", error);
   
       if (error.response && error.response.data && error.response.data.error) {
         console.log(error.response.data.error);
-        setError(error.response.data.error || "Login failed");
+        setError(error.response.data.error || "Finalize Registration failed");
       } else {
         setError("Network error");
       }
