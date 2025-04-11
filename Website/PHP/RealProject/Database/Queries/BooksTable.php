@@ -55,7 +55,9 @@ class BooksTable extends Table{
         ->innerJoin("Authors",["Books_Authors.AuthorID"],["="],["Authors.ID"])
         ->innerJoin("Books_Categories",["Books.ISBN"],["="],["Books_Categories.ISBN"])
         ->innerJoin("Categories",["Books_Categories.CategoryID"],["="],["Categories.ID"])
-        ->where(["books.Available"],[">"],[0],["i"])
+        ->leftJoin("borrowings", ["books.ISBN","borrowings.ReturnDate"], ["=","IS"], ["borrowings.ISBN","NULL"])
+        ->leftJoin("reservations", ["books.ISBN"], ["="], ["reservations.ISBN"])
+        ->where(["borrowings.ISBN","reservations.ISBN"], ["IS","IS"],["NULL","NULL"],["i","i"])
         ->groupBy(["books.ISBN","publishers.Publisher","books.Title","books.publicationYear"])
         ->execute(true);
     }
