@@ -572,6 +572,11 @@ public partial class Main : Form
         removeUser.ShowDialog();
         RefreshUsers(sender, e);
     }
+
+    private void VerifyUser(object sender, EventArgs e)
+    {
+
+    }
     #endregion
 
     // Hides every panel so there will be room for the opened panel
