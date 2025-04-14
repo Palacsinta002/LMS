@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Globalization;
+using System.Text.RegularExpressions;
 using Desktop_Application.Classes;
 
 namespace Desktop_Application.Forms.Users;
@@ -8,12 +9,14 @@ public partial class EditUser : Form
     private readonly DataGridView _users_grd;
     private string _oldUsername;
     private DateTime _dateOfBirth;
+    private bool _isAdmin;
 
-    public EditUser(DataGridView users_grd)
+    public EditUser(DataGridView users_grd, bool isAdmin)
     {
         _users_grd = users_grd;
         _oldUsername = string.Empty;
         _dateOfBirth = DateTime.Today;
+        _isAdmin = isAdmin;
         InitializeComponent();
     }
 
@@ -27,13 +30,17 @@ public partial class EditUser : Form
         HandleKeys.Handle(this, Keys.Enter, Save);
         HandleKeys.Handle(this, Keys.Escape, (s, e) => this.Close());
 
+        label_role.Visible = _isAdmin;
+        comboBox_role.Visible = _isAdmin;
+        textBox_username.Enabled = _isAdmin;
+
         // Load data from grid
         var selectedRow = _users_grd.SelectedRows[0].Cells;
 
         textBox_firstName.Text = selectedRow["users_firstName"].Value.ToString();
         textBox_lastName.Text = selectedRow["users_lastName"].Value.ToString();
         textBox_username.Text = selectedRow["users_username"].Value.ToString();
-        dateOfBirth_datePicker.Text = selectedRow["users_dateOfBirth"].Value.ToString();
+        dateOfBirth_datePicker.Value = DateTime.ParseExact(selectedRow["users_dateOfBirth"].Value.ToString() ?? string.Empty, "dd/MM/yyyy", CultureInfo.InvariantCulture);
         textBox_address.Text = selectedRow["users_address"].Value.ToString();
         checkBox_verify.Checked = selectedRow["users_verified"].Value.ToString() == "Yes";
 

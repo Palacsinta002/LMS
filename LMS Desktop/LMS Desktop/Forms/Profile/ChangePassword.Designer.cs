@@ -423,8 +423,6 @@ namespace Desktop_Application.Forms.Profile
         private Button rButton_special;
         private Button rButton_characterCount;
         private Label label_characterCount;
-        private Button rButton_allowed;
-        private Label label_allowed;
         private Button rButton_match;
         private Label label_match;
     }

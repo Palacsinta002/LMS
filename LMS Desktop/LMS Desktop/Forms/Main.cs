@@ -25,7 +25,6 @@ public partial class Main : Form
     private void OnLoad(object sender, EventArgs e)
     {
         HandleFonts.Set(this);
-        users_rButton_edit.Visible = _isAdmin;
         users_rButton_remove.Visible = _isAdmin;
 
         label_greeting.Text = $"Hello {_username}!";
@@ -553,7 +552,7 @@ public partial class Main : Form
             MessageBox.Show("You must select ONE user to edit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
-        EditUser editUser = new(users_grid);
+        EditUser editUser = new(users_grid, _isAdmin);
         editUser.ShowDialog();
         RefreshUsers(sender, e);
     }
@@ -571,11 +570,6 @@ public partial class Main : Form
         RemoveUser removeUser = new(selectedUsernames);
         removeUser.ShowDialog();
         RefreshUsers(sender, e);
-    }
-
-    private void VerifyUser(object sender, EventArgs e)
-    {
-
     }
     #endregion
 

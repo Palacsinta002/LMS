@@ -155,7 +155,6 @@ namespace Desktop_Application
             reservations_isbn = new DataGridViewTextBoxColumn();
             reservations_startDate = new DataGridViewTextBoxColumn();
             reservations_endDate = new DataGridViewTextBoxColumn();
-            roundedButton1 = new RoundedButton();
             panel_menu.SuspendLayout();
             panel_header.SuspendLayout();
             panel_dashboard.SuspendLayout();
@@ -1295,7 +1294,6 @@ namespace Desktop_Application
             // panel_users
             // 
             panel_users.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel_users.Controls.Add(roundedButton1);
             panel_users.Controls.Add(users_rButton_refresh);
             panel_users.Controls.Add(users_rButton_add);
             panel_users.Controls.Add(users_rButton_edit);
@@ -1343,9 +1341,9 @@ namespace Desktop_Application
             users_rButton_add.FlatStyle = FlatStyle.Flat;
             users_rButton_add.Font = new Font("Yu Gothic UI Semibold", 14F);
             users_rButton_add.ForeColor = Color.White;
-            users_rButton_add.Location = new Point(100, 26);
+            users_rButton_add.Location = new Point(342, 26);
             users_rButton_add.Name = "users_rButton_add";
-            users_rButton_add.Size = new Size(66, 36);
+            users_rButton_add.Size = new Size(100, 36);
             users_rButton_add.TabIndex = 15;
             users_rButton_add.Text = "Add";
             users_rButton_add.TextColor = Color.White;
@@ -1365,9 +1363,9 @@ namespace Desktop_Application
             users_rButton_edit.FlatStyle = FlatStyle.Flat;
             users_rButton_edit.Font = new Font("Yu Gothic UI Semibold", 14F);
             users_rButton_edit.ForeColor = Color.White;
-            users_rButton_edit.Location = new Point(172, 26);
+            users_rButton_edit.Location = new Point(236, 26);
             users_rButton_edit.Name = "users_rButton_edit";
-            users_rButton_edit.Size = new Size(68, 36);
+            users_rButton_edit.Size = new Size(100, 36);
             users_rButton_edit.TabIndex = 13;
             users_rButton_edit.Text = "Edit";
             users_rButton_edit.TextColor = Color.White;
@@ -1387,7 +1385,7 @@ namespace Desktop_Application
             users_rButton_remove.FlatStyle = FlatStyle.Flat;
             users_rButton_remove.Font = new Font("Yu Gothic UI Semibold", 14F);
             users_rButton_remove.ForeColor = Color.White;
-            users_rButton_remove.Location = new Point(342, 26);
+            users_rButton_remove.Location = new Point(130, 26);
             users_rButton_remove.Name = "users_rButton_remove";
             users_rButton_remove.Size = new Size(100, 36);
             users_rButton_remove.TabIndex = 14;
@@ -2045,28 +2043,6 @@ namespace Desktop_Application
             reservations_endDate.ReadOnly = true;
             reservations_endDate.Width = 79;
             // 
-            // roundedButton1
-            // 
-            roundedButton1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            roundedButton1.BackColor = Color.FromArgb(80, 77, 180);
-            roundedButton1.BackgroundColor = Color.FromArgb(80, 77, 180);
-            roundedButton1.BorderColor = Color.Transparent;
-            roundedButton1.BorderRadius = 5;
-            roundedButton1.BorderSize = 0;
-            roundedButton1.FlatAppearance.BorderSize = 0;
-            roundedButton1.FlatAppearance.MouseDownBackColor = Color.FromArgb(63, 65, 158);
-            roundedButton1.FlatStyle = FlatStyle.Flat;
-            roundedButton1.Font = new Font("Yu Gothic UI Semibold", 14F);
-            roundedButton1.ForeColor = Color.White;
-            roundedButton1.Location = new Point(246, 26);
-            roundedButton1.Name = "roundedButton1";
-            roundedButton1.Size = new Size(90, 36);
-            roundedButton1.TabIndex = 17;
-            roundedButton1.Text = "Verify";
-            roundedButton1.TextColor = Color.White;
-            roundedButton1.UseVisualStyleBackColor = false;
-            roundedButton1.Click += VerifyUser;
-            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -2075,7 +2051,6 @@ namespace Desktop_Application
             ClientSize = new Size(984, 561);
             Controls.Add(panel_header);
             Controls.Add(panel_menu);
-            Controls.Add(panel_users);
             Controls.Add(panel_dashboard);
             Controls.Add(panel_books);
             Controls.Add(panel_borrowings);
@@ -2083,6 +2058,7 @@ namespace Desktop_Application
             Controls.Add(panel_categories);
             Controls.Add(panel_authors);
             Controls.Add(panel_publishers);
+            Controls.Add(panel_users);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(1000, 590);
             Name = "Main";
@@ -2254,6 +2230,5 @@ namespace Desktop_Application
         private DataGridViewTextBoxColumn users_email;
         private DataGridViewTextBoxColumn users_role;
         private DataGridViewTextBoxColumn users_verified;
-        private RoundedButton roundedButton1;
     }
 }
