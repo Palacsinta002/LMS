@@ -28,7 +28,7 @@ public partial class Login : Form
         // Select the version and if something is wrong the application will close
         string query = $"SELECT version()";
         var result = HandleQueries.SelectFromString(query);
-        if (result.Count <= 0) this.Close();
+        if (result.Count <= 0) this.Close(); 
     }
 
     private void LoginCheck(object sender, EventArgs e)
