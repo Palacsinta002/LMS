@@ -1,4 +1,32 @@
 <?php
+/**
+ * UserTable.php
+ * 
+ * Ez a fájl a `UserTable` osztályt definiálja, amely a `Table` osztályból származik,
+ * és kifejezetten a felhasználókkal kapcsolatos adatok kezelésére és lekérdezésére biztosít metódusokat.
+ * 
+ * Funkciók:
+ * - `selectByUsername()`: Felhasználó adatainak lekérdezése felhasználónév alapján.
+ * - `rowExists()`: Annak ellenőrzése, hogy létezik-e adott feltételeknek megfelelő sor a `users` táblában.
+ * - `updateToVerified()`: Felhasználó email megerősítési állapotának frissítése.
+ * - `insertToUser()`: Új felhasználó beszúrása a `users` táblába.
+ * - `numberOfUsers()`: Felhasználók számának lekérdezése az adatbázisból.
+ * - `selectUserData()`: Részletes felhasználói adatok lekérdezése, beleértve a szerepkör-információkat is.
+ * - `updateUserData()`: Egy adott felhasználó adatainak frissítése.
+ * - `deleteUserRow()`: Felhasználó törlése a `users` táblából.
+ * - `selectByEmail()`: Felhasználói adatok lekérdezése email-cím alapján.
+ * - `changePassword()`: Felhasználó jelszavának frissítése.
+ * - `allByID()`: Összes felhasználói adat lekérdezése felhasználóazonosító alapján.
+ * 
+ * Használat:
+ * - Ezekkel a metódusokkal lehet kapcsolatba lépni a `users` táblával, például hitelesítés, regisztráció,
+ *   profilfrissítés és fiókkezelés céljából.
+ * - A `selectUserData()` és `updateUserData()` metódusok támogatják az összetett lekérdezéseket join-okkal és frissítésekkel.
+ * 
+ * Függőségek:
+ * - A `Table` osztályból származik, amely az alap lekérdezésépítési funkciókat biztosítja.
+ * - A `Helper` osztályt használja a bemeneti adatok validálására.
+ */
 
 namespace Database\Queries;
 

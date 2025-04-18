@@ -1,5 +1,12 @@
 <?php
-
+/**
+ * EmailBodies.php
+ * 
+ * Ez a fájl az `EmailBodies` osztályt definiálja, amely különböző e-mail törzseket biztosít
+ * Az osztály statikus metódusokat tartalmaz, amelyek egy-egy e-mail törzs HTML kódját generálják.
+ * Az e-mail törzsek tartalmazzák a felhasználó számára szükséges információkat, például
+ * a jelszó visszaállításához szükséges linket vagy a fiók ellenőrzéséhez szükséges kódot.
+ */
 namespace Emailer;
 
 class EmailBodies{

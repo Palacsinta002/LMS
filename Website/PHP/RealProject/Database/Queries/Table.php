@@ -1,4 +1,37 @@
 <?php
+/**
+ * Table.php
+ * 
+ * Ez a fájl a `Table` osztályt definiálja, amely alapot biztosít az adatbázis-lekérdezések felépítéséhez.
+ * Olyan metódusokat tartalmaz, amelyek lehetővé teszik SQL lekérdezések (pl. SELECT, INSERT, UPDATE, DELETE, JOIN)
+ * dinamikus összeállítását és végrehajtását.
+ * 
+ * Funkciók:
+ * - Lekérdezésépítés:
+ *   - `select()`: SELECT lekérdezés összeállítása megadott mezőkkel és táblákkal.
+ *   - `insert()`: INSERT lekérdezés összeállítása megadott mezőkkel és értékekkel.
+ *   - `update()`: UPDATE lekérdezés összeállítása megadott mezőkkel és értékekkel.
+ *   - `delete()`: DELETE lekérdezés összeállítása a megadott táblára.
+ * - Lekérdezésmódosítók:
+ *   - `where()`: WHERE feltételek hozzáadása operátorokkal, mint pl. `=`, `LIKE`, `IN`, `IS NULL`.
+ *   - `groupBy()`: GROUP BY feltételek hozzáadása a lekérdezéshez.
+ *   - `orderBy()`: ORDER BY feltételek hozzáadása növekvő vagy csökkenő sorrendben.
+ *   - `limit()`: LIMIT feltétel megadása az eredmények számának korlátozására.
+ *   - `innerJoin()` és `leftJoin()`: JOIN feltételek hozzáadása az adatok több táblából történő összekapcsolásához.
+ * - Végrehajtás:
+ *   - `execute()`: A felépített lekérdezés végrehajtása, opcionálisan az eredmények lekérésével.
+ *   - `toString()`: A lekérdezés szöveges formátumba alakítása hibakereséshez vagy al-lekérdezésekhez.
+ * - Egyéb lehetőségek:
+ *   - Automatikus paraméter kötés előkészített utasításokhoz (prepared statements).
+ *   - A lekérdezési állapot automatikus visszaállítása végrehajtás után, hogy az osztály újra felhasználható legyen.
+ * 
+ * Használat:
+ * - Származtass ebből az osztályból konkrét táblákhoz tartozó lekérdező osztályokat (pl. `BooksTable`, `BorrowingsTable`).
+ * - Használd a rendelkezésre álló metódusokat SQL lekérdezések dinamikus felépítésére és futtatására.
+ * 
+ * Függőségek:
+ * - `Database\Connection`: Az adatbázis-kapcsolat létrehozására szolgál a lekérdezések végrehajtásához.
+ */
 
 namespace Database\Queries;
 use Database\Connection;

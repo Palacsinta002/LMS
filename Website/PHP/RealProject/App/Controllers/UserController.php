@@ -1,4 +1,38 @@
 <?php
+/**
+ * UserController.php
+ * 
+ * Ez a fájl a `UserController` osztályt definiálja, amely a felhasználókezeléssel kapcsolatos HTTP-kéréseket kezeli.
+ * Kapcsolatot teremt a kliens és a `UserTable` adatbázis-lekérdezések között, elvégzi a bemeneti adatok validálását,
+ * hitelesítést, és megfelelő válaszokat ad vissza.
+ * 
+ * Funkciók:
+ * - `login()`: Felhasználó hitelesítése felhasználónév és jelszó alapján, majd token visszaadása.
+ * - `verifyUser()`: Felhasználói token ellenőrzése.
+ * - `register()`: Új felhasználó regisztrálása, adatok validálása és megerősítő e-mail küldése.
+ * - `verifyAccount()`: Felhasználói fiók megerősítése egy megerősítő kód segítségével.
+ * - `allUsers()`: A felhasználók számának lekérdezése az adatbázisból.
+ * - `userData()`: Felhasználói adatok lekérdezése azonosító alapján.
+ * - `updateUser()`: Felhasználói adatok frissítése azonosító alapján validálás után.
+ * - `deleteUser()`: Felhasználó törlése azonosító alapján.
+ * - `forgotPassword()`: Jelszó-visszaállító e-mail küldése a felhasználónak.
+ * - `changePassword()`: Jelszó megváltoztatása validálás után.
+ * - `finalizeRegistration()`: Regisztráció véglegesítése e-mail frissítésével és megerősítő e-mail küldésével.
+ * 
+ * Használat:
+ * - Ezt a kontrollert használd felhasználókkal kapcsolatos műveletekhez, mint például bejelentkezés,
+ *   regisztráció, profilfrissítés vagy jelszókezelés.
+ * - A bemeneti adatokat a `Helper` és `User` validáló osztályok ellenőrzik, mielőtt adatbázis-lekérdezés történik.
+ * 
+ * Függőségek:
+ * - `ApiResponse\Response`: HTTP válaszok küldésére szolgál.
+ * - `Database\Queries\UserTable`: A felhasználókkal kapcsolatos adatbázis-lekérdezési metódusokat biztosítja.
+ * - `Helper\Helper`: Bemeneti adatok validálására szolgál.
+ * - `App\Validations\User`: Felhasználókkal kapcsolatos speciális validálási metódusokat tartalmaz.
+ * - `App\Authorize\Token`: Tokenek generálásáért és ellenőrzéséért felelős.
+ * - `Emailer\SendEmail` és `Emailer\EmailBodies`: E-mailek küldésére és tartalomgenerálásra szolgál.
+ */
+
 namespace App\Controllers;
 use App\Validations\User;
 use Database\Queries\UserTable;
@@ -146,7 +180,7 @@ class UserController{
     # If the user exists, send a password reset email with a token
     public static function forgotPassword($body){
         $body = Helper::validateTheInputArray($body);
-        if (!($body = User::checkRequiredData($body,["email"],))){
+        if (!($body = User::checkRequiredData($body,["email"]))){
             Response::httpError(400,21);
         }
         User::validateEmail($body["email"]);

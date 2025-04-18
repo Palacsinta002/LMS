@@ -1,7 +1,32 @@
 <?php
+/**
+ * Router.php
+ * 
+ * Ez a fájl a `Router` osztályt definiálja, amely a HTTP kérések kezeléséért
+ * és a megfelelő vezérlőkhöz (controller) való irányításáért felelős.
+ * Támogatja a többféle HTTP metódust (GET, POST, PUT, DELETE), valamint biztosítja
+ * a hitelesítést, fájlkezelést és az URL-ekből történő változók kinyerését.
+ * 
+ * Funkciók:
+ * - `post()`: POST kérések kezelése egy adott végpontra.
+ * - `get()`: GET kérések kezelése egy adott végpontra, opcionális URL-változó kinyeréssel.
+ * - `put()`: PUT kérések kezelése egy adott végpontra.
+ * - `delete()`: DELETE kérések kezelése egy adott végpontra.
+ * - Hitelesítés: Token alapú hitelesítés támogatása védett útvonalakhoz.
+ * - URL feldolgozás: Változók és adatok kinyerése az URL-ből dinamikus végpontokhoz.
+ * - Segédfüggvények integrálása: Segédfüggvények használata bemenetellenőrzéshez és a kérés törzsének feldolgozásához.
+ * 
+ * Használat:
+ * - Az útvonalakat a statikus metódusok (`post`, `get`, `put`, `delete`) meghívásával lehet definiálni,
+ *   megadva a végpontot, a vezérlőt, a függvényt és opcionálisan további paramétereket (pl. hitelesítés).
+ * - A vezérlőknek implementálniuk kell a megadott függvényeket, hogy kezelni tudják az irányított kéréseket.
+ * 
+ * Függőségek:
+ * - `Helper\Helper`: Segédfüggvényeket biztosít a bemenetek ellenőrzéséhez és a kérés törzsének feldolgozásához.
+ * - `App\Authorize\Token`: A tokenek ellenőrzéséért felelős a hitelesítés során.
+ */
 
 namespace Router;
-use ApiResponse\Response;
 use Helper\Helper;
 use App\Authorize\Token;
 class Router{
@@ -12,6 +37,10 @@ class Router{
         if ($uri == $endpoint){
             if ($_SERVER["REQUEST_METHOD" ] != "POST"){
                 return;
+            }
+            if ($getFiles == true){
+                $controller::$function();
+                die();
             }
             $body = Helper::getPostBody();
 
@@ -24,10 +53,7 @@ class Router{
                     $controller::$function($body,$userID);
                     die();
                 }
-                if ($getFiles == true){
-                    $controller::$function();
-                    die();
-                }
+                
                 $controller::$function($body);
                 die("");
             
@@ -95,7 +121,7 @@ class Router{
                 return;
             }
             if (($userID = self::getHeadAuth())){
-                if (($data = self::getVariablesFromUrl($uri, $endpoint)) != false){
+                if ($data != false){
                     $controller::$function($data,$userID);
                     die();
                 }

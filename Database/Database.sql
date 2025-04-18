@@ -200,7 +200,7 @@ INSERT INTO Authors (Author) VALUES
 ('Jane Austen'),
 ('Leo Tolstoy'),
 ('Mark Twain'),
-('Isabel Allende'),
+('Isabel Allende'), 
 ('J.R.R. Tolkien'),
 ('Agatha Christie'),
 ('William Shakespeare'),
@@ -210,12 +210,18 @@ INSERT INTO Authors (Author) VALUES
 ('Emily Brontë'),
 ('J.D. Salinger'),
 ('Harper Lee'),
-('Aldous Huxley'),
+('Aldous Huxley'), 
 ('Herman Melville'),
 ('Homer'),
 ('Mary Shelley'),
 ('Victor Hugo'),
-('Dante Alighieri');
+('Dante Alighieri'),
+('Antoine de Saint-Exupéry'),
+('Paulo Coelho'),
+("Cao Xueqin"),
+('Lewis Carroll'),
+('C.S. Lewis'), 
+('H. Rider Haggard');
 
 -- Insert values into Categories table
 INSERT INTO Categories (Category) VALUES
@@ -228,20 +234,26 @@ INSERT INTO Categories (Category) VALUES
 ('Biography'),
 ('Romance'),
 ('Thriller'),
-('Self-help'),
+('Self-help'), 
 ('Classics'),
 ('Young Adult'),
 ('Adventure'),
 ('Horror'),
 ('Poetry'),
 ('Dystopian'),
-('Gothic Fiction'),
+('Gothic Fiction'), 
 ('Philosophical Fiction'),
 ('Coming-of-Age'),
 ('Southern Gothic'),
 ('Epic Poetry'),
 ('Classic Literature'),
-('Adventure Fiction');
+('Adventure Fiction'),
+("Children's fiction"),
+('Family saga'),
+('Classic Fiction'),
+("Children's Literature"),
+("Christian Allegory")
+;
 
 -- Insert values into Publishers table
 INSERT INTO Publishers (Publisher) VALUES
@@ -254,12 +266,20 @@ INSERT INTO Publishers (Publisher) VALUES
 ('Scholastic'),
 ('Cengage'),
 ('Wiley'),
-('Pearson'),
+('Pearson'), 
 ('Springer'),
 ('McGraw-Hill'),
 ('Routledge'),
 ('Cambridge University Press'),
-('Bloomsbury Publishing');
+('Bloomsbury Publishing'),
+('Chapman & Hall'),
+('Gallimard'),
+('HarperTorch'),
+('Collins Crime Club'),
+('Penguin Classics'), 
+('Puffin Books'),
+('Gosselin')
+;
 
 -- Insert values into Users table
 INSERT INTO Users (FirstName, LastName, Email, Username, Password, Address, Verified, EmailVerified, EmailVerificationCode, RoleID, DateOfBirth) VALUES
@@ -277,7 +297,8 @@ INSERT INTO Users (FirstName, LastName, Email, Username, Password, Address, Veri
 ('Hannah', 'Scott', 'hannah.scott@example.com', 'hannahscott', '$2y$10$y/MlLUAOqRhK3h/STvJHl.xavuT57tQk6gze37FlYQ4RYmjPO0ox6', '678 Fir St, Springfield', 1, 1, '444666', 3, '1989-05-19'),
 ('Ian', 'Walker', 'ian.walker@example.com', 'ianwalker', '$2y$10$CQDXhfODyjHT34GHjaqSCeu3FKF.hFotCrzLAXsgRxF1JvK77nW6W', '345 Aspen Dr, Springfield', 1, 1, '555777', 3, '1986-11-23'),
 ('Jack', 'Young', 'jack.young@example.com', 'jackyoung', '$2y$10$i7JYPvFT/sa6od7vlhp3oOJm2oV9XcGPjRxUR8RR11LhqmEfvQegu', '456 Willow Way, Springfield', 1, 1, '666888', 3, '1993-09-06'),
-('Laura', 'Harris', 'laura.harris@example.com', 'lauraharris', '$2y$10$7ohuabBRz5sXx2/0sFP4nOKcJl3XunwqNigHdTtQCsRosjmDFx0VW', '567 Cypress Ct, Springfield', 1, 1, '777999', 3, '1991-01-27');
+('Laura', 'Harris', 'laura.harris@example.com', 'lauraharris', '$2y$10$7ohuabBRz5sXx2/0sFP4nOKcJl3XunwqNigHdTtQCsRosjmDFx0VW', '567 Cypress Ct, Springfield', 1, 1, '777999', 3, '1991-01-27'),
+('Test', 'User', 'tester.user@example.com', 'TestUser', '$2y$10$QkWX8ewQySm3M95IZTdg0eY.sUYFO5irkdSoylUkfOOmBCP9Dqh8q', '1 Test St, Testfield', 1, 1, '111119', 3, '1991-01-27');
 
 
 
@@ -309,7 +330,27 @@ INSERT INTO Books (ISBN, PublisherID, Title, PublicationYear) VALUES
 (9780143105428, 9, 'Moby Dick', 1851),
 (9780141439563, 12, 'Frankenstein', 1818),
 (9780140449143, 13, 'Les Misérables', 1862),
-(9780140449334, 15, 'The Divine Comedy', 1320);
+(9780140449334, 15, 'The Divine Comedy', 1320),
+
+(9789225162106, 5, 'A Tale of Two Cities', 1859),
+(9783999835785, 17, 'The Little Prince', 1943),
+(9784641737389, 18, 'The Alchemist', 1988),
+(9786850437272, 19, 'And Then There Were None', 1939),
+(9781779218834, 20, 'Dream of the Red Chamber', 1973),
+(9780141321073, 21, "Alice's Adventures in Wonderland", 2008),
+(9780064471046, 2, "The Lion, the Witch and the Wardrobe", 1994),
+(9780140437638, 20, "She: A History of Adventure", 2001),
+(9780679734529, 6, 'The Unbearable Lightness of Being', 1984),
+(9780142437230, 21, 'The Odyssey', -800),
+(9780140449180, 22, 'The Hunchback of Notre-Dame', 1831),
+(9780141441145, 14, 'A Christmas Carol', 1843),
+(9780064400558, 2, 'The Giver', 1993),
+(9780375831003, 7, 'The Book Thief', 2005),
+(9780553213119, 13, 'Romeo and Juliet', 1597),
+(9780140439440, 17, 'Persuasion', 1818),
+(9780142437338, 15, 'Metamorphosis', 1915),
+(9780142437178, 6, 'South of the Border, West of the Sun', 1992)
+;
 
 -- Insert values into Books_Authors table
 INSERT INTO Books_Authors (ISBN, AuthorID) VALUES
@@ -317,19 +358,15 @@ INSERT INTO Books_Authors (ISBN, AuthorID) VALUES
 (9780439708180, 2),
 (9780684801223, 3),
 (9780060883287, 4),
-(9780486415871, 5),
-(9780486415871, 6),
+(9780486415871, 5),(9780486415871, 6),
 (9780375704024, 6),
 (9780141040349, 7),
 (9780199232765, 8),
-(9780486400778, 9),
-(9780486400778, 10),
+(9780486400778, 9),(9780486400778, 10),
 (9781501117015, 10),
 (9780345339683, 11),
-(9780062693661, 12),
-(9780062693661, 1),
-(9780743477123, 13),
-(9780743477123, 10),
+(9780062693661, 12),(9780062693661, 1),
+(9780743477123, 13),(9780743477123, 10),
 (9780486415864, 14),
 (9780805209990, 15),
 (9780141187761, 1),
@@ -343,31 +380,46 @@ INSERT INTO Books_Authors (ISBN, AuthorID) VALUES
 (9780143105428, 21),
 (9780141439563, 23),
 (9780140449143, 24),
-(9780140449334, 25);
+(9780140449334, 25),
+(9789225162106, 14),
+(9783999835785, 26),
+(9784641737389, 27),
+(9786850437272, 12),
+(9781779218834, 28),
+(9780141321073, 29),
+(9780064471046, 30),
+(9780140437638, 31),
+(9780679734529, 6),
+(9780142437230, 22),
+(9780140449180, 24),
+(9780141441145, 14),
+(9780064400558, 27),
+(9780375831003, 10),
+(9780553213119, 13),
+(9780140439440, 7),
+(9780142437338, 15),
+(9780142437178, 6);
+
+;
 
 -- Insert values into Books_Categories table
 INSERT INTO Books_Categories (ISBN, CategoryID) VALUES
-(9780451524935, 1),
-(9780451524935, 3),
-(9780439708180, 4),
-(9780439708180, 12),
+(9780451524935, 1),(9780451524935, 3),
+(9780439708180, 4),(9780439708180, 12),
 (9780684801223, 5),
-(9780060883287, 1),
-(9780060883287, 4),
+(9780060883287, 1),(9780060883287, 4),
 (9780486415871, 1),
 (9780375704024, 1),
 (9780141040349, 8),
 (9780199232765, 10),
-(9780486400778, 1),
-(9780486400778, 10),
+(9780486400778, 1),(9780486400778, 10),
 (9781501117015, 1),
 (9780345339683, 4),
 (9780062693661, 6),
 (9780743477123, 1),
 (9780486415864, 1),
 (9780805209990, 1),
-(9780141187761, 16),
-(9780141187761, 11),
+(9780141187761, 16),(9780141187761, 11),
 (9780743273565, 17),
 (9780141439518, 18),
 (9780140449266, 19),
@@ -378,7 +430,26 @@ INSERT INTO Books_Categories (ISBN, CategoryID) VALUES
 (9780143105428, 22),
 (9780141439563, 14),
 (9780140449143, 5),
-(9780140449334, 22);
+(9780140449334, 22),
+(9789225162106, 5),
+(9783999835785, 24),(9783999835785, 4),
+(9784641737389, 4),
+(9786850437272, 6),
+(9781779218834, 5),
+(9780141321073, 4),(9780141321073, 26),(9780141321073, 27),
+(9780064471046, 27),(9780064471046, 28),
+(9780140437638, 4),(9780140437638, 25),(9780140437638, 26),
+(9780679734529, 1),
+(9780142437230, 21),
+(9780140449180, 5),
+(9780141441145, 25),
+(9780064400558, 12),
+(9780375831003, 1),
+(9780553213119, 1),
+(9780140439440, 8),
+(9780142437338, 14),
+(9780142437178, 1)
+;
 
 -- Insert values into Borrowings table
 INSERT INTO Borrowings (UserID, ISBN, BorrowDate, DueDate, ReturnDate) VALUES

@@ -1,4 +1,27 @@
 <?php
+/**
+ * BooksController.php
+ * 
+ * Ez a fájl a `BooksController` osztályt definiálja, amely a könyvekkel kapcsolatos HTTP-kéréseket kezeli.
+ * Kapcsolatot teremt a kliens és a `BooksTable` adatbázis-lekérdezések között, elvégzi a bemeneti adatok validálását,
+ * és megfelelő válaszokat ad vissza.
+ * 
+ * Funkciók:
+ * - `getFromDBByParams()`: Könyvek lekérdezése az adatbázisból megadott paraméterek alapján.
+ * - `countAllBooks()`: A könyvek teljes számának visszaadása az adatbázisból.
+ * - `availableBooks()`: Az éppen elérhető (nem kölcsönzött vagy lefoglalt) könyvek listájának lekérdezése.
+ * 
+ * Használat:
+ * - Ezt a kontrollert használd könyvekkel kapcsolatos műveletekhez, például kereséshez, számláláshoz
+ *   vagy elérhetőség ellenőrzéséhez.
+ * - A bemeneti adatokat a `Helper` és a `Books` validáló osztályok segítségével ellenőrzi, mielőtt lekérdezést végezne.
+ * 
+ * Függőségek:
+ * - `ApiResponse\Response`: HTTP válaszok küldésére szolgál.
+ * - `Database\Queries\BooksTable`: A könyvekhez kapcsolódó adatbázis-lekérdezési metódusokat biztosítja.
+ * - `Helper\Helper`: A bemeneti adatok validálására szolgál.
+ * - `App\Validations\Books`: Könyvekkel kapcsolatos speciális validálási metódusokat tartalmaz.
+ */
 
 namespace App\Controllers;
 

@@ -1,4 +1,28 @@
 <?php
+/**
+ * ReservationController.php
+ * 
+ * Ez a fájl a `ReservationController` osztályt definiálja, amely a könyv foglalásokkal kapcsolatos HTTP kéréseket kezeli.
+ * Közvetítőként működik a kliens és a `ReservationTable` adatbázis lekérdezések között, elvégezve a bemenetek validálását
+ * és a megfelelő válaszokat visszaadva.
+ * 
+ * Funkciók:
+ * - `store($body, $userID)`: Új foglalást hoz létre egy könyv számára egy adott felhasználó által a bemenet validálása után.
+ * - `destroy($ISBN, $userID)`: Törli egy adott könyv foglalását egy adott felhasználó számára.
+ * - `show($body, $userID)`: Lekérdezi az összes foglalást, amit egy adott felhasználó tett.
+ * 
+ * Használat:
+ * - Használja ezt az kontrollert foglalásokkal kapcsolatos műveletekhez, mint például a foglalás létrehozása, törlése és listázása.
+ * - A bemeneti adatokat a `Helper` és `Model` validáló osztályok segítségével validálják, mielőtt adatbázis lekérdezés történik.
+ * 
+ * Függőségek:
+ * - `ApiResponse\Response`: HTTP válaszok küldésére szolgál.
+ * - `Database\Queries\ReservationTable`: Adatbázis lekérdezési módszerek biztosítása a foglalásokhoz.
+ * - `Database\Queries\BooksTable`: A könyv létezésének validálásához használatos.
+ * - `Database\Queries\BorrowingsTable`: A kölcsönzés állapotának ellenőrzésére szolgál.
+ * - `Helper\Helper`: A bemenetek validálásához használatos.
+ * - `App\Validations\Model`: További validálási módszereket biztosít.
+ */
 
 namespace App\Controllers;
 

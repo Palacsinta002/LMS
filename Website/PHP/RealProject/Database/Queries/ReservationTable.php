@@ -1,4 +1,26 @@
 <?php
+/**
+ * ReservationTable.php
+ * 
+ * Ez a fájl a `ReservationTable` osztályt definiálja, amely a `Table` osztályból származik,
+ * és kifejezetten a foglalásokkal kapcsolatos adatok kezelésére és lekérdezésére biztosít metódusokat.
+ * 
+ * Funkciók:
+ * - `reserve()`: Új foglalás létrehozása egy adott könyvre (ISBN alapján) és felhasználóra.
+ * - `deleteReservation()`: Egy adott könyvre (ISBN alapján) vonatkozó foglalás törlése.
+ * - `bookInReservation()`: Annak ellenőrzése, hogy egy adott könyv (ISBN alapján) jelenleg le van-e foglalva.
+ * - `countUserReservations()`: Egy adott felhasználó által létrehozott foglalások számának lekérdezése.
+ * - `selectByISBN()`: Foglalás részleteinek lekérdezése egy adott könyvre (ISBN alapján).
+ * - `selectMyReservations()`: Egy adott felhasználó által létrehozott foglalások listázása, a foglalás részleteivel együtt.
+ * 
+ * Használat:
+ * - Ezekkel a metódusokkal lehet kapcsolatba lépni a `reservations` táblával és a kapcsolódó táblákkal (pl. `books`, `authors`, `categories`).
+ * - A `selectMyReservations()` metódus támogatja az összetett lekérdezéseket join-okkal, csoportosítással és szűréssel.
+ * 
+ * Függőségek:
+ * - A `Table` osztályból származik, amely az alap lekérdezésépítési funkciókat biztosítja.
+ * - Használja a kapcsolódó adatbázistáblákat, mint például: `reservations`, `books`, `authors`, `categories`, és `publishers`.
+ */
 
 namespace Database\Queries;
 

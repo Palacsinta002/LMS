@@ -1,4 +1,35 @@
 <?php
+/**
+ * User.php
+ * 
+ * Ez a fájl a `User` osztályt definiálja, amely validálási metódusokat biztosít a felhasználókkal kapcsolatos adatok számára.
+ * Biztosítja a felhasználói adatok integritását és helyességét, például jelszavak, felhasználónevek, e-mailek és egyéb felhasználói attribútumok esetén.
+ * Ezen kívül kezel autentikációs és megerősítési logikát is.
+ * 
+ * Funkciók:
+ * - `checkPassword()`: Validálja és hasheli a jelszót, biztosítva, hogy megfeleljen a biztonsági követelményeknek.
+ * - `checkUsername()`: Validálja a felhasználónevet, és ellenőrzi annak egyediségét az adatbázisban.
+ * - `checkEmail()`: Validálja az e-mail címet, és ellenőrzi annak egyediségét az adatbázisban.
+ * - `checkFirstLastName()`: Validálja a kereszt- és családi neveket a megfelelő formázás érdekében.
+ * - `loginAuth()`: Hitelesíti a felhasználót a felhasználónév és jelszó ellenőrzésével.
+ * - `createAuthCode()`: Generál egy 6 számjegyű hitelesítő kódot.
+ * - `checkAuthCode()`: Validálja a hitelesítő kódot az e-mail megerősítése érdekében.
+ * - `updateToVerified()`: A felhasználót megerősítettre jelöli a sikeres e-mail megerősítés után.
+ * - `userPasswordIsMatch()`: Ellenőrzi, hogy a megadott jelszó megegyezik-e az adatbázisban tárolt hash-elt jelszóval.
+ * - `validateAddress()`: Validálja a felhasználói címet a megfelelő formázás és hosszúság érdekében.
+ * - `validateEmail()`: Validálja az e-mail cím formátumát.
+ * - `validateDateOfBirth()`: Validálja a felhasználó születési dátumát, hogy megfeleljen az életkori követelményeknek.
+ * - `isUserVerified()`: Ellenőrzi, hogy a felhasználó megerősítve van-e az e-mail cím vagy a fiók státusza alapján.
+ * 
+ * Használat:
+ * - Használjuk ezeket a metódusokat a felhasználói adatok validálására regisztráció, bejelentkezés és profilfrissítés során.
+ * - Az olyan metódusok, mint a `loginAuth()` és `checkAuthCode()`, alapvetőek az autentikációs és megerősítési folyamatokban.
+ * 
+ * Függőségek:
+ * - `ApiResponse\Response`: HTTP hibás vagy sikeres válaszok küldésére szolgál.
+ * - `Helper\Helper`: Bemeneti adatok validálására szolgáló segédfunkciók biztosítása.
+ * - `Database\Queries\UserTable`: Adatbázis-interakciók a felhasználói adatok ellenőrzésére és frissítések végrehajtására.
+ */
 
 namespace App\Validations;
 use ApiResponse\Response;

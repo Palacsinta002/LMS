@@ -1,21 +1,29 @@
 <?php
+/**
+ * BorrowingsTable.php
+ * 
+ * Ez a fájl a `BorrowingsTable` osztályt definiálja, amely a `Table` osztályból származik,
+ * és kifejezetten a kölcsönzésekkel kapcsolatos adatok kezelésére és lekérdezésére biztosít metódusokat.
+ * 
+ * Funkciók:
+ * - `allBorrowings()`: Az összes kölcsönzés megszámlálása az adatbázisban.
+ * - `bookInBorrowings()`: Annak ellenőrzése, hogy egy adott könyvet (ISBN alapján) jelenleg kölcsönözték-e, és még nem került vissza.
+ * - `selectMyBooks()`: Egy adott felhasználó által kölcsönzött könyvek listázása, a kölcsönzés részleteivel együtt.
+ * - `selectTopBorrowedBook()`: A legtöbbször kölcsönzött könyvek lekérdezése, megadott darabszámig korlátozva.
+ * 
+ * Használat:
+ * - Ezekkel a metódusokkal lehet kapcsolatba lépni a `borrowings` táblával és a kapcsolódó táblákkal (pl. `books`, `authors`, `categories`).
+ * - A `selectMyBooks()` és `selectTopBorrowedBook()` metódusok támogatják az összetett lekérdezéseket join-okkal, csoportosítással és rendezéssel.
+ * 
+ * Függőségek:
+ * - A `Table` osztályból származik, amely az alap lekérdezésépítési funkciókat biztosítja.
+ * - Használja a kapcsolódó adatbázistáblákat, mint például: `borrowings`, `books`, `authors`, `categories`, és `publishers`.
+ */
 
 namespace Database\Queries;
 
 class BorrowingsTable extends Table{
 
-    //ez sem kell
-    public static function borrowingsByParams($fields =[], $operators = [], $values = [],$types = []){
-        if (count($fields) == 0){
-            return self::select(["borrowings"],["*"])->execute(true);
-        }
-        return self::select(["borrowings"],["*"])->where(
-            [...$fields],
-            [...$operators],
-            [...$values],
-            [...$types])
-            ->execute(true);
-    }
     public static function allBorrowings(){
         return self::select(["borrowings_storage"],["count(ISBN) AS borrowings"])->execute(true);
     }

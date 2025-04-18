@@ -1,4 +1,26 @@
 <?php
+/**
+ * Image.php
+ * 
+ * Ez a fájl az `Image` osztályt definiálja, amely validálási funkciókat biztosít a képfájlok kezelésére.
+ * Biztosítja, hogy a feltöltött képek megfeleljenek bizonyos követelményeknek, mint például fájl típus, méret és létezés.
+ * 
+ * Funkciók:
+ * - `validateImage($img)`: Validálja a feltöltött képfájlt a létezés, típus és méret szempontjából.
+ * - `validateExtentions($fileType)`: Validálja a fájl típusát, és biztosítja, hogy az engedélyezett képformátumok egyike legyen (pl. PNG, JPG, JPEG).
+ * - `checkForValidFile($imgPath)`: Ellenőrzi, hogy egy érvényes képfájl létezik-e a megadott elérési úton, és a helyes MIME típusú fájlt szolgáltatja.
+ * 
+ * Használat:
+ * - Használja a `validateImage()` metódust a feltöltött képek validálására a fájl feltöltési folyamatok során.
+ * - Használja a `checkForValidFile()` metódust képfájlok kiszolgálására a szerverről, ha léteznek.
+ * 
+ * Függőségek:
+ * - `ApiResponse\Response`: HTTP hibás válaszok küldésére szolgál, amikor a validálás nem sikerül.
+ * 
+ * Megjegyzések:
+ * - A maximálisan engedélyezett kép mérete 70 MB.
+ * - Támogatott képformátumok: PNG, JPG, és JPEG.
+ */
 
 namespace App\Validations;
 

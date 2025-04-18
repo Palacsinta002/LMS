@@ -1,4 +1,26 @@
 <?php
+/**
+ * Model.php
+ * 
+ * Ez a fájl a `Model` osztályt definiálja, amely segédfunkciókat biztosít az adatok validálásához és feldolgozásához.
+ * Az osztály alapértelmezettként szolgál az input validálásához, típuskezeléshez és egyéb gyakori műveletekhez,
+ * amelyek szükségesek a validálási munkafolyamatokhoz.
+ * 
+ * Funkciók:
+ * - `checkRequiredData()`: Validálja és kinyeri a szükséges és opcionális adatokat egy bemeneti tömbből.
+ * - `makeTypesArray()`: SQL lekérdezésekhez szükséges adattípusok tömbjét generálja a bemeneti mezők és operátorok alapján.
+ * - `callingValidateFunctions()`: Dinamikusan hívja meg a validálási funkciókat a megadott mezők számára.
+ * - `validateISBN()`: Validálja az ISBN formátumot (10 vagy 13 számjegy).
+ * - `validateID()`: Validálja egy azonosítót, hogy csak numerikus karaktereket tartalmazzon.
+ * - `removeNullValues()`: Eltávolítja a null vagy üres értékeket egy bemeneti tömbből.
+ * 
+ * Használat:
+ * - Használja ezt az osztályt alapként a validálási logikában más osztályok számára.
+ * - Az olyan metódusok, mint a `checkRequiredData()` és `callingValidateFunctions()`, hasznosak az input adatok strukturált feldolgozásához és validálásához.
+ * 
+ * Függőségek:
+ * - `ApiResponse\Response`: HTTP hibás válaszok küldésére szolgál, amikor a validálás nem sikerül.
+ */
 
 namespace App\Validations;
 
