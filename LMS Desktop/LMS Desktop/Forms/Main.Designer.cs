@@ -53,6 +53,13 @@ namespace Desktop_Application
             label_greeting = new Label();
             label_title = new Label();
             panel_dashboard = new Panel();
+            label_topBorrowedBooks = new Label();
+            dashboard_grid = new DataGridView();
+            dashboard_count = new DataGridViewTextBoxColumn();
+            dashboard_title = new DataGridViewTextBoxColumn();
+            dashboard_author = new DataGridViewTextBoxColumn();
+            dashboard_publicationYear = new DataGridViewTextBoxColumn();
+            dashboard_category = new DataGridViewTextBoxColumn();
             panel_noOfBooks = new Panel();
             rButton_noOfBooks = new RoundedButton();
             panel_noOfUsers = new Panel();
@@ -61,14 +68,6 @@ namespace Desktop_Application
             panel_noOfBorrowings = new Panel();
             label_noOfBorrowings = new Label();
             rButton_noOfBorrowings = new RoundedButton();
-            panel_topBorrowedBooks = new Panel();
-            label_topBorrowedBooks = new Label();
-            dashboard_grid = new DataGridView();
-            dashboard_count = new DataGridViewTextBoxColumn();
-            dashboard_title = new DataGridViewTextBoxColumn();
-            dashboard_author = new DataGridViewTextBoxColumn();
-            dashboard_publicationYear = new DataGridViewTextBoxColumn();
-            dashboard_category = new DataGridViewTextBoxColumn();
             panel_books = new Panel();
             books_rBtton_refresh = new RoundedButton();
             books_rButton_add = new RoundedButton();
@@ -155,14 +154,14 @@ namespace Desktop_Application
             reservations_isbn = new DataGridViewTextBoxColumn();
             reservations_startDate = new DataGridViewTextBoxColumn();
             reservations_endDate = new DataGridViewTextBoxColumn();
+            panel_topBorrowed = new Panel();
             panel_menu.SuspendLayout();
             panel_header.SuspendLayout();
             panel_dashboard.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dashboard_grid).BeginInit();
             panel_noOfBooks.SuspendLayout();
             panel_noOfUsers.SuspendLayout();
             panel_noOfBorrowings.SuspendLayout();
-            panel_topBorrowedBooks.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dashboard_grid).BeginInit();
             panel_books.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)books_grid).BeginInit();
             panel_borrowings.SuspendLayout();
@@ -177,6 +176,7 @@ namespace Desktop_Application
             ((System.ComponentModel.ISupportInitialize)publishers_grid).BeginInit();
             panel_reservations.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)reservations_grid).BeginInit();
+            panel_topBorrowed.SuspendLayout();
             SuspendLayout();
             // 
             // panel_menu
@@ -489,15 +489,93 @@ namespace Desktop_Application
             // 
             panel_dashboard.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel_dashboard.AutoScroll = true;
+            panel_dashboard.Controls.Add(panel_topBorrowed);
             panel_dashboard.Controls.Add(panel_noOfBooks);
             panel_dashboard.Controls.Add(panel_noOfUsers);
             panel_dashboard.Controls.Add(panel_noOfBorrowings);
-            panel_dashboard.Controls.Add(panel_topBorrowedBooks);
             panel_dashboard.Location = new Point(266, 56);
             panel_dashboard.Name = "panel_dashboard";
             panel_dashboard.Size = new Size(709, 493);
             panel_dashboard.TabIndex = 12;
             panel_dashboard.Visible = false;
+            // 
+            // label_topBorrowedBooks
+            // 
+            label_topBorrowedBooks.AutoSize = true;
+            label_topBorrowedBooks.Font = new Font("Yu Gothic UI Semibold", 12F);
+            label_topBorrowedBooks.ForeColor = Color.Black;
+            label_topBorrowedBooks.Location = new Point(23, 7);
+            label_topBorrowedBooks.Margin = new Padding(0);
+            label_topBorrowedBooks.Name = "label_topBorrowedBooks";
+            label_topBorrowedBooks.Size = new Size(163, 21);
+            label_topBorrowedBooks.TabIndex = 17;
+            label_topBorrowedBooks.Text = "Top Borrowed Books";
+            // 
+            // dashboard_grid
+            // 
+            dashboard_grid.AllowUserToAddRows = false;
+            dashboard_grid.AllowUserToDeleteRows = false;
+            dashboard_grid.AllowUserToResizeColumns = false;
+            dashboard_grid.AllowUserToResizeRows = false;
+            dashboard_grid.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dashboard_grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dashboard_grid.BackgroundColor = Color.FromArgb(224, 224, 224);
+            dashboard_grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dashboard_grid.Columns.AddRange(new DataGridViewColumn[] { dashboard_count, dashboard_title, dashboard_author, dashboard_publicationYear, dashboard_category });
+            dashboard_grid.Location = new Point(23, 31);
+            dashboard_grid.MinimumSize = new Size(604, 290);
+            dashboard_grid.Name = "dashboard_grid";
+            dashboard_grid.ReadOnly = true;
+            dashboard_grid.RowHeadersVisible = false;
+            dashboard_grid.RowHeadersWidth = 51;
+            dashboard_grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dashboard_grid.ShowCellErrors = false;
+            dashboard_grid.ShowCellToolTips = false;
+            dashboard_grid.ShowEditingIcon = false;
+            dashboard_grid.ShowRowErrors = false;
+            dashboard_grid.Size = new Size(627, 311);
+            dashboard_grid.StandardTab = true;
+            dashboard_grid.TabIndex = 1;
+            // 
+            // dashboard_count
+            // 
+            dashboard_count.HeaderText = "#";
+            dashboard_count.MinimumWidth = 6;
+            dashboard_count.Name = "dashboard_count";
+            dashboard_count.ReadOnly = true;
+            dashboard_count.Width = 39;
+            // 
+            // dashboard_title
+            // 
+            dashboard_title.HeaderText = "Title";
+            dashboard_title.MinimumWidth = 6;
+            dashboard_title.Name = "dashboard_title";
+            dashboard_title.ReadOnly = true;
+            dashboard_title.Width = 54;
+            // 
+            // dashboard_author
+            // 
+            dashboard_author.HeaderText = "Author";
+            dashboard_author.MinimumWidth = 6;
+            dashboard_author.Name = "dashboard_author";
+            dashboard_author.ReadOnly = true;
+            dashboard_author.Width = 69;
+            // 
+            // dashboard_publicationYear
+            // 
+            dashboard_publicationYear.HeaderText = "Publication Year";
+            dashboard_publicationYear.MinimumWidth = 6;
+            dashboard_publicationYear.Name = "dashboard_publicationYear";
+            dashboard_publicationYear.ReadOnly = true;
+            dashboard_publicationYear.Width = 107;
+            // 
+            // dashboard_category
+            // 
+            dashboard_category.HeaderText = "Category";
+            dashboard_category.MinimumWidth = 6;
+            dashboard_category.Name = "dashboard_category";
+            dashboard_category.ReadOnly = true;
+            dashboard_category.Width = 80;
             // 
             // panel_noOfBooks
             // 
@@ -505,7 +583,7 @@ namespace Desktop_Application
             panel_noOfBooks.AutoSize = true;
             panel_noOfBooks.Controls.Add(label_noOfBooks);
             panel_noOfBooks.Controls.Add(rButton_noOfBooks);
-            panel_noOfBooks.Location = new Point(54, 30);
+            panel_noOfBooks.Location = new Point(54, 21);
             panel_noOfBooks.Name = "panel_noOfBooks";
             panel_noOfBooks.Size = new Size(200, 100);
             panel_noOfBooks.TabIndex = 22;
@@ -541,7 +619,7 @@ namespace Desktop_Application
             panel_noOfUsers.AutoSize = true;
             panel_noOfUsers.Controls.Add(label_noOfUsers);
             panel_noOfUsers.Controls.Add(rButton_noOfUsers);
-            panel_noOfUsers.Location = new Point(256, 30);
+            panel_noOfUsers.Location = new Point(256, 21);
             panel_noOfUsers.Name = "panel_noOfUsers";
             panel_noOfUsers.Size = new Size(200, 100);
             panel_noOfUsers.TabIndex = 23;
@@ -589,7 +667,7 @@ namespace Desktop_Application
             panel_noOfBorrowings.AutoSize = true;
             panel_noOfBorrowings.Controls.Add(label_noOfBorrowings);
             panel_noOfBorrowings.Controls.Add(rButton_noOfBorrowings);
-            panel_noOfBorrowings.Location = new Point(458, 30);
+            panel_noOfBorrowings.Location = new Point(458, 21);
             panel_noOfBorrowings.Name = "panel_noOfBorrowings";
             panel_noOfBorrowings.Size = new Size(200, 100);
             panel_noOfBorrowings.TabIndex = 23;
@@ -630,93 +708,6 @@ namespace Desktop_Application
             rButton_noOfBorrowings.Text = "0";
             rButton_noOfBorrowings.TextColor = Color.White;
             rButton_noOfBorrowings.UseVisualStyleBackColor = false;
-            // 
-            // panel_topBorrowedBooks
-            // 
-            panel_topBorrowedBooks.Anchor = AnchorStyles.Top;
-            panel_topBorrowedBooks.Controls.Add(label_topBorrowedBooks);
-            panel_topBorrowedBooks.Controls.Add(dashboard_grid);
-            panel_topBorrowedBooks.Location = new Point(39, 144);
-            panel_topBorrowedBooks.Name = "panel_topBorrowedBooks";
-            panel_topBorrowedBooks.Size = new Size(635, 335);
-            panel_topBorrowedBooks.TabIndex = 24;
-            // 
-            // label_topBorrowedBooks
-            // 
-            label_topBorrowedBooks.AutoSize = true;
-            label_topBorrowedBooks.Font = new Font("Yu Gothic UI Semibold", 12F);
-            label_topBorrowedBooks.ForeColor = Color.Black;
-            label_topBorrowedBooks.Location = new Point(13, 8);
-            label_topBorrowedBooks.Margin = new Padding(0);
-            label_topBorrowedBooks.Name = "label_topBorrowedBooks";
-            label_topBorrowedBooks.Size = new Size(163, 21);
-            label_topBorrowedBooks.TabIndex = 17;
-            label_topBorrowedBooks.Text = "Top Borrowed Books";
-            // 
-            // dashboard_grid
-            // 
-            dashboard_grid.AllowUserToAddRows = false;
-            dashboard_grid.AllowUserToDeleteRows = false;
-            dashboard_grid.AllowUserToResizeColumns = false;
-            dashboard_grid.AllowUserToResizeRows = false;
-            dashboard_grid.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dashboard_grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dashboard_grid.BackgroundColor = Color.FromArgb(224, 224, 224);
-            dashboard_grid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dashboard_grid.Columns.AddRange(new DataGridViewColumn[] { dashboard_count, dashboard_title, dashboard_author, dashboard_publicationYear, dashboard_category });
-            dashboard_grid.Location = new Point(15, 32);
-            dashboard_grid.Name = "dashboard_grid";
-            dashboard_grid.ReadOnly = true;
-            dashboard_grid.RowHeadersVisible = false;
-            dashboard_grid.RowHeadersWidth = 51;
-            dashboard_grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dashboard_grid.ShowCellErrors = false;
-            dashboard_grid.ShowCellToolTips = false;
-            dashboard_grid.ShowEditingIcon = false;
-            dashboard_grid.ShowRowErrors = false;
-            dashboard_grid.Size = new Size(604, 290);
-            dashboard_grid.StandardTab = true;
-            dashboard_grid.TabIndex = 1;
-            // 
-            // dashboard_count
-            // 
-            dashboard_count.HeaderText = "#";
-            dashboard_count.MinimumWidth = 6;
-            dashboard_count.Name = "dashboard_count";
-            dashboard_count.ReadOnly = true;
-            dashboard_count.Width = 39;
-            // 
-            // dashboard_title
-            // 
-            dashboard_title.HeaderText = "Title";
-            dashboard_title.MinimumWidth = 6;
-            dashboard_title.Name = "dashboard_title";
-            dashboard_title.ReadOnly = true;
-            dashboard_title.Width = 54;
-            // 
-            // dashboard_author
-            // 
-            dashboard_author.HeaderText = "Author";
-            dashboard_author.MinimumWidth = 6;
-            dashboard_author.Name = "dashboard_author";
-            dashboard_author.ReadOnly = true;
-            dashboard_author.Width = 69;
-            // 
-            // dashboard_publicationYear
-            // 
-            dashboard_publicationYear.HeaderText = "Publication Year";
-            dashboard_publicationYear.MinimumWidth = 6;
-            dashboard_publicationYear.Name = "dashboard_publicationYear";
-            dashboard_publicationYear.ReadOnly = true;
-            dashboard_publicationYear.Width = 107;
-            // 
-            // dashboard_category
-            // 
-            dashboard_category.HeaderText = "Category";
-            dashboard_category.MinimumWidth = 6;
-            dashboard_category.Name = "dashboard_category";
-            dashboard_category.ReadOnly = true;
-            dashboard_category.Width = 80;
             // 
             // panel_books
             // 
@@ -768,7 +759,7 @@ namespace Desktop_Application
             books_rButton_add.FlatStyle = FlatStyle.Flat;
             books_rButton_add.Font = new Font("Yu Gothic UI Semibold", 14F);
             books_rButton_add.ForeColor = Color.White;
-            books_rButton_add.Location = new Point(130, 26);
+            books_rButton_add.Location = new Point(343, 26);
             books_rButton_add.Name = "books_rButton_add";
             books_rButton_add.Size = new Size(100, 36);
             books_rButton_add.TabIndex = 15;
@@ -812,7 +803,7 @@ namespace Desktop_Application
             books_rButton_remove.FlatStyle = FlatStyle.Flat;
             books_rButton_remove.Font = new Font("Yu Gothic UI Semibold", 14F);
             books_rButton_remove.ForeColor = Color.White;
-            books_rButton_remove.Location = new Point(342, 26);
+            books_rButton_remove.Location = new Point(130, 26);
             books_rButton_remove.Name = "books_rButton_remove";
             books_rButton_remove.Size = new Size(100, 36);
             books_rButton_remove.TabIndex = 14;
@@ -969,7 +960,7 @@ namespace Desktop_Application
             borrowings_rButton_lend.FlatStyle = FlatStyle.Flat;
             borrowings_rButton_lend.Font = new Font("Yu Gothic UI Semibold", 14F);
             borrowings_rButton_lend.ForeColor = Color.White;
-            borrowings_rButton_lend.Location = new Point(130, 26);
+            borrowings_rButton_lend.Location = new Point(342, 26);
             borrowings_rButton_lend.Name = "borrowings_rButton_lend";
             borrowings_rButton_lend.Size = new Size(100, 36);
             borrowings_rButton_lend.TabIndex = 15;
@@ -1013,7 +1004,7 @@ namespace Desktop_Application
             borrowings_rButton_return.FlatStyle = FlatStyle.Flat;
             borrowings_rButton_return.Font = new Font("Yu Gothic UI Semibold", 14F);
             borrowings_rButton_return.ForeColor = Color.White;
-            borrowings_rButton_return.Location = new Point(342, 26);
+            borrowings_rButton_return.Location = new Point(130, 26);
             borrowings_rButton_return.Name = "borrowings_rButton_return";
             borrowings_rButton_return.Size = new Size(100, 36);
             borrowings_rButton_return.TabIndex = 14;
@@ -1182,7 +1173,7 @@ namespace Desktop_Application
             categories_rButton_add.FlatStyle = FlatStyle.Flat;
             categories_rButton_add.Font = new Font("Yu Gothic UI Semibold", 14F);
             categories_rButton_add.ForeColor = Color.White;
-            categories_rButton_add.Location = new Point(130, 26);
+            categories_rButton_add.Location = new Point(342, 26);
             categories_rButton_add.Name = "categories_rButton_add";
             categories_rButton_add.Size = new Size(100, 36);
             categories_rButton_add.TabIndex = 15;
@@ -1226,7 +1217,7 @@ namespace Desktop_Application
             categories_rButton_remove.FlatStyle = FlatStyle.Flat;
             categories_rButton_remove.Font = new Font("Yu Gothic UI Semibold", 14F);
             categories_rButton_remove.ForeColor = Color.White;
-            categories_rButton_remove.Location = new Point(342, 26);
+            categories_rButton_remove.Location = new Point(130, 26);
             categories_rButton_remove.Name = "categories_rButton_remove";
             categories_rButton_remove.Size = new Size(100, 36);
             categories_rButton_remove.TabIndex = 14;
@@ -1341,7 +1332,7 @@ namespace Desktop_Application
             users_rButton_add.FlatStyle = FlatStyle.Flat;
             users_rButton_add.Font = new Font("Yu Gothic UI Semibold", 14F);
             users_rButton_add.ForeColor = Color.White;
-            users_rButton_add.Location = new Point(130, 26);
+            users_rButton_add.Location = new Point(342, 26);
             users_rButton_add.Name = "users_rButton_add";
             users_rButton_add.Size = new Size(100, 36);
             users_rButton_add.TabIndex = 15;
@@ -1385,7 +1376,7 @@ namespace Desktop_Application
             users_rButton_remove.FlatStyle = FlatStyle.Flat;
             users_rButton_remove.Font = new Font("Yu Gothic UI Semibold", 14F);
             users_rButton_remove.ForeColor = Color.White;
-            users_rButton_remove.Location = new Point(342, 26);
+            users_rButton_remove.Location = new Point(130, 26);
             users_rButton_remove.Name = "users_rButton_remove";
             users_rButton_remove.Size = new Size(100, 36);
             users_rButton_remove.TabIndex = 14;
@@ -1557,7 +1548,7 @@ namespace Desktop_Application
             authors_rButton_add.FlatStyle = FlatStyle.Flat;
             authors_rButton_add.Font = new Font("Yu Gothic UI Semibold", 14F);
             authors_rButton_add.ForeColor = Color.White;
-            authors_rButton_add.Location = new Point(130, 26);
+            authors_rButton_add.Location = new Point(342, 26);
             authors_rButton_add.Name = "authors_rButton_add";
             authors_rButton_add.Size = new Size(100, 36);
             authors_rButton_add.TabIndex = 15;
@@ -1601,7 +1592,7 @@ namespace Desktop_Application
             authors_rButton_remove.FlatStyle = FlatStyle.Flat;
             authors_rButton_remove.Font = new Font("Yu Gothic UI Semibold", 14F);
             authors_rButton_remove.ForeColor = Color.White;
-            authors_rButton_remove.Location = new Point(342, 26);
+            authors_rButton_remove.Location = new Point(130, 26);
             authors_rButton_remove.Name = "authors_rButton_remove";
             authors_rButton_remove.Size = new Size(100, 36);
             authors_rButton_remove.TabIndex = 14;
@@ -1719,7 +1710,7 @@ namespace Desktop_Application
             publishers_rButton_add.FlatStyle = FlatStyle.Flat;
             publishers_rButton_add.Font = new Font("Yu Gothic UI Semibold", 14F);
             publishers_rButton_add.ForeColor = Color.White;
-            publishers_rButton_add.Location = new Point(130, 26);
+            publishers_rButton_add.Location = new Point(342, 26);
             publishers_rButton_add.Name = "publishers_rButton_add";
             publishers_rButton_add.Size = new Size(100, 36);
             publishers_rButton_add.TabIndex = 15;
@@ -1763,7 +1754,7 @@ namespace Desktop_Application
             publishers_rButton_remove.FlatStyle = FlatStyle.Flat;
             publishers_rButton_remove.Font = new Font("Yu Gothic UI Semibold", 14F);
             publishers_rButton_remove.ForeColor = Color.White;
-            publishers_rButton_remove.Location = new Point(342, 26);
+            publishers_rButton_remove.Location = new Point(130, 26);
             publishers_rButton_remove.Name = "publishers_rButton_remove";
             publishers_rButton_remove.Size = new Size(100, 36);
             publishers_rButton_remove.TabIndex = 14;
@@ -1859,7 +1850,7 @@ namespace Desktop_Application
             reservations_rButton_lend.FlatStyle = FlatStyle.Flat;
             reservations_rButton_lend.Font = new Font("Yu Gothic UI Semibold", 14F);
             reservations_rButton_lend.ForeColor = Color.White;
-            reservations_rButton_lend.Location = new Point(100, 26);
+            reservations_rButton_lend.Location = new Point(301, 26);
             reservations_rButton_lend.Name = "reservations_rButton_lend";
             reservations_rButton_lend.Size = new Size(69, 36);
             reservations_rButton_lend.TabIndex = 26;
@@ -1902,7 +1893,7 @@ namespace Desktop_Application
             reservations_rButton_add.FlatStyle = FlatStyle.Flat;
             reservations_rButton_add.Font = new Font("Yu Gothic UI Semibold", 14F);
             reservations_rButton_add.ForeColor = Color.White;
-            reservations_rButton_add.Location = new Point(175, 26);
+            reservations_rButton_add.Location = new Point(376, 26);
             reservations_rButton_add.Name = "reservations_rButton_add";
             reservations_rButton_add.Size = new Size(66, 36);
             reservations_rButton_add.TabIndex = 15;
@@ -1924,7 +1915,7 @@ namespace Desktop_Application
             reservations_rButton_extend.FlatStyle = FlatStyle.Flat;
             reservations_rButton_extend.Font = new Font("Yu Gothic UI Semibold", 14F);
             reservations_rButton_extend.ForeColor = Color.White;
-            reservations_rButton_extend.Location = new Point(247, 26);
+            reservations_rButton_extend.Location = new Point(201, 26);
             reservations_rButton_extend.Name = "reservations_rButton_extend";
             reservations_rButton_extend.Size = new Size(94, 36);
             reservations_rButton_extend.TabIndex = 13;
@@ -1946,7 +1937,7 @@ namespace Desktop_Application
             reservations_rButton_cancel.FlatStyle = FlatStyle.Flat;
             reservations_rButton_cancel.Font = new Font("Yu Gothic UI Semibold", 14F);
             reservations_rButton_cancel.ForeColor = Color.White;
-            reservations_rButton_cancel.Location = new Point(347, 26);
+            reservations_rButton_cancel.Location = new Point(100, 26);
             reservations_rButton_cancel.Name = "reservations_rButton_cancel";
             reservations_rButton_cancel.Size = new Size(95, 36);
             reservations_rButton_cancel.TabIndex = 14;
@@ -2043,15 +2034,25 @@ namespace Desktop_Application
             reservations_endDate.ReadOnly = true;
             reservations_endDate.Width = 79;
             // 
+            // panel_topBorrowed
+            // 
+            panel_topBorrowed.Anchor = AnchorStyles.Top;
+            panel_topBorrowed.Controls.Add(label_topBorrowedBooks);
+            panel_topBorrowed.Controls.Add(dashboard_grid);
+            panel_topBorrowed.Location = new Point(24, 131);
+            panel_topBorrowed.Name = "panel_topBorrowed";
+            panel_topBorrowed.Size = new Size(665, 359);
+            panel_topBorrowed.TabIndex = 24;
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(984, 561);
+            Controls.Add(panel_dashboard);
             Controls.Add(panel_header);
             Controls.Add(panel_menu);
-            Controls.Add(panel_dashboard);
             Controls.Add(panel_books);
             Controls.Add(panel_borrowings);
             Controls.Add(panel_reservations);
@@ -2071,15 +2072,13 @@ namespace Desktop_Application
             panel_header.PerformLayout();
             panel_dashboard.ResumeLayout(false);
             panel_dashboard.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dashboard_grid).EndInit();
             panel_noOfBooks.ResumeLayout(false);
             panel_noOfBooks.PerformLayout();
             panel_noOfUsers.ResumeLayout(false);
             panel_noOfUsers.PerformLayout();
             panel_noOfBorrowings.ResumeLayout(false);
             panel_noOfBorrowings.PerformLayout();
-            panel_topBorrowedBooks.ResumeLayout(false);
-            panel_topBorrowedBooks.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dashboard_grid).EndInit();
             panel_books.ResumeLayout(false);
             panel_books.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)books_grid).EndInit();
@@ -2101,6 +2100,8 @@ namespace Desktop_Application
             panel_reservations.ResumeLayout(false);
             panel_reservations.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)reservations_grid).EndInit();
+            panel_topBorrowed.ResumeLayout(false);
+            panel_topBorrowed.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -2169,7 +2170,6 @@ namespace Desktop_Application
         private Panel panel_noOfBorrowings;
         private RoundedButton rButton_noOfBorrowings;
         private Label label_noOfBorrowings;
-        private Panel panel_topBorrowedBooks;
         private DataGridView books_grid;
         private DataGridView borrowings_grid;
         private DataGridViewTextBoxColumn dashboard_count;
@@ -2230,5 +2230,6 @@ namespace Desktop_Application
         private DataGridViewTextBoxColumn users_email;
         private DataGridViewTextBoxColumn users_role;
         private DataGridViewTextBoxColumn users_verified;
+        private Panel panel_topBorrowed;
     }
 }

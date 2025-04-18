@@ -15,6 +15,7 @@ export default function Profile() {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [username, setUsername] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
   const [address, setAddress] = useState("");
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -45,8 +46,8 @@ export default function Profile() {
       return;
     }
     try {
-      const response = await axios.put("/api/update-user",
-        { firstname: firstname, lastname: lastname, username: username, address: address, passwordOld: currentPassword, password: newPassword },
+      const response = await axios.put("/api/user",
+        { firstname: firstname, lastname: lastname, username: username, dateOfBirth: dateOfBirth, address: address, passwordOld: currentPassword, password: newPassword },
         {
           headers: {
             "Content-type": "application/json",
@@ -81,6 +82,8 @@ export default function Profile() {
           <input className='profile-lastname' defaultValue={item.lastname} onChange={(e) => setLastname(e.target.value)} type="text" />
           <label>Username:</label>
           <input className='profile-username' defaultValue={item.username} onChange={(e) => setUsername(e.target.value)} type="text" />
+          <label>Date of Birth:</label>
+          <input className='profile-username' defaultValue={item.dateOfBirth} onChange={(e) => setDateOfBirth(e.target.value)} type="date" />
           <label>Address:</label>
           <input className='profile-username' defaultValue={item.address} onChange={(e) => setAddress(e.target.value)} type="text" />
           <label>Current Password:</label>
@@ -89,6 +92,7 @@ export default function Profile() {
           <input className='proflie-password' type="password" onChange={(e) => setNewPassword(e.target.value)} />
           <label>New Password Again:</label>
           <input className='proflie-password' type="password" onChange={(e) => setNewPasswordAgain(e.target.value)} />
+          {error && <div className="error-message">{error}</div>}
           <input type="submit" className="profile-submit" value={loading ? "Saving changes..." : "Save"} disabled={loading} />
           {loading && <div className="spinner"></div>}
         </form>
