@@ -1,0 +1,42 @@
+[
+    {
+        "testName" : "testing address",
+        "username" : "",
+        "passwordOld" : "",
+        "password" : "",
+        "firstname" : "Kálmán",
+        "lastname" : "",
+        "address" : "",
+        "expectedStatus" : 200
+    },
+    {
+        "testName" : "testing username with wrong characters",
+        "username" : "MÁlna",
+        "passwordOld" : "",
+        "password" : "",
+        "firstname" : "",
+        "lastname" : "",
+        "address" : "",
+        "expectedStatus" : 400
+    },
+    {
+        "testName" : "testing password change with 1 data",
+        "username" : "",
+        "passwordOld" : "passw",
+        "password" : "",
+        "firstname" : "",
+        "lastname" : "",
+        "address" : "",
+        "expectedStatus" : 400
+    },
+    {
+        "testName" : "testing full change",
+        "username" : "Makako",
+        "passwordOld" : "TestPassword123",
+        "password" : "Kakaoscsiga3",
+        "firstname" : "Kálmán",
+        "lastname" : "Csiga",
+        "address" : "30 kossuth utca, Békéscsaba",
+        "expectedStatus" : 200
+    }
+    ]
