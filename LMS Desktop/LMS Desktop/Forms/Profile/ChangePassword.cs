@@ -5,11 +5,13 @@ namespace Desktop_Application.Forms.Profile;
 
 public partial class ChangePassword : Form
 {
-    internal string Password { get; private set; }
+    private string _password;
+    private string _username;
 
-    public ChangePassword(string hashedPassword)
+    public ChangePassword(string hashedPassword, string username)
     {
-        Password = hashedPassword;
+        _password = hashedPassword;
+        _username = username;
         InitializeComponent();
     }
 
@@ -29,8 +31,9 @@ public partial class ChangePassword : Form
     {
         if (ValidateInput())
         {
-            Password = BCrypt.Net.BCrypt.HashPassword(textBox_newPassword.Text);
-            this.DialogResult = DialogResult.OK;
+            string newPassword = BCrypt.Net.BCrypt.HashPassword(textBox_newPassword.Text);
+            HandleQueries.UpdatePassword(_username, newPassword);
+            MessageBox.Show("Your password has been updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
     }
@@ -38,7 +41,7 @@ public partial class ChangePassword : Form
     // returns true if everything is correct
     private bool ValidateInput()
     {
-        if (!BCrypt.Net.BCrypt.Verify(textBox_currentPassword.Text, Password))
+        if (!BCrypt.Net.BCrypt.Verify(textBox_currentPassword.Text, _password))
         {
             MessageBox.Show("Current password field doesn't match with your actual password!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;

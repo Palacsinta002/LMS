@@ -29,7 +29,7 @@ export default function AuthProvider({ children }) {
 
     const login = (token) => {
         sessionStorage.setItem("token", token);
-        const decoded = jwt_decode(token);
+        const decoded = jwtDecode(token);
         setUser(decoded);
     }
 

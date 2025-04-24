@@ -148,7 +148,7 @@ public partial class ProfileSettings : Form
 
     private bool CheckUsername(string username)
     {
-        if (username == Username) return false; // This skips the check if the username didnt changed
+        if (username == Username) return false; // This skips the check if the username didn't changed
         List<string[]> result = HandleQueries.SelectFromFile("SelectUsername");
         foreach (string[] item in result)
         {
@@ -159,12 +159,7 @@ public partial class ProfileSettings : Form
 
     private void ChangePassword(object sender, EventArgs e)
     {
-        ChangePassword changePassword = new(_password);
+        ChangePassword changePassword = new(_password, Username);
         changePassword.ShowDialog();
-        if(changePassword.DialogResult == DialogResult.OK)
-        {
-            HandleQueries.UpdatePassword(Username, changePassword.Password);
-            MessageBox.Show("Your password has been updated succesfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
     }
 }
