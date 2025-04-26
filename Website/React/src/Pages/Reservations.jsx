@@ -26,8 +26,8 @@ export default function Reservations() {
             <th className='dashboard-th'>ISBN</th>
             <th className='dashboard-th'>Title</th>
             <th className='dashboard-th'>Author</th>
-            <th className='dashboard-th'>Borrowings Date</th>
-            <th className='dashboard-th'>Due Date</th>
+            <th className='dashboard-th'>Reserve Date</th>
+            <th className='dashboard-th'>Due Date</th>  
           </tr>
         </thead>
         <tbody className='dashboard-tbody'>
