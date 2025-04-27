@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import axios from "axios"
 import { Link, useNavigate } from 'react-router-dom'
 import "../Styles//Login.css"
 import { setAuthToken } from '../Auth/setAuthToken';
+import { AuthContext } from '../Auth/AuthProvider';
 
 export default function Login() {
   axios.defaults.withCredentials = true;
@@ -12,7 +13,7 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
+  const { login } = useContext(AuthContext);
 
   async function HandleSubmit(event) {
     event.preventDefault();
@@ -30,8 +31,7 @@ export default function Login() {
         console.log(response.data)
       if (response.data.Token) {
         setAuthToken(response.data.Token);
-        console.log(response.data.Token)
-        sessionStorage.setItem("token", response.data.Token);
+        login(response.data.Token);
         navigate("/dashboard");
       }
       else{

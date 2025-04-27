@@ -144,7 +144,6 @@
   min-width: 350px;
   max-width: 25%;
   min-height: 70vh;
-  max-height: 30  vh;
   background-color: white;
   border-radius: 2vh;
   display: grid;
@@ -191,7 +190,11 @@
   font-weight: 500;
   margin: 3px 0;
 }
-.profile-box input[type=text], input[type=password], input[type=email], input[type=date]{
+
+.profile-box input[type=text],
+input[type=password],
+input[type=email],
+input[type=date] {
   font-size: 1rem;
   font-weight: 500;
   margin: 3px 0;
@@ -201,4 +204,168 @@
   position: relative;
   border-radius: 5px;
   border: 1px solid black;
+}
+
+.dashboard-table {
+  width: 100%;
+  max-width: 50vw;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  margin-bottom: 1rem;
+  color: white;
+  margin: auto;
+  font-weight: 600;
+}
+
+.dashboard-th,
+.dashboard-td {
+  border: 2px solid black;
+  padding: 12px 8px;
+  text-align: left;
+}
+
+.dashboard-th {
+  background-color: #504DB4;
+  font-weight: bold;
+}
+
+.dashboard-tr:nth-child(even) {
+  background-color: #504DB4;
+
+}
+
+.dashboard-tr:nth-child(odd) {
+  background-color: #48459E;
+}
+
+.cancel-button {
+  padding: 5px 10px;
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cancel-button:hover {
+  background-color: #cc0000;
+}
+
+.cancel-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.profile-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.delete-account-button {
+  padding: 10px 15px;
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.6);
+}
+
+.delete-account-button:hover {
+  background-color: #cc0000;
+}
+
+.confirmation-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.confirm-delete-button {
+  padding: 8px 16px;
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.confirm-delete-button:hover {
+  background-color: #cc0000;
+}
+
+.cancel-delete-button {
+  padding: 8px 16px;
+  background-color: #ccc;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cancel-delete-button:hover {
+  background-color: #aaa;
+}
+
+@media (max-width: 768px) {
+
+  .dashboard-table,
+  .dashboard-thead,
+  .dashboard-tbody,
+  .dashboard-tr,
+  .dashboard-th,
+  .dashboard-td {
+    display: block;
+    width: 100%;
+  }
+
+  .dashboard-thead {
+    display: none;
+  }
+
+  .dashboard-tr {
+    margin-bottom: 1rem;
+    border: 1px solid #504DB4;
+    padding: 10px;
+    background: #504DB4;
+  }
+
+  .dashboard-td {
+    text-align: right;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  .dashboard-td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    top: 12px;
+    font-weight: bold;
+    text-align: left;
+    width: 45%;
+    white-space: nowrap;
+  }
 }

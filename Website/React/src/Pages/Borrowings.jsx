@@ -12,6 +12,7 @@ export default function Borrowings() {
     axios.get("/api/borrowings", { headers: { "Authorization": `Bearer ${token}` } })
       .then(response => {
         setBorrowings(response.data)
+        console.log(response.data)
       })
       .catch(err => console.error(err))
   }, [])
@@ -29,17 +30,17 @@ export default function Borrowings() {
           </tr>
         </thead>
         <tbody className='dashboard-tbody'>
-          {borrowings.map((items, index) => (
-            <tr className='dashboard-tr' key={index}>
-              <td className='dashboard-td'>{items.ISBN}</td>
-              <td className='dashboard-td'>{items.Title}</td>
-              <td className='dashboard-td'>{items.Authors}</td>
-              <td className='dashboard-td'>{items.BorrowDate}</td>
-              <td className='dashboard-td'>{items.DueDate}</td>
-              <td className='dashboard-td'></td>
+          {borrowings.map((items) => (
+            <tr className='dashboard-tr' key={items.ISBN}>
+              <td className='dashboard-td' data-label="ISBN">{items.ISBN}</td>
+              <td className='dashboard-td' data-label="Title">{items.Title}</td>
+              <td className='dashboard-td' data-label="Author">{items.Authors}</td>
+              <td className='dashboard-td' data-label="Borrowings Date">{items.BorrowDate}</td>
+              <td className='dashboard-td' data-label="Due Date">{items.DueDate}</td>
             </tr>
           ))}
         </tbody>
+
       </table>
     </div>
   )

@@ -11,9 +11,9 @@ export default function Verify() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const previousLocation = usePreviousLocation(location);
-  const endpoint = previousLocation?.pathname === "/register" ? "/api/finalize-registration" : "/api/verify-account";
-  console.log("Endpoint:", endpoint);
+  const previousLocation = usePreviousLocation(location.pathname);
+  const method = previousLocation !== "/register" ? "put" : "post";
+  console.log(method);
 
   async function HandleSubmit(event) {
     event.preventDefault();
@@ -22,7 +22,7 @@ export default function Verify() {
 
     try {
       const response = await axios.post(
-        `${endpoint}`,
+      "/api/verify-account",
         {
           verificationCode: code
         },
