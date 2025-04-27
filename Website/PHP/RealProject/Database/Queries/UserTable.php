@@ -111,7 +111,6 @@ class UserTable extends Table
             "users.username", 
             "users.firstname", 
             "users.lastname", 
-            "users.lastname", 
             "users.address", 
             "users.DateOfBirth",
             "Roles.Role"])

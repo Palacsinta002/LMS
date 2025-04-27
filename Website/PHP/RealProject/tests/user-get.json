@@ -1,0 +1,6 @@
+[
+    {
+        "testName" : "get Testuser data",
+        "expectedStatus" : 200
+    }
+]

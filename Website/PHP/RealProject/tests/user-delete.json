@@ -1,0 +1,6 @@
+[
+    {
+        "testName" : "delete Testuser",
+        "expectedStatus" : 200
+    }
+]
