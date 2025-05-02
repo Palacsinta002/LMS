@@ -18,7 +18,6 @@ export default function Profile() {
   const [error, setError] = useState("");
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 
-  // Form state
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
