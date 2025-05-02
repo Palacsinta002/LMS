@@ -299,7 +299,7 @@ INSERT INTO Users (FirstName, LastName, Email, Username, Password, Address, Veri
 ('Jack', 'Young', 'jack.young@example.com', 'jackyoung', '$2y$10$i7JYPvFT/sa6od7vlhp3oOJm2oV9XcGPjRxUR8RR11LhqmEfvQegu', '456 Willow Way, Springfield', 1, 1, '666888', 3, '1993-09-06'),
 ('Laura', 'Harris', 'laura.harris@example.com', 'lauraharris', '$2y$10$7ohuabBRz5sXx2/0sFP4nOKcJl3XunwqNigHdTtQCsRosjmDFx0VW', '567 Cypress Ct, Springfield', 1, 1, '777999', 3, '1991-01-27'),
 ('Test', 'User', 'tester.user@example.com', 'TestUser', '$2y$10$QkWX8ewQySm3M95IZTdg0eY.sUYFO5irkdSoylUkfOOmBCP9Dqh8q', '1 Test St, Testfield', 1, 1, '111119', 3, '1991-01-27'); 
---TestUser password is TestPassword123
+-- TestUser password is TestPassword123
 
 
 
