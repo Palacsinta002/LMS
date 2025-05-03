@@ -59,11 +59,12 @@ export default function Login() {
         <h1>Login</h1>
         <form onSubmit={HandleSubmit}>
           <label>Username</label>
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+          <input type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} />
           <label>Password</label>
           <div className="login-password-input">
             <input
               type={showPassword ? "text" : "password"}
+              name="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />

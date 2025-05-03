@@ -20,7 +20,6 @@ export default function Register() {
     event.preventDefault();
     setLoading(true);
     setError("");
-
     try {
       const response = await axios.post(
         "/api/register",
@@ -66,28 +65,28 @@ export default function Register() {
 
             <div className="register-card">
               <label htmlFor="firstname">First name</label>
-              <input type="text" onChange={(e) => setFirstname(e.target.value)} required />
+              <input type="text" name="firstname" onChange={(e) => setFirstname(e.target.value)} required />
             </div>
 
             <div className="register-card">
               <label htmlFor="lastname">Last name</label>
-              <input type="text" onChange={(e) => setLastname(e.target.value)} required />
+              <input type="text" name="lastname" onChange={(e) => setLastname(e.target.value)} required />
             </div>
 
             <div className="register-card">
               <label htmlFor="email">Email</label>
-              <input type="email" onChange={(e) => setEmail(e.target.value)} required />
+              <input type="email" name="email" onChange={(e) => setEmail(e.target.value)} required />
             </div>
 
             <div className="register-card">
               <label htmlFor="username">Username</label>
-              <input type="text" onChange={(e) => setUsername(e.target.value)} required />
+              <input type="text" name="username" onChange={(e) => setUsername(e.target.value)} required />
             </div>
 
             <div className="register-card">
-              <label htmlFor="passwordAgain">Password</label>
+              <label htmlFor="password">Password</label>
               <div className="register-password-input">
-                <input type={showPassword ? "text" : "password"} onChange={(e) => setPassword(e.target.value)} required />
+                <input type={showPassword ? "text" : "password"} name="password" onChange={(e) => setPassword(e.target.value)} required />
                 <button type="button" onClick={() => setShowPassword(!showPassword)} className="register-toggle-password">
                 <i className={`fa ${showPassword ? "fa-eye-slash" : "fa-eye"}`}></i>
                 </button>
@@ -96,12 +95,12 @@ export default function Register() {
 
             <div className="register-card">
               <label htmlFor="dateOfBirth">Date of Birth</label>
-              <input type="date" onChange={(e) => setDateOfBirth(e.target.value)} required />
+              <input type="date" name="dateOfBirth" onChange={(e) => setDateOfBirth(e.target.value)} required />
             </div>
 
             <div className="register-card">
               <label htmlFor="dateOfBirth">Address</label>
-              <input type="string" onChange={(e) => setAddress(e.target.value)} required />
+              <input type="string" name="address" onChange={(e) => setAddress(e.target.value)} required />
             </div>
 
           </div>
