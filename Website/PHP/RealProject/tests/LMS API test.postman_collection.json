@@ -1,0 +1,572 @@
+{
+	"info": {
+		"_postman_id": "4c016a5f-dd24-4585-a2af-267af42662db",
+		"name": "LMS API test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "32506565"
+	},
+	"item": [
+		{
+			"name": "user-methods",
+			"item": [
+				{
+					"name": "user(get-put-delete)",
+					"item": [
+						{
+							"name": "user",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let testData = pm.iterationData.toObject()\r",
+											"\r",
+											"pm.test(`${testData.testName} should be return response: ${testData.expectedStatus}`, () =>{\r",
+											"    if (testData.expectedStatus === 200){\r",
+											"        pm.response.to.have.status(200)\r",
+											"        let jsonData = pm.response.json()[0]\r",
+											"        pm.expect(jsonData).to.have.property(\"email\")\r",
+											"        pm.expect(jsonData).to.have.property(\"username\")\r",
+											"        pm.expect(jsonData).to.have.property(\"firstname\")\r",
+											"        pm.expect(jsonData).to.have.property(\"lastname\")\r",
+											"        pm.expect(jsonData).to.have.property(\"address\")\r",
+											"        pm.expect(jsonData).to.have.property(\"DateOfBirth\")\r",
+											"        pm.expect(jsonData).to.have.property(\"Role\")\r",
+											"    }\r",
+											"    else{\r",
+											"        pm.response.to.have.status(400)\r",
+											"        let jsonData = pm.response.json()\r",
+											"        pm.expect(jsonData.error)\r",
+											"    }\r",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{Token}}"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Test",
+										"value": "test",
+										"type": "text"
+									}
+								],
+								"url": "{{baseURL}}api/user"
+							},
+							"response": []
+						},
+						{
+							"name": "user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let testData = pm.iterationData.toObject()\r",
+											"\r",
+											"pm.test(`${testData.testName} should be return response: ${testData.expectedStatus}`, () =>{\r",
+											"    if (testData.expectedStatus === 200){\r",
+											"        pm.response.to.have.status(200)\r",
+											"        let jsonData = pm.response.json()\r",
+											"        pm.expect(jsonData).to.have.property(\"Success\")\r",
+											"    }\r",
+											"    else{\r",
+											"        pm.response.to.have.status(400)\r",
+											"        let jsonData = pm.response.json()\r",
+											"        pm.expect(jsonData.error)\r",
+											"    }\r",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const testData = pm.iterationData.toObject()\r",
+											"\r",
+											"const optional = [\"username\", \"passwordOld\", \"password\", \"firstname\", \"lastname\", \"address\", \"dateOfBirth\"]\r",
+											"let requestBody = {}\r",
+											"for (let i = 0; i < optional.length; i++){\r",
+											"    if (testData.hasOwnProperty(optional[i])){\r",
+											"        requestBody[optional[i]] = testData[optional[i]]\r",
+											"    }\r",
+											"}\r",
+											"pm.variables.set(\"requestBody\", JSON.stringify(requestBody))"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{Token}}"
+									}
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Test",
+										"value": "test",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{{requestBody}}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseURL}}api/user"
+							},
+							"response": []
+						},
+						{
+							"name": "user",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let testData = pm.iterationData.toObject()\r",
+											"\r",
+											"pm.test(`${testData.testName} should be return response: ${testData.expectedStatus}`, () =>{\r",
+											"    if (testData.expectedStatus === 200){\r",
+											"        pm.response.to.have.status(200)\r",
+											"        let jsonData = pm.response.json()\r",
+											"        pm.expect(jsonData).to.have.property(\"Success\")\r",
+											"    }\r",
+											"    else{\r",
+											"        pm.response.to.have.status(400)\r",
+											"        let jsonData = pm.response.json()\r",
+											"        pm.expect(jsonData.error)\r",
+											"    }\r",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "{{Token}}"
+									}
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Test",
+										"value": "test",
+										"type": "text"
+									}
+								],
+								"url": "{{baseURL}}api/user"
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									"pm.sendRequest({\r",
+									"    url: 'http://localhost:8000/api/login',\r",
+									"    method: 'POST',\r",
+									"    header: {\r",
+									"        'Content-Type': 'application/json'\r",
+									"    },\r",
+									"    body: {\r",
+									"        mode: 'raw',\r",
+									"        raw: JSON.stringify({\r",
+									"            username: \"TestUser\",\r",
+									"            password: 'TestPassword123'\r",
+									"        })\r",
+									"    }\r",
+									"}, function (err, res) {\r",
+									"    if (err) {\r",
+									"        console.log('Login failed:', err);\r",
+									"    } else {\r",
+									"        const data = res.json();\r",
+									"        pm.environment.set('Token', data.Token);\r",
+									"    }\r",
+									"});"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"packages": {},
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let testData = pm.iterationData.toObject()\r",
+									"\r",
+									"pm.test(`${testData.testName} should be return response: ${testData.expectedStatus}`, () =>{\r",
+									"    if (testData.expectedStatus === 200){\r",
+									"        pm.response.to.have.status(200)\r",
+									"        let jsonData = pm.response.json()\r",
+									"        pm.expect(jsonData).to.have.property(\"Token\")\r",
+									"        pm.expect(jsonData.Token).to.be.a(\"string\")\r",
+									"        pm.collectionVariables.set(\"Token\",jsonData.Token)\r",
+									"    }\r",
+									"    else{\r",
+									"        pm.response.to.have.status(400)\r",
+									"        let jsonData = pm.response.json()\r",
+									"        pm.expect(jsonData.error)\r",
+									"    }\r",
+									"})\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const testData = pm.iterationData.toObject();\r",
+									"\r",
+									"pm.variables.set(\"username\", testData.username)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}api/login"
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const testData = pm.iterationData.toObject();\r",
+									"\r",
+									"pm.variables.set(\"username\", testData.username)\r",
+									"pm.variables.set(\"password\", testData.password)\r",
+									"pm.variables.set(\"passwordAgain\", testData.passwordAgain)\r",
+									"pm.variables.set(\"email\", testData.email)\r",
+									"pm.variables.set(\"address\", testData.address)\r",
+									"pm.variables.set(\"firstname\", testData.firstname)\r",
+									"pm.variables.set(\"lastname\", testData.lastname)\r",
+									"pm.variables.set(\"dateOfBirth\", testData.dateOfBirth)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let testData = pm.iterationData.toObject()\r",
+									"\r",
+									"\r",
+									"pm.test(`${testData.testName} should return response: ${testData.expectedStatus}`, function () {\r",
+									"    if (testData.expectedStatus === 200){\r",
+									"        pm.response.to.have.status(200) \r",
+									"        let jsonData = pm.response.json()\r",
+									"        pm.expect(jsonData).to.have.property(\"Success\")\r",
+									"        pm.expect(jsonData.Success).to.be.a(\"string\")\r",
+									"    }\r",
+									"    else{\r",
+									"        pm.response.to.have.status(400) \r",
+									"        let jsonData = pm.response.json()\r",
+									"        pm.expect(jsonData).to.have.property(\"error\") \r",
+									"        pm.expect(jsonData.error).to.be.a(\"string\") \r",
+									"    }\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Test",
+								"value": "test",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"{{username}}\",\r\n    \"password\" : \"{{password}}\",\r\n    \"passwordAgain\" : \"{{passwordAgain}}\",\r\n    \"firstname\" : \"{{firstname}}\",\r\n    \"lastname\" : \"{{lastname}}\",\r\n    \"email\" : \"{{email}}\",\r\n    \"address\" : \"{{address}}\",\r\n    \"dateOfBirth\" : \"{{dateOfBirth}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}api/register"
+					},
+					"response": []
+				},
+				{
+					"name": "forgot-password",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const testData = pm.iterationData.toObject()\r",
+									"\r",
+									"pm.variables.set(\"email\", testData.email)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let testData = pm.iterationData.toObject()\r",
+									"\r",
+									"pm.test(`${testData.testName} should return response: ${testData.expectedStatus}`, function () {\r",
+									"    if (testData.expectedStatus === 200){\r",
+									"        pm.response.to.have.status(200) \r",
+									"        let jsonData = pm.response.json()\r",
+									"        pm.expect(jsonData).to.have.property(\"Success\")\r",
+									"    }\r",
+									"    else{\r",
+									"        pm.response.to.have.status(400) \r",
+									"        let jsonData = pm.response.json()\r",
+									"        pm.expect(jsonData).to.have.property(\"error\") \r",
+									"        pm.expect(jsonData.error).to.be.a(\"string\") \r",
+									"    }\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Test",
+								"value": "test",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"{{email}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseURL}}api/forgot-password"
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							"const testData = pm.iterationData.toObject();"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "books",
+			"item": [
+				{
+					"name": "books",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const testData = pm.iterationData.toObject();\r",
+									"\r",
+									"pm.variables.set(\"urlValues\", testData.values)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let testData = pm.iterationData.toObject()\r",
+									"\r",
+									"pm.test(`should be return response: ${testData.expectedStatus}`, () =>{\r",
+									"    if (testData.expectedStatus === 200){\r",
+									"         pm.response.to.have.status(200)\r",
+									"        let jsonData = pm.response.json()\r",
+									"        if (testData.hasOwnProperty(\"length\")){\r",
+									"            pm.expect(jsonData.length).to.equal(testData.length)\r",
+									"        }\r",
+									"    \r",
+									"    }\r",
+									"    else{\r",
+									"        pm.response.to.have.status(400)\r",
+									"        let jsonData = pm.response.json()\r",
+									"        pm.expect(jsonData.error)\r",
+									"    }\r",
+									"    })"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseURL}}api/books/{{urlValues}}"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"pm.sendRequest"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://localhost:8000/",
+			"type": "string"
+		},
+		{
+			"key": "Token",
+			"value": ""
+		},
+		{
+			"key": "urlValues",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
