@@ -1,7 +1,7 @@
 import { Builder, By, until } from 'selenium-webdriver';
 import chrome from 'selenium-webdriver/chrome.js';
 
-const RegisterTest = async () => {
+const registerTest = async () => {
     const driver = await new Builder().forBrowser('chrome').setChromeOptions(new chrome.Options()).build();
 
     try {
@@ -26,7 +26,9 @@ const RegisterTest = async () => {
         console.log('Test Passed: Redirected to /verify');
     } catch (err) {
         console.error('Test Failed:', err.message);
+    } finally {
+        await driver.quit();
     }
 };
 
-RegisterTest();
+registerTest();
