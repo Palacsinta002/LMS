@@ -28,7 +28,6 @@ export default function Profile() {
     newPassword: "",
     newPasswordAgain: ""
   });
-
   useEffect(() => {
     fetchUserData();
   }, [token]);
@@ -41,18 +40,22 @@ export default function Profile() {
           "Authorization": `Bearer ${token}`
         }
       });
+  
       setData(response.data);
+      
       if (response.data.length > 0) {
-        setFormData({
-          firstname: response.data[0].firstname,
-          lastname: response.data[0].lastname,
-          username: response.data[0].username,
-          dateOfBirth: response.data[0].dateOfBirth,
-          address: response.data[0].address,
-          currentPassword: "",
-          newPassword: "",
-          newPasswordAgain: ""
-        });
+        const userData = response.data[0];
+        const formattedDate = userData.DateOfBirth ? new Date(userData.DateOfBirth).toISOString().split('T')[0] : "";
+  
+        setFormData(prevFormData => ({
+          ...prevFormData,
+          firstname: userData.firstname,
+          lastname: userData.lastname,
+          username: userData.username,
+          dateOfBirth: formattedDate,
+          address: userData.address,
+        }));
+        
       }
     } catch (error) {
       console.error("Error fetching user data:", error);
@@ -73,39 +76,50 @@ export default function Profile() {
     setLoading(true);
     setError("");
 
-    if (formData.newPassword !== formData.newPasswordAgain) {
+    if (formData.newPassword && formData.newPassword !== formData.newPasswordAgain) {
       setLoading(false);
       setError("The new passwords don't match!");
       return;
     }
-
+  
     try {
-      const response = await axios.put("/api/user",
-        {
-          firstname: formData.firstname,
-          lastname: formData.lastname,
-          username: formData.username,
-          dateOfBirth: formData.dateOfBirth,
-          address: formData.address,
-          passwordOld: formData.currentPassword,
-          password: formData.newPassword
+      const updateData = {
+        firstname: formData.firstname,
+        lastname: formData.lastname,
+        dateOfBirth: formData.dateOfBirth,
+        address: formData.address,
+      };
+  
+      if (formData.username !== data[0]?.username) {
+        updateData.username = formData.username;
+      }
+  
+      if (formData.currentPassword && formData.newPassword) {
+        updateData.passwordOld = formData.currentPassword;
+        updateData.password = formData.newPassword;
+      }
+  
+      const response = await axios.put("/api/user", updateData, {
+        headers: {
+          "Content-type": "application/json",
+          "Authorization": `Bearer ${token}`,
         },
-        {
-          headers: {
-            "Content-type": "application/json",
-            "Authorization": `Bearer ${token}`
-          }
-        }
-      );
-
+      });
+  
       if (response.data.Success) {
         await fetchUserData();
+        setError("");
+        alert("Profile updated successfully!");
       } else {
         setError(response.data.message || "Update failed!");
       }
     } catch (error) {
       console.error("Update error:", error);
-      setError(error.response?.data?.message || "Update error!");
+      if (error.response?.data?.message?.includes("username")) {
+        setError("Username already taken. Please choose another one.");
+      } else {
+        setError(error.response?.data?.message || "Update error!");
+      }
     } finally {
       setLoading(false);
     }
@@ -177,7 +191,7 @@ export default function Profile() {
           <input
             className='profile-username'
             name="dateOfBirth"
-            value={formData.dateOfBirth}
+            value={formData.dateOfBirth || ""}
             onChange={handleInputChange}
             type="date"
           />
