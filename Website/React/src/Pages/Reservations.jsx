@@ -67,12 +67,12 @@ export default function Reservations() {
         <tbody className='dashboard-tbody'>
           {reservations.map((item, index) => (
             <tr className='dashboard-tr' key={index}>
-              <td className='dashboard-td'>{item.ISBN}</td>
-              <td className='dashboard-td'>{item.Title}</td>
-              <td className='dashboard-td'>{item.Authors}</td>
-              <td className='dashboard-td'>{item.ReservationStartDate}</td>
-              <td className='dashboard-td'>{item.ReservationEndDate}</td>
-              <td className='dashboard-td'>
+              <td className='dashboard-td' data-label="ISBN">{item.ISBN}</td>
+              <td className='dashboard-td' data-label="Title">{item.Title}</td>
+              <td className='dashboard-td' data-label="Authors">{item.Authors}</td>
+              <td className='dashboard-td' data-label="Reservation Start Date">{item.ReservationStartDate}</td>
+              <td className='dashboard-td' data-label="Reservation End Date">{item.ReservationEndDate}</td>
+              <td className='dashboard-td' data-label="Action">
                 <button 
                   type="button" 
                   onClick={() => handleCancel(item.ISBN)}

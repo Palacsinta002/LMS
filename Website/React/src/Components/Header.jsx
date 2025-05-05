@@ -12,20 +12,32 @@ export default function Header({ searchQuery, onSearch }) {
 
   return (
     <header className={hidden}>
-      <Link to="/"><h1 className="title">LMS</h1></Link>
-      <div className="logReg">
-        {!isAuthorized && <Link to="/register" className="signup">Register</Link>}
-        {!isAuthorized && <Link to="/login" className="signin">Login</Link>}
-        {isAuthorized && <Link to="/" className="logout" onClick={logout}>Logout</Link>}
-        {isAuthorized && <Link to="/dashboard" className="dashboard">Dashboard</Link>}
-        <Link to="/books" className="books">Books</Link>
+      <Link to="/" className="title">LMS</Link>
+
+      <div className={hiddenSearch}>
+        <input
+          type="text"
+          value={searchQuery || ""}
+          onChange={(e) => onSearch(e)}
+          placeholder="Search books..."
+        />
       </div>
-      <input
-      type="text" value={searchQuery || ""}
-      onChange={(e) => onSearch(e)}
-      placeholder="Search books..."
-      className={hiddenSearch}
-      />
+
+      <div className="logReg">
+      <Link to="/books" className="nav-button books">Books</Link>
+        {!isAuthorized && (
+          <>
+            <Link to="/register" className="nav-button signup">Register</Link>
+            <Link to="/login" className="nav-button signin">Login</Link>
+          </>
+        )}
+        {isAuthorized && (
+          <>
+            <Link to="/dashboard" className="nav-button dashboard">Dashboard</Link>
+            <Link to="/" className="nav-button logout" onClick={logout}>Logout</Link>
+          </>
+        )}
+      </div>
     </header>
   );
 }

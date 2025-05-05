@@ -30,7 +30,6 @@ export default function Login() {
           }
         });
 
-        console.log(response.data)
       if (response.data.Token) {
         setAuthToken(response.data.Token);
         login(response.data.Token);

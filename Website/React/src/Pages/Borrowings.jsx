@@ -12,7 +12,6 @@ export default function Borrowings() {
     axios.get("/api/borrowings", { headers: { "Authorization": `Bearer ${token}` } })
       .then(response => {
         setBorrowings(response.data)
-        console.log(response.data)
       })
       .catch(err => console.error(err))
   }, [])
@@ -30,8 +29,8 @@ export default function Borrowings() {
           </tr>
         </thead>
         <tbody className='dashboard-tbody'>
-          {borrowings.map((items) => (
-            <tr className='dashboard-tr' key={items.ISBN}>
+          {borrowings.map((items, index) => (
+            <tr className='dashboard-tr' key={index}>
               <td className='dashboard-td' data-label="ISBN">{items.ISBN}</td>
               <td className='dashboard-td' data-label="Title">{items.Title}</td>
               <td className='dashboard-td' data-label="Author">{items.Authors}</td>
