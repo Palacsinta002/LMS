@@ -1,22 +1,29 @@
 :root {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-*{
+
+* {
   box-sizing: border-box;
   margin: 0;
 }
 
-.HeroSection{
+body {
+  background-image: url(../circles.png);
+}
+
+.HeroSection {
   height: 80vh;
   width: 100vw;
   position: relative;
   margin-top: 5vh;
 }
-.Hero{
+
+.Hero {
   position: absolute;
   width: 100vw;
 }
-header{
+
+header {
   height: 10vh;
   width: 100vw;
   background-color: rgb(72, 69, 158);
@@ -24,9 +31,11 @@ header{
   position: relative;
   display: inline-block;
 }
-.hidden{
+
+.hidden {
   display: none;
 }
-.hiddenSearch{
+
+.hiddenSearch {
   display: none;
 }
