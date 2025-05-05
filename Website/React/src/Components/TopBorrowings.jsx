@@ -13,7 +13,6 @@ export default function SliderColousel() {
         const getData = async () => {
             try {
                 const response = await axios.get(`/api/top-borrowings/5`);
-                console.log(response.data);
                 setBooks(response.data);
             } catch (error) {
                 console.error("Error fetching books:", error);
