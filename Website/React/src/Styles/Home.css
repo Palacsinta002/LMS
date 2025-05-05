@@ -244,35 +244,29 @@ caption {
   text-decoration: none;
 }
 
+/* Card List Styles */
 .cards-list {
-  position: relative;
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  width: 70vw;
-  max-width: 60vw;
-  min-width: 60vw;
-  border-radius: 1vh;
-  margin: auto;
-  font-weight: bold;
-  color: black;
-  z-index: 1;
+  justify-content: center;
+  gap: 20px;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
 }
 
 .home-card {
-  width: 100%;
-  max-width: 300px;
-  min-height: 100%;
-  height: 100%;
+  width: 280px;
+  min-height: 500px;
   border-radius: 16px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  margin: 16px;
+  margin: 0;
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  background: white;
 }
 
 .home-card:hover {
@@ -282,20 +276,20 @@ caption {
 
 .home-card-image {
   width: 100%;
-  height: 400px;
+  height: 300px;
   background-color: white;
   padding: 15px;
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .home-card-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  border-radius: 15px;
+  object-fit: contain;
+  border-radius: 8px;
 }
 
 .home-card-content {
@@ -303,12 +297,16 @@ caption {
   padding: 16px;
   background-color: #48459E;
   color: white;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .content-text {
   padding-bottom: 10px;
   text-align: left;
   font-weight: 800;
+  flex-grow: 1;
 }
 
 .home-card-content-button {
@@ -320,6 +318,13 @@ caption {
   cursor: pointer;
   border: none;
   font-weight: 800;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.home-card-content-button:hover {
+  background-color: #3a388a;
 }
 
 .home-card-category {
@@ -333,6 +338,25 @@ caption {
   padding: 4px 8px;
   cursor: default;
   font-weight: 800;
+}
+
+@media (max-width: 768px) {
+  .cards-list {
+    width: 95%;
+    gap: 15px;
+  }
+  
+  .home-card {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cards-list {
+    width: 100%;
+    padding: 10px;
+  }
 }
 .books-container {
   padding: 20px;

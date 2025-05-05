@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import "../Styles/Register.css"
 import axios from 'axios'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -52,7 +54,11 @@ export default function Register() {
 
   return (
     <div className="register">
-      <Link to="/" className="back-to-home">Back to Home</Link>
+      <div className="login-navigation-buttons">
+        <Link to="/" className="back-to-home">
+          <FontAwesomeIcon icon={faArrowLeft} /> Back to Home
+        </Link>
+      </div>
       <div className="register-header">
         <h1 className="register-top">Welcome to</h1>
         <h2 className="register-bottom">Library Management System</h2>
@@ -88,7 +94,7 @@ export default function Register() {
               <div className="register-password-input">
                 <input type={showPassword ? "text" : "password"} name="password" onChange={(e) => setPassword(e.target.value)} required />
                 <button type="button" onClick={() => setShowPassword(!showPassword)} className="register-toggle-password">
-                <i className={`fa ${showPassword ? "fa-eye-slash" : "fa-eye"}`}></i>
+                  <i className={`fa ${showPassword ? "fa-eye-slash" : "fa-eye"}`}></i>
                 </button>
               </div>
             </div>
@@ -99,8 +105,8 @@ export default function Register() {
             </div>
 
             <div className="register-card">
-              <label htmlFor="dateOfBirth">Address</label>
-              <input type="string" name="address" onChange={(e) => setAddress(e.target.value)} required />
+              <label htmlFor="address">Address</label>
+              <input type="text" name="address" onChange={(e) => setAddress(e.target.value)} required />
             </div>
 
           </div>

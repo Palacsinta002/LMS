@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import "../Styles//Login.css"
 import { setAuthToken } from '../Auth/setAuthToken';
 import { AuthContext } from '../Auth/AuthProvider';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 export default function Login() {
   axios.defaults.withCredentials = true;
@@ -52,10 +54,14 @@ export default function Login() {
   }
   return (
     <div className="login">
-      <Link to="/" className="back-to-home">Back to Home</Link>
+      <div className="login-navigation-buttons">
+        <Link to="/" className="back-to-home">
+          <FontAwesomeIcon icon={faArrowLeft} /> Back to Home
+        </Link>
+      </div>
       <h1 className="login-header">Library Management System</h1>
       <div className="login-card">
-        <i className="fa fa-user"></i>
+        <i className="fa fa-user login-icon"></i>
         <h1>Login</h1>
         <form onSubmit={HandleSubmit}>
           <label>Username</label>
@@ -73,7 +79,7 @@ export default function Login() {
               onClick={() => setShowPassword(!showPassword)}
               className="login-toggle-password"
             >
-              {showPassword ? "Hide" : "Show"}
+              <i className={`fa ${showPassword ? "fa-eye-slash" : "fa-eye"}`}></i>
             </button>
           </div>
           {error && <p className="error-message">{error}</p>}
