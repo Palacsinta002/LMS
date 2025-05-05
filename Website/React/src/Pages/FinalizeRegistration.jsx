@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import axios from "axios"
 import { Link, useNavigate } from 'react-router-dom'
 import "../Styles/Login.css"
-import { setAuthToken } from '../Auth/setAuthToken';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 export default function Login() {
   axios.defaults.withCredentials = true;
@@ -27,13 +28,13 @@ export default function Login() {
           }
         });
 
-        console.log(response)
+      console.log(response)
       if (response.data.Success) {
         navigate("/verify");
       }
     } catch (error) {
       console.error("Finalize Registration Error:", error);
-  
+
       if (error.response && error.response.data && error.response.data.error) {
         console.log(error.response.data.error);
         setError(error.response.data.error || "Finalize Registration failed");
@@ -46,10 +47,14 @@ export default function Login() {
   }
   return (
     <div className="login">
-      <Link to="/" className="back-to-home">Back to Home</Link>
+      <div className="login-navigation-buttons">
+        <Link to="/" className="back-to-home">
+          <FontAwesomeIcon icon={faArrowLeft} /> Back to Home
+        </Link>
+      </div>
       <h1 className="login-header">Library Management System</h1>
       <div className="login-card">
-        <i className="fa fa-user"></i>
+        <i className="fa fa-user login-icon"></i>
         <h1>Finalize Registration</h1>
         <form onSubmit={HandleSubmit}>
           <label>Email</label>
@@ -68,7 +73,7 @@ export default function Login() {
               onClick={() => setShowPassword(!showPassword)}
               className="login-toggle-password"
             >
-              {showPassword ? "Hide" : "Show"}
+              <i className={`fa ${showPassword ? "fa-eye-slash" : "fa-eye"}`}></i>
             </button>
           </div>
           {error && <p className="error-message">{error}</p>}
