@@ -32,7 +32,7 @@ body {
   box-shadow: 2px 3px 10px 1px rgba(0, 0, 0, 0.6);
 }
 
-.login-card i {
+.login-card .login-icon {
   font-size: 16vh;
   text-align: center;
   grid-column-start: 1;
