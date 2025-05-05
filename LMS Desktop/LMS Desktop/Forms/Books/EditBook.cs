@@ -49,11 +49,13 @@ public partial class EditBook : Form
 
             if (_originalImgPath != string.Empty)
             {
+                save.Text = "Saving...";
                 string extension = Path.GetExtension(_originalImgPath);
                 string newName = textBox_isbn.Text + extension;
                 string tempPath = Path.Combine(Path.GetTempPath(), newName);
                 File.Copy(_originalImgPath, tempPath, true);
                 uploadSuccessful = HandleFiles.Upload(tempPath);
+                save.Text = "Save";
             }
             if (uploadSuccessful || _originalImgPath == string.Empty)
             {
