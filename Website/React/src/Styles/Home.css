@@ -1,5 +1,5 @@
 body {
-  background-color: #504DB4;
+  z-index: -1;
   overflow-x: hidden;
 }
 header {

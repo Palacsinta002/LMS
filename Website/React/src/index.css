@@ -7,10 +7,6 @@
   margin: 0;
 }
 
-body {
-  background-image: url(../circles.png);
-}
-
 .HeroSection {
   height: 80vh;
   width: 100vw;
@@ -38,4 +34,10 @@ header {
 
 .hiddenSearch {
   display: none;
+}
+body {
+  background-color: #504DB4;
+  background-image: url("./Images/circles.png");
+  background-repeat: repeat;
+  z-index: 10;
 }
